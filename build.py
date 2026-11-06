@@ -164,18 +164,27 @@ def vitrina(guias, prompts, herrs, en_biblioteca):
 
 
 def catalogo(guias, en_biblioteca):
-    """Todas las guías agrupadas por tema, plegadas."""
+    """Todas las guías: pestañas por tema y una grilla de tarjetas del tema elegido (la primera, abierta)."""
     grupos = {}
     for g in guias:
         grupos.setdefault(AGRUPAR.get(g["tema"], g["tema"]), []).append(g)
     orden = [t for t in ORDEN_TEMAS if t in grupos] + [t for t in grupos if t not in ORDEN_TEMAS]
-    salida = []
-    for tema in orden:
-        items = "".join(
-            (f'<li><a href="guias/{g["slug"]}.html">{html.escape(g["t"])}</a><small>{g["min"]} min</small></li>' if en_biblioteca
-             else f'<li><span>{html.escape(g["t"])}</span><small>{g["min"]} min</small></li>') for g in grupos[tema])
-        salida.append(f'<details class="glass"><summary><span>{html.escape(tema)}</span><em>{len(grupos[tema])} guías</em></summary><ul>{items}</ul></details>')
-    return '<div class="v-catalogo">' + "".join(salida) + "</div>"
+    e = html.escape
+    tabs = "".join(f'<button type="button" class="v-tab" role="tab" aria-selected="{"true" if k == 0 else "false"}" data-tema="{k}">'
+                   f'{e(tema)}<span>{len(grupos[tema])}</span></button>' for k, tema in enumerate(orden))
+    paneles = []
+    for k, tema in enumerate(orden):
+        tarjetas = []
+        for n, g in enumerate(grupos[tema], 1):
+            cuerpo = (f'<span class="v-g-num">{n:02d}</span><h4>{e(g["t"])}</h4><p>{e(g["d"])}</p>'
+                      f'<span class="v-g-pie"><b>{g["min"]} min</b>' + (f'<i>Reel · {e(g["post"])}</i>' if g.get("post") else "") + '</span>')
+            tarjetas.append(f'<a class="v-g" href="guias/{g["slug"]}.html">{cuerpo}</a>' if en_biblioteca else f'<div class="v-g">{cuerpo}</div>')
+        paneles.append(f'<div class="v-panel" role="tabpanel" data-tema="{k}"{"" if k == 0 else " hidden"}>' + "".join(tarjetas) + "</div>")
+    script = ("<script>(function(){var c=document.currentScript.previousElementSibling;"
+              "c.querySelector('.v-tabs').addEventListener('click',function(ev){var b=ev.target.closest('.v-tab');if(!b)return;"
+              "c.querySelectorAll('.v-tab').forEach(function(x){x.setAttribute('aria-selected',x===b);});"
+              "c.querySelectorAll('.v-panel').forEach(function(p){p.hidden=p.dataset.tema!==b.dataset.tema;});});})();</script>")
+    return f'<div class="v-catalogo"><div class="v-tabs" role="tablist">{tabs}</div>' + "".join(paneles) + "</div>" + script
 
 
 def inicio(v):
