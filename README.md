@@ -13,7 +13,7 @@ Web estática + una función (`api/entrar.js`) + `middleware.js`, en Vercel.
 | Diseño | `web/*.css`, `web/menu.js`, `web/guia.js`, `web/comun.js` |
 | Plantillas | `web/inicio.html` → `index.html`, `web/recursos.html` → `recursos.html`, `web/guia.html` → `guias/<slug>.html` |
 
-Después de cambiar cualquier cosa: `python3 build.py` y subir los archivos generados (`index.html`, `recursos.html`, `guias/`, `web/guias-web.*`).
+Después de cambiar cualquier cosa: `python3 build.py` (o `npm run construir`) y subir los archivos generados (`index.html`, `recursos.html`, `guias/`, `web/guias-web.*`).
 
 ## Sumar una guía
 
