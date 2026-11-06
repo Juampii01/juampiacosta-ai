@@ -24,7 +24,7 @@ def version():
 
 
 TEMAS = {"Empezar", "Claude", "Claude Code", "Skills", "Negocio", "Ventas", "Contenido", "Productividad", "Automatizar",
-         "Asistentes", "Conectores", "Video"}
+         "Asistentes", "Conectores", "Video", "Agentes", "Desarrollo", "Vender IA"}
 
 
 def lotes():

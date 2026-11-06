@@ -13,7 +13,7 @@ Un solo archivo JSON con tres listas:
   "slug": "minusculas-con-guiones-unico",
   "t": "Título claro (máx. ~70 caracteres)",
   "d": "Resumen de 1 o 2 frases: qué vas a lograr.",
-  "tema": "uno de: Empezar | Claude | Claude Code | Skills | Negocio | Ventas | Contenido | Productividad | Automatizar",
+  "tema": "uno de: Empezar | Claude | Claude Code | Skills | Negocio | Ventas | Contenido | Productividad | Automatizar | Agentes | Desarrollo | Vender IA",
   "min": 6,                       // minutos de lectura estimados (entero)
   "ficha": [["Qué es", "..."], ["Necesitás", "..."], ["Cuánto cuesta", "..."], ["Qué no hace", "..."]],   // opcional, 3-5 filas
   "fichaNombre": "nombre corto",  // opcional
