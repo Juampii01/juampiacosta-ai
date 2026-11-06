@@ -1,0 +1,141 @@
+/* Base común de las 3 propuestas: marca juampiacosta.ai + glass */
+:root {
+  --navy: #0b0a09;
+  --navy-2: #17140f;
+  --blue: #ff5a1f;
+  --sky: #ff8a4c;
+  --glow: #ffb889;
+  --ink: #efeae4;
+  --muted: #a8a097;
+  --line: rgba(255, 150, 100, .22);
+  --glass: rgba(255, 255, 255, .045);
+  --glass-2: rgba(255, 255, 255, .08);
+  --radius: 22px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--navy);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+/* Sin barras de scroll grises en ningún sitio; el scroll sigue funcionando */
+* { scrollbar-width: none; }
+*::-webkit-scrollbar { display: none; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+.mono { font-family: "JetBrains Mono", ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; font-size: 11px; }
+
+/* Fondo: brillos azules que dan profundidad al cristal */
+.fondo { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.fondo::before, .fondo::after {
+  content: ""; position: absolute; border-radius: 50%; filter: blur(110px);
+}
+.fondo::before { width: 720px; height: 520px; left: -160px; top: -200px; background: rgba(255, 90, 31, .35); }
+.fondo::after { width: 640px; height: 640px; right: -220px; top: 30vh; background: rgba(255, 138, 76, .18); }
+
+/* Cristal */
+.glass {
+  background: linear-gradient(160deg, var(--glass-2), var(--glass));
+  border: 1px solid var(--line);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08), 0 20px 50px -20px rgba(0, 0, 0, .6);
+}
+
+/* Cabecera */
+.cab {
+  position: sticky; top: 12px; z-index: 20;
+  max-width: 1200px; margin: 12px auto 0; padding: 10px 14px 10px 18px;
+  display: flex; align-items: center; gap: 16px; border-radius: 999px;
+}
+.marca { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; }
+.marca i { width: 30px; height: 30px; border-radius: 9px; background: #fff; color: var(--navy); display: grid; place-items: center; font-style: normal; font-weight: 800; }
+.marca b { color: var(--sky); }
+/* Logo sobre placa blanca, como en el mapa de 64 repos */
+.marca i.logo { background: transparent; padding: 0; overflow: hidden; box-shadow: 0 0 14px rgba(255, 90, 31, .35); }
+.marca i.logo img, .marca i.logo svg { display: block; width: 100%; height: 100%; object-fit: contain; }
+.cab nav { margin-left: auto; display: flex; gap: 6px; align-items: center; }
+.redes { display: flex; gap: 6px; }
+.red { display: inline-flex; align-items: center; gap: 7px; padding: 8px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; border: 1px solid var(--line); background: var(--glass); transition: background .2s, border-color .2s; }
+/* Al pasar el ratón: solo se ilumina el fondo; el borde no se vuelve una línea clara */
+.red:hover { background: rgba(255, 90, 31, .18); }
+.red svg { width: 16px; height: 16px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; flex: none; padding: 10px 16px; border-radius: 999px; font-weight: 700; font-size: 13px; background: var(--blue); color: #fff; box-shadow: 0 0 24px rgba(255, 90, 31, .55); transition: transform .2s; }
+.btn:hover { transform: translateY(-1px); }
+
+/* Buscador */
+.buscar { position: relative; }
+.buscar input {
+  width: 100%; padding: 18px 20px 18px 52px; border-radius: 18px; font: inherit; font-size: 16px; color: var(--ink);
+  background: rgba(0, 66, 160, .38); border: 1px solid rgba(255, 138, 76, .55); outline: none;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 0 0 1px rgba(255, 90, 31, .15), 0 0 28px rgba(255, 90, 31, .35);
+}
+/* Que el buscador se vea sobre la bandera: fondo y borde azules, texto de ayuda más claro */
+.buscar input::placeholder { color: #a9c6ee; }
+.buscar input:focus { border-color: var(--sky); box-shadow: 0 0 0 4px rgba(255, 138, 76, .15); }
+.buscar svg { position: absolute; z-index: 1; pointer-events: none; left: 18px; top: 50%; translate: 0 -50%; width: 20px; color: var(--glow); }
+.buscar kbd { position: absolute; right: 16px; top: 50%; translate: 0 -50%; font: 11px "JetBrains Mono", monospace; color: var(--muted); border: 1px solid var(--line); padding: 3px 7px; border-radius: 6px; }
+
+/* Chips de sección */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { padding: 9px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; color: var(--muted); border: 1px solid var(--line); background: var(--glass); cursor: pointer; }
+.chip span { margin-left: 6px; opacity: .6; font-weight: 500; }
+.chip[aria-pressed="true"] { color: #fff; background: rgba(255, 90, 31, .25); border-color: var(--sky); }
+.chip.vacia { opacity: .45; }
+
+/* Etiqueta de tipo */
+.tipo { display: inline-flex; align-items: center; gap: 6px; padding: 4px 9px; border-radius: 999px; font: 600 10px "JetBrains Mono", monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--glow); background: rgba(255, 90, 31, .14); border: 1px solid rgba(255, 138, 76, .3); }
+
+/* Bloque de prompt con botón copiar */
+.prompt { position: relative; border-radius: 14px; padding: 16px 92px 16px 16px; background: rgba(0, 0, 0, .35); border: 1px dashed rgba(255, 138, 76, .35); font: 13px/1.6 "JetBrains Mono", monospace; color: var(--ink); }
+.prompt button { position: absolute; top: 10px; right: 10px; font: 600 11px "JetBrains Mono", monospace; color: var(--navy); background: var(--glow); border: 0; border-radius: 8px; padding: 6px 10px; cursor: pointer; }
+
+/* Popup «New video» */
+.nuevo {
+  position: fixed; right: 20px; bottom: 20px; z-index: 40; width: 300px; border-radius: 20px; padding: 12px;
+  display: grid; grid-template-columns: 96px 1fr; gap: 12px; align-items: center;
+  translate: 0 140%; transition: translate .6s cubic-bezier(.2, .9, .2, 1);
+}
+.nuevo.ver { translate: 0 0; }
+.nuevo img { width: 96px; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; }
+.nuevo strong { display: block; font-size: 13px; margin: 4px 0 2px; }
+.nuevo small { color: var(--muted); font-size: 12px; }
+.nuevo .cerrar { position: absolute; top: -8px; right: -8px; width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--line); background: var(--navy-2); color: var(--ink); cursor: pointer; }
+.punto { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #ff3b5c; box-shadow: 0 0 10px #ff3b5c; margin-right: 6px; }
+
+.sin-resultados { display: none; text-align: center; color: var(--muted); padding: 40px 0; }
+
+/* Línea que avanza al bajar */
+.progreso { position: absolute; left: 0; bottom: -1px; height: 2px; width: 0; background: linear-gradient(90deg, var(--blue), var(--glow)); box-shadow: 0 0 10px var(--blue); border-radius: 2px; }
+
+@media (max-width: 720px) {
+  /* Cabecera: barra de borde a borde pegada arriba */
+  .cab { top: 0; margin: 0; padding: 10px 16px; gap: 8px; border-radius: 0; border-width: 0 0 1px; }
+  .progreso { border-radius: 0; }
+  .marca { font-size: 14px; gap: 8px; white-space: nowrap; }
+  .btn { white-space: nowrap; }
+  .marca i { width: 28px; height: 28px; }
+  .cab nav { gap: 6px; }
+  .redes { gap: 4px; }
+  .red { padding: 8px; }
+  .red .txt, .btn .largo { display: none; }
+  .btn { padding: 9px 13px; }
+  .nuevo { left: 16px; right: 16px; width: auto; bottom: 12px; grid-template-columns: 72px 1fr; padding: 10px; gap: 10px; border-radius: 16px; }
+  .nuevo img { width: 72px; }
+  .nuevo strong { font-size: 12.5px; margin: 2px 0 0; }
+  .nuevo small { display: none; }
+}
+/* Móviles pequeños (360 px): que la cabecera quepa en una fila */
+@media (max-width: 400px) {
+  .cab { padding: 9px 12px; gap: 6px; }
+  .marca { font-size: 13px; gap: 7px; }
+  .marca i { width: 26px; height: 26px; border-radius: 8px; }
+  .red { padding: 7px; }
+  .red svg { width: 15px; height: 15px; }
+  .btn { padding: 8px 11px; font-size: 12px; }
+}

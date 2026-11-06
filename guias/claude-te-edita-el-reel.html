@@ -1,0 +1,39 @@
+<!doctype html>
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena claude-te-edita-el-reel, Claude te edita el reel, Le pasás el video crudo y te devuelve el reel: silencios cortados, subtítulos palabra por palabra y música que baja sola cuando hablás. Todo gratis y en tu compu. y 1789ddc2 -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude te edita el reel | juampiacosta.ai</title>
+<meta name="description" content="Le pasás el video crudo y te devuelve el reel: silencios cortados, subtítulos palabra por palabra y música que baja sola cuando hablás. Todo gratis y en tu compu.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../web/base.css?v=1789ddc2">
+<link rel="stylesheet" href="../web/cta.css?v=1789ddc2">
+<link rel="stylesheet" href="../web/biblioteca.css?v=1789ddc2">
+<link rel="stylesheet" href="../web/guia.css?v=1789ddc2">
+<link rel="stylesheet" href="../web/tema.css?v=1789ddc2">
+<script src="../web/tema.js?v=1789ddc2"></script>
+</head>
+<body>
+<div class="fondo"></div>
+<script src="../web/redes.js?v=1789ddc2"></script>
+<script src="../web/guias-web.js?v=1789ddc2"></script>
+<script src="../web/comun.js?v=1789ddc2"></script>
+<script>document.write(cabecera());</script>
+
+<main class="lectura" id="guia" data-slug="claude-te-edita-el-reel"></main>
+
+<script src="../web/rutas.js?v=1789ddc2"></script>
+<script src="../web/logos.js?v=1789ddc2"></script>
+<script src="../web/guia.js?v=1789ddc2"></script>
+<script>
+(function () {
+  var slug = document.getElementById("guia").dataset.slug;
+  var g = GUIAS_WEB.filter(function (x) { return x.slug === slug; })[0];
+  pintarGuia(document.getElementById("guia"), g);
+})();
+</script>
+</body>
+</html>

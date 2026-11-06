@@ -1,0 +1,103 @@
+/* Modo claro. tema.js pone data-tema="claro" en <html>.
+   Cambia las variables de base.css y los pocos colores que estaban fijos en los otros CSS.
+   Las tarjetas oscuras a propósito (vídeo, llamada, formulario) se quedan oscuras con texto blanco. */
+
+/* Botón ☀️/🌙 de la cabecera, igual que los botones de redes */
+.tema-boton {
+  display: grid; place-items: center; flex: none; width: 36px; height: 36px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--glass); color: var(--ink); transition: background .2s;
+}
+.tema-boton:hover { background: rgba(255, 90, 31, .18); }
+.tema-boton svg { width: 17px; height: 17px; }
+@media (max-width: 400px) { .tema-boton { width: 32px; height: 32px; } .tema-boton svg { width: 15px; height: 15px; } }
+/* Con el botón nuevo la cabecera no cabía en móviles de 360-414 px: queda solo el logo, sin el texto */
+@media (max-width: 430px) { .cab .marca span { display: none; } }
+
+[data-tema="claro"] {
+  --navy: #f6f1eb;
+  --navy-2: #ffffff;
+  --sky: #d9480f;
+  --glow: #c2410c;
+  --ink: #1c1712;
+  --muted: #6b6259;
+  --line: rgba(120, 60, 20, .16);
+  --glass: rgba(255, 255, 255, .62);
+  --glass-2: rgba(255, 255, 255, .92);
+  color-scheme: light;
+}
+[data-tema="claro"] .glass { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 14px 36px -18px rgba(60, 30, 10, .28); }
+[data-tema="claro"] .fondo::before { background: rgba(255, 90, 31, .14); }
+[data-tema="claro"] .fondo::after { background: rgba(255, 138, 76, .12); }
+/* La bandera de arriba: más suave y fundida con el fondo claro */
+[data-tema="claro"] .bandera { opacity: .4; }
+[data-tema="claro"] .bandera::after { background: rgba(246, 241, 235, .55); }
+/* El logo va siempre en placa blanca; en claro lleva un borde para que no se pierda en el fondo */
+[data-tema="claro"] .marca i.logo { box-shadow: 0 0 0 1px rgba(120, 60, 20, .18), 0 4px 12px -4px rgba(60, 30, 10, .3); }
+
+/* Buscadores de sección */
+/* Fondo blanco casi opaco: el azul transparente dejaba ver la bandera y quedaba gris */
+[data-tema="claro"] .buscar input { background: rgba(255, 255, 255, .94); border-color: rgba(255, 90, 31, .45); box-shadow: 0 6px 20px -10px rgba(60, 30, 10, .3); }
+/* Filtro activo («Todos 116»): azul de marca sólido; el texto blanco no se leía sobre el azul clarito */
+[data-tema="claro"] .chip { background: rgba(255, 255, 255, .85); }
+[data-tema="claro"] .chip[aria-pressed="true"] { color: #fff; background: var(--blue); border-color: var(--blue); }
+[data-tema="claro"] .chip[aria-pressed="true"] span { opacity: .8; }
+[data-tema="claro"] .buscar input::placeholder { color: #6a7f9e; }
+[data-tema="claro"] .buscar input:focus { box-shadow: 0 0 0 4px rgba(255, 90, 31, .12); }
+
+/* Prompts para copiar */
+[data-tema="claro"] .prompt { background: rgba(110, 55, 20, .05); border-color: rgba(255, 90, 31, .35); }
+[data-tema="claro"] .prompt button { background: var(--blue); color: #fff; }
+
+/* Tarjetas que van sobre imagen o fondo azul oscuro: el texto sigue blanco */
+[data-tema="claro"] .b-video .txt,
+[data-tema="claro"] .guia .miniatura b,
+[data-tema="claro"] .cta-card h3,
+[data-tema="claro"] .modal-izq h2,
+[data-tema="claro"] .modal-izq li { color: #fff; }
+[data-tema="claro"] .b-video .txt .mono,
+[data-tema="claro"] .b-video .tipo,
+[data-tema="claro"] .guia .miniatura span,
+[data-tema="claro"] .modal-izq .etq,
+[data-tema="claro"] .modal-izq li::before { color: #ffb889; }
+[data-tema="claro"] .pronto b { color: var(--ink); }
+
+/* Formulario de llamada: la mitad izquierda azul se queda; la derecha pasa a blanco */
+[data-tema="claro"] .modal { background: rgba(40, 25, 15, .45); }
+[data-tema="claro"] .modal-caja { background: #fff; }
+[data-tema="claro"] .op { background: #f5f8fd; }
+[data-tema="claro"] .barra-prog div { background: rgba(90, 45, 15, .1); }
+[data-tema="claro"] .campos input, [data-tema="claro"] .campos textarea, [data-tema="claro"] .campos .tel select, [data-tema="claro"] .cerrar-modal { background: #f5f8fd; }
+[data-tema="claro"] .error-campo { color: #c62828; }
+/* El botón blanco usaba var(--navy) para el texto, que en claro es casi blanco */
+[data-tema="claro"] .btn-blanco { color: #0b0a09; }
+/* El botón blanco «OK» se perdía sobre el fondo blanco: en claro va azul */
+[data-tema="claro"] .modal-der .btn-blanco { background: var(--blue); color: #fff; box-shadow: 0 0 0 4px rgba(255, 90, 31, .18); }
+
+/* Menú lateral */
+[data-tema="claro"] .menu { background: rgba(255, 255, 255, .9); }
+[data-tema="claro"] .m-item.activo { background: rgba(255, 90, 31, .1); }
+[data-tema="claro"] .m-comunidad { color: #0f7a3f; background: rgba(37, 211, 102, .1); border-color: rgba(20, 150, 70, .35); }
+[data-tema="claro"] .ruta li a { background: rgba(255, 255, 255, .75); }
+[data-tema="claro"] .menu-velo { background: rgba(40, 25, 15, .35); }
+
+/* Página de cada guía */
+[data-tema="claro"] .lectura p, [data-tema="claro"] .lectura li { color: #2a3a53; }
+[data-tema="claro"] .lectura b, [data-tema="claro"] .lectura strong { color: var(--ink); }
+[data-tema="claro"] .lectura .cta-card p { color: #e6d9cc; }
+
+/* Guía visual en modo claro */
+[data-tema="claro"] .g-prompt pre { background: rgba(110, 55, 20, .05); }
+[data-tema="claro"] .g-check { color: #0f8f6a; }
+[data-tema="claro"] .g-uso-etq { color: rgb(var(--c)); filter: brightness(.7) saturate(1.3); }
+[data-tema="claro"] .g-uso { background: linear-gradient(160deg, rgba(var(--c), .12), rgba(255, 255, 255, .7)); }
+[data-tema="claro"] .g-aviso i { color: #c86a12; }
+[data-tema="claro"] .placa-logo { box-shadow: 0 0 0 1px rgba(120, 60, 20, .14), 0 8px 20px -10px rgba(60, 30, 10, .35); }
+/* Los números de los pasos van sobre el círculo azul: siempre blancos
+ */
+[data-tema="claro"] .lectura .g-pasos b { color: #fff; }
+/* Mejoras premium de la guía en modo claro */
+[data-tema="claro"] .g-portada::before { background: radial-gradient(closest-side, color-mix(in srgb, var(--marca) 22%, transparent), transparent); }
+[data-tema="claro"] .g-hueco { background: rgba(255, 190, 40, .25); color: #8a5a00; border-color: rgba(200, 140, 0, .5); }
+[data-tema="claro"] .g-ruta-etq { filter: brightness(.75) saturate(1.3); }
+[data-tema="claro"] .lectura .g-pasos button b { color: #fff; }
+[data-tema="claro"] .g-progreso.completo span::after { color: #0f8f6a; }

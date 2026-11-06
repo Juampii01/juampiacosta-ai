@@ -1,0 +1,14 @@
+/* Tarjeta de llamada a la acción al final de cada guía («Escribime») */
+.cta-card {
+  position: relative; margin: -150px auto 0; width: min(720px, 100%);
+  border-radius: 28px; padding: 40px; overflow: hidden;
+  background: radial-gradient(120% 140% at 85% 20%, rgba(255, 138, 76, .55), transparent 55%),
+              radial-gradient(90% 120% at 10% 110%, rgba(255, 90, 31, .7), transparent 60%), #1a0d06;
+  border: 1px solid rgba(255, 184, 137, .35);
+  box-shadow: 0 30px 80px -20px rgba(255, 90, 31, .55);
+}
+.cta-card h3 { font-size: clamp(24px, 3vw, 34px); letter-spacing: -.025em; line-height: 1.1; max-width: 520px; }
+.cta-card p { color: #e6d9cc; margin: 12px 0 24px; max-width: 460px; }
+.btn-blanco { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 14px; border: 0; cursor: pointer;
+  font: 700 15px "Inter", sans-serif; color: var(--navy); background: #fff; box-shadow: 0 0 0 4px rgba(255, 138, 76, .45); transition: transform .2s; }
+.btn-blanco:hover { transform: translateY(-1px); }

@@ -1,0 +1,169 @@
+<!doctype html>
+<!-- Plantilla de /recursos. No abrir esta: build.py la copia a ../recursos.html y pone la versión ({{V}}) -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biblioteca | juampiacosta.ai</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="web/base.css?v={{V}}">
+<link rel="stylesheet" href="web/cta.css?v={{V}}">
+<link rel="stylesheet" href="web/biblioteca.css?v={{V}}">
+<link rel="stylesheet" href="web/menu.css?v={{V}}">
+<link rel="stylesheet" href="web/tema.css?v={{V}}">
+<script src="web/tema.js?v={{V}}"></script>
+</head>
+<body>
+<div class="fondo"></div>
+<script src="web/redes.js?v={{V}}"></script>
+<script src="web/guias-web.js?v={{V}}"></script>
+<script src="web/herramientas.js?v={{V}}"></script>
+<script src="web/prompts.js?v={{V}}"></script>
+<script src="web/datos.js?v={{V}}"></script>
+<script src="web/comun.js?v={{V}}"></script>
+<script src="web/rutas.js?v={{V}}"></script>
+<script src="web/menu.js?v={{V}}"></script>
+<script>document.write(cabecera());</script>
+
+<main>
+  <section id="inicio">
+  <div class="bento">
+    <div class="b b-hero glass">
+      <div>
+        <span class="mono" style="color:var(--glow)">Acceso fundador</span>
+        <h1 class="saludo">Bienvenido a la biblioteca: todo lo que uso para <em>armar sistemas con Claude</em>.</h1>
+        <p>Guías, prompts, skills y conectores en un solo lugar. Cada semana se suman recursos nuevos.</p>
+      </div>
+      <a class="btn" href="#rutas" data-bajar-a="ruta-recomendada" style="align-self:flex-start">Empezar por acá ↓</a>
+    </div>
+    <a class="b b-red glass" id="b-ig" target="_blank" rel="noopener"></a>
+    <a class="b b-red glass" id="b-dm" target="_blank" rel="noopener"></a>
+    <div class="b b-num glass"><b id="n-recursos"></b><span>recursos</span></div>
+    <div class="b b-num glass"><b id="n-guias"></b><span>guías paso a paso</span></div>
+  </div>
+  </section>
+
+  <section id="rutas">
+    <div class="tit"><div><span class="mono">Rutas de aprendizaje</span><h2>Seguí un camino, de fácil a difícil</h2></div></div>
+    <div class="rutas" id="lista-rutas"></div>
+  </section>
+
+  <section id="ruta-recomendada"></section>
+  <section id="ultimos-posts"></section>
+
+  <section id="guias-web">
+    <div class="tit"><div><span class="mono">01 · Guías</span><h2>Guías paso a paso</h2></div></div>
+    <div class="filtro-cat" id="filtro-guias-web"></div>
+    <div class="herrs" id="lista-guias-web"></div>
+  </section>
+
+  <section id="prompts">
+    <div class="tit"><div><span class="mono">02 · Prompts</span><h2>Prompts para copiar y pegar</h2></div></div>
+    <div class="filtro-cat" id="filtro-prompts"></div>
+    <div class="herrs" id="lista-prompts"></div>
+  </section>
+
+  <section id="skills">
+    <div class="tit"><div><span class="mono">03 · Skills</span><h2>Skills para tu Claude</h2></div></div>
+    <div class="herrs" id="lista-skills"></div>
+  </section>
+
+  <section id="mcp">
+    <div class="tit"><div><span class="mono">04 · MCP</span><h2>Conectá Claude con tus apps</h2></div></div>
+    <div class="herrs" id="lista-mcp"></div>
+  </section>
+
+  <section id="herramientas">
+    <div class="tit"><div><span class="mono">05 · Herramientas</span><h2>Plugins y apps</h2></div></div>
+    <div class="herrs" id="lista-herramientas"></div>
+  </section>
+
+  <section id="posts">
+    <div class="tit"><div><span class="mono">06 · De mis reels</span><h2>Lo que prometí en mis videos</h2></div></div>
+    <div class="herrs" id="lista-posts"></div>
+  </section>
+  <p class="sin-resultados">No encontré nada con esa palabra.</p>
+</main>
+
+<script>
+// Total: guías + packs de prompts + skills, MCP y herramientas (los de «De mis reels» ya son guías: no se cuentan dos veces)
+document.getElementById("n-recursos").textContent = GUIAS_WEB.length + PROMPTS.length + HERRAMIENTAS.length;
+document.getElementById("n-guias").textContent = GUIAS_WEB.length;
+
+// Skills, MCP y herramientas: qué hace, para qué te sirve, comando para copiar y link
+function tarjetaHerramienta(h) {
+  var cmds = h.cmds.map(function (c) {
+    return '<div class="cmd"><small>' + c.donde + '</small><div class="prompt"><button onclick="copiar(this)">Copiar</button><code>' + c.c + '</code></div></div>';
+  }).join("");
+  var meta = [h.estrellas ? "★ " + h.estrellas : "", h.licencia || ""].filter(Boolean).join(" · ");
+  return '<article class="herr glass" data-buscar="' + buscable(h) + ' ' + h.tipo + ' ' + h.repo + ' ' + h.para.replace(/"/g, "") + '">' +
+    '<div class="herr-cab"><span class="tipo">' + h.tipo + '</span>' + (meta ? '<span class="herr-meta">' + meta + '</span>' : '') + '</div>' +
+    '<h3>' + h.t + '</h3><p>' + h.d + '</p><p class="para"><b>Para qué te sirve:</b> ' + h.para + '</p>' + cmds +
+    '<a class="bajar" href="' + h.url + '" target="_blank" rel="noopener">' + h.repo + ' →</a></article>';
+}
+["Skills", "MCP", "Herramientas"].forEach(function (cat) {
+  var id = { Skills: "lista-skills", MCP: "lista-mcp", Herramientas: "lista-herramientas" }[cat];
+  document.getElementById(id).innerHTML = HERRAMIENTAS.filter(function (h) { return h.cat === cat; }).map(tarjetaHerramienta).join("");
+});
+
+// Packs de prompts: cada prompt con su botón «Copiar», plegados hasta tocar «Ver los N prompts»
+document.getElementById("lista-prompts").innerHTML = PROMPTS.map(function (p) {
+  return '<article class="herr glass' + (p.prompts.length > 1 ? ' plegado' : '') + '" data-cat="' + p.tema + '" data-buscar="' + buscable(p) + ' prompt ' + p.tema + ' ' + p.para.replace(/"/g, "") + '">' +
+    '<div class="herr-cab"><span class="tipo">Prompts · ' + p.tema + '</span><span class="herr-meta">' + p.prompts.length + ' prompts</span></div>' +
+    '<h3>' + p.t + '</h3><p>' + p.d + '</p><p class="para"><b>Para qué te sirve:</b> ' + p.para + '</p>' +
+    p.prompts.map(function (x) { return '<div class="cmd"><small>' + x.t + '</small><div class="prompt"><button onclick="copiar(this)">Copiar</button><code>' + x.c + '</code></div></div>'; }).join("") +
+    (p.prompts.length > 1 ? '<button class="mas-prompts" onclick="plegarPack(this)" data-n="' + p.prompts.length + '">Ver los ' + p.prompts.length + ' prompts ↓</button>' : '') +
+    '</article>';
+}).join("");
+function plegarPack(boton) {
+  var pack = boton.closest(".herr");
+  var plegado = pack.classList.toggle("plegado");
+  boton.textContent = plegado ? "Ver los " + boton.dataset.n + " prompts ↓" : "Ocultar ↑";
+}
+
+// Filtro por tema (Todas + cada tema) para una lista de tarjetas
+function filtroTemas(caja, lista, items, campo, todas) {
+  var temas = {};
+  items.forEach(function (x) { temas[x[campo]] = (temas[x[campo]] || 0) + 1; });
+  caja.innerHTML = '<button class="chip" aria-pressed="true" data-cat="">' + todas + '<span>' + items.length + '</span></button>' +
+    Object.keys(temas).sort().map(function (k) { return '<button class="chip" aria-pressed="false" data-cat="' + k + '">' + k + '<span>' + temas[k] + '</span></button>'; }).join("");
+  caja.addEventListener("click", function (e) {
+    var b = e.target.closest(".chip");
+    if (!b) return;
+    caja.querySelectorAll(".chip").forEach(function (c) { c.setAttribute("aria-pressed", c === b); });
+    lista.classList.toggle("abierta", !!b.dataset.cat);
+    lista.querySelectorAll(".herr").forEach(function (h) { h.classList.toggle("oculta-cat", !!b.dataset.cat && h.dataset.cat !== b.dataset.cat); });
+  });
+}
+filtroTemas(document.getElementById("filtro-prompts"), document.getElementById("lista-prompts"), PROMPTS, "tema", "Todos");
+
+// Guías: cada una tiene su página en guias/<slug>.html
+function tarjetaGuia(g, etiqueta) {
+  return '<a class="herr glass" href="guias/' + g.slug + '.html" data-cat="' + g.tema + '" data-buscar="' + buscable(g) + ' guia ' + g.tema + ' ' + (g.post || '') + '">' +
+    '<div class="herr-cab"><span class="tipo">' + etiqueta + '</span><span class="herr-meta">' + g.min + ' min</span></div>' +
+    '<h3>' + g.t + '</h3><p>' + g.d + '</p><span class="bajar">Leer la guía →</span></a>';
+}
+document.getElementById("lista-guias-web").innerHTML = GUIAS_WEB.map(function (g) { return tarjetaGuia(g, "Guía · " + g.tema); }).join("");
+document.getElementById("lista-posts").innerHTML = GUIAS_WEB.filter(function (g) { return g.post; }).map(function (g) { return tarjetaGuia(g, "Palabra · " + g.post); }).join("");
+filtroTemas(document.getElementById("filtro-guias-web"), document.getElementById("lista-guias-web"), GUIAS_WEB, "tema", "Todas");
+
+recoger(document.getElementById("lista-guias-web"), 9, "las guías");
+recoger(document.getElementById("lista-prompts"), 6, "los packs");
+buscadorSeccion(document.getElementById("lista-guias-web"), "Buscá en las guías…");
+buscadorSeccion(document.getElementById("lista-prompts"), "Buscá un prompt…");
+
+var ig = document.getElementById("b-ig");
+ig.href = REDES.ig;
+ig.innerHTML = ICONO.ig + '<div><strong>Instagram</strong><small>' + REDES.igUsuario + '</small></div>';
+var dm = document.getElementById("b-dm");
+dm.href = REDES.dm;
+dm.innerHTML = ICONO.ig + '<div><strong>¿Una duda?</strong><small>Escribime por DM</small></div>';
+empiezaAqui(document.getElementById("ruta-recomendada"));
+ultimosPosts(document.getElementById("ultimos-posts"));
+pintarRutas(document.getElementById("lista-rutas"));
+menuLateral();
+</script>
+</body>
+</html>
