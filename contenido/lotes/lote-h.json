@@ -1,0 +1,2040 @@
+{
+  "guias": [
+    {
+      "slug": "youtube-skills-claude",
+      "t": "Claude te ayuda con tu canal de YouTube: 11 skills gratis",
+      "d": "Guiones con 21 fórmulas de gancho, título y miniatura pensados juntos, qué cortar, el segundo exacto en que se va la gente y qué funciona en tu nicho. Gratis y de código abierto.",
+      "tema": "Contenido",
+      "min": 7,
+      "fichaNombre": "youtube-agent-skill",
+      "ficha": [
+        [
+          "Qué es",
+          "Un paquete de 11 skills para Claude que te ayuda con tu canal: guion, título y miniatura, cortes, retención y más."
+        ],
+        [
+          "Necesitás",
+          "Claude Code o la pestaña Code de la app de escritorio. Sin eso funciona a medias."
+        ],
+        [
+          "Cuánto cuesta",
+          "El paquete es gratis (licencia MIT). Claude Code viene con los planes pagos de Claude."
+        ],
+        [
+          "Qué no hace",
+          "No publica nada: el video lo subís vos."
+        ],
+        [
+          "Repo",
+          "github.com/Jakeschincariol/youtube-agent-skill"
+        ]
+      ],
+      "secciones": [
+        {
+          "h": "Qué es",
+          "p": [
+            "youtube-agent-skill junta 11 skills para Claude pensadas para manejar un canal de YouTube. Es gratis, tiene licencia MIT y no te pide registrarte, conseguir una clave de API ni conectar tu cuenta.",
+            "Algo importante: no publica nada. Las skills escriben y analizan; el video lo subís vos."
+          ]
+        },
+        {
+          "h": "Instalalo en un minuto",
+          "p": [
+            "La forma más fácil es pegar esto en Claude Code (o en la pestaña Code de la app de escritorio):"
+          ],
+          "prompts": [
+            {
+              "t": "Instalar",
+              "c": "https://github.com/Jakeschincariol/youtube-agent-skill\n\nInstalá esta skill y después comprobá que /yt-script funcione."
+            }
+          ],
+          "lista": [
+            "Como plugin, dentro de Claude Code: /plugin marketplace add Jakeschincariol/youtube-agent-skill y después /plugin install youtube-agent",
+            "A mano, en la terminal: git clone https://github.com/Jakeschincariol/youtube-agent-skill.git y después cp -r youtube-agent-skill/skills/yt-* ~/.claude/skills/"
+          ],
+          "aviso": "Sin Claude Code funciona a medias: pegás el SKILL.md de una skill al principio de un chat, pero perdés las herramientas que hacen los cálculos (gancho, retención y cortes)."
+        },
+        {
+          "h": "Primero, tu voz",
+          "p": [
+            "Todas las skills leen un archivo, voice.md, con tu forma de hablar. Es el paso que más cambia el resultado, porque después el guion lo decís vos en voz alta."
+          ],
+          "prompts": [
+            {
+              "t": "Tu voice.md",
+              "c": "Te paso 3 videos míos (o sus transcripciones). Con eso, escribí mi voice.md siguiendo la plantilla del paquete de YouTube: cómo hablo, las frases que uso, lo que nunca diría y mi ritmo."
+            }
+          ]
+        },
+        {
+          "h": "Las 11 skills",
+          "lista": [
+            "/yt-script: de una idea a un guion. Cinco ganchos armados con 21 fórmulas, con puntaje, y el guion con los momentos de retención marcados.",
+            "/yt-package: título y miniatura como pareja. Revisa que no se corten, que no repitan lo mismo y que no sean vagos.",
+            "/yt-edit: de la transcripción a una lista de cortes (silencios, muletillas y tomas repetidas) con su minuto.",
+            "/yt-retention: lee la retención que exportás de YouTube Studio y te dice el segundo exacto en que se va la gente y qué estabas diciendo.",
+            "/yt-viral: qué está funcionando en tu nicho, ordenado por cuánto supera cada video al promedio de su propio canal.",
+            "/yt-shorts: los Shorts que ya hay adentro de un video largo, con una primera frase nueva para cada uno.",
+            "/yt-comment: ordena los comentarios en cuatro grupos, responde con tu voz y te dice cuál fijar.",
+            "/yt-plan: una semana que entra en tus horas reales: un video principal, uno más simple y tres Shorts.",
+            "/yt-seo: la descripción, las etiquetas que sí valen la pena y las tres búsquedas que debería ganar.",
+            "/yt-chapters: capítulos armados desde la transcripción, que cumplen las reglas de YouTube.",
+            "/yt-audit: revisa el canal entero y termina en UNA mejora, no en veinte."
+          ]
+        },
+        {
+          "h": "La mejor: de lo que funciona a tu guion",
+          "prompts": [
+            {
+              "t": "Virales a guiones",
+              "c": "/yt-viral Buscá qué está funcionando en mi nicho [NICHO] en las últimas semanas. Después tomá los 3 videos que más superan el promedio de su canal y convertilos en guiones míos con /yt-script, usando mi voice.md. No copies frases: usá la estructura."
+            }
+          ]
+        },
+        {
+          "h": "Un flujo por video",
+          "pasos": [
+            "/yt-script con tu idea.",
+            "/yt-package para el título y la miniatura.",
+            "Grabás.",
+            "/yt-edit con la transcripción para saber qué cortar.",
+            "/yt-chapters y /yt-seo antes de subirlo.",
+            "A la semana, /yt-retention con los datos del video."
+          ]
+        },
+        {
+          "h": "Lo que conviene saber",
+          "lista": [
+            "El puntaje del gancho es una guía, no una predicción: un puntaje bajo es motivo para revisarlo y uno alto no garantiza nada.",
+            "/yt-viral solo lee listados públicos: nunca entra con tu cuenta.",
+            "Si a una skill le falta un dato, te lo pide; no inventa números.",
+            "Es un proyecto de terceros: revisá lo que instalás."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Cuesta algo?",
+          "a": "El paquete es gratis. Necesitás Claude y, para la versión completa, Claude Code, que viene con los planes pagos."
+        },
+        {
+          "q": "¿Sube los videos por mí?",
+          "a": "No. Todo termina en un bloque para copiar y la pregunta: ¿lo publicás o lo cambiás?"
+        },
+        {
+          "q": "¿De dónde saco la retención?",
+          "a": "En YouTube Studio, entrá a las estadísticas del video, exportá los datos de retención y pasale el archivo."
+        }
+      ],
+      "usos": [
+        {
+          "e": "Guion",
+          "c": "rosa",
+          "t": "De una idea a un guion",
+          "d": "Cinco ganchos con puntaje, armados con 21 fórmulas, y el guion con los momentos de retención marcados."
+        },
+        {
+          "e": "Miniatura",
+          "c": "morado",
+          "t": "Título y miniatura juntos",
+          "d": "Los revisa como pareja: que no se corten, no repitan lo mismo y no sean vagos."
+        },
+        {
+          "e": "Datos",
+          "c": "verde",
+          "t": "El segundo en que se va la gente",
+          "d": "Lee la retención de YouTube Studio y te dice qué decías justo en ese momento."
+        },
+        {
+          "e": "Ideas",
+          "c": "naranja",
+          "t": "Lo que funciona en tu nicho",
+          "d": "Videos que superan el promedio de su propio canal, listos para convertirlos en tus guiones."
+        }
+      ],
+      "fuentes": [
+        "https://github.com/Jakeschincariol/youtube-agent-skill"
+      ]
+    },
+    {
+      "slug": "instagram-skills-claude",
+      "t": "Claude te ayuda con tu Instagram: la guía completa de las skills",
+      "d": "Reels con 26 fórmulas de gancho con puntaje, lo que funciona en tu nicho, captions, carruseles, stories, perfil, plan semanal, comentarios, mensajes y un humanizador. Gratis y de código abierto.",
+      "tema": "Contenido",
+      "min": 8,
+      "fichaNombre": "instagram-agent-skill",
+      "ficha": [
+        [
+          "Qué es",
+          "Un paquete gratis de 13 skills para Claude que te ayuda con tu Instagram: reels, captions, carruseles, stories, perfil y más."
+        ],
+        [
+          "Necesitás",
+          "Claude Code o la pestaña Code de la app de escritorio. Sin eso funciona a medias."
+        ],
+        [
+          "Cuánto cuesta",
+          "El paquete es gratis (licencia MIT). Para la versión completa, Claude Code (planes pagos)."
+        ],
+        [
+          "Qué no hace",
+          "No publica ni se conecta a tu cuenta: vos decidís y publicás."
+        ],
+        [
+          "Repo",
+          "github.com/Jakeschincariol/instagram-agent-skill"
+        ]
+      ],
+      "secciones": [
+        {
+          "h": "Qué es",
+          "p": [
+            "instagram-agent-skill es un paquete de 13 skills para Claude que hace el trabajo pesado de tu perfil y tu contenido. Es gratis, con licencia MIT, y no te pide registrarte, una clave de API ni conectar tu cuenta.",
+            "Importante: no publica nada. Las skills escriben; vos decidís y publicás."
+          ]
+        },
+        {
+          "h": "Instalalo en un minuto",
+          "p": [
+            "Pegá esto en Claude Code (o en la pestaña Code de la app de escritorio):"
+          ],
+          "prompts": [
+            {
+              "t": "Instalar",
+              "c": "https://github.com/Jakeschincariol/instagram-agent-skill\n\nInstalá esta skill y después comprobá que /ig-reel funcione."
+            }
+          ],
+          "lista": [
+            "Como plugin, dentro de Claude Code: /plugin marketplace add Jakeschincariol/instagram-agent-skill y después /plugin install instagram-agent",
+            "A mano, en la terminal: git clone https://github.com/Jakeschincariol/instagram-agent-skill.git y después cp -r instagram-agent-skill/skills/ig-* ~/.claude/skills/"
+          ],
+          "aviso": "Sin Claude Code funciona a medias: pegás el SKILL.md de una skill al principio de un chat, pero perdés las herramientas que puntúan ganchos, miden tiempos y humanizan."
+        },
+        {
+          "h": "Primero, tu voz",
+          "p": [
+            "Todas las skills leen un archivo, voice.md, con tu forma de hablar. Diez minutos acá cambian todo lo demás."
+          ],
+          "prompts": [
+            {
+              "t": "Tu voice.md",
+              "c": "Te paso 3 reels míos (o sus transcripciones). Con eso, escribí mi voice.md con la plantilla del paquete de Instagram: cómo hablo, las frases que uso, lo que nunca diría y mi ritmo."
+            }
+          ]
+        },
+        {
+          "h": "Las 13 funciones",
+          "lista": [
+            "/ig-reel: de una idea a un reel. Tres ganchos con 26 fórmulas, con puntaje, más el guion, el texto en pantalla y los tiempos.",
+            "/ig-viral: busca los reels que mejor funcionan en tu nicho, los ordena por cuánto superan el promedio de su cuenta y te explica la fórmula.",
+            "/ig-caption: el caption revisado; te muestra los ~125 caracteres que se ven antes del «más».",
+            "/ig-carousel: una portada que invita a deslizar, el texto de cada lámina y los archivos en 1080×1350.",
+            "/ig-story: la secuencia de stories del día y qué sticker usar para cada cosa.",
+            "/ig-profile: le pone puntaje a tu perfil sobre 100 y reescribe primero lo que más resta.",
+            "/ig-plan: la semana: qué publicar, en qué formato, cuándo y con qué 10 cuentas interactuar.",
+            "/ig-comment: comentarios para publicaciones de otros, según el tipo de post. Nunca «🔥🔥🔥».",
+            "/ig-reply: ordena los comentarios de tus posts y responde por prioridad.",
+            "/ig-dm: el mensaje de la palabra clave, el primer mensaje, la propuesta de colaboración y dos seguimientos.",
+            "/ig-human: el humanizador. Saca rayas largas, palabras típicas de IA y caracteres invisibles, y pasa el texto por cinco controles.",
+            "/ig-repurpose: un video, podcast o newsletter convertido en una semana de reels y carruseles.",
+            "/ig-audit: revisa lo que ya publicaste y lo ordena por cuánto se destacó y cuánto se compartió."
+          ]
+        },
+        {
+          "h": "La favorita: lo que funciona en tu nicho",
+          "prompts": [
+            {
+              "t": "De lo que funciona a tus guiones",
+              "c": "/ig-viral Buscá los reels que mejor funcionan en las últimas semanas en mi nicho [NICHO]. Explicame por qué funcionaron y convertí los 3 mejores en guiones míos con /ig-reel y mi voice.md. Usá la estructura, no las frases."
+            }
+          ]
+        },
+        {
+          "h": "Una semana con las skills",
+          "pasos": [
+            "Lunes: /ig-plan para la semana.",
+            "Cada pieza: /ig-reel o /ig-carousel, después /ig-caption y /ig-human.",
+            "Todos los días: /ig-story y /ig-reply.",
+            "Fin de semana: /ig-audit para ver qué se destacó.",
+            "Una vez por mes: /ig-profile."
+          ]
+        },
+        {
+          "h": "Lo que conviene saber",
+          "lista": [
+            "El puntaje del gancho orienta, no predice: uno bajo es motivo para revisar y uno alto no garantiza nada.",
+            "No se publica nada sin tu sí.",
+            "Las herramientas corren en tu compu, sobre tu texto: no suben nada.",
+            "Es un proyecto de terceros: revisá lo que instalás."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Cuesta algo?",
+          "a": "El paquete es gratis. Para la versión completa necesitás Claude Code (planes pagos)."
+        },
+        {
+          "q": "¿Se conecta a mi cuenta de Instagram?",
+          "a": "No. Trabaja con lo que le pasás y con información pública."
+        },
+        {
+          "q": "¿Sirve en español?",
+          "a": "Sí: escribe con tu voz si tu voice.md está en español. Pedíselo así."
+        }
+      ],
+      "usos": [
+        {
+          "e": "Reels",
+          "c": "rosa",
+          "t": "De una idea a un reel",
+          "d": "Tres ganchos con puntaje, armados con 26 fórmulas."
+        },
+        {
+          "e": "Viral",
+          "c": "naranja",
+          "t": "Lo que funciona en tu nicho",
+          "d": "/ig-viral ordena los mejores reels."
+        },
+        {
+          "e": "Carruseles",
+          "c": "azul",
+          "t": "Portada y láminas",
+          "d": "/ig-carousel con el texto de cada una."
+        },
+        {
+          "e": "Semana",
+          "c": "verde",
+          "t": "Plan y stories",
+          "d": "/ig-plan para la semana y /ig-story todos los días."
+        }
+      ],
+      "fuentes": [
+        "https://github.com/Jakeschincariol/instagram-agent-skill"
+      ]
+    },
+    {
+      "slug": "personaje-ia-tiktok-shop",
+      "t": "Un personaje de IA para vender en TikTok Shop: prompts y herramientas",
+      "d": "Diseñá con Claude un personaje que no existe, ponelo a copiar los movimientos de un video de referencia (gratis con WanGP en tu compu, o con Higgsfield y Kling) y mostrá productos como afiliado de TikTok Shop.",
+      "tema": "Contenido",
+      "min": 10,
+      "ficha": [
+        [
+          "Qué es",
+          "Diseñar un personaje de IA, ponerlo en videos copiando cada movimiento y mostrar productos como afiliado de TikTok Shop."
+        ],
+        [
+          "Necesitás",
+          "Claude para el personaje y WanGP en tu compu con placa de video (o Higgsfield y Kling si no tenés)."
+        ],
+        [
+          "Cuánto cuesta",
+          "WanGP es gratis para usar en tu compu; Higgsfield y Kling gastan créditos."
+        ],
+        [
+          "Ojo",
+          "Etiquetá los videos como IA, no uses la cara ni los videos de otra persona sin permiso. Requisitos y comisiones cambian según el país."
+        ],
+        [
+          "Repo",
+          "github.com/deepbeepmeep/Wan2GP"
+        ]
+      ],
+      "secciones": [
+        {
+          "h": "El sistema en 5 pasos",
+          "pasos": [
+            "Diseñá un personaje que no existe.",
+            "Ponelo en un video de referencia, copiando cada movimiento.",
+            "Publicá seguido, varias veces por día.",
+            "Dale un producto para mostrar.",
+            "Si TikTok Shop funciona en tu país, cobrás una comisión por cada venta como afiliado."
+          ],
+          "aviso": "Los seguidores, vistas y ventas que muestran otras cuentas son casos puntuales, no una promesa. Muchas cuentas no venden nada: lo difícil es la constancia y elegir bien el producto."
+        },
+        {
+          "h": "1. Diseñá tu personaje con Claude",
+          "prompts": [
+            {
+              "t": "El personaje",
+              "c": "Diseñame un personaje para TikTok que no existe y que se recuerde en un segundo. Nicho: [NICHO o PRODUCTOS QUE QUIERO VENDER]. Dame: nombre, edad, aspecto (pelo, ropa, rasgos exagerados pero creíbles), personalidad, forma de hablar y 3 frases típicas. Que no se parezca a ninguna persona real."
+            },
+            {
+              "t": "Su hoja de referencia",
+              "c": "Escribí el prompt para un generador de imágenes que cree la hoja de personaje: fondo gris de estudio, cuerpo entero de frente, de costado y de espaldas, y tres primeros planos de la cara con expresiones distintas. Misma ropa y mismo pelo en todas."
+            }
+          ],
+          "p": [
+            "Generá esa hoja con el modelo de imágenes que prefieras (el de ChatGPT, Gemini o el que traiga tu app de video). Va a ser la referencia para que la cara no cambie de un video a otro."
+          ]
+        },
+        {
+          "h": "2. La app: WanGP, gratis en tu compu",
+          "p": [
+            "WanGP (antes Wan2GP) es un estudio de video con IA que se instala en tu compu y se usa gratis. Trae modelos para animar y reemplazar personajes, como Wan 2.2 Animate 2, que toma los movimientos, gestos y cámara de un video de referencia y se los pasa a tu personaje, y SCAIL-2, que tiene un modo para reemplazar a la persona de un video. Como corre en tu equipo no gasta créditos: el límite lo pone tu placa de video."
+          ],
+          "lista": [
+            "Repositorio: <a href=\"https://github.com/deepbeepmeep/Wan2GP\" target=\"_blank\" rel=\"noopener\">github.com/deepbeepmeep/Wan2GP ↗</a>",
+            "Placa de video: NVIDIA (desde las GTX 10XX) o AMD reciente (RDNA 2, 3 o 4). Según su README, algunos modelos andan con 4 GB de VRAM y con 8 GB ya podés arrancar.",
+            "Instalación: hay scripts de instalación para Windows y Linux, instaladores de un clic (Pinokio) y, en Windows, WanGP Manager, una app experimental que elige el perfil recomendado para tu placa e instala todo.",
+            "Licencia: WanGP Community License. Podés usarlo gratis y vender lo que generás, pero no revender el programa. Si vendés directamente un video hecho con WanGP, piden que les des crédito."
+          ],
+          "pasos": [
+            "Elegí un video corto con una sola persona, cámara quieta y buena luz. Lo mejor es grabarlo vos.",
+            "En WanGP, entrá a los modelos de animación y reemplazo de personajes (por ejemplo Wan 2.2 Animate 2) y subí el video y la imagen de tu personaje.",
+            "Si querés que tu personaje ocupe el lugar de la persona, elegí el modo de reemplazo (no solo animar la imagen).",
+            "Probá primero en baja resolución y con pocos segundos; cuando salga bien, generá la versión final.",
+            "Revisá manos, cara y ropa antes de publicar."
+          ],
+          "prompts": [
+            {
+              "t": "Que Claude te lo instale",
+              "c": "Quiero instalar WanGP (github.com/deepbeepmeep/Wan2GP) en mi compu con [PLACA DE VIDEO Y VRAM] y [WINDOWS/LINUX]. Guiame paso a paso según su guía de instalación, decime qué perfil de memoria elegir y cómo abrir el modelo de reemplazo de personajes para poner a mi personaje en lugar de la persona de un video."
+            }
+          ],
+          "aviso": "Usá el video de referencia solo para copiar el movimiento, y si podés grabalo vos. Meter tu personaje en el video de otra persona sin permiso puede violar los derechos de autor del video y la imagen de esa persona. Tampoco uses su audio."
+        },
+        {
+          "h": "Alternativas sin placa de video",
+          "lista": [
+            "Higgsfield: se usa desde el navegador o desde Claude con su conector (Personalizar → Conectores → agregar un conector personalizado con la dirección https://mcp.higgsfield.ai/mcp). Trae control de movimiento (Kling Motion Control y Motion Transfer de Genjutsu) y personajes que se mantienen iguales (Soul Character). Cada generación por el conector gasta créditos: pedile a Claude que te muestre el costo antes de cada una.",
+            "Kling: su Motion Control copia los gestos de un video de referencia sobre tu personaje. Funciona con créditos; revisá en su web qué incluye cada plan."
+          ],
+          "prompts": [
+            {
+              "t": "Elegir herramienta",
+              "c": "Tengo [COMPU CON/SIN PLACA DE VIDEO] y quiero hacer [N] videos por día con mi personaje copiando movimientos de videos de referencia. Compará WanGP, Higgsfield y Kling para mi caso: costo, tiempo por video, calidad y límites."
+            }
+          ]
+        },
+        {
+          "h": "3. Publicá todos los días",
+          "prompts": [
+            {
+              "t": "Plan de publicación",
+              "c": "Armame un plan de 7 días para la cuenta de mi personaje [NOMBRE]: de 3 a 5 videos por día, qué tendencias o formatos usar cada día, texto en pantalla y una descripción corta para cada uno. Mantené siempre su personalidad."
+            }
+          ],
+          "aviso": "Etiquetá los videos como contenido generado con IA (TikTok tiene un interruptor para eso). Lo pide para personas o escenas realistas hechas con IA, y puede borrar o limitar los posts que no lo hagan."
+        },
+        {
+          "h": "4. Dale un producto",
+          "prompts": [
+            {
+              "t": "Pitch de 18 segundos",
+              "c": "Escribí un guion de 18 segundos en el que mi personaje [NOMBRE, PERSONALIDAD] muestra [PRODUCTO]: gancho en los 2 primeros segundos, un beneficio concreto, una demostración y la invitación a comprarlo en el carrito naranja. Con su forma de hablar. Sin promesas falsas ni testimonios inventados."
+            }
+          ],
+          "aviso": "Mostrá solo lo que el producto hace de verdad. Si tu personaje lo recomienda, no inventes que lo usó una persona real."
+        },
+        {
+          "h": "5. Afiliado de TikTok Shop",
+          "pasos": [
+            "Fijate si TikTok Shop está disponible en tu país y cuáles son los requisitos del programa de afiliados (edad, seguidores, tipo de cuenta).",
+            "Activá el programa de afiliados desde tu perfil o el Centro de Creadores.",
+            "En el mercado de afiliados, elegí productos que tengan que ver con tu personaje, con buenas reseñas y una comisión clara.",
+            "Sumá el producto a tu vidriera y enlazalo en el video.",
+            "Publicá varios videos del mismo producto con ganchos distintos y fijate cuál vende."
+          ],
+          "aviso": "Los requisitos y las comisiones cambian según el país y la categoría: revisá siempre la página oficial de TikTok Shop. Lo que ganes como afiliado puede tener que declararse como ingreso."
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿De verdad es gratis?",
+          "a": "WanGP es gratis para usar en tu compu si tenés placa de video; solo pagás la luz y tu tiempo. Higgsfield y Kling gastan créditos."
+        },
+        {
+          "q": "¿Puedo usar la cara de un famoso?",
+          "a": "No. Creá un personaje propio: usar la imagen de otra persona sin permiso puede ser ilegal y te pueden cerrar la cuenta."
+        },
+        {
+          "q": "¿Cuánto se gana?",
+          "a": "Nadie te lo puede asegurar. Depende del producto, la constancia y el alcance; las cifras que circulan son de cuentas puntuales, no un promedio."
+        }
+      ],
+      "usos": [
+        {
+          "e": "Personaje",
+          "c": "azul",
+          "t": "Diseñado con Claude",
+          "d": "Alguien que no existe, con su hoja de referencia."
+        },
+        {
+          "e": "Video",
+          "c": "rosa",
+          "t": "Copiando movimientos",
+          "d": "Tu personaje haciendo los gestos de un video de referencia."
+        },
+        {
+          "e": "Producto",
+          "c": "naranja",
+          "t": "Un pitch de 18 segundos",
+          "d": "Para mostrar lo que vende."
+        },
+        {
+          "e": "Comisión",
+          "c": "verde",
+          "t": "TikTok Shop",
+          "d": "Cobrás por cada venta como afiliado, donde esté disponible."
+        }
+      ],
+      "fuentes": [
+        "https://github.com/deepbeepmeep/Wan2GP",
+        "https://raw.githubusercontent.com/deepbeepmeep/WanGP/HEAD/docs/MODELS.md",
+        "https://raw.githubusercontent.com/deepbeepmeep/Wan2GP/HEAD/LICENSE.txt",
+        "https://higgsfield.ai/blog/Generate-AI-Videos-From-Claude-with-Higgsfield-MCP",
+        "https://blog.hootsuite.com/ai-disclosure-policy-for-tiktok/"
+      ]
+    },
+    {
+      "slug": "oficina-de-agentes-ia",
+      "t": "Tu oficina de agentes de IA: gratis, de código abierto y en tu compu",
+      "d": "Munder Difflin junta los agentes que ya usás (Claude Code, Codex, Gemini, Grok, Kimi, Cursor…) en una oficina: un orquestador reparte el trabajo, cada agente tiene memoria y buzón, y los ves trabajar.",
+      "tema": "Automatizar",
+      "min": 8,
+      "fichaNombre": "Munder Difflin",
+      "ficha": [
+        [
+          "Qué es",
+          "Una app que junta tus agentes (Claude Code, Codex, Gemini, Grok, Kimi, Cursor…) en una oficina con orquestador, memoria y buzón."
+        ],
+        [
+          "Necesitás",
+          "Mac, Windows o Linux y al menos un agente de terminal como Claude Code."
+        ],
+        [
+          "Cuánto cuesta",
+          "La versión Classic es gratis y de código abierto (MIT); pagás tus suscripciones a los agentes. Hay una versión Pro paga."
+        ],
+        [
+          "Ojo",
+          "Está en etapa previa (pre-release): puede tener errores. Dale acceso solo a carpetas de proyecto."
+        ],
+        [
+          "Repo",
+          "github.com/chaitanyagiri/munder-difflin"
+        ]
+      ],
+      "secciones": [
+        {
+          "h": "Qué es",
+          "p": [
+            "Munder Difflin es una app de escritorio gratis y de código abierto (MIT) que arma un equipo con los agentes de programación de terminal que ya pagás. Cada agente es un programa real corriendo en su propia terminal: la app los coordina y los muestra como personajes en una oficina en 2D."
+          ],
+          "lista": [
+            "Repositorio: <a href=\"https://github.com/chaitanyagiri/munder-difflin\" target=\"_blank\" rel=\"noopener\">github.com/chaitanyagiri/munder-difflin ↗</a>",
+            "Web: <a href=\"https://munderdiffl.in/\" target=\"_blank\" rel=\"noopener\">munderdiffl.in ↗</a>"
+          ]
+        },
+        {
+          "h": "Qué agentes podés sumar",
+          "lista": [
+            "Claude Code",
+            "Codex (OpenAI)",
+            "Gemini CLI y Antigravity (Google)",
+            "Grok (xAI)",
+            "Kimi Code",
+            "Cursor",
+            "También Qwen, OpenCode, Crush, pi.dev, GitHub Copilot CLI, modelos locales con Ollama, LM Studio o vLLM, y cualquier comando propio."
+          ],
+          "aviso": "Usa tus suscripciones y sus límites: la oficina no te regala agentes, organiza los que ya tenés."
+        },
+        {
+          "h": "Cómo funciona",
+          "lista": [
+            "Michael, tu clon: es el único agente al que le hablás. Le das el objetivo, lo divide en tareas y se las pasa al agente que corresponde.",
+            "Tablero compartido: tareas en columnas que todos los agentes pueden ver.",
+            "Buzón por agente: los agentes se mandan mensajes entre ellos.",
+            "Aprobaciones: lo delicado (gastos, cambios de alcance y acciones que borran cosas) llega a una cola para que decidas vos.",
+            "Memoria: cada agente guarda en tu compu, en notas de texto, lo que aprendió. Cerrás la app y al otro día se acuerdan.",
+            "La oficina visual: ves a cada agente trabajando en su escritorio.",
+            "Freno de gasto: presupuesto de tokens por agente y un corte automático si un agente se traba en un bucle o gasta de más."
+          ]
+        },
+        {
+          "h": "Instalalo",
+          "pasos": [
+            "Descargá la app para Mac, Windows o Linux desde harnessmd.com/download (o desde la página de releases del repositorio).",
+            "Abrila: el asistente de inicio revisa qué tenés instalado y te ofrece instalar lo que falta.",
+            "Fijate que los agentes que querés usar (por ejemplo claude o codex) funcionen en la terminal con tu cuenta activa.",
+            "Abrí una carpeta de proyecto: cada carpeta es un «piso» de la oficina, con sus propios agentes, tablero y memoria.",
+            "Sumá 2 o 3 agentes para empezar."
+          ],
+          "prompts": [
+            {
+              "t": "Que Claude te ayude",
+              "c": "Quiero usar Munder Difflin (github.com/chaitanyagiri/munder-difflin) con Claude Code y [OTRO AGENTE]. Uso [MAC/WINDOWS/LINUX]. Guiame para instalar los agentes que me falten, comprobar que funcionan en la terminal y armar mi primera oficina con un proyecto de prueba."
+            }
+          ]
+        },
+        {
+          "h": "Tu primer encargo",
+          "p": [
+            "Arrancá con algo chico y fácil de revisar."
+          ],
+          "prompts": [
+            {
+              "t": "Objetivo para el orquestador",
+              "c": "Objetivo: creá una landing de una página para [NEGOCIO] con formulario de contacto. Repartí: un agente diseña y construye, otro revisa errores y accesibilidad, otro escribe los textos. Avisame solo para aprobar el diseño y antes de publicar cualquier cosa."
+            }
+          ],
+          "lista": [
+            "Mirá el tablero de tareas para ver cómo se repartió.",
+            "Respondé en la cola de aprobaciones cuando te necesite.",
+            "Revisá el resultado antes de darlo por bueno."
+          ]
+        },
+        {
+          "h": "Cómo explicárselo a un cliente",
+          "p": [
+            "Si vendés sistemas de IA a empresas, la oficina sirve para que el cliente entienda de un vistazo cómo trabajan los agentes: él pone el objetivo, el orquestador reparte, los agentes trabajan y él los ve."
+          ],
+          "prompts": [
+            {
+              "t": "Explicación para un cliente",
+              "c": "Explicale a un cliente de [RUBRO] en 5 frases simples cómo funcionaría una oficina de agentes de IA en su empresa: qué objetivos les daría, qué hace cada agente, qué decide él y qué riesgos controlamos."
+            }
+          ]
+        },
+        {
+          "h": "Lo que conviene saber",
+          "lista": [
+            "Está en etapa previa (pre-release): puede tener errores.",
+            "Los agentes corren en tu compu: si la apagás, se frenan.",
+            "Hay una versión Pro paga con más funciones (por ejemplo, transcripción de reuniones). La versión Classic es gratis.",
+            "Cada agente gasta de su propio plan: vigilá los límites y usá el freno de gasto.",
+            "Configurá qué puede hacer cada agente solo y qué tiene que consultarte.",
+            "Dale acceso solo a carpetas de proyecto, no a todo tu disco."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Es gratis?",
+          "a": "La versión Classic sí, y es de código abierto. Pagás tus suscripciones a los agentes; la versión Pro es paga."
+        },
+        {
+          "q": "¿Necesito programar?",
+          "a": "Para usarla no, pero sí tener instalado al menos un agente de terminal como Claude Code."
+        },
+        {
+          "q": "¿Funciona en Windows?",
+          "a": "Sí: Mac, Windows y Linux."
+        }
+      ],
+      "usos": [
+        {
+          "e": "Orquestar",
+          "c": "azul",
+          "t": "Tu clon reparte el trabajo",
+          "d": "Le das el objetivo y lo divide entre los agentes."
+        },
+        {
+          "e": "Tablero",
+          "c": "morado",
+          "t": "Tareas compartidas",
+          "d": "Todos los agentes ven el mismo tablero."
+        },
+        {
+          "e": "Aprobaciones",
+          "c": "verde",
+          "t": "Lo que necesita tu decisión",
+          "d": "Gastos y acciones delicadas te llegan para que decidas."
+        },
+        {
+          "e": "Clientes",
+          "c": "naranja",
+          "t": "Explicar los agentes",
+          "d": "Para que un cliente vea cómo funciona la automatización."
+        }
+      ],
+      "fuentes": [
+        "https://github.com/chaitanyagiri/munder-difflin"
+      ]
+    },
+    {
+      "slug": "22-skills-claude-code",
+      "t": "Las 22 mejores skills para Claude Code, con su instalación",
+      "d": "Repos de GitHub para construir, diseñar, investigar y hacer marketing con Claude, con el comando para instalar cada uno, para que tus sistemas para clientes no se vean genéricos.",
+      "tema": "Skills",
+      "min": 11,
+      "ficha": [
+        [
+          "Qué es",
+          "Las 22 mejores skills para Claude Code, con su repositorio y su comando: construir, diseñar, investigar y marketing."
+        ],
+        [
+          "Para quién",
+          "Quien arma sistemas para clientes con Claude y no quiere que se vean genéricos."
+        ],
+        [
+          "Necesitás",
+          "Claude Code. Algunas piden además Node.js, Python o una clave de un servicio externo."
+        ],
+        [
+          "Ojo",
+          "Son proyectos de terceros: instalá solo las que vayas a usar y revisá qué hacen."
+        ],
+        [
+          "Por dónde empezar",
+          "superpowers, ui-ux-pro-max, impeccable, last30days y humanizer."
+        ]
+      ],
+      "secciones": [
+        {
+          "h": "Cómo instalarlas",
+          "p": [
+            "Lo más fácil es pegarle a Claude Code el link del repositorio y pedirle «instalá esta skill y comprobá que funciona». Abajo tenés además el comando que figura en el README de cada una. Los que empiezan con /plugin van dentro de Claude Code; los que empiezan con npx, npm, uv o git, en la terminal."
+          ],
+          "prompts": [
+            {
+              "t": "Instalar una",
+              "c": "Instalá esta skill desde [LINK DEL REPO]. Leé su README, usá el método de instalación que recomienda y después decime cómo se usa y probala con un ejemplo chico."
+            }
+          ],
+          "aviso": "Son proyectos de terceros. Instalá solo las que vayas a usar y revisá qué hacen antes de darles acceso a tus archivos."
+        },
+        {
+          "h": "1. Construir (6)",
+          "lista": [
+            "superpowers: planifica y depura antes de escribir código. Instalación: /plugin install superpowers@claude-plugins-official <a href=\"https://github.com/obra/superpowers\" target=\"_blank\" rel=\"noopener\">github.com/obra/superpowers ↗</a>",
+            "gstack: un equipo de desarrollo virtual (producto, arquitectura, diseño, revisión) en una sola instalación. Instalación: git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/gstack y después cd ~/gstack && ./setup <a href=\"https://github.com/garrytan/gstack\" target=\"_blank\" rel=\"noopener\">github.com/garrytan/gstack ↗</a>",
+            "caveman: respuestas con muchos menos tokens. Instalación: /plugin marketplace add JuliusBrussee/caveman y /plugin install caveman@caveman <a href=\"https://github.com/JuliusBrussee/caveman\" target=\"_blank\" rel=\"noopener\">github.com/JuliusBrussee/caveman ↗</a>",
+            "ponytail: que Claude escriba solo el código que hace falta. Instalación: /plugin marketplace add DietrichGebert/ponytail y /plugin install ponytail@ponytail <a href=\"https://github.com/DietrichGebert/ponytail\" target=\"_blank\" rel=\"noopener\">github.com/DietrichGebert/ponytail ↗</a>",
+            "codex: el plugin oficial de OpenAI para usar Codex dentro de Claude Code (revisiones de código o pasarle tareas). Necesita una cuenta de ChatGPT (incluso la gratis) o una clave de OpenAI. Instalación: /plugin marketplace add openai/codex-plugin-cc, /plugin install codex@openai-codex y después /codex:setup <a href=\"https://github.com/openai/codex-plugin-cc\" target=\"_blank\" rel=\"noopener\">github.com/openai/codex-plugin-cc ↗</a>",
+            "i-have-adhd: que no entierre la respuesta en relleno. Instalación: pedile a Claude Code que la instale desde el repo siguiendo su AGENTS.md (es lo que indica el README). <a href=\"https://github.com/ayghri/i-have-adhd\" target=\"_blank\" rel=\"noopener\">github.com/ayghri/i-have-adhd ↗</a>"
+          ]
+        },
+        {
+          "h": "2. Diseño (6)",
+          "lista": [
+            "ui-ux-pro-max: criterio de diseño, paletas y tipografías. Instalación: /plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill y /plugin install ui-ux-pro-max@ui-ux-pro-max-skill <a href=\"https://github.com/nextlevelbuilder/ui-ux-pro-max-skill\" target=\"_blank\" rel=\"noopener\">github.com/nextlevelbuilder/ui-ux-pro-max-skill ↗</a>",
+            "taste-skill: webs de empresa que se ven profesionales en lugar de una landing genérica. Necesita Node 22 o más nuevo y Chrome, Edge o Chromium. Instalación: /plugin marketplace add Leonxlnx/taste-skill y /plugin install taste-skill@taste-skill <a href=\"https://github.com/Leonxlnx/taste-skill\" target=\"_blank\" rel=\"noopener\">github.com/Leonxlnx/taste-skill ↗</a>",
+            "impeccable: el vocabulario de diseño para pulir y revisar el front end (polish, critique, audit y más). Instalación: en la carpeta del proyecto, npx impeccable install; después /impeccable init <a href=\"https://github.com/pbakaus/impeccable\" target=\"_blank\" rel=\"noopener\">github.com/pbakaus/impeccable ↗</a>",
+            "hyperframes: escribís HTML y sale un video MP4. Instalación: en la terminal, claude plugin marketplace add heygen-com/hyperframes y claude plugin install hyperframes@hyperframes <a href=\"https://github.com/heygen-com/hyperframes\" target=\"_blank\" rel=\"noopener\">github.com/heygen-com/hyperframes ↗</a>",
+            "skills de Emil Kowalski: animaciones de interfaz fluidas. Instalación: npx skills@latest add emilkowalski/skills <a href=\"https://github.com/emilkowalski/skills\" target=\"_blank\" rel=\"noopener\">github.com/emilkowalski/skills ↗</a>",
+            "gsap: animación web profesional (skills oficiales de GSAP). Instalación: npx skills add https://github.com/greensock/gsap-skills <a href=\"https://github.com/greensock/gsap-skills\" target=\"_blank\" rel=\"noopener\">github.com/greensock/gsap-skills ↗</a>"
+          ]
+        },
+        {
+          "h": "3. Investigación (6)",
+          "lista": [
+            "skill-creator: creá tus propias skills (viene en las skills oficiales de Anthropic, dentro del paquete example-skills). Instalación: /plugin marketplace add anthropics/skills y /plugin install example-skills@anthropic-agent-skills <a href=\"https://github.com/anthropics/skills\" target=\"_blank\" rel=\"noopener\">github.com/anthropics/skills ↗</a>",
+            "graphify: convierte tu proyecto o tus notas en un mapa que Claude puede consultar. Necesita Python 3.10 o más nuevo y uv. Instalación: uv tool install graphifyy y después graphify install <a href=\"https://github.com/Graphify-Labs/graphify\" target=\"_blank\" rel=\"noopener\">github.com/Graphify-Labs/graphify ↗</a>",
+            "last30days: qué se dijo en internet en los últimos 30 días sobre un tema. Instalación: /plugin marketplace add mvanhorn/last30days-skill y /plugin install last30days <a href=\"https://github.com/mvanhorn/last30days-skill\" target=\"_blank\" rel=\"noopener\">github.com/mvanhorn/last30days-skill ↗</a>",
+            "agent-browser: Claude maneja un navegador, paso a paso. Instalación: npm install -g agent-browser, después agent-browser install y npx skills add vercel-labs/agent-browser <a href=\"https://github.com/vercel-labs/agent-browser\" target=\"_blank\" rel=\"noopener\">github.com/vercel-labs/agent-browser ↗</a>",
+            "skills (buscador): el instalador abierto de skills: busca e instala la que necesitás. Instalación: npx skills find [LO QUE BUSCÁS] y npx skills add usuario/repo <a href=\"https://github.com/vercel-labs/skills\" target=\"_blank\" rel=\"noopener\">github.com/vercel-labs/skills ↗</a>",
+            "claude-hud: te muestra en vivo lo que hace Claude: contexto usado, límites de uso, herramientas y agentes activos. Necesita Node.js 22.18 o más nuevo. Instalación: /plugin marketplace add jarrodwatts/claude-hud, /plugin install claude-hud, /reload-plugins y /hud <a href=\"https://github.com/jarrodwatts/claude-hud\" target=\"_blank\" rel=\"noopener\">github.com/jarrodwatts/claude-hud ↗</a>"
+          ]
+        },
+        {
+          "h": "4. Marketing (4)",
+          "lista": [
+            "remotion: videos con código, sin línea de tiempo (skills oficiales de Remotion). Instalación: npx skills add remotion-dev/skills <a href=\"https://github.com/remotion-dev/skills\" target=\"_blank\" rel=\"noopener\">github.com/remotion-dev/skills ↗</a>",
+            "marketingskills: decenas de skills de crecimiento y marketing: SEO, conversión, textos, anuncios y más. Instalación: npx skills add coreyhaines31/marketingskills <a href=\"https://github.com/coreyhaines31/marketingskills\" target=\"_blank\" rel=\"noopener\">github.com/coreyhaines31/marketingskills ↗</a>",
+            "humanizer: saca el tono robótico de IA de tus textos. Instalación: /plugin marketplace add blader/humanizer y /plugin install humanizer@humanizer <a href=\"https://github.com/blader/humanizer\" target=\"_blank\" rel=\"noopener\">github.com/blader/humanizer ↗</a>",
+            "social-media-research-skills: investigación de redes: posts que se destacan, comentarios y competencia. Necesita una clave de API de ScrapeCreators, un servicio externo con su propia cuenta. Instalación: npx skills add ScrapeCreators/social-media-research-skills <a href=\"https://github.com/ScrapeCreators/social-media-research-skills\" target=\"_blank\" rel=\"noopener\">github.com/ScrapeCreators/social-media-research-skills ↗</a>"
+          ]
+        },
+        {
+          "h": "Por dónde empezar",
+          "pasos": [
+            "Construir: superpowers.",
+            "Diseño: ui-ux-pro-max e impeccable.",
+            "Investigación: last30days.",
+            "Marketing: humanizer."
+          ],
+          "p": [
+            "Si querés más, en esta biblioteca tenés muchas otras guías de Claude."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Instalo las 22 a la vez?",
+          "a": "No. Cada skill suma instrucciones; instalá en cada proyecto las que vayas a usar."
+        },
+        {
+          "q": "¿Funcionan fuera de Claude Code?",
+          "a": "Muchas sí (Codex, Cursor y otros agentes); fijate en el README de cada una."
+        },
+        {
+          "q": "¿Son gratis?",
+          "a": "Los repos sí. Algunas usan servicios externos (como ScrapeCreators o Codex) que tienen su propia cuenta y sus límites."
+        }
+      ],
+      "usos": [
+        {
+          "e": "Construir",
+          "c": "azul",
+          "t": "superpowers y gstack",
+          "d": "Planificar, depurar y herramientas de desarrollo."
+        },
+        {
+          "e": "Diseño",
+          "c": "morado",
+          "t": "ui-ux-pro-max e impeccable",
+          "d": "Criterio de diseño y el pulido final."
+        },
+        {
+          "e": "Investigar",
+          "c": "verde",
+          "t": "last30days y graphify",
+          "d": "Qué se dijo en internet y el mapa de tu proyecto."
+        },
+        {
+          "e": "Marketing",
+          "c": "rosa",
+          "t": "humanizer y marketingskills",
+          "d": "Sacar el tono robótico y crecer."
+        }
+      ],
+      "fuentes": [
+        "https://github.com/obra/superpowers",
+        "https://github.com/garrytan/gstack",
+        "https://github.com/JuliusBrussee/caveman",
+        "https://github.com/DietrichGebert/ponytail",
+        "https://github.com/openai/codex-plugin-cc",
+        "https://github.com/ayghri/i-have-adhd",
+        "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+        "https://github.com/Leonxlnx/taste-skill",
+        "https://github.com/pbakaus/impeccable",
+        "https://github.com/heygen-com/hyperframes",
+        "https://github.com/emilkowalski/skills",
+        "https://github.com/greensock/gsap-skills",
+        "https://github.com/anthropics/skills",
+        "https://github.com/Graphify-Labs/graphify",
+        "https://github.com/mvanhorn/last30days-skill",
+        "https://github.com/vercel-labs/agent-browser",
+        "https://github.com/vercel-labs/skills",
+        "https://github.com/jarrodwatts/claude-hud",
+        "https://github.com/remotion-dev/skills",
+        "https://github.com/coreyhaines31/marketingskills",
+        "https://github.com/blader/humanizer",
+        "https://github.com/ScrapeCreators/social-media-research-skills"
+      ]
+    },
+    {
+      "slug": "ahorra-tokens-graphify-obsidian",
+      "t": "Ahorrá tokens en Claude Code con Graphify y Obsidian",
+      "d": "Graphify convierte tu proyecto en un mapa que Claude consulta en lugar de releer archivos, y Obsidian le da una memoria de notas en texto plano. Cómo instalar las dos y conectarlas.",
+      "tema": "Claude Code",
+      "min": 7,
+      "ficha": [
+        [
+          "Qué es",
+          "Graphify convierte tu proyecto en un mapa que Claude consulta y Obsidian le da una memoria de notas."
+        ],
+        [
+          "Para quién",
+          "Quien gasta mucho uso porque Claude relee todos sus archivos al arrancar."
+        ],
+        [
+          "Necesitás",
+          "Claude Code, Python 3.10 o más nuevo con uv, Obsidian y las obsidian-skills."
+        ],
+        [
+          "Cuánto cuesta",
+          "Graphify es de código abierto (Apache 2.0) y Obsidian es gratis, también para trabajo."
+        ],
+        [
+          "Ojo",
+          "Las cifras de ahorro que publican son de sus pruebas: medilo vos con /context."
+        ]
+      ],
+      "secciones": [
+        {
+          "h": "El problema",
+          "p": [
+            "Cada vez que arranca una sesión, Claude vuelve a leer tus archivos para entender el proyecto, y eso se come tokens y parte de tu límite de uso. La idea es darle dos cosas: un mapa del proyecto para consultar y una memoria que no tenga que releer entera."
+          ]
+        },
+        {
+          "h": "1. Graphify: el mapa del proyecto",
+          "p": [
+            "Graphify arma un grafo (un mapa de conexiones) con tu código, documentos, PDF e imágenes, y Claude lo consulta en lugar de buscar archivo por archivo. El mapa del código se arma en tu compu sin usar IA, así que esa parte no gasta tokens. Los documentos, PDF e imágenes sí pasan por el modelo de tu asistente, y eso sí consume."
+          ],
+          "lista": [
+            "Repositorio: <a href=\"https://github.com/Graphify-Labs/graphify\" target=\"_blank\" rel=\"noopener\">github.com/Graphify-Labs/graphify ↗</a>",
+            "Necesitás: Python 3.10 o más nuevo y uv (o pipx).",
+            "Instalación, en la terminal: uv tool install graphifyy y después graphify install (detecta tu asistente y registra la skill).",
+            "Para usarlo, dentro de Claude Code: /graphify ."
+          ],
+          "prompts": [
+            {
+              "t": "Instalarlo",
+              "c": "Instalá Graphify (github.com/Graphify-Labs/graphify) en este proyecto siguiendo su README, generá el mapa y configurá Claude Code para que lo consulte antes de leer archivos. Después compará cuánto contexto usás en una misma pregunta con y sin el mapa."
+            }
+          ],
+          "aviso": "Los porcentajes de ahorro que publican son de sus propias pruebas, y algunos son de su versión paga en la nube (Graphify Cloud), que es otra cosa. Medilo vos en tu proyecto."
+        },
+        {
+          "h": "2. Obsidian: la memoria",
+          "p": [
+            "Obsidian guarda tus notas como archivos de texto en tu compu. Con las obsidian-skills de Steph Ango (kepano), del equipo de Obsidian, Claude aprende a leer y escribir esas notas en el formato de Obsidian: decisiones, aprendizajes, clientes."
+          ],
+          "lista": [
+            "Obsidian (gratis, también para uso laboral): <a href=\"https://obsidian.md\" target=\"_blank\" rel=\"noopener\">obsidian.md ↗</a>",
+            "Skills para Obsidian: <a href=\"https://github.com/kepano/obsidian-skills\" target=\"_blank\" rel=\"noopener\">github.com/kepano/obsidian-skills ↗</a>",
+            "Instalación, dentro de Claude Code: /plugin marketplace add kepano/obsidian-skills y después /plugin install obsidian@obsidian-skills"
+          ],
+          "prompts": [
+            {
+              "t": "Conectarlo",
+              "c": "Ya instalé las obsidian-skills (github.com/kepano/obsidian-skills). Mi bóveda de Obsidian está en [RUTA]. Creá las notas decisiones.md, aprendizajes.md y proyectos.md, y agregá a mi CLAUDE.md que las lea al empezar y las actualice al terminar cada tarea."
+            }
+          ]
+        },
+        {
+          "h": "3. Las dos juntas en 10 minutos",
+          "pasos": [
+            "Instalá Graphify en tu proyecto y generá el mapa.",
+            "Instalá Obsidian y las obsidian-skills.",
+            "En tu CLAUDE.md: primero consultá el mapa de Graphify, después la memoria de Obsidian, y recién ahí abrí archivos puntuales.",
+            "Probá con una pregunta sobre tu proyecto y mirá el uso con /context."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Cuesta algo?",
+          "a": "Graphify es de código abierto y Obsidian es gratis, incluso para trabajo. Lo que se procesa con IA (documentos, PDF, imágenes) gasta de tu plan de Claude."
+        },
+        {
+          "q": "¿Sirve para un negocio y no solo para código?",
+          "a": "Sí: Graphify también lee documentos y PDF, y en Obsidian podés guardar cualquier nota."
+        }
+      ],
+      "usos": [
+        {
+          "e": "Mapa",
+          "c": "azul",
+          "t": "Tu proyecto en un grafo",
+          "d": "Claude lo consulta en lugar de releer archivos."
+        },
+        {
+          "e": "Memoria",
+          "c": "morado",
+          "t": "Notas en Obsidian",
+          "d": "Archivos de texto que Claude lee y escribe."
+        },
+        {
+          "e": "Negocio",
+          "c": "verde",
+          "t": "No solo código",
+          "d": "También lee documentos y PDF."
+        },
+        {
+          "e": "Medir",
+          "c": "naranja",
+          "t": "Comprobá el ahorro",
+          "d": "Hacé una pregunta y mirá el uso con /context."
+        }
+      ],
+      "fuentes": [
+        "https://github.com/Graphify-Labs/graphify",
+        "https://github.com/kepano/obsidian-skills",
+        "https://obsidian.md/blog/free-for-work/"
+      ]
+    },
+    {
+      "slug": "webs-con-ia-3-skills-2-conectores",
+      "t": "Páginas web con IA que se ven profesionales: 3 skills y 2 conectores",
+      "d": "El diseñador, el rediseño, el animador, Figma para revisar y el tester: el setup para hacer webs con Claude Code que puedas cobrar bien.",
+      "tema": "Claude Code",
+      "min": 8,
+      "ficha": [
+        [
+          "Qué es",
+          "El setup para hacer webs con Claude Code que se vean profesionales: 3 skills de diseño y 2 conectores."
+        ],
+        [
+          "Para quién",
+          "Quien vende webs hechas con IA y quiere cobrarlas bien."
+        ],
+        [
+          "Necesitás",
+          "Claude Code, las skills taste-skill, impeccable y las de Emil Kowalski, y los conectores de Figma y Playwright."
+        ],
+        [
+          "Ojo",
+          "Revisá siempre los textos y datos del cliente antes de entregar."
+        ],
+        [
+          "Incluye",
+          "5 prompts: instalar las skills y los 4 pasos del flujo."
+        ]
+      ],
+      "secciones": [
+        {
+          "h": "Las 5 piezas",
+          "lista": [
+            "El diseñador: taste-skill, dirección de arte para que Claude deje de lado la landing genérica de siempre. <a href=\"https://github.com/Leonxlnx/taste-skill\" target=\"_blank\" rel=\"noopener\">github.com/Leonxlnx/taste-skill ↗</a>",
+            "El rediseño: impeccable, 24 comandos (como polish, critique o audit). Le señalás una parte de la web, decís qué no te gusta y la rehace. <a href=\"https://github.com/pbakaus/impeccable\" target=\"_blank\" rel=\"noopener\">github.com/pbakaus/impeccable ↗</a>",
+            "El animador: las skills de Emil Kowalski, movimiento y transiciones como las de las webs de producto más cuidadas. <a href=\"https://github.com/emilkowalski/skills\" target=\"_blank\" rel=\"noopener\">github.com/emilkowalski/skills ↗</a>",
+            "Figma: el servidor MCP oficial de Figma. Claude Code lee tus diseños y puede capturar la interfaz de tu web y mandarla a un archivo de Figma para revisarla. <a href=\"https://developers.figma.com/docs/figma-mcp-server/remote-server-installation\" target=\"_blank\" rel=\"noopener\">developers.figma.com ↗</a>",
+            "El tester: Playwright MCP de Microsoft. Claude abre tu web en un navegador real, la recorre y arregla lo que falla. <a href=\"https://github.com/microsoft/playwright-mcp\" target=\"_blank\" rel=\"noopener\">github.com/microsoft/playwright-mcp ↗</a>"
+          ]
+        },
+        {
+          "h": "Instalar las 3 skills",
+          "prompts": [
+            {
+              "t": "Skills de diseño",
+              "c": "Instalá estas tres skills en Claude Code siguiendo el README de cada una: github.com/Leonxlnx/taste-skill, github.com/pbakaus/impeccable y github.com/emilkowalski/skills. Después decime qué comandos trae cada una."
+            }
+          ],
+          "lista": [
+            "taste-skill, dentro de Claude Code: /plugin marketplace add Leonxlnx/taste-skill y /plugin install taste-skill@taste-skill",
+            "impeccable, en la terminal desde la carpeta del proyecto: npx impeccable install; después, en Claude Code, /impeccable init",
+            "Emil Kowalski, en la terminal: npx skills@latest add emilkowalski/skills"
+          ],
+          "aviso": "taste-skill necesita Node 22 o más nuevo y Chrome, Edge o Chromium instalado."
+        },
+        {
+          "h": "Conectar Figma y el navegador",
+          "pasos": [
+            "Figma, en la terminal: claude plugin install figma@claude-plugins-official. Reiniciá Claude Code, escribí /plugin, entrá a Installed, elegí figma e iniciá sesión.",
+            "Si no podés instalar plugins: claude mcp add --transport http figma https://mcp.figma.com/mcp y después, en Claude Code, /mcp para autenticarte.",
+            "Playwright, en la terminal: claude mcp add playwright npx @playwright/mcp@latest",
+            "Reiniciá Claude Code."
+          ]
+        },
+        {
+          "h": "El flujo de un proyecto",
+          "prompts": [
+            {
+              "t": "1. Diseño",
+              "c": "Diseñá la web de [NEGOCIO] para [PÚBLICO] con taste-skill: elegí una dirección de arte concreta (no genérica) y explicámela antes de construir."
+            },
+            {
+              "t": "2. Revisión en Figma",
+              "c": "Mandá cada pantalla de la web a Figma para que el cliente pueda comentarla."
+            },
+            {
+              "t": "3. Pulido y movimiento",
+              "c": "Pasá impeccable por toda la web y sumá animaciones sutiles con las skills de Emil Kowalski: entrada de secciones, botones y menús."
+            },
+            {
+              "t": "4. Prueba",
+              "c": "Abrí la web con Playwright en celular y en escritorio, recorrela como un cliente, arreglá lo que falle y volvé a comprobar."
+            }
+          ]
+        },
+        {
+          "h": "Lo que conviene saber",
+          "lista": [
+            "No hay un precio fijo: lo que cobres depende de tu mercado y de tu cartera de trabajos.",
+            "Revisá siempre los textos y los datos del cliente antes de entregar.",
+            "Usá fotos, íconos y tipografías con licencia; si te inspirás en la web de otro, no copies su marca."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Necesito Figma pago?",
+          "a": "Para empezar, no necesariamente; revisá qué permite tu plan de Figma con su servidor MCP."
+        },
+        {
+          "q": "¿Necesito saber diseñar?",
+          "a": "No hace falta, pero sí tener criterio para elegir: las skills te proponen y vos decidís qué queda."
+        }
+      ],
+      "usos": [
+        {
+          "e": "Diseñador",
+          "c": "morado",
+          "t": "taste-skill",
+          "d": "Dirección de arte para que no salga lo de siempre."
+        },
+        {
+          "e": "Rediseño",
+          "c": "azul",
+          "t": "impeccable",
+          "d": "Señalás una parte, decís qué no te gusta y lo arregla."
+        },
+        {
+          "e": "Revisión",
+          "c": "verde",
+          "t": "Figma",
+          "d": "Las pantallas de tu web en Figma para revisarlas."
+        },
+        {
+          "e": "Tester",
+          "c": "naranja",
+          "t": "Playwright",
+          "d": "Claude abre tu web en un navegador real y la prueba."
+        }
+      ],
+      "fuentes": [
+        "https://github.com/Leonxlnx/taste-skill",
+        "https://github.com/pbakaus/impeccable",
+        "https://github.com/emilkowalski/skills",
+        "https://developers.figma.com/docs/figma-mcp-server/remote-server-installation",
+        "https://github.com/microsoft/playwright-mcp"
+      ]
+    },
+    {
+      "slug": "canal-sin-cara-wan2gp",
+      "t": "Videos animados sin cara para YouTube con WanGP, gratis en tu compu",
+      "d": "El sistema para un canal de videos cortos animados: WanGP en tu compu, personajes y escenas con sonido, tandas que se generan de noche y qué pide YouTube para monetizar.",
+      "tema": "Contenido",
+      "min": 9,
+      "ficha": [
+        [
+          "Qué es",
+          "Un canal de videos cortos animados sin cara, hechos con WanGP en tu compu y generados en tandas de noche."
+        ],
+        [
+          "Para quién",
+          "Quien quiere un canal de YouTube sin salir en cámara."
+        ],
+        [
+          "Necesitás",
+          "Una placa de video NVIDIA (desde GTX 10XX) o AMD reciente; con 8 GB de VRAM ya podés empezar."
+        ],
+        [
+          "Cuánto cuesta",
+          "WanGP es gratis para usar en tu compu y no gasta créditos."
+        ],
+        [
+          "Ojo",
+          "Lo que muestran otros canales no es un resultado asegurado. YouTube no monetiza contenido masivo o repetitivo."
+        ]
+      ],
+      "secciones": [
+        {
+          "h": "El sistema",
+          "pasos": [
+            "Instalá WanGP, un estudio de video con IA que corre en tu compu.",
+            "Creá personajes, animales y escenas, y sumales sonido.",
+            "Dejá varios videos en la cola a la noche y revisalos a la mañana.",
+            "Publicá seguido y, cuando cumplas los requisitos, pedí la monetización."
+          ],
+          "aviso": "Las vistas o ingresos que muestran otros canales son ejemplos, no un resultado asegurado. Muchos canales nunca llegan a monetizar."
+        },
+        {
+          "h": "1. Instalá WanGP",
+          "lista": [
+            "Repositorio: <a href=\"https://github.com/deepbeepmeep/Wan2GP\" target=\"_blank\" rel=\"noopener\">github.com/deepbeepmeep/Wan2GP ↗</a>",
+            "Placa de video: NVIDIA (desde las GTX 10XX) o AMD reciente (RDNA 2, 3 o 4). Según su README, algunos modelos andan con 4 GB de VRAM y con 8 GB ya podés arrancar.",
+            "Instalación: scripts para Windows y Linux, Pinokio o, en Windows, WanGP Manager (experimental), que elige el perfil para tu placa e instala todo.",
+            "Sonido: trae herramientas para generar la banda de sonido (MMAudio) y modelos de voz.",
+            "Licencia: podés usarlo gratis y vender lo que generás; si vendés directamente un video hecho con WanGP, piden que les des crédito."
+          ],
+          "prompts": [
+            {
+              "t": "Instalación guiada",
+              "c": "Instalame WanGP (github.com/deepbeepmeep/Wan2GP) en mi compu con [PLACA Y VRAM] y [WINDOWS/LINUX] siguiendo su guía. Decime qué perfil de memoria elegir y qué modelo de video usar para clips cortos con sonido."
+            }
+          ]
+        },
+        {
+          "h": "2. Ideas y prompts con Claude",
+          "prompts": [
+            {
+              "t": "El canal",
+              "c": "Diseñá un canal de YouTube Shorts de videos animados sin cara para [PÚBLICO, por ejemplo chicos de 3 a 6 años]. Dame: personaje principal con nombre y aspecto, estilo visual en una frase, 10 ideas de episodios de 30 segundos y el tono."
+            },
+            {
+              "t": "Prompts de video",
+              "c": "Convertí la idea [IDEA] en 4 prompts de video de 5 segundos para WanGP: escena, personaje (siempre igual), acción, cámara y sonido. Que se encadenen como una historia."
+            }
+          ]
+        },
+        {
+          "h": "3. Tandas nocturnas",
+          "pasos": [
+            "Prepará 5 videos con sus prompts.",
+            "Ponelos en la cola de WanGP antes de dormir.",
+            "A la mañana, revisalos, uní los clips y sumá música o voz.",
+            "Publicá uno o dos por día."
+          ]
+        },
+        {
+          "h": "4. Monetizar: lo que pide YouTube",
+          "lista": [
+            "Programa de Socios: hoy pide 1.000 suscriptores y, además, 10 millones de vistas válidas de Shorts en 90 días o 4.000 horas de reproducción pública en 12 meses. Cumplirlo no te asegura la aprobación, y los números pueden cambiar: revisá la ayuda oficial.",
+            "Contenido original: YouTube no monetiza videos hechos en serie o muy repetitivos. Cada video tiene que aportar algo propio (historia, guion, voz).",
+            "Etiqueta de IA: YouTube pide avisar cuando el contenido hecho con IA parece real. Los dibujos claramente irreales no lo necesitan, pero si algo parece real, marcalo.",
+            "Mientras tanto: podés vender productos digitales o usar enlaces de afiliado, avisando siempre que lo son."
+          ],
+          "aviso": "Si hacés contenido para chicos, marcalo como «creado para niños»: cambia cómo se monetiza y qué funciones tenés, y es una obligación legal en muchos países."
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Es ilimitado de verdad?",
+          "a": "En créditos sí, porque corre en tu compu. El límite es tu placa de video, la luz y tu tiempo."
+        },
+        {
+          "q": "¿Cuánto tarda cada video?",
+          "a": "Depende de tu placa y del modelo; probá primero en baja resolución."
+        },
+        {
+          "q": "¿Puedo vender los videos?",
+          "a": "Según la licencia de WanGP, sí podés vender lo que generás; si lo vendés directamente, piden que les des crédito. Revisá también la licencia de cada modelo que uses."
+        }
+      ],
+      "usos": [
+        {
+          "e": "Personajes",
+          "c": "azul",
+          "t": "Animales y escenas",
+          "d": "Con sonido, generados en tu compu."
+        },
+        {
+          "e": "Noche",
+          "c": "morado",
+          "t": "Tandas nocturnas",
+          "d": "Cinco videos en cola que están listos a la mañana."
+        },
+        {
+          "e": "Publicar",
+          "c": "verde",
+          "t": "Uno o dos por día",
+          "d": "La constancia que pide el canal."
+        },
+        {
+          "e": "Monetizar",
+          "c": "naranja",
+          "t": "Programa de Socios",
+          "d": "Y mientras, productos digitales o afiliados."
+        }
+      ],
+      "fuentes": [
+        "https://github.com/deepbeepmeep/Wan2GP",
+        "https://raw.githubusercontent.com/deepbeepmeep/Wan2GP/HEAD/LICENSE.txt",
+        "https://support.google.com/youtube/answer/72851?hl=en-gb",
+        "https://support.google.com/youtube/answer/14328491",
+        "https://support.google.com/youtube/answer/1311392"
+      ]
+    },
+    {
+      "slug": "automatiza-redes-13-plataformas",
+      "t": "Automatizá tus redes: un post publicado en 13 plataformas",
+      "d": "Programás una vez y publicás en Instagram, YouTube, TikTok, LinkedIn, X, Facebook, Threads, Pinterest, Reddit, Discord, Telegram, WhatsApp y Google Business, cada una con su formato.",
+      "tema": "Contenido",
+      "min": 7,
+      "ficha": [
+        [
+          "Qué es",
+          "Programar una vez y publicar en 13 redes, cada una con su formato, con Zernio."
+        ],
+        [
+          "Para quién",
+          "Quien publica en muchas redes o maneja las de clientes."
+        ],
+        [
+          "Necesitás",
+          "Una cuenta de Zernio con tus redes conectadas; opcional, su conector en Claude Code."
+        ],
+        [
+          "Ojo",
+          "Revisá qué redes incluye tu plan, respetá las reglas de cada red y pedí siempre la vista previa antes de programar."
+        ],
+        [
+          "Incluye",
+          "2 prompts: adaptar un post a cada red y el calendario del mes."
+        ]
+      ],
+      "secciones": [
+        {
+          "h": "Qué conseguís",
+          "lista": [
+            "Un post adaptado al formato de cada red (vertical, cuadrado u horizontal).",
+            "Un calendario lleno: ponés la hora y te olvidás.",
+            "Publicaciones en los horarios que mejor le funcionan a tu cuenta."
+          ]
+        },
+        {
+          "h": "La herramienta: Zernio",
+          "p": [
+            "Zernio es una plataforma para programar publicaciones en muchas redes desde un solo lugar. Tiene API y un servidor MCP para conectarla con agentes de IA como Claude. Es la que uso yo."
+          ],
+          "lista": [
+            "Web: <a href=\"https://zernio.com\" target=\"_blank\" rel=\"noopener\">zernio.com ↗</a>"
+          ],
+          "aviso": "Revisá qué redes y funciones incluye tu plan y las condiciones de cada red."
+        },
+        {
+          "h": "Pasos",
+          "pasos": [
+            "Creá tu cuenta en Zernio y conectá tus redes (una sola vez).",
+            "Definí tus horarios para cada red.",
+            "Subí el contenido o pedile a Claude que lo prepare.",
+            "Programá y revisá el calendario."
+          ],
+          "prompts": [
+            {
+              "t": "Adaptar un post a cada red",
+              "c": "Adaptá este contenido [TEXTO O GUION] a Instagram, TikTok, YouTube Shorts, LinkedIn, X, Threads y Facebook: texto, largo, hashtags y formato de cada una, con mi tono [TONO]."
+            },
+            {
+              "t": "Calendario del mes",
+              "c": "Con estas 10 ideas [IDEAS], armame el calendario del mes para mis redes: qué va en cada una, qué día y a qué hora, sin repetir el mismo texto."
+            }
+          ]
+        },
+        {
+          "h": "Con Claude y su conector",
+          "p": [
+            "Si conectás Zernio a Claude Code, le podés pedir en el chat «programá este post en estas redes el martes a las 20» y revisarlo antes de confirmar."
+          ],
+          "pasos": [
+            "En la terminal: claude mcp add --transport http zernio https://mcp.zernio.com/mcp",
+            "En Claude Code, escribí /mcp, elegí zernio y aprobá el acceso en la ventana del navegador que se abre.",
+            "Volvé a /mcp y fijate que zernio aparezca conectado."
+          ],
+          "aviso": "Pedí siempre la vista previa antes de programar. No hace falta pegar ninguna clave: el acceso se aprueba en el navegador."
+        },
+        {
+          "h": "Las reglas de cada red",
+          "lista": [
+            "Automatizar está permitido, el spam no: no publiques el mismo texto idéntico en muchas cuentas ni en masa, y respetá las reglas de uso de cada red.",
+            "Mensajería: en WhatsApp, Telegram y Discord mandá mensajes solo a gente que aceptó recibirlos.",
+            "Contenido con IA: si se ve real, etiquetalo como piden TikTok, YouTube e Instagram.",
+            "Cuentas de clientes: conectalas con el acceso oficial; nunca pidas contraseñas por chat."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Publica sin que lo vea?",
+          "a": "Solo lo que vos programás. Revisá el calendario todas las semanas."
+        },
+        {
+          "q": "¿Sirve para clientes?",
+          "a": "Sí: es un servicio que podés ofrecer a negocios que no tienen tiempo para las redes."
+        },
+        {
+          "q": "¿Cuánto cuesta?",
+          "a": "Depende del plan; revisá los precios actuales en la web de Zernio."
+        }
+      ],
+      "usos": [
+        {
+          "e": "Formato",
+          "c": "azul",
+          "t": "Uno para cada red",
+          "d": "Vertical, cuadrado u horizontal."
+        },
+        {
+          "e": "Calendario",
+          "c": "morado",
+          "t": "Lleno de antemano",
+          "d": "Ponés la hora y te olvidás."
+        },
+        {
+          "e": "Claude",
+          "c": "verde",
+          "t": "Desde el chat",
+          "d": "«Programá este post el martes» con el conector."
+        },
+        {
+          "e": "Clientes",
+          "c": "naranja",
+          "t": "Un servicio para ofrecer",
+          "d": "Para negocios sin tiempo para redes."
+        }
+      ],
+      "fuentes": [
+        "https://zernio.com/claude",
+        "https://blog.hootsuite.com/ai-disclosure-policy-for-tiktok/",
+        "https://support.google.com/youtube/answer/14328491"
+      ]
+    },
+    {
+      "slug": "4-agentes-whatsapp-para-vender",
+      "t": "4 agentes de IA para WhatsApp que podés crear y ofrecer",
+      "d": "Recepcionista, ventas, atención al cliente y turnos: qué hace cada uno, cómo se arma con la API oficial y cómo ofrecérselo a negocios con un abono mensual.",
+      "tema": "Ventas",
+      "min": 9,
+      "ficha": [
+        [
+          "Qué es",
+          "Cuatro agentes de WhatsApp que podés crear y ofrecer a negocios: recepcionista, ventas, atención y turnos."
+        ],
+        [
+          "Para quién",
+          "Quien quiere vender servicios de IA a negocios locales."
+        ],
+        [
+          "Necesitás",
+          "La API oficial de WhatsApp Business, un modelo de IA, una base de datos como Supabase y Claude Code."
+        ],
+        [
+          "Cuánto cuesta",
+          "La IA se paga por uso y Meta cobra los mensajes de plantilla según la categoría y el país: sumalo a tu abono."
+        ],
+        [
+          "Ojo",
+          "No uses herramientas que escanean el QR de WhatsApp Web, y el agente tiene que atender solo temas de ese negocio."
+        ]
+      ],
+      "secciones": [
+        {
+          "h": "Los 4 agentes",
+          "lista": [
+            "Recepcionista: contesta a toda hora horarios, ubicación, servicios, precios y preguntas frecuentes.",
+            "Ventas: recomienda el producto indicado, resuelve dudas, propone extras y toma pedidos.",
+            "Atención al cliente: da soporte, sigue los reclamos y responde rápido.",
+            "Turnos: convierte un chat en un turno con calendario, confirmación y recordatorio."
+          ]
+        },
+        {
+          "h": "Con qué se arma",
+          "lista": [
+            "La API oficial de WhatsApp Business (la Cloud API de Meta).",
+            "Un modelo de IA, por ejemplo Claude por API.",
+            "Una base de datos para la memoria y los datos del negocio, por ejemplo Supabase.",
+            "Para turnos: un calendario (Google Calendar o Cal.com)."
+          ],
+          "aviso": "No uses herramientas que se conectan escaneando el QR de WhatsApp Web: van contra los términos de WhatsApp y te pueden bloquear el número. Además, Meta no permite usar la API para ofrecer chatbots de IA de uso general; sí permite que un negocio use IA para atender a sus propios clientes."
+        },
+        {
+          "h": "Crealo con Claude Code",
+          "prompts": [
+            {
+              "t": "El agente",
+              "c": "Creame un agente de WhatsApp con la API oficial de Meta para [TIPO DE NEGOCIO]. Rol: [RECEPCIONISTA / VENTAS / ATENCIÓN / TURNOS]. Usá la información del negocio de [ARCHIVO], que solo responda temas de ese negocio, que avise que es un asistente automático, guardá las conversaciones en Supabase, pasale a una persona lo que no sepa y, si es de turnos, consultá y reservá en [CALENDARIO] con confirmación y recordatorio. Respetá la ventana de 24 horas de WhatsApp y usá plantillas aprobadas para los mensajes que inicia el negocio. Dejalo listo para publicar y decime qué variables necesito."
+            },
+            {
+              "t": "Pruebas",
+              "c": "Escribí 15 mensajes de prueba realistas para este agente, incluidos casos difíciles (enojo, preguntas que no tienen nada que ver, audios), y revisá las respuestas."
+            }
+          ]
+        },
+        {
+          "h": "Reglas que tenés que respetar",
+          "lista": [
+            "Permiso: pedí que el cliente acepte (opt-in) antes de mandarle mensajes que inicia el negocio.",
+            "Transparencia: avisá que responde un asistente automático y ofrecé hablar con una persona.",
+            "Datos: guardá solo lo necesario, explicale al negocio dónde quedan y cumplí la ley de datos personales de tu país.",
+            "Temas delicados: que el agente no dé diagnósticos médicos ni consejos legales o financieros; que lo pase a una persona."
+          ]
+        },
+        {
+          "h": "Cómo ofrecerlo",
+          "pasos": [
+            "Elegí un tipo de negocio de tu zona (consultorios, restaurantes, talleres…).",
+            "Armá una demo con sus datos públicos.",
+            "Mostrásela funcionando en una llamada.",
+            "Cobrá la instalación y un abono mensual por mantenimiento y mejoras."
+          ],
+          "prompts": [
+            {
+              "t": "Mensaje al negocio",
+              "c": "Escribí un mensaje corto para el dueño de [NEGOCIO] ofreciéndole una demo gratis de un agente de WhatsApp que responde a sus clientes a toda hora, sin palabras técnicas y sin prometer resultados."
+            }
+          ],
+          "aviso": "No hay un precio de referencia ni ventas aseguradas. Calculá tu abono según el trabajo que te lleva, los costos de IA y de Meta, y lo que el agente le ahorra al negocio."
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Cuánto cuesta mantenerlo?",
+          "a": "La IA se paga por uso. Meta cobra cada mensaje de plantilla entregado según la categoría y el país; las respuestas comunes dentro de las 24 horas desde que el cliente te escribe son gratis. Sumalo a tu abono."
+        },
+        {
+          "q": "¿Necesito saber programar?",
+          "a": "Con Claude Code, poco; sí tenés que entender las piezas y probar bien."
+        }
+      ],
+      "usos": [
+        {
+          "e": "Recepción",
+          "c": "azul",
+          "t": "Contesta a toda hora",
+          "d": "Horarios, ubicación, servicios y precios."
+        },
+        {
+          "e": "Ventas",
+          "c": "verde",
+          "t": "Recomienda y toma pedidos",
+          "d": "Resuelve dudas y propone extras."
+        },
+        {
+          "e": "Soporte",
+          "c": "morado",
+          "t": "Atención al cliente",
+          "d": "Sigue los reclamos y responde rápido."
+        },
+        {
+          "e": "Turnos",
+          "c": "naranja",
+          "t": "Del chat a la agenda",
+          "d": "Con confirmación y recordatorio."
+        }
+      ],
+      "fuentes": [
+        "https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing",
+        "https://techcrunch.com/2025/10/18/whatssapp-changes-its-terms-to-bar-general-purpose-chatbots-from-its-platform"
+      ]
+    },
+    {
+      "slug": "8-apps-clonadas-gratis",
+      "t": "8 apps de pago con alternativa gratis y abierta: links e instalación",
+      "d": "Motion design con agentes, un asistente de correo, Figma, Word, Excel, PowerPoint, Intercom y beehiiv: alternativas de código abierto que podés instalar con ayuda de Claude Code.",
+      "tema": "Productividad",
+      "min": 8,
+      "ficha": [
+        [
+          "Qué es",
+          "Ocho alternativas de código abierto a apps pagas, con sus links."
+        ],
+        [
+          "Para quién",
+          "Quien paga suscripciones y quiere opciones gratis."
+        ],
+        [
+          "Necesitás",
+          "Claude Code para instalarlas, o los instaladores de cada repo. Algunas piden Docker o un servidor."
+        ],
+        [
+          "Cuánto cuesta",
+          "El código es gratis; varias tienen además una versión en la nube que es paga."
+        ],
+        [
+          "Ojo",
+          "Son proyectos de terceros, algunos en alfa o beta: probalos antes de cambiar tus herramientas de trabajo."
+        ]
+      ],
+      "secciones": [
+        {
+          "h": "Antes de instalar nada",
+          "p": [
+            "Todas son de código abierto. Lo más fácil es pegarle el link a Claude Code y pedirle «instalalo siguiendo su README y decime cómo se usa». Varias tienen además una versión en la nube, ya instalada, que es paga."
+          ],
+          "aviso": "Son proyectos de terceros y algunos muy nuevos. Probalos antes de cambiar tus herramientas de trabajo y no les des datos sensibles sin revisarlos."
+        },
+        {
+          "h": "1. Motion design abierto: Open Design",
+          "p": [
+            "Open Design es un estudio de diseño con agentes de IA. Con su editor HyperFrames describís un video de motion, el agente lo arma y lo exportás a MP4. Funciona con Claude Code, Claude Desktop, Codex, Cursor y muchos agentes más."
+          ],
+          "lista": [
+            "Repositorio: <a href=\"https://github.com/nexu-io/open-design\" target=\"_blank\" rel=\"noopener\">github.com/nexu-io/open-design ↗</a>",
+            "Licencia: Apache 2.0."
+          ]
+        },
+        {
+          "h": "2. Asistente de correo: Inbox Zero",
+          "p": [
+            "Asistente de IA para Gmail y Outlook: ordena la bandeja, te deja borradores de respuesta con tu estilo, te da de baja de listas en un clic y trae su propia app de correo."
+          ],
+          "lista": [
+            "Repositorio: <a href=\"https://github.com/elie222/inbox-zero\" target=\"_blank\" rel=\"noopener\">github.com/elie222/inbox-zero ↗</a>",
+            "En lugar de: asistentes de correo pagos.",
+            "Costo: gratis si lo instalás en tu propio servidor (licencia AGPL); también hay una versión alojada en su web."
+          ],
+          "aviso": "Le das acceso a tu correo: si no lo instalás vos, leé bien quién guarda tus datos."
+        },
+        {
+          "h": "3. Figma abierto: FigCraft",
+          "p": [
+            "Diseño de interfaces y prototipos con frames, auto layout, componentes y variables, en una app que abre al instante y funciona sin internet, sin cuenta."
+          ],
+          "lista": [
+            "Repositorio: <a href=\"https://github.com/storytold/figcraft\" target=\"_blank\" rel=\"noopener\">github.com/storytold/figcraft ↗</a>",
+            "En lugar de: Figma, para uso individual.",
+            "Estado: alfa. Bajás el instalador para Mac, Windows o Linux desde la página de releases."
+          ]
+        },
+        {
+          "h": "4. Office abierto: WordCraft, GridCraft y DeckCraft",
+          "p": [
+            "Procesador de textos, planilla de cálculo y presentaciones que abren y guardan archivos .docx, .xlsx y .pptx."
+          ],
+          "lista": [
+            "<a href=\"https://github.com/storytold/wordcraft\" target=\"_blank\" rel=\"noopener\">github.com/storytold/wordcraft ↗</a>",
+            "<a href=\"https://github.com/storytold/gridcraft\" target=\"_blank\" rel=\"noopener\">github.com/storytold/gridcraft ↗</a>",
+            "<a href=\"https://github.com/storytold/deckcraft\" target=\"_blank\" rel=\"noopener\">github.com/storytold/deckcraft ↗</a>",
+            "En lugar de: Word, Excel y PowerPoint, para uso básico.",
+            "Instalación: cada repo tiene instaladores en su página de releases. Licencia MIT o Apache 2.0."
+          ]
+        },
+        {
+          "h": "5. Soporte al cliente: Helpin",
+          "p": [
+            "Alternativa de código abierto a Intercom y Linear: chat de soporte, bandeja compartida, centro de ayuda, CRM y agentes de IA que responden y arman tareas para tu equipo, con aprobaciones donde las necesites."
+          ],
+          "lista": [
+            "Repositorio: <a href=\"https://github.com/helpin-ai/helpin\" target=\"_blank\" rel=\"noopener\">github.com/helpin-ai/helpin ↗</a>",
+            "Para instalarlo vos: Linux o Mac con Docker, y para probar arrancá con 8 GB de RAM. Está en beta.",
+            "Licencia: AGPL-3.0 para la versión comunitaria; las partes empresariales necesitan licencia comercial."
+          ]
+        },
+        {
+          "h": "6. Newsletters: MailCheap",
+          "p": [
+            "Newsletters donde pagás por los correos que mandás y no por suscriptores dormidos. Importa listas de beehiiv, Substack y Mailchimp."
+          ],
+          "lista": [
+            "Repositorio: <a href=\"https://github.com/marclou/mailcheap\" target=\"_blank\" rel=\"noopener\">github.com/marclou/mailcheap ↗</a>",
+            "En lugar de: beehiiv.",
+            "Costo: gratis si lo instalás vos (licencia AGPL), más lo que cobre tu proveedor de envío de correos; también tiene una versión paga en la nube."
+          ],
+          "aviso": "Instalarlo vos lleva cerca de una hora y no tiene soporte. Mandá correos solo a gente que se suscribió."
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Son igual de buenas que las pagas?",
+          "a": "Para muchos usos, sí; para equipos grandes o funciones avanzadas, comparalas antes."
+        },
+        {
+          "q": "¿Necesito un servidor?",
+          "a": "FigCraft y las apps de Office se instalan como cualquier programa. Inbox Zero, Helpin y MailCheap, si las querés gratis, se instalan en un servidor propio."
+        }
+      ],
+      "usos": [
+        {
+          "e": "Correo",
+          "c": "azul",
+          "t": "Inbox Zero",
+          "d": "Un asistente de correo que podés instalar vos."
+        },
+        {
+          "e": "Diseño",
+          "c": "morado",
+          "t": "FigCraft",
+          "d": "En lugar de Figma, para uso individual."
+        },
+        {
+          "e": "Office",
+          "c": "verde",
+          "t": "WordCraft, GridCraft y DeckCraft",
+          "d": "En lugar de Word, Excel y PowerPoint."
+        },
+        {
+          "e": "Soporte",
+          "c": "naranja",
+          "t": "Helpin",
+          "d": "En lugar de Intercom."
+        }
+      ],
+      "fuentes": [
+        "https://github.com/nexu-io/open-design",
+        "https://github.com/elie222/inbox-zero",
+        "https://github.com/storytold/figcraft",
+        "https://github.com/storytold/wordcraft",
+        "https://github.com/storytold/gridcraft",
+        "https://github.com/storytold/deckcraft",
+        "https://github.com/helpin-ai/helpin",
+        "https://github.com/marclou/mailcheap"
+      ]
+    },
+    {
+      "slug": "7-repos-para-vender-a-empresas",
+      "t": "No armes un SaaS: 7 repos gratis para vender servicios de IA a empresas",
+      "d": "CRM con agentes, auditoría SEO, monitor de competencia, rediseño de webs, informes en PowerPoint, listas de prospectos y OCR de papeles: qué ofrecer, a quién y cómo presentarlo.",
+      "tema": "Negocio",
+      "min": 9,
+      "ficha": [
+        [
+          "Qué es",
+          "Siete repos gratis para vender servicios de IA a empresas, con a quién ofrecerlos y cómo presentarlos."
+        ],
+        [
+          "Para quién",
+          "Quien quiere vender servicios de IA sin crear un SaaS."
+        ],
+        [
+          "Necesitás",
+          "Claude Code para instalarlos y adaptarlos. Algunos piden Docker, Python o Node."
+        ],
+        [
+          "Cuánto cuesta",
+          "Los repos son gratis; lo que se paga es tu trabajo. No hay un precio que sirva para todos."
+        ],
+        [
+          "Ojo",
+          "Respetá las condiciones de cada web, la licencia de cada repo y las leyes de protección de datos."
+        ]
+      ],
+      "secciones": [
+        {
+          "h": "La idea",
+          "p": [
+            "Lo que cobrás no es el código, que es gratis: es instalarlo, adaptarlo a ese negocio, automatizarlo y mantenerlo andando. Tu trabajo es lo que vale."
+          ],
+          "aviso": "No hay precios fijos ni ventas aseguradas. Lo que cobres depende de tu mercado, del tamaño del cliente y de lo que le ahorrás. Revisá la licencia de cada repo antes de usarlo en un servicio pago."
+        },
+        {
+          "h": "Ventas y clientes",
+          "lista": [
+            "CRM con agentes: Comp AI CRM, un CRM de código abierto (MIT) donde los agentes registran cada contacto y hacen el seguimiento. Para empresas de servicios con las ventas desordenadas en planillas. <a href=\"https://github.com/trycompai/crm\" target=\"_blank\" rel=\"noopener\">github.com/trycompai/crm ↗</a>",
+            "Listas de prospectos: Scrapling (BSD-3), un framework de Python para sacar datos de webs que aguanta cuando la página cambia. Ofrecelo como una lista de posibles clientes que se actualiza sola. <a href=\"https://github.com/D4Vinci/Scrapling\" target=\"_blank\" rel=\"noopener\">github.com/D4Vinci/Scrapling ↗</a>"
+          ],
+          "prompts": [
+            {
+              "t": "Pitch del CRM",
+              "c": "Escribí un pitch de 4 frases para [TIPO DE EMPRESA] ofreciendo un CRM con agentes de IA que registran cada contacto y hacen el seguimiento solos, instalado en su propio servidor. Sin prometer resultados."
+            }
+          ],
+          "aviso": "Respetá las condiciones de uso de cada web y la ley de datos personales de tu país. No juntes datos personales para mandar spam."
+        },
+        {
+          "h": "Marketing y web",
+          "lista": [
+            "Auditoría SEO: la skill seo-audit de marketingskills (MIT) revisa una web y arma el informe que después le explicás al cliente. Para negocios locales y tiendas online. Instalación: npx skills add coreyhaines31/marketingskills <a href=\"https://github.com/coreyhaines31/marketingskills\" target=\"_blank\" rel=\"noopener\">github.com/coreyhaines31/marketingskills ↗</a>",
+            "Monitor de competencia: changedetection.io (Apache 2.0) vigila cualquier página y avisa cuando cambia, por mail, Slack, Telegram y más. Para tiendas que quieren seguir precios y lanzamientos. Se instala con Docker. <a href=\"https://github.com/dgtlmoon/changedetection.io\" target=\"_blank\" rel=\"noopener\">github.com/dgtlmoon/changedetection.io ↗</a>",
+            "Rediseño de webs: ai-website-cloner-template (MIT) toma una web y la rehace como una app nueva en Next.js. <a href=\"https://github.com/JCodesMore/ai-website-cloner-template\" target=\"_blank\" rel=\"noopener\">github.com/JCodesMore/ai-website-cloner-template ↗</a>"
+          ],
+          "aviso": "Usá el clonador solo con la web de tu propio cliente y con su permiso: copiar la web o la marca de otra empresa viola sus derechos."
+        },
+        {
+          "h": "Documentos y papeles",
+          "lista": [
+            "Motor de informes: ppt-master (MIT) convierte un documento o un tema en un PowerPoint real. Para consultoras y equipos que hacen informes todas las semanas. <a href=\"https://github.com/hugohe3/ppt-master\" target=\"_blank\" rel=\"noopener\">github.com/hugohe3/ppt-master ↗</a>",
+            "Papeles a datos: PaddleOCR (Apache 2.0) convierte PDF y escaneos en datos ordenados: facturas, contratos y formularios. Para estudios contables, logística y cualquier empresa con mucho papel. <a href=\"https://github.com/PaddlePaddle/PaddleOCR\" target=\"_blank\" rel=\"noopener\">github.com/PaddlePaddle/PaddleOCR ↗</a>"
+          ],
+          "aviso": "Facturas y contratos tienen datos sensibles: procesalos en un servidor del cliente o con su permiso por escrito."
+        },
+        {
+          "h": "Cómo venderlo",
+          "pasos": [
+            "Elegí un repo y un tipo de cliente.",
+            "Armá una demo con datos de ejemplo de su rubro.",
+            "Mostrala en una llamada de 20 minutos.",
+            "Cobrá la instalación más un abono de mantenimiento."
+          ],
+          "prompts": [
+            {
+              "t": "Lista de precios",
+              "c": "Ayudame a armar una tabla de precios para estos servicios [LISTA] en mi mercado [PAÍS/CIUDAD]: instalación, abono mensual, qué incluye y qué no. Basate en las horas que me lleva cada uno y decime qué datos tendría que averiguar de mi zona antes de fijar los números."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Necesito programar?",
+          "a": "Con Claude Code podés instalarlos y adaptarlos; sí tenés que entender lo que vendés y probarlo bien."
+        },
+        {
+          "q": "¿Puedo cobrar por algo que es gratis?",
+          "a": "Sí: cobrás tu trabajo de instalación, adaptación y mantenimiento. Revisá igual la licencia de cada repo; las AGPL, por ejemplo, tienen reglas si modificás el código y lo ofrecés como servicio."
+        }
+      ],
+      "usos": [
+        {
+          "e": "CRM",
+          "c": "azul",
+          "t": "CRM con agentes",
+          "d": "Para empresas con las ventas en planillas."
+        },
+        {
+          "e": "Competencia",
+          "c": "morado",
+          "t": "Monitor de competencia",
+          "d": "changedetection.io vigila sus precios y lanzamientos."
+        },
+        {
+          "e": "Prospectos",
+          "c": "verde",
+          "t": "Listas que se actualizan",
+          "d": "Scrapling, respetando las reglas de cada web."
+        },
+        {
+          "e": "Papeles",
+          "c": "naranja",
+          "t": "Papeles a datos",
+          "d": "PaddleOCR para facturas y contratos."
+        }
+      ],
+      "fuentes": [
+        "https://github.com/trycompai/crm",
+        "https://github.com/coreyhaines31/marketingskills",
+        "https://github.com/dgtlmoon/changedetection.io",
+        "https://github.com/JCodesMore/ai-website-cloner-template",
+        "https://github.com/hugohe3/ppt-master",
+        "https://github.com/D4Vinci/Scrapling",
+        "https://github.com/PaddlePaddle/PaddleOCR"
+      ]
+    },
+    {
+      "slug": "5-repos-que-matan-apps-de-pago",
+      "t": "5 repos de GitHub que reemplazan apps que pagás",
+      "d": "Compañeros de IA siempre activos, un asesor de finanzas que deja tus datos en tu compu, piezas 3D desde una frase, videos de motion escritos como una web y 45 tipos de diagrama: links y cómo instalarlos.",
+      "tema": "Productividad",
+      "min": 7,
+      "ficha": [
+        [
+          "Qué es",
+          "Cinco repositorios de GitHub que reemplazan apps pagas: compañeros de IA, finanzas, 3D, motion y diagramas."
+        ],
+        [
+          "Para quién",
+          "Quien quiere dejar de pagar ciertas apps."
+        ],
+        [
+          "Necesitás",
+          "Claude Code para instalarlos. Algunos piden Node, uv o Docker."
+        ],
+        [
+          "Cuánto cuesta",
+          "Son de código abierto; algunos usan una API de IA que se paga por uso."
+        ],
+        [
+          "Ojo",
+          "Proyectos de terceros: revisá licencia y permisos antes de usarlos con datos reales."
+        ]
+      ],
+      "secciones": [
+        {
+          "h": "Cómo instalarlos en minutos",
+          "prompts": [
+            {
+              "t": "Instalar",
+              "c": "Instalá [LINK DEL REPO] siguiendo su README, decime qué necesito (claves, programas) y hacé una prueba chica para comprobar que funciona."
+            }
+          ],
+          "aviso": "Son proyectos de terceros: revisá licencia y permisos antes de usarlos con datos reales."
+        },
+        {
+          "h": "1. Compañeros de IA: OpenDots",
+          "p": [
+            "Una plantilla de código abierto (MIT) para tener agentes de IA siempre activos, cada uno con su propia compu: navegan, atienden llamadas y trabajan en Slack."
+          ],
+          "lista": [
+            "Repositorio: <a href=\"https://github.com/CopilotKit/OpenDots\" target=\"_blank\" rel=\"noopener\">github.com/CopilotKit/OpenDots ↗</a>"
+          ],
+          "aviso": "Es una plantilla para desarrolladores, todavía en etapa temprana: la instalás y la configurás vos, y las conversaciones necesitan el servicio CopilotKit Intelligence (alojado, o una versión local de prueba con Docker)."
+        },
+        {
+          "h": "2. Finanzas personales: Aurelio",
+          "p": [
+            "Una app para seguir tu patrimonio y planificar tus finanzas (inversiones, propiedades y deudas) con un asesor de IA opcional. Corre en tu compu y tus registros quedan ahí; la IA va por OpenRouter con tu propia clave."
+          ],
+          "lista": [
+            "Repositorio: <a href=\"https://github.com/LosaLosSantos/aurelio-finance\" target=\"_blank\" rel=\"noopener\">github.com/LosaLosSantos/aurelio-finance ↗</a>",
+            "Necesitás Git, Node.js 22 o más nuevo y uv. Podés probarla primero con datos inventados."
+          ],
+          "aviso": "No es asesoramiento financiero: usala para ordenar tus números. Si activás la IA, lo que le preguntes sale de tu compu hacia OpenRouter y se paga por uso."
+        },
+        {
+          "h": "3. Piezas 3D: text-to-cad",
+          "p": [
+            "Describís una pieza con palabras (o con una imagen) y tu agente genera archivos 3D reales en STEP, STL, 3MF o GLB para imprimir o mecanizar. También revisa si la pieza se puede fabricar."
+          ],
+          "lista": [
+            "Repositorio: <a href=\"https://github.com/earthtojake/text-to-cad\" target=\"_blank\" rel=\"noopener\">github.com/earthtojake/text-to-cad ↗</a>",
+            "Funciona con Claude Code, Codex, Cursor y otros agentes con plugins o skills."
+          ],
+          "aviso": "Revisá medidas y tolerancias antes de fabricar."
+        },
+        {
+          "h": "4. Motion design: HyperFrames",
+          "p": [
+            "Lo hizo HeyGen: Claude escribe cada escena como una página web y HyperFrames la convierte en un MP4 con movimiento. Es gratis y de código abierto (Apache 2.0)."
+          ],
+          "lista": [
+            "Repositorio: <a href=\"https://github.com/heygen-com/hyperframes\" target=\"_blank\" rel=\"noopener\">github.com/heygen-com/hyperframes ↗</a>",
+            "Instalación, en la terminal: claude plugin marketplace add heygen-com/hyperframes y después claude plugin install hyperframes@hyperframes",
+            "En lugar de: programas de animación pagos, para videos simples."
+          ]
+        },
+        {
+          "h": "5. Diagramas: diagram-design",
+          "p": [
+            "Le pedís un diagrama con palabras y te devuelve un archivo HTML prolijo, entre 45 tipos. Si le pasás tu web, toma tu paleta y tus tipografías."
+          ],
+          "lista": [
+            "Repositorio: <a href=\"https://github.com/cathrynlavery/diagram-design\" target=\"_blank\" rel=\"noopener\">github.com/cathrynlavery/diagram-design ↗</a>",
+            "Instalación, dentro de Claude Code: /plugin marketplace add cathrynlavery/diagram-design y después /plugin install diagram-design@diagram-design"
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Son gratis?",
+          "a": "Sí, son de código abierto. Algunos usan una API de IA que se paga por uso."
+        },
+        {
+          "q": "¿Cuál es el más fácil para empezar?",
+          "a": "diagram-design y HyperFrames: se instalan con un comando en Claude Code. OpenDots es el que más trabajo técnico pide."
+        }
+      ],
+      "usos": [
+        {
+          "e": "Agentes",
+          "c": "azul",
+          "t": "OpenDots",
+          "d": "Compañeros de IA siempre activos."
+        },
+        {
+          "e": "Finanzas",
+          "c": "verde",
+          "t": "Aurelio",
+          "d": "Tu patrimonio, con los datos en tu compu."
+        },
+        {
+          "e": "3D",
+          "c": "morado",
+          "t": "text-to-cad",
+          "d": "Piezas 3D desde una frase."
+        },
+        {
+          "e": "Video",
+          "c": "rosa",
+          "t": "HyperFrames",
+          "d": "Videos de motion escritos como una web."
+        }
+      ],
+      "fuentes": [
+        "https://github.com/CopilotKit/OpenDots",
+        "https://github.com/LosaLosSantos/aurelio-finance",
+        "https://github.com/earthtojake/text-to-cad",
+        "https://github.com/heygen-com/hyperframes",
+        "https://github.com/cathrynlavery/diagram-design"
+      ]
+    },
+    {
+      "slug": "videos-virales-plantilla-hypit",
+      "t": "Convertí un video que funciona en una plantilla y armalo con IA",
+      "d": "Hypit analiza un video y lo convierte en un flujo reutilizable; Claude Code con HyperFrames arma tu versión con tu voz o una voz de IA, y Rhubarb Lip Sync hace hablar a tu mascota digital.",
+      "tema": "Contenido",
+      "min": 8,
+      "ficha": [
+        [
+          "Qué es",
+          "Hypit convierte un video en una plantilla y Claude Code con HyperFrames arma tu video, con tu voz o una de IA."
+        ],
+        [
+          "Para quién",
+          "Creadores que quieren partir de estructuras que ya funcionan."
+        ],
+        [
+          "Necesitás",
+          "Claude Code, Hypit, HyperFrames y, para mascotas, Rhubarb Lip Sync."
+        ],
+        [
+          "Cuánto cuesta",
+          "Las tres herramientas son gratis; los modelos de generación y las voces de IA se pagan aparte."
+        ],
+        [
+          "Ojo",
+          "Copiá la estructura, no el contenido, la música ni la cara de otros."
+        ]
+      ],
+      "secciones": [
+        {
+          "h": "Las piezas",
+          "lista": [
+            "Hypit: le da a tu agente un sistema para hacer video. Le pasás un video y lo clona como un flujo completo (gancho, ritmo, escenas, subtítulos y efectos). Es gratis, con licencia propia basada en Apache 2.0 con condiciones. <a href=\"https://github.com/hypit-ai/hypit\" target=\"_blank\" rel=\"noopener\">github.com/hypit-ai/hypit ↗</a>",
+            "HyperFrames: escribís el video en HTML y lo convierte en MP4 (Apache 2.0). <a href=\"https://github.com/heygen-com/hyperframes\" target=\"_blank\" rel=\"noopener\">github.com/heygen-com/hyperframes ↗</a>",
+            "Rhubarb Lip Sync: analiza tu audio y genera qué forma de boca va en cada momento, para animar a un personaje 2D (MIT). <a href=\"https://github.com/DanielSWolf/rhubarb-lip-sync\" target=\"_blank\" rel=\"noopener\">github.com/DanielSWolf/rhubarb-lip-sync ↗</a>",
+            "Claude Code: el agente que junta todo."
+          ]
+        },
+        {
+          "h": "1. De video a plantilla",
+          "lista": [
+            "Instalación de Hypit, en la terminal: npx skills add hypit-ai/hypit -g. La primera vez, tu agente revisa si falta el programa de Hypit y te ayuda a prepararlo.",
+            "Instalación de HyperFrames, en la terminal: claude plugin marketplace add heygen-com/hyperframes y claude plugin install hyperframes@hyperframes"
+          ],
+          "prompts": [
+            {
+              "t": "Analizar",
+              "c": "Usá Hypit para analizar este video [ARCHIVO o LINK] y convertilo en una plantilla reutilizable: gancho, ritmo, escenas, subtítulos y visuales. Quedate solo con la estructura, no con el contenido."
+            }
+          ]
+        },
+        {
+          "h": "2. Que el agente arme el video",
+          "prompts": [
+            {
+              "t": "Armar",
+              "c": "Con la plantilla anterior y HyperFrames, armá un video vertical sobre [MI TEMA] con mi marca [COLORES, LOGO]. Usá estos recursos míos: [B-ROLL, FOTOS DE PRODUCTO, CLIPS]. Mostrame la vista previa antes de renderizar."
+            }
+          ]
+        },
+        {
+          "h": "3. La voz: vos elegís",
+          "lista": [
+            "Grabá tu guion y pasale la pista de audio.",
+            "O usá una voz de IA (por ejemplo ElevenLabs)."
+          ],
+          "aviso": "Si usás una voz clonada, que sea la tuya o la de alguien que te dio permiso por escrito. Clonar la voz de otra persona sin permiso viola sus derechos."
+        },
+        {
+          "h": "4. Hacé hablar a tu mascota digital",
+          "p": [
+            "Rhubarb usa seis formas básicas de boca (A a F) y tres opcionales (G, H y X). Necesitás un dibujo de la boca de tu mascota para cada una."
+          ],
+          "prompts": [
+            {
+              "t": "Sincronizar la boca",
+              "c": "Con Rhubarb Lip Sync, sincronizá la boca de mi mascota [DIBUJOS DE LA BOCA: A, B, C, D, E, F y X] con este audio [ARCHIVO] e integralo en la escena de HyperFrames."
+            }
+          ]
+        },
+        {
+          "h": "5. Dirigí la edición con tu voz",
+          "prompts": [
+            {
+              "t": "Ajustes",
+              "c": "Hacé el gancho más corto, subí los subtítulos para que no tapen la cara y cambiá la tercera escena por el clip [ARCHIVO]. Volvé a mostrarme la vista previa."
+            }
+          ]
+        },
+        {
+          "h": "Lo que conviene saber",
+          "lista": [
+            "Copiá la estructura (gancho, ritmo, escenas), no el contenido, la música, las imágenes ni la cara de otros: todo eso tiene derechos.",
+            "Usá solo caras y voces propias o con permiso.",
+            "Indicá que es contenido hecho con IA cuando la plataforma lo pida.",
+            "Los modelos de generación (de Hypit o tu propia API) tienen sus propias cuentas y costos."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Necesito saber editar?",
+          "a": "No. Describís lo que querés y el agente arma el borrador; vos revisás."
+        },
+        {
+          "q": "¿Es todo gratis?",
+          "a": "Hypit, HyperFrames y Rhubarb sí. Pagás tu plan de Claude y, si los usás, los modelos de generación y las voces de IA."
+        }
+      ],
+      "usos": [
+        {
+          "e": "Plantilla",
+          "c": "azul",
+          "t": "De video a plantilla",
+          "d": "Gancho, ritmo y estructura con Hypit."
+        },
+        {
+          "e": "Armar",
+          "c": "morado",
+          "t": "El agente edita",
+          "d": "HyperFrames escribe el video y lo renderiza."
+        },
+        {
+          "e": "Voz",
+          "c": "verde",
+          "t": "Tuya o de IA",
+          "d": "Tu audio o una voz de IA con permiso."
+        },
+        {
+          "e": "Mascota",
+          "c": "rosa",
+          "t": "Que hable tu mascota",
+          "d": "Rhubarb mueve la boca al ritmo del audio."
+        }
+      ],
+      "fuentes": [
+        "https://github.com/hypit-ai/hypit",
+        "https://github.com/heygen-com/hyperframes",
+        "https://github.com/DanielSWolf/rhubarb-lip-sync"
+      ]
+    }
+  ],
+  "prompts": [],
+  "herramientas": []
+}

@@ -41,5 +41,11 @@ var RUTAS = [
     pasos: ["treinta-dias-de-ideas-de-contenido", "guiones-de-reels-con-tu-voz", "carruseles-con-claude-paso-a-paso", "claude-te-edita-el-reel",
             "palabra-clave-en-comentarios-con-manychat", "responder-dms-y-calificar-prospectos", "propuesta-comercial-con-claude",
             "seguimiento-de-prospectos-sin-ser-pesado", "landing-en-tres-preguntas", "linkedin-agent-11-skills"]
+  },
+  {
+    id: "vender", color: "azul", t: "Vendé servicios de IA",
+    d: "Qué armar para otros negocios, con qué herramientas y cómo presentarlo y cobrarlo.",
+    pasos: ["el-plano-de-un-negocio-con-ia", "7-repos-para-vender-a-empresas", "4-agentes-whatsapp-para-vender", "oficina-de-agentes-ia",
+            "cuanto-cobrar-por-automatizar-con-ia", "propuesta-comercial-con-claude", "seguimiento-de-prospectos-sin-ser-pesado"]
   }
 ];
