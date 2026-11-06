@@ -54,5 +54,18 @@ var RUTAS = [
     d: "Qué armar para otros negocios, con qué herramientas y cómo presentarlo y cobrarlo.",
     pasos: ["el-plano-de-un-negocio-con-ia", "7-repos-para-vender-a-empresas", "4-agentes-whatsapp-para-vender", "oficina-de-agentes-ia",
             "cuanto-cobrar-por-automatizar-con-ia", "propuesta-comercial-con-claude", "seguimiento-de-prospectos-sin-ser-pesado"]
+  },
+  {
+    id: "agentes", color: "azul", t: "Armá tus propios agentes",
+    d: "Qué es un agente de verdad, cómo diseñarlo, los que más sirven en un negocio y cómo usarlos con cuidado.",
+    pasos: ["que-es-un-agente-de-ia-de-verdad", "disena-tu-agente-en-una-hoja", "agente-de-investigacion", "agente-de-atencion-con-base-de-conocimiento",
+            "agente-que-califica-prospectos", "agente-de-contenido-semanal", "equipos-de-agentes-cuando-conviene", "seguridad-de-agentes", "agentes-con-el-claude-agent-sdk"]
+  },
+  {
+    id: "desarrollo", color: "azul", t: "Desarrollá tu app con Claude Code",
+    d: "De la idea a una app publicada, con base de datos, usuarios, cobros y lo que necesita para usarse de verdad.",
+    pasos: ["escribi-la-especificacion-antes-de-programar", "de-idea-a-app-publicada-con-claude-code", "git-y-github-para-no-perder-nada",
+            "base-de-datos-con-supabase-y-claude-code", "usuarios-y-login-sin-romperte-la-cabeza", "cobrar-dentro-de-tu-app",
+            "publicar-tu-app-y-conectar-tu-dominio", "de-demo-a-producto", "mantener-una-app-hecha-con-ia"]
   }
 ];

@@ -1,0 +1,39 @@
+<!doctype html>
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena publicar-tu-app-y-conectar-tu-dominio, Publicar tu app y conectar tu dominio, Conectá tu repositorio de GitHub a Vercel (o Netlify), cargá las variables de entorno y poné tu propio dominio. y e7055214 -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publicar tu app y conectar tu dominio | juampiacosta.ai</title>
+<meta name="description" content="Conectá tu repositorio de GitHub a Vercel (o Netlify), cargá las variables de entorno y poné tu propio dominio.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../web/base.css?v=e7055214">
+<link rel="stylesheet" href="../web/cta.css?v=e7055214">
+<link rel="stylesheet" href="../web/biblioteca.css?v=e7055214">
+<link rel="stylesheet" href="../web/guia.css?v=e7055214">
+<link rel="stylesheet" href="../web/tema.css?v=e7055214">
+<script src="../web/tema.js?v=e7055214"></script>
+</head>
+<body>
+<div class="fondo"></div>
+<script src="../web/redes.js?v=e7055214"></script>
+<script src="../web/guias-web.js?v=e7055214"></script>
+<script src="../web/comun.js?v=e7055214"></script>
+<script>document.write(cabecera());</script>
+
+<main class="lectura" id="guia" data-slug="publicar-tu-app-y-conectar-tu-dominio"></main>
+
+<script src="../web/rutas.js?v=e7055214"></script>
+<script src="../web/logos.js?v=e7055214"></script>
+<script src="../web/guia.js?v=e7055214"></script>
+<script>
+(function () {
+  var slug = document.getElementById("guia").dataset.slug;
+  var g = GUIAS_WEB.filter(function (x) { return x.slug === slug; })[0];
+  pintarGuia(document.getElementById("guia"), g);
+})();
+</script>
+</body>
+</html>
