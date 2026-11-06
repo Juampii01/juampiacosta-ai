@@ -76,6 +76,7 @@ guia(
 # ---------------------------------------------------------------- JARVIS
 guia(
     slug="tu-propio-jarvis-con-claude",
+    fuentes=['https://github.com/Juampii01/jarvi-os/tree/main/voz', 'https://github.com/Itsme23476/jarvis-os', 'https://elevenlabs.io/docs'],
     post="JARVIS",
     t="Tu propio Jarvis con Claude",
     d="Le hablás, te contesta con voz y se conecta a tu mail y tu calendario. De código abierto: vive en tu compu y nadie te cobra después.",
@@ -119,6 +120,7 @@ guia(
 # ---------------------------------------------------------------- LINKEDIN
 guia(
     slug="linkedin-agent-11-skills",
+    fuentes=['https://github.com/Juampii01/linkedin-agent-skills'],
     post="LINKEDIN",
     t="LinkedIn Agent: 11 skills para Claude",
     d="Te escriben los posts, preparan comentarios, ordenan respuestas, le ponen nota a tu perfil, te arman la semana y humanizan todo. Vos publicás.",
@@ -164,6 +166,7 @@ guia(
 # ---------------------------------------------------------------- CODEX
 guia(
     slug="codex-dentro-de-claude-code",
+    fuentes=['https://github.com/openai/codex-plugin-cc', 'https://developers.openai.com/codex/pricing'],
     post="GUÍA",
     t="Codex dentro de Claude Code",
     d="Claude piensa el plan, Codex ejecuta y revisa. Cada uno gasta su propio límite, así repartís la carga entre las dos suscripciones.",
@@ -205,6 +208,7 @@ guia(
 # ---------------------------------------------------------------- MARKITDOWN
 guia(
     slug="markitdown-para-ahorrar-tokens",
+    fuentes=['https://github.com/microsoft/markitdown', 'https://github.com/microsoft/markitdown/tree/main/packages/markitdown-mcp', 'https://docs.astral.sh/uv/getting-started/installation/', 'https://modelcontextprotocol.io/quickstart/user'],
     post="TOKEN",
     t="MarkItDown: Claude lee tus archivos gastando menos",
     d="La herramienta gratis de Microsoft que convierte PDF, Word, Excel, PowerPoint y hasta videos de YouTube en texto limpio. Claude lo lee mejor y gasta menos.",
@@ -244,6 +248,7 @@ guia(
 # ---------------------------------------------------------------- CONECTORES
 guia(
     slug="4-conectores-que-claude-deberia-tener",
+    fuentes=['https://github.com/upstash/context7', 'https://github.com/firecrawl/firecrawl-mcp-server', 'https://github.com/microsoft/playwright-mcp', 'https://docs.composio.dev/docs/composio-connect'],
     post="CONECTOR",
     t="Los 4 conectores que Claude debería tener",
     d="Context7, Firecrawl, Playwright y Composio: documentación al día, cualquier web en texto, un navegador de verdad y más de 1.000 apps conectadas.",
@@ -277,6 +282,7 @@ guia(
 # ---------------------------------------------------------------- EDITAR
 guia(
     slug="claude-te-edita-el-reel",
+    fuentes=['https://github.com/WyattBlue/auto-editor', 'https://github.com/SYSTRAN/faster-whisper', 'https://ffmpeg.org/download.html'],
     post="EDITAR",
     t="Claude te edita el reel",
     d="Le pasás el video crudo y te devuelve el reel: silencios cortados, subtítulos palabra por palabra y música que baja sola cuando hablás. Todo gratis y en tu compu.",

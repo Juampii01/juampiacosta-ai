@@ -219,3 +219,9 @@ details p { margin-top: 10px; }
 .placa-logo b { font: 800 20px/1 "Inter", sans-serif; letter-spacing: -.03em; }
 .rel a .placa-logo b { font-size: 15px; }
 @media (max-width: 640px) { .g-logos .placa-logo b { font-size: 17px; } }
+
+/* Fuentes al final de la guía: chicas y discretas */
+.g-fuentes { margin-top: 40px; }
+.g-fuentes ul { list-style: none; margin-top: 10px; display: grid; gap: 6px; }
+.g-fuentes a { color: var(--muted); font-size: 13px; word-break: break-all; text-decoration: underline; text-underline-offset: 3px; }
+.g-fuentes a:hover { color: var(--sky); }

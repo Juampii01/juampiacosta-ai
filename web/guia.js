@@ -198,6 +198,14 @@ function pintarGuia(caja, g) {
       g.faq.map(function (f) { return '<details class="glass"><summary>' + f.q + '</summary><p>' + adornar(f.a) + '</p></details>'; }).join("") + '</section>';
   }
 
+  // Fuentes oficiales que respaldan la guía
+  if (g.fuentes && g.fuentes.length) {
+    html += '<section class="g-fuentes"><span class="g-etq">Fuentes</span><ul>' + g.fuentes.map(function (u) {
+      var limpio = u.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+      return '<li><a href="' + u + '" target="_blank" rel="noopener">' + limpio + '</a></li>';
+    }).join("") + '</ul></section>';
+  }
+
   // Siguiente paso de la ruta (si la guía está en una)
   html += siguienteDeRuta(g);
 

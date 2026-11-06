@@ -1,0 +1,58 @@
+[
+ {
+  "tema": "Productividad",
+  "t": "Tu día ordenado con Claude",
+  "d": "Panel con tu agenda y tus mails, y la revisión de cada noche.",
+  "para": "Arrancar el día sabiendo qué es lo importante y cerrarlo sabiendo qué mejorar.",
+  "prompts": [
+   {
+    "t": "Panel de vida",
+    "c": "Armame mi panel de vida en una sola página con mi Google Calendar y mi Gmail: reuniones de hoy, mails importantes sin responder, pendientes de la semana y, arriba, un resumen de 3 líneas con lo más importante."
+   },
+   {
+    "t": "Revisión de la noche",
+    "c": "Mirá mi Google Calendar de hoy y haceme 3 preguntas cortas: qué salió bien, qué no salió y qué aprendí. Con mis respuestas armá un resumen del día en 5 líneas."
+   },
+   {
+    "t": "Resumen semanal",
+    "c": "Juntá mis revisiones de esta semana, decime los 3 patrones que se repiten y dame 3 cosas concretas para mejorar la semana que viene. Sé honesto."
+   }
+  ]
+ },
+ {
+  "tema": "Marca",
+  "t": "Tu kit de marca",
+  "d": "Colores, tipografías, tono y piezas base, listos para reutilizar.",
+  "para": "Que todo lo que te hace Claude tenga tu marca sin explicarla cada vez.",
+  "prompts": [
+   {
+    "t": "Armar el kit",
+    "c": "Armame el kit de marca de [TU NEGOCIO]. Me dedico a [EN UNA LÍNEA], le hablo a [TU CLIENTE IDEAL] y mi tono es [TONO]. Quiero 5 colores con hex, 2 tipografías de Google Fonts, 5 reglas de tono con ejemplos y 3 piezas de muestra."
+   },
+   {
+    "t": "Guardarlo como skill",
+    "c": "Convertí este kit en una skill para que lo uses siempre que te pida algo de mi marca."
+   }
+  ]
+ },
+ {
+  "tema": "Claude Code",
+  "t": "Instalar con un solo mensaje",
+  "d": "Prompts para que Claude Code instale y configure por vos.",
+  "para": "Ahorrarte la terminal: pegás, aprobás y listo.",
+  "prompts": [
+   {
+    "t": "Revisar antes de instalar",
+    "c": "Antes de instalar nada, decime qué vas a instalar, desde dónde y para qué sirve cada cosa. Esperá mi OK."
+   },
+   {
+    "t": "Context7 siempre",
+    "c": "Usá siempre Context7 cuando necesites documentación de una librería o herramienta, sin que te lo pida."
+   },
+   {
+    "t": "Archivos con MarkItDown",
+    "c": "Cuando te pase la ruta de un archivo o un link, convertilo primero con la herramienta markitdown y trabajá sobre ese texto."
+   }
+  ]
+ }
+]
