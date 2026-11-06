@@ -105,6 +105,9 @@ function recoger(lista, n, etiqueta) {
   lista.after(boton);
 }
 
+// Escapa el texto que va dentro de <code>: los prompts pueden traer etiquetas como <ejemplo>
+function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+
 function buscable(o) {
   return [o.t || o.n, o.d || "", o.cat || ""].join(" ").replace(/"/g, "");
 }

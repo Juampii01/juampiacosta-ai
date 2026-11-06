@@ -1,0 +1,39 @@
+<!doctype html>
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena permisos-y-modo-automatico-con-cuidado, Permisos y modo automático, sin romper nada, Qué hace cada modo de permisos, qué aprobar sin miedo, qué leer dos veces y por qué tenés que guardar una copia antes de dejarlo solo. y a817b5ad -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Permisos y modo automático, sin romper nada | juampiacosta.ai</title>
+<meta name="description" content="Qué hace cada modo de permisos, qué aprobar sin miedo, qué leer dos veces y por qué tenés que guardar una copia antes de dejarlo solo.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../web/base.css?v=a817b5ad">
+<link rel="stylesheet" href="../web/cta.css?v=a817b5ad">
+<link rel="stylesheet" href="../web/biblioteca.css?v=a817b5ad">
+<link rel="stylesheet" href="../web/guia.css?v=a817b5ad">
+<link rel="stylesheet" href="../web/tema.css?v=a817b5ad">
+<script src="../web/tema.js?v=a817b5ad"></script>
+</head>
+<body>
+<div class="fondo"></div>
+<script src="../web/redes.js?v=a817b5ad"></script>
+<script src="../web/guias-web.js?v=a817b5ad"></script>
+<script src="../web/comun.js?v=a817b5ad"></script>
+<script>document.write(cabecera());</script>
+
+<main class="lectura" id="guia" data-slug="permisos-y-modo-automatico-con-cuidado"></main>
+
+<script src="../web/rutas.js?v=a817b5ad"></script>
+<script src="../web/logos.js?v=a817b5ad"></script>
+<script src="../web/guia.js?v=a817b5ad"></script>
+<script>
+(function () {
+  var slug = document.getElementById("guia").dataset.slug;
+  var g = GUIAS_WEB.filter(function (x) { return x.slug === slug; })[0];
+  pintarGuia(document.getElementById("guia"), g);
+})();
+</script>
+</body>
+</html>

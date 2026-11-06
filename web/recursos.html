@@ -95,7 +95,7 @@ document.getElementById("n-guias").textContent = GUIAS_WEB.length;
 // Skills, MCP y herramientas: qué hace, para qué te sirve, comando para copiar y link
 function tarjetaHerramienta(h) {
   var cmds = h.cmds.map(function (c) {
-    return '<div class="cmd"><small>' + c.donde + '</small><div class="prompt"><button onclick="copiar(this)">Copiar</button><code>' + c.c + '</code></div></div>';
+    return '<div class="cmd"><small>' + c.donde + '</small><div class="prompt"><button onclick="copiar(this)">Copiar</button><code>' + esc(c.c) + '</code></div></div>';
   }).join("");
   var meta = [h.estrellas ? "★ " + h.estrellas : "", h.licencia || ""].filter(Boolean).join(" · ");
   return '<article class="herr glass" data-buscar="' + buscable(h) + ' ' + h.tipo + ' ' + h.repo + ' ' + h.para.replace(/"/g, "") + '">' +
@@ -113,7 +113,7 @@ document.getElementById("lista-prompts").innerHTML = PROMPTS.map(function (p) {
   return '<article class="herr glass' + (p.prompts.length > 1 ? ' plegado' : '') + '" data-cat="' + p.tema + '" data-buscar="' + buscable(p) + ' prompt ' + p.tema + ' ' + p.para.replace(/"/g, "") + '">' +
     '<div class="herr-cab"><span class="tipo">Prompts · ' + p.tema + '</span><span class="herr-meta">' + p.prompts.length + ' prompts</span></div>' +
     '<h3>' + p.t + '</h3><p>' + p.d + '</p><p class="para"><b>Para qué te sirve:</b> ' + p.para + '</p>' +
-    p.prompts.map(function (x) { return '<div class="cmd"><small>' + x.t + '</small><div class="prompt"><button onclick="copiar(this)">Copiar</button><code>' + x.c + '</code></div></div>'; }).join("") +
+    p.prompts.map(function (x) { return '<div class="cmd"><small>' + x.t + '</small><div class="prompt"><button onclick="copiar(this)">Copiar</button><code>' + esc(x.c) + '</code></div></div>'; }).join("") +
     (p.prompts.length > 1 ? '<button class="mas-prompts" onclick="plegarPack(this)" data-n="' + p.prompts.length + '">Ver los ' + p.prompts.length + ' prompts ↓</button>' : '') +
     '</article>';
 }).join("");

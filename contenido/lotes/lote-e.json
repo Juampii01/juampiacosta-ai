@@ -1,0 +1,925 @@
+{
+ "guias": [
+  {
+   "slug": "guiones-de-reels-con-tu-voz",
+   "t": "Guiones de reels que suenan a vos",
+   "d": "Armá una ficha de voz, guardala en Claude y pedí guiones con gancho, desarrollo y cierre. Después los leés en voz alta y ajustás lo que no te sale natural.",
+   "tema": "Contenido",
+   "min": 9,
+   "fichaNombre": "Guiones con tu voz",
+   "ficha": [
+    [
+     "Qué es",
+     "Un método para que Claude escriba guiones de reels con tus palabras y tu ritmo, no con frases de manual."
+    ],
+    [
+     "Necesitás",
+     "Una cuenta de Claude y 3 a 5 textos tuyos: transcripciones de reels, audios pasados a texto o posts."
+    ],
+    [
+     "Tiempo",
+     "Media hora la primera vez. Después, minutos por guion."
+    ],
+    [
+     "Qué no hace",
+     "No graba ni edita. Te deja el texto listo para decir a cámara."
+    ]
+   ],
+   "secciones": [
+    {
+     "h": "Por qué los guiones de IA suenan a IA",
+     "p": [
+      "Si le pedís a Claude \"escribime un guion sobre X\" sin más datos, rellena con lo más común: frases genéricas, ritmo parejo y palabras que vos nunca usarías.",
+      "La solución es darle material tuyo. Cuanto más real sea lo que le pasás (cómo arrancás, qué muletillas usás, cómo explicás), más se va a parecer a vos lo que te devuelve."
+     ]
+    },
+    {
+     "h": "1. Armá tu ficha de voz",
+     "pasos": [
+      "Juntá entre 3 y 5 textos tuyos. Lo mejor son transcripciones de reels o audios donde hablás suelto, porque un reel se dice, no se lee.",
+      "Abrí un chat nuevo y pegá el prompt de abajo con tus textos.",
+      "Leé la ficha que te devuelve y corregí lo que no es cierto (\"yo no digo eso\", \"esto sí lo uso mucho\").",
+      "Guardala en un documento: la vas a usar en el paso siguiente."
+     ],
+     "prompts": [
+      {
+       "t": "Ficha de voz",
+       "c": "Te paso textos míos para que entiendas cómo hablo. Son transcripciones de cosas que dije a cámara.\n\n[PEGÁ TUS TEXTOS, SEPARADOS POR ---]\n\nCon eso armá mi ficha de voz con estas partes:\n1. Cómo arranco cuando explico algo.\n2. Largo típico de mis frases (cortas, largas, mezcla).\n3. Palabras y expresiones que repito.\n4. Palabras que NO uso nunca (sacalas de lo que no aparece y de lo que suena forzado para mi forma de hablar).\n5. Cómo cierro o qué le pido a la gente al final.\n6. Tres frases de ejemplo que suenen a mí, sobre un tema cualquiera.\nNo inventes rasgos que no estén en los textos. Si algo no se puede saber con lo que te pasé, decilo."
+      }
+     ]
+    },
+    {
+     "h": "2. Guardala para no pegarla cada vez",
+     "p": [
+      "Tenés dos caminos y podés usar los dos."
+     ],
+     "lista": [
+      "Proyecto: creá un proyecto en Claude (Proyectos → + New Project), subí la ficha al conocimiento del proyecto y en las instrucciones poné que la use siempre. Todo chat que abras adentro la va a tener en cuenta.",
+      "Estilo personalizado: en el selector de estilos del chat elegí \"Create & Edit Styles\" → \"Create Custom Style\" → \"Add Writing Example\" y pegá tus textos. Claude arma un estilo que podés elegir en cualquier chat."
+     ],
+     "aviso": "La memoria de un chat no pasa a otro chat del mismo proyecto. Lo que querés que recuerde siempre tiene que estar en el conocimiento o en las instrucciones."
+    },
+    {
+     "h": "3. La estructura: gancho, desarrollo y cierre",
+     "lista": [
+      "Gancho: la primera frase. Tiene que decir de qué va el video o abrir una duda concreta. Nada de \"hola, ¿cómo están?\".",
+      "Desarrollo: dos o tres ideas, una por bloque. Si una idea necesita mucha explicación, es otro reel.",
+      "Prueba: un ejemplo, un caso o algo que se ve en pantalla. Es lo que hace creíble lo que decís.",
+      "Cierre con pedido: una sola acción. Comentar una palabra, guardar el video o seguirte. Si pedís tres cosas, no hacen ninguna."
+     ]
+    },
+    {
+     "h": "4. Pedí el guion",
+     "prompts": [
+      {
+       "t": "Guion de reel",
+       "c": "Usá mi ficha de voz y escribime el guion de un reel hablado.\nTema: [TEMA].\nA quién le hablo: [TU PÚBLICO].\nLo que quiero que la persona se lleve: [UNA IDEA].\nPedido final: [EJ.: QUE COMENTE LA PALABRA GUIA].\n\nFormato:\n- 3 opciones de gancho distintas (una con pregunta, una con dato o ejemplo concreto, una que contradiga algo que se cree).\n- Desarrollo en bloques cortos, cada uno con lo que digo y, entre corchetes, lo que se ve en pantalla.\n- Cierre con el pedido final en una sola frase.\nEscribilo para decirlo, no para leerlo: frases cortas, sin palabras que yo no usaría. No inventes datos ni cifras: si hace falta un número, dejá [DATO] para que lo complete yo."
+      }
+     ]
+    },
+    {
+     "h": "5. Revisalo en voz alta",
+     "pasos": [
+      "Leé el guion en voz alta, de corrido, como si estuvieras grabando.",
+      "Marcá cada lugar donde te trabás o donde decís \"esto no lo diría así\".",
+      "Pegale a Claude solo esas partes y decile cómo lo dirías vos. Pedile que ajuste el resto para que combine.",
+      "Si una corrección se repite (por ejemplo, siempre te cambia una palabra), sumala a tu ficha de voz."
+     ],
+     "prompts": [
+      {
+       "t": "Ajuste después de leerlo",
+       "c": "Leí el guion en voz alta. Estas partes no me salen naturales:\n[PEGÁ LAS FRASES]\nAsí lo diría yo: [CÓMO LO DIRÍAS].\nReescribí solo esas partes y ajustá lo que está alrededor para que suene igual. Después decime qué regla nueva conviene sumar a mi ficha de voz."
+      }
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Cuántos textos míos necesito?",
+     "a": "Con 3 a 5 ya arranca bien. Lo importante es que sean textos hablados y variados, no cinco versiones del mismo tema."
+    },
+    {
+     "q": "¿Proyecto o estilo personalizado?",
+     "a": "El proyecto sirve para guardar la ficha junto con tus ideas y guiones anteriores. El estilo cambia cómo escribe en cualquier chat. Podés usar los dos a la vez."
+    },
+    {
+     "q": "Me sigue saliendo genérico",
+     "a": "Pasale más transcripciones reales y decile exactamente qué frase sonó a máquina. Las correcciones concretas le sirven más que \"hacelo más natural\"."
+    }
+   ],
+   "fuentes": [
+    "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects",
+    "https://support.claude.com/en/articles/10185698-configuring-and-using-styles"
+   ]
+  },
+  {
+   "slug": "carruseles-con-claude-paso-a-paso",
+   "t": "Carruseles con Claude, paso a paso",
+   "d": "De un texto, un reel o una idea suelta a un carrusel de 7 a 10 slides: primero el contenido slide por slide, después el diseño con un artifact o con Canva.",
+   "tema": "Contenido",
+   "min": 9,
+   "fichaNombre": "Carrusel en dos pasos",
+   "ficha": [
+    [
+     "Qué es",
+     "Un proceso para separar el texto del diseño: Claude arma el contenido y después lo maqueta."
+    ],
+    [
+     "Necesitás",
+     "Claude. Para el camino de Canva, además una cuenta de Canva y el conector de Canva en Claude."
+    ],
+    [
+     "Tiempo",
+     "Entre 20 y 40 minutos por carrusel."
+    ],
+    [
+     "Qué no hace",
+     "No publica en Instagram. El posteo lo hacés vos."
+    ]
+   ],
+   "secciones": [
+    {
+     "h": "Primero el texto, después el diseño",
+     "p": [
+      "El error más común es pedir el carrusel terminado de una. Sale lindo pero flojo, o con buen contenido metido en un diseño que no se lee.",
+      "Hacelo en dos vueltas: primero cerrás qué dice cada slide y después lo pasás a diseño. Así corregís cada cosa por separado."
+     ]
+    },
+    {
+     "h": "1. Armá el guion de slides",
+     "p": [
+      "Podés partir de un texto largo, la transcripción de un reel, un mail que mandaste o tus notas."
+     ],
+     "prompts": [
+      {
+       "t": "Guion del carrusel",
+       "c": "Convertí este material en un carrusel de Instagram de [ENTRE 7 Y 10] slides.\n\n[PEGÁ EL TEXTO]\n\nReglas:\n- Slide 1: un título que diga qué gana la persona si lo lee. Máximo 10 palabras.\n- Slide 2: por qué le importa (el problema, en una o dos frases).\n- Slides del medio: una idea por slide. Título corto y como máximo 25 palabras de texto.\n- Anteúltima: resumen en una lista de 3 puntos.\n- Última: un solo pedido (guardar, comentar una palabra o seguirme).\nDevolvelo como tabla con columnas: número, título, texto, idea visual.\nUsá mi tono: [DESCRIBÍ TU TONO O PEDILE QUE USE TU FICHA DE VOZ]. No inventes datos."
+      }
+     ],
+     "pasos": [
+      "Leé la tabla y sacá todo lo que se repite.",
+      "Revisá que cada slide se entienda sola: mucha gente entra por la mitad.",
+      "Recién cuando el texto te cierra, pasá al diseño."
+     ]
+    },
+    {
+     "h": "2A. Diseño con un artifact",
+     "p": [
+      "Los artifacts son piezas que Claude te muestra en una ventana al lado del chat. Entre los tipos que puede armar están páginas HTML y componentes interactivos, así que te puede maquetar todas las slides en una sola vista para revisar."
+     ],
+     "prompts": [
+      {
+       "t": "Maquetar en artifact",
+       "c": "Con esta tabla de slides, armame un artifact HTML que muestre cada slide como una tarjeta vertical, todas del mismo tamaño, una debajo de la otra.\nColores: [TUS COLORES EN HEX]. Tipografía: [TU TIPOGRAFÍA O \"UNA SANS SERIF SIMPLE\"].\nTexto grande y con mucho aire, que se lea desde el celular. Numerá cada slide en una esquina.\n\n[PEGÁ LA TABLA]"
+      }
+     ],
+     "aviso": "Si no ves el panel del artifact, revisá que los artifacts estén activados en tu configuración (tu nombre abajo a la izquierda)."
+    },
+    {
+     "h": "2B. Diseño con Canva",
+     "p": [
+      "Canva tiene un conector oficial para Claude. Según la documentación de Canva, con el conector Claude puede crear diseños vacíos, autocompletar plantillas, buscar tus diseños y exportarlos como PDF o imagen."
+     ],
+     "pasos": [
+      "En Claude, abrí un chat nuevo y tocá el botón de herramientas junto al cuadro de mensaje → Manage connectors (en español puede decir \"Administrar conectores\").",
+      "Buscá Canva y tocá Connect. Si no aparece, entrá a Browse connectors.",
+      "Autorizá el acceso a tu cuenta de Canva.",
+      "Probalo con: \"Mostrame mi último diseño editado en Canva\" y aprobá la herramienta cuando te lo pida.",
+      "Pedile que use tu tabla de slides para armar el diseño, y terminá los detalles a mano en Canva."
+     ],
+     "aviso": "Canva aclara que algunas funciones dependen del plan: por ejemplo, autocompletar plantillas puede estar limitado a Canva Enterprise. Exportar está en todos los planes. Revisá también qué plan de Claude te pide el conector."
+    },
+    {
+     "h": "3. Control antes de publicar",
+     "lista": [
+      "Portada: ¿se entiende de qué va sin leer el resto?",
+      "Una idea por slide: si tenés que achicar la letra para que entre, partila en dos.",
+      "Contraste: texto oscuro sobre fondo claro o al revés. Nada de texto encima de fotos cargadas.",
+      "Pedido final: uno solo y claro.",
+      "Datos: todo número o afirmación tiene que poder respaldarse. Si no, sacalo."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Cómo paso el artifact a imágenes?",
+     "a": "La forma simple es sacar una captura de cada tarjeta. Si querés archivos prolijos, usá el camino de Canva, que exporta como imagen o PDF."
+    },
+    {
+     "q": "¿Cuántas slides conviene?",
+     "a": "Las que necesite la idea. Arrancá con 7 a 10 y sacá cualquier slide que no sume nada nuevo."
+    },
+    {
+     "q": "No me aparece Canva en los conectores",
+     "a": "Buscalo en Browse connectors. Si tampoco está, revisá que tu plan de Claude incluya conectores."
+    }
+   ],
+   "fuentes": [
+    "https://support.claude.com/en/articles/9487310-what-are-artifacts",
+    "https://www.canva.dev/docs/connect/canva-mcp-server-setup"
+   ]
+  },
+  {
+   "slug": "treinta-dias-de-ideas-de-contenido",
+   "t": "30 días de ideas de contenido en una tabla",
+   "d": "Definí 3 o 4 pilares, armá un banco de ideas con Claude y bajalo a un calendario de 30 días que podés abrir en Google Sheets.",
+   "tema": "Contenido",
+   "min": 8,
+   "fichaNombre": "Calendario de 30 días",
+   "ficha": [
+    [
+     "Qué es",
+     "Un sistema para no arrancar cada día pensando qué publicar."
+    ],
+    [
+     "Necesitás",
+     "Claude y, si querés la planilla, una cuenta de Google."
+    ],
+    [
+     "Tiempo",
+     "Una hora para armar el mes entero."
+    ],
+    [
+     "Qué no hace",
+     "No graba ni publica. Te deja el plan y las ideas."
+    ]
+   ],
+   "secciones": [
+    {
+     "h": "1. Tus pilares",
+     "p": [
+      "Los pilares son los 3 o 4 temas grandes de los que hablás siempre. Sirven para que tu cuenta tenga un hilo y para que la gente sepa por qué seguirte."
+     ],
+     "prompts": [
+      {
+       "t": "Definir pilares",
+       "c": "Ayudame a definir mis pilares de contenido.\nA qué me dedico: [EN UNA LÍNEA].\nA quién le hablo: [TU PÚBLICO].\nQué vendo o quiero vender: [TU OFERTA].\nTemas de los que sé y me gusta hablar: [LISTA].\n\nProponeme 4 pilares. Para cada uno:\n- Nombre corto.\n- Por qué le importa a mi público.\n- Cómo se conecta con lo que vendo.\n- Un ejemplo de publicación.\nUno de los pilares tiene que ser personal o de detrás de escena, para que no todo sea enseñar o vender."
+      }
+     ]
+    },
+    {
+     "h": "2. Banco de ideas",
+     "p": [
+      "Antes de armar el calendario, juntá muchas más ideas de las que vas a usar. Elegir es más fácil que inventar."
+     ],
+     "prompts": [
+      {
+       "t": "Banco de ideas",
+       "c": "Con estos pilares: [PEGÁ TUS PILARES]\nArmame un banco de 50 ideas de contenido para Instagram.\nPara cada idea: pilar, título de trabajo, formato sugerido (reel hablado, carrusel, historia) y el ángulo (error común, paso a paso, opinión, caso, pregunta frecuente).\nMezclá ángulos dentro de cada pilar. Evitá ideas que digan lo mismo con otras palabras.\nSumá también 10 ideas a partir de estas preguntas que me hacen seguido: [PEGÁ PREGUNTAS DE TUS CLIENTES O SEGUIDORES]."
+      }
+     ],
+     "pasos": [
+      "Marcá con una estrella las ideas que te dan ganas de grabar.",
+      "Tachá las que no podrías respaldar con algo concreto.",
+      "Quedate con unas 30."
+     ]
+    },
+    {
+     "h": "3. El calendario en una tabla",
+     "prompts": [
+      {
+       "t": "Calendario de 30 días",
+       "c": "Con estas ideas elegidas: [PEGÁ TUS 30 IDEAS]\nArmame un calendario de 30 días empezando el [FECHA DE INICIO].\nVoy a publicar [CUÁNTAS VECES POR SEMANA] y los días [QUÉ DÍAS].\nColumnas: fecha, día, pilar, formato, título, gancho, pedido final, estado.\nReglas: no repitas el mismo pilar dos publicaciones seguidas, alterná formatos y dejá la columna estado en \"pendiente\".\nDevolvelo primero como tabla y después el mismo contenido en formato CSV, separado por comas, en un bloque de código."
+      }
+     ]
+    },
+    {
+     "h": "4. Pasalo a Google Sheets",
+     "pasos": [
+      "Copiá el bloque CSV y guardalo en un archivo de texto con extensión .csv (por ejemplo calendario.csv). Si en Claude tenés activado \"Crear y editar archivos\", también podés pedirle que te genere el archivo directamente.",
+      "Abrí una planilla en Google Sheets y andá a Archivo → Importar.",
+      "Subí el archivo, elegí si querés una hoja nueva o reemplazar la actual, y en el separador dejá la detección automática o coma.",
+      "Tocá Importar. Usá la columna estado para ir marcando lo grabado y lo publicado."
+     ]
+    },
+    {
+     "h": "5. Guardalo en un proyecto",
+     "p": [
+      "Creá un proyecto en Claude llamado Contenido y subí al conocimiento tus pilares, tu ficha de voz y el calendario. Así, cuando le pidas el guion del día 12, ya tiene todo el contexto."
+     ],
+     "aviso": "Subí la versión actualizada del calendario cada tanto: Claude no ve los cambios que hacés en la planilla."
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Y si un día no tengo ganas de esa idea?",
+     "a": "Cambiala por otra del banco del mismo pilar. El calendario es una guía, no una obligación."
+    },
+    {
+     "q": "¿Puedo pedirle que use tendencias de la semana?",
+     "a": "Si le pasás vos lo que viste (links o capturas), sí. No le pidas que adivine qué está de moda sin darle material."
+    }
+   ],
+   "fuentes": [
+    "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects",
+    "https://support.claude.com/en/articles/12512180-use-skills-in-claude",
+    "https://support.google.com/docs/answer/40608?hl=en"
+   ]
+  },
+  {
+   "slug": "palabra-clave-en-comentarios-con-manychat",
+   "t": "Palabra clave en comentarios con ManyChat",
+   "d": "Alguien comenta una palabra en tu reel y le llega un mensaje privado con el recurso. Cómo se arma en ManyChat y qué reglas de Instagram tenés que respetar.",
+   "tema": "Ventas",
+   "min": 11,
+   "fichaNombre": "Comentario → DM",
+   "ficha": [
+    [
+     "Qué es",
+     "Una automatización de ManyChat que responde por mensaje privado cuando alguien comenta una palabra en tu publicación."
+    ],
+    [
+     "Necesitás",
+     "Una cuenta profesional de Instagram (empresa o creador) y una cuenta de ManyChat."
+    ],
+    [
+     "Tiempo",
+     "20 a 30 minutos la primera vez."
+    ],
+    [
+     "Qué no hace",
+     "No te deja mandar mensajes automáticos cuando quieras: hay reglas de tiempo que pone Meta."
+    ]
+   ],
+   "secciones": [
+    {
+     "h": "Cómo funciona el flujo",
+     "p": [
+      "La persona comenta la palabra clave. ManyChat le contesta el comentario en público (opcional) y le manda una respuesta privada por DM. Esa respuesta privada es un solo mensaje y tiene que tener un botón o una respuesta rápida.",
+      "Cuando la persona toca ese botón, recién ahí se abre la conversación: queda como contacto y empieza la ventana de 24 horas para seguir mandándole mensajes automáticos."
+     ]
+    },
+    {
+     "h": "1. Prepará tu cuenta",
+     "pasos": [
+      "Pasá tu Instagram a cuenta profesional (empresa o creador), si todavía no lo es.",
+      "En la configuración de Instagram activá el acceso a los mensajes para herramientas conectadas. La ruta, como la documenta Meta en inglés, es: Settings → Messages and story replies → Message controls → Connected Tools → Allow Access to Messages. En español los nombres pueden variar un poco.",
+      "En ManyChat: Get started → Instagram, iniciá sesión con Google o Facebook, tocá Go to Instagram, dale los permisos y elegí tu cuenta.",
+      "Si ya tenés ManyChat: My profile → Manage accounts → + Add new account → Instagram."
+     ]
+    },
+    {
+     "h": "2. Armá la automatización",
+     "pasos": [
+      "En ManyChat: Automation → + New Automation → Start From Scratch.",
+      "Tocá + New Trigger y, en la pestaña Instagram, elegí \"User comments on your Post or Reel\".",
+      "Elegí qué publicación escuchar: una en particular, todas, o la próxima que publiques.",
+      "Poné la palabra clave (por ejemplo GUIA). También podés excluir palabras o aceptar cualquier comentario.",
+      "Opcional: escribí varias respuestas públicas para el comentario. ManyChat las va rotando.",
+      "Guardá el trigger y agregá como primer paso un nodo de Send Message de Instagram con la opción \"Send as Private Reply\". Sin esa opción la automatización no sigue.",
+      "Probalo con Preview y, cuando funcione, tocá Set Live."
+     ]
+    },
+    {
+     "h": "3. El primer mensaje: siempre con botón",
+     "p": [
+      "Ese primer DM puede tener un solo bloque: texto o imagen, con botones o respuestas rápidas. No admite pedir datos, demoras de escritura ni pasos siguientes encadenados.",
+      "Lo importante: mandar la respuesta privada no abre la ventana de 24 horas. Se abre cuando la persona toca un botón o una respuesta rápida. Un botón que solo abre una web no cuenta para eso."
+     ],
+     "prompts": [
+      {
+       "t": "Textos del flujo",
+       "c": "Voy a armar una automatización de comentario a DM en Instagram.\nPalabra clave: [PALABRA].\nLo que entrego: [RECURSO].\nMi tono: [TU TONO].\n\nEscribime:\n1. Cinco respuestas públicas distintas para el comentario, cortas pero no solo emojis, sin repetir estructura.\n2. El primer mensaje privado: máximo 3 líneas y un botón que diga algo como \"Lo quiero\". Tiene que pedir que toque el botón para recibirlo.\n3. El mensaje que llega después de tocar el botón, con el link al recurso y una pregunta abierta para seguir la charla.\nNo prometas resultados ni pongas cifras."
+      }
+     ]
+    },
+    {
+     "h": "Reglas que tenés que conocer",
+     "lista": [
+      "Ventana de 24 horas: después de que la persona te escribe o interactúa, tenés 24 horas para responder, y en ese plazo podés mandar mensajes automáticos.",
+      "Respuesta privada: es un solo mensaje y Meta pide mandarlo dentro de los 7 días del comentario.",
+      "Después de las 24 horas: con la etiqueta Human Agent podés seguir respondiendo hasta 7 días, pero solo con mensajes que manda una persona a mano desde el Inbox. Automáticos, no.",
+      "Un solo disparo por persona: el trigger se activa con el primer comentario de cada persona con esa palabra en esa publicación. Si comenta de nuevo, no se repite.",
+      "Evitá parecer spam: variá las respuestas públicas y no uses respuestas muy cortas o de puro emoji.",
+      "Publicaciones en colaboración: solo funciona con los comentarios de la versión publicada desde tu cuenta conectada."
+     ],
+     "aviso": "Estas reglas las pone Meta y pueden cambiar. Antes de lanzar una campaña, revisá la ayuda de ManyChat."
+    }
+   ],
+   "faq": [
+    {
+     "q": "Comentaron y no les llegó nada",
+     "a": "Revisá que la automatización esté en Live, que el primer paso tenga \"Send as Private Reply\", que la palabra esté bien escrita y que el acceso a los mensajes para herramientas conectadas (Allow Access to Messages) esté activado en Instagram. Si la persona ya había comentado esa palabra en esa publicación, no se vuelve a disparar."
+    },
+    {
+     "q": "¿Puedo mandarle un recordatorio a los tres días?",
+     "a": "Automático no: pasadas las 24 horas solo puede responder una persona a mano, y hasta 7 días desde la última interacción."
+    },
+    {
+     "q": "¿Sirve para publicaciones promocionadas?",
+     "a": "Según ManyChat, sí, siempre que la publicación aparezca en tu grilla. Las publicaciones que existen solo como anuncio no se pueden elegir."
+    }
+   ],
+   "fuentes": [
+    "https://help.manychat.com/hc/en-us/articles/14281316989724",
+    "https://help.manychat.com/hc/en-us/articles/14281290924444-How-to-connect-Instagram-to-Manychat",
+    "https://help.manychat.com/hc/en-us/articles/14281199732892",
+    "https://developers.facebook.com/docs/messenger-platform/send-messages",
+    "https://developers.facebook.com/documentation/business-messaging/instagram-messaging/get-started"
+   ]
+  },
+  {
+   "slug": "responder-dms-y-calificar-prospectos",
+   "t": "Responder DMs y calificar prospectos con Claude",
+   "d": "Un proyecto de Claude que clasifica tus mensajes, te dice quién está listo para hablar de compra y te deja un borrador con tu tono. Vos revisás y mandás.",
+   "tema": "Ventas",
+   "min": 9,
+   "fichaNombre": "Asistente de DMs",
+   "ficha": [
+    [
+     "Qué es",
+     "Un proyecto de Claude con instrucciones para ordenar mensajes y preparar respuestas."
+    ],
+    [
+     "Necesitás",
+     "Una cuenta de Claude, tu ficha de voz y una lista corta de lo que vendés con sus preguntas frecuentes."
+    ],
+    [
+     "Qué no hace",
+     "No lee tu Instagram ni manda mensajes. Vos le pegás los mensajes y vos respondés."
+    ],
+    [
+     "Regla de oro",
+     "Ningún borrador sale sin que lo leas."
+    ]
+   ],
+   "secciones": [
+    {
+     "h": "Para qué sirve",
+     "p": [
+      "Cuando llegan muchos mensajes juntos, los que tienen intención de compra se mezclan con saludos, dudas sueltas y spam. Este asistente te los ordena y te deja una respuesta armada para cada uno, para que vos solo revises y ajustes."
+     ]
+    },
+    {
+     "h": "1. Creá el proyecto",
+     "pasos": [
+      "En Claude, andá a Proyectos → + New Project y ponele un nombre como Mensajes.",
+      "En el conocimiento del proyecto subí: tu ficha de voz, qué vendés (qué incluye, para quién es y para quién no) y tus preguntas frecuentes con sus respuestas.",
+      "Tocá \"Set project instructions\", pegá el texto de abajo y guardalo."
+     ],
+     "prompts": [
+      {
+       "t": "Instrucciones del proyecto",
+       "c": "Sos mi asistente para ordenar mensajes directos. No mandás nada: preparás borradores para que yo los revise.\n\nCuando te pegue mensajes, para cada uno:\n1. Clasificalo en una de estas categorías:\n   - Listo para hablar: pregunta por precio, condiciones, cómo empezar o pide una llamada.\n   - Interesado: tiene un problema que mi oferta resuelve, pero todavía no pregunta cómo comprar.\n   - Consulta: duda puntual que se responde con mis preguntas frecuentes.\n   - Cliente: ya compró y necesita ayuda.\n   - Otro: saludo, spam o algo que no tiene que ver.\n2. Explicá en una línea por qué lo pusiste ahí.\n3. Escribí un borrador de respuesta con mi ficha de voz: corto, como se escribe en un chat, terminando con una sola pregunta o un solo paso siguiente.\n4. Si la respuesta depende de algo que no está en mis documentos (precio, fecha, disponibilidad), no lo inventes: poné [CONFIRMAR: ...].\n\nAl final, dame un resumen: cuántos hay de cada categoría y en qué orden responder.\nNunca prometas resultados, descuentos ni plazos que no estén en mis documentos."
+      }
+     ]
+    },
+    {
+     "h": "2. Usalo todos los días",
+     "pasos": [
+      "Copiá los mensajes nuevos (sin nombres completos ni datos personales que no hagan falta) y pegalos en un chat dentro del proyecto.",
+      "Empezá por los \"Listo para hablar\".",
+      "Leé cada borrador, cambiá lo que haga falta y completá todo lo que diga [CONFIRMAR].",
+      "Mandá vos la respuesta desde Instagram."
+     ],
+     "aviso": "No pegues datos sensibles de otras personas (documentos, datos de pago, temas de salud). Para clasificar alcanza con el texto del mensaje."
+    },
+    {
+     "h": "3. Las preguntas que califican",
+     "p": [
+      "Calificar es saber si la persona tiene el problema que resolvés, si es el momento y si puede avanzar. Pedile a Claude que, en los borradores para \"Interesado\", incluya una de estas preguntas según el caso."
+     ],
+     "lista": [
+      "Situación: \"¿Cómo lo estás resolviendo hoy?\"",
+      "Urgencia: \"¿Para cuándo te gustaría tenerlo resuelto?\"",
+      "Decisión: \"¿Lo decidís vos o lo hablás con alguien más?\"",
+      "Encaje: \"¿Qué te hizo escribirme justo ahora?\""
+     ]
+    },
+    {
+     "h": "4. Opcional: convertilo en skill",
+     "p": [
+      "Si querés usar el mismo asistente fuera del proyecto, podés empaquetarlo como skill: una carpeta con un archivo skill.md que empieza con nombre y descripción, comprimida en .zip. Se sube en Customize → Skills → + → Create skill → Upload a skill (en español: Personalizar → Skills). Para usar skills tenés que tener activado \"Crear y editar archivos\" (Code execution and file creation) en Configuración → Capacidades."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Puede responder solo en Instagram?",
+     "a": "Este método no. Está pensado para que vos revises cada respuesta. Si automatizás mensajes en Instagram, tenés que respetar las reglas de Meta, como la ventana de 24 horas."
+    },
+    {
+     "q": "Clasifica mal algunos mensajes",
+     "a": "Decíselo con el ejemplo: \"este era Listo para hablar porque preguntó cómo empezar\". Si se repite, sumá esa regla a las instrucciones."
+    },
+    {
+     "q": "¿Me sirve para WhatsApp o mail?",
+     "a": "Sí: el proyecto trabaja con el texto que le pegues, venga de donde venga."
+    }
+   ],
+   "fuentes": [
+    "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects",
+    "https://support.claude.com/en/articles/12512180-use-skills-in-claude",
+    "https://support.claude.com/en/articles/12512198-how-to-create-custom-skills",
+    "https://help.manychat.com/hc/en-us/articles/14281199732892"
+   ]
+  },
+  {
+   "slug": "propuesta-comercial-con-claude",
+   "t": "Propuesta comercial a partir de las notas de una llamada",
+   "d": "Pegás tus notas o la transcripción de la llamada, Claude te marca lo que falta y arma una propuesta clara con las palabras del cliente. Los números los ponés vos.",
+   "tema": "Ventas",
+   "min": 9,
+   "fichaNombre": "Propuesta desde la llamada",
+   "ficha": [
+    [
+     "Qué es",
+     "Un proceso en tres prompts: revisar las notas, armar la propuesta y corregirla."
+    ],
+    [
+     "Necesitás",
+     "Claude y las notas o la transcripción de la llamada con el cliente."
+    ],
+    [
+     "Tiempo",
+     "20 a 30 minutos por propuesta."
+    ],
+    [
+     "Qué no hace",
+     "No decide tu precio ni tus plazos. Eso lo definís vos."
+    ]
+   ],
+   "secciones": [
+    {
+     "h": "Qué tiene que salir de la llamada",
+     "p": [
+      "Una propuesta buena repite lo que el cliente dijo, ordenado. Si en la llamada no preguntaste estas cosas, la propuesta va a quedar coja."
+     ],
+     "lista": [
+      "Situación actual: cómo trabaja hoy y qué no le funciona.",
+      "Objetivo: qué quiere lograr, con sus palabras.",
+      "Costo de no hacer nada: qué pasa si sigue igual.",
+      "Límites: plazo, presupuesto aproximado y quién decide.",
+      "Lo que no quiere: experiencias malas anteriores o cosas que descartó."
+     ]
+    },
+    {
+     "h": "1. Que Claude te diga qué falta",
+     "prompts": [
+      {
+       "t": "Revisar las notas",
+       "c": "Te paso las notas de una llamada de venta. Antes de escribir nada, revisalas.\n\n[PEGÁ NOTAS O TRANSCRIPCIÓN]\n\nDecime:\n1. Qué problema tiene el cliente, con sus palabras (citá frases textuales).\n2. Qué objetivo quiere lograr.\n3. Qué datos faltan para armar una propuesta: plazo, presupuesto, quién decide, alcance.\n4. Qué dijo que podría ser una objeción más adelante.\nNo completes con suposiciones. Si algo no está, marcalo como faltante."
+      }
+     ],
+     "p": [
+      "Si falta algo importante, mandale un mensaje corto al cliente antes de escribir la propuesta. Es mejor preguntar que adivinar."
+     ]
+    },
+    {
+     "h": "2. Armá la propuesta",
+     "prompts": [
+      {
+       "t": "Propuesta",
+       "c": "Con las notas de la llamada y lo que revisamos, armá una propuesta para [NOMBRE DEL CLIENTE O EMPRESA].\nLo que ofrezco: [TU SERVICIO].\nPrecio y forma de pago: [LOS DEFINÍS VOS].\nPlazo: [LO DEFINÍS VOS].\n\nEstructura:\n1. Lo que entendí: su situación y su objetivo, usando sus palabras.\n2. Qué propongo: el enfoque en 3 o 4 pasos.\n3. Qué incluye y qué no incluye, en dos listas.\n4. Plazo y etapas.\n5. Inversión y forma de pago.\n6. Próximo paso: una sola acción concreta con fecha para responder.\n\nTono: claro, profesional y directo. Nada de relleno ni frases de folleto. Máximo dos páginas. No prometas resultados ni pongas cifras que yo no te di."
+      }
+     ]
+    },
+    {
+     "h": "3. Revisala antes de mandar",
+     "pasos": [
+      "Leela como si fueras el cliente: ¿se reconoce en la primera parte?",
+      "Revisá que precio, plazo y alcance sean exactamente los que definiste.",
+      "Mirá la lista de \"no incluye\": es lo que te evita discusiones después.",
+      "Pedile a Claude que la critique con el prompt de abajo y corregí lo que te parezca justo."
+     ],
+     "prompts": [
+      {
+       "t": "Crítica desde el cliente",
+       "c": "Leé esta propuesta como si fueras el cliente, con las dudas que mostró en la llamada. Decime: qué parte no se entiende, qué pregunta te haría antes de aceptar y qué objeción probablemente aparezca. No la reescribas todavía.\n\n[PEGÁ LA PROPUESTA]"
+      }
+     ]
+    },
+    {
+     "h": "4. Dejala como plantilla",
+     "p": [
+      "Creá un proyecto en Claude llamado Propuestas. Subí al conocimiento tu descripción de servicios, una propuesta que te haya funcionado y tus condiciones. Pegá la estructura de arriba en las instrucciones. Cada propuesta nueva arranca con todo ese contexto.",
+      "Si querés verla con formato, pedile que la arme como documento en un artifact y copiala a tu editor de siempre para mandarla."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Le puedo pasar la grabación de la llamada?",
+     "a": "Pasale la transcripción en texto. Muchas herramientas de videollamadas la generan; si no, pegá tus notas."
+    },
+    {
+     "q": "¿Y si el cliente no dijo un presupuesto?",
+     "a": "Ofrecé dos o tres opciones de alcance con precios que definas vos, y dejá claro qué cambia entre una y otra."
+    }
+   ],
+   "fuentes": [
+    "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects",
+    "https://support.claude.com/en/articles/9487310-what-are-artifacts"
+   ]
+  },
+  {
+   "slug": "seguimiento-de-prospectos-sin-ser-pesado",
+   "t": "Seguimiento de prospectos sin ser pesado",
+   "d": "Una secuencia de mensajes donde cada uno aporta algo nuevo, una planilla para no perder a nadie y un prompt para escribir los seguimientos con tu tono.",
+   "tema": "Ventas",
+   "min": 8,
+   "fichaNombre": "Secuencia de seguimiento",
+   "ficha": [
+    [
+     "Qué es",
+     "Un sistema simple de seguimiento: secuencia, planilla y prompts."
+    ],
+    [
+     "Necesitás",
+     "Claude y Google Sheets (o la planilla que uses)."
+    ],
+    [
+     "Tiempo",
+     "Media hora para armarlo. Después, unos minutos por día."
+    ],
+    [
+     "Qué no hace",
+     "No manda los mensajes por vos."
+    ]
+   ],
+   "secciones": [
+    {
+     "h": "La regla: cada mensaje suma algo",
+     "p": [
+      "\"¿Pudiste ver lo que te mandé?\" no aporta nada y empuja a la persona a no contestar. Un buen seguimiento le da una razón para responder: una idea, un ejemplo, una respuesta a una duda que tenía o una salida fácil."
+     ]
+    },
+    {
+     "h": "La secuencia",
+     "p": [
+      "Un punto de partida. Ajustá los tiempos a tu rubro y a cómo te habló la persona."
+     ],
+     "lista": [
+      "Mensaje 1, recordatorio útil: retomá lo que habló y sumá un recurso corto relacionado con su problema.",
+      "Mensaje 2, prueba: un ejemplo o caso parecido al suyo, contado en dos o tres líneas.",
+      "Mensaje 3, la objeción: respondé la duda que mostró antes de que la vuelva a plantear.",
+      "Mensaje 4, pregunta directa: \"¿Sigue siendo prioridad o lo dejamos para más adelante?\"",
+      "Mensaje 5, cierre amable: avisá que no vas a insistir más y dejá la puerta abierta."
+     ],
+     "aviso": "En Instagram, si usás automatizaciones: pasadas 24 horas desde la última interacción, los mensajes automáticos no están permitidos. Con la etiqueta Human Agent una persona puede responder a mano hasta 7 días. Los seguimientos más largos, por otro canal que la persona haya aceptado."
+    },
+    {
+     "h": "La planilla",
+     "p": [
+      "Una fila por persona. Pedile a Claude que te arme la plantilla y la importás en Google Sheets."
+     ],
+     "prompts": [
+      {
+       "t": "Plantilla de seguimiento",
+       "c": "Armame una plantilla de seguimiento de prospectos en formato CSV, separada por comas, en un bloque de código.\nColumnas: nombre, canal, de dónde vino, qué necesita (en una línea), objeción principal, último contacto (fecha), mensaje número, próximo contacto (fecha), estado, notas.\nEstados posibles: nuevo, en conversación, propuesta enviada, ganado, perdido, más adelante.\nAgregá 3 filas de ejemplo inventadas y marcadas como EJEMPLO para que se entienda cómo completarla."
+      }
+     ],
+     "pasos": [
+      "Guardá el CSV en un archivo .csv.",
+      "En Google Sheets: Archivo → Importar, subí el archivo y tocá Importar.",
+      "Borrá las filas de ejemplo y cargá tus prospectos.",
+      "Cada día, ordená por \"próximo contacto\" y empezá por los de hoy."
+     ]
+    },
+    {
+     "h": "Escribí cada seguimiento",
+     "prompts": [
+      {
+       "t": "Seguimiento personalizado",
+       "c": "Escribime el mensaje de seguimiento número [NÚMERO] para esta persona.\nQué necesita: [EN UNA LÍNEA].\nLo último que hablamos: [RESUMEN].\nObjeción que mostró: [OBJECIÓN].\nCanal: [INSTAGRAM, WHATSAPP O MAIL].\n\nReglas:\n- Que aporte algo nuevo: una idea, un ejemplo o una respuesta.\n- Máximo 4 líneas si es chat, 6 si es mail.\n- Una sola pregunta al final.\n- Sin culpa, sin presión y sin \"solo quería saber si viste mi mensaje\".\nUsá mi ficha de voz. Dame dos versiones: una más cálida y una más directa."
+      }
+     ]
+    },
+    {
+     "h": "Cuándo parar",
+     "p": [
+      "Si después del mensaje de cierre no hay respuesta, pasalo a \"más adelante\" y anotá una fecha para revisar en un par de meses. Si alguien te pide que no le escribas más, respetalo y marcalo como perdido."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Y si me contesta \"ahora no\"?",
+     "a": "Preguntale cuándo le conviene que le escribas de nuevo, anotá esa fecha en la planilla y cumplila."
+    },
+    {
+     "q": "¿Puedo pasarle la planilla a Claude?",
+     "a": "Sí: exportala o copiala y pegala en un chat. Pedile que te diga a quién escribir hoy y que te prepare los mensajes."
+    }
+   ],
+   "fuentes": [
+    "https://support.google.com/docs/answer/40608?hl=en",
+    "https://help.manychat.com/hc/en-us/articles/14281199732892",
+    "https://developers.facebook.com/docs/messenger-platform/send-messages"
+   ]
+  },
+  {
+   "slug": "landing-en-tres-preguntas",
+   "t": "Una landing en tres preguntas",
+   "d": "Respondés tres preguntas y Claude arma la página: como artifact publicado con un link o como sitio con Claude Code. Cómo armarla, revisarla y publicarla.",
+   "tema": "Ventas",
+   "min": 10,
+   "fichaNombre": "Landing rápida",
+   "ficha": [
+    [
+     "Qué es",
+     "Una página de una sola sección larga para presentar una oferta y llevar a una acción."
+    ],
+    [
+     "Necesitás",
+     "Claude. Para el camino B, Claude Code (requiere plan pago o cuenta de Console) y una cuenta de Netlify."
+    ],
+    [
+     "Tiempo",
+     "30 a 60 minutos."
+    ],
+    [
+     "Qué no hace",
+     "No cobra ni guarda datos de formularios por sí sola. Para eso necesitás otra herramienta."
+    ]
+   ],
+   "secciones": [
+    {
+     "h": "Las tres preguntas",
+     "p": [
+      "Si no podés responder esto en pocas líneas, la página no va a ser clara, la arme quien la arme."
+     ],
+     "lista": [
+      "Para quién y qué problema: \"Ayudo a [QUIÉN] que [PROBLEMA].\"",
+      "Qué ofrecés: qué incluye, cómo funciona y qué lo diferencia.",
+      "Qué querés que haga la persona: escribirte por WhatsApp, agendar una llamada, comprar o comentar una palabra."
+     ]
+    },
+    {
+     "h": "El prompt",
+     "prompts": [
+      {
+       "t": "Landing en tres preguntas",
+       "c": "Armame una landing de una sola página.\n\n1. Para quién y qué problema: [RESPUESTA].\n2. Qué ofrezco: [RESPUESTA].\n3. Qué quiero que haga la persona: [RESPUESTA + LINK DEL BOTÓN].\n\nSecciones, en este orden:\n- Título que diga el resultado que busca la persona y subtítulo que explique cómo.\n- El problema, con palabras de mi cliente.\n- Qué incluye, en una lista corta.\n- Cómo funciona, en 3 pasos.\n- Para quién es y para quién no es.\n- Preguntas frecuentes (4).\n- Botón final con la acción.\nEl botón principal aparece arriba y al final.\nColores: [TUS COLORES]. Tono: [TU TONO].\nQue se vea bien en el celular primero.\nNo inventes testimonios, cifras ni logos de clientes: si hace falta uno, dejá un espacio marcado [COMPLETAR]."
+      }
+     ]
+    },
+    {
+     "h": "Camino A: artifact publicado",
+     "pasos": [
+      "Pegá el prompt en Claude. La página aparece como artifact al lado del chat.",
+      "Pedile cambios hasta que te guste: \"el título más corto\", \"sacá la sección X\".",
+      "Cuando estés en la versión que querés, tocá Publish y copiá el link público.",
+      "Ponelo en tu bio o mandalo por DM. Las personas que no usan Claude pueden verla sin crear cuenta."
+     ],
+     "aviso": "Publicar en público está en los planes Free, Pro y Max. En Team y Enterprise solo se comparte dentro de la organización. Si despublicás, no podés volver a publicar ese mismo artifact: tendrías que crear uno nuevo."
+    },
+    {
+     "h": "Camino B: sitio con Claude Code",
+     "p": [
+      "Si querés tener los archivos y publicarla en tu propio hosting, usá Claude Code."
+     ],
+     "pasos": [
+      "Creá una carpeta vacía (por ejemplo mi-landing), abrí la terminal ahí y escribí claude.",
+      "Pegá el mismo prompt y agregá al final: \"Hacelo en un solo archivo index.html con el CSS adentro.\"",
+      "Aprobá cuando te pida crear el archivo y abrí index.html en el navegador para revisarlo.",
+      "Entrá a app.netlify.com/drop, iniciá sesión y arrastrá la carpeta.",
+      "Netlify te da una dirección que termina en netlify.app. Para actualizarla, arrastrá la carpeta nueva en Production deploys de tu proyecto."
+     ],
+     "aviso": "Si arrastrás la carpeta sin iniciar sesión, Netlify protege el link con una contraseña temporal hasta que reclames el proyecto. Mejor iniciá sesión antes."
+    },
+    {
+     "h": "Control antes de compartir",
+     "lista": [
+      "El botón funciona: tocá cada uno y fijate a dónde te lleva.",
+      "Celular: abrila en tu teléfono, no solo en la compu.",
+      "Nada inventado: sin testimonios, cifras ni logos que no tengas.",
+      "Espacios [COMPLETAR]: que no quede ninguno.",
+      "Una sola acción: si hay tres botones distintos, elegí uno."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Puedo poner mi propio dominio?",
+     "a": "Con el camino B sí, configurándolo en Netlify. La ayuda de Claude sobre artifacts publicados no menciona dominios propios."
+    },
+    {
+     "q": "¿Puedo poner un formulario?",
+     "a": "Un formulario necesita un lugar donde guardar las respuestas. Lo más simple es que el botón lleve a WhatsApp, a tu agenda o a un formulario que ya uses."
+    },
+    {
+     "q": "¿Puedo meterla en mi web?",
+     "a": "Un artifact publicado tiene la opción \"Get embed code\" para insertarlo en otra web, indicando los dominios permitidos."
+    }
+   ],
+   "fuentes": [
+    "https://support.claude.com/en/articles/9547008-publishing-and-sharing-artifacts",
+    "https://support.claude.com/en/articles/9487310-what-are-artifacts",
+    "https://code.claude.com/docs/en/quickstart",
+    "https://docs.netlify.com/start/get-started-with-drop/"
+   ]
+  }
+ ],
+ "prompts": [
+  {
+   "tema": "Contenido",
+   "t": "Ganchos para reels y carruseles",
+   "d": "Prompts para escribir la primera frase o la portada desde distintos ángulos.",
+   "para": "Para tener varias opciones de arranque y elegir la que suena más a vos.",
+   "prompts": [
+    {
+     "t": "10 ganchos por ángulo",
+     "c": "Tema del video: [TEMA]. Público: [QUIÉN].\nEscribime 10 ganchos de una sola frase, 2 de cada tipo:\n- Error común (\"si hacés X, te está pasando Y\").\n- Pregunta concreta.\n- Contradicción con algo que se cree.\n- Resultado o situación final que la persona quiere.\n- Detrás de escena (\"esto es lo que hago cuando...\").\nMáximo 12 palabras cada uno. Sin cifras inventadas. Usá mi tono: [TU TONO]."
+    },
+    {
+     "t": "Gancho desde una pregunta de cliente",
+     "c": "Un cliente me preguntó esto: [PREGUNTA TEXTUAL].\nConvertila en 5 ganchos para un reel que responda esa pregunta. Que suenen a conversación, no a anuncio."
+    },
+    {
+     "t": "Portada de carrusel",
+     "c": "Este es el contenido de mi carrusel: [RESUMEN].\nDame 6 títulos para la primera slide. Cada uno tiene que decir qué gana la persona si lo pasa. Máximo 10 palabras. Marcá cuál te parece más claro y por qué."
+    },
+    {
+     "t": "Mejorar un gancho flojo",
+     "c": "Este gancho no me convence: [TU GANCHO].\nDecime en una línea por qué puede no funcionar y dame 5 versiones más concretas, sin cambiar el tema."
+    },
+    {
+     "t": "Gancho visual",
+     "c": "Para este reel: [TEMA], proponeme 5 primeras imágenes o acciones en cámara que acompañen la primera frase (qué se ve en el primer segundo). Que se puedan hacer con un celular y sin producción."
+    }
+   ]
+  },
+  {
+   "tema": "Contenido",
+   "t": "Cierres y llamados a la acción",
+   "d": "Prompts para terminar cada pieza con un pedido claro y uno solo.",
+   "para": "Para que cada publicación lleve a algo: comentar, guardar, escribirte o seguirte.",
+   "prompts": [
+    {
+     "t": "Cierre con palabra clave",
+     "c": "Quiero que la gente comente la palabra [PALABRA] para recibir [RECURSO].\nEscribime 6 formas de pedirlo al final de un reel, en una o dos frases, que expliquen qué recibe y por qué le sirve. Sin exagerar ni prometer resultados."
+    },
+    {
+     "t": "Cierre según el objetivo",
+     "c": "Para este contenido: [RESUMEN], decime qué pedido final conviene más (guardar, compartir, comentar, seguir o escribir por DM) y por qué. Después escribime 3 versiones de ese cierre con mi tono: [TU TONO]."
+    },
+    {
+     "t": "Caption con cierre",
+     "c": "Escribime el texto de la publicación (caption) para este reel: [GUION O RESUMEN].\nPrimera línea que sume al gancho, 3 a 5 líneas de contenido y una línea final con el pedido: [PEDIDO].\nSin relleno ni hashtags de más."
+    },
+    {
+     "t": "Cierre de historia",
+     "c": "Voy a subir una secuencia de 4 historias sobre [TEMA]. Escribime el texto de cada una y una última historia con un pedido simple que se pueda responder con un toque o una palabra."
+    }
+   ]
+  },
+  {
+   "tema": "Ventas",
+   "t": "Responder objeciones",
+   "d": "Prompts para preparar respuestas a las dudas que frenan una compra, sin presionar.",
+   "para": "Para tener respuestas pensadas a las objeciones que más escuchás.",
+   "prompts": [
+    {
+     "t": "Mapa de objeciones",
+     "c": "Vendo [TU OFERTA] a [TU CLIENTE].\nArmame una lista de las 8 objeciones más probables (precio, tiempo, confianza, \"lo hago solo\", \"no es el momento\", etc.).\nPara cada una: qué miedo hay detrás y una pregunta para entenderla mejor antes de responder."
+    },
+    {
+     "t": "Responder una objeción concreta",
+     "c": "Un prospecto me dijo: [LO QUE DIJO, TEXTUAL].\nContexto: [QUÉ NECESITA Y QUÉ LE OFRECÍ].\nEscribime una respuesta para chat que:\n1. Reconozca la duda sin discutirla.\n2. Haga una pregunta para entender qué hay detrás.\n3. No baje el precio ni prometa resultados.\nMáximo 4 líneas. Dame dos versiones."
+    },
+    {
+     "t": "Es caro",
+     "c": "Me dicen que mi [SERVICIO] es caro. Ayudame a responder sin justificarme de más.\nIncluí: una pregunta para saber contra qué lo compara, cómo explicar qué incluye y qué no, y una alternativa de menor alcance si existe: [SÍ / NO, CUÁL]."
+    },
+    {
+     "t": "Preguntas frecuentes desde objeciones",
+     "c": "Con estas objeciones que escucho: [LISTA], escribime una sección de preguntas frecuentes para mi página o mi propuesta. Respuestas cortas, honestas y sin promesas."
+    },
+    {
+     "t": "Práctica de conversación",
+     "c": "Hacé de cliente que está interesado en [TU OFERTA] pero tiene dudas de [OBJECIÓN]. Respondé como lo haría una persona real, de a un mensaje. Yo te contesto como vendedor. Al final, decime qué hice bien y qué podría mejorar."
+    }
+   ]
+  },
+  {
+   "tema": "Ventas",
+   "t": "Seguimientos que aportan",
+   "d": "Prompts para retomar conversaciones sin sonar insistente.",
+   "para": "Para escribir el próximo mensaje a un prospecto con algo nuevo que decir.",
+   "prompts": [
+    {
+     "t": "Retomar después de una llamada",
+     "c": "Tuve una llamada con [NOMBRE] sobre [TEMA]. Lo más importante que dijo: [RESUMEN].\nEscribime un mensaje de seguimiento corto que resuma lo que hablamos en dos líneas, confirme el próximo paso y termine con una sola pregunta."
+    },
+    {
+     "t": "Seguimiento con recurso",
+     "c": "Esta persona necesita [PROBLEMA]. Proponeme 3 cosas útiles que le puedo mandar como seguimiento (una idea, un ejemplo, un recurso propio: [TUS RECURSOS]) y escribime el mensaje para la mejor opción. Máximo 4 líneas."
+    },
+    {
+     "t": "Propuesta sin respuesta",
+     "c": "Mandé una propuesta a [NOMBRE] el [FECHA] y no respondió. Escribime un mensaje que no presione, que le facilite contestar con algo simple (por ejemplo, \"sí\", \"más adelante\" o \"no\") y que ofrezca resolver una duda puntual."
+    },
+    {
+     "t": "Mensaje de cierre",
+     "c": "Ya le escribí varias veces a [NOMBRE] sin respuesta. Escribime un último mensaje amable que diga que no voy a insistir, deje la puerta abierta y no genere culpa. Máximo 3 líneas."
+    },
+    {
+     "t": "Reactivar contactos viejos",
+     "c": "Tengo contactos que mostraron interés hace tiempo en [OFERTA] y no avanzaron. Escribime 3 mensajes distintos para retomar la conversación con algo nuevo: [NOVEDAD, CAMBIO O RECURSO]. Que no suenen a envío masivo."
+    }
+   ]
+  }
+ ],
+ "herramientas": []
+}

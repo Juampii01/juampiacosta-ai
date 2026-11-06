@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de /recursos. No abrir esta: build.py la copia a ../recursos.html y pone la versión (7af58f4a) -->
+<!-- Plantilla de /recursos. No abrir esta: build.py la copia a ../recursos.html y pone la versión (a817b5ad) -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -8,23 +8,23 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="web/base.css?v=7af58f4a">
-<link rel="stylesheet" href="web/cta.css?v=7af58f4a">
-<link rel="stylesheet" href="web/biblioteca.css?v=7af58f4a">
-<link rel="stylesheet" href="web/menu.css?v=7af58f4a">
-<link rel="stylesheet" href="web/tema.css?v=7af58f4a">
-<script src="web/tema.js?v=7af58f4a"></script>
+<link rel="stylesheet" href="web/base.css?v=a817b5ad">
+<link rel="stylesheet" href="web/cta.css?v=a817b5ad">
+<link rel="stylesheet" href="web/biblioteca.css?v=a817b5ad">
+<link rel="stylesheet" href="web/menu.css?v=a817b5ad">
+<link rel="stylesheet" href="web/tema.css?v=a817b5ad">
+<script src="web/tema.js?v=a817b5ad"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="web/redes.js?v=7af58f4a"></script>
-<script src="web/guias-web.js?v=7af58f4a"></script>
-<script src="web/herramientas.js?v=7af58f4a"></script>
-<script src="web/prompts.js?v=7af58f4a"></script>
-<script src="web/datos.js?v=7af58f4a"></script>
-<script src="web/comun.js?v=7af58f4a"></script>
-<script src="web/rutas.js?v=7af58f4a"></script>
-<script src="web/menu.js?v=7af58f4a"></script>
+<script src="web/redes.js?v=a817b5ad"></script>
+<script src="web/guias-web.js?v=a817b5ad"></script>
+<script src="web/herramientas.js?v=a817b5ad"></script>
+<script src="web/prompts.js?v=a817b5ad"></script>
+<script src="web/datos.js?v=a817b5ad"></script>
+<script src="web/comun.js?v=a817b5ad"></script>
+<script src="web/rutas.js?v=a817b5ad"></script>
+<script src="web/menu.js?v=a817b5ad"></script>
 <script>document.write(cabecera());</script>
 
 <main>
@@ -95,7 +95,7 @@ document.getElementById("n-guias").textContent = GUIAS_WEB.length;
 // Skills, MCP y herramientas: qué hace, para qué te sirve, comando para copiar y link
 function tarjetaHerramienta(h) {
   var cmds = h.cmds.map(function (c) {
-    return '<div class="cmd"><small>' + c.donde + '</small><div class="prompt"><button onclick="copiar(this)">Copiar</button><code>' + c.c + '</code></div></div>';
+    return '<div class="cmd"><small>' + c.donde + '</small><div class="prompt"><button onclick="copiar(this)">Copiar</button><code>' + esc(c.c) + '</code></div></div>';
   }).join("");
   var meta = [h.estrellas ? "★ " + h.estrellas : "", h.licencia || ""].filter(Boolean).join(" · ");
   return '<article class="herr glass" data-buscar="' + buscable(h) + ' ' + h.tipo + ' ' + h.repo + ' ' + h.para.replace(/"/g, "") + '">' +
@@ -113,7 +113,7 @@ document.getElementById("lista-prompts").innerHTML = PROMPTS.map(function (p) {
   return '<article class="herr glass' + (p.prompts.length > 1 ? ' plegado' : '') + '" data-cat="' + p.tema + '" data-buscar="' + buscable(p) + ' prompt ' + p.tema + ' ' + p.para.replace(/"/g, "") + '">' +
     '<div class="herr-cab"><span class="tipo">Prompts · ' + p.tema + '</span><span class="herr-meta">' + p.prompts.length + ' prompts</span></div>' +
     '<h3>' + p.t + '</h3><p>' + p.d + '</p><p class="para"><b>Para qué te sirve:</b> ' + p.para + '</p>' +
-    p.prompts.map(function (x) { return '<div class="cmd"><small>' + x.t + '</small><div class="prompt"><button onclick="copiar(this)">Copiar</button><code>' + x.c + '</code></div></div>'; }).join("") +
+    p.prompts.map(function (x) { return '<div class="cmd"><small>' + x.t + '</small><div class="prompt"><button onclick="copiar(this)">Copiar</button><code>' + esc(x.c) + '</code></div></div>'; }).join("") +
     (p.prompts.length > 1 ? '<button class="mas-prompts" onclick="plegarPack(this)" data-n="' + p.prompts.length + '">Ver los ' + p.prompts.length + ' prompts ↓</button>' : '') +
     '</article>';
 }).join("");

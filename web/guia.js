@@ -186,7 +186,7 @@ function pintarGuia(caja, g) {
     if (s.pasos) html += listaPasos(g.slug, i, s.pasos);
     (s.prompts || []).forEach(function (x) {
       html += '<div class="g-prompt glass"><div class="g-prompt-cab"><i>' + svgGuia("prompt") + '</i><span>' + x.t + '</span>' +
-        '<button onclick="copiarGuia(this)">Copiar prompt</button></div><pre><code>' + huecos(x.c) + '</code></pre></div>';
+        '<button onclick="copiarGuia(this)">Copiar prompt</button></div><pre><code>' + huecos(esc(x.c)) + '</code></pre></div>';
     });
     if (s.aviso) html += '<div class="g-aviso"><i>' + svgGuia("ojo") + '</i><p><b>Ojo:</b> ' + adornar(s.aviso) + '</p></div>';
     html += '</section>';

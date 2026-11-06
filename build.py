@@ -52,7 +52,7 @@ def validar(guias, prompts, herrs):
     for x in prompts:
         assert x.get("t") and x.get("tema") and x.get("prompts"), f"pack de prompts incompleto: {x.get('t')}"
     for x in herrs:
-        assert x.get("cat") in ("Skills", "MCP", "Herramientas") and x.get("t") and x.get("url") and x.get("cmds"), f"herramienta incompleta: {x.get('t')}"
+        assert x.get("cat") in ("Skills", "MCP", "Herramientas") and x.get("t") and x.get("url") and isinstance(x.get("cmds"), list), f"herramienta incompleta: {x.get('t')}"
 
 
 def datos_js(prompts, herrs):
@@ -111,6 +111,10 @@ if __name__ == "__main__":
     prompts = json.loads((RAIZ / "contenido" / "base-prompts.json").read_text()) + p_lotes
     herrs = json.loads((RAIZ / "contenido" / "base-herramientas.json").read_text()) + h_lotes
     validar(guias, prompts, herrs)
+    rutas = (WEB / "rutas.js").read_text()
+    slugs = {g["slug"] for g in guias}
+    faltan = [s for s in re.findall(r'"([a-z0-9-]{8,})"', rutas) if s not in slugs and s not in ("empezar", "conectar", "skills", "claude-code", "negocio", "contenido")]
+    assert not faltan, f"rutas.js nombra guías que no existen: {faltan}"
     (WEB / "guias-web.json").write_text(json.dumps(guias, ensure_ascii=False, indent=1))
     datos_js(prompts, herrs)
     v = version()
