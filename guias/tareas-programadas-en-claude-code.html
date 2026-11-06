@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena tareas-programadas-en-claude-code, Tareas programadas: Claude Code trabajando solo, Tres formas oficiales de dejar a Claude Code haciendo algo a una hora o cada cierto tiempo: en la nube, en tu compu o mientras tenés la sesión abierta. y ab129bc2 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena tareas-programadas-en-claude-code, Tareas programadas: Claude Code trabajando solo, Tres formas oficiales de dejar a Claude Code haciendo algo a una hora o cada cierto tiempo: en la nube, en tu compu o mientras tenés la sesión abierta. y 14a3efd1 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,29 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/cta.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/biblioteca.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/guia.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/tema.css?v=ab129bc2">
-<script src="../web/tema.js?v=ab129bc2"></script>
+<link rel="stylesheet" href="../web/base.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/cta.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/biblioteca.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/guia.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/tema.css?v=14a3efd1">
+<script src="../web/tema.js?v=14a3efd1"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=ab129bc2"></script>
-<script src="../web/guias-web.js?v=ab129bc2"></script>
-<script src="../web/comun.js?v=ab129bc2"></script>
+<script src="../web/redes.js?v=14a3efd1"></script>
+<script src="../web/guias-web.js?v=14a3efd1"></script>
+<script src="../web/comun.js?v=14a3efd1"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="tareas-programadas-en-claude-code"></main>
+<script>var GUIA = {"slug": "tareas-programadas-en-claude-code", "t": "Tareas programadas: Claude Code trabajando solo", "d": "Tres formas oficiales de dejar a Claude Code haciendo algo a una hora o cada cierto tiempo: en la nube, en tu compu o mientras tenés la sesión abierta.", "tema": "Claude Code", "min": 10, "fichaNombre": "Tareas programadas", "ficha": [["En la nube", "Corre aunque tu compu esté apagada. Se crea en claude.ai/code/routines, desde la app de escritorio o con /schedule."], ["En tu compu", "Desde la app de escritorio. Tiene acceso a tus archivos, pero solo corre con la app abierta y la compu despierta."], ["Mientras trabajás", "/loop repite un pedido mientras la sesión sigue abierta."], ["Necesitás", "Plan Pro, Max, Team o Enterprise. Para que una tarea en la nube trabaje sobre tu proyecto, un repositorio en GitHub."]], "secciones": [{"h": "Cuál te conviene", "lista": ["Tarea en la nube: para algo que tiene que correr sí o sí, aunque cierres la compu. Trabaja sobre una copia nueva de tu repositorio de GitHub, no sobre tus archivos locales. Como mínimo, una vez por hora.", "Tarea local de la app de escritorio: cuando necesita tus archivos o programas. Corre solo con la app abierta y la compu despierta.", "/loop: para vigilar algo durante un rato mientras trabajás, por ejemplo si terminó una publicación. Se corta al cerrar la sesión."], "p": ["Las tareas en la nube están en vista previa (research preview): pueden cambiar cómo funcionan y sus límites."]}, {"h": "Tarea en la nube", "pasos": ["Entrá a claude.ai/code/routines y tocá New task (en algunas cuentas todavía dice New routine). Si te ofrece Create with Claude o Set up manually, elegí la que prefieras: la primera lo arma charlando.", "Ponele nombre y escribí el pedido. Tiene que entenderse solo, porque nadie va a estar ahí para aclararle nada.", "En Trigger elegí Schedule y una frecuencia, por ejemplo por hora, diaria o semanal.", "En Advanced settings elegí el repositorio de GitHub y el entorno (Default sirve para empezar).", "En la pestaña Connectors sacá los conectores que la tarea no necesita.", "Tocá Create. Para probarla ya, tocá Run now en su página."], "prompts": [{"t": "Crearla desde la terminal", "c": "/schedule todos los lunes a las 9, revisá los cambios de la semana en este repositorio y armá un resumen simple de qué se hizo y qué quedó pendiente"}], "aviso": "Los conectores que dejes incluidos los puede usar para escribir (mandar mensajes, crear tareas) y todo sale a tu nombre. Dejá solo los necesarios."}, {"h": "Tarea local en la app de escritorio", "pasos": ["En la pestaña Code, tocá Scheduled en la barra lateral (o en el menú More) y después New task.", "Ponele nombre y escribí las instrucciones.", "En Advanced settings, pestaña General, prendé Only on this computer y elegí la carpeta en Local folder.", "En Trigger elegí Hourly, Daily, Weekdays o Weekly.", "Elegí el modo de permisos y el modelo en la barra del cuadro de instrucciones, y tocá Create.", "Tocá Run now una vez y aprobá los permisos que pida con \"always allow\": así las próximas no se traban esperándote."], "p": ["Si la compu estuvo dormida a la hora de la tarea, se saltea. Al despertar hace una sola corrida de recuperación por la última que perdió. Para que no se duerma sola, en Settings → This computer → System está Keep computer awake (cerrar la tapa la duerme igual)."]}, {"h": "/loop: repetir mientras trabajás", "lista": ["/loop 10m [pedido]: lo repite cada 10 minutos. Unidades: s, m, h y d.", "/loop [pedido]: Claude decide cada cuánto, entre un minuto y una hora.", "Recordatorio de una vez: escribile \"recordame a las 15 que revise el formulario\".", "Para ver o cancelar: \"¿qué tareas programadas tengo?\" o \"cancelá la tarea de revisar el formulario\"."], "aviso": "Solo corre mientras Claude Code está abierto. Las tareas que se repiten se borran solas a los 7 días."}, {"h": "Escribí bien el pedido", "p": ["Una tarea programada trabaja sin vos. Decile qué revisar, qué hacer si no hay nada nuevo y qué no tiene que tocar."], "prompts": [{"t": "Plantilla de tarea programada", "c": "Tarea: [QUÉ TIENE QUE HACER].\nDónde mirar: [CARPETA, REPOSITORIO O CONECTOR].\nQué me tenés que dejar: [EJ.: UN RESUMEN DE 5 LÍNEAS EN RESUMEN.MD].\nSi no hay nada nuevo: escribí \"sin novedades\" y terminá.\nNo hagas: borrar archivos, publicar nada ni mandar mensajes a nadie.\nSi algo falla, anotá qué pasó y no intentes arreglarlo solo."}]}], "faq": [{"q": "/schedule dice \"Unknown command\"", "a": "Necesitás haber iniciado sesión con una cuenta de claude.ai (no con una clave de API). Probá /login. Si no, creala desde claude.ai/code/routines."}, {"q": "¿Gasta de mi plan?", "a": "Sí. Las tareas en la nube usan tu límite igual que una sesión normal."}, {"q": "Mi tarea local no corrió", "a": "Revisá que la app estuviera abierta y la compu despierta. En el historial de la tarea, pasando el mouse por la corrida salteada, te dice por qué."}], "fuentes": ["https://code.claude.com/docs/en/routines", "https://code.claude.com/docs/en/desktop-scheduled-tasks", "https://code.claude.com/docs/en/scheduled-tasks", "https://code.claude.com/docs/en/commands"]};</script>
 
-<script src="../web/rutas.js?v=ab129bc2"></script>
-<script src="../web/logos.js?v=ab129bc2"></script>
-<script src="../web/guia.js?v=ab129bc2"></script>
+<script src="../web/rutas.js?v=14a3efd1"></script>
+<script src="../web/logos.js?v=14a3efd1"></script>
+<script src="../web/guia.js?v=14a3efd1"></script>
 <script>
 (function () {
-  var slug = document.getElementById("guia").dataset.slug;
-  var g = GUIAS_WEB.filter(function (x) { return x.slug === slug; })[0];
-  pintarGuia(document.getElementById("guia"), g);
+  pintarGuia(document.getElementById("guia"), GUIA);
 })();
 </script>
 </body>

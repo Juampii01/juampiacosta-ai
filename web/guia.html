@@ -24,15 +24,14 @@
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="{{SLUG}}"></main>
+<script>var GUIA = {{GUIA}};</script>
 
 <script src="../web/rutas.js?v={{V}}"></script>
 <script src="../web/logos.js?v={{V}}"></script>
 <script src="../web/guia.js?v={{V}}"></script>
 <script>
 (function () {
-  var slug = document.getElementById("guia").dataset.slug;
-  var g = GUIAS_WEB.filter(function (x) { return x.slug === slug; })[0];
-  pintarGuia(document.getElementById("guia"), g);
+  pintarGuia(document.getElementById("guia"), GUIA);
 })();
 </script>
 </body>

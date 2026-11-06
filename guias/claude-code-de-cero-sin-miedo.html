@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena claude-code-de-cero-sin-miedo, Claude Code de cero y sin miedo, Lo instalás (en la app de escritorio o en la terminal), iniciás sesión y le das tu primera tarea. Sin saber programar. y ab129bc2 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena claude-code-de-cero-sin-miedo, Claude Code de cero y sin miedo, Lo instalás (en la app de escritorio o en la terminal), iniciás sesión y le das tu primera tarea. Sin saber programar. y 14a3efd1 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,29 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/cta.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/biblioteca.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/guia.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/tema.css?v=ab129bc2">
-<script src="../web/tema.js?v=ab129bc2"></script>
+<link rel="stylesheet" href="../web/base.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/cta.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/biblioteca.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/guia.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/tema.css?v=14a3efd1">
+<script src="../web/tema.js?v=14a3efd1"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=ab129bc2"></script>
-<script src="../web/guias-web.js?v=ab129bc2"></script>
-<script src="../web/comun.js?v=ab129bc2"></script>
+<script src="../web/redes.js?v=14a3efd1"></script>
+<script src="../web/guias-web.js?v=14a3efd1"></script>
+<script src="../web/comun.js?v=14a3efd1"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="claude-code-de-cero-sin-miedo"></main>
+<script>var GUIA = {"slug": "claude-code-de-cero-sin-miedo", "t": "Claude Code de cero y sin miedo", "d": "Lo instalás (en la app de escritorio o en la terminal), iniciás sesión y le das tu primera tarea. Sin saber programar.", "tema": "Claude Code", "min": 9, "fichaNombre": "Claude Code", "ficha": [["Qué es", "La versión de Claude que trabaja adentro de una carpeta de tu compu: lee tus archivos, los modifica y corre comandos con tu permiso."], ["Necesitás", "Un plan Pro, Max, Team o Enterprise, o una cuenta de Claude Console. El plan gratis no lo incluye."], ["Dos formas de usarlo", "La pestaña Code de la app de escritorio (sin terminal) o el comando claude en la terminal."], ["Qué no hace", "No adivina lo que querés: cuanto más claro se lo pidas, mejor sale."]], "secciones": [{"h": "Elegí por dónde entrar", "p": ["Hay dos puertas al mismo Claude Code. Si nunca abriste una terminal, empezá por la app de escritorio: es todo con botones. Si ya te animás a pegar un comando, la terminal te da todas las opciones.", "Las dos usan tu misma cuenta de Claude, así que podés arrancar en una y después probar la otra."], "lista": ["App de escritorio: viene con Claude Code adentro, no tenés que instalar nada más. Ideal para empezar.", "Terminal: instalás el programa con un comando y lo abrís escribiendo claude. Es la versión más completa."]}, {"h": "Opción A: la app de escritorio", "pasos": ["Descargá la app de Claude para Mac o Windows desde la guía oficial (en Linux está en beta) e instalala.", "Abrila e iniciá sesión con tu cuenta de Claude.", "Hacé clic en la pestaña Code, arriba de todo en la barra lateral. Si te pide mejorar el plan, es porque tu cuenta es gratis.", "Debajo del cuadro de mensaje, en el selector de entorno, elegí la primera opción del grupo Local.", "Al lado, tocá el control de carpeta → Open folder… y elegí la carpeta de tu proyecto.", "Escribí tu primera tarea (tenés una abajo) y mandala."], "aviso": "Para la primera vez usá una carpeta de prueba o una copia de tu proyecto, no la versión que ya usás con clientes."}, {"h": "Opción B: la terminal", "p": ["Abrí la terminal (en Mac: Terminal; en Windows: PowerShell), pegá el comando que te corresponde y apretá Enter. Mientras descarga no muestra nada: esperá a que termine."], "prompts": [{"t": "Mac, Linux o WSL", "c": "curl -fsSL https://claude.ai/install.sh | bash"}, {"t": "Windows (PowerShell)", "c": "irm https://claude.ai/install.ps1 | iex"}, {"t": "Comprobar que quedó instalado (en una terminal nueva)", "c": "claude --version"}], "pasos": ["Cerrá la terminal y abrí una nueva. Corré claude --version: si aparece un número de versión, está listo.", "Entrá a la carpeta de tu proyecto con cd y la ruta, por ejemplo: cd Documentos/mi-proyecto.", "Escribí claude y apretá Enter.", "La primera vez te pide iniciar sesión: se abre el navegador, entrás con tu cuenta y volvés a la terminal.", "Si más adelante querés cambiar de cuenta, adentro de Claude Code escribí /login."], "aviso": "En Windows conviene instalar también Git para Windows: Claude Code lo usa para correr comandos. Si no está, usa PowerShell."}, {"h": "Tu primera tarea", "p": ["Arrancá preguntando, no pidiendo cambios. Así ves cómo entiende tu proyecto antes de tocar nada. Después pedile algo chico y revisá lo que propone."], "prompts": [{"t": "Primera pregunta", "c": "Explicame qué hay en esta carpeta como si yo no supiera programar: qué es cada archivo importante, para qué sirve el proyecto y qué te haría falta saber para trabajar en él. No cambies nada todavía."}, {"t": "Primer cambio chico", "c": "Quiero hacer un cambio chico para probar: [DESCRIBÍ EL CAMBIO, POR EJEMPLO: CAMBIAR EL TÍTULO DE LA PÁGINA PRINCIPAL POR \"BIENVENIDOS\"]. Antes de hacerlo, decime qué archivo vas a tocar y qué vas a cambiar. Esperá mi OK."}]}, {"h": "Cuando te pide permiso", "p": ["Antes de editar un archivo o correr un comando, Claude Code te muestra qué quiere hacer y espera tu respuesta. Leelo: si está bien, elegí Yes; si no, decile qué cambiar.", "En la terminal, Shift+Tab cambia el modo de permisos (cuánto puede hacer sin preguntarte). En la app de escritorio el modo está en la fila de abajo del cuadro de mensaje. Si recién empezás, quedate en un modo que te pregunte todo."]}], "faq": [{"q": "Dice que \"claude\" no se reconoce", "a": "Cerrá la terminal y abrí una nueva. Si sigue, la carpeta del programa no quedó en el PATH: la guía oficial de problemas de instalación te dice cómo arreglarlo según tu sistema."}, {"q": "¿Necesito saber programar?", "a": "No. Le hablás en español, como a un compañero. Lo que sí conviene es pedir cosas concretas y leer lo que te propone antes de aprobarlo."}, {"q": "En la app no me deja entrar a Code", "a": "Si te aparece un aviso para mejorar el plan, tu cuenta es gratis: Claude Code necesita Pro, Max, Team o Enterprise."}], "fuentes": ["https://code.claude.com/docs/en/quickstart", "https://code.claude.com/docs/en/desktop-quickstart", "https://code.claude.com/docs/en/troubleshoot-install"]};</script>
 
-<script src="../web/rutas.js?v=ab129bc2"></script>
-<script src="../web/logos.js?v=ab129bc2"></script>
-<script src="../web/guia.js?v=ab129bc2"></script>
+<script src="../web/rutas.js?v=14a3efd1"></script>
+<script src="../web/logos.js?v=14a3efd1"></script>
+<script src="../web/guia.js?v=14a3efd1"></script>
 <script>
 (function () {
-  var slug = document.getElementById("guia").dataset.slug;
-  var g = GUIAS_WEB.filter(function (x) { return x.slug === slug; })[0];
-  pintarGuia(document.getElementById("guia"), g);
+  pintarGuia(document.getElementById("guia"), GUIA);
 })();
 </script>
 </body>

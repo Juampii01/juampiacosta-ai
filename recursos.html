@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de /recursos. No abrir esta: build.py la copia a ../recursos.html y pone la versión (ab129bc2) -->
+<!-- Plantilla de /recursos. No abrir esta: build.py la copia a ../recursos.html y pone la versión (14a3efd1) -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -8,24 +8,24 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="web/base.css?v=ab129bc2">
-<link rel="stylesheet" href="web/cta.css?v=ab129bc2">
-<link rel="stylesheet" href="web/biblioteca.css?v=ab129bc2">
-<link rel="stylesheet" href="web/menu.css?v=ab129bc2">
-<link rel="stylesheet" href="web/vitrina.css?v=ab129bc2">
-<link rel="stylesheet" href="web/tema.css?v=ab129bc2">
-<script src="web/tema.js?v=ab129bc2"></script>
+<link rel="stylesheet" href="web/base.css?v=14a3efd1">
+<link rel="stylesheet" href="web/cta.css?v=14a3efd1">
+<link rel="stylesheet" href="web/biblioteca.css?v=14a3efd1">
+<link rel="stylesheet" href="web/menu.css?v=14a3efd1">
+<link rel="stylesheet" href="web/vitrina.css?v=14a3efd1">
+<link rel="stylesheet" href="web/tema.css?v=14a3efd1">
+<script src="web/tema.js?v=14a3efd1"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="web/redes.js?v=ab129bc2"></script>
-<script src="web/guias-web.js?v=ab129bc2"></script>
-<script src="web/herramientas.js?v=ab129bc2"></script>
-<script src="web/prompts.js?v=ab129bc2"></script>
-<script src="web/datos.js?v=ab129bc2"></script>
-<script src="web/comun.js?v=ab129bc2"></script>
-<script src="web/rutas.js?v=ab129bc2"></script>
-<script src="web/menu.js?v=ab129bc2"></script>
+<script src="web/redes.js?v=14a3efd1"></script>
+<script src="web/guias-web.js?v=14a3efd1"></script>
+<script src="web/herramientas.js?v=14a3efd1"></script>
+<script src="web/prompts.js?v=14a3efd1"></script>
+<script src="web/datos.js?v=14a3efd1"></script>
+<script src="web/comun.js?v=14a3efd1"></script>
+<script src="web/rutas.js?v=14a3efd1"></script>
+<script src="web/menu.js?v=14a3efd1"></script>
 <script>document.write(cabecera());</script>
 
 <main>
@@ -91,6 +91,17 @@
 </main>
 
 <script>
+// Nivel de quien mira: "pago" o "gratis" (lo pone el servidor; lo que se abre lo decide el middleware, esto es solo cómo se ve)
+var NIVEL = (document.cookie.match(/(?:^|;\s*)jpa_nivel=(pago|gratis)/) || [])[1] || "pago";
+var GRATIS = NIVEL === "gratis";
+if (GRATIS) {
+  document.body.classList.add("nivel-gratis");
+  var aviso = document.createElement("a");
+  aviso.className = "aviso-gratis glass";
+  aviso.href = "/#precio";
+  aviso.innerHTML = '<span class="mono">Plan gratis</span><b>Tenés abiertas las guías de mis reels y el Módulo 1.</b><span>Desbloqueá las ' + GUIAS_WEB.length + ' guías, los prompts y las herramientas →</span>';
+  document.querySelector("main").insertBefore(aviso, document.querySelector("main").firstChild);
+}
 // Total: guías + packs de prompts + skills, MCP y herramientas (los de «De mis reels» ya son guías: no se cuentan dos veces)
 document.getElementById("n-recursos").textContent = GUIAS_WEB.length + PROMPTS.length + HERRAMIENTAS.length;
 document.getElementById("n-guias").textContent = GUIAS_WEB.length;
@@ -144,9 +155,10 @@ filtroTemas(document.getElementById("filtro-prompts"), document.getElementById("
 
 // Guías: cada una tiene su página en guias/<slug>.html
 function tarjetaGuia(g, etiqueta) {
-  return '<a class="herr glass" href="guias/' + g.slug + '.html" data-cat="' + g.tema + '" data-buscar="' + buscable(g) + ' guia ' + g.tema + ' ' + (g.post || '') + '">' +
+  var cerrada = GRATIS && !g.gratis;
+  return '<a class="herr glass' + (cerrada ? ' cerrada' : '') + '" href="' + (cerrada ? '/#precio' : 'guias/' + g.slug + '.html') + '" data-cat="' + g.tema + '" data-buscar="' + buscable(g) + ' guia ' + g.tema + ' ' + (g.post || '') + '">' +
     '<div class="herr-cab"><span class="tipo">' + etiqueta + '</span><span class="herr-meta">' + g.min + ' min</span></div>' +
-    '<h3>' + g.t + '</h3><p>' + g.d + '</p><span class="bajar">Leer la guía →</span></a>';
+    '<h3>' + g.t + '</h3><p>' + g.d + '</p><span class="bajar">' + (cerrada ? '🔒 Desbloquear' : 'Leer la guía →') + '</span></a>';
 }
 document.getElementById("lista-guias-web").innerHTML = GUIAS_WEB.map(function (g) { return tarjetaGuia(g, "Guía · " + g.tema); }).join("");
 document.getElementById("lista-posts").innerHTML = GUIAS_WEB.filter(function (g) { return g.post; }).map(function (g) { return tarjetaGuia(g, "Palabra · " + g.post); }).join("");

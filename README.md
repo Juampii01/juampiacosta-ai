@@ -21,6 +21,16 @@ Después de cambiar cualquier cosa: `python3 build.py` (o `npm run construir`) y
 2. Si querés que esté en una ruta, sumá su `slug` en `web/rutas.js`.
 3. `python3 build.py`, revisá en el navegador (`python3 -m http.server`) y subilo.
 
+## Plan gratis (registro con email)
+
+- En el inicio, «Empezá gratis» pide nombre y email (`api/registro.js`). El registro se guarda en la tabla `registros` de Supabase.
+- Quien se registra abre las guías de los reels (las que tienen palabra clave) y el Módulo 1 del sistema base. El resto lo ve bloqueado.
+  La lista sale sola de `build.py` (`es_gratis`) y queda en `lib/gratis.js`.
+- Prompts y herramientas: el plan gratis ve títulos y descripciones; el texto y los comandos, solo el pago (`web/*-vista.js`).
+- Para crear la tabla: correr `supabase/registros.sql` en el SQL Editor de tu proyecto de Supabase (una vez).
+- Variables en Vercel: `SUPABASE_URL` (Project Settings → API → Project URL) y `SUPABASE_SERVICE_ROLE_KEY`
+  (la clave secreta service_role: solo en Vercel, nunca en el código ni en el navegador).
+
 ## Acceso (quién entra)
 
 - Sin acceso se ve solo la página de inicio. La biblioteca, las guías y sus datos piden la cookie firmada.

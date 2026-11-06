@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena que-es-un-agente-de-ia-de-verdad, Qué es un agente de IA de verdad (y cuándo no te hace falta), La diferencia entre un chat, una automatización y un agente, explicada con ejemplos simples. Y la pregunta que te ahorra semanas: ¿esto necesita un agente? y ab129bc2 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena que-es-un-agente-de-ia-de-verdad, Qué es un agente de IA de verdad (y cuándo no te hace falta), La diferencia entre un chat, una automatización y un agente, explicada con ejemplos simples. Y la pregunta que te ahorra semanas: ¿esto necesita un agente? y 14a3efd1 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,29 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/cta.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/biblioteca.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/guia.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/tema.css?v=ab129bc2">
-<script src="../web/tema.js?v=ab129bc2"></script>
+<link rel="stylesheet" href="../web/base.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/cta.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/biblioteca.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/guia.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/tema.css?v=14a3efd1">
+<script src="../web/tema.js?v=14a3efd1"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=ab129bc2"></script>
-<script src="../web/guias-web.js?v=ab129bc2"></script>
-<script src="../web/comun.js?v=ab129bc2"></script>
+<script src="../web/redes.js?v=14a3efd1"></script>
+<script src="../web/guias-web.js?v=14a3efd1"></script>
+<script src="../web/comun.js?v=14a3efd1"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="que-es-un-agente-de-ia-de-verdad"></main>
+<script>var GUIA = {"slug": "que-es-un-agente-de-ia-de-verdad", "t": "Qué es un agente de IA de verdad (y cuándo no te hace falta)", "d": "La diferencia entre un chat, una automatización y un agente, explicada con ejemplos simples. Y la pregunta que te ahorra semanas: ¿esto necesita un agente?", "tema": "Agentes", "min": 7, "fichaNombre": "Agente", "ficha": [["Qué es", "Un sistema que recibe un objetivo, decide los pasos y usa herramientas hasta terminar."], ["Qué lo distingue", "Elige qué hacer después según lo que va encontrando."], ["Qué no es", "Un chat que responde una vez, ni una automatización que sigue siempre el mismo camino."], ["Regla práctica", "Si podés dibujar todos los pasos de antemano, probablemente no necesitás un agente."]], "secciones": [{"h": "Tres cosas que se confunden", "lista": ["Chat: vos preguntás, Claude responde. Si querés otro paso, lo pedís vos. Vos sos el que decide todo.", "Automatización: una receta fija. \"Cuando llega un formulario, copialo en la planilla y mandá este mail\". Siempre hace lo mismo, en el mismo orden.", "Agente: le das un objetivo y herramientas. Él decide qué paso dar, mira el resultado y decide el siguiente, hasta que termina o se queda sin opciones."], "p": ["La documentación oficial de Anthropic lo define así: un agente es una aplicación que completa una tarea planeando sus propios pasos y usando herramientas que leen archivos, corren comandos o editan cosas."]}, {"h": "Las cuatro piezas de cualquier agente", "lista": ["Objetivo: qué tiene que lograr y cómo se sabe que terminó. \"Dejame un informe de 5 competidores con sus links\".", "Herramientas: lo que puede usar. Buscar en la web, leer tus archivos, escribir un documento, consultar una app conectada.", "Decisiones: en cada vuelta elige qué herramienta usar según lo que encontró antes.", "Bucle: piensa, actúa, mira el resultado y repite. Termina cuando responde sin pedir más herramientas."], "p": ["Claude Code funciona así: evalúa tu pedido, usa herramientas, recibe los resultados y repite hasta terminar. Cada vuelta completa se llama turno."]}, {"h": "Ejemplos simples", "lista": ["Chat alcanza: \"Escribime tres versiones de este mail\". Una sola respuesta y listo.", "Automatización alcanza: \"Cada vez que alguien paga, mandale el comprobante\". El camino es siempre igual.", "Agente sirve: \"Averiguá qué ofrecen mis 5 competidores y compará precios publicados\". No sabés de antemano qué páginas va a tener que abrir ni cuántas búsquedas va a necesitar.", "Agente sirve: \"Revisá los 40 mensajes de esta semana, separá los que quieren comprar y armá un resumen\". Cada mensaje es distinto y hay que decidir caso por caso."]}, {"h": "Cuándo NO hace falta un agente", "lista": ["Los pasos son siempre los mismos: usá una automatización (Make, Zapier, n8n). Es más barata y más predecible.", "Es una tarea de una sola vez: pedíselo a Claude en un chat y listo.", "Un error sale caro y no podés revisar: si el agente manda plata, borra datos o les escribe a clientes sin que vos mires, todavía no está listo.", "No sabés explicar qué es un buen resultado: si vos no podés decir cuándo está bien, el agente tampoco."], "aviso": "Más autonomía también es más riesgo y más consumo. Arrancá con lo mínimo que resuelva el problema."}, {"h": "Probá si tu idea necesita un agente", "prompts": [{"t": "¿Chat, automatización o agente?", "c": "Quiero resolver esto en mi negocio: [DESCRIBÍ LA TAREA EN 3 O 4 LÍNEAS].\nLo hago [CADA CUÁNTO] y hoy me lleva [TIEMPO].\n\nDecime:\n1. Si alcanza con un chat, con una automatización de pasos fijos o si necesita un agente. Explicá por qué en 3 líneas.\n2. Si es un agente: qué objetivo tendría, qué herramientas necesita y en qué momentos tendría que preguntarme antes de seguir.\n3. Qué podría salir mal y cómo lo detectaría yo.\n4. La versión más simple que podría probar esta semana.\nSi te falta información, preguntame antes de responder."}]}], "faq": [{"q": "¿Un Proyecto de Claude con instrucciones ya es un agente?", "a": "No del todo. Es un chat con contexto: responde lo que le pedís. Se acerca a un agente cuando le das herramientas (búsqueda web, conectores) y una tarea con varios pasos que decide solo."}, {"q": "¿Claude Code es un agente?", "a": "Sí. Recibe tu pedido, decide qué archivos leer o qué comandos correr, mira los resultados y sigue hasta terminar, pidiéndote permiso para lo que no habilitaste."}, {"q": "¿Necesito programar para armar uno?", "a": "No para empezar. Con Claude Code y archivos de instrucciones podés armar agentes simples. Programar te sirve si querés meter el agente adentro de tu propia app."}], "fuentes": ["https://code.claude.com/docs/en/agent-sdk/overview", "https://code.claude.com/docs/en/agent-sdk/agent-loop"]};</script>
 
-<script src="../web/rutas.js?v=ab129bc2"></script>
-<script src="../web/logos.js?v=ab129bc2"></script>
-<script src="../web/guia.js?v=ab129bc2"></script>
+<script src="../web/rutas.js?v=14a3efd1"></script>
+<script src="../web/logos.js?v=14a3efd1"></script>
+<script src="../web/guia.js?v=14a3efd1"></script>
 <script>
 (function () {
-  var slug = document.getElementById("guia").dataset.slug;
-  var g = GUIAS_WEB.filter(function (x) { return x.slug === slug; })[0];
-  pintarGuia(document.getElementById("guia"), g);
+  pintarGuia(document.getElementById("guia"), GUIA);
 })();
 </script>
 </body>

@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena cinco-preguntas-antes-de-meter-ia-en-tu-negocio, 5 preguntas antes de meter IA en tu negocio, Un filtro simple para elegir qué tarea automatizar primero, sin gastar semanas en algo que no te cambia el día. y ab129bc2 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena cinco-preguntas-antes-de-meter-ia-en-tu-negocio, 5 preguntas antes de meter IA en tu negocio, Un filtro simple para elegir qué tarea automatizar primero, sin gastar semanas en algo que no te cambia el día. y 14a3efd1 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,29 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/cta.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/biblioteca.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/guia.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/tema.css?v=ab129bc2">
-<script src="../web/tema.js?v=ab129bc2"></script>
+<link rel="stylesheet" href="../web/base.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/cta.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/biblioteca.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/guia.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/tema.css?v=14a3efd1">
+<script src="../web/tema.js?v=14a3efd1"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=ab129bc2"></script>
-<script src="../web/guias-web.js?v=ab129bc2"></script>
-<script src="../web/comun.js?v=ab129bc2"></script>
+<script src="../web/redes.js?v=14a3efd1"></script>
+<script src="../web/guias-web.js?v=14a3efd1"></script>
+<script src="../web/comun.js?v=14a3efd1"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="cinco-preguntas-antes-de-meter-ia-en-tu-negocio"></main>
+<script>var GUIA = {"slug": "cinco-preguntas-antes-de-meter-ia-en-tu-negocio", "t": "5 preguntas antes de meter IA en tu negocio", "d": "Un filtro simple para elegir qué tarea automatizar primero, sin gastar semanas en algo que no te cambia el día.", "tema": "Negocio", "min": 8, "fichaNombre": "Filtro de 5 preguntas", "ficha": [["Qué es", "Un método para ordenar tus tareas y elegir la primera que vale la pena automatizar."], ["Necesitás", "Una semana anotando lo que hacés y 30 minutos para puntuar."], ["Resultado", "Una lista corta de tareas, ordenada de la más conveniente a la menos."], ["Qué no hace", "No elige la herramienta: eso viene después."]], "secciones": [{"h": "El error de siempre: empezar por la herramienta", "p": ["La mayoría arranca al revés: ve una demo, se entusiasma y busca dónde meterla. Termina con un chatbot que nadie usa o una automatización que se rompe a la semana.", "El orden que funciona es otro: primero mirás tu negocio, después elegís la tarea y recién al final la herramienta. Estas cinco preguntas son el filtro del medio."]}, {"h": "Paso cero: anotá lo que hacés durante una semana", "p": ["Sin datos, vas a elegir por intuición. Durante una semana anotá cada tarea que te saca tiempo, aunque sea chica: responder consultas, pasar datos de un lado a otro, armar presupuestos, perseguir pagos."], "pasos": ["Abrí una planilla con cuatro columnas: Tarea, Veces por semana, Minutos cada vez, Quién la hace.", "Cada vez que hagas algo repetitivo, sumá una fila o actualizá la que ya existe.", "Pedile lo mismo a tu equipo, si tenés.", "Al final de la semana, multiplicá veces por minutos: ese es el tiempo real que te come cada tarea."]}, {"h": "Las 5 preguntas", "p": ["Pasá cada tarea de la lista por estas preguntas y puntuala del 1 al 5 en cada una."], "lista": ["1. ¿Se repite igual?: si cada vez es distinta y depende de tu criterio, es mala candidata. Si siempre sigue los mismos pasos, es buena.", "2. ¿Cuánto tiempo te come?: usá el número de tu semana anotada, no lo que creés.", "3. ¿Qué pasa si sale mal?: si un error se nota y se corrige rápido, vas bien. Si un error te hace perder un cliente o plata, empezá por otra cosa o dejá a una persona revisando.", "4. ¿La información está a mano?: si los datos están en mails, planillas o un sistema, se puede conectar. Si están en la cabeza de alguien o en papel, primero hay que ordenarlos.", "5. ¿Está escrito cómo se hace?: si podés explicarle el proceso a alguien nuevo en una hoja, se lo podés explicar a una IA. Si no, el primer trabajo es escribirlo."]}, {"h": "Cómo leer el puntaje", "p": ["Sumá los cinco puntos de cada tarea. Las que más suman van primero. En la pregunta 3, dale más puntos a lo que tiene menos riesgo.", "Ejemplo (inventado para mostrar el método): responder consultas de horarios saca 5, 4, 5, 5 y 4, o sea 23. Armar propuestas a medida saca 2, 4, 2, 3 y 2, o sea 13. La primera va antes, aunque la segunda parezca más importante."], "aviso": "Si una tarea tiene puntaje alto pero nadie la quiere soltar, hablalo antes. Automatizar algo que el equipo no acepta es tiempo perdido."}, {"h": "Dejá que Claude te ayude a puntuar", "p": ["Pegá tu lista de tareas y pedile un primer borrador del puntaje. Después lo corregís vos: vos conocés tu negocio, Claude no."], "prompts": [{"t": "Diagnóstico de tareas", "c": "Tengo un negocio de [RUBRO] con [CANTIDAD] personas. Esta es la lista de tareas que anoté durante una semana, con veces por semana, minutos cada vez y quién la hace:\n\n[PEGÁ TU LISTA]\n\nPara cada tarea:\n1. Calculá las horas por semana.\n2. Puntuala del 1 al 5 en: se repite igual, tiempo que consume, bajo riesgo si sale mal, información disponible y proceso escrito.\n3. Explicá cada puntaje en una línea.\n4. Ordená de mayor a menor puntaje total.\n5. Para las 3 primeras, decime qué parte podría hacer una IA y qué parte tiene que seguir revisando una persona.\nSi te falta información para puntuar algo, preguntame antes de inventar."}]}], "faq": [{"q": "¿Y si ninguna tarea saca puntaje alto?", "a": "Casi siempre es porque los procesos no están escritos o los datos están desordenados. Ese es tu primer proyecto: escribir y ordenar. Automatizar viene después."}, {"q": "¿Conviene empezar por lo que más tiempo me come?", "a": "No siempre. Si es algo riesgoso o muy variable, empezá por una tarea más chica y segura. Te sirve para aprender y ganar confianza."}, {"q": "¿Cuántas tareas automatizo a la vez?", "a": "Una. Cuando funciona sola durante unas semanas, pasás a la siguiente."}], "fuentes": []};</script>
 
-<script src="../web/rutas.js?v=ab129bc2"></script>
-<script src="../web/logos.js?v=ab129bc2"></script>
-<script src="../web/guia.js?v=ab129bc2"></script>
+<script src="../web/rutas.js?v=14a3efd1"></script>
+<script src="../web/logos.js?v=14a3efd1"></script>
+<script src="../web/guia.js?v=14a3efd1"></script>
 <script>
 (function () {
-  var slug = document.getElementById("guia").dataset.slug;
-  var g = GUIAS_WEB.filter(function (x) { return x.slug === slug; })[0];
-  pintarGuia(document.getElementById("guia"), g);
+  pintarGuia(document.getElementById("guia"), GUIA);
 })();
 </script>
 </body>

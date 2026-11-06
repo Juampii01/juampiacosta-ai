@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena 4-agentes-whatsapp-para-vender, 4 agentes de IA para WhatsApp que podés crear y ofrecer, Recepcionista, ventas, atención al cliente y turnos: qué hace cada uno, cómo se arma con la API oficial y cómo ofrecérselo a negocios con un abono mensual. y ab129bc2 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena 4-agentes-whatsapp-para-vender, 4 agentes de IA para WhatsApp que podés crear y ofrecer, Recepcionista, ventas, atención al cliente y turnos: qué hace cada uno, cómo se arma con la API oficial y cómo ofrecérselo a negocios con un abono mensual. y 14a3efd1 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,29 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/cta.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/biblioteca.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/guia.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/tema.css?v=ab129bc2">
-<script src="../web/tema.js?v=ab129bc2"></script>
+<link rel="stylesheet" href="../web/base.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/cta.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/biblioteca.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/guia.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/tema.css?v=14a3efd1">
+<script src="../web/tema.js?v=14a3efd1"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=ab129bc2"></script>
-<script src="../web/guias-web.js?v=ab129bc2"></script>
-<script src="../web/comun.js?v=ab129bc2"></script>
+<script src="../web/redes.js?v=14a3efd1"></script>
+<script src="../web/guias-web.js?v=14a3efd1"></script>
+<script src="../web/comun.js?v=14a3efd1"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="4-agentes-whatsapp-para-vender"></main>
+<script>var GUIA = {"slug": "4-agentes-whatsapp-para-vender", "t": "4 agentes de IA para WhatsApp que podés crear y ofrecer", "d": "Recepcionista, ventas, atención al cliente y turnos: qué hace cada uno, cómo se arma con la API oficial y cómo ofrecérselo a negocios con un abono mensual.", "tema": "Ventas", "min": 9, "ficha": [["Qué es", "Cuatro agentes de WhatsApp que podés crear y ofrecer a negocios: recepcionista, ventas, atención y turnos."], ["Para quién", "Quien quiere vender servicios de IA a negocios locales."], ["Necesitás", "La API oficial de WhatsApp Business, un modelo de IA, una base de datos como Supabase y Claude Code."], ["Cuánto cuesta", "La IA se paga por uso y Meta cobra los mensajes de plantilla según la categoría y el país: sumalo a tu abono."], ["Ojo", "No uses herramientas que escanean el QR de WhatsApp Web, y el agente tiene que atender solo temas de ese negocio."]], "secciones": [{"h": "Los 4 agentes", "lista": ["Recepcionista: contesta a toda hora horarios, ubicación, servicios, precios y preguntas frecuentes.", "Ventas: recomienda el producto indicado, resuelve dudas, propone extras y toma pedidos.", "Atención al cliente: da soporte, sigue los reclamos y responde rápido.", "Turnos: convierte un chat en un turno con calendario, confirmación y recordatorio."]}, {"h": "Con qué se arma", "lista": ["La API oficial de WhatsApp Business (la Cloud API de Meta).", "Un modelo de IA, por ejemplo Claude por API.", "Una base de datos para la memoria y los datos del negocio, por ejemplo Supabase.", "Para turnos: un calendario (Google Calendar o Cal.com)."], "aviso": "No uses herramientas que se conectan escaneando el QR de WhatsApp Web: van contra los términos de WhatsApp y te pueden bloquear el número. Además, Meta no permite usar la API para ofrecer chatbots de IA de uso general; sí permite que un negocio use IA para atender a sus propios clientes."}, {"h": "Crealo con Claude Code", "prompts": [{"t": "El agente", "c": "Creame un agente de WhatsApp con la API oficial de Meta para [TIPO DE NEGOCIO]. Rol: [RECEPCIONISTA / VENTAS / ATENCIÓN / TURNOS]. Usá la información del negocio de [ARCHIVO], que solo responda temas de ese negocio, que avise que es un asistente automático, guardá las conversaciones en Supabase, pasale a una persona lo que no sepa y, si es de turnos, consultá y reservá en [CALENDARIO] con confirmación y recordatorio. Respetá la ventana de 24 horas de WhatsApp y usá plantillas aprobadas para los mensajes que inicia el negocio. Dejalo listo para publicar y decime qué variables necesito."}, {"t": "Pruebas", "c": "Escribí 15 mensajes de prueba realistas para este agente, incluidos casos difíciles (enojo, preguntas que no tienen nada que ver, audios), y revisá las respuestas."}]}, {"h": "Reglas que tenés que respetar", "lista": ["Permiso: pedí que el cliente acepte (opt-in) antes de mandarle mensajes que inicia el negocio.", "Transparencia: avisá que responde un asistente automático y ofrecé hablar con una persona.", "Datos: guardá solo lo necesario, explicale al negocio dónde quedan y cumplí la ley de datos personales de tu país.", "Temas delicados: que el agente no dé diagnósticos médicos ni consejos legales o financieros; que lo pase a una persona."]}, {"h": "Cómo ofrecerlo", "pasos": ["Elegí un tipo de negocio de tu zona (consultorios, restaurantes, talleres…).", "Armá una demo con sus datos públicos.", "Mostrásela funcionando en una llamada.", "Cobrá la instalación y un abono mensual por mantenimiento y mejoras."], "prompts": [{"t": "Mensaje al negocio", "c": "Escribí un mensaje corto para el dueño de [NEGOCIO] ofreciéndole una demo gratis de un agente de WhatsApp que responde a sus clientes a toda hora, sin palabras técnicas y sin prometer resultados."}], "aviso": "No hay un precio de referencia ni ventas aseguradas. Calculá tu abono según el trabajo que te lleva, los costos de IA y de Meta, y lo que el agente le ahorra al negocio."}], "faq": [{"q": "¿Cuánto cuesta mantenerlo?", "a": "La IA se paga por uso. Meta cobra cada mensaje de plantilla entregado según la categoría y el país; las respuestas comunes dentro de las 24 horas desde que el cliente te escribe son gratis. Sumalo a tu abono."}, {"q": "¿Necesito saber programar?", "a": "Con Claude Code, poco; sí tenés que entender las piezas y probar bien."}], "usos": [{"e": "Recepción", "c": "azul", "t": "Contesta a toda hora", "d": "Horarios, ubicación, servicios y precios."}, {"e": "Ventas", "c": "verde", "t": "Recomienda y toma pedidos", "d": "Resuelve dudas y propone extras."}, {"e": "Soporte", "c": "morado", "t": "Atención al cliente", "d": "Sigue los reclamos y responde rápido."}, {"e": "Turnos", "c": "naranja", "t": "Del chat a la agenda", "d": "Con confirmación y recordatorio."}], "fuentes": ["https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing", "https://techcrunch.com/2025/10/18/whatssapp-changes-its-terms-to-bar-general-purpose-chatbots-from-its-platform"]};</script>
 
-<script src="../web/rutas.js?v=ab129bc2"></script>
-<script src="../web/logos.js?v=ab129bc2"></script>
-<script src="../web/guia.js?v=ab129bc2"></script>
+<script src="../web/rutas.js?v=14a3efd1"></script>
+<script src="../web/logos.js?v=14a3efd1"></script>
+<script src="../web/guia.js?v=14a3efd1"></script>
 <script>
 (function () {
-  var slug = document.getElementById("guia").dataset.slug;
-  var g = GUIAS_WEB.filter(function (x) { return x.slug === slug; })[0];
-  pintarGuia(document.getElementById("guia"), g);
+  pintarGuia(document.getElementById("guia"), GUIA);
 })();
 </script>
 </body>

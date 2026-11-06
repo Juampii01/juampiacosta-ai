@@ -43,10 +43,10 @@ export default async function handler(req, res) {
   const { clave } = await leerCuerpo(req);
   if (!claveValida(clave, process.env.CLAVES_ACCESO)) return volver("clave");
 
-  const cookie = await crearCookie("clave:" + String(clave).trim().toUpperCase(), "", secreto);
+  const cookie = await crearCookie("clave:" + String(clave).trim().toUpperCase(), "", secreto, "pago");
   res.setHeader("Set-Cookie", [
     `${ACCESS_COOKIE_NAME}=${encodeURIComponent(cookie)}; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; HttpOnly; Secure; SameSite=Lax`,
-    `${AVISO_COOKIE_NAME}=1; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; Secure; SameSite=Lax`
+    `${AVISO_COOKIE_NAME}=pago; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; Secure; SameSite=Lax`
   ]);
   res.statusCode = 303;
   res.setHeader("Location", "/recursos");

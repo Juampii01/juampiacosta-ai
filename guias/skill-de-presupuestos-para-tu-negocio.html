@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena skill-de-presupuestos-para-tu-negocio, Skill de presupuestos para tu negocio, Una skill que arma presupuestos con tu formato, tus precios y tus condiciones. Le pasás el pedido y te devuelve el presupuesto listo para revisar. y ab129bc2 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena skill-de-presupuestos-para-tu-negocio, Skill de presupuestos para tu negocio, Una skill que arma presupuestos con tu formato, tus precios y tus condiciones. Le pasás el pedido y te devuelve el presupuesto listo para revisar. y 14a3efd1 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,29 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/cta.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/biblioteca.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/guia.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/tema.css?v=ab129bc2">
-<script src="../web/tema.js?v=ab129bc2"></script>
+<link rel="stylesheet" href="../web/base.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/cta.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/biblioteca.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/guia.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/tema.css?v=14a3efd1">
+<script src="../web/tema.js?v=14a3efd1"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=ab129bc2"></script>
-<script src="../web/guias-web.js?v=ab129bc2"></script>
-<script src="../web/comun.js?v=ab129bc2"></script>
+<script src="../web/redes.js?v=14a3efd1"></script>
+<script src="../web/guias-web.js?v=14a3efd1"></script>
+<script src="../web/comun.js?v=14a3efd1"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="skill-de-presupuestos-para-tu-negocio"></main>
+<script>var GUIA = {"slug": "skill-de-presupuestos-para-tu-negocio", "t": "Skill de presupuestos para tu negocio", "d": "Una skill que arma presupuestos con tu formato, tus precios y tus condiciones. Le pasás el pedido y te devuelve el presupuesto listo para revisar.", "tema": "Skills", "min": 10, "fichaNombre": "presupuestos", "ficha": [["Qué es", "Una skill con tu formato de presupuesto y un archivo aparte con tu lista de precios."], ["Necesitás", "Skills activadas en la app (o Claude Code) y tu lista de precios al día."], ["Tiempo", "Unos 30 minutos para dejarla andando."], ["Qué no hace", "No manda el presupuesto ni actualiza los precios sola. Vos revisás y enviás."]], "secciones": [{"h": "Qué va a hacer", "p": ["Le escribís algo como \"presupuesto para Laura, 3 cajas del producto A y una instalación\" y la skill busca los precios en tu lista, hace las cuentas, aplica tus condiciones y lo arma con tu formato. Si un ítem no está en la lista, no lo inventa: te lo marca para que lo confirmes."], "lista": ["SKILL.md: el procedimiento, las reglas y el formato.", "references/precios.md: tu lista de precios. Está aparte para que la actualices sin tocar el resto."]}, {"h": "Prepará tus datos", "pasos": ["Tu lista de precios: código, nombre, unidad y precio de cada cosa que vendés.", "Tus condiciones: validez del presupuesto, formas de pago, descuentos, cómo mostrás los impuestos.", "Los datos de tu negocio para el encabezado.", "Un presupuesto real que ya hayas mandado, para copiar el tono y el cierre."]}, {"h": "El SKILL.md", "p": ["Copialo y reemplazá todo lo que está entre corchetes. La carpeta se tiene que llamar presupuestos, igual que el name."], "prompts": [{"t": "presupuestos/SKILL.md", "c": "---\nname: presupuestos\ndescription: Arma presupuestos para clientes de [TU NEGOCIO] con el formato y la lista de precios del negocio. Usala cuando pidan un presupuesto, una cotización o el precio de un trabajo.\n---\n\n# Presupuestos de [TU NEGOCIO]\n\n## Cuándo usarla\n- Cuando te pida un presupuesto o una cotización para un cliente.\n- Cuando te pase un pedido de un cliente y quiera saber cuánto cobrarle.\n\n## Datos que necesitás antes de empezar\nSi falta alguno, preguntalo. No lo inventes.\n1. Nombre del cliente (y empresa, si tiene).\n2. Qué quiere: productos o servicios y cantidades.\n3. Si hay plazo de entrega o fecha especial.\n\n## Pasos\n1. Leé la lista de precios en references/precios.md.\n2. Buscá cada ítem del pedido en la lista. Si un ítem no está, no le pongas precio: anotalo en \"A confirmar\" y avisame.\n3. Calculá subtotal por ítem (precio x cantidad), el total y, si corresponde, el descuento según las reglas de abajo.\n4. Armá el presupuesto con el formato de abajo.\n5. Al final, mostrame las cuentas paso a paso para que las revise.\n\n## Reglas\n- Moneda: [MONEDA]. Escribí los montos con separador de miles.\n- Validez del presupuesto: [CANTIDAD] días desde la fecha.\n- Formas de pago: [EJ.: TRANSFERENCIA, TARJETA].\n- Descuentos: [EJ.: 10% SI EL TOTAL SUPERA TAL MONTO]. No apliques otros.\n- Impuestos: [CÓMO LOS MOSTRÁS: INCLUIDOS O APARTE].\n- Tono: [EJ.: CORDIAL Y PROFESIONAL, TRATO DE USTED].\n- Nunca prometas fechas de entrega que no te haya confirmado.\n\n## Formato\n**[TU NEGOCIO]** | [CONTACTO]\nPresupuesto N.º [NÚMERO] | Fecha: [FECHA]\nCliente: [NOMBRE]\n\n| Ítem | Cantidad | Precio unitario | Subtotal |\n|------|----------|-----------------|----------|\n\nTotal: [TOTAL]\nA confirmar: [ÍTEMS SIN PRECIO, SI HAY]\nCondiciones: validez, formas de pago y plazo.\nCierre: [TU FRASE DE CIERRE HABITUAL]\n\n## Si me pide el archivo\nSi pido el presupuesto en PDF o Word, armalo con el mismo contenido y formato."}]}, {"h": "La lista de precios", "p": ["Creá dentro de la carpeta una subcarpeta references y adentro este archivo. Cuando cambien tus precios, actualizás solo este."], "prompts": [{"t": "presupuestos/references/precios.md", "c": "# Lista de precios de [TU NEGOCIO]\nActualizada: [FECHA]\n\n| Código | Producto o servicio | Unidad | Precio |\n|--------|---------------------|--------|--------|\n| [A01]  | [NOMBRE]            | [UNIDAD] | [PRECIO] |\n| [A02]  | [NOMBRE]            | [UNIDAD] | [PRECIO] |\n\n## Notas\n- [EJ.: EL ENVÍO SE COTIZA APARTE]\n- [EJ.: PEDIDO MÍNIMO]"}], "aviso": "Si preferís no armarlo a mano, pasale a Claude tu lista en Excel o PDF y pedile que la convierta a esta tabla."}, {"h": "Instalala", "pasos": ["Revisá que quede así: presupuestos/SKILL.md y presupuestos/references/precios.md.", "En la app: comprimí la carpeta presupuestos entera (no los archivos sueltos) en un .zip y subila en Personalizar → Skills → + → Crear skill → Subir una skill. Activala.", "En Claude Code: copiá la carpeta a ~/.claude/skills/ para tenerla en todos tus proyectos."], "prompts": [{"t": "Que Claude la arme con tus datos", "c": "Armame la skill presupuestos con esta plantilla: [PEGÁ EL SKILL.MD DE ARRIBA].\nCompletala con mis datos:\n- Negocio y contacto: [DATOS].\n- Condiciones: [VALIDEZ, PAGOS, DESCUENTOS, IMPUESTOS].\n- Un presupuesto que ya mandé: [PEGALO].\nCon esta lista de precios armá references/precios.md: [PEGÁ O ADJUNTÁ LA LISTA].\nEntregame la carpeta presupuestos como .zip, con la carpeta como primer nivel."}]}, {"h": "Usala", "prompts": [{"t": "Pedir un presupuesto", "c": "Presupuesto para [CLIENTE]: [CANTIDAD] de [PRODUCTO], [CANTIDAD] de [SERVICIO]. Entrega en [PLAZO]."}, {"t": "En archivo", "c": "Armá el presupuesto para [CLIENTE] con este pedido y dámelo en PDF: [PEGÁ EL PEDIDO]."}], "aviso": "Revisá siempre las cuentas y los precios antes de mandarlo. La skill te muestra el cálculo para que sea rápido."}], "faq": [{"q": "¿Cómo actualizo los precios?", "a": "Editá references/precios.md. En la app, volvé a comprimir la carpeta y subila de nuevo; en Claude Code el cambio se toma solo."}, {"q": "¿Puede mandarle el presupuesto al cliente?", "a": "Esta skill no lo hace a propósito: te lo deja listo para que lo revises y lo mandes vos."}, {"q": "¿Y si vendo cosas con precio variable?", "a": "Poné en la lista un precio base y en las reglas cómo se calcula el ajuste. Si no hay regla, la skill lo deja en \"A confirmar\"."}], "fuentes": ["https://claude.com/docs/skills/how-to", "https://support.claude.com/en/articles/12512198-creating-custom-skills", "https://support.claude.com/en/articles/12512180-use-skills-in-claude", "https://claude.com/docs/skills/overview", "https://code.claude.com/docs/en/skills"]};</script>
 
-<script src="../web/rutas.js?v=ab129bc2"></script>
-<script src="../web/logos.js?v=ab129bc2"></script>
-<script src="../web/guia.js?v=ab129bc2"></script>
+<script src="../web/rutas.js?v=14a3efd1"></script>
+<script src="../web/logos.js?v=14a3efd1"></script>
+<script src="../web/guia.js?v=14a3efd1"></script>
 <script>
 (function () {
-  var slug = document.getElementById("guia").dataset.slug;
-  var g = GUIAS_WEB.filter(function (x) { return x.slug === slug; })[0];
-  pintarGuia(document.getElementById("guia"), g);
+  pintarGuia(document.getElementById("guia"), GUIA);
 })();
 </script>
 </body>

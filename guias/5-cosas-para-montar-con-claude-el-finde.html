@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena 5-cosas-para-montar-con-claude-el-finde, 5 cosas para montar con Claude este finde, Panel de vida, segundo cerebro, agente de revisión, kit de marca y biblioteca de vida. Cada una con sus pasos y el prompt listo para copiar. y ab129bc2 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena 5-cosas-para-montar-con-claude-el-finde, 5 cosas para montar con Claude este finde, Panel de vida, segundo cerebro, agente de revisión, kit de marca y biblioteca de vida. Cada una con sus pasos y el prompt listo para copiar. y 14a3efd1 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,29 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/cta.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/biblioteca.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/guia.css?v=ab129bc2">
-<link rel="stylesheet" href="../web/tema.css?v=ab129bc2">
-<script src="../web/tema.js?v=ab129bc2"></script>
+<link rel="stylesheet" href="../web/base.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/cta.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/biblioteca.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/guia.css?v=14a3efd1">
+<link rel="stylesheet" href="../web/tema.css?v=14a3efd1">
+<script src="../web/tema.js?v=14a3efd1"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=ab129bc2"></script>
-<script src="../web/guias-web.js?v=ab129bc2"></script>
-<script src="../web/comun.js?v=ab129bc2"></script>
+<script src="../web/redes.js?v=14a3efd1"></script>
+<script src="../web/guias-web.js?v=14a3efd1"></script>
+<script src="../web/comun.js?v=14a3efd1"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="5-cosas-para-montar-con-claude-el-finde"></main>
+<script>var GUIA = {"slug": "5-cosas-para-montar-con-claude-el-finde", "post": "CINCO", "t": "5 cosas para montar con Claude este finde", "d": "Panel de vida, segundo cerebro, agente de revisión, kit de marca y biblioteca de vida. Cada una con sus pasos y el prompt listo para copiar.", "tema": "Productividad", "min": 12, "fichaNombre": "5 herramientas para el finde", "ficha": [["Qué es", "Cinco herramientas que te armás vos en un fin de semana, sin programar."], ["Necesitás", "Cuenta de Claude (mejor un plan pago), la app de escritorio y tu cuenta de Google."], ["Tiempo", "Entre 15 y 40 minutos cada una."], ["Por dónde empezar", "Por el panel de vida: es el que más vas a usar todos los días."]], "secciones": [{"h": "Antes de empezar: conectá tus herramientas", "p": ["Las cinco usan lo mismo, así que hacelo una sola vez: en Claude andá a Configuración → Conectores y conectá Gmail, Google Calendar y Google Drive.", "Si algo no sale a la primera, decíselo a Claude con tus palabras (\"no me muestra los mails de hoy, arreglalo\"). Se corrige solo."]}, {"h": "1. Panel de vida", "p": ["Una sola página con tu día: reuniones, mails importantes y pendientes. Y cada mañana un resumen antes de arrancar."], "pasos": ["Revisá que Gmail y Calendar estén conectados.", "Abrí un chat nuevo y pegá el prompt de abajo.", "Pedile cambios hasta que te guste: \"sacá esto\", \"poné primero los mails de clientes\".", "Para el resumen diario, pedile que lo deje como tarea programada a la hora que quieras. Si tu plan no tiene tareas programadas, guardá el prompt y pegalo cada mañana."], "prompts": [{"t": "Panel de vida", "c": "Armame mi panel de vida en una sola página. Usá mi Google Calendar y mi Gmail.\nQuiero ver:\n1. Mis reuniones de hoy, con hora y con quién.\n2. Los mails importantes que no respondí (no promociones ni newsletters).\n3. Lo que tengo pendiente esta semana.\n4. Arriba de todo, un resumen de 3 líneas: qué es lo más importante hoy.\nQue sea simple, limpio y fácil de leer desde el celular.\nDespués dejalo programado para que todos los días a las [HORA] me mandes ese mismo resumen."}]}, {"h": "2. Segundo cerebro", "p": ["Guardás todo tu papeleo (contratos, seguros, garantías, notas, PDF) y le preguntás cualquier cosa: \"¿cuándo vence mi seguro del auto?\"."], "pasos": ["En Claude, entrá a Proyectos y creá uno llamado Segundo cerebro.", "Subí tus archivos al conocimiento del proyecto, con nombres claros (\"Seguro auto 2026.pdf\").", "En Instrucciones del proyecto pegá el texto de abajo.", "Cuando quieras saber algo, abrí un chat adentro del proyecto y preguntá."], "prompts": [{"t": "Instrucciones del proyecto", "c": "Sos mi segundo cerebro. Tenés todos mis papeles: contratos, seguros, garantías y notas.\nCuando te pregunte algo:\n1. Respondé corto y directo.\n2. Decime de qué documento sacaste la respuesta.\n3. Si hay una fecha de vencimiento o un pago, ponela en negrita.\n4. Si no está en los documentos, decímelo. No inventes."}], "aviso": "Subí solo lo que te sientas cómodo guardando en la nube. Contraseñas, números de tarjeta y datos bancarios no van ahí."}, {"h": "3. Agente de revisión", "p": ["Cada noche te ayuda a repasar qué salió bien y qué no. Cada semana te arma un resumen con qué mejorar."], "pasos": ["Creá un proyecto llamado Revisión y pegá las instrucciones de abajo.", "Cada noche escribí \"revisión\": te hace 3 preguntas y te devuelve el resumen del día.", "El domingo escribí \"resumen semanal\"."], "prompts": [{"t": "Instrucciones del proyecto", "c": "Sos mi agente de revisión.\nCuando escriba \"revisión\":\n1. Mirá mi Google Calendar de hoy.\n2. Haceme 3 preguntas cortas: qué salió bien, qué no salió y qué aprendí.\n3. Con mis respuestas, armá un resumen del día en 5 líneas y guardalo con la fecha.\nCuando escriba \"resumen semanal\":\n1. Juntá las revisiones de la semana.\n2. Decime los 3 patrones que se repiten.\n3. Dame 3 cosas concretas para mejorar la semana que viene.\nSé honesto: si me estoy repitiendo en un error, decímelo directo."}]}, {"h": "4. Kit de marca", "p": ["Le das tu tono y tus valores y te arma colores, tipografías y piezas base. Después lo guardás como skill para que lo use siempre."], "pasos": ["Pegá el prompt de abajo con tus datos.", "Pedile cambios hasta que te guste.", "Pedile: \"Convertí este kit en una skill para que lo uses siempre que te pida algo de mi marca\"."], "prompts": [{"t": "Kit de marca", "c": "Armame el kit de marca de [TU NOMBRE O NEGOCIO].\nA qué me dedico: [EN UNA LÍNEA].\nA quién le hablo: [TU CLIENTE IDEAL].\nMi tono: [EJ.: DIRECTO, CERCANO].\nMis valores: [3 PALABRAS].\nQuiero:\n1. Paleta de 5 colores con código hex y para qué se usa cada uno.\n2. Dos tipografías de Google Fonts: títulos y texto.\n3. Guía de tono: 5 reglas con frases que sí y frases que no.\n4. Tres piezas de muestra: un post de Instagram, la portada de una web y el encabezado de un newsletter.\nMostrámelo todo en una página."}]}, {"h": "5. Biblioteca de vida", "p": ["Un registro de todo lo que leés, mirás y escuchás, con las ideas clave. Después le preguntás \"¿qué aprendí sobre ventas este año?\"."], "pasos": ["Creá un proyecto llamado Biblioteca y pegá las instrucciones de abajo.", "Cada vez que terminás algo, pegale el link, el texto o la transcripción (en YouTube: Más → Mostrar transcripción).", "Cada semana pedile que junte las fichas en un documento y subilo al conocimiento del proyecto."], "prompts": [{"t": "Instrucciones del proyecto", "c": "Sos mi biblioteca de vida.\nCada vez que te pase un libro, artículo, video o podcast, armá una ficha con:\n- Fecha, tipo y título.\n- Autor o canal.\n- Las 3 ideas más importantes, en una línea cada una.\n- Una cosa concreta que puedo aplicar.\n- Etiquetas para encontrarlo después.\nCuando te pregunte algo, buscá en todas las fichas y decime de cuál sale cada idea."}], "aviso": "Claude no mira el video: necesita la transcripción."}], "faq": [{"q": "¿Necesito un plan pago?", "a": "Las tareas programadas y algunos conectores van mejor en los planes pagos. Lo demás funciona igual en el gratis, con menos uso."}], "idea": []};</script>
 
-<script src="../web/rutas.js?v=ab129bc2"></script>
-<script src="../web/logos.js?v=ab129bc2"></script>
-<script src="../web/guia.js?v=ab129bc2"></script>
+<script src="../web/rutas.js?v=14a3efd1"></script>
+<script src="../web/logos.js?v=14a3efd1"></script>
+<script src="../web/guia.js?v=14a3efd1"></script>
 <script>
 (function () {
-  var slug = document.getElementById("guia").dataset.slug;
-  var g = GUIAS_WEB.filter(function (x) { return x.slug === slug; })[0];
-  pintarGuia(document.getElementById("guia"), g);
+  pintarGuia(document.getElementById("guia"), GUIA);
 })();
 </script>
 </body>

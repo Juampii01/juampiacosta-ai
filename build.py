@@ -55,18 +55,44 @@ def validar(guias, prompts, herrs):
         assert x.get("cat") in ("Skills", "MCP", "Herramientas") and x.get("t") and x.get("url") and isinstance(x.get("cmds"), list), f"herramienta incompleta: {x.get('t')}"
 
 
+BLOQUEADO = "🔒 Disponible con el acceso completo."
+
+
 def datos_js(prompts, herrs):
+    """prompts.js y herramientas.js (completos, solo para quien pagó) y sus versiones «vista» para el plan gratis:
+    mismos títulos y descripciones, sin el texto de los prompts ni los comandos. El middleware elige cuál servir."""
+    vista_p = [{**p, "prompts": [{"t": x["t"], "c": BLOQUEADO} for x in p["prompts"]]} for p in prompts]
+    vista_h = [{**h, "cmds": [{"donde": c["donde"], "c": BLOQUEADO} for c in h["cmds"]]} for h in herrs]
+    (WEB / "prompts-vista.js").write_text("// Generado por build.py: vista del plan gratis (sin el texto de los prompts).\n"
+                                          f"var PROMPTS = {json.dumps(vista_p, ensure_ascii=False)};\n")
+    (WEB / "herramientas-vista.js").write_text("// Generado por build.py: vista del plan gratis (sin los comandos).\n"
+                                               f"var HERRAMIENTAS = {json.dumps(vista_h, ensure_ascii=False)};\n")
     (WEB / "prompts.js").write_text("// Generado por build.py desde contenido/base-prompts.json y contenido/lotes/. No editar a mano.\n"
                                     f"var PROMPTS = {json.dumps(prompts, ensure_ascii=False)};\n")
     (WEB / "herramientas.js").write_text("// Generado por build.py desde contenido/base-herramientas.json y contenido/lotes/. No editar a mano.\n"
                                          f"var HERRAMIENTAS = {json.dumps(herrs, ensure_ascii=False)};\n")
 
 
+GRATIS_EXTRA = ["sistema-base-modulo-1-la-oferta"]
+
+
+def es_gratis(g):
+    """Abiertas para quien se registra gratis: las guías de los reels y el Módulo 1 del sistema base."""
+    return bool(g.get("post")) or g["slug"] in GRATIS_EXTRA
+
+
 def guias_web(v):
+    """web/guias-web.js lleva solo los datos para listar (sin el contenido); cada guía lleva su contenido dentro de su página.
+    Así la biblioteca puede mostrar todas las guías, y el middleware decide quién abre cada una."""
     datos = json.loads((WEB / "guias-web.json").read_text())
+    meta = [{k: g[k] for k in ("slug", "t", "d", "tema", "min", "post") if k in g} | ({"gratis": True} if es_gratis(g) else {}) for g in datos]
     (WEB / "guias-web.js").write_text(
-        "// Generado por build.py desde web/guias-web.json. No editar a mano.\n"
-        f"var GUIAS_WEB = {json.dumps(datos, ensure_ascii=False)};\n"
+        "// Generado por build.py: solo título, resumen, tema y minutos de cada guía. El contenido va en guias/<slug>.html.\n"
+        f"var GUIAS_WEB = {json.dumps(meta, ensure_ascii=False)};\n"
+    )
+    (RAIZ / "lib" / "gratis.js").write_text(
+        "// Generado por build.py: guías que abre quien se registra gratis (las de los reels y el Módulo 1).\n"
+        f"export const GUIAS_GRATIS = new Set({json.dumps([g['slug'] for g in datos if es_gratis(g)])});\n"
     )
     carpeta = RAIZ / "guias"
     carpeta.mkdir(exist_ok=True)
@@ -74,8 +100,11 @@ def guias_web(v):
         viejo.unlink()
     plantilla = (WEB / "guia.html").read_text()
     for g in datos:
+        # </script> dentro del texto cortaría el script: se escapa la barra
+        contenido = json.dumps(g, ensure_ascii=False).replace("</", "<\\/")
         pagina = (plantilla.replace("{{SLUG}}", g["slug"]).replace("{{V}}", v)
-                  .replace("{{TITULO}}", html.escape(g["t"])).replace("{{DESC}}", html.escape(g["d"])))
+                  .replace("{{TITULO}}", html.escape(g["t"])).replace("{{DESC}}", html.escape(g["d"]))
+                  .replace("{{GUIA}}", contenido))
         (carpeta / f"{g['slug']}.html").write_text(pagina)
     return len(datos)
 

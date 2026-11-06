@@ -94,3 +94,12 @@ a.v-g:hover, .v-g:hover { transform: translateY(-2px); border-color: rgba(255, 1
   .v-tabs { flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x proximity; margin-right: -16px; padding-right: 16px; }
   .v-g { min-height: 0; }
 }
+
+/* Plan gratis: aviso arriba y guías cerradas */
+.aviso-gratis { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; padding: 16px 20px; border-radius: 18px; margin-bottom: 18px;
+  border: 1px solid rgba(255, 90, 31, .5); background: linear-gradient(90deg, rgba(255, 90, 31, .18), rgba(255, 255, 255, .03)); }
+.aviso-gratis .mono { color: var(--glow); }
+.aviso-gratis span:last-child { color: var(--sky); font-weight: 700; margin-left: auto; }
+.herr.cerrada { opacity: .72; }
+.herr.cerrada:hover { opacity: 1; }
+.herr.cerrada .bajar { color: var(--glow); }
