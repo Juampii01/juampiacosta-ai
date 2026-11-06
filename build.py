@@ -113,7 +113,7 @@ if __name__ == "__main__":
     validar(guias, prompts, herrs)
     rutas = (WEB / "rutas.js").read_text()
     slugs = {g["slug"] for g in guias}
-    faltan = [s for s in re.findall(r'"([a-z0-9-]{8,})"', rutas) if s not in slugs and s not in ("empezar", "conectar", "skills", "claude-code", "negocio", "contenido", "vender")]
+    faltan = [s for s in re.findall(r'"([a-z0-9-]{8,})"', rutas) if s not in slugs and s not in ("empezar", "conectar", "skills", "claude-code", "negocio", "contenido", "vender", "sistema-base")]
     assert not faltan, f"rutas.js nombra guías que no existen: {faltan}"
     (WEB / "guias-web.json").write_text(json.dumps(guias, ensure_ascii=False, indent=1))
     datos_js(prompts, herrs)

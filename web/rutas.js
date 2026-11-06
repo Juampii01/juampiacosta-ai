@@ -4,6 +4,13 @@ var EMPIEZA = ["configura-claude-en-10-minutos", "las-formas-de-usar-claude", "5
 
 var RUTAS = [
   {
+    id: "sistema-base", color: "azul", t: "El sistema base para vender IA a negocios",
+    d: "El método completo, módulo por módulo: la oferta, a quién venderle, el primer mensaje, el diagnóstico, la propuesta, la instalación, la entrega y el mantenimiento.",
+    pasos: ["sistema-base-modulo-1-la-oferta", "sistema-base-modulo-2-elegir-a-quien-venderle", "sistema-base-modulo-3-el-primer-mensaje",
+            "sistema-base-modulo-4-la-llamada-de-diagnostico", "sistema-base-modulo-5-propuesta-y-precio", "sistema-base-modulo-6-la-instalacion-paso-a-paso",
+            "sistema-base-modulo-7-entrega-y-capacitacion", "sistema-base-modulo-8-mantenimiento-mensual", "sistema-base-modulo-9-contrato-y-cuidados"]
+  },
+  {
     id: "empezar", color: "azul", t: "Empezá con Claude",
     d: "De cero a usarlo todos los días: configurarlo, elegir el modelo, pedirle bien y que tu plan rinda.",
     pasos: ["configura-claude-en-10-minutos", "las-formas-de-usar-claude", "que-modelo-de-claude-uso", "formula-para-pedirle-bien-a-claude",

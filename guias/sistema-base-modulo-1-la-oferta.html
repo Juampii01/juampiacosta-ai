@@ -1,0 +1,39 @@
+<!doctype html>
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena sistema-base-modulo-1-la-oferta, Módulo 1 · La oferta: Claude instalado en tu negocio, Qué vendés, qué entra en el paquete y qué queda afuera. Al final tenés una frase para presentarlo sin vueltas. y cc830bfe -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Módulo 1 · La oferta: Claude instalado en tu negocio | juampiacosta.ai</title>
+<meta name="description" content="Qué vendés, qué entra en el paquete y qué queda afuera. Al final tenés una frase para presentarlo sin vueltas.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../web/base.css?v=cc830bfe">
+<link rel="stylesheet" href="../web/cta.css?v=cc830bfe">
+<link rel="stylesheet" href="../web/biblioteca.css?v=cc830bfe">
+<link rel="stylesheet" href="../web/guia.css?v=cc830bfe">
+<link rel="stylesheet" href="../web/tema.css?v=cc830bfe">
+<script src="../web/tema.js?v=cc830bfe"></script>
+</head>
+<body>
+<div class="fondo"></div>
+<script src="../web/redes.js?v=cc830bfe"></script>
+<script src="../web/guias-web.js?v=cc830bfe"></script>
+<script src="../web/comun.js?v=cc830bfe"></script>
+<script>document.write(cabecera());</script>
+
+<main class="lectura" id="guia" data-slug="sistema-base-modulo-1-la-oferta"></main>
+
+<script src="../web/rutas.js?v=cc830bfe"></script>
+<script src="../web/logos.js?v=cc830bfe"></script>
+<script src="../web/guia.js?v=cc830bfe"></script>
+<script>
+(function () {
+  var slug = document.getElementById("guia").dataset.slug;
+  var g = GUIAS_WEB.filter(function (x) { return x.slug === slug; })[0];
+  pintarGuia(document.getElementById("guia"), g);
+})();
+</script>
+</body>
+</html>
