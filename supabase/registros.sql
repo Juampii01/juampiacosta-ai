@@ -21,12 +21,14 @@ alter table public.registros enable row level security;
 
 create index if not exists registros_creado_idx on public.registros (creado desc);
 
--- Datos del formulario de registro (agregado nov-2026)
+-- Formulario de bienvenida (web/bienvenida.js -> api/perfil.js), agregado nov-2026
 alter table public.registros
-  add column if not exists whatsapp text check (length(whatsapp) <= 25),
-  add column if not exists pais     text check (length(pais) <= 40),
-  add column if not exists perfil   text check (length(perfil) <= 60),
-  add column if not exists rubro    text check (length(rubro) <= 80),
-  add column if not exists nivel    text check (length(nivel) <= 60),
-  add column if not exists objetivo text check (length(objetivo) <= 60),
+  add column if not exists whatsapp  text check (length(whatsapp) <= 25),
+  add column if not exists pais      text check (length(pais) <= 40),
+  add column if not exists situacion text check (length(situacion) <= 60),
+  add column if not exists rubro     text check (length(rubro) <= 80),
+  add column if not exists nivel     text check (length(nivel) <= 60),
+  add column if not exists objetivo  text check (length(objetivo) <= 60),
+  add column if not exists horas     text check (length(horas) <= 40),
+  add column if not exists perfil_completo boolean not null default false,
   add column if not exists actualizado timestamptz;

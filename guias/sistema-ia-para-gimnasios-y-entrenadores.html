@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena sistema-ia-para-gimnasios-y-entrenadores, Sistema con Claude para gimnasios y entrenadores, Consultas de nuevos socios, seguimiento de los que dejan de venir, planes armados en borrador y contenido: el sistema para un gimnasio o un entrenador personal. y 3db65d83 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena sistema-ia-para-gimnasios-y-entrenadores, Sistema con Claude para gimnasios y entrenadores, Consultas de nuevos socios, seguimiento de los que dejan de venir, planes armados en borrador y contenido: el sistema para un gimnasio o un entrenador personal. y 3e4c4cfb -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,26 +9,26 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=3db65d83">
-<link rel="stylesheet" href="../web/cta.css?v=3db65d83">
-<link rel="stylesheet" href="../web/biblioteca.css?v=3db65d83">
-<link rel="stylesheet" href="../web/guia.css?v=3db65d83">
-<link rel="stylesheet" href="../web/tema.css?v=3db65d83">
-<script src="../web/tema.js?v=3db65d83"></script>
+<link rel="stylesheet" href="../web/base.css?v=3e4c4cfb">
+<link rel="stylesheet" href="../web/cta.css?v=3e4c4cfb">
+<link rel="stylesheet" href="../web/biblioteca.css?v=3e4c4cfb">
+<link rel="stylesheet" href="../web/guia.css?v=3e4c4cfb">
+<link rel="stylesheet" href="../web/tema.css?v=3e4c4cfb">
+<script src="../web/tema.js?v=3e4c4cfb"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=3db65d83"></script>
-<script src="../web/guias-web.js?v=3db65d83"></script>
-<script src="../web/comun.js?v=3db65d83"></script>
+<script src="../web/redes.js?v=3e4c4cfb"></script>
+<script src="../web/guias-web.js?v=3e4c4cfb"></script>
+<script src="../web/comun.js?v=3e4c4cfb"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="sistema-ia-para-gimnasios-y-entrenadores"></main>
 <script>var GUIA = {"slug": "sistema-ia-para-gimnasios-y-entrenadores", "t": "Sistema con Claude para gimnasios y entrenadores", "d": "Consultas de nuevos socios, seguimiento de los que dejan de venir, planes armados en borrador y contenido: el sistema para un gimnasio o un entrenador personal.", "tema": "Vender IA", "min": 8, "fichaNombre": "Gimnasios", "ficha": [["Qué es", "Un asistente con los planes, horarios y la forma de entrenar del lugar para atender, retener y comunicar."], ["Necesitás", "Una cuenta de Claude del negocio (las tareas programadas piden plan pago), sus documentos y las cuentas de Google que ya usan."], ["Tiempo", "Ejemplo: una tarde para la demo y una o dos semanas de ajustes con el dueño."], ["Qué no hace", "No reemplaza la evaluación del entrenador ni da indicaciones a personas con lesiones o problemas de salud."]], "secciones": [{"h": "Lo que les come el tiempo", "lista": ["Consultas de precio, horarios y clases de prueba.", "Socios que dejan de venir y nadie les escribe.", "Armar rutinas o planes semanales, uno por uno.", "Recordar cuotas vencidas sin sonar a reclamo.", "Contenido para redes todas las semanas.", "Organizar horarios de clases y cambios de profes."]}, {"h": "El sistema", "lista": ["Proyecto \"Gimnasio\": planes y precios, grilla de clases, reglas, la metodología del entrenador y plantillas de rutinas que él mismo armó.", "Skill de consultas y clase de prueba: responde y propone un horario para la primera clase.", "Skill de retención: con la lista de socios que no vinieron en dos semanas, arma un mensaje personal para cada uno.", "Skill de borrador de plan: arma un plan semanal a partir de las plantillas del entrenador y los datos que él carga. Siempre lo revisa el entrenador.", "Conectores: Google Drive para la planilla de asistencia y Google Calendar para la grilla de clases.", "Automatización: una tarea programada que los lunes lista quién no vino la semana anterior y deja los mensajes listos."], "aviso": "Las skills necesitan que esté prendida la ejecución de código (Settings → Capabilities). Las tareas programadas están en los planes pagos. Revisá la ayuda oficial antes de prometer algo que depende del plan del cliente."}, {"h": "Prompts y skills listos", "prompts": [{"t": "Mensaje para socio que dejó de venir", "c": "Estos socios no vinieron en las últimas 2 semanas: [LISTA CON NOMBRE, PLAN Y ÚLTIMA VEZ QUE VINO].\nPara cada uno, escribí un mensaje de 2 o 3 líneas, cercano y sin culpa, que pregunte cómo está y ofrezca algo concreto (un horario nuevo, una clase distinta, una charla con el profe).\nNada de \"te extrañamos\" genérico ni descuentos, salvo que te lo indique."}, {"t": "Borrador de plan semanal", "c": "Datos que cargó el entrenador: objetivo [OBJETIVO], días disponibles [DÍAS], nivel [NIVEL], equipamiento [EQUIPO].\nUsá solo las plantillas y ejercicios del Proyecto.\nArmá un borrador de plan semanal en tabla: día, bloque, ejercicio, series y repeticiones.\nArriba de todo poné: BORRADOR PARA REVISAR POR EL ENTRENADOR.\nSi el entrenador mencionó una lesión o un tema de salud, no armes el plan: decí que eso lo evalúa él."}, {"t": "Respuesta a consulta nueva", "c": "Llegó esta consulta: [PEGÁ].\nRespondé con planes, precios y horarios del Proyecto, en voseo y en 4 líneas como máximo.\nTerminá ofreciendo dos horarios para una clase de prueba.\nSi pregunta algo de salud o de una lesión, decí que lo charla con el entrenador en la primera clase."}]}, {"h": "Cómo instalarlo", "pasos": ["Pedile al entrenador sus plantillas de rutinas y su forma de trabajar por escrito. Sin eso, Claude arma planes genéricos.", "Armá el Proyecto \"Gimnasio\" con planes, grilla y reglas.", "Ordená la asistencia en una planilla de Google Drive (aunque sea simple: nombre, plan, última visita).", "Probá las tres skills con casos reales y ajustá el tono con el dueño.", "Conectá Drive y Calendar y programá la tarea de los lunes.", "Acordá quién manda los mensajes y quién aprueba los planes."]}, {"h": "Cómo ofrecérselo", "prompts": [{"t": "Mensaje de primer contacto", "c": "Hola [NOMBRE], soy [TU NOMBRE]. Armo sistemas con Claude para gimnasios y entrenadores.\nUna de las cosas que más se repite es que la gente deja de venir y nadie se entera a tiempo. Lo que hago es dejarte un asistente que todos los lunes te dice quién no vino y te deja el mensaje listo, responde las consultas nuevas y te arma borradores de planes con tu forma de entrenar. Vos revisás y decidís.\n¿Te muestro cómo quedaría con tu lista de esta semana?"}], "lista": ["Argumento central: \"Te enterás a tiempo de quién se está yendo y tus mensajes salen con tu estilo, sin que dependas de acordarte.\"", "Para entrenadores solos: el ahorro está en los planes y las consultas; para gimnasios, en retener socios."]}, {"h": "Cuidados del rubro", "lista": ["Salud: lesiones, enfermedades o embarazo los evalúa el profesional. Claude no arma planes para esos casos.", "Datos de socios: la planilla de asistencia tiene datos personales. Compartí solo lo necesario.", "Publicidad: nada de prometer kilos o resultados en tiempos determinados."], "aviso": "Claude no reemplaza al entrenador ni al médico. Todo plan lo revisa un profesional, y los datos de los socios se cuidan según las leyes de cada país."}], "faq": [{"q": "¿Claude puede armar rutinas sin el entrenador?", "a": "Puede, pero no deberías venderlo así. El valor está en que use la metodología del entrenador y que él apruebe cada plan."}, {"q": "¿Y si usan un sistema de gestión de socios?", "a": "Exportá la asistencia a una planilla. Antes de prometer una conexión directa, fijate si ese sistema tiene conector oficial para Claude."}], "fuentes": ["https://support.claude.com/en/articles/9517075-what-are-projects", "https://support.claude.com/en/articles/12512180-use-skills-in-claude", "https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities", "https://support.claude.com/en/articles/10166901-use-google-workspace-connectors", "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork"]};</script>
 
-<script src="../web/rutas.js?v=3db65d83"></script>
-<script src="../web/logos.js?v=3db65d83"></script>
-<script src="../web/guia.js?v=3db65d83"></script>
+<script src="../web/rutas.js?v=3e4c4cfb"></script>
+<script src="../web/logos.js?v=3e4c4cfb"></script>
+<script src="../web/guia.js?v=3e4c4cfb"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

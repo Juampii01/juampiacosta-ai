@@ -1,4 +1,4 @@
-// Registro gratis. POST /api/registro (formulario: nombre, email, whatsapp, pais, perfil, rubro, nivel, objetivo y utm_* del link).
+// Registro gratis con email. POST /api/registro (formulario: nombre, email, y opcionales utm_* del link).
 // Guarda a la persona en la tabla «registros» de Supabase y le da la cookie de nivel «gratis»: abre las guías de los reels
 // y el Módulo 1, y ve el resto bloqueado. Si ya tenía acceso pago, no se lo baja.
 // Variables en Vercel: ACCESS_SECRET, SUPABASE_URL y SUPABASE_SECRET_KEY (la «secret key» sb_secret_… de Supabase; también sirve la vieja SUPABASE_SERVICE_ROLE_KEY). Nunca en el navegador ni en el código.
@@ -9,35 +9,16 @@ import { permitido } from "./entrar.js";
 const EMAIL = /^[^\s@]{1,64}@[^\s@]{1,190}\.[^\s@]{2,}$/;
 const UTM = ["utm_source", "utm_medium", "utm_campaign", "utm_content"];
 
-// Opciones de cada desplegable del formulario (las mismas que en web/inicio.html). Lo que no esté acá no se guarda.
-export const OPCIONES = {
-  pais: ["Argentina", "México", "Colombia", "Chile", "Perú", "Uruguay", "Ecuador", "Venezuela", "España", "Estados Unidos", "Otro"],
-  perfil: ["Tengo un negocio", "Trabajo en una empresa", "Freelancer o agencia", "Quiero vender IA a empresas", "Estudiante", "Otro"],
-  nivel: ["Nunca usé IA", "Uso ChatGPT o Claude a veces", "La uso todos los días", "Ya armo automatizaciones o agentes"],
-  objetivo: ["Ahorrar tiempo en mi negocio", "Vender servicios de IA", "Conseguir trabajo con IA", "Aprender", "Que me lo instalen en mi negocio"]
-};
-const WHATSAPP = /^\+?[0-9 ()-]{8,25}$/;
-const texto = (v, max) => String(v || "").trim().replace(/\s+/g, " ").slice(0, max);
-
-// Devuelve { fila } o { error } con el código que muestra la portada
 export function limpiarRegistro(cuerpo) {
   const email = String(cuerpo.email || "").trim().toLowerCase();
-  if (!EMAIL.test(email) || email.length > 254) return { error: "email" };
-  const nombre = texto(cuerpo.nombre, 80);
-  if (!nombre) return { error: "datos" };
-  const whatsapp = texto(cuerpo.whatsapp, 25);
-  if (!WHATSAPP.test(whatsapp) || whatsapp.replace(/\D/g, "").length < 8) return { error: "whatsapp" };
-  const fila = { email, nombre, whatsapp, rubro: texto(cuerpo.rubro, 80) || null, origen: "web", actualizado: new Date().toISOString() };
-  for (const [k, lista] of Object.entries(OPCIONES)) {
-    const v = texto(cuerpo[k], 60);
-    if (!lista.includes(v)) return { error: "datos" };
-    fila[k] = v;
-  }
+  if (!EMAIL.test(email) || email.length > 254) return null;
+  const nombre = String(cuerpo.nombre || "").trim().replace(/\s+/g, " ").slice(0, 80);
+  const fila = { email, nombre: nombre || null, origen: "web" };
   for (const k of UTM) {
-    const v = texto(cuerpo[k], 120);
+    const v = String(cuerpo[k] || "").trim().slice(0, 120);
     if (v) fila[k] = v;
   }
-  return { fila };
+  return fila;
 }
 
 async function leerCuerpo(req) {
@@ -48,10 +29,10 @@ async function leerCuerpo(req) {
   return Object.fromEntries(new URLSearchParams(texto));
 }
 
-// Inserta en Supabase por su API REST. Si el email ya estaba, actualiza sus datos sin duplicarlo (merge-duplicates sobre la columna única email).
+// Inserta en Supabase por su API REST. Si el email ya estaba, no lo duplica (ignore-duplicates sobre la columna única email).
 // Las claves nuevas (sb_secret_…) no son JWT: van solo en «apikey». Las viejas (service_role, empiezan con eyJ) también en Authorization.
 export function cabeceras(clave) {
-  const h = { apikey: clave, "Content-Type": "application/json", Prefer: "resolution=merge-duplicates,return=minimal" };
+  const h = { apikey: clave, "Content-Type": "application/json", Prefer: "resolution=ignore-duplicates,return=minimal" };
   if (clave.startsWith("eyJ")) h.Authorization = `Bearer ${clave}`;
   return h;
 }
@@ -77,8 +58,8 @@ export default async function handler(req, res) {
   const clave = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!secreto || !url || !clave) { console.error("Faltan variables: ACCESS_SECRET, SUPABASE_URL o SUPABASE_SECRET_KEY"); return volver("config"); }
 
-  const { fila, error } = limpiarRegistro(await leerCuerpo(req));
-  if (error) return volver(error);
+  const fila = limpiarRegistro(await leerCuerpo(req));
+  if (!fila) return volver("email");
 
   try {
     await guardarEnSupabase(fila, { url, clave });
@@ -93,7 +74,9 @@ export default async function handler(req, res) {
     const cookie = await crearCookie(fila.email, fila.nombre || "", secreto, "gratis");
     res.setHeader("Set-Cookie", [
       `${ACCESS_COOKIE_NAME}=${encodeURIComponent(cookie)}; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; HttpOnly; Secure; SameSite=Lax`,
-      `${AVISO_COOKIE_NAME}=gratis; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; Secure; SameSite=Lax`
+      `${AVISO_COOKIE_NAME}=gratis; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; Secure; SameSite=Lax`,
+      // Primer nombre legible por la página: el formulario de bienvenida saluda con él
+      `jpa_nombre=${encodeURIComponent((fila.nombre || "").split(" ")[0].slice(0, 30))}; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; Secure; SameSite=Lax`
     ]);
   }
   res.statusCode = 303;

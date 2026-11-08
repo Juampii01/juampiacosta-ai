@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena artifacts-apps-sin-programar, Artifacts: herramientas para tu negocio sin programar, Pedile a Claude una calculadora, un cotizador o un tablero y te lo arma al lado del chat. Después lo publicás o lo compartís con tu equipo. y 3db65d83 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena artifacts-apps-sin-programar, Artifacts: herramientas para tu negocio sin programar, Pedile a Claude una calculadora, un cotizador o un tablero y te lo arma al lado del chat. Después lo publicás o lo compartís con tu equipo. y 3e4c4cfb -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,26 +9,26 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=3db65d83">
-<link rel="stylesheet" href="../web/cta.css?v=3db65d83">
-<link rel="stylesheet" href="../web/biblioteca.css?v=3db65d83">
-<link rel="stylesheet" href="../web/guia.css?v=3db65d83">
-<link rel="stylesheet" href="../web/tema.css?v=3db65d83">
-<script src="../web/tema.js?v=3db65d83"></script>
+<link rel="stylesheet" href="../web/base.css?v=3e4c4cfb">
+<link rel="stylesheet" href="../web/cta.css?v=3e4c4cfb">
+<link rel="stylesheet" href="../web/biblioteca.css?v=3e4c4cfb">
+<link rel="stylesheet" href="../web/guia.css?v=3e4c4cfb">
+<link rel="stylesheet" href="../web/tema.css?v=3e4c4cfb">
+<script src="../web/tema.js?v=3e4c4cfb"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=3db65d83"></script>
-<script src="../web/guias-web.js?v=3db65d83"></script>
-<script src="../web/comun.js?v=3db65d83"></script>
+<script src="../web/redes.js?v=3e4c4cfb"></script>
+<script src="../web/guias-web.js?v=3e4c4cfb"></script>
+<script src="../web/comun.js?v=3e4c4cfb"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="artifacts-apps-sin-programar"></main>
 <script>var GUIA = {"slug": "artifacts-apps-sin-programar", "t": "Artifacts: herramientas para tu negocio sin programar", "d": "Pedile a Claude una calculadora, un cotizador o un tablero y te lo arma al lado del chat. Después lo publicás o lo compartís con tu equipo.", "tema": "Claude", "min": 9, "fichaNombre": "Artifacts", "ficha": [["Qué es", "Lo que Claude te arma para mostrar o usar: documentos, páginas, tableros, diagramas o herramientas chicas."], ["Necesitás", "Tener activado \"Cloud code execution and file creation\". Crear artifacts está en todos los planes."], ["Qué no hace", "No reemplaza un sistema grande con base de datos y usuarios propios."]], "secciones": [{"h": "Activalos", "pasos": ["En planes Free, Pro y Max: Settings → Capabilities.", "En Team y Enterprise: Organization settings → Capabilities (lo hace quien administra).", "Activá Cloud code execution and file creation."], "p": ["Los nombres de los menús están como aparecen en la ayuda oficial de Claude (en inglés). Si tenés Claude en español, vas a ver la traducción en el mismo lugar."]}, {"h": "Ideas para un negocio", "lista": ["Cotizador: el cliente elige opciones y ve el precio estimado.", "Calculadora de márgenes: cargás costo y precio y te muestra la ganancia.", "Checklist de onboarding: los pasos para un cliente o empleado nuevo, con casillas para tildar.", "Tablero de ventas: pegás tus números y lo ves en gráficos.", "Página de un servicio: una landing simple para mostrar una oferta."], "prompts": [{"t": "Cotizador para tu negocio", "c": "Armame un cotizador interactivo para [TU NEGOCIO].\nMis servicios y precios base son: [LISTA DE SERVICIOS CON PRECIO].\nOpciones que suman al precio: [EJ.: URGENCIA, CANTIDAD, EXTRAS].\nQuiero que el cliente elija las opciones y vea el total al instante, con un botón que diga \"Pedir este presupuesto\".\nQue se vea limpio, se lea bien en el celular y esté todo en español."}]}, {"h": "Mejoralo y descargalo", "lista": ["Pedí cambios en el chat: \"poné el total más grande\", \"agregá un campo para el nombre\".", "En documentos, marcá un texto y tocá Edit with Claude para cambiar solo esa parte.", "Si aparece un error, tocá Try fixing with Claude.", "Todo lo que creaste queda en la pestaña Artifacts de la barra lateral.", "Los artifacts hechos con plantillas se exportan con Export: documentos a Word, PDF o Google Docs; presentaciones a PowerPoint o PDF."]}, {"h": "Artifacts que usan Claude y guardan datos", "p": ["Un artifact puede llamar a Claude por dentro: por ejemplo, un generador de respuestas para clientes. Cada persona que lo usa gasta de su propio plan, no del tuyo, y no necesitás claves de API.", "En los planes pagos un artifact también puede guardar datos entre sesiones: privados para cada persona o compartidos para todos. El límite es de 20 MB por artifact y solo texto."]}, {"h": "Compartilo", "pasos": ["Free, Pro y Max: abrí el artifact, revisá que sea la versión correcta y tocá Publish. Copiá el link.", "Para meterlo en tu web: Get embed code, y en Allowed domains poné las direcciones de tu sitio.", "Team y Enterprise: tocá Share y después Share & copy link. Solo lo ven personas de tu organización."], "aviso": "Un artifact publicado lo puede ver cualquiera que tenga el link. Si lo despublicás con Unpublish, no lo podés volver a publicar y se borran sus datos guardados. En Team, quien lo ve también accede a los archivos del chat de origen: revisá que no haya nada sensible."}], "faq": [{"q": "¿La persona que usa mi artifact necesita cuenta de Claude?", "a": "Para verlo y usarlo, no. Se le pide cuenta solo para funciones como personalizarlo o las partes que usan IA."}, {"q": "¿Puedo conectar un artifact a mi Google Calendar?", "a": "En los planes pagos, sí: se puede conectar a tus apps conectadas. Cada persona conecta las suyas."}, {"q": "No me aparece la opción de crear artifacts", "a": "Revisá que esté activado Cloud code execution and file creation en Settings → Capabilities."}], "fuentes": ["https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them", "https://support.claude.com/en/articles/9547008-publishing-and-sharing-artifacts"]};</script>
 
-<script src="../web/rutas.js?v=3db65d83"></script>
-<script src="../web/logos.js?v=3db65d83"></script>
-<script src="../web/guia.js?v=3db65d83"></script>
+<script src="../web/rutas.js?v=3e4c4cfb"></script>
+<script src="../web/logos.js?v=3e4c4cfb"></script>
+<script src="../web/guia.js?v=3e4c4cfb"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

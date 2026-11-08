@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena oficina-de-agentes-ia, Tu oficina de agentes de IA: gratis, de código abierto y en tu compu, Munder Difflin junta los agentes que ya usás (Claude Code, Codex, Gemini, Grok, Kimi, Cursor…) en una oficina: un orquestador reparte el trabajo, cada agente tiene memoria y buzón, y los ves trabajar. y 3db65d83 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena oficina-de-agentes-ia, Tu oficina de agentes de IA: gratis, de código abierto y en tu compu, Munder Difflin junta los agentes que ya usás (Claude Code, Codex, Gemini, Grok, Kimi, Cursor…) en una oficina: un orquestador reparte el trabajo, cada agente tiene memoria y buzón, y los ves trabajar. y 3e4c4cfb -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,26 +9,26 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=3db65d83">
-<link rel="stylesheet" href="../web/cta.css?v=3db65d83">
-<link rel="stylesheet" href="../web/biblioteca.css?v=3db65d83">
-<link rel="stylesheet" href="../web/guia.css?v=3db65d83">
-<link rel="stylesheet" href="../web/tema.css?v=3db65d83">
-<script src="../web/tema.js?v=3db65d83"></script>
+<link rel="stylesheet" href="../web/base.css?v=3e4c4cfb">
+<link rel="stylesheet" href="../web/cta.css?v=3e4c4cfb">
+<link rel="stylesheet" href="../web/biblioteca.css?v=3e4c4cfb">
+<link rel="stylesheet" href="../web/guia.css?v=3e4c4cfb">
+<link rel="stylesheet" href="../web/tema.css?v=3e4c4cfb">
+<script src="../web/tema.js?v=3e4c4cfb"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=3db65d83"></script>
-<script src="../web/guias-web.js?v=3db65d83"></script>
-<script src="../web/comun.js?v=3db65d83"></script>
+<script src="../web/redes.js?v=3e4c4cfb"></script>
+<script src="../web/guias-web.js?v=3e4c4cfb"></script>
+<script src="../web/comun.js?v=3e4c4cfb"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="oficina-de-agentes-ia"></main>
 <script>var GUIA = {"slug": "oficina-de-agentes-ia", "t": "Tu oficina de agentes de IA: gratis, de código abierto y en tu compu", "d": "Munder Difflin junta los agentes que ya usás (Claude Code, Codex, Gemini, Grok, Kimi, Cursor…) en una oficina: un orquestador reparte el trabajo, cada agente tiene memoria y buzón, y los ves trabajar.", "tema": "Automatizar", "min": 8, "fichaNombre": "Munder Difflin", "ficha": [["Qué es", "Una app que junta tus agentes (Claude Code, Codex, Gemini, Grok, Kimi, Cursor…) en una oficina con orquestador, memoria y buzón."], ["Necesitás", "Mac, Windows o Linux y al menos un agente de terminal como Claude Code."], ["Cuánto cuesta", "La versión Classic es gratis y de código abierto (MIT); pagás tus suscripciones a los agentes. Hay una versión Pro paga."], ["Ojo", "Está en etapa previa (pre-release): puede tener errores. Dale acceso solo a carpetas de proyecto."], ["Repo", "github.com/chaitanyagiri/munder-difflin"]], "secciones": [{"h": "Qué es", "p": ["Munder Difflin es una app de escritorio gratis y de código abierto (MIT) que arma un equipo con los agentes de programación de terminal que ya pagás. Cada agente es un programa real corriendo en su propia terminal: la app los coordina y los muestra como personajes en una oficina en 2D."], "lista": ["Repositorio: <a href=\"https://github.com/chaitanyagiri/munder-difflin\" target=\"_blank\" rel=\"noopener\">github.com/chaitanyagiri/munder-difflin ↗<\/a>", "Web: <a href=\"https://munderdiffl.in/\" target=\"_blank\" rel=\"noopener\">munderdiffl.in ↗<\/a>"]}, {"h": "Qué agentes podés sumar", "lista": ["Claude Code", "Codex (OpenAI)", "Gemini CLI y Antigravity (Google)", "Grok (xAI)", "Kimi Code", "Cursor", "También Qwen, OpenCode, Crush, pi.dev, GitHub Copilot CLI, modelos locales con Ollama, LM Studio o vLLM, y cualquier comando propio."], "aviso": "Usa tus suscripciones y sus límites: la oficina no te regala agentes, organiza los que ya tenés."}, {"h": "Cómo funciona", "lista": ["Michael, tu clon: es el único agente al que le hablás. Le das el objetivo, lo divide en tareas y se las pasa al agente que corresponde.", "Tablero compartido: tareas en columnas que todos los agentes pueden ver.", "Buzón por agente: los agentes se mandan mensajes entre ellos.", "Aprobaciones: lo delicado (gastos, cambios de alcance y acciones que borran cosas) llega a una cola para que decidas vos.", "Memoria: cada agente guarda en tu compu, en notas de texto, lo que aprendió. Cerrás la app y al otro día se acuerdan.", "La oficina visual: ves a cada agente trabajando en su escritorio.", "Freno de gasto: presupuesto de tokens por agente y un corte automático si un agente se traba en un bucle o gasta de más."]}, {"h": "Instalalo", "pasos": ["Descargá la app para Mac, Windows o Linux desde harnessmd.com/download (o desde la página de releases del repositorio).", "Abrila: el asistente de inicio revisa qué tenés instalado y te ofrece instalar lo que falta.", "Fijate que los agentes que querés usar (por ejemplo claude o codex) funcionen en la terminal con tu cuenta activa.", "Abrí una carpeta de proyecto: cada carpeta es un «piso» de la oficina, con sus propios agentes, tablero y memoria.", "Sumá 2 o 3 agentes para empezar."], "prompts": [{"t": "Que Claude te ayude", "c": "Quiero usar Munder Difflin (github.com/chaitanyagiri/munder-difflin) con Claude Code y [OTRO AGENTE]. Uso [MAC/WINDOWS/LINUX]. Guiame para instalar los agentes que me falten, comprobar que funcionan en la terminal y armar mi primera oficina con un proyecto de prueba."}]}, {"h": "Tu primer encargo", "p": ["Arrancá con algo chico y fácil de revisar."], "prompts": [{"t": "Objetivo para el orquestador", "c": "Objetivo: creá una landing de una página para [NEGOCIO] con formulario de contacto. Repartí: un agente diseña y construye, otro revisa errores y accesibilidad, otro escribe los textos. Avisame solo para aprobar el diseño y antes de publicar cualquier cosa."}], "lista": ["Mirá el tablero de tareas para ver cómo se repartió.", "Respondé en la cola de aprobaciones cuando te necesite.", "Revisá el resultado antes de darlo por bueno."]}, {"h": "Cómo explicárselo a un cliente", "p": ["Si vendés sistemas de IA a empresas, la oficina sirve para que el cliente entienda de un vistazo cómo trabajan los agentes: él pone el objetivo, el orquestador reparte, los agentes trabajan y él los ve."], "prompts": [{"t": "Explicación para un cliente", "c": "Explicale a un cliente de [RUBRO] en 5 frases simples cómo funcionaría una oficina de agentes de IA en su empresa: qué objetivos les daría, qué hace cada agente, qué decide él y qué riesgos controlamos."}]}, {"h": "Lo que conviene saber", "lista": ["Está en etapa previa (pre-release): puede tener errores.", "Los agentes corren en tu compu: si la apagás, se frenan.", "Hay una versión Pro paga con más funciones (por ejemplo, transcripción de reuniones). La versión Classic es gratis.", "Cada agente gasta de su propio plan: vigilá los límites y usá el freno de gasto.", "Configurá qué puede hacer cada agente solo y qué tiene que consultarte.", "Dale acceso solo a carpetas de proyecto, no a todo tu disco."]}], "faq": [{"q": "¿Es gratis?", "a": "La versión Classic sí, y es de código abierto. Pagás tus suscripciones a los agentes; la versión Pro es paga."}, {"q": "¿Necesito programar?", "a": "Para usarla no, pero sí tener instalado al menos un agente de terminal como Claude Code."}, {"q": "¿Funciona en Windows?", "a": "Sí: Mac, Windows y Linux."}], "usos": [{"e": "Orquestar", "c": "azul", "t": "Tu clon reparte el trabajo", "d": "Le das el objetivo y lo divide entre los agentes."}, {"e": "Tablero", "c": "morado", "t": "Tareas compartidas", "d": "Todos los agentes ven el mismo tablero."}, {"e": "Aprobaciones", "c": "verde", "t": "Lo que necesita tu decisión", "d": "Gastos y acciones delicadas te llegan para que decidas."}, {"e": "Clientes", "c": "naranja", "t": "Explicar los agentes", "d": "Para que un cliente vea cómo funciona la automatización."}], "fuentes": ["https://github.com/chaitanyagiri/munder-difflin"]};</script>
 
-<script src="../web/rutas.js?v=3db65d83"></script>
-<script src="../web/logos.js?v=3db65d83"></script>
-<script src="../web/guia.js?v=3db65d83"></script>
+<script src="../web/rutas.js?v=3e4c4cfb"></script>
+<script src="../web/logos.js?v=3e4c4cfb"></script>
+<script src="../web/guia.js?v=3e4c4cfb"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

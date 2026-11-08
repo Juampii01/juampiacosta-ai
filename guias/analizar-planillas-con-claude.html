@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena analizar-planillas-con-claude, Analizar planillas con Claude sin saber fórmulas, Subís tu Excel o CSV, le hacés preguntas en criollo, le pedís gráficos y verificás los números antes de usarlos. y 3db65d83 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena analizar-planillas-con-claude, Analizar planillas con Claude sin saber fórmulas, Subís tu Excel o CSV, le hacés preguntas en criollo, le pedís gráficos y verificás los números antes de usarlos. y 3e4c4cfb -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,26 +9,26 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=3db65d83">
-<link rel="stylesheet" href="../web/cta.css?v=3db65d83">
-<link rel="stylesheet" href="../web/biblioteca.css?v=3db65d83">
-<link rel="stylesheet" href="../web/guia.css?v=3db65d83">
-<link rel="stylesheet" href="../web/tema.css?v=3db65d83">
-<script src="../web/tema.js?v=3db65d83"></script>
+<link rel="stylesheet" href="../web/base.css?v=3e4c4cfb">
+<link rel="stylesheet" href="../web/cta.css?v=3e4c4cfb">
+<link rel="stylesheet" href="../web/biblioteca.css?v=3e4c4cfb">
+<link rel="stylesheet" href="../web/guia.css?v=3e4c4cfb">
+<link rel="stylesheet" href="../web/tema.css?v=3e4c4cfb">
+<script src="../web/tema.js?v=3e4c4cfb"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=3db65d83"></script>
-<script src="../web/guias-web.js?v=3db65d83"></script>
-<script src="../web/comun.js?v=3db65d83"></script>
+<script src="../web/redes.js?v=3e4c4cfb"></script>
+<script src="../web/guias-web.js?v=3e4c4cfb"></script>
+<script src="../web/comun.js?v=3e4c4cfb"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="analizar-planillas-con-claude"></main>
 <script>var GUIA = {"slug": "analizar-planillas-con-claude", "t": "Analizar planillas con Claude sin saber fórmulas", "d": "Subís tu Excel o CSV, le hacés preguntas en criollo, le pedís gráficos y verificás los números antes de usarlos.", "tema": "Productividad", "min": 9, "fichaNombre": "Análisis de planillas", "ficha": [["Qué es", "Claude lee tu planilla, hace los cálculos con código y te devuelve respuestas, tablas y gráficos."], ["Necesitás", "La función de ejecución de código y creación de archivos activada. Está para todos los planes."], ["Qué archivos", "CSV, TSV y otros archivos de datos para analizar. Puede devolverte un Excel nuevo."], ["Qué no hace", "No te garantiza que los datos de origen estén bien: si la planilla tiene errores, el análisis también."]], "secciones": [{"h": "Activá la función", "pasos": ["En la web o en la app de escritorio, andá a Configuración → Capacidades.", "Activá \"Ejecución de código y creación de archivos\" (en la configuración nueva puede figurar como \"Crear y editar archivos\").", "En equipos de empresa, puede que el administrador la tenga apagada: consultale."], "aviso": "Según el centro de ayuda de Anthropic, usar esta función gasta más de tu límite de uso que un chat normal."}, {"h": "Prepará la planilla antes de subirla", "lista": ["Una tabla por hoja: con encabezados en la primera fila y sin celdas combinadas.", "Nombres de columna claros: \"Fecha venta\" en vez de \"F1\".", "Sin datos sensibles que no hagan falta: si no necesitás el teléfono del cliente para el análisis, sacá esa columna."]}, {"h": "Primero, que te cuente qué ve", "p": ["Antes de preguntar nada, pedile una descripción. Así detectás rápido si leyó mal una columna o si hay datos raros."], "prompts": [{"t": "Reconocimiento de la planilla", "c": "Te subo una planilla de [QUÉ ES, EJ.: VENTAS DEL AÑO]. Antes de analizar nada:\n1. Decime qué columnas tiene y qué tipo de dato hay en cada una.\n2. Cuántas filas tiene y qué período cubre.\n3. Qué problemas ves: celdas vacías, duplicados, formatos mezclados, valores que parecen errores.\nNo corrijas nada todavía. Solo contame lo que encontraste."}]}, {"h": "Preguntas que sirven", "lista": ["Tendencias: ¿cómo evolucionaron las ventas mes a mes?", "Rankings: ¿cuáles son los 10 productos que más facturan y qué parte del total representan?", "Comparaciones: ¿qué diferencia hay entre [SUCURSAL A] y [SUCURSAL B] en el último trimestre?", "Rarezas: ¿hay meses o clientes que se salen mucho de lo normal?"], "prompts": [{"t": "Análisis con gráfico", "c": "Con la planilla que te subí:\n1. Respondé: [TU PREGUNTA].\n2. Mostrame el resultado en una tabla chica.\n3. Hacé un gráfico que lo muestre claro, con título y ejes con nombre.\n4. Explicame en 3 líneas qué significa para mi negocio.\n5. Decime qué columnas y qué filtros usaste para calcularlo."}]}, {"h": "Verificá los números", "p": ["El centro de ayuda de Anthropic avisa que puede hacer falta revisar y ajustar lo que Claude genera. Con números, eso es obligatorio antes de tomar una decisión."], "pasos": ["Elegí un resultado y calculalo vos en Excel con una suma o un filtro simple.", "Pedile que te muestre las filas que usó para un número puntual.", "Si no coincide, preguntale qué criterio aplicó (por ejemplo, si excluyó filas vacías o devoluciones)."], "prompts": [{"t": "Control de un número", "c": "Del análisis que hiciste, tomá este número: [EL NÚMERO]. Mostrame:\n1. La fórmula o el cálculo exacto que usaste.\n2. Cuántas filas entraron y cuáles quedaron afuera y por qué.\n3. Cómo lo calculo yo en Excel para comprobarlo, paso a paso."}]}, {"h": "Llevate el resultado", "p": ["Claude puede crear archivos de Excel. Cuando el análisis te sirva, pedile una planilla nueva con los resultados y los gráficos para guardarla o compartirla."], "aviso": "Anthropic recomienda mirar lo que hace Claude mientras usa esta función y no subir archivos de origen dudoso: pueden traer instrucciones escondidas."}], "faq": [{"q": "¿Puedo subir un Excel directamente?", "a": "El centro de ayuda habla de subir CSV, TSV y otros archivos de datos. Si tu Excel da problemas, guardalo como CSV desde Excel (Archivo → Guardar como) y subilo así."}, {"q": "¿Se modifica mi archivo original?", "a": "No. Claude trabaja sobre la copia que subiste y, si le pedís, te genera un archivo nuevo para descargar."}, {"q": "¿Funciona en el plan gratis?", "a": "Sí, la función está disponible en todos los planes, con los límites de uso de cada uno."}], "fuentes": ["https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude"]};</script>
 
-<script src="../web/rutas.js?v=3db65d83"></script>
-<script src="../web/logos.js?v=3db65d83"></script>
-<script src="../web/guia.js?v=3db65d83"></script>
+<script src="../web/rutas.js?v=3e4c4cfb"></script>
+<script src="../web/logos.js?v=3e4c4cfb"></script>
+<script src="../web/guia.js?v=3e4c4cfb"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

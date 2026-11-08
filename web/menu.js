@@ -150,7 +150,7 @@ function pintarRutas(caja) {
       return '<li><a href="' + g.url + '"><b>' + (i + 1) + '</b><span>' + g.t + '</span>' + (g.min ? '<small>' + g.min + ' min</small>' : '') + '</a></li>';
     }).join("");
     var min = r.pasos.reduce(function (t, p) { return t + (typeof p === "string" ? porSlug[p].min : 0); }, 0);
-    return '<details class="ruta glass ruta-' + r.color + '" data-buscar="' + r.t + ' ' + r.d + ' ruta"><summary><i>' + svgMenu("rutas") + '</i><div><h3>' + r.t + '</h3><p>' + r.d + '</p>' +
+    return '<details id="ruta-' + r.id + '" class="ruta glass ruta-' + r.color + '" data-buscar="' + r.t + ' ' + r.d + ' ruta"><summary><i>' + svgMenu("rutas") + '</i><div><h3>' + r.t + '</h3><p>' + r.d + '</p>' +
       '<span class="meta">' + r.pasos.length + ' pasos · unos ' + min + ' min de lectura</span></div><span class="abrir">⌄</span></summary><ol>' + pasos + '</ol></details>';
   }).join("");
 }
