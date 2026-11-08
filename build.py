@@ -55,6 +55,9 @@ def validar(guias, prompts, herrs):
         assert x.get("cat") in ("Skills", "MCP", "Herramientas") and x.get("t") and x.get("url") and isinstance(x.get("cmds"), list), f"herramienta incompleta: {x.get('t')}"
 
 
+SKILLS_LARGAS = []
+
+
 def mejorar(guias):
     """contenido/mejoras/<slug>.json: correcciones verificadas, ejemplo, si algo falla, kit y fecha de verificación.
     Cada corrección tiene que encontrar su texto exacto en la guía, si no la construcción falla."""
@@ -93,6 +96,16 @@ def mejorar(guias):
                 g[k] = m[k]
         for k in m.get("kit", []):
             assert k.get("archivo") and k.get("contenido") and k.get("que_es"), f"{f.name}: archivo del kit incompleto"
+            if k["archivo"].endswith("SKILL.md"):
+                # Límites de la app al subir una skill (ayuda oficial 12512198): name hasta 64, description hasta 200
+                fm = re.match(r"^---\n(.*?)\n---", k["contenido"], re.S)
+                assert fm, f"{f.name}: {k['archivo']} sin encabezado"
+                d = re.search(r"^description:\s*(.*)$", fm.group(1), re.M)
+                nom = re.search(r"^name:\s*(.*)$", fm.group(1), re.M)
+                assert d and nom, f"{f.name}: {k['archivo']} sin name o description"
+                largo = len(d.group(1).strip().strip("\"'"))
+                if largo > 200:
+                    SKILLS_LARGAS.append(f"{f.name}: {k['archivo']} ({largo})")
         n += 1
     return n
 
@@ -370,4 +383,6 @@ if __name__ == "__main__":
     (RAIZ / "recursos.html").write_text((WEB / "recursos.html").read_text().replace("{{V}}", v)
                                         .replace("{{VITRINA}}", vitrina(guias, prompts, herrs, True)))
     inicio(v)
+    if SKILLS_LARGAS:
+        print(f"aviso: {len(SKILLS_LARGAS)} skills con description de más de 200 caracteres (la app no las acepta)")
     print(f"ok · {n} guías · {n_mejoras} elevadas · versión {v}")
