@@ -1,0 +1,316 @@
+{
+ "_": "Orden de la biblioteca: partes y categorías. Cada guía y cada pack de prompts tiene que estar en exactamente una categoría (build.py lo valida). El orden de las listas es el orden en que se muestran: de lo más simple a lo más avanzado.",
+ "partes": [
+  {
+   "id": "aprende",
+   "n": "Parte 1 · Aprendé Claude",
+   "d": "De cero a usarlo bien: configuración, skills y conectores."
+  },
+  {
+   "id": "usalo",
+   "n": "Parte 2 · Usalo en tu negocio",
+   "d": "Tareas reales: operación, contenido, clientes y agentes."
+  },
+  {
+   "id": "construi",
+   "n": "Parte 3 · Construí y vendé",
+   "d": "Claude Code, tus propias apps y el sistema para vender IA a empresas."
+  }
+ ],
+ "categorias": [
+  {
+   "id": "primeros-pasos",
+   "parte": "aprende",
+   "e": "🌱",
+   "n": "Primeros pasos",
+   "d": "Configurá Claude y aprendé a pedirle bien las cosas.",
+   "guias": [
+    "configura-claude-en-10-minutos",
+    "las-formas-de-usar-claude",
+    "pasate-de-chatgpt-a-claude",
+    "formula-para-pedirle-bien-a-claude",
+    "claude-chatgpt-y-gemini-juntos"
+   ],
+   "prompts": [
+    "Tu primera semana con Claude",
+    "Pedile bien las cosas"
+   ]
+  },
+  {
+   "id": "ahorrar",
+   "parte": "aprende",
+   "e": "💸",
+   "n": "Gastá menos tokens",
+   "destacada": true,
+   "d": "Que no se te corte el plan a mitad de semana: buenas prácticas para que Claude rinda más con el mismo plan.",
+   "guias": [
+    "errores-que-agotan-tu-plan-de-claude",
+    "por-que-claude-se-vuelve-torpe-en-chats-largos",
+    "que-modelo-de-claude-uso",
+    "markitdown-para-ahorrar-tokens",
+    "ahorra-tokens-graphify-obsidian"
+   ],
+   "prompts": [
+    "Chats ordenados"
+   ]
+  },
+  {
+   "id": "mas-jugo",
+   "parte": "aprende",
+   "e": "🧠",
+   "n": "Sacale más jugo a Claude",
+   "d": "Trucos para que rinda más, gaste menos y se equivoque menos.",
+   "guias": [
+    "el-bucle-de-verificacion",
+    "artifacts-apps-sin-programar",
+    "proyectos-de-claude-para-tu-negocio",
+    "5-cosas-para-montar-con-claude-el-finde"
+   ],
+   "prompts": [
+    "Pedidos bien armados",
+    "Revisión antes de entregar"
+   ]
+  },
+  {
+   "id": "skills",
+   "parte": "aprende",
+   "e": "🧩",
+   "n": "Skills y plugins",
+   "d": "Enseñale a Claude tu forma de trabajar y sumale habilidades.",
+   "guias": [
+    "que-es-una-skill-y-como-crear-la-tuya",
+    "convertir-una-tarea-manual-en-skill",
+    "skills-globales-o-por-proyecto",
+    "instalar-skills-de-github",
+    "plugins-de-claude-desde-cero",
+    "22-skills-claude-code",
+    "skill-de-tu-marca",
+    "skill-para-responder-clientes",
+    "skill-de-presupuestos-para-tu-negocio"
+   ],
+   "prompts": [
+    "Diseñá tus skills",
+    "Revisá antes de instalar",
+    "Probá y mejorá tus skills"
+   ]
+  },
+  {
+   "id": "conectores",
+   "parte": "aprende",
+   "e": "🔌",
+   "n": "Conectores y MCP",
+   "d": "Conectá Claude con tu mail, tu agenda, tus archivos y tus apps.",
+   "guias": [
+    "conectores-claude-dentro-de-tus-apps",
+    "4-conectores-que-claude-deberia-tener",
+    "como-elegir-y-revisar-un-mcp-antes-de-instalarlo",
+    "mcp-oficiales-para-tu-negocio",
+    "make-zapier-o-n8n-cual-elegir",
+    "8-apps-clonadas-gratis",
+    "5-repos-que-matan-apps-de-pago"
+   ],
+   "prompts": [
+    "Tu día con MCP: arrancar, seguir y cerrar",
+    "Usar MCP con cuidado: revisar antes de que Claude toque algo"
+   ]
+  },
+  {
+   "id": "negocio",
+   "parte": "usalo",
+   "e": "🏢",
+   "n": "IA en tu negocio",
+   "d": "Ordená la operación: reuniones, planillas, métricas y decisiones.",
+   "guias": [
+    "cinco-preguntas-antes-de-meter-ia-en-tu-negocio",
+    "el-plano-de-un-negocio-con-ia",
+    "segundo-cerebro-de-tu-negocio",
+    "resumir-reuniones-y-mails",
+    "analizar-planillas-con-claude",
+    "panel-de-metricas-de-tu-negocio-con-claude",
+    "investigar-un-mercado-con-claude",
+    "revisar-contratos-con-claude",
+    "tu-propio-jarvis-con-claude"
+   ],
+   "prompts": [
+    "Tu día ordenado con Claude",
+    "Productividad del día a día",
+    "Reuniones, mails y planillas",
+    "Diagnóstico de procesos",
+    "Análisis de ventas",
+    "Políticas para atención al cliente"
+   ]
+  },
+  {
+   "id": "contenido",
+   "parte": "usalo",
+   "e": "🎬",
+   "n": "Contenido y redes",
+   "d": "Ideas, guiones, carruseles y videos con tu voz.",
+   "guias": [
+    "treinta-dias-de-ideas-de-contenido",
+    "guiones-de-reels-con-tu-voz",
+    "carruseles-con-claude-paso-a-paso",
+    "claude-te-edita-el-reel",
+    "instagram-skills-claude",
+    "youtube-skills-claude",
+    "linkedin-agent-11-skills",
+    "automatiza-redes-13-plataformas",
+    "videos-virales-plantilla-hypit",
+    "canal-sin-cara-wan2gp",
+    "personaje-ia-tiktok-shop"
+   ],
+   "prompts": [
+    "Tu kit de marca",
+    "Ganchos para reels y carruseles",
+    "Cierres y llamados a la acción"
+   ]
+  },
+  {
+   "id": "clientes",
+   "parte": "usalo",
+   "e": "🎯",
+   "n": "Conseguí clientes",
+   "d": "De la palabra clave en comentarios a la propuesta y el seguimiento.",
+   "guias": [
+    "de-donde-vienen-tus-clientes",
+    "palabra-clave-en-comentarios-con-manychat",
+    "responder-dms-y-calificar-prospectos",
+    "landing-en-tres-preguntas",
+    "propuesta-comercial-con-claude",
+    "seguimiento-de-prospectos-sin-ser-pesado"
+   ],
+   "prompts": [
+    "Responder objeciones",
+    "Seguimientos que aportan"
+   ]
+  },
+  {
+   "id": "agentes",
+   "parte": "usalo",
+   "e": "🤖",
+   "n": "Agentes",
+   "d": "Qué es un agente de verdad y cómo armar los que más se venden.",
+   "guias": [
+    "que-es-un-agente-de-ia-de-verdad",
+    "disena-tu-agente-en-una-hoja",
+    "agente-de-atencion-con-base-de-conocimiento",
+    "agente-de-whatsapp-que-atiende-y-agenda",
+    "agente-que-califica-prospectos",
+    "agente-de-investigacion",
+    "agente-de-contenido-semanal",
+    "4-agentes-whatsapp-para-vender",
+    "oficina-de-agentes-ia",
+    "equipos-de-agentes-cuando-conviene",
+    "agentes-con-el-claude-agent-sdk",
+    "seguridad-de-agentes"
+   ],
+   "prompts": [
+    "Diseñá tu agente",
+    "Instrucciones para agentes de atención y ventas",
+    "Instrucciones para agentes de investigación y contenido",
+    "Probá tu agente antes de soltarlo"
+   ]
+  },
+  {
+   "id": "claude-code",
+   "parte": "construi",
+   "e": "💻",
+   "n": "Claude Code",
+   "d": "La herramienta para construir: de cero a usarlo todos los días.",
+   "guias": [
+    "claude-code-de-cero-sin-miedo",
+    "comandos-de-claude-code-de-todos-los-dias",
+    "claude-md-la-memoria-del-proyecto",
+    "modo-plan-de-claude-code",
+    "permisos-y-modo-automatico-con-cuidado",
+    "subagentes-en-claude-code",
+    "tareas-programadas-en-claude-code",
+    "claude-code-desde-el-celular-y-la-web",
+    "codex-dentro-de-claude-code",
+    "webs-con-ia-3-skills-2-conectores"
+   ],
+   "prompts": [
+    "Instalar con un solo mensaje",
+    "Revisar y entender un proyecto",
+    "Arreglar errores sin pánico"
+   ]
+  },
+  {
+   "id": "desarrollo",
+   "parte": "construi",
+   "e": "🚀",
+   "n": "Creá tu app",
+   "d": "De la idea a una app publicada, con login, base de datos y cobros.",
+   "guias": [
+    "escribi-la-especificacion-antes-de-programar",
+    "de-idea-a-app-publicada-con-claude-code",
+    "git-y-github-para-no-perder-nada",
+    "base-de-datos-con-supabase-y-claude-code",
+    "usuarios-y-login-sin-romperte-la-cabeza",
+    "cobrar-dentro-de-tu-app",
+    "publicar-tu-app-y-conectar-tu-dominio",
+    "de-demo-a-producto",
+    "mantener-una-app-hecha-con-ia"
+   ],
+   "prompts": [
+    "Construir desde cero",
+    "Construir una app paso a paso",
+    "Depurar errores de producción",
+    "Revisar la seguridad de tu app",
+    "Preparar tu app para producción"
+   ]
+  },
+  {
+   "id": "sistema-base",
+   "parte": "construi",
+   "e": "💼",
+   "n": "El sistema para vender IA",
+   "d": "El método completo para vender e instalar IA en negocios, módulo por módulo.",
+   "guias": [
+    "sistema-base-modulo-1-la-oferta",
+    "sistema-base-modulo-2-elegir-a-quien-venderle",
+    "sistema-base-modulo-3-el-primer-mensaje",
+    "sistema-base-modulo-4-la-llamada-de-diagnostico",
+    "sistema-base-modulo-5-propuesta-y-precio",
+    "sistema-base-modulo-6-la-instalacion-paso-a-paso",
+    "sistema-base-modulo-7-entrega-y-capacitacion",
+    "sistema-base-modulo-8-mantenimiento-mensual",
+    "sistema-base-modulo-9-contrato-y-cuidados",
+    "cuanto-cobrar-por-automatizar-con-ia",
+    "7-repos-para-vender-a-empresas"
+   ],
+   "prompts": [
+    "Sistema base · Prospección",
+    "Sistema base · Diagnóstico",
+    "Sistema base · Propuesta",
+    "Propuesta de automatización para un cliente",
+    "Sistema base · Instalación",
+    "Sistema base · Reporte mensual",
+    "Sistema base · Objeciones"
+   ]
+  },
+  {
+   "id": "rubros",
+   "parte": "construi",
+   "e": "🏪",
+   "n": "Sistemas listos por rubro",
+   "d": "Qué automatizar en cada tipo de negocio, listo para instalar y vender.",
+   "guias": [
+    "sistema-ia-para-inmobiliarias",
+    "sistema-ia-para-clinicas-y-centros-de-estetica",
+    "sistema-ia-para-restaurantes-y-gastronomia",
+    "sistema-ia-para-estudios-contables",
+    "sistema-ia-para-tiendas-online",
+    "sistema-ia-para-gimnasios-y-entrenadores",
+    "sistema-ia-para-estudios-juridicos",
+    "sistema-ia-para-agencias-de-marketing",
+    "sistema-ia-para-profesores-y-academias"
+   ],
+   "prompts": [
+    "Detectá qué automatizar en un rubro",
+    "Adaptá el sistema a un rubro nuevo",
+    "Armá la demo para un rubro"
+   ]
+  }
+ ]
+}

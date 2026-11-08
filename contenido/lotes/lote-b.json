@@ -886,26 +886,6 @@
  ],
  "herramientas": [
   {
-   "cat": "Skills",
-   "tipo": "Plugin",
-   "t": "Skills oficiales de Anthropic (documentos)",
-   "d": "El repositorio oficial de skills de Anthropic. El paquete document-skills le enseña a Claude Code a trabajar con PDF, Word, Excel y PowerPoint.",
-   "para": "Que Claude Code lea, cree y edite documentos de oficina con mejores resultados.",
-   "cmds": [
-    {
-     "donde": "Claude Code",
-     "c": "/plugin marketplace add anthropics/skills"
-    },
-    {
-     "donde": "Claude Code",
-     "c": "/plugin install document-skills@anthropic-agent-skills"
-    }
-   ],
-   "url": "https://github.com/anthropics/skills",
-   "repo": "anthropics/skills",
-   "fuente": "https://github.com/anthropics/skills/blob/main/README.md"
-  },
-  {
    "cat": "Herramientas",
    "tipo": "Plugin",
    "t": "Security Guidance",
@@ -920,22 +900,6 @@
    "url": "https://code.claude.com/docs/en/security-guidance",
    "repo": "anthropics/claude-plugins-official",
    "fuente": "https://code.claude.com/docs/en/security-guidance"
-  },
-  {
-   "cat": "Skills",
-   "tipo": "Plugin",
-   "t": "Frontend Design",
-   "d": "Plugin del marketplace oficial de Anthropic para que las páginas que arma Claude tengan un diseño con personalidad y no se vean genéricas. Claude lo usa solo cuando hacés trabajo visual. Para instalarlo: abrí /plugin, entrá a la pestaña Discover y buscá frontend-design.",
-   "para": "Landings y páginas con mejor diseño desde el primer intento.",
-   "cmds": [
-    {
-     "donde": "Claude Code",
-     "c": "/plugin"
-    }
-   ],
-   "url": "https://github.com/anthropics/claude-plugins-official/blob/main/plugins/frontend-design/README.md",
-   "repo": "anthropics/claude-plugins-official",
-   "fuente": "https://code.claude.com/docs/en/plugins/anthropic-marketplaces"
   },
   {
    "cat": "MCP",

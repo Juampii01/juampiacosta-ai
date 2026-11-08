@@ -55,6 +55,33 @@ def validar(guias, prompts, herrs):
         assert x.get("cat") in ("Skills", "MCP", "Herramientas") and x.get("t") and x.get("url") and isinstance(x.get("cmds"), list), f"herramienta incompleta: {x.get('t')}"
 
 
+def ordenar(guias, prompts):
+    """contenido/orden.json manda: cada guía y cada pack va en una sola categoría, en el orden de la lista.
+    Pisa el tema de origen con el nombre de la categoría (así toda la web usa los mismos nombres) y suma cat y parte."""
+    o = json.loads((RAIZ / "contenido" / "orden.json").read_text())
+    por_g = {g["slug"]: g for g in guias}
+    por_p = {p["t"]: p for p in prompts}
+    usados_g, usados_p, g_out, p_out = set(), set(), [], []
+    for c in o["categorias"]:
+        for slug in c["guias"]:
+            assert slug in por_g, f"orden.json: la guía {slug} no existe"
+            assert slug not in usados_g, f"orden.json: la guía {slug} está en dos categorías"
+            usados_g.add(slug)
+            g_out.append({**por_g[slug], "tema": c["n"], "cat": c["id"], "parte": c["parte"]})
+        for t in c["prompts"]:
+            assert t in por_p, f"orden.json: el pack «{t}» no existe"
+            assert t not in usados_p, f"orden.json: el pack «{t}» está en dos categorías"
+            usados_p.add(t)
+            p_out.append({**por_p[t], "tema": c["n"], "cat": c["id"], "parte": c["parte"]})
+    faltan = [g["slug"] for g in guias if g["slug"] not in usados_g] + [p["t"] for p in prompts if p["t"] not in usados_p]
+    assert not faltan, f"orden.json: falta ubicar {faltan}"
+    cats = [{k: c[k] for k in ("id", "parte", "e", "n", "d") } | ({"destacada": True} if c.get("destacada") else {}) for c in o["categorias"]]
+    (WEB / "categorias.js").write_text("// Generado por build.py desde contenido/orden.json: partes y categorías de la biblioteca.\n"
+                                       f"var PARTES = {json.dumps(o['partes'], ensure_ascii=False)};\n"
+                                       f"var CATEGORIAS = {json.dumps(cats, ensure_ascii=False)};\n")
+    return g_out, p_out, [c["n"] for c in o["categorias"]]
+
+
 BLOQUEADO = "🔒 Disponible con el acceso completo."
 
 
@@ -85,7 +112,7 @@ def guias_web(v):
     """web/guias-web.js lleva solo los datos para listar (sin el contenido); cada guía lleva su contenido dentro de su página.
     Así la biblioteca puede mostrar todas las guías, y el middleware decide quién abre cada una."""
     datos = json.loads((WEB / "guias-web.json").read_text())
-    meta = [{k: g[k] for k in ("slug", "t", "d", "tema", "min", "post") if k in g} | ({"gratis": True} if es_gratis(g) else {}) for g in datos]
+    meta = [{k: g[k] for k in ("slug", "t", "d", "tema", "cat", "parte", "min", "post") if k in g} | ({"gratis": True} if es_gratis(g) else {}) for g in datos]
     (WEB / "guias-web.js").write_text(
         "// Generado por build.py: solo título, resumen, tema y minutos de cada guía. El contenido va en guias/<slug>.html.\n"
         f"var GUIAS_WEB = {json.dumps(meta, ensure_ascii=False)};\n"
@@ -110,9 +137,7 @@ def guias_web(v):
 
 
 # ---------------------------------------------------------------- Vitrina
-AGRUPAR = {"Conectores": "Claude", "Asistentes": "Claude Code", "Video": "Contenido"}
-ORDEN_TEMAS = ["Vender IA", "Agentes", "Desarrollo", "Claude Code", "Skills", "Negocio", "Automatizar", "Ventas", "Contenido",
-               "Claude", "Productividad", "Empezar"]
+ORDEN_CATS = []  # lo llena ordenar() con el orden de contenido/orden.json
 LOGOS_VITRINA = ["claude", "github", "notion", "supabase", "vercel", "n8n", "zapier", "make", "figma", "googledrive", "gmail", "whatsapp"]
 
 
@@ -149,7 +174,7 @@ def vitrina(guias, prompts, herrs, en_biblioteca):
     tarjetas = []
     # 1. El sistema base (grande)
     sb = rutas["sistema-base"]
-    plantillas = [p for p in prompts if p["tema"] == "Vender IA"]
+    plantillas = [p for p in prompts if p.get("cat") in ("sistema-base", "rubros")]
     tarjetas.append(
         '<article class="v-card v-card--grande"><div class="v-top"><span class="v-etq"><i></i>El método</span><span class="v-num">9</span></div>'
         "<h3>El sistema base para vender IA a negocios</h3>"
@@ -175,7 +200,15 @@ def vitrina(guias, prompts, herrs, en_biblioteca):
         "<h3>Skills, MCP y herramientas</h3><p>Cada una con el comando exacto para instalarla, sacado de la documentación de quien la publica.</p>"
         f'<div class="v-logos">{logos}</div><div class="v-pie"><span>{cuenta["Skills"]} skills</span><span>{cuenta["MCP"]} MCP</span><span>{cuenta["Herramientas"]} herramientas</span></div>'
         + ir("#mcp", "Ver las herramientas") + "</article>")
-    # 4-6. Agentes, desarrollo, Claude Code
+    # 4. Gastá menos tokens: franja ancha y destacada
+    cat = next(c for c in json.loads((RAIZ / "contenido" / "orden.json").read_text())["categorias"] if c["id"] == "ahorrar")
+    ah = cat["guias"]
+    tarjetas.append(
+        '<article class="v-card v-card--franja"><div class="v-franja-txt"><div class="v-top"><span class="v-etq"><i></i>Que no se te corte el plan</span>'
+        f'<span class="v-num">{len(ah)}</span></div><h3>Gastá menos tokens con Claude</h3><p>{e(cat["d"])}</p>'
+        + pie(ah) + ir(f"guias/{ah[0]}.html", "Empezar por acá") + "</div>"
+        '<ol class="v-pasos">' + "".join(item(i + 1, sl) for i, sl in enumerate(ah)) + "</ol></article>")
+    # 5-7. Agentes, desarrollo, Claude Code
     for rid, etq, titulo, desc, n_items in (
         ("agentes", "Agentes", "Armá tus propios agentes", "De qué es un agente de verdad al Agent SDK oficial: investigación, atención, ventas, contenido y seguridad.", 5),
         ("desarrollo", "Desarrollo", "De la idea a tu app publicada", "Especificación, base de datos, login, cobros con Stripe y Mercado Pago, dominio y lo que le falta a una demo para ser producto.", 5),
@@ -196,8 +229,8 @@ def catalogo(guias, en_biblioteca):
     """Todas las guías: pestañas por tema y una grilla de tarjetas del tema elegido (la primera, abierta)."""
     grupos = {}
     for g in guias:
-        grupos.setdefault(AGRUPAR.get(g["tema"], g["tema"]), []).append(g)
-    orden = [t for t in ORDEN_TEMAS if t in grupos] + [t for t in grupos if t not in ORDEN_TEMAS]
+        grupos.setdefault(g["tema"], []).append(g)
+    orden = [t for t in ORDEN_CATS if t in grupos]
     e = html.escape
     tabs = "".join(f'<button type="button" class="v-tab" role="tab" aria-selected="{"true" if k == 0 else "false"}" data-tema="{k}">'
                    f'{e(tema)}<span>{len(grupos[tema])}</span></button>' for k, tema in enumerate(orden))
@@ -248,6 +281,7 @@ if __name__ == "__main__":
     prompts = json.loads((RAIZ / "contenido" / "base-prompts.json").read_text()) + p_lotes
     herrs = json.loads((RAIZ / "contenido" / "base-herramientas.json").read_text()) + h_lotes
     validar(guias, prompts, herrs)
+    guias, prompts, ORDEN_CATS = ordenar(guias, prompts)
     rutas = (WEB / "rutas.js").read_text()
     slugs = {g["slug"] for g in guias}
     faltan = [s for s in re.findall(r'"([a-z0-9-]{8,})"', rutas) if s not in slugs and s not in ("empezar", "conectar", "skills", "claude-code", "negocio", "contenido", "vender", "sistema-base", "agentes", "desarrollo")]

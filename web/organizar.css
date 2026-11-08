@@ -1,0 +1,43 @@
+/* Biblioteca por partes y categorías (web/organizar.js) */
+.org-indice { display: grid; gap: 10px; margin: 6px 0 26px; padding: 16px 18px; border-radius: 20px; border: 1px solid var(--line);
+  background: linear-gradient(160deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .015)); }
+.org-fila { display: grid; grid-template-columns: 74px 1fr; gap: 12px; align-items: start; }
+.org-parte-n { padding-top: 9px; font: 600 11px "JetBrains Mono", monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--glow); }
+.org-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.org-chip { display: inline-flex; align-items: center; gap: 7px; padding: 8px 12px; border-radius: 999px; font-size: 14px; font-weight: 600;
+  background: rgba(255, 255, 255, .05); border: 1px solid var(--line); transition: border-color .2s, transform .2s; }
+.org-chip:hover { border-color: rgba(255, 138, 76, .6); transform: translateY(-1px); }
+.org-chip b { font-size: 11.5px; font-weight: 600; padding: 2px 7px; border-radius: 999px; background: rgba(255, 255, 255, .08); color: var(--muted); }
+.org-chip--dest { border-color: rgba(255, 209, 102, .6); background: rgba(255, 209, 102, .12); }
+.org-parte { margin-top: 34px; }
+.org-parte:first-of-type { margin-top: 8px; }
+.org-parte-cab { padding-bottom: 14px; margin-bottom: 18px; border-bottom: 1px solid var(--line); }
+.org-parte-cab .mono { color: var(--glow); }
+.org-parte-cab h3 { margin-top: 6px; font-size: clamp(22px, 2.6vw, 28px); letter-spacing: -.02em; }
+.org-parte-cab p { margin-top: 4px; color: var(--muted); font-size: 15px; }
+.org-cat { margin-bottom: 26px; scroll-margin-top: 90px; }
+.org-cat-cab { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.org-cat-cab i { flex: none; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; font-size: 22px; font-style: normal;
+  background: rgba(255, 90, 31, .12); border: 1px solid rgba(255, 138, 76, .3); }
+.org-cat-cab h4 { font-size: 19px; letter-spacing: -.01em; }
+.org-cat-cab p { margin-top: 2px; color: var(--muted); font-size: 14px; line-height: 1.4; }
+.org-cat-cab span { margin-left: auto; flex: none; font-size: 12.5px; color: var(--muted); padding: 5px 10px; border-radius: 999px; background: rgba(255, 255, 255, .05); border: 1px solid var(--line); }
+.org-cat--dest { padding: 20px; border-radius: 22px; border: 1px solid rgba(255, 209, 102, .5);
+  background: radial-gradient(90% 120% at 0% 0%, rgba(255, 209, 102, .14), transparent 60%), rgba(255, 255, 255, .02); }
+.org-cat--dest .org-cat-cab i { background: rgba(255, 209, 102, .16); border-color: rgba(255, 209, 102, .5); }
+.org-lista > .org-extra { display: none; }
+.org-cat.abierta .org-lista > .org-extra, .org-buscando .org-lista > .org-extra { display: flex; }
+.org-mas { margin-top: 14px; }
+.org-buscando .org-mas, .org-buscando .org-indice { display: none; }
+.org-cat[hidden], .org-parte[hidden] { display: none; }
+[data-tema="claro"] .org-chip, [data-tema="claro"] .org-cat-cab span { background: rgba(120, 60, 20, .05); }
+[data-tema="claro"] .org-cat--dest { background: radial-gradient(90% 120% at 0% 0%, rgba(255, 209, 102, .3), transparent 60%), #fff; }
+@media (max-width: 640px) {
+  .org-indice { padding: 14px; }
+  .org-fila { grid-template-columns: 1fr; gap: 6px; }
+  .org-parte-n { padding-top: 0; }
+  .org-cat-cab { flex-wrap: wrap; }
+  .org-cat-cab span { margin-left: 60px; }
+  .org-cat--dest { padding: 14px; }
+}
+.tit-sub { margin-top: 8px; max-width: 640px; color: var(--muted); font-size: 15px; line-height: 1.5; }

@@ -18,6 +18,8 @@
     { id: "objetivo", b: 2, tipo: "lista", q: "¿Qué querés lograr con la IA?", ops: [
       ["Ahorrar tiempo en mi negocio", "⏱️"], ["Vender servicios de IA", "💵"], ["Conseguir trabajo con IA", "🎯"],
       ["Aprender", "📚"], ["Que me lo instalen en mi negocio", "🛠️"]] },
+    { id: "foco", b: 2, tipo: "lista", q: "¿Qué te gustaría resolver primero con IA?", sub: "Con esto te armo tu sección de recomendados.", ops: [
+      ["Atención y WhatsApp", "💬"], ["Contenido y redes", "🎬"], ["Ventas y seguimiento", "🤝"], ["Administración y planillas", "📊"], ["Crear apps o webs", "💻"]] },
     { id: "inversion", b: 2, tipo: "lista", q: "Si encontrás lo que necesitás, ¿estás para invertir?", ops: [
       ["Sí, ahora", "✅"], ["En los próximos meses", "📅"], ["Por ahora solo lo gratis", "🎁"]] },
     { id: "pais", b: 3, tipo: "paises", q: "¿Desde dónde me escribís?", ops: [
@@ -266,6 +268,8 @@
     var datos = datosHasta(PREGUNTAS.length); datos.completo = true;
     enviar(datos);
     guardado("jpa_perfil", "1");
+    var copia = datosHasta(PREGUNTAS.length); delete copia.whatsapp; copia.ruta = rutaPara(st.resp);
+    guardado("jpa_respuestas", JSON.stringify(copia));
     pantallaEspera({ emoji: "✨", ceja: "Armando tu ruta", tit: "Un segundo" + (nombre ? ", " + nombre : "") + "…", texto: "Estoy eligiendo por dónde te conviene empezar.", ms: 1300 });
     Sfx.avanzar();
     st.timer = setTimeout(resultado, 1300);
@@ -277,12 +281,18 @@
     var dm = (window.REDES && REDES.dm) || "https://ig.me/m/juampiiacosta.ia";
     Sfx.gran(); confeti(70); progreso();
     el.cuerpo.innerHTML = '<div class="bv-espera"><span class="bv-icono" aria-hidden="true">🎉</span><p class="bv-ceja">Perfil completo</p>' +
-      '<h2 class="bv-tit" tabindex="-1">¡Listo' + (nombre ? ", " + esc(nombre) : "") + '! Esta es tu ruta</h2>' +
+      '<h2 class="bv-tit" tabindex="-1">¡Listo' + (nombre ? ", " + esc(nombre) : "") + '! Ya sé qué te sirve</h2>' +
       (ruta ? '<div class="bv-ruta"><small>Tu ruta recomendada · ' + ruta.pasos.length + ' pasos</small><b>' + esc(ruta.t) + '</b><span>' + esc(ruta.d) + '</span></div>' : '') +
       (instalar ? '<a class="bv-extra" href="' + dm + '" target="_blank" rel="noopener"><span class="e">🛠️</span><span><b>¿Querés que te lo instale yo?</b><br>Escribime «INSTALAR» por Instagram y vemos tu caso.</span></a>' : '') +
-      '<button class="bv-ok" type="button" id="bv-ir">' + (ruta ? "Empezar mi ruta →" : "Entrar a la biblioteca →") + '</button></div>';
+      '<p class="bv-texto">Y te armé arriba de todo tu sección <b>Recomendados para vos</b>' + (window.recomendar ? ', con ' + recomendar(st.resp).length + ' guías elegidas para lo tuyo' : '') + '.</p>' +
+      '<button class="bv-ok" type="button" id="bv-ir">Ver mis recomendados →</button></div>';
     enfocar(".bv-tit");
-    $("#bv-ir").addEventListener("click", function () { cerrar(); abrirRuta(id); });
+    $("#bv-ir").addEventListener("click", function () {
+      cerrar();
+      if (window.pintarRecomendados) pintarRecomendados();
+      history.replaceState(null, "", "#inicio"); if (window.verVista) verVista("inicio");
+      setTimeout(function () { var c = document.getElementById("para-vos"); if (c) c.scrollIntoView({ behavior: sinMovimiento() ? "auto" : "smooth", block: "start" }); }, 80);
+    });
   }
 
   function abrirRuta(id) {
@@ -338,7 +348,7 @@
     });
 
     pantallaEspera({ emoji: "🎁", ceja: "Biblioteca abierta", tit: "¡Entraste" + (nombre ? ", " + nombre : "") + "! Ahora contame de vos",
-      texto: "Son 7 preguntas rápidas y te armo la ruta que más te conviene.", ms: 1600 });
+      texto: "Son 8 preguntas rápidas y te armo tu sección de recomendados.", ms: 1600 });
     st.timer = setTimeout(function () { st.timer = 0; st.etapa = "preg"; Sfx.avanzar(); pintar(); }, 1600);
   }
 

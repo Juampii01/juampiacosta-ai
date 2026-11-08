@@ -951,7 +951,7 @@
   {
    "cat": "Skills",
    "tipo": "Skill",
-   "t": "Skills de ejemplo de Anthropic",
+   "t": "Skills oficiales de Anthropic (documentos y ejemplos)",
    "d": "El repositorio oficial de skills de Anthropic: skills de documentos (Word, Excel, PowerPoint, PDF) y ejemplos de diseño, comunicación interna y desarrollo, más la plantilla y la especificación.",
    "para": "Instalar skills oficiales en Claude Code o copiar su estructura para armar las tuyas.",
    "cmds": [

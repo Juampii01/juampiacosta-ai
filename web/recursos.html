@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="web/biblioteca.css?v={{V}}">
 <link rel="stylesheet" href="web/menu.css?v={{V}}">
 <link rel="stylesheet" href="web/vitrina.css?v={{V}}">
+<link rel="stylesheet" href="web/organizar.css?v={{V}}">
+<link rel="stylesheet" href="web/recomendados.css?v={{V}}">
 <link rel="stylesheet" href="web/tema.css?v={{V}}">
 <link rel="stylesheet" href="web/bienvenida.css?v={{V}}">
 <script src="web/tema.js?v={{V}}"></script>
@@ -26,6 +28,9 @@
 <script src="web/datos.js?v={{V}}"></script>
 <script src="web/comun.js?v={{V}}"></script>
 <script src="web/rutas.js?v={{V}}"></script>
+<script src="web/categorias.js?v={{V}}"></script>
+<script src="web/organizar.js?v={{V}}"></script>
+<script src="web/recomendados.js?v={{V}}" defer></script>
 <script src="web/menu.js?v={{V}}"></script>
 <script>document.write(cabecera());</script>
 
@@ -45,6 +50,7 @@
     <div class="b b-num glass"><b id="n-recursos"></b><span>recursos</span></div>
     <div class="b b-num glass"><b id="n-guias"></b><span>guías paso a paso</span></div>
   </div>
+  <div id="para-vos"></div>
   <div class="tit" style="margin-top:44px"><div><span class="mono">Lo más completo</span><h2>Empezá por lo que más te va a servir</h2></div></div>
   {{VITRINA}}
   </section>
@@ -58,15 +64,13 @@
   <section id="ultimos-posts"></section>
 
   <section id="guias-web">
-    <div class="tit"><div><span class="mono">01 · Guías</span><h2>Guías paso a paso</h2></div></div>
-    <div class="filtro-cat" id="filtro-guias-web"></div>
-    <div class="herrs" id="lista-guias-web"></div>
+    <div class="tit"><div><span class="mono">01 · Guías</span><h2>Guías paso a paso</h2><p class="tit-sub">Ordenadas en 3 partes: primero aprendés Claude, después lo usás en tu negocio y al final construís y vendés.</p></div></div>
+    <div id="lista-guias-web"></div>
   </section>
 
   <section id="prompts">
-    <div class="tit"><div><span class="mono">02 · Prompts</span><h2>Prompts para copiar y pegar</h2></div></div>
-    <div class="filtro-cat" id="filtro-prompts"></div>
-    <div class="herrs" id="lista-prompts"></div>
+    <div class="tit"><div><span class="mono">02 · Prompts</span><h2>Prompts para copiar y pegar</h2><p class="tit-sub">Los mismos temas que las guías, para que encuentres el prompt justo al lado de lo que estás aprendiendo.</p></div></div>
+    <div id="lista-prompts"></div>
   </section>
 
   <section id="skills">
@@ -124,51 +128,31 @@ function tarjetaHerramienta(h) {
 });
 
 // Packs de prompts: cada prompt con su botón «Copiar», plegados hasta tocar «Ver los N prompts»
-document.getElementById("lista-prompts").innerHTML = PROMPTS.map(function (p) {
-  return '<article class="herr glass' + (p.prompts.length > 1 ? ' plegado' : '') + '" data-cat="' + p.tema + '" data-buscar="' + buscable(p) + ' prompt ' + p.tema + ' ' + p.para.replace(/"/g, "") + '">' +
+function tarjetaPack(p) {
+  return '<article class="herr glass' + (p.prompts.length > 1 ? ' plegado' : '') + '" data-buscar="' + buscable(p) + ' prompt ' + p.tema + ' ' + p.para.replace(/"/g, "") + '">' +
     '<div class="herr-cab"><span class="tipo">Prompts · ' + p.tema + '</span><span class="herr-meta">' + p.prompts.length + ' prompts</span></div>' +
     '<h3>' + p.t + '</h3><p>' + p.d + '</p><p class="para"><b>Para qué te sirve:</b> ' + p.para + '</p>' +
     p.prompts.map(function (x) { return '<div class="cmd"><small>' + x.t + '</small><div class="prompt"><button onclick="copiar(this)">Copiar</button><code>' + esc(x.c) + '</code></div></div>'; }).join("") +
     (p.prompts.length > 1 ? '<button class="mas-prompts" onclick="plegarPack(this)" data-n="' + p.prompts.length + '">Ver los ' + p.prompts.length + ' prompts ↓</button>' : '') +
     '</article>';
-}).join("");
+}
+organizar(document.getElementById("lista-prompts"), PROMPTS, tarjetaPack, { prefijo: "p-", visibles: 2, palabra: "packs", buscar: "Buscá un prompt…" });
 function plegarPack(boton) {
   var pack = boton.closest(".herr");
   var plegado = pack.classList.toggle("plegado");
   boton.textContent = plegado ? "Ver los " + boton.dataset.n + " prompts ↓" : "Ocultar ↑";
 }
 
-// Filtro por tema (Todas + cada tema) para una lista de tarjetas
-function filtroTemas(caja, lista, items, campo, todas) {
-  var temas = {};
-  items.forEach(function (x) { temas[x[campo]] = (temas[x[campo]] || 0) + 1; });
-  caja.innerHTML = '<button class="chip" aria-pressed="true" data-cat="">' + todas + '<span>' + items.length + '</span></button>' +
-    Object.keys(temas).sort().map(function (k) { return '<button class="chip" aria-pressed="false" data-cat="' + k + '">' + k + '<span>' + temas[k] + '</span></button>'; }).join("");
-  caja.addEventListener("click", function (e) {
-    var b = e.target.closest(".chip");
-    if (!b) return;
-    caja.querySelectorAll(".chip").forEach(function (c) { c.setAttribute("aria-pressed", c === b); });
-    lista.classList.toggle("abierta", !!b.dataset.cat);
-    lista.querySelectorAll(".herr").forEach(function (h) { h.classList.toggle("oculta-cat", !!b.dataset.cat && h.dataset.cat !== b.dataset.cat); });
-  });
-}
-filtroTemas(document.getElementById("filtro-prompts"), document.getElementById("lista-prompts"), PROMPTS, "tema", "Todos");
-
 // Guías: cada una tiene su página en guias/<slug>.html
 function tarjetaGuia(g, etiqueta) {
   var cerrada = GRATIS && !g.gratis;
-  return '<a class="herr glass' + (cerrada ? ' cerrada' : '') + '" href="' + (cerrada ? '/#precio' : 'guias/' + g.slug + '.html') + '" data-cat="' + g.tema + '" data-buscar="' + buscable(g) + ' guia ' + g.tema + ' ' + (g.post || '') + '">' +
+  return '<a class="herr glass' + (cerrada ? ' cerrada' : '') + '" href="' + (cerrada ? '/#precio' : 'guias/' + g.slug + '.html') + '" data-buscar="' + buscable(g) + ' guia ' + g.tema + ' ' + (g.post || '') + '">' +
     '<div class="herr-cab"><span class="tipo">' + etiqueta + '</span><span class="herr-meta">' + g.min + ' min</span></div>' +
     '<h3>' + g.t + '</h3><p>' + g.d + '</p><span class="bajar">' + (cerrada ? '🔒 Desbloquear' : 'Leer la guía →') + '</span></a>';
 }
-document.getElementById("lista-guias-web").innerHTML = GUIAS_WEB.map(function (g) { return tarjetaGuia(g, "Guía · " + g.tema); }).join("");
+organizar(document.getElementById("lista-guias-web"), GUIAS_WEB, function (g) { return tarjetaGuia(g, "Guía · " + g.tema); },
+  { prefijo: "g-", visibles: 4, palabra: "guías", buscar: "Buscá en las guías…" });
 document.getElementById("lista-posts").innerHTML = GUIAS_WEB.filter(function (g) { return g.post; }).map(function (g) { return tarjetaGuia(g, "Palabra · " + g.post); }).join("");
-filtroTemas(document.getElementById("filtro-guias-web"), document.getElementById("lista-guias-web"), GUIAS_WEB, "tema", "Todas");
-
-recoger(document.getElementById("lista-guias-web"), 9, "las guías");
-recoger(document.getElementById("lista-prompts"), 6, "los packs");
-buscadorSeccion(document.getElementById("lista-guias-web"), "Buscá en las guías…");
-buscadorSeccion(document.getElementById("lista-prompts"), "Buscá un prompt…");
 
 var ig = document.getElementById("b-ig");
 ig.href = REDES.ig;

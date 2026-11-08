@@ -1,0 +1,56 @@
+/* «Recomendados para vos» (web/recomendados.js): arriba de todo en Inicio */
+#para-vos:empty { display: none; }
+#para-vos { margin-top: 28px; scroll-margin-top: 90px; }
+.pv { position: relative; overflow: hidden; display: grid; gap: 18px; padding: clamp(20px, 3vw, 32px); border-radius: 26px;
+  border: 1.5px solid rgba(255, 90, 31, .55);
+  background: radial-gradient(110% 80% at 100% 0%, rgba(255, 90, 31, .24), transparent 55%), radial-gradient(70% 60% at 0% 100%, rgba(255, 209, 102, .12), transparent 60%),
+              linear-gradient(160deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02));
+  box-shadow: 0 0 0 1px rgba(255, 90, 31, .12), 0 40px 90px -45px rgba(255, 90, 31, .6); }
+.pv-cab { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.pv-cab .mono { color: var(--glow); }
+.pv-cab h2 { margin-top: 6px; font-size: clamp(26px, 3.2vw, 36px); letter-spacing: -.03em; line-height: 1.1; }
+.pv-cab p { margin-top: 8px; max-width: 640px; color: var(--muted); font-size: 15.5px; line-height: 1.5; }
+.pv-cambiar { flex: none; font-size: 13px; color: var(--muted); text-decoration: underline; text-underline-offset: 4px; }
+.pv-cambiar:hover { color: var(--ink); }
+.pv-ruta { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-radius: 18px; border: 1px solid rgba(255, 138, 76, .45);
+  background: rgba(255, 90, 31, .12); transition: transform .2s, border-color .2s; }
+.pv-ruta:hover { transform: translateY(-2px); border-color: var(--sky); }
+.pv-ruta > span { font-size: 26px; }
+.pv-ruta small { display: block; font: 600 11px "JetBrains Mono", monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--glow); }
+.pv-ruta b { font-size: 17px; }
+.pv-ruta em { margin-left: auto; font-style: normal; font-weight: 700; color: var(--sky); white-space: nowrap; }
+.pv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.pv-card { display: flex; flex-direction: column; gap: 8px; padding: 18px; border-radius: 18px; min-height: 190px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02)); border: 1px solid var(--line); transition: transform .2s, border-color .2s; }
+.pv-card:hover { transform: translateY(-2px); border-color: rgba(255, 138, 76, .55); }
+.pv-motivo { align-self: flex-start; padding: 4px 9px; border-radius: 999px; font: 600 10.5px "JetBrains Mono", monospace; letter-spacing: .08em; text-transform: uppercase;
+  color: #ffd166; background: rgba(255, 209, 102, .12); border: 1px solid rgba(255, 209, 102, .35); }
+.pv-card h4 { font-size: 16.5px; line-height: 1.25; letter-spacing: -.01em; }
+.pv-card p { color: var(--muted); font-size: 13.5px; line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pv-pie { margin-top: auto; display: flex; align-items: center; gap: 8px; font-size: 12px; }
+.pv-pie b { white-space: nowrap; font-weight: 600; padding: 4px 8px; border-radius: 8px; background: rgba(255, 255, 255, .06); }
+.pv-pie i { font-style: normal; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pv-pie em { margin-left: auto; font-style: normal; font-weight: 700; color: var(--sky); white-space: nowrap; }
+.pv-card.cerrada { opacity: .8; }
+.pv-card.cerrada em { color: var(--glow); }
+.pv-packs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.pv-packs small { margin-right: 4px; font: 600 11px "JetBrains Mono", monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--glow); }
+.pv-packs a { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: 999px; font-size: 13.5px; background: rgba(255, 255, 255, .05); border: 1px solid var(--line); }
+.pv-packs a:hover { border-color: var(--sky); }
+.pv-packs a b { font-size: 11px; padding: 1px 7px; border-radius: 999px; background: rgba(255, 255, 255, .08); color: var(--muted); }
+.pv-cta { display: block; padding: 14px 18px; border-radius: 16px; font-size: 15px; border: 1px solid rgba(255, 90, 31, .55);
+  background: linear-gradient(90deg, rgba(255, 90, 31, .2), rgba(255, 255, 255, .03)); }
+.pv-cta b { color: var(--sky); }
+.pv-cta:hover { border-color: var(--sky); }
+.pv-cta--dm { border-color: rgba(255, 209, 102, .55); background: linear-gradient(90deg, rgba(255, 209, 102, .16), rgba(255, 255, 255, .03)); }
+[data-tema="claro"] .pv { background: radial-gradient(110% 80% at 100% 0%, rgba(255, 90, 31, .16), transparent 55%), linear-gradient(160deg, #fff, rgba(255, 255, 255, .8)); }
+[data-tema="claro"] .pv-card { background: #fff; }
+[data-tema="claro"] .pv-motivo { color: #a15c00; }
+[data-tema="claro"] .pv-pie b, [data-tema="claro"] .pv-packs a { background: rgba(120, 60, 20, .05); }
+@media (max-width: 980px) { .pv-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) {
+  .pv-grid { grid-template-columns: 1fr; }
+  .pv-card { min-height: 0; }
+  .pv-cab { flex-direction: column; gap: 8px; }
+  .pv-ruta em { display: none; }
+}
