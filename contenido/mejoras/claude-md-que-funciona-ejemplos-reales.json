@@ -1,0 +1,101 @@
+{
+ "slug": "claude-md-que-funciona-ejemplos-reales",
+ "verificada": "2026-11-08",
+ "correcciones": [
+  {
+   "antes": "/context: muestra si el archivo cargó (aparece en Memory files).",
+   "despues": "/context: muestra qué está ocupando el contexto; la doc lo recomienda para confirmar que el CLAUDE.md cargó. Para ver la lista exacta de CLAUDE.md, CLAUDE.local.md y reglas cargadas en la sesión, usá /memory.",
+   "motivo": "La doc oficial no menciona una sección llamada Memory files. La guía de buenas prácticas recomienda /context para confirmar la carga, y la página de memoria indica que /memory lista todos los CLAUDE.md, CLAUDE.local.md y archivos de reglas cargados en la sesión.",
+   "fuente": "https://code.claude.com/docs/en/memory"
+  },
+  {
+   "antes": "/doctor prompt-audit: revisa tus archivos de instrucciones y propone cortes sin cambiar nada hasta que se lo pidas. Necesita Claude Code v2.1.283 o más nuevo.",
+   "despues": "/doctor prompt-audit: revisa tus CLAUDE.md, skills y otra configuración y busca instrucciones viejas o que se contradicen. Necesita Claude Code v2.1.283 o más nuevo. El /doctor común también mira el CLAUDE.md: propone cortar lo que Claude puede deducir del código y pide confirmación antes de cambiar algo.",
+   "motivo": "Según la página de skills, lo de proponer cortes y pedir confirmación antes de cambiar describe al chequeo general de /doctor. Del subcomando prompt-audit la doc dice que busca instrucciones desactualizadas o que se contradicen en CLAUDE.md, skills y otra configuración.",
+   "fuente": "https://code.claude.com/docs/en/skills"
+  },
+  {
+   "antes": "Notas para humanos: los comentarios HTML (<!-- así -->) se borran antes de llegar a Claude, así que no gastan contexto.",
+   "despues": "Notas para humanos: los comentarios HTML en bloque (<!-- así -->, en su propia línea) se borran antes de llegar a Claude, así que no gastan contexto. Los que están dentro de un bloque de código sí llegan.",
+   "motivo": "La doc oficial habla de comentarios HTML a nivel de bloque y aclara que los que están dentro de bloques de código se conservan.",
+   "fuente": "https://code.claude.com/docs/en/memory"
+  },
+  {
+   "antes": "AGENTS.md: si tu proyecto ya tiene uno y no hay CLAUDE.md, Claude Code lo lee. Si hay los dos, lee solo el CLAUDE.md, salvo que este importe el AGENTS.md con @AGENTS.md.",
+   "despues": "AGENTS.md: la doc oficial recomienda crear un CLAUDE.md que lo importe con @AGENTS.md y sumar abajo lo propio de Claude. Las versiones recientes también leen AGENTS.md cuando no hay CLAUDE.md, pero cualquier CLAUDE.md o CLAUDE.local.md en la carpeta o más arriba hace que lo salteen sin avisar. Con el import no dependés de eso.",
+   "motivo": "La página oficial de memoria dice que Claude Code lee CLAUDE.md, no AGENTS.md, y recomienda el import (o un symlink). La lectura automática llegó en una versión reciente, se configura en /config y se apaga con cualquier CLAUDE.md o CLAUDE.local.md en el camino, incluso uno personal.",
+   "fuente": "https://code.claude.com/docs/en/memory"
+  },
+  {
+   "antes": "Claude Code lee las dos formas.",
+   "despues": "Es justo lo que recomienda la doc oficial: un CLAUDE.md con la línea @AGENTS.md y, abajo, lo específico de Claude.",
+   "motivo": "La doc oficial plantea el import de AGENTS.md desde CLAUDE.md como la forma de compartir reglas con otros agentes. Que Claude Code lea AGENTS.md solo depende de la versión y de que no haya ningún CLAUDE.md en el camino.",
+   "fuente": "https://code.claude.com/docs/en/memory"
+  },
+  {
+   "antes": "Primero corré /context y fijate si aparece en Memory files.",
+   "despues": "Primero corré /memory y fijate si tu archivo aparece entre los cargados en la sesión.",
+   "motivo": "La sección de problemas de la doc oficial indica correr /memory para confirmar que el archivo se carga. No existe una sección llamada Memory files documentada en /context.",
+   "fuente": "https://code.claude.com/docs/en/memory"
+  }
+ ],
+ "fuentes_extra": [
+  "https://code.claude.com/docs/en/skills",
+  "https://code.claude.com/docs/en/permissions"
+ ],
+ "ejemplo": {
+  "titulo": "Ejemplo resuelto: un CLAUDE.md corto que comparte reglas con otro agente",
+  "negocio": "Ejemplo inventado: un estudio web de dos desarrolladores en Medellín, Colombia, que hace tiendas online para comercios de barrio. Uno usa Claude Code y el otro otro agente de código, sobre el mismo repositorio.",
+  "punto_de_partida": "Tenían un AGENTS.md largo con reglas mezcladas, más un CLAUDE.local.md personal. Claude Code no seguía las reglas del AGENTS.md y un día editó la carpeta clientes/ con datos de los comercios.",
+  "pasos": [
+   "Corrieron /memory y vieron que solo cargaba el CLAUDE.local.md: ese archivo personal hacía que Claude Code no leyera el AGENTS.md.",
+   "Crearon un CLAUDE.md con la plantilla del kit: la línea @AGENTS.md arriba y, abajo, cinco reglas propias de Claude Code.",
+   "Podaron el AGENTS.md con el prompt Poda mensual de la guía: sacaron la descripción carpeta por carpeta y las reglas que Claude ya cumplía solo.",
+   "Las reglas de la API de pagos las movieron a .claude/rules/pagos.md con paths, para que carguen solo cuando Claude lee esos archivos.",
+   "Como editar clientes/ no puede pasar nunca, lo sacaron del CLAUDE.md y lo bloquearon con el archivo de permisos del kit en .claude/settings.json.",
+   "Instalaron la skill regla-desde-un-error del kit. La próxima vez que Claude se equivocó, la usaron y sumaron una sola regla, después de leerla.",
+   "Volvieron a correr /memory para confirmar que cargaban el CLAUDE.md, el AGENTS.md importado y el CLAUDE.local.md."
+  ],
+  "resultado": "Los dos agentes leen las mismas reglas desde un solo archivo, el CLAUDE.md quedó corto y la carpeta clientes/ está protegida por permisos y no por una frase. Las reglas nuevas entran solo cuando hay un error que las justifica."
+ },
+ "si_falla": [
+  {
+   "sintoma": "El CLAUDE.md carga, pero Claude sigue ignorando una regla.",
+   "solucion": "Casi siempre es largo o la regla es ambigua. Pasá cada línea por la prueba de si la saco, ¿se equivocaría?, buscá reglas que se contradigan y dejá IMPORTANTE en una sola línea. Si tenés una versión nueva, /doctor te propone qué cortar."
+  },
+  {
+   "sintoma": "Tenés AGENTS.md y Claude Code no lo lee.",
+   "solucion": "Revisá si hay un CLAUDE.md o CLAUDE.local.md en la carpeta o más arriba: cualquiera de los dos hace que Claude Code saltee el AGENTS.md sin avisar. La solución estable es un CLAUDE.md que empiece con @AGENTS.md."
+  },
+  {
+   "sintoma": "Una regla de .claude/rules/ con paths nunca se aplica.",
+   "solucion": "Esas reglas se cargan cuando Claude lee un archivo que coincide con el patrón, no antes. Revisá el patrón (entre comillas, con la ruta desde la raíz del proyecto, por ejemplo src/api/**/*.ts) y pedile a Claude que lea primero un archivo de esa carpeta."
+  },
+  {
+   "sintoma": "Escribís /doctor prompt-audit y no pasa nada o no existe.",
+   "solucion": "Necesita Claude Code v2.1.283 o más nuevo. Fijate tu versión con claude --version y actualizá. Mientras tanto, usá el prompt Poda mensual de la guía."
+  },
+  {
+   "sintoma": "Claude edita una carpeta que el CLAUDE.md dice que no toque.",
+   "solucion": "El CLAUDE.md es contexto, no una cerradura. Bloquealo con una regla de permisos en .claude/settings.json, por ejemplo Edit(/clientes/**) en deny (el archivo del kit). Esa regla frena las herramientas de edición de Claude; para comandos de terminal como rm o mv sumá reglas Bash o un hook."
+  }
+ ],
+ "kit": [
+  {
+   "archivo": "claude-md-que-importa-agents-md.md",
+   "que_es": "Un CLAUDE.md para proyectos que ya tienen AGENTS.md: lo importa y suma solo lo propio de Claude Code. Copialo a la raíz con el nombre CLAUDE.md y completá los corchetes.",
+   "contenido": "@AGENTS.md\n\n<!-- Las reglas compartidas con otros agentes viven en AGENTS.md. Acá va solo lo propio de Claude Code. Este comentario no llega a Claude. -->\n\n## Claude Code\n\n- Usá modo plan para cualquier cambio en src/pagos/ o en supabase/migrations/.\n- Antes de dar una tarea por terminada, corré [COMANDO DE PRUEBA, EJ.: npm test] y mostrame la salida tal cual.\n- Si una investigación necesita leer más de 10 archivos, usá un subagente y traeme el resumen.\n- Al compactar, conservá la lista de archivos modificados y los comandos de prueba.\n- Las reglas por carpeta están en .claude/rules/. No las copies acá.\n"
+  },
+  {
+   "archivo": "settings-bloquear-carpeta-clientes.json",
+   "que_es": "Permisos que bloquean de verdad lo que el CLAUDE.md solo pide: Claude no puede editar clientes/ ni leer el .env, y te pregunta antes de borrar, mover o hacer push. Guardalo como .claude/settings.json (si ya existe, sumá estas reglas dentro de permissions) y cambiá clientes por tu carpeta.",
+   "contenido": "{\n  \"permissions\": {\n    \"deny\": [\n      \"Edit(/clientes/**)\",\n      \"Read(/.env)\",\n      \"Read(/.env.*)\"\n    ],\n    \"ask\": [\n      \"Bash(rm *)\",\n      \"Bash(mv *)\",\n      \"Bash(git push *)\"\n    ]\n  }\n}\n"
+  },
+  {
+   "archivo": "regla-desde-un-error/SKILL.md",
+   "que_es": "Skill que convierte un error de Claude en una sola regla concreta, elige si va al CLAUDE.md, a .claude/rules/ o a permisos, y te la muestra antes de escribirla. Ponela en .claude/skills/regla-desde-un-error/.",
+   "contenido": "---\nname: regla-desde-un-error\ndescription: Convierte un error que Claude acaba de cometer en una sola regla concreta para el CLAUDE.md o para .claude/rules/, y la muestra antes de escribirla. Usala con /regla-desde-un-error y una línea sobre qué salió mal.\ndisable-model-invocation: true\n---\n\n# Una regla nueva a partir de un error\n\nQué salió mal, según el usuario: $ARGUMENTS\n\n## Pasos\n\n1. Resumí el error en una línea: qué hiciste y qué se esperaba.\n2. Decidí si de verdad hace falta una regla. No hace falta si el error se evita leyendo el código, si fue un caso único o si ya hay una regla que lo cubre (en ese caso, decí cuál y por qué no alcanzó).\n3. Elegí dónde va:\n   - CLAUDE.md de la raíz: si aplica a todo el proyecto.\n   - .claude/rules/[TEMA].md con paths: si aplica solo a una carpeta o tipo de archivo.\n   - Un permiso o un hook: si es algo que nunca puede pasar. Explicá que el CLAUDE.md no lo garantiza y proponé la regla de permisos.\n4. Escribí la regla en una línea, concreta y verificable. Bien: Corré npm test antes de hacer commit. Mal: Probá tus cambios.\n5. Revisá que no choque con otra regla existente. Si choca, proponé cuál queda.\n6. Mostrá la regla, el archivo donde iría y el texto exacto a agregar. No escribas nada hasta que el usuario diga OK.\n\n## Reglas\n\n- Una sola regla por error. Si salen varias, quedate con la que más evita que se repita.\n- No uses IMPORTANTE salvo que el usuario lo pida.\n- Si el CLAUDE.md ya pasa de 200 líneas, avisá y proponé qué sacar a cambio.\n"
+  }
+ ],
+ "notas_revision": "Verifiqué en code.claude.com/docs/en/memory: menos de 200 líneas, imports con @ (cargan igual al inicio, hasta cuatro saltos), .claude/rules/ con paths (se cargan al leer archivos que coinciden), CLAUDE.local.md, ~/.claude/CLAUDE.md, comentarios HTML a nivel de bloque, AGENTS.md (la doc dice que lee CLAUDE.md y recomienda @AGENTS.md), /memory lista los archivos cargados. En best-practices: tabla de qué va y qué no, prueba de cada línea, IMPORTANTE en una sola línea, /context para confirmar carga, /doctor propone cortes, subirlo a git. En skills: qué revisa /doctor y prompt-audit (v2.1.283). En permissions: sintaxis Edit(/ruta/**) relativa al proyecto en settings de proyecto, Read deny también frena Edit y Write, formato de allow/deny/ask. La lectura automática de AGENTS.md cuando no hay CLAUDE.md (v2.1.277, opción Project instructions en /config, se apaga con CLAUDE.local.md) la confirmé solo en notas de terceros que citan el changelog; el changelog oficial no abrió, por eso las correcciones no nombran la versión. No verifiqué las anécdotas de Reddit y Hacker News (la guía las presenta como experiencia de usuarios)."
+}
