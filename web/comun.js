@@ -12,7 +12,7 @@ var LOGO = '<i class="logo"><svg viewBox="0 0 64 64" width="64" height="64" aria
 
 function cabecera() {
   return '<header class="cab glass">' +
-    '<a class="marca" href="#">' + LOGO + '<span>juampiacosta<b>.ai</b></span></a>' +
+    '<a class="marca" href="#">' + LOGO + '<span>juampiiacosta<b>.ai</b></span></a>' +
     '<nav><div class="redes">' +
     '<a class="red" href="' + REDES.ig + '" target="_blank" rel="noopener">' + ICONO.ig + '<span class="txt">' + REDES.igUsuario + '</span></a>' +
     '</div><a class="btn" href="' + REDES.dm + '" target="_blank" rel="noopener"><span>Escribime<span class="largo"> por Instagram</span></span>→</a></nav><i class="progreso"></i></header>';

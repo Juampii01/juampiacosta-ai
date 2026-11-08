@@ -42,7 +42,7 @@ function menuLateral() {
   }).join("");
   var aside = document.createElement("aside");
   aside.className = "menu";
-  aside.innerHTML = '<a class="marca" href="#inicio">' + LOGO + '<span>juampiacosta<b>.ai</b></span></a>' +
+  aside.innerHTML = '<a class="marca" href="#inicio">' + LOGO + '<span>juampiiacosta<b>.ai</b></span></a>' +
     '<button class="menu-plegar" type="button" aria-label="Plegar menú" title="Plegar menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17l-5-5 5-5M18 17l-5-5 5-5"/></svg></button>' +
     '<nav>' + items + '</nav>' +
     '<div class="m-pie"><a class="btn m-llamada" href="' + REDES.dm + '" target="_blank" rel="noopener" title="Escribime">' + svgMenu("llamada") + '<span>Escribime</span>→</a></div>';
