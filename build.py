@@ -209,7 +209,8 @@ def vitrina(guias, prompts, herrs, en_biblioteca):
         '<article class="v-card v-card--franja"><div class="v-franja-txt"><div class="v-top"><span class="v-etq"><i></i>Que no se te corte el plan</span>'
         f'<span class="v-num">{len(ah)}</span></div><h3>Gastá menos tokens con Claude</h3><p>{e(cat["d"])}</p>'
         + pie(ah) + ir(f"guias/{ah[0]}.html", "Empezar por acá") + "</div>"
-        '<ol class="v-pasos">' + "".join(item(i + 1, sl) for i, sl in enumerate(ah)) + "</ol></article>")
+        '<div><ol class="v-pasos">' + "".join(item(i + 1, sl) for i, sl in enumerate(ah[:6])) + "</ol>"
+        + (f'<span class="v-mas">+ {len(ah) - 6} guías más en la categoría</span>' if len(ah) > 6 else "") + "</div></article>")
     # 5-7. Agentes, desarrollo, Claude Code
     for rid, etq, titulo, desc, n_items in (
         ("agentes", "Agentes", "Armá tus propios agentes", "De qué es un agente de verdad al Agent SDK oficial: investigación, atención, ventas, contenido y seguridad.", 5),

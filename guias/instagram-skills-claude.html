@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena instagram-skills-claude, Claude te ayuda con tu Instagram: la guía completa de las skills, Reels con 26 fórmulas de gancho con puntaje, lo que funciona en tu nicho, captions, carruseles, stories, perfil, plan semanal, comentarios, mensajes y un humanizador. Gratis y de código abierto. y 12560169 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena instagram-skills-claude, Claude te ayuda con tu Instagram: la guía completa de las skills, Reels con 26 fórmulas de gancho con puntaje, lo que funciona en tu nicho, captions, carruseles, stories, perfil, plan semanal, comentarios, mensajes y un humanizador. Gratis y de código abierto. y 6b4c5579 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=12560169">
-<link rel="stylesheet" href="../web/cta.css?v=12560169">
-<link rel="stylesheet" href="../web/biblioteca.css?v=12560169">
-<link rel="stylesheet" href="../web/guia.css?v=12560169">
-<link rel="stylesheet" href="../web/tema.css?v=12560169">
-<link rel="stylesheet" href="../web/bienvenida.css?v=12560169">
-<script src="../web/tema.js?v=12560169"></script>
-<link rel="icon" href="../web/favicon.svg?v=12560169" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/cta.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/biblioteca.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/guia.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/tema.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/bienvenida.css?v=6b4c5579">
+<script src="../web/tema.js?v=6b4c5579"></script>
+<link rel="icon" href="../web/favicon.svg?v=6b4c5579" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=12560169"></script>
-<script src="../web/guias-web.js?v=12560169"></script>
-<script src="../web/comun.js?v=12560169"></script>
+<script src="../web/redes.js?v=6b4c5579"></script>
+<script src="../web/guias-web.js?v=6b4c5579"></script>
+<script src="../web/comun.js?v=6b4c5579"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="instagram-skills-claude"></main>
 <script>var GUIA = {"slug": "instagram-skills-claude", "t": "Claude te ayuda con tu Instagram: la guía completa de las skills", "d": "Reels con 26 fórmulas de gancho con puntaje, lo que funciona en tu nicho, captions, carruseles, stories, perfil, plan semanal, comentarios, mensajes y un humanizador. Gratis y de código abierto.", "tema": "Contenido y redes", "min": 8, "fichaNombre": "instagram-agent-skill", "ficha": [["Qué es", "Un paquete gratis de 13 skills para Claude que te ayuda con tu Instagram: reels, captions, carruseles, stories, perfil y más."], ["Necesitás", "Claude Code o la pestaña Code de la app de escritorio. Sin eso funciona a medias."], ["Cuánto cuesta", "El paquete es gratis (licencia MIT). Para la versión completa, Claude Code (planes pagos)."], ["Qué no hace", "No publica ni se conecta a tu cuenta: vos decidís y publicás."], ["Repo", "github.com/Jakeschincariol/instagram-agent-skill"]], "secciones": [{"h": "Qué es", "p": ["instagram-agent-skill es un paquete de 13 skills para Claude que hace el trabajo pesado de tu perfil y tu contenido. Es gratis, con licencia MIT, y no te pide registrarte, una clave de API ni conectar tu cuenta.", "Importante: no publica nada. Las skills escriben; vos decidís y publicás."]}, {"h": "Instalalo en un minuto", "p": ["Pegá esto en Claude Code (o en la pestaña Code de la app de escritorio):"], "prompts": [{"t": "Instalar", "c": "https://github.com/Jakeschincariol/instagram-agent-skill\n\nInstalá esta skill y después comprobá que /ig-reel funcione."}], "lista": ["Como plugin, dentro de Claude Code: /plugin marketplace add Jakeschincariol/instagram-agent-skill y después /plugin install instagram-agent", "A mano, en la terminal: git clone https://github.com/Jakeschincariol/instagram-agent-skill.git y después cp -r instagram-agent-skill/skills/ig-* ~/.claude/skills/"], "aviso": "Sin Claude Code funciona a medias: pegás el SKILL.md de una skill al principio de un chat, pero perdés las herramientas que puntúan ganchos, miden tiempos y humanizan."}, {"h": "Primero, tu voz", "p": ["Todas las skills leen un archivo, voice.md, con tu forma de hablar. Diez minutos acá cambian todo lo demás."], "prompts": [{"t": "Tu voice.md", "c": "Te paso 3 reels míos (o sus transcripciones). Con eso, escribí mi voice.md con la plantilla del paquete de Instagram: cómo hablo, las frases que uso, lo que nunca diría y mi ritmo."}]}, {"h": "Las 13 funciones", "lista": ["/ig-reel: de una idea a un reel. Tres ganchos con 26 fórmulas, con puntaje, más el guion, el texto en pantalla y los tiempos.", "/ig-viral: busca los reels que mejor funcionan en tu nicho, los ordena por cuánto superan el promedio de su cuenta y te explica la fórmula.", "/ig-caption: el caption revisado; te muestra los ~125 caracteres que se ven antes del «más».", "/ig-carousel: una portada que invita a deslizar, el texto de cada lámina y los archivos en 1080×1350.", "/ig-story: la secuencia de stories del día y qué sticker usar para cada cosa.", "/ig-profile: le pone puntaje a tu perfil sobre 100 y reescribe primero lo que más resta.", "/ig-plan: la semana: qué publicar, en qué formato, cuándo y con qué 10 cuentas interactuar.", "/ig-comment: comentarios para publicaciones de otros, según el tipo de post. Nunca «🔥🔥🔥».", "/ig-reply: ordena los comentarios de tus posts y responde por prioridad.", "/ig-dm: el mensaje de la palabra clave, el primer mensaje, la propuesta de colaboración y dos seguimientos.", "/ig-human: el humanizador. Saca rayas largas, palabras típicas de IA y caracteres invisibles, y pasa el texto por cinco controles.", "/ig-repurpose: un video, podcast o newsletter convertido en una semana de reels y carruseles.", "/ig-audit: revisa lo que ya publicaste y lo ordena por cuánto se destacó y cuánto se compartió."]}, {"h": "La favorita: lo que funciona en tu nicho", "prompts": [{"t": "De lo que funciona a tus guiones", "c": "/ig-viral Buscá los reels que mejor funcionan en las últimas semanas en mi nicho [NICHO]. Explicame por qué funcionaron y convertí los 3 mejores en guiones míos con /ig-reel y mi voice.md. Usá la estructura, no las frases."}]}, {"h": "Una semana con las skills", "pasos": ["Lunes: /ig-plan para la semana.", "Cada pieza: /ig-reel o /ig-carousel, después /ig-caption y /ig-human.", "Todos los días: /ig-story y /ig-reply.", "Fin de semana: /ig-audit para ver qué se destacó.", "Una vez por mes: /ig-profile."]}, {"h": "Lo que conviene saber", "lista": ["El puntaje del gancho orienta, no predice: uno bajo es motivo para revisar y uno alto no garantiza nada.", "No se publica nada sin tu sí.", "Las herramientas corren en tu compu, sobre tu texto: no suben nada.", "Es un proyecto de terceros: revisá lo que instalás."]}], "faq": [{"q": "¿Cuesta algo?", "a": "El paquete es gratis. Para la versión completa necesitás Claude Code (planes pagos)."}, {"q": "¿Se conecta a mi cuenta de Instagram?", "a": "No. Trabaja con lo que le pasás y con información pública."}, {"q": "¿Sirve en español?", "a": "Sí: escribe con tu voz si tu voice.md está en español. Pedíselo así."}], "usos": [{"e": "Reels", "c": "rosa", "t": "De una idea a un reel", "d": "Tres ganchos con puntaje, armados con 26 fórmulas."}, {"e": "Viral", "c": "naranja", "t": "Lo que funciona en tu nicho", "d": "/ig-viral ordena los mejores reels."}, {"e": "Carruseles", "c": "azul", "t": "Portada y láminas", "d": "/ig-carousel con el texto de cada una."}, {"e": "Semana", "c": "verde", "t": "Plan y stories", "d": "/ig-plan para la semana y /ig-story todos los días."}], "fuentes": ["https://github.com/Jakeschincariol/instagram-agent-skill"], "cat": "contenido", "parte": "usalo"};</script>
 
-<script src="../web/rutas.js?v=12560169"></script>
-<script src="../web/logos.js?v=12560169"></script>
-<script src="../web/guia.js?v=12560169"></script>
-<script src="../web/bienvenida.js?v=12560169"></script>
+<script src="../web/rutas.js?v=6b4c5579"></script>
+<script src="../web/logos.js?v=6b4c5579"></script>
+<script src="../web/guia.js?v=6b4c5579"></script>
+<script src="../web/bienvenida.js?v=6b4c5579"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

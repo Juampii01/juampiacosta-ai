@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena skill-de-tu-marca, Skill de tu marca: que todo salga con tu tono y tus colores, Guardá tu tono, tus colores, tus tipografías y tus reglas en una skill, y Claude las aplica cada vez que le pidas algo para tu marca. y 12560169 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena skill-de-tu-marca, Skill de tu marca: que todo salga con tu tono y tus colores, Guardá tu tono, tus colores, tus tipografías y tus reglas en una skill, y Claude las aplica cada vez que le pidas algo para tu marca. y 6b4c5579 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=12560169">
-<link rel="stylesheet" href="../web/cta.css?v=12560169">
-<link rel="stylesheet" href="../web/biblioteca.css?v=12560169">
-<link rel="stylesheet" href="../web/guia.css?v=12560169">
-<link rel="stylesheet" href="../web/tema.css?v=12560169">
-<link rel="stylesheet" href="../web/bienvenida.css?v=12560169">
-<script src="../web/tema.js?v=12560169"></script>
-<link rel="icon" href="../web/favicon.svg?v=12560169" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/cta.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/biblioteca.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/guia.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/tema.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/bienvenida.css?v=6b4c5579">
+<script src="../web/tema.js?v=6b4c5579"></script>
+<link rel="icon" href="../web/favicon.svg?v=6b4c5579" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=12560169"></script>
-<script src="../web/guias-web.js?v=12560169"></script>
-<script src="../web/comun.js?v=12560169"></script>
+<script src="../web/redes.js?v=6b4c5579"></script>
+<script src="../web/guias-web.js?v=6b4c5579"></script>
+<script src="../web/comun.js?v=6b4c5579"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="skill-de-tu-marca"></main>
 <script>var GUIA = {"slug": "skill-de-tu-marca", "t": "Skill de tu marca: que todo salga con tu tono y tus colores", "d": "Guardá tu tono, tus colores, tus tipografías y tus reglas en una skill, y Claude las aplica cada vez que le pidas algo para tu marca.", "tema": "Skills y plugins", "min": 9, "fichaNombre": "mi-marca", "ficha": [["Qué es", "Una skill con tu manual de marca, más tu logo en una carpeta aparte."], ["Necesitás", "Skills activadas en la app (o Claude Code) y tu manual, aunque sea informal."], ["Tiempo", "Entre 20 y 40 minutos."]], "secciones": [{"h": "Qué resuelve", "p": ["Sin skill, cada vez que pedís un post o una presentación tenés que volver a explicar cómo hablás y qué colores usás. Con la skill lo explicás una vez: cuando el pedido tiene que ver con tu marca, Claude la carga y sigue tus reglas.", "Anthropic tiene una skill de ejemplo parecida (brand-guidelines) en su repositorio oficial. Esta es una versión propia pensada para un negocio chico, con más foco en el tono."]}, {"h": "Juntá tu manual", "pasos": ["Qué hacés, a quién le hablás y qué te diferencia, en una línea cada uno.", "Cómo hablás: tratamiento (vos, tú o usted), frases que usás y palabras que evitás.", "Tus colores con código hex. Si no lo sabés, pasale tu logo a Claude y pedile que te lo diga.", "Tus tipografías para títulos y texto.", "Tu logo en versión color y en versión blanca."]}, {"h": "El SKILL.md", "p": ["Copialo y completá lo que está entre corchetes. La carpeta se tiene que llamar mi-marca, igual que el name."], "prompts": [{"t": "mi-marca/SKILL.md", "c": "---\nname: mi-marca\ndescription: Aplica el manual de marca de [TU MARCA] (tono, colores, tipografías y reglas) a textos, posts, presentaciones y documentos. Usala siempre que pida algo con mi marca.\n---\n\n# Manual de marca de [TU MARCA]\n\n## Cuándo usarla\n- Cuando escriba o diseñe algo que va a salir con mi marca: posts, textos para la web, mails, presentaciones, documentos.\n- Cuando te pida que revises si algo respeta la marca.\n\n## Quiénes somos\n- Qué hacemos: [EN UNA LÍNEA].\n- A quién le hablamos: [TU CLIENTE IDEAL].\n- Qué nos diferencia: [EN UNA LÍNEA].\n\n## Tono\n- [EJ.: DIRECTO Y CERCANO, SIN VUELTAS].\n- Tratamiento: [VOS | TÚ | USTED].\n- Oraciones cortas. Una idea por párrafo.\n\nFrases que sí usamos:\n- [FRASE 1]\n- [FRASE 2]\n\nFrases y palabras que no usamos:\n- [EJ.: \"REVOLUCIONARIO\", \"INCREÍBLE\"]\n- [EJ.: SIGNOS DE EXCLAMACIÓN DOBLES]\n\n## Colores\n- Principal: [#HEX] ([PARA QUÉ SE USA]).\n- Secundario: [#HEX] ([PARA QUÉ SE USA]).\n- Acento: [#HEX] (solo botones y detalles).\n- Fondo: [#HEX].\n- Texto: [#HEX].\n\n## Tipografías\n- Títulos: [NOMBRE DE LA FUENTE], negrita.\n- Texto: [NOMBRE DE LA FUENTE], normal.\n\n## Logo\n- Archivos en assets/. Usá [ARCHIVO-LOGO-COLOR] sobre fondos claros y [ARCHIVO-LOGO-BLANCO] sobre fondos oscuros.\n- No lo deformes, no le cambies los colores y dejale aire alrededor.\n\n## Antes de entregar\nRevisá que el resultado cumpla tono, colores y tipografías. Si algo no se puede cumplir (por ejemplo, una fuente que no está disponible), avisame qué cambiaste."}]}, {"h": "Armala a partir de lo que ya publicaste", "p": ["Si no tenés manual escrito, Claude lo puede sacar de tus piezas."], "prompts": [{"t": "Sacar el manual de tus piezas", "c": "Te paso [CANTIDAD] textos que publiqué y que me representan: [PEGALOS].\nTambién te adjunto mi logo.\n1. Describí mi tono en 5 reglas, con frases que sí y frases que no, sacadas de mis textos.\n2. Decime los colores de mi logo en hex.\n3. Completá con eso esta plantilla de skill: [PEGÁ EL SKILL.MD DE ARRIBA].\n4. Lo que no puedas deducir, dejalo entre corchetes y preguntámelo.\nAl final entregame la carpeta mi-marca como .zip, con mi logo dentro de assets/."}]}, {"h": "Instalala y probala", "pasos": ["Revisá que quede así: mi-marca/SKILL.md y mi-marca/assets/ con tus logos.", "En la app: comprimí la carpeta mi-marca entera y subila en Personalizar → Skills → + → Crear skill → Subir una skill. Activala.", "En Claude Code: copiá la carpeta a ~/.claude/skills/.", "Probala con un pedido real, por ejemplo: \"Escribime un post sobre [TEMA] para mi marca\"."], "prompts": [{"t": "Revisar una pieza con tu marca", "c": "Usá mi-marca y revisá este texto. Decime qué no respeta el tono o las reglas y pasame la versión corregida: [PEGÁ EL TEXTO]."}]}], "faq": [{"q": "¿Sirve para imágenes?", "a": "Sirve para que Claude use tus colores y tipografías en lo que arma (presentaciones, documentos, páginas). Para piezas de diseño finales, revisalas igual."}, {"q": "¿Puedo tener una skill por cada marca que manejo?", "a": "Sí. Usá un nombre distinto para cada una (marca-cliente-a, marca-cliente-b) y en la descripción poné el nombre de la marca, así Claude elige la correcta."}, {"q": "¿Mi equipo puede usarla?", "a": "En planes Team y Enterprise podés compartirla desde Personalizar → Skills, en el menú de tres puntos → Compartir, si tu organización lo tiene habilitado."}], "fuentes": ["https://claude.com/docs/skills/how-to", "https://support.claude.com/en/articles/12512198-creating-custom-skills", "https://support.claude.com/en/articles/12512180-use-skills-in-claude", "https://github.com/anthropics/skills/tree/main/skills/brand-guidelines", "https://code.claude.com/docs/en/skills"], "cat": "skills", "parte": "aprende"};</script>
 
-<script src="../web/rutas.js?v=12560169"></script>
-<script src="../web/logos.js?v=12560169"></script>
-<script src="../web/guia.js?v=12560169"></script>
-<script src="../web/bienvenida.js?v=12560169"></script>
+<script src="../web/rutas.js?v=6b4c5579"></script>
+<script src="../web/logos.js?v=6b4c5579"></script>
+<script src="../web/guia.js?v=6b4c5579"></script>
+<script src="../web/bienvenida.js?v=6b4c5579"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

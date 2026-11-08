@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena mantener-una-app-hecha-con-ia, Mantener una app hecha con IA, Revisar errores, leer los registros con Claude, actualizar dependencias sin romper nada y pasar una revisión de código antes de cada publicación. y 12560169 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena mantener-una-app-hecha-con-ia, Mantener una app hecha con IA, Revisar errores, leer los registros con Claude, actualizar dependencias sin romper nada y pasar una revisión de código antes de cada publicación. y 6b4c5579 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=12560169">
-<link rel="stylesheet" href="../web/cta.css?v=12560169">
-<link rel="stylesheet" href="../web/biblioteca.css?v=12560169">
-<link rel="stylesheet" href="../web/guia.css?v=12560169">
-<link rel="stylesheet" href="../web/tema.css?v=12560169">
-<link rel="stylesheet" href="../web/bienvenida.css?v=12560169">
-<script src="../web/tema.js?v=12560169"></script>
-<link rel="icon" href="../web/favicon.svg?v=12560169" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/cta.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/biblioteca.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/guia.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/tema.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/bienvenida.css?v=6b4c5579">
+<script src="../web/tema.js?v=6b4c5579"></script>
+<link rel="icon" href="../web/favicon.svg?v=6b4c5579" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=12560169"></script>
-<script src="../web/guias-web.js?v=12560169"></script>
-<script src="../web/comun.js?v=12560169"></script>
+<script src="../web/redes.js?v=6b4c5579"></script>
+<script src="../web/guias-web.js?v=6b4c5579"></script>
+<script src="../web/comun.js?v=6b4c5579"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="mantener-una-app-hecha-con-ia"></main>
 <script>var GUIA = {"slug": "mantener-una-app-hecha-con-ia", "t": "Mantener una app hecha con IA", "d": "Revisar errores, leer los registros con Claude, actualizar dependencias sin romper nada y pasar una revisión de código antes de cada publicación.", "tema": "Creá tu app", "min": 9, "secciones": [{"h": "Publicar es el comienzo", "p": ["Las apps se deterioran aunque no las toques: aparecen errores con usuarios reales, las librerías sacan versiones nuevas, los servicios cambian. Mantener es tener una rutina chica y constante, no apagar incendios."]}, {"h": "La rutina semanal", "pasos": ["Mirá los errores de la semana (registros del hosting o Sentry).", "Pedile a Claude que los agrupe y te diga cuáles afectan a más usuarios.", "Arreglá el más importante en una rama, probalo en la vista previa y publicalo.", "Revisá si hay actualizaciones de dependencias pendientes.", "Confirmá que la copia de seguridad de la base se está haciendo."]}, {"h": "Que Claude lea los registros", "p": ["En vez de copiar y pegar errores sueltos, dale a Claude acceso a la fuente. En Vercel, el comando vercel logs muestra los registros. Con el MCP oficial de Sentry, Claude puede consultar los errores de tu proyecto. Y con el MCP de Supabase puede revisar los asesores de seguridad y rendimiento de tu base."], "prompts": [{"t": "Leer y priorizar errores", "c": "Revisá los registros de errores de los últimos [7] días de esta app (usá [VERCEL LOGS / EL MCP DE SENTRY]).\nAgrupá los errores parecidos y, para cada grupo, decime: cuántas veces pasó, qué hacía el usuario, la causa más probable y qué archivo habría que tocar.\nOrdenalos por impacto. No cambies código todavía.\nSi en los registros ves datos personales o claves, avisame: no deberían estar ahí."}]}, {"h": "Actualizar dependencias con cuidado", "lista": ["De a una: actualizá una librería por vez, así sabés cuál rompió algo.", "En una rama: nunca directo en main. Probá en la vista previa.", "Leé qué cambió: pedile a Claude que resuma las notas de la versión nueva y si hay cambios que rompen.", "Automatizalo: Dependabot de GitHub puede abrir pull requests que actualizan tus dependencias; vos solo revisás y aceptás."], "prompts": [{"t": "Actualizar una dependencia", "c": "Quiero actualizar [NOMBRE DE LA LIBRERÍA] a su última versión.\n1. Creá una rama nueva.\n2. Antes de actualizar, decime qué versión tengo, cuál es la nueva y si la documentación avisa de cambios que rompen.\n3. Actualizá solo esa librería, corré la app y las pruebas que haya.\n4. Decime qué tengo que probar yo a mano."}]}, {"h": "Revisión antes de publicar", "lista": ["/diff: muestra qué cambió en tu proyecto, incluidas las ediciones de Claude.", "/code-review: revisa los cambios de tu rama buscando errores. Viene incluido en Claude Code; /review es otro nombre del mismo comando. Con --fix, además aplica los arreglos (pasando por tus permisos).", "/security-review: revisa los cambios de tu rama buscando problemas de seguridad, como fallas de autenticación o datos expuestos. Necesita que el proyecto esté conectado a un repositorio remoto (origin)."], "aviso": "Si usás /code-review --fix, las correcciones se hacen por fuera de los checkpoints de la sesión: guardá un commit antes, así podés volver con Git."}], "faq": [{"q": "¿Cada cuánto actualizo las dependencias?", "a": "Las de seguridad, apenas aparecen. El resto, con una rutina fija (por ejemplo, una vez por semana o por mes) y siempre de a una."}, {"q": "/code-review no encontró nada, ¿ya está?", "a": "Es una ayuda, no una garantía. Igual probá la app vos, sobre todo login, pagos y permisos."}, {"q": "¿Necesito Sentry?", "a": "No para empezar. Los registros de Vercel o Netlify alcanzan al principio. Sentry suma cuando tenés más usuarios y querés ver los errores agrupados."}], "fuentes": ["https://code.claude.com/docs/en/commands", "https://code.claude.com/docs/en/code-review-local", "https://code.claude.com/docs/en/checkpointing", "https://vercel.com/docs/cli", "https://sentry.io/cookbook/debug-with-sentry-mcp-claude-code", "https://supabase.com/docs/guides/mcp", "https://docs.github.com/en/code-security/concepts/supply-chain-security/about-dependabot-version-updates"], "cat": "desarrollo", "parte": "construi"};</script>
 
-<script src="../web/rutas.js?v=12560169"></script>
-<script src="../web/logos.js?v=12560169"></script>
-<script src="../web/guia.js?v=12560169"></script>
-<script src="../web/bienvenida.js?v=12560169"></script>
+<script src="../web/rutas.js?v=6b4c5579"></script>
+<script src="../web/logos.js?v=6b4c5579"></script>
+<script src="../web/guia.js?v=6b4c5579"></script>
+<script src="../web/bienvenida.js?v=6b4c5579"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena landing-en-tres-preguntas, Una landing en tres preguntas, Respondés tres preguntas y Claude arma la página: como artifact publicado con un link o como sitio con Claude Code. Cómo armarla, revisarla y publicarla. y 12560169 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena landing-en-tres-preguntas, Una landing en tres preguntas, Respondés tres preguntas y Claude arma la página: como artifact publicado con un link o como sitio con Claude Code. Cómo armarla, revisarla y publicarla. y 6b4c5579 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=12560169">
-<link rel="stylesheet" href="../web/cta.css?v=12560169">
-<link rel="stylesheet" href="../web/biblioteca.css?v=12560169">
-<link rel="stylesheet" href="../web/guia.css?v=12560169">
-<link rel="stylesheet" href="../web/tema.css?v=12560169">
-<link rel="stylesheet" href="../web/bienvenida.css?v=12560169">
-<script src="../web/tema.js?v=12560169"></script>
-<link rel="icon" href="../web/favicon.svg?v=12560169" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/cta.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/biblioteca.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/guia.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/tema.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/bienvenida.css?v=6b4c5579">
+<script src="../web/tema.js?v=6b4c5579"></script>
+<link rel="icon" href="../web/favicon.svg?v=6b4c5579" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=12560169"></script>
-<script src="../web/guias-web.js?v=12560169"></script>
-<script src="../web/comun.js?v=12560169"></script>
+<script src="../web/redes.js?v=6b4c5579"></script>
+<script src="../web/guias-web.js?v=6b4c5579"></script>
+<script src="../web/comun.js?v=6b4c5579"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="landing-en-tres-preguntas"></main>
 <script>var GUIA = {"slug": "landing-en-tres-preguntas", "t": "Una landing en tres preguntas", "d": "Respondés tres preguntas y Claude arma la página: como artifact publicado con un link o como sitio con Claude Code. Cómo armarla, revisarla y publicarla.", "tema": "Conseguí clientes", "min": 10, "fichaNombre": "Landing rápida", "ficha": [["Qué es", "Una página de una sola sección larga para presentar una oferta y llevar a una acción."], ["Necesitás", "Claude. Para el camino B, Claude Code (requiere plan pago o cuenta de Console) y una cuenta de Netlify."], ["Tiempo", "30 a 60 minutos."], ["Qué no hace", "No cobra ni guarda datos de formularios por sí sola. Para eso necesitás otra herramienta."]], "secciones": [{"h": "Las tres preguntas", "p": ["Si no podés responder esto en pocas líneas, la página no va a ser clara, la arme quien la arme."], "lista": ["Para quién y qué problema: \"Ayudo a [QUIÉN] que [PROBLEMA].\"", "Qué ofrecés: qué incluye, cómo funciona y qué lo diferencia.", "Qué querés que haga la persona: escribirte por WhatsApp, agendar una llamada, comprar o comentar una palabra."]}, {"h": "El prompt", "prompts": [{"t": "Landing en tres preguntas", "c": "Armame una landing de una sola página.\n\n1. Para quién y qué problema: [RESPUESTA].\n2. Qué ofrezco: [RESPUESTA].\n3. Qué quiero que haga la persona: [RESPUESTA + LINK DEL BOTÓN].\n\nSecciones, en este orden:\n- Título que diga el resultado que busca la persona y subtítulo que explique cómo.\n- El problema, con palabras de mi cliente.\n- Qué incluye, en una lista corta.\n- Cómo funciona, en 3 pasos.\n- Para quién es y para quién no es.\n- Preguntas frecuentes (4).\n- Botón final con la acción.\nEl botón principal aparece arriba y al final.\nColores: [TUS COLORES]. Tono: [TU TONO].\nQue se vea bien en el celular primero.\nNo inventes testimonios, cifras ni logos de clientes: si hace falta uno, dejá un espacio marcado [COMPLETAR]."}]}, {"h": "Camino A: artifact publicado", "pasos": ["Pegá el prompt en Claude. La página aparece como artifact al lado del chat.", "Pedile cambios hasta que te guste: \"el título más corto\", \"sacá la sección X\".", "Cuando estés en la versión que querés, tocá Publish y copiá el link público.", "Ponelo en tu bio o mandalo por DM. Las personas que no usan Claude pueden verla sin crear cuenta."], "aviso": "Publicar en público está en los planes Free, Pro y Max. En Team y Enterprise solo se comparte dentro de la organización. Si despublicás, no podés volver a publicar ese mismo artifact: tendrías que crear uno nuevo."}, {"h": "Camino B: sitio con Claude Code", "p": ["Si querés tener los archivos y publicarla en tu propio hosting, usá Claude Code."], "pasos": ["Creá una carpeta vacía (por ejemplo mi-landing), abrí la terminal ahí y escribí claude.", "Pegá el mismo prompt y agregá al final: \"Hacelo en un solo archivo index.html con el CSS adentro.\"", "Aprobá cuando te pida crear el archivo y abrí index.html en el navegador para revisarlo.", "Entrá a app.netlify.com/drop, iniciá sesión y arrastrá la carpeta.", "Netlify te da una dirección que termina en netlify.app. Para actualizarla, arrastrá la carpeta nueva en Production deploys de tu proyecto."], "aviso": "Si arrastrás la carpeta sin iniciar sesión, Netlify protege el link con una contraseña temporal hasta que reclames el proyecto. Mejor iniciá sesión antes."}, {"h": "Control antes de compartir", "lista": ["El botón funciona: tocá cada uno y fijate a dónde te lleva.", "Celular: abrila en tu teléfono, no solo en la compu.", "Nada inventado: sin testimonios, cifras ni logos que no tengas.", "Espacios [COMPLETAR]: que no quede ninguno.", "Una sola acción: si hay tres botones distintos, elegí uno."]}], "faq": [{"q": "¿Puedo poner mi propio dominio?", "a": "Con el camino B sí, configurándolo en Netlify. La ayuda de Claude sobre artifacts publicados no menciona dominios propios."}, {"q": "¿Puedo poner un formulario?", "a": "Un formulario necesita un lugar donde guardar las respuestas. Lo más simple es que el botón lleve a WhatsApp, a tu agenda o a un formulario que ya uses."}, {"q": "¿Puedo meterla en mi web?", "a": "Un artifact publicado tiene la opción \"Get embed code\" para insertarlo en otra web, indicando los dominios permitidos."}], "fuentes": ["https://support.claude.com/en/articles/9547008-publishing-and-sharing-artifacts", "https://support.claude.com/en/articles/9487310-what-are-artifacts", "https://code.claude.com/docs/en/quickstart", "https://docs.netlify.com/start/get-started-with-drop/"], "cat": "clientes", "parte": "usalo"};</script>
 
-<script src="../web/rutas.js?v=12560169"></script>
-<script src="../web/logos.js?v=12560169"></script>
-<script src="../web/guia.js?v=12560169"></script>
-<script src="../web/bienvenida.js?v=12560169"></script>
+<script src="../web/rutas.js?v=6b4c5579"></script>
+<script src="../web/logos.js?v=6b4c5579"></script>
+<script src="../web/guia.js?v=6b4c5579"></script>
+<script src="../web/bienvenida.js?v=6b4c5579"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

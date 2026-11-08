@@ -1,0 +1,42 @@
+<!doctype html>
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena pedidos-que-salen-a-la-primera, Pedidos que salen a la primera: menos ida y vuelta, más plan, Cinco hábitos para que cada pedido a Claude salga bien de entrada: planificar, juntar, ser específico, releer y editar el mensaje original en vez de mandar correcciones. y 6b4c5579 -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pedidos que salen a la primera: menos ida y vuelta, más plan | juampiacosta.ai</title>
+<meta name="description" content="Cinco hábitos para que cada pedido a Claude salga bien de entrada: planificar, juntar, ser específico, releer y editar el mensaje original en vez de mandar correcciones.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../web/base.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/cta.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/biblioteca.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/guia.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/tema.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/bienvenida.css?v=6b4c5579">
+<script src="../web/tema.js?v=6b4c5579"></script>
+<link rel="icon" href="../web/favicon.svg?v=6b4c5579" type="image/svg+xml">
+<meta name="theme-color" content="#0b0a09">
+</head>
+<body>
+<div class="fondo"></div>
+<script src="../web/redes.js?v=6b4c5579"></script>
+<script src="../web/guias-web.js?v=6b4c5579"></script>
+<script src="../web/comun.js?v=6b4c5579"></script>
+<script>document.write(cabecera());</script>
+
+<main class="lectura" id="guia" data-slug="pedidos-que-salen-a-la-primera"></main>
+<script>var GUIA = {"slug": "pedidos-que-salen-a-la-primera", "t": "Pedidos que salen a la primera: menos ida y vuelta, más plan", "d": "Cinco hábitos para que cada pedido a Claude salga bien de entrada: planificar, juntar, ser específico, releer y editar el mensaje original en vez de mandar correcciones.", "tema": "Gastá menos tokens", "min": 6, "secciones": [{"h": "Por qué la ida y vuelta te sale cara", "p": ["Cada mensaje de aclaración y cada corrección alarga el chat. Y según el centro de ayuda de Anthropic, el largo de la conversación es una de las cosas que más mueven tu consumo.", "Las piezas de un buen pedido (contexto, tarea, formato, criterios) están en \"La fórmula para pedirle bien a Claude\". Esta guía es sobre el proceso: qué hacer antes de mandar y qué hacer cuando la respuesta no sirvió."]}, {"h": "1. Planificá antes de abrir el chat", "pasos": ["Escribí en una línea qué necesitás al final (\"un mail para el cliente\", \"una tabla con los gastos del mes\").", "Anotá todas las preguntas que tenés sobre ese tema.", "Fijate cuáles van juntas: casi siempre son varias partes de lo mismo.", "Juntá el material: textos, datos, ejemplos. Así no lo mandás de a pedazos."]}, {"h": "2. Juntá todo en un solo mensaje", "p": ["La ayuda oficial recomienda agrupar en un mensaje las tareas parecidas, mandar el texto completo cuando querés que lo edite (no por partes) y, en análisis, poner todos los datos en un mensaje bien ordenado."], "prompts": [{"t": "Tres pedidos en uno", "c": "Te paso tres cosas sobre [TEMA]. Resolvé cada una por separado, con un título para cada parte:\n1. [PRIMER PEDIDO]\n2. [SEGUNDO PEDIDO]\n3. [TERCER PEDIDO]\nMaterial para las tres:\n[PEGÁ EL TEXTO O LOS DATOS]\nSi te falta algo, preguntame todo junto antes de empezar."}]}, {"h": "3. Sé específico (y no repitas)", "lista": ["Decí para quién es: no es lo mismo un mail para un cliente enojado que para un proveedor.", "Decí el formato: tabla, viñetas, un párrafo, cuántas palabras.", "Decí qué es \"bien hecho\": qué tiene que tener sí o sí y qué no querés.", "No pegues dos veces lo mismo: en un chat donde ya está el material, la ayuda recomienda referirte a lo anterior (\"el texto que te pasé arriba\") en vez de repetirlo."]}, {"h": "4. Releé antes de mandar", "p": ["La ayuda oficial lo pone como un paso más: revisá tu pedido antes de mandarlo. Treinta segundos de lectura te ahorran una vuelta entera."], "pasos": ["¿Se entiende qué querés al final?", "¿Está todo el material o falta algo que después vas a tener que mandar?", "¿Dijiste el formato y el largo?", "¿Hay algo ambiguo? Si alguien que no conoce tu negocio no lo entendería, Claude tampoco."]}, {"h": "5. Editá el mensaje original en vez de corregir", "p": ["Cuando la respuesta no sirvió porque tu pedido estaba flojo, lo natural es mandar \"no, así no, hacelo de nuevo con...\". Eso suma dos mensajes más al chat: tu corrección y la respuesta nueva, encima del intento que no sirvió.", "La otra opción es editar tu mensaje original. Según el centro de ayuda, editar un mensaje anterior crea otra versión del chat, con sus propios artifacts, y la versión anterior queda guardada. Así seguís trabajando sobre el pedido bien armado y no sobre el intento fallido."], "pasos": ["Buscá tu mensaje original en el chat y usá la opción para editarlo.", "Corregí lo que faltaba: el contexto, el formato o el dato que no estaba.", "Mandalo. Claude responde de nuevo desde ese punto, en una versión nueva del chat.", "Si querés comparar, la versión anterior sigue guardada."], "aviso": "En la nueva experiencia de Claude, donde chat y Cowork están unidos, la ayuda indica que no está disponible ramificar una conversación desde un punto anterior. Si no ves la opción de editar, corregí en un solo mensaje completo, no en varios chiquitos."}], "faq": [{"q": "Si edito un mensaje, ¿pierdo la respuesta anterior?", "a": "No. Según la ayuda, editar un mensaje anterior crea otra versión del chat y la anterior queda guardada."}, {"q": "¿Conviene que Claude me haga preguntas antes de empezar?", "a": "Sí, si se las pedís todas juntas en un mismo mensaje. Así es una sola vuelta de aclaraciones y no cinco."}, {"q": "¿Mandar todo junto no confunde a Claude?", "a": "No, si lo ordenás: numerá los pedidos, separá el material y decí qué querés para cada parte."}], "fuentes": ["https://support.claude.com/en/articles/9797557-usage-limit-best-practices", "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work", "https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them", "https://support.claude.com/en/articles/16761823-claude-cowork-and-chat-are-one-claude"], "cat": "ahorrar", "parte": "aprende"};</script>
+
+<script src="../web/rutas.js?v=6b4c5579"></script>
+<script src="../web/logos.js?v=6b4c5579"></script>
+<script src="../web/guia.js?v=6b4c5579"></script>
+<script src="../web/bienvenida.js?v=6b4c5579"></script>
+<script>
+(function () {
+  pintarGuia(document.getElementById("guia"), GUIA);
+})();
+</script>
+</body>
+</html>

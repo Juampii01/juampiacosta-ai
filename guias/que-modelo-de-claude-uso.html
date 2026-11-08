@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena que-modelo-de-claude-uso, Qué modelo de Claude usar para cada tarea, Haiku, Sonnet, Opus y Fable: para qué sirve cada uno, cuánto de tu límite gasta y cómo cambiarlo en la app y en Claude Code. y 12560169 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena que-modelo-de-claude-uso, Qué modelo de Claude usar para cada tarea, Haiku, Sonnet, Opus y Fable: para qué sirve cada uno, cuánto de tu límite gasta y cómo cambiarlo en la app y en Claude Code. y 6b4c5579 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=12560169">
-<link rel="stylesheet" href="../web/cta.css?v=12560169">
-<link rel="stylesheet" href="../web/biblioteca.css?v=12560169">
-<link rel="stylesheet" href="../web/guia.css?v=12560169">
-<link rel="stylesheet" href="../web/tema.css?v=12560169">
-<link rel="stylesheet" href="../web/bienvenida.css?v=12560169">
-<script src="../web/tema.js?v=12560169"></script>
-<link rel="icon" href="../web/favicon.svg?v=12560169" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/cta.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/biblioteca.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/guia.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/tema.css?v=6b4c5579">
+<link rel="stylesheet" href="../web/bienvenida.css?v=6b4c5579">
+<script src="../web/tema.js?v=6b4c5579"></script>
+<link rel="icon" href="../web/favicon.svg?v=6b4c5579" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=12560169"></script>
-<script src="../web/guias-web.js?v=12560169"></script>
-<script src="../web/comun.js?v=12560169"></script>
+<script src="../web/redes.js?v=6b4c5579"></script>
+<script src="../web/guias-web.js?v=6b4c5579"></script>
+<script src="../web/comun.js?v=6b4c5579"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="que-modelo-de-claude-uso"></main>
 <script>var GUIA = {"slug": "que-modelo-de-claude-uso", "t": "Qué modelo de Claude usar para cada tarea", "d": "Haiku, Sonnet, Opus y Fable: para qué sirve cada uno, cuánto de tu límite gasta y cómo cambiarlo en la app y en Claude Code.", "tema": "Gastá menos tokens", "min": 7, "fichaNombre": "Modelos de Claude", "ficha": [["Qué es", "Claude viene en varias familias de modelos: más rápidos y livianos o más potentes y lentos."], ["Los actuales", "Claude Haiku 5.5, Claude Sonnet 5.5, Claude Opus 5.5 y Claude Fable 5.1."], ["Regla simple", "Si no sabés cuál elegir, empezá con Sonnet y subí cuando la tarea lo pida."]], "secciones": [{"h": "Los cuatro modelos", "lista": ["Haiku: el más rápido. Para respuestas cortas, resúmenes y sacar datos de un texto. Es el que menos gasta de tu límite.", "Sonnet: el de todos los días. Escribir, analizar, programar y tareas de varios pasos. Anthropic lo recomienda como punto de partida si dudás.", "Opus: para razonar en serio. Investigaciones profundas y problemas complejos que necesitan pensar mucho. Gasta más de tu límite.", "Fable: el más capaz que está disponible para el público. Para los proyectos más grandes y largos, donde Claude avanza con menos supervisión. Es el que más gasta y requiere un plan pago."]}, {"h": "Cómo elegir sin pensarlo tanto", "pasos": ["Arrancá con Sonnet.", "Si es algo simple y lo hacés muchas veces (clasificar, resumir, extraer), pasá a Haiku y cuidás tu límite.", "Si la respuesta se queda corta en algo difícil (una estrategia, un análisis con muchos datos), probá con Opus.", "Guardá Fable para trabajos grandes e importantes, no para preguntas sueltas."]}, {"h": "Cambiar de modelo en la app", "p": ["En la caja de mensaje está el selector de modelo. Ahí elegís el modelo y también el nivel de esfuerzo (Effort): cuánto razona Claude antes de responder.", "Más esfuerzo suele dar mejores respuestas en tareas difíciles, pero gasta más. Para cosas de rutina, bajalo."], "aviso": "No todos los modelos están en todos los planes. Fijate qué te aparece en el selector."}, {"h": "Cambiar de modelo en Claude Code", "p": ["En Claude Code escribís /model sin nada más para abrir el selector, o /model con el nombre corto: haiku, sonnet, opus o fable.", "El esfuerzo se cambia con /effort: solo abre un control deslizante, o le pasás el nivel directo (por ejemplo /effort high)."], "prompts": [{"t": "Comandos de Claude Code", "c": "/model sonnet\n/model opus\n/model fable\n/effort high\n/effort auto"}]}, {"h": "Dejá que Claude te ayude a elegir", "prompts": [{"t": "Qué modelo conviene", "c": "Voy a hacer esta tarea: [DESCRIBILA].\nLa voy a repetir [UNA VEZ / TODOS LOS DÍAS] y lo que más me importa es [RAPIDEZ / CALIDAD / CUIDAR MI LÍMITE].\n¿Qué modelo de Claude me conviene (Haiku, Sonnet, Opus o Fable) y con qué nivel de esfuerzo? Respondé en 3 líneas."}]}], "faq": [{"q": "¿Opus siempre responde mejor?", "a": "No siempre vale la pena. En tareas simples la diferencia es chica y gastás más de tu límite. Usalo cuando la tarea lo pida."}, {"q": "¿Qué es Mythos?", "a": "Es la familia más capaz de Anthropic, pero está reservada a organizaciones específicas. Fable es la versión para uso general, con protecciones extra."}, {"q": "¿Puedo cambiar de modelo en el medio de un chat?", "a": "Sí, desde el selector. En Claude Code, con /model en cualquier momento de la sesión."}], "fuentes": ["https://platform.claude.com/docs/en/models-overview", "https://claude.com/resources/tutorials/choosing-the-right-claude-model", "https://claude.com/blog/claude-models-explained", "https://code.claude.com/docs/en/model-config", "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work"], "cat": "ahorrar", "parte": "aprende"};</script>
 
-<script src="../web/rutas.js?v=12560169"></script>
-<script src="../web/logos.js?v=12560169"></script>
-<script src="../web/guia.js?v=12560169"></script>
-<script src="../web/bienvenida.js?v=12560169"></script>
+<script src="../web/rutas.js?v=6b4c5579"></script>
+<script src="../web/logos.js?v=6b4c5579"></script>
+<script src="../web/guia.js?v=6b4c5579"></script>
+<script src="../web/bienvenida.js?v=6b4c5579"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

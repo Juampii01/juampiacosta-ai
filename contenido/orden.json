@@ -44,14 +44,21 @@
    "destacada": true,
    "d": "Que no se te corte el plan a mitad de semana: buenas prácticas para que Claude rinda más con el mismo plan.",
    "guias": [
+    "medidor-de-uso-y-limites-de-claude",
     "errores-que-agotan-tu-plan-de-claude",
+    "pedidos-que-salen-a-la-primera",
     "por-que-claude-se-vuelve-torpe-en-chats-largos",
-    "que-modelo-de-claude-uso",
+    "proyectos-y-cache-para-gastar-menos",
+    "archivos-sin-desperdiciar-tokens",
     "markitdown-para-ahorrar-tokens",
+    "herramientas-y-esfuerzo-justos",
+    "que-modelo-de-claude-uso",
     "ahorra-tokens-graphify-obsidian"
    ],
    "prompts": [
-    "Chats ordenados"
+    "Chats ordenados",
+    "Del chat largo al chat nuevo",
+    "Pedidos de una sola vez"
    ]
   },
   {
