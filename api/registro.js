@@ -47,6 +47,18 @@ export async function guardarEnSupabase(fila, { url, clave, fetchImpl = fetch } 
   if (!r.ok) throw new Error(`Supabase respondió ${r.status}: ${(await r.text()).slice(0, 200)}`);
 }
 
+// ¿Este email ya compró? (lo marca el aviso de pago de Hotmart en api/hotmart.js)
+export async function yaCompro(email, { url, clave, fetchImpl = fetch } = {}) {
+  const h = cabeceras(clave);
+  delete h.Prefer;
+  const r = await fetchImpl(`${url.replace(/\/$/, "")}/rest/v1/registros?email=eq.${encodeURIComponent(email)}&select=compro`, {
+    headers: h, signal: AbortSignal.timeout(5000)
+  });
+  if (!r.ok) throw new Error(`Supabase respondió ${r.status}`);
+  const filas = await r.json();
+  return Array.isArray(filas) && filas.length > 0 && filas[0].compro === true;
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") { res.statusCode = 405; res.setHeader("Allow", "POST"); return res.end(); }
   const volver = (error) => { res.statusCode = 303; res.setHeader("Location", "/?error=" + error + "#gratis"); res.end(); };
@@ -71,11 +83,14 @@ export default async function handler(req, res) {
 
   // Quien ya pagó sigue con su acceso completo
   const actual = nivelDe(await leerCookie(valorCookie(req.headers.cookie, ACCESS_COOKIE_NAME), secreto));
+  let pago = false;
   if (actual !== "pago") {
-    const cookie = await crearCookie(fila.email, fila.nombre || "", secreto, "gratis");
+    try { pago = await yaCompro(fila.email, { url, clave }); } catch (e) { console.error("No se pudo ver si compró:", e.message); }
+    const nivel = pago ? "pago" : "gratis";
+    const cookie = await crearCookie(fila.email, fila.nombre || "", secreto, nivel);
     res.setHeader("Set-Cookie", [
       `${ACCESS_COOKIE_NAME}=${encodeURIComponent(cookie)}; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; HttpOnly; Secure; SameSite=Lax`,
-      `${AVISO_COOKIE_NAME}=gratis; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; Secure; SameSite=Lax`,
+      `${AVISO_COOKIE_NAME}=${nivel}; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; Secure; SameSite=Lax`,
       // Primer nombre legible por la página: el formulario de bienvenida saluda con él
       `jpa_nombre=${encodeURIComponent((fila.nombre || "").split(" ")[0].slice(0, 30))}; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; Secure; SameSite=Lax`
     ]);

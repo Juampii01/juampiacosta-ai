@@ -43,3 +43,6 @@ create table if not exists public.opiniones (
 );
 alter table public.opiniones enable row level security;
 grant insert, select on public.opiniones to service_role;
+
+-- Compras por Hotmart (api/hotmart.js): el aviso de pago marca «compro» en la fila del email (y la crea con origen 'hotmart' si no existía).
+-- Al registrarse con ese email, api/registro.js le da el nivel pago.
