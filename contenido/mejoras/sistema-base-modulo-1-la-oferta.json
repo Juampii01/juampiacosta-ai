@@ -1,0 +1,78 @@
+{
+ "slug": "sistema-base-modulo-1-la-oferta",
+ "verificada": "2026-11-08",
+ "correcciones": [
+  {
+   "antes": "Skills: necesitan que esté activada la ejecución de código y creación de archivos.",
+   "despues": "Skills: necesitan que esté prendida la opción Code execution and file creation (en el diseño nuevo de Settings aparece como Create and edit files), en Settings → Capabilities. En Team y Enterprise la habilita el owner de la organización, desde Organization settings → Plugins & skills.",
+   "motivo": "La ayuda oficial nombra la opción exacta, \"Code execution and file creation\", que en el diseño actualizado se llama \"Create and edit files\", y aclara que en Team y Enterprise la controlan los owners desde Organization settings > Plugins & skills. Para quien vende el paquete esto importa: si el cliente es Team, sin el owner no se instalan las skills.",
+   "fuente": "https://support.claude.com/en/articles/12512180-use-skills-in-claude"
+  },
+  {
+   "antes": "Por defecto, Claude pide permiso antes de enviar un mail o de compartir, mover o borrar archivos de Drive.",
+   "despues": "Por defecto, cada acción que Claude hace en nombre de la persona necesita su aprobación, como enviar un mail o compartir, mover o mandar a la papelera archivos de Drive. En Team y Enterprise, un Owner o Primary Owner tiene que habilitar estos conectores para la organización antes de que cada persona conecte su cuenta. Y Gmail no le deja leer el contenido de los adjuntos, solo sus datos.",
+   "motivo": "La ayuda oficial dice que por defecto cada acción requiere aprobación explícita, que en Drive la acción es mandar a la papelera (trash), no borrar, que en Team y Enterprise un Owner o Primary Owner tiene que habilitar los conectores a nivel organización y que el contenido de los adjuntos de Gmail no es accesible (solo metadatos). Las dos últimas cosas cambian lo que se le puede prometer al cliente.",
+   "fuente": "https://support.claude.com/en/articles/10166901-use-google-workspace-connectors"
+  },
+  {
+   "antes": "Tareas programadas: en los planes pagos se puede programar una tarea en Cowork para que corra cada hora, cada día, cada semana o en días hábiles, y corre aunque la compu esté apagada si no necesita archivos locales.",
+   "despues": "Tareas programadas: en los planes pagos (Pro, Max, Ultra, Team y Enterprise) se puede programar una tarea en Cowork, desde Scheduled y New task, para que corra cada hora, cada día, cada semana o en días hábiles. Corre de forma remota aunque la compu esté dormida o la app de escritorio cerrada. Si necesita archivos o apps de la compu, corre solo ahí.",
+   "motivo": "La ayuda oficial dice que las tareas corren de forma remota \"aunque la computadora esté dormida o la app de escritorio cerrada\" (no habla de apagada), que si requieren archivos o apps locales solo corren localmente, y que se crean desde Scheduled > New task en Cowork. También lista los planes pagos incluidos.",
+   "fuente": "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork"
+  }
+ ],
+ "fuentes_extra": [
+  "https://support.claude.com/en/articles/9519189-project-visibility-and-sharing"
+ ],
+ "ejemplo": {
+  "titulo": "Ejemplo resuelto: armar la oferta para estudios contables chicos",
+  "negocio": "Ejemplo inventado: una freelancer de marketing de Asunción, Paraguay, que usa Claude todos los días para su trabajo. Quiere vender el paquete base a estudios contables chicos de su ciudad, de dos a seis personas, que atienden consultas de clientes por mail todo el mes.",
+  "punto_de_partida": "Cuando le preguntaban qué hacía con IA, contestaba \"de todo un poco\" y cada charla terminaba en un pedido distinto. No tenía una lista de qué entraba y qué no.",
+  "pasos": [
+   "Antes de ofrecer nada, armó el paquete para su propio negocio: un Proyecto con sus servicios y precios, las tres skills, los conectores de Google y una tarea programada. Así supo cuánto tiempo le lleva cada pieza.",
+   "Copió la ficha de la oferta del kit y completó las siete piezas pensando en un estudio contable: la skill de respuestas cubre consultas sobre vencimientos y documentación, y la de presupuestos usa los honorarios del estudio.",
+   "Escribió la lista de qué no incluye sin suavizarla. Sumó una línea propia del rubro: Claude no presenta declaraciones ni opina sobre casos impositivos; los borradores los revisa un contador.",
+   "Eligió la automatización fija del paquete: un resumen de mails de clientes pendientes de respuesta, de lunes a viernes a primera hora, que no envía nada.",
+   "Pasó la checklist del kit con lo que sabía de su primer prospecto. Detectó que el estudio quería que las cuatro personas usaran el mismo Proyecto, así que en la ficha puso que hace falta plan Team, y que su Google era Workspace administrado por un sobrino del dueño: lo anotó como contacto necesario.",
+   "Usó el prompt de nombre y frase de la guía con el rubro y la ciudad. De las opciones eligió \"Tu estudio en Claude\" y la frase: Dejo Claude armado en tu estudio para que responder consultas de clientes te lleve menos tiempo, y te enseño a usarlo.",
+   "Le leyó la frase a un contador conocido sin explicarle nada antes. La entendió en una lectura, así que la dejó. Le cambió la palabra \"armado\" por \"instalado\" porque él la repitió así.",
+   "Definió los extras que cotiza aparte (una cuarta skill, una segunda automatización, capacitar a más personas) y los anotó al final de la ficha."
+  ],
+  "resultado": "Quedó una ficha de una página con la frase, las siete piezas, lo que no incluye, lo que necesita del cliente y los pasos de trabajo, más una checklist para confirmar el plan y las cuentas antes de cada propuesta. Cuando le preguntan qué hace, ahora responde con la frase y manda la ficha."
+ },
+ "si_falla": [
+  {
+   "sintoma": "El cliente quiere que todo el equipo use el mismo Proyecto y no aparece la opción de compartirlo.",
+   "solucion": "Compartir proyectos está solo en Team y Enterprise. Si el cliente está en Pro o Max, o pasa a Team, o cada persona usa su propia cuenta y el Proyecto se arma en la cuenta de quien más lo usa. Dejalo definido antes de la propuesta: cambia el plan que tiene que pagar."
+  },
+  {
+   "sintoma": "En la cuenta del cliente no aparece Skills o las skills se ven en gris.",
+   "solucion": "Prendé Code execution and file creation (o Create and edit files) en Settings → Capabilities. Si la cuenta es Team o Enterprise y la opción está bloqueada, la tiene que habilitar el owner en Organization settings → Plugins & skills. Conviene pedírselo antes del día de instalación."
+  },
+  {
+   "sintoma": "Al conectar Gmail o Drive aparece un aviso de acceso bloqueado por el administrador de la institución.",
+   "solucion": "La cuenta de Google es Workspace y el admin tiene que aprobar a Claude como app de confianza en la consola de Google. Si la cuenta de Claude es Team o Enterprise, además un Owner tiene que habilitar los conectores de Google para la organización. Pedí el contacto del admin en la llamada de diagnóstico."
+  },
+  {
+   "sintoma": "El cliente esperaba que Claude leyera los PDF que le mandan por mail.",
+   "solucion": "El conector de Gmail no lee el contenido de los adjuntos, solo sus datos. Mostralo en la capacitación: para trabajar un adjunto, se descarga y se sube al chat. Escribilo en la ficha para que no se tome como una falla del servicio."
+  },
+  {
+   "sintoma": "Después de la entrega, el cliente pide \"que también conteste solo por WhatsApp\" como si fuera parte del paquete.",
+   "solucion": "Volvé a la lista de qué no incluye que firmó o aceptó. Un agente que habla solo con clientes es otro proyecto: cotizalo aparte, con su propio alcance. Si la lista no estaba escrita, este es el momento de agregarla a tu plantilla para el próximo cliente."
+  }
+ ],
+ "kit": [
+  {
+   "archivo": "ficha-oferta-paquete-base-claude.md",
+   "que_es": "La ficha de una página del paquete base: frase, qué incluye, qué no incluye, qué necesitás del cliente, pasos y precio. Sirve para mandar después de una charla y como texto de alcance para la propuesta.",
+   "contenido": "# [NOMBRE DEL SERVICIO]: ficha de la oferta\n\nUsá este archivo de dos formas: como hoja de una página para mandar después de una charla, y como texto base para las secciones de alcance de la propuesta y del acuerdo. Completá los corchetes y borrá lo que no aplique.\n\n---\n\n## Qué es\n\n[FRASE DE PRESENTACIÓN. Ejemplo de forma: Dejo Claude armado en tu [TIPO DE NEGOCIO] para que [TAREA CONCRETA] te lleve menos tiempo, y te enseño a usarlo.]\n\nEs un servicio cerrado: las piezas son siempre las mismas y se adaptan a tu negocio. Al terminar, todo queda en tu cuenta de Claude y a tu nombre.\n\n## Qué incluye\n\n1. **Proyecto con el conocimiento del negocio.** Cargo en un Proyecto de Claude tus precios, servicios, preguntas frecuentes, procesos y políticas, con instrucciones para que responda como tu negocio.\n2. **Skill de marca.** Tono, palabras que sí y que no, y reglas de comunicación, para que lo que salga tenga la cara de tu negocio.\n3. **Skill de presupuestos.** Arma presupuestos con tu formato, tus precios y tus condiciones. Los revisa una persona antes de mandarlos.\n4. **Skill de respuestas.** Borradores de respuesta a clientes con tu tono y tus políticas, que marcan lo que Claude no sabe en vez de inventarlo.\n5. **Conectores de Google.** Gmail, Google Calendar y Google Drive conectados a la cuenta del negocio, para que Claude lea mails, arme borradores, vea la agenda y busque archivos. Por defecto, cada acción que Claude hace en tu nombre (por ejemplo, enviar un mail) te pide aprobación.\n6. **Una automatización.** Una tarea programada que se repite sola con frecuencia fija. La que elegimos: [EJEMPLO: resumen de mails pendientes de lunes a viernes a primera hora].\n7. **Capacitación.** Una sesión de [DURACIÓN] con [QUIÉNES DEL EQUIPO], un video grabado y un documento de entrega con lo que quedó armado y cómo se usa.\n\n## Qué no incluye\n\n- Agentes que hablan solos con tus clientes (por ejemplo, un agente de WhatsApp que atiende y agenda). Es otro proyecto, con otras reglas y otros costos.\n- Desarrollo a medida: páginas web, apps o integraciones con sistemas propios.\n- Las suscripciones. El plan de Claude y cualquier otra herramienta las pagás vos, a tu nombre.\n- Ordenar información que hoy no está escrita. Si tus precios o procesos no están en ningún lado, ordenarlos es trabajo aparte o tarea tuya antes de empezar.\n- Resultados garantizados. Entrego una herramienta instalada y enseñada; cuánto la usa el equipo depende del equipo.\n- Cambios después de la entrega, salvo lo que diga la sección de soporte.\n\n## Qué necesito de vos\n\n- Una cuenta de Claude del negocio en un plan pago, porque la automatización usa tareas programadas, que están solo en planes pagos. Si van a compartir el Proyecto entre varias personas, plan Team o Enterprise.\n- La cuenta de Google del negocio. Si es Google Workspace, el contacto de quien la administra.\n- Precios, servicios, preguntas frecuentes, políticas y 3 a 5 ejemplos de presupuestos y respuestas que te gusten.\n- Una persona del equipo que pruebe todo durante la semana de prueba.\n\n## Cómo trabajamos\n\n1. Charla de diagnóstico y recolección de materiales.\n2. Armado del Proyecto, las skills y los conectores.\n3. Semana de prueba con el equipo, ajustando lo que corrijan.\n4. Automatización y capacitación.\n5. Entrega: documento, video y repaso final.\n\nPlazo estimado: [PLAZO]. Soporte después de la entrega: [QUÉ INCLUYE Y POR CUÁNTO TIEMPO].\n\n## Precio\n\n[PRECIO Y FORMA DE PAGO]. Los extras se cotizan aparte: [LISTA DE EXTRAS QUE OFRECÉS].\n"
+  },
+  {
+   "archivo": "checklist-verificar-plan-y-cuentas-antes-de-vender.md",
+   "que_es": "Checklist para pasar antes de cada propuesta e instalación: plan del cliente, skills, conectores de Google, automatización y lo que tiene que quedar escrito, con qué artículo de la ayuda oficial buscar para confirmar cada punto.",
+   "contenido": "# Checklist antes de vender (y antes de cada instalación)\n\nLas funciones de Claude cambian seguido. Pasá esta lista antes de mandar una propuesta y otra vez antes de empezar a instalar. Cada punto dice qué buscar en la ayuda oficial (support.claude.com) para confirmarlo el día que la usás.\n\n## 1. Plan del cliente\n- [ ] ¿Qué plan va a contratar el cliente? [FREE / PRO / MAX / TEAM / ENTERPRISE]\n- [ ] Tareas programadas: están solo en planes pagos. Si el cliente piensa quedarse en Free, la automatización no entra. Buscar: \"Schedule recurring tasks in Claude Cowork\".\n- [ ] Compartir el Proyecto con varias personas: solo Team o Enterprise. Si es Pro o Max, cada persona trabaja en su propia cuenta y el Proyecto no se comparte. Buscar: \"Project visibility and sharing\".\n- [ ] Proyectos en Free: máximo cinco. Buscar: \"What are projects\".\n\n## 2. Skills\n- [ ] En la cuenta del cliente está prendida Code execution and file creation (en el diseño nuevo de Settings: Create and edit files), en Settings → Capabilities.\n- [ ] En Team o Enterprise, el owner la habilitó en Organization settings → Plugins & skills, y sabe que puede compartir las skills con el equipo.\n- [ ] Cada skill va como ZIP con su carpeta adentro, y la carpeta se llama igual que el name del SKILL.md. Buscar: \"Use skills in Claude\".\n\n## 3. Conectores de Google\n- [ ] ¿La cuenta de Google es personal o Google Workspace? Si es Workspace: ¿quién es el admin? Puede tener que aprobar a Claude como app de confianza.\n- [ ] En Team o Enterprise, un Owner o Primary Owner habilita los conectores para la organización antes de que cada persona conecte su cuenta.\n- [ ] El cliente sabe que Claude no lee el contenido de los adjuntos de Gmail (solo sus datos), y que por defecto le pide aprobación antes de enviar, compartir, mover o mandar a la papelera.\n- Buscar: \"Use Google Workspace connectors\".\n\n## 4. Automatización\n- [ ] Elegimos una sola tarea, que no envía nada sin revisión: [TAREA].\n- [ ] Frecuencia posible: cada hora, cada día, cada semana, días hábiles o manual.\n- [ ] La tarea no necesita archivos ni apps de la compu (si los necesita, solo corre con la compu disponible).\n- [ ] Probé el prompt de la tarea a mano en un chat antes de programarlo.\n\n## 5. Lo que queda escrito en la propuesta\n- [ ] Lista de qué incluye y qué no incluye (ficha de la oferta).\n- [ ] Quién paga las suscripciones: el cliente, a su nombre.\n- [ ] Ninguna promesa de horas ahorradas ni de ventas.\n- [ ] Fecha en que revisé esta checklist: [AAAA-MM-DD]\n"
+  }
+ ],
+ "notas_revision": "Verifiqué en support.claude.com: Proyectos en todos los planes con máximo cinco en Free (9517075), compartir proyectos solo en Team y Enterprise (9519189), skills disponibles en todos los planes con la opción Code execution and file creation / Create and edit files y control del owner en Team y Enterprise, subida como ZIP en Customize > Skills y compartir con colegas (12512180), conectores de Google: cada persona autentica su cuenta, aprobación por defecto en cada acción, Drive manda a la papelera, habilitación por Owner en Team/Enterprise, adjuntos de Gmail solo metadatos (10166901), tareas programadas en planes pagos, frecuencias, ejecución remota con la compu dormida o la app cerrada, ejecución local si necesitan archivos locales, Scheduled > New task (13854387). No encontré en la ayuda los nombres exactos de las opciones de aprobación de las tareas programadas. No verifiqué el mínimo de asientos del plan Team ni precios: la guía no los afirma y el kit no los usa."
+}
