@@ -14,6 +14,8 @@ Sos el revisor y editor senior de la biblioteca juampiacosta.ai: guías en espa�
 
 ## Reglas
 
+- Si usás scripts auxiliares, guardalos en una carpeta propia con nombre único (por ejemplo con tus slugs): hay otros agentes trabajando en paralelo y se pisan los archivos.
+
 - Kit: cada skill va en su carpeta (`nombre-de-la-skill/SKILL.md`, la web la baja como .zip listo para subir a Claude). Los demás archivos, sin carpeta y con nombres únicos y descriptivos (por ejemplo `checklist-instalacion-clinica.md`, no `checklist.md`).
 - Las URL de `fuentes` no se corrigen: si una fuente está vieja o en otro idioma, sumá la buena en `fuentes_extra`.
 - Mirá el piloto ya hecho como vara de calidad: `contenido/mejoras/sistema-ia-para-inmobiliarias.json`.

@@ -1,0 +1,119 @@
+{
+ "slug": "que-es-una-skill-y-como-crear-la-tuya",
+ "verificada": "2026-11-08",
+ "correcciones": [
+  {
+   "antes": "Un plan Pro, Max, Team o Enterprise con la ejecución de código activada, o Claude Code.",
+   "despues": "Cualquier plan de Claude (Free, Pro, Max, Ultra, Team o Enterprise) con la ejecución de código activada, o Claude Code.",
+   "motivo": "La ayuda oficial dice que las skills están disponibles en los planes Free, Pro, Max, Ultra, Team y Enterprise, con la ejecución de código activada. La guía dejaba afuera Free y Ultra.",
+   "fuente": "https://support.claude.com/en/articles/12512176-what-are-skills"
+  },
+  {
+   "antes": "description: qué hace y cuándo usarla. Es lo único que Claude lee antes de decidir si la usa, así que escribila con las palabras que usarías al pedirla.",
+   "despues": "description: qué hace y cuándo usarla. Es lo único que Claude lee antes de decidir si la usa, así que escribila con las palabras que usarías al pedirla. Para subirla a la app, que no pase de 200 caracteres.",
+   "motivo": "La guía oficial para crear skills fija un máximo de 200 caracteres para la description (y 64 para el name). Una description más larga es una causa común de que la subida falle.",
+   "fuente": "https://support.claude.com/en/articles/12512198-creating-custom-skills"
+  },
+  {
+   "antes": "Abrí Configuración → Capacidades y activá \"Ejecución de código y creación de archivos\" (en el diseño nuevo puede figurar como \"Crear y editar archivos\").",
+   "despues": "Abrí Settings → Capabilities (Configuración → Capacidades) y activá Code execution and file creation (ejecución de código y creación de archivos). En el diseño nuevo de Settings se llama Create and edit files.",
+   "motivo": "La ayuda oficial nombra la ruta Settings > Capabilities y la opción \"Code execution and file creation\", que en el diseño actualizado aparece como \"Create and edit files\". Se usan los nombres tal como figuran en la documentación, con la aclaración en español.",
+   "fuente": "https://support.claude.com/en/articles/12512180-use-skills-in-claude"
+  },
+  {
+   "antes": "Si estás en un plan Team o Enterprise y no ves la opción, la tiene que habilitar un Owner de tu organización.",
+   "despues": "Si estás en un plan Team o Enterprise y no ves la opción, la tiene que habilitar un Owner de tu organización en Organization settings → Plugins & skills, pestaña Policy.",
+   "motivo": "La ayuda oficial indica que en Team y Enterprise se habilitan \"Cloud code execution and file creation\" y \"Skills\" desde Organization settings > Plugins & skills, en la pestaña Policy. Con la ruta exacta, la persona sabe qué pedirle al Owner.",
+   "fuente": "https://support.claude.com/en/articles/12512180-use-skills-in-claude"
+  },
+  {
+   "antes": "Entrá a Personalizar → Skills. En \"Tus skills\" ves las que tenés y en \"Descubrir\" las que podés sumar.",
+   "despues": "Entrá a Customize → Skills (Personalizar → Skills). Ahí ves tus skills, cada una con su interruptor para prenderla o apagarla. En Team y Enterprise también aparecen las que te compartieron y las de tu organización.",
+   "motivo": "La ayuda oficial describe Customize > Skills con las secciones Personal skills, Shared with you y Organization skills, y el interruptor de cada skill. No menciona pestañas llamadas \"Tus skills\" ni \"Descubrir\".",
+   "fuente": "https://support.claude.com/en/articles/12512180-use-skills-in-claude"
+  },
+  {
+   "antes": "El más fácil es que Claude la escriba con vos usando skill-creator, una skill de Anthropic que aparece en Personalizar → Skills.",
+   "despues": "El más fácil es que Claude la escriba con vos usando skill-creator, una de las skills de ejemplo de Anthropic que, según su repositorio oficial, ya vienen en los planes pagos de Claude. Buscala en Customize → Skills.",
+   "motivo": "El repositorio anthropics/skills, donde está skill-creator, aclara que sus skills de ejemplo están disponibles en los planes pagos de Claude.ai. La guía no decía que en Free puede no aparecer. Además se usa el nombre del menú como figura en la documentación (Customize).",
+   "fuente": "https://github.com/anthropics/skills"
+  },
+  {
+   "antes": "Activá skill-creator en Personalizar → Skills.",
+   "despues": "Activá skill-creator en Customize → Skills.",
+   "motivo": "Nombre del menú tal como aparece en la ayuda oficial (Customize > Skills).",
+   "fuente": "https://support.claude.com/en/articles/12512180-use-skills-in-claude"
+  },
+  {
+   "antes": "Subila en Personalizar → Skills → + → Crear skill → Subir una skill.",
+   "despues": "Subila en Customize → Skills: tocá el botón +, después + Create skill y Upload a skill, y elegí el .zip.",
+   "motivo": "La ayuda oficial nombra los botones exactos: en Customize > Skills, \"+\", \"+ Create skill\" y \"Upload a skill\".",
+   "fuente": "https://support.claude.com/en/articles/12512180-use-skills-in-claude"
+  },
+  {
+   "antes": "Sí. En la app escribí / en el cuadro de mensaje y elegila de la lista. En Claude Code escribí /nombre-de-la-skill.",
+   "despues": "En la app, Claude elige solo la skill que corresponde. Si querés forzarla, nombrala en el mensaje (por ejemplo, \"usá la skill presupuesto-de-servicio\"), y si no querés que se use, apagala en Customize → Skills. En Claude Code escribí /nombre-de-la-skill.",
+   "motivo": "La ayuda oficial documenta el menú con / para skills solo en los complementos de Microsoft 365 (Excel, Word, PowerPoint, Outlook) y en Claude Code. Para el chat de Claude dice que las skills se eligen automáticamente según el pedido. No se pudo confirmar un menú / en el chat, así que se evita afirmarlo.",
+   "fuente": "https://support.claude.com/en/articles/12512180-use-skills-in-claude"
+  },
+  {
+   "antes": "No. Las que subís vos o te comparten no pasan por una revisión de Anthropic, por eso conviene leer el SKILL.md y sus archivos antes de activarlas.",
+   "despues": "La ayuda oficial no menciona ninguna revisión de Anthropic para las skills que subís o te comparten. Pide instalarlas solo de fuentes confiables y revisarlas antes de activarlas, porque los riesgos principales son que traigan instrucciones escondidas o que saquen datos. En Enterprise, la organización puede prender un escaneo que revisa las skills de terceros antes de que corran.",
+   "motivo": "La ayuda oficial dice: instalar skills solo de fuentes confiables, revisar las que te comparte un colega, y que los riesgos principales son prompt injection y exfiltración de datos. La única revisión que describe es la de la propia organización (aprobación antes de publicar y escaneo en Enterprise). Se ajusta para no afirmar más de lo que dice la fuente.",
+   "fuente": "https://support.claude.com/en/articles/12512180-use-skills-in-claude"
+  }
+ ],
+ "fuentes_extra": [],
+ "ejemplo": {
+  "titulo": "Ejemplo resuelto: una skill para armar presupuestos con el mismo formato siempre",
+  "negocio": "Ejemplo inventado: un estudio de diseño gráfico de dos socias en Montevideo. Hacen logos, piezas para redes y papelería para comercios del barrio. Los pedidos les llegan por WhatsApp y por mail, en mensajes cortos y desordenados.",
+  "punto_de_partida": "Cada presupuesto lo arma la socia que agarró el pedido, con su propio formato. A veces se olvidan de aclarar cuántas rondas de cambios incluye el trabajo y después discuten con el cliente.",
+  "pasos": [
+   "Una de las socias entró a Settings → Capabilities y confirmó que Code execution and file creation estuviera prendida.",
+   "En Customize → Skills buscó skill-creator y la activó.",
+   "Abrió un chat nuevo y pegó el prompt \"Crear una skill con Claude\" de esta guía. En la tarea puso: \"armar un presupuesto de diseño a partir del mensaje del cliente\". En cómo lo hacen hoy pegó tres pasos, y como ejemplo pegó el último presupuesto que les gustó.",
+   "Claude le preguntó qué pasa cuando un ítem no tiene precio en la lista y si querían aclarar las rondas de cambios. Respondió que sin precio quede [PRECIO] y que siempre figuren las rondas incluidas.",
+   "Revisó el SKILL.md que le mostró. Corrigió la description para que dijera \"presupuesto\" y \"cotización\", que son las dos palabras que usan, y verificó que no pasara de 200 caracteres.",
+   "Pidió el .zip con la carpeta presupuesto-de-servicio como primer nivel. Lo subió en Customize → Skills, con +, + Create skill y Upload a skill, y dejó el interruptor prendido.",
+   "En un chat nuevo pegó un mensaje real de un cliente (\"necesito logo y tarjetas para mi panadería, para fin de mes\") y pidió \"armame la cotización\". En el razonamiento de Claude vio que abrió la skill.",
+   "Probó también un pedido que no tenía que activarla (\"escribime un post para Instagram sobre el estudio\") y confirmó que no la usó.",
+   "La otra socia hizo lo mismo en Claude Code: guardó la misma carpeta en ~/.claude/skills/presupuesto-de-servicio/ y la probó con /presupuesto-de-servicio."
+  ],
+  "resultado": "Las dos arman los presupuestos con la misma estructura: detalle por ítem, qué no incluye, plazo y forma de pago. Cuando falta un dato, el presupuesto lo marca en lugar de inventarlo, y la que revisa completa los precios antes de mandarlo."
+ },
+ "si_falla": [
+  {
+   "sintoma": "No aparece la sección Skills en Customize, o las skills se ven en gris.",
+   "solucion": "Prendé Code execution and file creation (o Create and edit files) en Settings → Capabilities. En Team o Enterprise, si no podés, pedile al Owner que habilite Skills y la ejecución de código en Organization settings → Plugins & skills, pestaña Policy."
+  },
+  {
+   "sintoma": "Al subir el .zip aparece un error de formato, de nombre o de archivo faltante.",
+   "solucion": "Revisá cuatro cosas: que el .zip tenga la carpeta adentro (no los archivos sueltos), que la carpeta se llame igual que el name, que el SKILL.md arranque con --- en la primera línea y que la description no pase de 200 caracteres. Sacá tildes, ñ y signos raros del name."
+  },
+  {
+   "sintoma": "La skill está activada pero Claude no la usa.",
+   "solucion": "Casi siempre es la description. Copiá tal cual la frase con la que pediste la tarea y sumá esas palabras a la description. Volvé a probar en un chat nuevo y mirá en el razonamiento de Claude si abrió la skill."
+  },
+  {
+   "sintoma": "En Claude Code la skill nueva no aparece en /skills.",
+   "solucion": "Revisá la ruta: tiene que quedar ~/.claude/skills/nombre/SKILL.md (no ~/.claude/skills/SKILL.md). Si la carpeta skills no existía cuando abriste la sesión, escribí /reload-skills. Si sigue sin aparecer, abrí Claude Code con claude --debug y buscá el error de esa skill en el registro."
+  },
+  {
+   "sintoma": "En Claude Code /nombre-de-la-skill funciona, pero Claude nunca la elige solo.",
+   "solucion": "Es probable que el encabezado tenga un error de formato: en ese caso Claude Code carga las instrucciones pero sin la description. Fijate que la primera línea sea --- y que no haya dos puntos sueltos o comillas sin cerrar en la description."
+  }
+ ],
+ "kit": [
+  {
+   "archivo": "presupuesto-de-servicio/SKILL.md",
+   "que_es": "Skill lista para usar que arma presupuestos con formato fijo a partir de notas sueltas, sin inventar precios. Guardala en una carpeta presupuesto-de-servicio, comprimila en .zip y subila en Customize → Skills, o copiala a ~/.claude/skills/ en Claude Code.",
+   "contenido": "---\nname: presupuesto-de-servicio\ndescription: Arma un presupuesto de servicio con formato fijo a partir de notas sueltas del pedido. Usala cuando pidan un presupuesto, una cotización o cuánto sale un trabajo.\n---\n\n# Presupuesto de servicio\n\nConvertís las notas de un pedido en un presupuesto listo para revisar y mandar. Nunca lo mandás vos.\n\n## Antes de empezar\n\nSi en el Proyecto o en el chat hay una lista de precios, usala. Si no la hay, no pongas montos: dejá [PRECIO] en cada ítem y avisalo al final.\n\n## Pasos\n\n1. Leé las notas y separá: quién pide, qué pide, para cuándo y cualquier condición que mencione.\n2. Partí el trabajo en ítems concretos que el cliente pueda entender sin explicación (por ejemplo, \"Diseño de logo: 2 propuestas y 2 rondas de cambios\").\n3. A cada ítem ponele el precio de la lista, tal cual figura. Si un ítem no está en la lista, dejá [PRECIO].\n4. Escribí qué incluye y qué no incluye. Lo que no incluye es tan importante como lo que sí.\n5. Armá el presupuesto con el formato de abajo.\n6. Al final, fuera del presupuesto, listá en PREGUNTAR AL CLIENTE todo lo que falte para cerrar el trabajo.\n\n## Formato\n\n**Presupuesto para [NOMBRE DEL CLIENTE]**\nFecha: [FECHA DE HOY]\nValidez: [DÍAS QUE FIGUREN EN LAS REGLAS DEL NEGOCIO, o \"a confirmar\"]\n\n**Qué vamos a hacer**\nUn párrafo de 2 o 3 frases, en el idioma del cliente, sin jerga.\n\n**Detalle**\n| Ítem | Qué incluye | Precio |\n|---|---|---|\n\n**No incluye**\n- ...\n\n**Plazo de entrega**\n[PLAZO, o \"a confirmar\"]\n\n**Forma de pago**\n[LA QUE FIGURE EN LAS REGLAS DEL NEGOCIO, o \"a confirmar\"]\n\n## Reglas\n\n- No inventes precios, plazos, descuentos ni condiciones de pago.\n- No sumes ítems que el cliente no pidió. Si te parece que conviene ofrecer algo más, escribilo aparte como sugerencia para quien revisa.\n- Tono: claro, cordial, con voseo si el negocio usa voseo. Sin signos de exclamación.\n- Si las notas son contradictorias (por ejemplo, dos fechas distintas), no elijas: anotalo en PREGUNTAR AL CLIENTE.\n\n## Al final\n\nCerrá con una línea para quien revisa: \"Revisá precios, plazo y forma de pago antes de mandarlo.\"\n"
+  },
+  {
+   "archivo": "checklist-primera-skill.md",
+   "que_es": "Checklist para pasar de la idea a una skill instalada y probada, con la tabla de pedidos de prueba para ver si se activa cuando corresponde.",
+   "contenido": "# Checklist: tu primera skill, de la idea a la prueba\n\nUsala en orden. Si un punto no se cumple, no sigas al siguiente.\n\n## 1. La idea\n- [ ] La tarea la pedís seguido (no es de una sola vez).\n- [ ] La podés decir en una frase: \"Cuando [SITUACIÓN], quiero que Claude [RESULTADO]\".\n- [ ] No necesita datos en vivo de otra app. Si los necesita, primero conectá el conector y después la skill le explica cómo usarlo.\n- [ ] Tenés un ejemplo de un resultado que te gustó.\n\n## 2. El SKILL.md\n- [ ] La primera línea del archivo es --- (sin espacios ni líneas vacías antes).\n- [ ] Tiene name: minúsculas, números y guiones. Sin tildes, sin ñ, sin espacios.\n- [ ] El name es igual al nombre de la carpeta.\n- [ ] Tiene description: qué hace y cuándo usarla, en menos de 200 caracteres si la vas a subir a la app.\n- [ ] La description tiene las palabras que usás vos al pedir la tarea (\"presupuesto\", \"cotización\", \"cuánto sale\").\n- [ ] Si la vas a subir a la app, en el encabezado solo hay name y description (otros campos de Claude Code, como disable-model-invocation, hacen fallar la subida).\n- [ ] Debajo del encabezado hay pasos numerados, reglas y un ejemplo.\n- [ ] No hay claves, contraseñas ni datos personales de clientes.\n- [ ] Tiene menos de 500 líneas. Lo largo va en un archivo aparte dentro de la carpeta.\n\n## 3. Instalarla\nEn la app:\n- [ ] Settings → Capabilities: Code execution and file creation (o Create and edit files) prendida.\n- [ ] Comprimiste la carpeta (no los archivos sueltos) en un .zip.\n- [ ] Customize → Skills, botón +, + Create skill, Upload a skill.\n- [ ] La skill aparece con el interruptor prendido.\n\nEn Claude Code:\n- [ ] La carpeta está en ~/.claude/skills/[NOMBRE]/SKILL.md (todos tus proyectos) o en .claude/skills/[NOMBRE]/SKILL.md (un proyecto).\n- [ ] Aparece en /skills. Si no, probá /reload-skills.\n\n## 4. Probarla\nEscribí estos pedidos en chats nuevos y anotá qué pasó:\n\n| Pedido | ¿Debería usarla? | ¿La usó? | ¿El resultado sirve? |\n|---|---|---|---|\n| [UN PEDIDO COMO LO HARÍAS UN DÍA NORMAL] | Sí | | |\n| [EL MISMO PEDIDO, DICHO DE OTRA FORMA] | Sí | | |\n| [UN PEDIDO CON DATOS QUE FALTAN] | Sí | | |\n| [UN PEDIDO PARECIDO PERO DE OTRA COSA] | No | | |\n\n- [ ] Si no la usó cuando debía: sumá a la description las palabras de ese pedido.\n- [ ] Si la usó cuando no debía: hacé la description más específica.\n- [ ] Si la usó pero el resultado no sirve: el problema está en los pasos o falta el ejemplo, no en la description.\n"
+  }
+ ],
+ "notas_revision": "Verifiqué contra la ayuda oficial: planes (Free, Pro, Max, Ultra, Team, Enterprise), opción Code execution and file creation / Create and edit files en Settings > Capabilities, habilitación en Organization settings > Plugins & skills > Policy, botones de subida (+, + Create skill, Upload a skill), secciones de Customize > Skills, límites de name (64) y description (200), requisito de carpeta igual al name y ZIP con la carpeta como raíz, consejos de prueba (mirar el razonamiento), y advertencias de seguridad. En la doc de Claude Code: rutas personal y de proyecto, /reload-skills, /skills, límite recomendado de 500 líneas, frontmatter en la primera línea y --debug. No pude confirmar que el chat de Claude tenga un menú / para elegir skills (la ayuda solo lo documenta en los complementos de Microsoft 365), así que lo saqué. No pude abrir claude.com/docs/skills ni la página de la Academy sobre crear skills conversando; la disponibilidad de skill-creator la tomé del README de anthropics/skills (planes pagos). No pude confirmar los nombres en español de los menús, por eso van en inglés con la aclaración."
+}
