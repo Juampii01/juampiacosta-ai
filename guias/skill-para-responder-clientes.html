@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena skill-para-responder-clientes, Skill para responder clientes con tu tono y tus políticas, Pegás la consulta y la skill te arma la respuesta con tu forma de hablar y tus reglas. Lo que no sabe, no lo inventa: te lo marca para derivar. y 1b71218b -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena skill-para-responder-clientes, Skill para responder clientes con tu tono y tus políticas, Pegás la consulta y la skill te arma la respuesta con tu forma de hablar y tus reglas. Lo que no sabe, no lo inventa: te lo marca para derivar. y e9815a09 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=1b71218b">
-<link rel="stylesheet" href="../web/cta.css?v=1b71218b">
-<link rel="stylesheet" href="../web/biblioteca.css?v=1b71218b">
-<link rel="stylesheet" href="../web/guia.css?v=1b71218b">
-<link rel="stylesheet" href="../web/tema.css?v=1b71218b">
-<link rel="stylesheet" href="../web/bienvenida.css?v=1b71218b">
-<script src="../web/tema.js?v=1b71218b"></script>
-<link rel="icon" href="../web/favicon.svg?v=1b71218b" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=e9815a09">
+<link rel="stylesheet" href="../web/cta.css?v=e9815a09">
+<link rel="stylesheet" href="../web/biblioteca.css?v=e9815a09">
+<link rel="stylesheet" href="../web/guia.css?v=e9815a09">
+<link rel="stylesheet" href="../web/tema.css?v=e9815a09">
+<link rel="stylesheet" href="../web/bienvenida.css?v=e9815a09">
+<script src="../web/tema.js?v=e9815a09"></script>
+<link rel="icon" href="../web/favicon.svg?v=e9815a09" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=1b71218b"></script>
-<script src="../web/guias-web.js?v=1b71218b"></script>
-<script src="../web/comun.js?v=1b71218b"></script>
+<script src="../web/redes.js?v=e9815a09"></script>
+<script src="../web/guias-web.js?v=e9815a09"></script>
+<script src="../web/comun.js?v=e9815a09"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="skill-para-responder-clientes"></main>
 <script>var GUIA = {"slug": "skill-para-responder-clientes", "t": "Skill para responder clientes con tu tono y tus políticas", "d": "Pegás la consulta y la skill te arma la respuesta con tu forma de hablar y tus reglas. Lo que no sabe, no lo inventa: te lo marca para derivar.", "tema": "Skills y plugins", "min": 9, "fichaNombre": "responder-clientes", "ficha": [["Qué es", "Una skill con tu tono, tus políticas, tus preguntas frecuentes y los casos que siempre se derivan."], ["Necesitás", "Skills activadas en la app (o Claude Code) y tus políticas por escrito."], ["Qué no hace", "No manda mensajes. Prepara la respuesta y vos la enviás."]], "secciones": [{"h": "Cómo funciona", "p": ["La skill sigue siempre el mismo camino: entiende qué pide el cliente, busca la respuesta en tus políticas y tus preguntas frecuentes, y la redacta con tu tono. Si la respuesta no está o el tema es delicado, no improvisa: te devuelve un mensaje corto de espera y una marca de DERIVAR con el motivo."], "lista": ["SKILL.md: tono, políticas, pasos y casos para derivar.", "references/preguntas-frecuentes.md: las preguntas que te hacen siempre, con tu respuesta."]}, {"h": "Juntá lo que necesita", "pasos": ["Tus políticas: horario, envíos, cambios, devoluciones, pagos.", "Las 10 o 15 preguntas que más te hacen, con la respuesta que das vos.", "Tres o cuatro respuestas reales que te hayan quedado bien, para el tono.", "La lista de temas que siempre tienen que pasar por vos o por alguien de tu equipo."]}, {"h": "El SKILL.md", "p": ["Copialo y completá lo que está entre corchetes. La carpeta se tiene que llamar responder-clientes."], "prompts": [{"t": "responder-clientes/SKILL.md", "c": "---\nname: responder-clientes\ndescription: Redacta respuestas a consultas de clientes de [TU NEGOCIO] con nuestro tono y nuestras políticas, y marca para derivar lo que no está cubierto. Usala cuando pegue un mensaje o mail de un cliente.\n---\n\n# Responder clientes de [TU NEGOCIO]\n\n## Cuándo usarla\n- Cuando pegue un mensaje, mail o comentario de un cliente y quiera una respuesta.\n- Cuando te pida ordenar varias consultas.\n\n## Pasos\n1. Leé la consulta y decime en una línea qué está pidiendo el cliente.\n2. Buscá la respuesta en references/preguntas-frecuentes.md y en las políticas de abajo.\n3. Si la respuesta está, redactala con el tono de abajo.\n4. Si no está, o si es uno de los casos para derivar, no inventes: escribí una respuesta corta que avise que lo estamos consultando y marcala con DERIVAR A [PERSONA O ÁREA] y el motivo.\n5. Entregá primero la respuesta lista para copiar y abajo una nota para mí con lo que tengo que revisar.\n\n## Tono\n- [EJ.: CERCANO Y RESOLUTIVO, TRATO DE VOS].\n- Saludá por el nombre si lo tenemos.\n- Respuestas cortas: [EJ.: MÁXIMO 5 LÍNEAS].\n- Cerrá con [TU FIRMA O FRASE DE CIERRE].\n\n## Políticas\n- Horario de atención: [HORARIO].\n- Envíos: [ZONAS, PLAZOS, COSTOS O \"SE COTIZA\"].\n- Cambios y devoluciones: [CONDICIONES Y PLAZO].\n- Formas de pago: [LISTA].\n- [OTRA POLÍTICA]\n\n## Siempre derivar\n- Reclamos por cobros o reintegros de dinero.\n- Quejas graves o clientes muy enojados.\n- Pedidos de descuentos fuera de las políticas.\n- Temas legales, de salud o de seguridad.\n- [OTRO CASO]\n\n## Nunca\n- Prometer plazos, precios o excepciones que no estén en este archivo.\n- Pedir datos de tarjetas o contraseñas.\n- Decir que el mensaje ya fue enviado: yo lo envío."}]}, {"h": "Las preguntas frecuentes", "p": ["Guardalo en responder-clientes/references/preguntas-frecuentes.md. Cada vez que respondas algo nuevo que se repite, sumalo acá."], "prompts": [{"t": "references/preguntas-frecuentes.md", "c": "# Preguntas frecuentes de [TU NEGOCIO]\n\n## [PREGUNTA QUE TE HACEN SEGUIDO]\n[RESPUESTA COMO LA DARÍAS VOS]\n\n## [PREGUNTA]\n[RESPUESTA]\n\n## [PREGUNTA]\n[RESPUESTA]"}, {"t": "Armar las preguntas frecuentes con tus chats", "c": "Te paso conversaciones reales con clientes (sin datos personales): [PEGALAS].\nSacá las preguntas que se repiten y armá references/preguntas-frecuentes.md con el formato \"## Pregunta\" y abajo la respuesta como la di yo.\nSi en dos chats respondí distinto lo mismo, marcámelo para que elija."}], "aviso": "Antes de pegar chats reales, sacá nombres, teléfonos, direcciones y cualquier dato de pago."}, {"h": "Instalala y usala", "pasos": ["Comprimí la carpeta responder-clientes entera en un .zip.", "Subila en Personalizar → Skills → + → Crear skill → Subir una skill y activala. En Claude Code, copiala a ~/.claude/skills/.", "Pegá la consulta con el prompt de abajo.", "Revisá la respuesta y la nota de abajo antes de mandarla."], "prompts": [{"t": "Responder una consulta", "c": "Respondé esta consulta de un cliente: [PEGÁ EL MENSAJE]."}, {"t": "Ordenar varias consultas", "c": "Tengo estas consultas de hoy: [PEGALAS]. Ordenalas por urgencia, respondé las que estén cubiertas y separá las que hay que derivar, con el motivo."}]}], "faq": [{"q": "¿Puede contestar sola en WhatsApp o Instagram?", "a": "No. La skill prepara la respuesta. Copiar y enviar lo hacés vos."}, {"q": "¿Qué pasa si un cliente pregunta algo que no está?", "a": "Te devuelve un mensaje corto de espera y la marca DERIVAR con el motivo. Cuando lo resuelvas, sumá la respuesta a las preguntas frecuentes."}, {"q": "¿Puedo usarla con mi mail conectado?", "a": "Una skill le puede explicar a Claude cómo usar un conector que ya tengas. Si conectaste tu mail, pedile que prepare la respuesta como borrador y revisala antes de enviarla."}], "fuentes": ["https://claude.com/docs/skills/how-to", "https://support.claude.com/en/articles/12512198-creating-custom-skills", "https://support.claude.com/en/articles/12512180-use-skills-in-claude", "https://claude.com/docs/skills/overview", "https://code.claude.com/docs/en/skills"], "cat": "skills", "parte": "aprende"};</script>
 
-<script src="../web/rutas.js?v=1b71218b"></script>
-<script src="../web/logos.js?v=1b71218b"></script>
-<script src="../web/guia.js?v=1b71218b"></script>
-<script src="../web/bienvenida.js?v=1b71218b"></script>
+<script src="../web/rutas.js?v=e9815a09"></script>
+<script src="../web/logos.js?v=e9815a09"></script>
+<script src="../web/guia.js?v=e9815a09"></script>
+<script src="../web/bienvenida.js?v=e9815a09"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

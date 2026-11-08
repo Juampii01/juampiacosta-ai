@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena proyectos-y-cache-para-gastar-menos, Proyectos y caché: subí tu material una vez y gastá menos, Por qué el material que dejás en un Proyecto cuenta menos cuando lo reutilizás, cuándo deja de contar menos, qué es el modo RAG y qué conviene subir y qué no. y 1b71218b -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena proyectos-y-cache-para-gastar-menos, Proyectos y caché: subí tu material una vez y gastá menos, Por qué el material que dejás en un Proyecto cuenta menos cuando lo reutilizás, cuándo deja de contar menos, qué es el modo RAG y qué conviene subir y qué no. y e9815a09 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=1b71218b">
-<link rel="stylesheet" href="../web/cta.css?v=1b71218b">
-<link rel="stylesheet" href="../web/biblioteca.css?v=1b71218b">
-<link rel="stylesheet" href="../web/guia.css?v=1b71218b">
-<link rel="stylesheet" href="../web/tema.css?v=1b71218b">
-<link rel="stylesheet" href="../web/bienvenida.css?v=1b71218b">
-<script src="../web/tema.js?v=1b71218b"></script>
-<link rel="icon" href="../web/favicon.svg?v=1b71218b" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=e9815a09">
+<link rel="stylesheet" href="../web/cta.css?v=e9815a09">
+<link rel="stylesheet" href="../web/biblioteca.css?v=e9815a09">
+<link rel="stylesheet" href="../web/guia.css?v=e9815a09">
+<link rel="stylesheet" href="../web/tema.css?v=e9815a09">
+<link rel="stylesheet" href="../web/bienvenida.css?v=e9815a09">
+<script src="../web/tema.js?v=e9815a09"></script>
+<link rel="icon" href="../web/favicon.svg?v=e9815a09" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=1b71218b"></script>
-<script src="../web/guias-web.js?v=1b71218b"></script>
-<script src="../web/comun.js?v=1b71218b"></script>
+<script src="../web/redes.js?v=e9815a09"></script>
+<script src="../web/guias-web.js?v=e9815a09"></script>
+<script src="../web/comun.js?v=e9815a09"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="proyectos-y-cache-para-gastar-menos"></main>
 <script>var GUIA = {"slug": "proyectos-y-cache-para-gastar-menos", "t": "Proyectos y caché: subí tu material una vez y gastá menos", "d": "Por qué el material que dejás en un Proyecto cuenta menos cuando lo reutilizás, cuándo deja de contar menos, qué es el modo RAG y qué conviene subir y qué no.", "tema": "Gastá menos tokens", "min": 7, "secciones": [{"h": "La idea en una línea", "p": ["Si vas a usar el mismo material muchas veces (tu lista de precios, tus políticas, tu guía de marca), no lo pegues en cada chat: subilo una vez a un Proyecto.", "Un Proyecto es un espacio con su propio historial de chats, sus archivos (la base de conocimiento, que en la app se llama project knowledge) y sus instrucciones. Cada chat nuevo adentro ya arranca con eso.", "Para armar proyectos por área de tu negocio está la guía \"Proyectos de Claude: un asistente por área de tu negocio\". Acá nos enfocamos en cómo usarlos para gastar menos."]}, {"h": "Por qué cuenta menos: la caché", "p": ["El centro de ayuda lo dice así: el contenido de los proyectos queda en caché y cuenta menos contra tus límites cuando se reutiliza.", "La caché es como una memoria de corto plazo del sistema: en vez de procesar todo tu material desde cero en cada mensaje, el sistema retoma desde lo que ya procesó. Por eso el material fijo de un Proyecto conviene más que pegar el mismo texto una y otra vez."]}, {"h": "Cuándo vence la caché", "p": ["La caché vence después de un rato sin uso. Si volvés a un proyecto después de una pausa larga, tu primer mensaje cuenta todo ese material completo otra vez.", "La ayuda de la app no dice cuánto dura exactamente, así que no planifiques con un número. Lo práctico es esto:"], "lista": ["Trabajá por bloques: si tenés cinco consultas sobre el mismo proyecto, hacelas seguidas en vez de una a la mañana, otra al mediodía y otra a la noche.", "Juntá preguntas: si podés, mandá varias consultas relacionadas en un mismo mensaje.", "No te asustes por el primer mensaje: que el primero después de una pausa gaste más es normal."]}, {"h": "El modo RAG: proyectos más grandes", "p": ["En los planes pagos (Pro, Max, Ultra, Team y Enterprise), cuando el material del proyecto se acerca al límite de lo que Claude puede tener en la cabeza a la vez (la ventana de contexto), se activa solo el modo RAG. Según Anthropic, eso amplía la capacidad del proyecto hasta 10 veces.", "En modo RAG, Claude no carga todo el material de una: usa una herramienta de búsqueda dentro de tu proyecto (project knowledge search) y trae solo las partes que necesita para responder. No tenés que configurar nada, y si después el material baja, puede volver a trabajar como antes."], "lista": ["Nombres claros: ponele a cada archivo un nombre que diga qué es (por ejemplo, precios-2026.pdf y no doc-final-v3.pdf).", "Nombrá el documento: cuando preguntes, decí en qué archivo buscar (\"según politicas-de-cambio.pdf...\").", "Un tema por proyecto: agrupá en un mismo proyecto lo que va junto."]}, {"h": "Qué conviene subir y qué no", "lista": ["Sí: lo que consultás seguido y cambia poco (precios, políticas, procesos, guía de marca, preguntas frecuentes).", "Sí: versiones finales y en texto. En los archivos de proyecto Claude extrae solo el texto, salvo en los PDF, donde también puede mirar lo visual.", "Sí: resúmenes que ya armaste de documentos largos (lo explicamos en la guía de archivos de esta categoría).", "No: borradores y versiones viejas. Si hay dos versiones de lo mismo, Claude puede mezclarlas.", "No: archivos que vas a usar una sola vez. Esos van en el chat.", "No: lo que ya no usás. La ayuda recomienda sacar los archivos que no usás y mantener las instrucciones del proyecto cortas."], "aviso": "Cada archivo de proyecto puede pesar hasta 30 MB."}, {"h": "Armalo y mantenelo en orden", "pasos": ["Entrá a Projects (Proyectos) en la barra lateral, o a claude.ai/projects, y tocá + New Project (nuevo proyecto).", "Ponele nombre y descripción. Claude no ve esos datos: son para vos.", "En el área de conocimiento del proyecto, a la derecha, tocá + y subí tus archivos.", "Tocá Set project instructions (instrucciones del proyecto), escribí reglas cortas y guardá con Save instructions.", "Una vez por mes, revisá qué archivos sobran o están viejos y sacalos."], "prompts": [{"t": "Revisión del proyecto", "c": "Mirá los archivos de este proyecto y decime:\n1. Cuáles parecen repetidos o versiones viejas de otro.\n2. Cuáles no se relacionan con [PARA QUÉ USO ESTE PROYECTO].\n3. Si las instrucciones del proyecto tienen algo que sobra o se contradice.\nRespondé en una lista corta. No cambies nada, solo recomendá."}]}], "faq": [{"q": "¿Puedo usar proyectos en el plan gratis?", "a": "Sí, hasta cinco proyectos. El modo RAG es solo para los planes pagos."}, {"q": "¿Lo que hablo en un chat del proyecto lo sabe el otro chat?", "a": "No por sí solo. Lo que querés que todos los chats sepan tiene que estar en la base de conocimiento del proyecto. Cada proyecto también tiene su propia memoria, si la usás."}, {"q": "¿Cuánto dura la caché?", "a": "La ayuda de la app no lo dice. Solo aclara que vence después de un rato sin uso, y que al volver el material cuenta completo otra vez."}, {"q": "¿Usar proyectos me da más uso gratis?", "a": "No. Los proyectos usan tu plan como cualquier otra cosa. Lo que ganás es que el material reutilizado cuenta menos mientras está en caché."}], "fuentes": ["https://support.claude.com/en/articles/9797557-usage-limit-best-practices", "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work", "https://support.claude.com/en/articles/9517075-what-are-projects", "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects", "https://support.claude.com/en/articles/11473015-retrieval-augmented-generation-rag-for-projects", "https://support.claude.com/en/articles/8241126-upload-files-to-claude", "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context", "https://platform.claude.com/docs/en/build-with-claude/prompt-caching"], "cat": "ahorrar", "parte": "aprende"};</script>
 
-<script src="../web/rutas.js?v=1b71218b"></script>
-<script src="../web/logos.js?v=1b71218b"></script>
-<script src="../web/guia.js?v=1b71218b"></script>
-<script src="../web/bienvenida.js?v=1b71218b"></script>
+<script src="../web/rutas.js?v=e9815a09"></script>
+<script src="../web/logos.js?v=e9815a09"></script>
+<script src="../web/guia.js?v=e9815a09"></script>
+<script src="../web/bienvenida.js?v=e9815a09"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena disena-tu-agente-en-una-hoja, Diseñá tu agente en una hoja antes de construirlo, Una plantilla de seis partes para definir qué hace tu agente, con qué, con qué reglas, cuándo te llama y cómo sabés si funciona. Incluye un prompt que la completa con vos. y 1b71218b -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena disena-tu-agente-en-una-hoja, Diseñá tu agente en una hoja antes de construirlo, Una plantilla de seis partes para definir qué hace tu agente, con qué, con qué reglas, cuándo te llama y cómo sabés si funciona. Incluye un prompt que la completa con vos. y e9815a09 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=1b71218b">
-<link rel="stylesheet" href="../web/cta.css?v=1b71218b">
-<link rel="stylesheet" href="../web/biblioteca.css?v=1b71218b">
-<link rel="stylesheet" href="../web/guia.css?v=1b71218b">
-<link rel="stylesheet" href="../web/tema.css?v=1b71218b">
-<link rel="stylesheet" href="../web/bienvenida.css?v=1b71218b">
-<script src="../web/tema.js?v=1b71218b"></script>
-<link rel="icon" href="../web/favicon.svg?v=1b71218b" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=e9815a09">
+<link rel="stylesheet" href="../web/cta.css?v=e9815a09">
+<link rel="stylesheet" href="../web/biblioteca.css?v=e9815a09">
+<link rel="stylesheet" href="../web/guia.css?v=e9815a09">
+<link rel="stylesheet" href="../web/tema.css?v=e9815a09">
+<link rel="stylesheet" href="../web/bienvenida.css?v=e9815a09">
+<script src="../web/tema.js?v=e9815a09"></script>
+<link rel="icon" href="../web/favicon.svg?v=e9815a09" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=1b71218b"></script>
-<script src="../web/guias-web.js?v=1b71218b"></script>
-<script src="../web/comun.js?v=1b71218b"></script>
+<script src="../web/redes.js?v=e9815a09"></script>
+<script src="../web/guias-web.js?v=e9815a09"></script>
+<script src="../web/comun.js?v=e9815a09"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="disena-tu-agente-en-una-hoja"></main>
 <script>var GUIA = {"slug": "disena-tu-agente-en-una-hoja", "t": "Diseñá tu agente en una hoja antes de construirlo", "d": "Una plantilla de seis partes para definir qué hace tu agente, con qué, con qué reglas, cuándo te llama y cómo sabés si funciona. Incluye un prompt que la completa con vos.", "tema": "Agentes", "min": 8, "fichaNombre": "Hoja del agente", "ficha": [["Qué es", "Una ficha de una página que describe tu agente antes de armarlo."], ["Tiempo", "20 a 30 minutos."], ["Para qué", "Que no construyas algo que después no sabés si funciona."], ["Sirve para", "Claude Code, Proyectos de Claude o el Agent SDK."]], "secciones": [{"h": "Por qué una hoja primero", "p": ["La mayoría de los agentes que fallan no fallan por la tecnología: fallan porque nadie definió qué era un buen resultado ni qué tenía prohibido hacer.", "Una hoja corta te obliga a decidir eso antes. Y después la misma hoja se convierte en las instrucciones del agente."]}, {"h": "Las seis partes", "lista": ["Objetivo: una frase con un resultado que se pueda revisar. Mal: \"ayudarme con ventas\". Bien: \"dejar cada mañana una lista de prospectos ordenados de más a menos listos para comprar\".", "Entradas: qué recibe y de dónde. Mensajes pegados, un archivo, un formulario exportado, una búsqueda web.", "Herramientas: qué puede usar. Leer archivos, escribir un documento, buscar en la web, una app conectada. Solo las necesarias.", "Reglas: lo que siempre hace y lo que nunca hace. \"Nunca inventa precios\", \"siempre deja la fuente\".", "Cuándo pide ayuda a un humano: las situaciones en las que frena y te pregunta. Dudas, enojos, plata, datos que faltan.", "Cómo se mide: dos o tres números o chequeos simples. \"De 10 casos de prueba, 9 bien clasificados\", \"cero datos inventados\"."]}, {"h": "Ejemplo completo", "prompts": [{"t": "Hoja de un agente de seguimiento", "c": "AGENTE: Seguimiento de presupuestos\nOBJETIVO: Cada lunes, dejarme una lista de los presupuestos enviados hace más de 7 días sin respuesta, con un borrador de seguimiento para cada uno.\nENTRADAS: La planilla presupuestos.csv (cliente, fecha, monto, estado).\nHERRAMIENTAS: Leer la planilla. Escribir el archivo seguimientos.md. Nada más.\nREGLAS:\n- No cambia la planilla.\n- No manda mensajes: solo borradores.\n- No ofrece descuentos.\nPIDE AYUDA CUANDO:\n- Falta la fecha o el contacto.\n- El cliente ya se quejó antes.\nCÓMO SE MIDE:\n- Encuentra todos los presupuestos vencidos (lo chequeo a mano 2 semanas).\n- Yo uso el borrador sin cambios grandes en 7 de cada 10 casos."}]}, {"h": "Que Claude te ayude a completarla", "prompts": [{"t": "Entrevista para diseñar tu agente", "c": "Quiero diseñar un agente de IA para mi negocio: [TU NEGOCIO EN UNA LÍNEA].\nLa tarea que quiero delegar es: [TAREA].\n\nEntrevistame para completar esta hoja: Objetivo, Entradas, Herramientas, Reglas, Cuándo pide ayuda a un humano y Cómo se mide.\nHaceme una pregunta por vez. Si mi respuesta es vaga, repreguntame con un ejemplo concreto.\nCuando tengas todo, mostrame la hoja completa en el mismo formato y marcá con [REVISAR] lo que te parezca riesgoso o poco claro."}]}, {"h": "De la hoja a las instrucciones", "pasos": ["Pegá la hoja terminada en un chat nuevo.", "Pedile que la convierta en instrucciones de sistema en segunda persona (\"Sos...\", \"Nunca...\").", "Revisá que cada regla de la hoja esté en las instrucciones. Si falta una, agregala vos.", "Usá esas instrucciones en un Proyecto de Claude, en un subagente de Claude Code o en el Agent SDK.", "Guardá la hoja: cuando el agente falle, volvé a ella para ver qué parte estaba mal definida."], "prompts": [{"t": "Convertir la hoja en instrucciones", "c": "Convertí esta hoja en instrucciones de sistema para un agente. Escribilas en segunda persona, cortas y en orden: qué sos, qué recibís, qué hacés paso a paso, qué nunca hacés, cuándo frenás y me preguntás, y cómo entregás el resultado.\nNo agregues reglas que no estén en la hoja. Si algo de la hoja se contradice, avisame en vez de elegir vos.\n\n[PEGÁ TU HOJA]"}]}], "faq": [{"q": "¿Qué tan detallada tiene que ser?", "a": "Que entre en una página. Si necesitás más, probablemente son dos agentes distintos."}, {"q": "¿Y si no sé qué medir?", "a": "Armá 10 casos de ejemplo con la respuesta que vos darías. Medir es contar en cuántos el agente se acerca a tu respuesta."}, {"q": "¿Cada cuánto la actualizo?", "a": "Cada vez que el agente falle de una forma nueva. Agregá la regla que hubiera evitado ese error."}], "fuentes": ["https://code.claude.com/docs/en/agent-sdk/agent-loop", "https://code.claude.com/docs/en/sub-agents"], "cat": "agentes", "parte": "usalo"};</script>
 
-<script src="../web/rutas.js?v=1b71218b"></script>
-<script src="../web/logos.js?v=1b71218b"></script>
-<script src="../web/guia.js?v=1b71218b"></script>
-<script src="../web/bienvenida.js?v=1b71218b"></script>
+<script src="../web/rutas.js?v=e9815a09"></script>
+<script src="../web/logos.js?v=e9815a09"></script>
+<script src="../web/guia.js?v=e9815a09"></script>
+<script src="../web/bienvenida.js?v=e9815a09"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

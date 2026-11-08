@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena escribi-la-especificacion-antes-de-programar, Escribí la especificación antes de programar, Un documento corto que dice qué hace tu app, para quién, qué pantallas tiene, qué datos guarda y qué no hace. Claude lo usa como guía para construir. y 1b71218b -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena escribi-la-especificacion-antes-de-programar, Escribí la especificación antes de programar, Un documento corto que dice qué hace tu app, para quién, qué pantallas tiene, qué datos guarda y qué no hace. Claude lo usa como guía para construir. y e9815a09 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=1b71218b">
-<link rel="stylesheet" href="../web/cta.css?v=1b71218b">
-<link rel="stylesheet" href="../web/biblioteca.css?v=1b71218b">
-<link rel="stylesheet" href="../web/guia.css?v=1b71218b">
-<link rel="stylesheet" href="../web/tema.css?v=1b71218b">
-<link rel="stylesheet" href="../web/bienvenida.css?v=1b71218b">
-<script src="../web/tema.js?v=1b71218b"></script>
-<link rel="icon" href="../web/favicon.svg?v=1b71218b" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=e9815a09">
+<link rel="stylesheet" href="../web/cta.css?v=e9815a09">
+<link rel="stylesheet" href="../web/biblioteca.css?v=e9815a09">
+<link rel="stylesheet" href="../web/guia.css?v=e9815a09">
+<link rel="stylesheet" href="../web/tema.css?v=e9815a09">
+<link rel="stylesheet" href="../web/bienvenida.css?v=e9815a09">
+<script src="../web/tema.js?v=e9815a09"></script>
+<link rel="icon" href="../web/favicon.svg?v=e9815a09" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=1b71218b"></script>
-<script src="../web/guias-web.js?v=1b71218b"></script>
-<script src="../web/comun.js?v=1b71218b"></script>
+<script src="../web/redes.js?v=e9815a09"></script>
+<script src="../web/guias-web.js?v=e9815a09"></script>
+<script src="../web/comun.js?v=e9815a09"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="escribi-la-especificacion-antes-de-programar"></main>
 <script>var GUIA = {"slug": "escribi-la-especificacion-antes-de-programar", "t": "Escribí la especificación antes de programar", "d": "Un documento corto que dice qué hace tu app, para quién, qué pantallas tiene, qué datos guarda y qué no hace. Claude lo usa como guía para construir.", "tema": "Creá tu app", "min": 7, "secciones": [{"h": "Por qué conviene escribirla primero", "p": ["Cuando le pedís algo vago a Claude, rellena los huecos con suposiciones. A veces acierta, muchas veces no. La especificación cierra esos huecos antes de que se conviertan en código.", "Además te sirve a vos: si en tres semanas no te acordás por qué hiciste algo, está escrito. Y si le vendés la app a un cliente, es la base para acordar qué entra y qué no."]}, {"h": "Las seis partes", "lista": ["Qué hace: una o dos frases, sin palabras técnicas.", "Para quién: quién la usa y si hay tipos de usuario distintos (cliente, administrador).", "Pantallas: cada pantalla en orden y qué se puede hacer en ella.", "Datos: qué se guarda (por ejemplo, nombre, fecha del turno) y quién puede verlo o cambiarlo.", "Qué NO hace: lo que queda afuera de esta versión. Es la parte más importante.", "Cómo sé que funciona: dos o tres pruebas concretas que tienen que salir bien."]}, {"h": "Plantilla para copiar", "p": ["Copiala en un archivo llamado ESPECIFICACION.md en la carpeta del proyecto y completala. Si no sabés qué poner en alguna parte, dejala vacía y pedile ayuda a Claude con el prompt de la sección siguiente."], "prompts": [{"t": "Plantilla de especificación", "c": "# Especificación: [NOMBRE DE LA APP]\n\n## Qué hace\n[UNA O DOS FRASES]\n\n## Para quién\n- [TIPO DE USUARIO 1]: [QUÉ NECESITA]\n- [TIPO DE USUARIO 2, SI HAY]: [QUÉ NECESITA]\n\n## Pantallas\n1. [PANTALLA]: [QUÉ SE VE Y QUÉ SE PUEDE HACER]\n2. [PANTALLA]: [...]\n\n## Datos\n- [DATO]: lo carga [QUIÉN], lo puede ver [QUIÉN], lo puede cambiar [QUIÉN]\n\n## Qué NO hace (en esta versión)\n- [COSA QUE QUEDA AFUERA]\n- [OTRA]\n\n## Cómo sé que funciona\n- [PRUEBA 1: QUÉ HAGO Y QUÉ TIENE QUE PASAR]\n- [PRUEBA 2]\n\n## Preguntas abiertas\n- [LO QUE TODAVÍA NO DECIDISTE]"}]}, {"h": "Si no sabés por dónde empezar, que Claude te entreviste", "p": ["En vez de llenar la plantilla solo, dejá que Claude te haga preguntas. Vos respondés con tus palabras y él ordena todo."], "prompts": [{"t": "Entrevista para la especificación", "c": "Quiero construir una app y antes de escribir código necesito una especificación corta.\nMi idea en una frase: [QUÉ HACE TU APP].\nPara quién es: [QUIÉN LA VA A USAR].\nEntrevistame de a una pregunta por vez hasta tener claro:\n1. Qué problema resuelve y cómo sabemos que funciona.\n2. Quién la usa (y si hay distintos tipos de usuario, como cliente y administrador).\n3. Las pantallas, en orden, y qué se puede hacer en cada una.\n4. Qué datos se guardan y quién puede ver o cambiar cada uno.\n5. Qué NO hace en esta primera versión.\nCuando tengas todo, armá el documento en un archivo ESPECIFICACION.md, con lenguaje simple, sin código. Al final agregá una lista de preguntas abiertas. No empieces a programar."}]}, {"h": "Cómo usarla con Claude Code", "pasos": ["Guardá el archivo ESPECIFICACION.md en la carpeta raíz del proyecto.", "En cada pedido importante, mencionalo con @ESPECIFICACION.md para que Claude lo lea antes de trabajar.", "Cuando cambies de idea, actualizá primero el documento y después pedile a Claude que ajuste el código.", "Antes de publicar, pedile que compare la app con la especificación y te diga qué falta o qué sobra."], "prompts": [{"t": "Revisar contra la especificación", "c": "Compará lo que hay construido en este proyecto con @ESPECIFICACION.md.\nDecime en una tabla: qué está hecho, qué falta, y qué hay en el código que la especificación no pide.\nNo cambies nada todavía."}]}], "faq": [{"q": "¿Tiene que ser larga?", "a": "No. Una o dos páginas alcanzan. Si se hace muy larga, probablemente la app es demasiado grande para una primera versión: pasá cosas a \"Qué NO hace\"."}, {"q": "¿Es lo mismo que el CLAUDE.md?", "a": "No. El CLAUDE.md tiene reglas de cómo trabajar en el proyecto (estilo, comandos). La especificación describe qué tiene que hacer la app. Conviven bien."}, {"q": "¿Sirve para vender a clientes?", "a": "Sí. Mandarle al cliente la parte de \"Qué hace\" y \"Qué NO hace\" antes de arrancar te ahorra discusiones sobre lo que estaba incluido."}], "fuentes": ["https://code.claude.com/docs/en/common-workflows"], "cat": "desarrollo", "parte": "construi"};</script>
 
-<script src="../web/rutas.js?v=1b71218b"></script>
-<script src="../web/logos.js?v=1b71218b"></script>
-<script src="../web/guia.js?v=1b71218b"></script>
-<script src="../web/bienvenida.js?v=1b71218b"></script>
+<script src="../web/rutas.js?v=e9815a09"></script>
+<script src="../web/logos.js?v=e9815a09"></script>
+<script src="../web/guia.js?v=e9815a09"></script>
+<script src="../web/bienvenida.js?v=e9815a09"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

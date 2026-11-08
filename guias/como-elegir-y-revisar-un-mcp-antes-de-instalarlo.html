@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena como-elegir-y-revisar-un-mcp-antes-de-instalarlo, Cómo elegir y revisar un MCP antes de instalarlo, Una revisión corta para saber quién publica un MCP, qué puede hacer con tus cuentas y cómo probarlo sin riesgo antes de usarlo en serio. y 1b71218b -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena como-elegir-y-revisar-un-mcp-antes-de-instalarlo, Cómo elegir y revisar un MCP antes de instalarlo, Una revisión corta para saber quién publica un MCP, qué puede hacer con tus cuentas y cómo probarlo sin riesgo antes de usarlo en serio. y e9815a09 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=1b71218b">
-<link rel="stylesheet" href="../web/cta.css?v=1b71218b">
-<link rel="stylesheet" href="../web/biblioteca.css?v=1b71218b">
-<link rel="stylesheet" href="../web/guia.css?v=1b71218b">
-<link rel="stylesheet" href="../web/tema.css?v=1b71218b">
-<link rel="stylesheet" href="../web/bienvenida.css?v=1b71218b">
-<script src="../web/tema.js?v=1b71218b"></script>
-<link rel="icon" href="../web/favicon.svg?v=1b71218b" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=e9815a09">
+<link rel="stylesheet" href="../web/cta.css?v=e9815a09">
+<link rel="stylesheet" href="../web/biblioteca.css?v=e9815a09">
+<link rel="stylesheet" href="../web/guia.css?v=e9815a09">
+<link rel="stylesheet" href="../web/tema.css?v=e9815a09">
+<link rel="stylesheet" href="../web/bienvenida.css?v=e9815a09">
+<script src="../web/tema.js?v=e9815a09"></script>
+<link rel="icon" href="../web/favicon.svg?v=e9815a09" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=1b71218b"></script>
-<script src="../web/guias-web.js?v=1b71218b"></script>
-<script src="../web/comun.js?v=1b71218b"></script>
+<script src="../web/redes.js?v=e9815a09"></script>
+<script src="../web/guias-web.js?v=e9815a09"></script>
+<script src="../web/comun.js?v=e9815a09"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="como-elegir-y-revisar-un-mcp-antes-de-instalarlo"></main>
 <script>var GUIA = {"slug": "como-elegir-y-revisar-un-mcp-antes-de-instalarlo", "t": "Cómo elegir y revisar un MCP antes de instalarlo", "d": "Una revisión corta para saber quién publica un MCP, qué puede hacer con tus cuentas y cómo probarlo sin riesgo antes de usarlo en serio.", "tema": "Conectores y MCP", "min": 7, "ficha": [["Qué es", "Una lista de control para revisar un servidor MCP o un plugin antes de conectarlo a Claude."], ["Necesitás", "Claude Code o la app de Claude, y 10 minutos antes de cada instalación."], ["Qué no hace", "No reemplaza la revisión de seguridad de tu empresa ni garantiza que un MCP sea seguro."]], "fichaNombre": "Revisión de MCP", "secciones": [{"h": "Por qué conviene revisar antes", "p": ["Un MCP le da a Claude las llaves de otra app: tu CRM, tus pagos, tu base de datos. Lo que el MCP pueda hacer, Claude lo va a poder hacer en tu nombre.", "Anthropic lo dice claro en su doc: confirmá que confiás en cada servidor antes de conectarlo, porque los que traen contenido de afuera te pueden exponer a inyección de instrucciones (texto escondido que intenta darle órdenes a Claude). Y en el directorio de plugins avisa que no controla los MCP que trae cada plugin."], "aviso": "Conectar un MCP a una cuenta con datos reales sin revisarlo es como correr un script en producción sin backup."}, {"h": "Quién lo publica: oficial o comunidad", "lista": ["Oficial de la empresa: la URL o el comando aparece en la documentación de la propia marca (por ejemplo docs.stripe.com o linear.app/docs). Es la opción más segura.", "Directorio oficial de Anthropic: el marketplace claude-plugins-official separa los plugins hechos por Anthropic de los de terceros. Que esté ahí no significa que Anthropic controle lo que hace por dentro.", "Comunidad: repos públicos de personas o equipos. Pueden ser muy buenos, pero leé el README, mirá quién lo mantiene y si tiene actividad reciente.", "Copias raras: si encontrás un instalador de un tercero que dice ser el oficial, desconfiá. Vercel, por ejemplo, recomienda confirmar siempre que la URL sea la oficial."]}, {"h": "Qué permisos pide", "pasos": ["Leé qué herramientas trae: solo lectura (buscar, listar) o también escritura (crear, editar, borrar).", "Fijate cómo se conecta: con OAuth (te abre una ventana para iniciar sesión y autorizar) o con una clave que pegás vos. OAuth te deja revocar el acceso después.", "Si usa una clave, creá una con los permisos mínimos. Stripe, por ejemplo, pide claves de agente con solo los permisos necesarios.", "Buscá si tiene modo solo lectura o forma de limitarlo a un proyecto. Supabase lo recomienda para no tocar datos de otros proyectos.", "Mirá dónde queda guardado: en Claude Code el alcance local es solo para vos en ese proyecto, el de proyecto se comparte con tu equipo en .mcp.json y el de usuario vale para todos tus proyectos."]}, {"h": "Cómo probarlo sin riesgo", "pasos": ["Conectalo primero a una cuenta de prueba o a un entorno de desarrollo, nunca directo a producción.", "Corré claude mcp list para ver si quedó conectado o si necesita autenticación.", "Empezá con pedidos de solo lectura: listar, buscar, resumir.", "Dejá activada la aprobación de cada herramienta, así ves qué va a hacer Claude antes de que lo haga.", "Si algo no te cierra, sacalo con claude mcp remove y el nombre del servidor."], "prompts": [{"t": "Pedile a Claude que te explique un MCP antes de usarlo", "c": "Acabo de conectar el MCP [NOMBRE]. Antes de usarlo, listame todas las herramientas que trae y separalas en dos grupos: las que solo leen y las que pueden crear, cambiar o borrar algo. No ejecutes ninguna todavía."}]}, {"h": "Señales de alerta", "lista": ["Pide más permisos de los que necesita: un MCP para leer el calendario no debería poder mandar mails.", "No tiene documentación clara ni dice quién lo mantiene.", "Te pide pegar una clave con acceso total cuando la app ofrece OAuth o claves limitadas.", "Lo combinás con otros MCP que leen contenido de afuera (webs, mails) y además tiene permisos de escritura: ahí el riesgo de inyección es mayor."]}], "faq": [{"q": "¿Un plugin del marketplace oficial ya está revisado por Anthropic?", "a": "El README del directorio pide que confíes en un plugin antes de instalarlo y aclara que Anthropic no controla qué servidores MCP o archivos incluye cada uno. Revisalo igual."}, {"q": "¿Cómo saco un MCP que ya no uso?", "a": "En Claude Code corrés claude mcp remove y el nombre del servidor. Si se conectó con OAuth, también conviene revocar el acceso desde la configuración de la otra app."}, {"q": "¿Qué pasa con los MCP que vienen en un proyecto compartido?", "a": "Claude Code te pide aprobación antes de usar servidores definidos en el archivo .mcp.json de un proyecto. Leé cuáles son antes de aceptar."}], "fuentes": ["https://code.claude.com/docs/en/mcp", "https://code.claude.com/docs/en/discover-plugins", "https://github.com/anthropics/claude-plugins-official/blob/main/README.md", "https://docs.stripe.com/mcp", "https://supabase.com/docs/guides/mcp", "https://vercel.com/docs/ai-tooling/vercel-mcp", "https://developers.notion.com/guides/mcp/get-started-with-mcp.md", "https://knowledge.hubspot.com/integrations/set-up-and-use-the-hubspot-connector-for-claude"], "cat": "conectores", "parte": "aprende"};</script>
 
-<script src="../web/rutas.js?v=1b71218b"></script>
-<script src="../web/logos.js?v=1b71218b"></script>
-<script src="../web/guia.js?v=1b71218b"></script>
-<script src="../web/bienvenida.js?v=1b71218b"></script>
+<script src="../web/rutas.js?v=e9815a09"></script>
+<script src="../web/logos.js?v=e9815a09"></script>
+<script src="../web/guia.js?v=e9815a09"></script>
+<script src="../web/bienvenida.js?v=e9815a09"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

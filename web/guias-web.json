@@ -1524,7 +1524,7 @@
    {
     "h": "Mirá qué está ocupando lugar",
     "lista": [
-     "/context: te muestra una grilla de colores con lo que ocupa el contexto, y sugerencias para herramientas pesadas, memoria inflada y avisos de capacidad. Con /context all ves el detalle completo.",
+     "/context: te muestra una grilla de colores con lo que ocupa el contexto, y sugerencias para herramientas pesadas, memoria inflada y avisos de capacidad. Si usás la pantalla completa (fullscreen), el detalle por ítem aparece colapsado para que se vea la grilla; con /context all lo expandís.",
      "/usage: tu consumo en la sesión y los límites de tu plan. /cost es lo mismo.",
      "Línea de estado: podés tener siempre a la vista el porcentaje de contexto usado. Lo armás con /statusline (está explicado en la guía de cómo medir tu consumo)."
     ],
@@ -1540,7 +1540,7 @@
      "Si seguís con la misma tarea pero la charla se hizo larga, usá /compact con instrucciones, por ejemplo: /compact Focus on code samples and API usage. Así decidís vos qué conserva el resumen.",
      "Si querés que la compactación siempre cuide algo, agregá en tu CLAUDE.md una sección \"# Compact instructions\" con lo que tiene que mantener."
     ],
-    "aviso": "/compact también gasta: tiene que leer toda la conversación para resumirla. Si no necesitás continuidad, /clear no cuesta nada.",
+    "aviso": "/compact también gasta: manda toda la conversación para resumirla. Con la caché caliente cuesta una fracción; después de una pausa larga, cuando la caché ya venció, es cuando más cuesta. Compactá en un corte natural del trabajo, no al volver de un rato largo. Si no necesitás continuidad, /clear no cuesta nada.",
     "prompts": [
      {
       "t": "Resumen antes de /clear",
@@ -1589,8 +1589,8 @@
    {
     "h": "El modelo y el esfuerzo justos",
     "lista": [
-     "/model: cambiás de modelo en la sesión. Según la documentación oficial, Sonnet resuelve bien la mayoría de las tareas de código y cuesta menos que Opus; dejá Opus para decisiones de arquitectura o razonamiento de varios pasos.",
-     "opusplan: con /model opusplan usa Opus en el modo plan y pasa a Sonnet para ejecutar.",
+     "/model: cambiás de modelo, y queda guardado como predeterminado para las sesiones nuevas. Elegilo al arrancar: cambiar de modelo a mitad de una sesión hace que el pedido siguiente relea toda la conversación sin caché. Según la documentación oficial, Sonnet resuelve bien la mayoría de las tareas de código y cuesta menos que Opus; dejá Opus para decisiones de arquitectura o razonamiento de varios pasos.",
+     "opusplan: con /model opusplan usa Opus en el modo plan y pasa a Sonnet para ejecutar. Ojo: cada vez que entrás o salís del modo plan cambia el modelo, y el pedido siguiente arranca sin caché.",
      "Subagentes simples: en la configuración del subagente podés poner model: haiku.",
      "/effort: bajá el nivel de esfuerzo (por ejemplo /effort low) para tareas simples. El razonamiento extendido se cobra como tokens de salida."
     ]
@@ -1616,8 +1616,70 @@
    "https://code.claude.com/docs/fr/context-window",
    "https://code.claude.com/docs/en/memory",
    "https://code.claude.com/docs/en/sub-agents",
-   "https://code.claude.com/docs/en/model-config"
+   "https://code.claude.com/docs/en/model-config",
+   "https://code.claude.com/docs/en/context-window",
+   "https://code.claude.com/docs/en/prompt-caching",
+   "https://code.claude.com/docs/en/statusline",
+   "https://code.claude.com/docs/en/skills"
   ],
+  "ejemplo": {
+   "titulo": "Ejemplo resuelto: una semana de trabajo sin que se llene el contexto",
+   "negocio": "Ejemplo inventado: una desarrolladora freelance de Montevideo que mantiene la tienda online de una dietética de barrio. Trabaja sola, con Claude Code en la terminal y un plan Pro.",
+   "punto_de_partida": "Dejaba una sola sesión abierta toda la semana para todo: arreglos, textos, pruebas. Su CLAUDE.md había crecido con instrucciones de cada tarea y al arrancar aparecía un aviso de que era demasiado largo.",
+   "pasos": [
+    "Al abrir la sesión corrió /context. En Memory files vio cuánto lugar ocupaba su CLAUDE.md, y que tenía conectados dos servidores MCP que no usaba desde hacía semanas.",
+    "Pegó el prompt \"Achicá tu CLAUDE.md\" de la guía. Claude le propuso una versión corta con el formato del kit y le marcó dos flujos (publicar una versión y migrar la base) para pasar a skills. Revisó el cambio antes de guardarlo.",
+    "Movió las reglas de estilo de los componentes a .claude/rules/componentes.md con un encabezado paths que apunta solo a la carpeta de componentes. Ahora se cargan cuando Claude lee esos archivos, no siempre.",
+    "Corrió /mcp disable con el nombre de cada servidor que no usaba. Para GitHub dejó de usar el MCP y le pidió a Claude que use gh desde la terminal.",
+    "Copió el archivo corredor-de-tests.md del kit en .claude/agents/ y, al terminar cada cambio, escribió: \"Usá el subagente corredor-de-tests para correr la suite\". A su conversación volvió solo el resumen de lo que falló.",
+    "Agregó el statusLine del kit a ~/.claude/settings.json (ya tenía jq instalado). Desde ahí ve siempre el modelo y el porcentaje de contexto abajo de todo.",
+    "Cuando terminó el arreglo del carrito y tenía que pasar a los textos de la página de envíos, pegó el prompt \"Resumen antes de /clear\", guardó el resumen, corrió /rename carrito-arreglo y después /clear.",
+    "Para un cambio grande en el cálculo de envíos usó /plan seguido de la tarea. Claude exploró y le propuso un plan; ella corrigió una parte antes de que tocara el código.",
+    "A mitad de la tarde, antes de irse a una reunión larga, compactó con /compact Conservá los archivos tocados del cálculo de envíos y los tests que fallan, en vez de dejar que la caché venciera con todo el historial adentro.",
+    "El viernes abrió /usage para ver qué le estaba pesando más en la semana y aplicó la recomendación que le correspondía."
+   ],
+   "resultado": "Quedó trabajando con sesiones cortas por tarea, un CLAUDE.md breve con su sección de Compact instructions, reglas por carpeta, solo los MCP que usa, un subagente que corre los tests y una línea de estado que le muestra el contexto todo el tiempo. Sabe cuándo usar /clear, cuándo /compact y cuándo /rewind."
+  },
+  "si_falla": [
+   {
+    "sintoma": "Edité el CLAUDE.md y Claude sigue trabajando como antes.",
+    "solucion": "El CLAUDE.md de la raíz y el de usuario se leen al empezar la sesión. Lo que cambies a mitad de sesión recién se carga con el próximo /clear, /compact o al reiniciar Claude Code. Corré /context y fijate en Memory files qué versión está cargada."
+   },
+   {
+    "sintoma": "Volví de un rato largo y el primer mensaje tardó mucho y consumió más de lo normal.",
+    "solucion": "La caché venció durante la pausa y Claude Code tuvo que reprocesar toda la conversación. Antes de una pausa larga, hacé /clear si ya terminaste la tarea o /compact si vas a seguir. En /usage, la línea Prompt cache (main) te muestra si la caché está caliente y cuántos fallos hubo."
+   },
+   {
+    "sintoma": "Después de compactar, Claude se olvidó de una regla que le había dicho.",
+    "solucion": "Si la regla la dijiste solo en el chat, se pierde en el resumen. El CLAUDE.md de la raíz se vuelve a leer del disco después de /compact, así que pasala ahí (o a la sección # Compact instructions si es sobre qué conservar). Las reglas con paths se vuelven a cargar cuando Claude lee un archivo que coincide."
+   },
+   {
+    "sintoma": "La línea de estado no aparece o queda en blanco.",
+    "solucion": "Revisá que jq esté instalado (el comando del kit lo usa), que el statusLine esté dentro del mismo objeto JSON que el resto de tu settings.json y que la carpeta sea de confianza. Si usás un script en archivo, tiene que ser ejecutable (chmod +x). En Windows con Git Bash, escribí las rutas con barras /. Corré claude --debug para ver el error del script."
+   },
+   {
+    "sintoma": "/usage muestra un mensaje como \"rate limited until\" una hora.",
+    "solucion": "No significa que no puedas trabajar: significa que Claude Code no puede volver a consultar los límites de tu plan hasta esa hora. Mientras tanto muestra los últimos datos que cargó. Apretá r después de esa hora para actualizar."
+   }
+  ],
+  "kit": [
+   {
+    "archivo": "CLAUDE.md",
+    "que_es": "Esqueleto de CLAUDE.md corto: solo lo que hace falta en todas las sesiones, con la sección # Compact instructions lista. Completá los corchetes y guardalo en la raíz de tu proyecto.",
+    "contenido": "# [NOMBRE DEL PROYECTO]\n\n[Una línea: qué es y para quién. Ejemplo: tienda online de [RUBRO] hecha con [FRAMEWORK], con pagos por [MEDIO DE PAGO].]\n\n## Comandos\n\n- Instalar: `[COMANDO]`\n- Levantar en local: `[COMANDO]`\n- Tests: `[COMANDO]` (un solo archivo: `[COMANDO] ruta/al/test`)\n- Lint y tipos: `[COMANDO]`\n\n## Reglas que no se rompen\n\n- No toques `[CARPETA O ARCHIVO SENSIBLE]` sin preguntar.\n- Nunca subas claves ni archivos `.env`.\n- Antes de dar algo por terminado, corré los tests del archivo que cambiaste.\n- [UNA REGLA PROPIA DEL PROYECTO QUE CLAUDE NO PUEDE DEDUCIR LEYENDO EL CÓDIGO]\n\n## Convenciones que no salen del código\n\n- [EJEMPLO: los textos de la interfaz van en español rioplatense, con voseo.]\n- [EJEMPLO: los montos se guardan en centavos, como enteros.]\n\n## Dónde está lo demás\n\n- Flujos puntuales (revisar un PR, hacer una migración, publicar): están en skills dentro de `.claude/skills/`. No los copies acá.\n- Reglas que valen solo para una carpeta: en `.claude/rules/`, con `paths` en el encabezado.\n\n# Compact instructions\n\nCuando compactes, conservá: el objetivo de la tarea actual, los archivos modificados con una línea de qué cambió en cada uno, las decisiones tomadas y por qué, los comandos de test que fallaron y qué falta hacer. Descartá salidas largas de comandos y archivos que solo se leyeron para explorar.\n"
+   },
+   {
+    "archivo": ".claude/agents/corredor-de-tests.md",
+    "que_es": "Subagente que corre los tests con Haiku y devuelve solo los que fallan. Guardalo en .claude/agents/ de tu proyecto (o en ~/.claude/agents/ para todos tus proyectos) y pedí \"usá el subagente corredor-de-tests\".",
+    "contenido": "---\nname: corredor-de-tests\ndescription: Corre los tests del proyecto y devuelve solo los que fallan, con su error. Usalo cuando haya que correr la suite completa o un grupo grande de tests, o verificar un cambio, para que la salida larga no llene la conversación principal.\ntools: Bash, Read, Grep, Glob\nmodel: haiku\n---\n\nSos un subagente que corre tests y reporta resultados. No modificás archivos.\n\nPasos:\n1. Si te dicen qué comando usar, usá ese. Si no, buscalo en CLAUDE.md o en el archivo de configuración del proyecto (package.json, pyproject.toml, Makefile o similar).\n2. Corré los tests que te pidieron. Si no te dicen cuáles, corré la suite completa.\n3. Si un test falla, leé solo las líneas del error y, si hace falta, la parte del archivo de test que falla.\n\nTu respuesta tiene que ser corta:\n- Primera línea: cuántos tests pasaron y cuántos fallaron, con el comando que usaste.\n- Después, por cada test que falla: nombre, archivo y línea, el mensaje de error en 1 a 3 líneas y tu mejor hipótesis de la causa en una línea.\n- Si todo pasó, decilo en una línea y nada más.\n\nNo pegues la salida completa de los tests. No propongas arreglos de código salvo que te lo pidan.\n"
+   },
+   {
+    "archivo": "settings.json",
+    "que_es": "Línea de estado que muestra el modelo y el porcentaje de contexto usado. Necesita jq instalado. Si ya tenés un ~/.claude/settings.json, copiá solo el bloque statusLine adentro del objeto que ya existe.",
+    "contenido": "{\n  \"statusLine\": {\n    \"type\": \"command\",\n    \"command\": \"jq -r '\\\"[\\\\(.model.display_name)] \\\\(.context_window.used_percentage // 0)% de contexto\\\"'\"\n  }\n}\n"
+   }
+  ],
+  "verificada": "2026-11-08",
   "cat": "ahorrar",
   "parte": "aprende"
  },
@@ -11794,7 +11856,7 @@
     "prompts": [
      {
       "t": "Plantilla de notas",
-      "c": "NEGOCIO: [NOMBRE]\nFECHA: [FECHA]\nCON QUIÉN HABLÉ: [NOMBRE Y ROL]\nPERSONAS EN EL EQUIPO: [CANTIDAD]\nCÓMO ES UN DÍA NORMAL: [RESUMEN]\nTAREA QUE MÁS TIEMPO COME: [TAREA] | VECES POR SEMANA: [N] | MINUTOS CADA VEZ: [N]\nEJEMPLO REAL: [LO QUE CONTÓ]\nOTRAS TAREAS QUE MENCIONÓ: [LISTA]\nDÓNDE ESTÁ LA INFORMACIÓN: [PLANILLAS, MAIL, PAPEL, CABEZA DEL DUEÑO]\nUSA GMAIL / GOOGLE CALENDAR / GOOGLE DRIVE: [SÍ/NO EN CADA UNO]\nPROBÓ IA ANTES: [QUÉ Y CÓMO LE FUE]\nDUDAS O MIEDOS QUE DIJO: [TEXTUAL SI PUEDO]\nPRÓXIMO PASO ACORDADO: [QUÉ Y CUÁNDO]"
+      "c": "NEGOCIO: [NOMBRE]\nFECHA: [FECHA]\nCON QUIÉN HABLÉ: [NOMBRE Y ROL]\nPERSONAS EN EL EQUIPO: [CANTIDAD]\nCÓMO ES UN DÍA NORMAL: [RESUMEN]\nTAREA QUE MÁS TIEMPO COME: [TAREA] | VECES POR SEMANA: [N] | MINUTOS CADA VEZ: [N]\nEJEMPLO REAL: [LO QUE CONTÓ]\nOTRAS TAREAS QUE MENCIONÓ: [LISTA]\nDÓNDE ESTÁ LA INFORMACIÓN: [PLANILLAS, MAIL, PAPEL, CABEZA DEL DUEÑO]\nUSA GMAIL / GOOGLE CALENDAR / GOOGLE DRIVE: [SÍ/NO EN CADA UNO]\nCUENTA DE GOOGLE: [PERSONAL O GOOGLE WORKSPACE] | ADMIN DE WORKSPACE: [QUIÉN]\nPLAN DE CLAUDE HOY: [NO TIENE / FREE / PRO / MAX / TEAM / OTRO]\nPROBÓ IA ANTES: [QUÉ Y CÓMO LE FUE]\nDUDAS O MIEDOS QUE DIJO: [TEXTUAL SI PUEDO]\nPRÓXIMO PASO ACORDADO: [QUÉ Y CUÁNDO]"
      },
      {
       "t": "Resumen del diagnóstico",
@@ -11817,7 +11879,70 @@
     "a": "Dale un rango honesto si ya lo tenés armado (Módulo 5) y aclarale que el precio final sale de la propuesta, cuando sepas el alcance."
    }
   ],
-  "fuentes": [],
+  "fuentes": [
+   "https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities",
+   "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork",
+   "https://support.claude.com/en/articles/12512180-use-skills-in-claude",
+   "https://support.claude.com/en/articles/10166901-use-google-workspace-connectors"
+  ],
+  "ejemplo": {
+   "titulo": "Ejemplo resuelto: la llamada con un corralón que arma presupuestos a mano",
+   "negocio": "Ejemplo inventado: un corralón de materiales de construcción en Pergamino (provincia de Buenos Aires), atendido por el dueño, su hija en el mostrador y cuatro empleados entre depósito y reparto.",
+   "punto_de_partida": "La hija respondió el primer mensaje del Módulo 3 y aceptó 15 minutos por videollamada. El dueño dice que \"todo el día se le va en el teléfono\", pero no sabe bien en qué.",
+   "pasos": [
+    "El día anterior mandó el mensaje de confirmación del kit y le pidió a la hija que tuviera a mano el último presupuesto que mandaron. Copió la plantilla de notas con el nombre del corralón.",
+    "Minuto 0 a 2: \"Gracias por el rato. La idea es ver qué tareas del corralón podría cubrir Claude y cuáles no. ¿Te molesta si tomo notas?\". Ella dijo que sí, y que el dueño se sumaba a mitad de la charla.",
+    "Minuto 2 a 5: \"Contame un día normal, desde que abren hasta que cierran\". Apareció que a la mañana entran pedidos de presupuesto por WhatsApp y por mail, que los precios están en una planilla que actualiza el dueño y que a la tarde coordinan el reparto.",
+    "Minuto 5 a 9: con la pregunta \"¿qué tarea te gustaría no hacer nunca más?\" salió la respuesta sin dudar: los presupuestos de obra, con lista de materiales, cantidades y flete. Le pidió el ejemplo real y ella compartió pantalla con el último: lo arma copiando de la planilla a un documento y lo pasa a PDF.",
+    "Anotó en la plantilla los minutos por presupuesto y las veces por semana con los números que dijo ella, sin redondear. En \"lo que preguntan siempre\" anotó: si hay stock, cuánto sale el flete y si aceptan transferencia.",
+    "Las preguntas técnicas: usan un Gmail personal del corralón (no Workspace), no tienen cuenta de Claude, y la planilla de precios está en la compu del dueño, no en Google Drive.",
+    "Minuto 9 a 12: devolvió lo que entendió en una frase: \"Lo que más les pesa es armar presupuestos de obra copiando de la planilla. Claude podría armar el borrador con tus precios y tu formato, y vos lo revisás y lo mandás. El precio final y el stock los sigue confirmando una persona\".",
+    "Minuto 12 a 15: el dueño, que ya se había sumado, preguntó cuánto salía. Le dio el rango que tenía armado (Módulo 5) y aclaró que el precio final sale de la propuesta. Cerró con el segundo final: \"Para que esto funcione, la planilla de precios tiene que estar en Google Drive y al día. Si la suben esta semana, el jueves les mando la propuesta\". Quedó el jueves.",
+    "Esa misma tarde pegó sus notas en un chat con la skill diagnostico-de-llamada. El resumen marcó como RIESGO que la planilla solo existe en una compu y listó tres preguntas pendientes: cómo calculan el flete, qué condiciones de pago ofrecen y quién más va a usar la cuenta.",
+    "Mandó el mensaje de \"falta algo antes\" del kit, con las tres preguntas al final, y anotó en su planilla de 50 que la llamada terminó en \"falta algo antes\", con recordatorio para el jueves."
+   ],
+   "resultado": "La llamada terminó en 15 minutos con una tarea concreta (presupuestos de obra) y su ejemplo real, un requisito claro para el cliente (la planilla de precios en Drive), una fecha y tres preguntas pendientes. Con eso la propuesta del Módulo 5 se escribe sobre datos del negocio y no sobre suposiciones."
+  },
+  "si_falla": [
+   {
+    "sintoma": "El dueño habla 15 minutos de su negocio en general y no aparece ninguna tarea concreta.",
+    "solucion": "Pedí un caso puntual y reciente: \"¿Qué fue lo último que hiciste en la compu antes de esta llamada?\" o \"¿Cómo fue la última consulta que respondiste?\". Las preguntas sobre el último caso traen tareas concretas; las preguntas sobre \"en general\" traen opiniones. Si igual no aparece nada, proponé seguir otro día con la pantalla compartida."
+   },
+   {
+    "sintoma": "Responde \"un montón\" o \"todo el día\" cuando le preguntás cuánto tiempo le lleva una tarea.",
+    "solucion": "Partilo en dos preguntas chicas: \"¿Cuántos hiciste esta semana?\" y \"El último, ¿cuánto te llevó, más o menos?\". Anotá lo que diga, aunque sea aproximado, y marcá en la plantilla que es una estimación suya. No pongas números tuyos."
+   },
+   {
+    "sintoma": "Quiere el precio en el minuto dos y no avanza hasta que se lo digas.",
+    "solucion": "Dale el rango del Módulo 5 si ya lo tenés armado y volvé a la charla: \"Depende de qué tareas cubramos. Por eso te pregunto cómo trabajás, para no venderte algo que no necesitás\". Si todavía no tenés rango, decí que lo vas a tener en la propuesta y dale una fecha."
+   },
+   {
+    "sintoma": "En la instalación, la conexión de Gmail o Drive aparece bloqueada con un mensaje de que el administrador tiene que revisar a Claude.",
+    "solucion": "La cuenta es de Google Workspace y el administrador tiene que marcar a Claude como app de confianza (en la consola de Google: Security → Access and data control → API controls → Manage third-party app access). Por eso conviene preguntar en la llamada si usan Workspace y quién es el admin, y poner ese acceso en la lista de \"lo que necesitamos de vos\" de la propuesta."
+   },
+   {
+    "sintoma": "Al otro día no te acordás qué dijo exactamente y las notas quedaron incompletas.",
+    "solucion": "Pasá las notas por la skill o el prompt de resumen el mismo día, cuando todavía te acordás. Lo que el resumen marque como NO LO SÉ, mandalo como preguntas cortas en el mensaje de seguimiento: es mejor preguntar que inventar en la propuesta."
+   }
+  ],
+  "kit": [
+   {
+    "archivo": "diagnostico-de-llamada/SKILL.md",
+    "que_es": "Skill que convierte tus notas de la llamada en resumen, tareas que cubre el paquete, riesgos técnicos, preguntas pendientes, recomendación de cierre y mensaje de seguimiento. Guardala en una carpeta llamada diagnostico-de-llamada, comprimila en ZIP y subila en Customize → Skills.",
+    "contenido": "---\nname: diagnostico-de-llamada\ndescription: Ordena las notas de una llamada de diagnóstico de 15 minutos con un negocio y deja listo el material para la propuesta de una página. Usala cuando el usuario pegue notas o una transcripción de una llamada con un posible cliente, pida resumir un diagnóstico, decidir si el paquete le sirve a ese negocio o preparar la propuesta a partir de esas notas.\n---\n\n# Diagnóstico de llamada\n\nConvertís las notas de una llamada de diagnóstico en un resumen que sirve para decidir y para escribir la propuesta. El paquete que se ofrece instala Claude en un negocio: un Proyecto con el conocimiento del negocio, skills de marca, presupuestos y respuestas, conectores de Gmail, Google Calendar y Google Drive, una automatización (tarea programada) y una capacitación.\n\n## Reglas\n\n- Usá solo lo que está en las notas. Si un dato no está, escribí \"NO LO SÉ\" y sumalo a las preguntas pendientes. No completes con suposiciones.\n- Si en las notas aparecen nombres de clientes del negocio, datos de salud, documentos o datos bancarios, no los repitas: reemplazalos por el tipo de dato (por ejemplo, \"datos de pacientes\").\n- Las palabras del dueño van entre comillas y textuales. No las mejores.\n- No prometas resultados ni ahorros. Si las notas traen tiempos (minutos por tarea, veces por semana), usalos tal cual y aclarales que son estimaciones del dueño.\n- Escribí en español rioplatense, con voseo, frases cortas.\n\n## Qué entregás, en este orden\n\n1. **El negocio en 3 líneas**: rubro, tamaño del equipo, cómo trabaja hoy.\n2. **Tareas que el paquete cubre**: una tabla con columnas Tarea | Qué haría Claude | Qué sigue haciendo una persona | Pieza del paquete (Proyecto, skill de marca, skill de presupuestos, skill de respuestas, conector, automatización).\n3. **La automatización más útil**: una sola, con qué hace, cada cuánto y qué deja (por ejemplo, borradores para revisar). Las tareas programadas piden un plan pago de Claude: si el negocio no lo tiene, decilo.\n4. **Estado técnico**: qué plan de Claude tiene o tendría, si usa Gmail personal o Google Workspace (y quién es el administrador), dónde vive la información. Marcá como RIESGO lo que puede trabar la instalación: Google Workspace sin admin a mano, precios que no están escritos, información solo en la cabeza del dueño.\n5. **Preguntas pendientes**: lo que falta saber antes de la propuesta, como preguntas cortas que se puedan mandar por mensaje.\n6. **Dudas y miedos**: con sus palabras, y al lado cómo los vas a responder en la propuesta.\n7. **Lo que el paquete no resuelve**: lo que pidió o insinuó y queda afuera (agentes que hablan solos con clientes, desarrollos a medida, cargar datos que no existen).\n8. **Mi recomendación de cierre**: una de tres, con el motivo en una línea:\n   - SÍ LE SIRVE: hay al menos dos tareas del paquete con un ejemplo real en las notas.\n   - FALTA ALGO ANTES: hay tareas que encajan, pero falta un requisito (precios escritos, una cuenta, un acceso).\n   - NO LE SIRVE: las tareas que más le pesan no entran en el paquete o casi no usa la compu ni el celular para trabajar.\n9. **Mensaje de seguimiento**: un borrador corto (4 a 6 líneas) para mandar hoy, que repita el próximo paso y la fecha acordados. Si en las notas no hay fecha acordada, el mensaje propone una.\n\n## Al final\n\nPreguntá si querés que arme la propuesta de una página con esto. No la armes sin que te lo pidan.\n"
+   },
+   {
+    "archivo": "checklist-llamada-diagnostico.md",
+    "que_es": "Checklist de antes, durante y después de la llamada, con las preguntas técnicas que evitan sorpresas en la instalación y la plantilla de notas ampliada.",
+    "contenido": "# Checklist de la llamada de diagnóstico\n\nImprimila o tenela abierta al lado. Marcá cada casilla.\n\n## Antes (el día anterior)\n\n- [ ] Confirmé la llamada por mensaje: día, hora, por dónde (video, teléfono o en persona) y que dura 15 minutos.\n- [ ] Miré su web, sus redes y sus reseñas. Anoté una cosa concreta que vi (consultas repetidas, presupuestos, turnos).\n- [ ] Tengo la plantilla de notas copiada con el nombre del negocio.\n- [ ] Si es por video, le pedí que tenga a mano un presupuesto o una consulta real para mostrarme.\n- [ ] Si quiero grabar o transcribir, lo tengo anotado para pedir permiso al principio.\n\n## Durante\n\n- [ ] Minuto 0 a 2: agradecí, dije para qué es la charla y pedí permiso para tomar notas (y para grabar, si corresponde).\n- [ ] Minuto 2 a 5: me contó un día normal. Anoté qué parte hace en la compu o el celular.\n- [ ] Minuto 5 a 9: encontré la tarea que más tiempo come y pedí un ejemplo real del último caso.\n- [ ] Anoté minutos por vez y veces por semana con los números que dijo él, no los míos.\n- [ ] Minuto 9 a 12: le devolví lo que entendí en una frase y dije qué haría Claude y qué seguiría haciendo una persona.\n- [ ] Minuto 12 a 15: propuse el próximo paso y quedó una fecha.\n- [ ] No prometí ahorros ni resultados.\n- [ ] Miré el reloj: terminé a tiempo o pregunté si podía seguir.\n\n## Preguntas técnicas que no pueden faltar\n\nSin estas, la instalación (Módulo 6) se puede trabar.\n\n- [ ] ¿Usa Gmail con una cuenta personal o con Google Workspace (mail con el dominio del negocio)? Si es Workspace, ¿quién es el administrador? Puede tener que autorizar a Claude.\n- [ ] ¿Tiene una cuenta de Claude? ¿Con qué plan? Las tareas programadas piden un plan pago. En los planes Team y Enterprise, el owner de la organización tiene que habilitar los conectores.\n- [ ] ¿Dónde están los precios, las preguntas frecuentes y los procesos? ¿Están escritos en algún lado?\n- [ ] ¿Quién más del equipo lo usaría?\n\n## Después (el mismo día)\n\n- [ ] Pasé las notas por la skill de diagnóstico (o por el prompt \"Resumen del diagnóstico\").\n- [ ] Mandé el mensaje de seguimiento con el próximo paso y la fecha.\n- [ ] Anoté en mi planilla de 50 (Módulo 2) cómo terminó: sí, falta algo o no.\n- [ ] Si quedó en \"falta algo antes\", agendé un recordatorio para la fecha que acordamos.\n- [ ] Borré o anonimicé cualquier dato sensible que haya quedado en las notas.\n\n## Plantilla de notas (versión ampliada)\n\n```\nNEGOCIO: [NOMBRE]\nRUBRO Y CIUDAD: [RUBRO, CIUDAD]\nFECHA: [FECHA]\nCON QUIÉN HABLÉ: [NOMBRE Y ROL]\n¿DECIDE ÉL O ELLA?: [SÍ/NO, QUIÉN MÁS]\nPERSONAS EN EL EQUIPO: [CANTIDAD]\nCÓMO ES UN DÍA NORMAL: [RESUMEN]\nTAREA QUE MÁS TIEMPO COME: [TAREA] | VECES POR SEMANA: [N] | MINUTOS CADA VEZ: [N]\nEJEMPLO REAL: [LO QUE CONTÓ O MOSTRÓ]\nOTRAS TAREAS QUE MENCIONÓ: [LISTA]\nLO QUE LE PREGUNTAN SIEMPRE LOS CLIENTES: [LISTA]\nDÓNDE ESTÁ LA INFORMACIÓN: [PLANILLAS, MAIL, PAPEL, WHATSAPP, CABEZA DEL DUEÑO]\nGMAIL / GOOGLE CALENDAR / GOOGLE DRIVE: [SÍ/NO EN CADA UNO]\nCUENTA DE GOOGLE: [PERSONAL O WORKSPACE] | ADMIN DE WORKSPACE: [QUIÉN]\nCLAUDE HOY: [NO TIENE / FREE / PRO / MAX / TEAM / OTRO]\nPROBÓ IA ANTES: [QUÉ Y CÓMO LE FUE]\nDUDAS O MIEDOS QUE DIJO: [TEXTUAL SI PUEDO]\nCÓMO TERMINÓ: [SÍ LE SIRVE / FALTA ALGO ANTES / NO LE SIRVE]\nPRÓXIMO PASO ACORDADO: [QUÉ Y CUÁNDO]\n```\n"
+   },
+   {
+    "archivo": "mensajes-antes-y-despues-de-la-llamada.md",
+    "que_es": "Mensajes listos para confirmar la llamada, hacer el seguimiento según cómo terminó (le sirve, falta algo, no le sirve) y mandar un único recordatorio.",
+    "contenido": "# Mensajes para antes y después de la llamada\n\nCambiá lo que está entre corchetes. Escribilos o revisalos uno por uno: no los mandes iguales a todos.\n\n## Confirmación (el día anterior)\n\nHola [NOMBRE], te confirmo la charla de mañana [DÍA] a las [HORA] por [VIDEO / TELÉFONO / EN PERSONA]. Son 15 minutos. Si podés, tené a mano [UN PRESUPUESTO / UNA CONSULTA] reciente así lo vemos con un caso real. Si te surge algo, avisame y la pasamos.\n\n## Después de la llamada: le sirve\n\nHola [NOMBRE], gracias por el rato de hoy. Me quedo con lo que me contaste de [TAREA 1, CON SUS PALABRAS] y [TAREA 2]. Como quedamos, te mando la propuesta de una página el [DÍA] y la revisamos juntos el [DÍA] a las [HORA]. Si mientras tanto te acordás de algo más, mandámelo por acá.\n\n## Después de la llamada: falta algo antes\n\nHola [NOMBRE], gracias por la charla. Para que el asistente te sirva de verdad, primero hace falta [REQUISITO: TENER LOS PRECIOS EN UNA PLANILLA / DEFINIR QUIÉN USA LA CUENTA / LO QUE CORRESPONDA]. Cuando lo tengas, avisame y en [PLAZO] te mando la propuesta. Si te sirve, te paso un modelo de planilla para arrancar.\n\n## Después de la llamada: no le sirve\n\nHola [NOMBRE], gracias por el tiempo. Como te dije, por cómo trabajás hoy no creo que el paquete te cambie mucho, y prefiero decírtelo ahora. Si en algún momento [CONDICIÓN: EMPIEZAN A ENTRAR MÁS CONSULTAS POR MAIL / SUMÁS GENTE AL EQUIPO], escribime y lo vemos de nuevo. Y si conocés a alguien de [RUBRO] que esté tapado de [TAREA], me encantaría que nos presentes.\n\n## Un solo recordatorio (si no respondió en unos días)\n\nHola [NOMBRE], te escribo por la propuesta que te mandé el [DÍA]. Le sumé [ALGO QUE APORTE: UN EJEMPLO HECHO CON UNO DE TUS PRODUCTOS / LA RESPUESTA A LA DUDA QUE ME DIJISTE]. Si no es el momento, decime sin problema y no te molesto más.\n"
+   }
+  ],
+  "verificada": "2026-11-08",
   "cat": "sistema-base",
   "parte": "construi"
  },
@@ -12537,7 +12662,7 @@
      "Conectores: Gmail para leer consultas que llegan por mail y dejar borradores, Google Calendar para ver horarios libres de visita, Google Drive para la planilla de cartera.",
      "Automatización: una tarea programada que cada mañana revisa los interesados sin respuesta de los últimos días y deja borradores de seguimiento para que el corredor los mande."
     ],
-    "aviso": "Las skills necesitan que esté prendida la ejecución de código (Settings → Capabilities). Las tareas programadas están en los planes pagos. Revisá la ayuda oficial antes de prometer algo que depende del plan del cliente."
+    "aviso": "Las skills necesitan que esté prendida la opción Code execution and file creation (en el diseño nuevo de Settings se llama Create and edit files), en Settings → Capabilities. En los planes Team y Enterprise la controla el owner de la organización. Las tareas programadas están en los planes pagos. Revisá la ayuda oficial antes de prometer algo que depende del plan del cliente."
    },
    {
     "h": "Prompts y skills listos",
@@ -12565,9 +12690,9 @@
      "Pedile al dueño la planilla de cartera, 5 fichas que le gusten, las preguntas que más le hacen y sus reglas (qué datos nunca se dan por mensaje).",
      "Creá el Proyecto \"Cartera\", subí esos archivos y escribí instrucciones cortas: responder solo con la cartera y marcar lo que falta.",
      "Probá los tres prompts con propiedades reales y corregí hasta que el corredor diga \"esto lo mando así\".",
-     "Convertí cada prompt en skill y subilas en Customize → Skills.",
+     "Convertí cada prompt en skill: una carpeta con su SKILL.md, comprimida en ZIP. Subilas en Customize → Skills, con el botón +, después + Create skill y Upload a skill.",
      "Conectá Gmail, Google Calendar y Google Drive con la cuenta del negocio, no con la tuya.",
-     "Armá la tarea programada de seguimiento y dejala una semana dejando solo borradores.",
+     "Armá la tarea programada de seguimiento (en Cowork: Scheduled, New task) con un prompt que diga dónde está la planilla de interesados y que no envíe nada. Dejala una semana dejando solo borradores y revisá cada corrida en la página Scheduled.",
      "Hacé una reunión corta de cierre: qué ahorró, qué falló y qué se ajusta."
     ]
    },
@@ -12609,7 +12734,7 @@
    },
    {
     "q": "¿Qué pasa si la cartera cambia todos los días?",
-    "a": "Conviene que la planilla viva en Google Drive y que el Proyecto la consulte desde ahí, o que alguien actualice el archivo del Proyecto una vez por semana."
+    "a": "Conviene que la planilla viva en Google Drive. Podés sumarla a los archivos del Proyecto desde Drive (en Files, el botón + y después Drive; esta opción aparece solo en proyectos privados) o prender el conector de Google Drive en el chat para que Claude la lea en el momento. Si no usan Drive, que alguien reemplace el archivo del Proyecto una vez por semana."
    }
   ],
   "fuentes": [
@@ -12617,8 +12742,66 @@
    "https://support.claude.com/en/articles/12512180-use-skills-in-claude",
    "https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities",
    "https://support.claude.com/en/articles/10166901-use-google-workspace-connectors",
-   "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork"
+   "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork",
+   "https://support.claude.com/en/articles/9519177"
   ],
+  "ejemplo": {
+   "titulo": "Ejemplo resuelto: el sistema instalado en una inmobiliaria de barrio",
+   "negocio": "Ejemplo inventado: una inmobiliaria familiar en barrio General Paz, Córdoba capital. Trabaja ventas y alquileres en la zona, con el dueño (corredor matriculado), dos corredores y una administrativa. Publican en portales y en Instagram, y las consultas entran por mail, por los portales y por WhatsApp.",
+   "punto_de_partida": "Las fichas se escriben a mano después de cada visita, cada una distinta. Los interesados que preguntaron y no visitaron quedan en una planilla que nadie mira hasta fin de mes.",
+   "pasos": [
+    "En la demo, el dueño le pasó las notas de una visita a un 2 ambientes. Con el prompt de ficha armó título, descripción, características y la versión para Instagram delante de él. La lista PREGUNTAR AL PROPIETARIO salió con las expensas y si es apto crédito, que faltaban en las notas. Eso fue lo que lo convenció.",
+    "Le pidió al dueño la planilla de cartera, cinco fichas que le gustaran, las preguntas frecuentes y la lista de lo que nunca se da por mensaje. Reordenó la planilla con las columnas del kit y la subieron a Google Drive de la cuenta del negocio.",
+    "Revisó con el dueño qué plan de Claude iba a usar y que la cuenta de Google fuera la del negocio. En Settings → Capabilities prendió la opción de ejecución de código y creación de archivos que piden las skills.",
+    "Creó el Proyecto privado \"Cartera\" en la cuenta del negocio, pegó las instrucciones del kit completando los corchetes y sumó la planilla desde Files, +, Drive. Subió las preguntas frecuentes y las fichas de ejemplo.",
+    "Probó los tres prompts con propiedades reales durante una semana con los corredores. Ajustó el tono de las respuestas (los corredores no querían firmar como \"el equipo\") hasta que dijeron \"esto lo mando así\".",
+    "Convirtió la ficha en la skill ficha-de-propiedad del kit, y las otras dos en sus propias skills. Armó cada carpeta con su SKILL.md, la comprimió en ZIP y la subió en Customize → Skills.",
+    "Conectó Gmail, Google Calendar y Google Drive con la cuenta del negocio y probó en un chat: \"buscá las consultas de esta semana sobre el código [CÓDIGO] y armá borradores de respuesta\".",
+    "Creó la tarea programada con el archivo del kit, de lunes a viernes a primera hora, pidiendo aprobación antes de actuar. Durante la semana de prueba un corredor revisó cada borrador y anotó qué corrigió.",
+    "En la reunión de cierre repasaron esas notas con el dueño: qué borradores salieron sin cambios, cuáles se corrigieron y por qué. Ajustaron el prompt de seguimiento y acordaron quién actualiza el estado de cada propiedad en la planilla el mismo día que se reserva."
+   ],
+   "resultado": "Quedó un Proyecto con la cartera y las reglas del negocio, tres skills que los corredores usan para fichas, respuestas e informes, y una tarea que cada mañana deja borradores de seguimiento para revisar. Todo lo que sale hacia un cliente lo manda una persona, y la planilla en Drive es la única fuente de precios y condiciones."
+  },
+  "si_falla": [
+   {
+    "sintoma": "No aparece la sección Skills o las skills se ven en gris.",
+    "solucion": "Prendé Code execution and file creation (o Create and edit files, según cómo se vea tu Settings) en Settings → Capabilities. En una cuenta Team o Enterprise, si está en gris, la apagó el owner de la organización: pedile que la habilite en Organization settings → Plugins & skills."
+   },
+   {
+    "sintoma": "Al subir la skill aparece un error de formato o de archivo faltante.",
+    "solucion": "Revisá tres cosas: que subas un ZIP que contenga la carpeta (no los archivos sueltos), que la carpeta se llame igual que el name del SKILL.md (por ejemplo, ficha-de-propiedad) y que adentro esté el archivo SKILL.md. Evitá tildes y signos raros en el name."
+   },
+   {
+    "sintoma": "Al conectar Gmail o Drive aparece \"Access blocked: your institution's admin needs to review Claude for Google Drive\".",
+    "solucion": "La inmobiliaria usa Google Workspace y el administrador tiene que marcar a Claude como app de confianza en la consola de Google (Security → Access and data control → API controls → Manage third-party app access). Después de guardar, esperá unos 15 minutos y volvé a probar. Si la cuenta de Claude es Team o Enterprise, además el owner tiene que habilitar los conectores de Google."
+   },
+   {
+    "sintoma": "Claude responde una consulta de mail pero no ve el PDF o las fotos que mandó el interesado.",
+    "solucion": "El conector de Gmail no lee el contenido de los adjuntos, solo sus datos (nombre, tipo). Descargá el adjunto y subilo al chat, o pedile a Claude que trabaje solo con el texto del mail y marque como PENDIENTE lo que dependa del adjunto."
+   },
+   {
+    "sintoma": "En el Proyecto no aparece la opción de agregar la planilla desde Drive.",
+    "solucion": "Esa opción está solo en proyectos privados. Si crearon el Proyecto compartido con toda la organización, tenés dos caminos: prender el conector de Google Drive en cada chat para que lea la planilla en el momento, o subir la planilla como archivo y reemplazarla una vez por semana."
+   }
+  ],
+  "kit": [
+   {
+    "archivo": "ficha-de-propiedad/SKILL.md",
+    "que_es": "Skill que arma título, descripción, características, versión para redes y la lista de lo que falta preguntar, sin inventar datos ni exponer al propietario. Guardala en una carpeta ficha-de-propiedad, comprimila en ZIP y subila en Customize → Skills.",
+    "contenido": "---\nname: ficha-de-propiedad\ndescription: Arma la ficha de una propiedad para portales y redes a partir de las notas de la visita y la descripción de las fotos, con el tono de la inmobiliaria y sin inventar datos. Usala cuando el usuario pegue notas de una visita, datos sueltos de una propiedad o pida una ficha, un aviso, una descripción para un portal o un posteo de una propiedad.\n---\n\n# Ficha de propiedad\n\nConvertís notas de una visita en una ficha lista para que el corredor la revise y la cargue en el portal. Nunca la publicás vos.\n\n## Qué te pasan\n\n- Notas de la visita (pueden venir desordenadas, con abreviaturas).\n- Una línea por foto describiendo qué se ve.\n- A veces, el código de la propiedad en la planilla de cartera.\n\nSi te pasan un código y tenés acceso a la planilla de cartera (en el Proyecto o en Google Drive), tomá de ahí precio, expensas, superficie y condiciones. Si las notas y la planilla no coinciden, no elijas vos: listá la diferencia en PREGUNTAR AL PROPIETARIO.\n\n## Qué entregás, en este orden\n\n1. **Título**: hasta 70 caracteres. Tipo de propiedad, ambientes, barrio y el dato más fuerte que sea verificable (por ejemplo, \"con balcón al frente\" si está en las notas).\n2. **Descripción**: de 120 a 180 palabras. Primero cómo es y dónde está, después los ambientes en el orden en que se recorren, al final servicios y condiciones. Párrafos cortos.\n3. **Características**, en lista: tipo, operación (venta o alquiler), ambientes, dormitorios, baños, superficie cubierta y total, orientación, antigüedad, estado, expensas, servicios, cochera, apto crédito, apto mascotas (solo en alquiler, si está en las notas).\n4. **Versión para redes**: 3 líneas y un llamado a consultar por mensaje privado.\n5. **PREGUNTAR AL PROPIETARIO**: lista de todo lo que falta o no coincide.\n\n## Reglas\n\n- No inventes ni redondees datos. Si un campo de la lista no está en las notas, escribí \"a confirmar\" y sumalo a PREGUNTAR AL PROPIETARIO.\n- El precio, la superficie y las condiciones se copian tal cual. No los \"mejores\".\n- No uses \"único\", \"imperdible\", \"oportunidad única\", \"joya\" ni signos de exclamación.\n- No describas cosas que no están en las notas ni en las fotos (vistas, luminosidad, silencio) aunque sean típicas del barrio.\n- No pongas la dirección exacta, el nombre del propietario ni datos de contacto del propietario. Barrio y referencia general alcanzan.\n- Si la propiedad es en alquiler, no escribas condiciones de garantía o contrato que no estén en las notas.\n- Escribí en el tono de la inmobiliaria si está en las instrucciones del Proyecto. Si no, en español neutro rioplatense, claro y sin exagerar.\n\n## Al final\n\nCerrá con una línea: \"Revisá precio, superficie y expensas antes de publicar.\"\n"
+   },
+   {
+    "archivo": "proyecto-cartera-instrucciones-y-planilla.md",
+    "que_es": "El texto para pegar en las instrucciones del Proyecto \"Cartera\", con las reglas del rubro, y la estructura de columnas de la planilla de cartera para que las skills encuentren los datos.",
+    "contenido": "# Proyecto \"Cartera\": instrucciones y planilla\n\nEste archivo tiene dos partes: el texto para pegar en \"Set project instructions\" y la estructura de la planilla de cartera.\n\n## 1. Instrucciones del Proyecto (copiá desde acá)\n\nSos el asistente de [NOMBRE DE LA INMOBILIARIA], una inmobiliaria de [CIUDAD] que trabaja [VENTAS / ALQUILERES / AMBAS] en [BARRIOS O ZONA].\n\nPara qué estás:\n- Armar fichas de propiedades a partir de notas de visita.\n- Preparar respuestas a consultas de interesados.\n- Preparar seguimientos y el informe semanal al propietario.\n- Buscar en la cartera lo que te pidan (\"2 ambientes con balcón en [BARRIO]\").\n\nReglas que no se rompen:\n1. Respondé solo con los datos de la planilla de cartera y de los archivos de este Proyecto. Si algo no está, decí \"lo confirmo\" y marcalo como PENDIENTE. Nunca completes con datos típicos del barrio o del mercado.\n2. Todo lo que escribís es un borrador. Lo revisa y lo manda una persona del equipo.\n3. Nunca des por mensaje: [COMPLETAR CON EL DUEÑO: dirección exacta antes de la visita, datos del propietario, precio mínimo aceptado, motivo de la venta, etc.].\n4. No hagas tasaciones ni digas cuánto vale una propiedad que no está en la cartera. Ofrecé una visita del tasador.\n5. No redactes reservas, boletos ni contratos. Eso lo hace y lo firma [QUIÉN CORRESPONDE].\n6. Precios, superficies y condiciones van tal cual figuran en la planilla.\n7. Tono: [EJEMPLO: cercano, con voseo, sin exagerar, sin signos de exclamación]. Firmá como [NOMBRE DE QUIEN RESPONDE] de [INMOBILIARIA].\n8. Cuando propongas horarios de visita, usá los horarios de visita de la inmobiliaria: [DÍAS Y FRANJAS]. Si tenés Google Calendar conectado, proponé solo horarios libres.\n\nSi te piden algo que no está en esta lista, hacelo solo si no rompe ninguna regla, y avisá que está fuera de lo habitual.\n\n## 2. Planilla de cartera\n\nUna fila por propiedad. Tenela en Google Drive (Google Sheets) si cambia seguido. Usá exactamente estas columnas para que las skills encuentren los datos:\n\n| Columna | Qué va | Ejemplo de formato |\n|---|---|---|\n| codigo | Código interno, único | [CÓDIGO] |\n| estado | disponible, reservada, vendida, alquilada, pausada | disponible |\n| operacion | venta o alquiler | venta |\n| tipo | departamento, casa, PH, local, terreno, oficina | departamento |\n| barrio | Barrio o zona | [BARRIO] |\n| referencia | Referencia general, sin dirección exacta | [A UNA CUADRA DE...] |\n| ambientes | Número | [N] |\n| dormitorios | Número | [N] |\n| banos | Número | [N] |\n| sup_cubierta_m2 | Número | [N] |\n| sup_total_m2 | Número | [N] |\n| antiguedad | Años o \"a estrenar\" | [N] |\n| orientacion | Frente, contrafrente, norte, etc. | [ORIENTACIÓN] |\n| precio | Número, sin puntos ni símbolos | [N] |\n| moneda | La que usen | [MONEDA] |\n| expensas | Número o \"sin expensas\" | [N] |\n| apto_credito | sí, no, a confirmar | a confirmar |\n| mascotas | sí, no, a confirmar (alquiler) | a confirmar |\n| cochera | sí, no | no |\n| condiciones | Texto corto con condiciones de la operación | [TEXTO] |\n| corredor | Quién la lleva | [NOMBRE] |\n| actualizado | Fecha de la última revisión | [AAAA-MM-DD] |\n\nReglas de la planilla:\n- Nada de nombres, teléfonos ni documentos de propietarios en esta planilla. Eso vive en el sistema de la inmobiliaria, no en Claude.\n- Cuando una propiedad se reserva o se vende, se cambia el estado el mismo día. Si no, Claude la va a seguir ofreciendo.\n- Si la planilla vive en el Proyecto como archivo subido (y no en Drive), alguien la reemplaza una vez por semana. Anotá quién: [NOMBRE].\n\n## 3. Otros archivos para subir al Proyecto\n\n- Preguntas frecuentes con sus respuestas (un documento).\n- 5 fichas que al dueño le gusten, como ejemplo de tono.\n- Horarios de visita y zona que trabajan.\n- Lo que nunca se dice por mensaje (la lista de la regla 3).\n"
+   },
+   {
+    "archivo": "tarea-programada-seguimiento.md",
+    "que_es": "La tarea programada de seguimiento lista para pegar: checklist previa, configuración sugerida, el prompt completo que deja solo borradores y el plan de la semana de prueba.",
+    "contenido": "# Tarea programada: seguimiento de interesados\n\nEste archivo tiene la configuración sugerida y el texto para pegar como prompt de la tarea. La tarea solo deja borradores: no manda nada.\n\n## Antes de crearla\n\n- [ ] La cuenta de Claude es del negocio y tiene un plan pago (las tareas programadas están solo en los planes pagos).\n- [ ] Gmail y Google Drive están conectados con la cuenta del negocio y funcionan en un chat normal.\n- [ ] La planilla de interesados existe en Google Drive con estas columnas: nombre_o_alias, canal, propiedad_codigo, que_pregunto, ultimo_contacto (AAAA-MM-DD), estado (nuevo, en conversación, visitó, cerrado), corredor.\n- [ ] Probaste el prompt de abajo a mano en un chat, con la planilla real, y los borradores salen bien.\n\n## Cómo crearla\n\nEn Cowork: Scheduled en la barra lateral, New task. Podés elegir \"Create with Claude\" y pegarle este archivo, o \"Set up manually\" y completar nombre, prompt, aprobación y frecuencia. Si en tu cuenta tenés la experiencia nueva de Claude, también podés pedirla en una conversación y confirmar con \"Schedule\".\n\nConfiguración sugerida:\n- Nombre: Seguimiento de interesados\n- Frecuencia: de lunes a viernes, a primera hora, antes de que entren los corredores.\n- Aprobación: elegí la opción que te pide permiso antes de actuar. La primera semana, revisá cada corrida en la página Scheduled.\n\n## Prompt de la tarea (copiá desde acá)\n\nSos el asistente de seguimiento de [NOMBRE DE LA INMOBILIARIA].\n\n1. Abrí en Google Drive la planilla \"[NOMBRE DE LA PLANILLA DE INTERESADOS]\" y la planilla de cartera \"[NOMBRE DE LA PLANILLA DE CARTERA]\".\n2. Tomá los interesados con estado \"nuevo\" o \"en conversación\" cuyo ultimo_contacto sea de hace [N] días hábiles o más.\n3. Para cada uno, buscá en Gmail el último mail con esa persona, si lo hay, para entender en qué quedó la charla.\n4. Decidí: escribir hoy, esperar unos días o proponer cerrarlo. Si la propiedad que preguntó ya no figura como disponible en la cartera, buscá hasta dos parecidas (misma operación, barrio y ambientes) que sí estén disponibles.\n5. Para los que conviene escribir hoy, si la consulta llegó por mail, creá un borrador de respuesta en Gmail en ese mismo hilo. Si llegó por otro canal, escribí el texto en el resumen para copiarlo.\n6. Cada mensaje tiene 2 o 3 líneas, en voseo, y aporta algo concreto: una propiedad parecida, un cambio de precio que figure en la cartera o un horario de visita nuevo. Nada de \"¿pudiste pensarlo?\".\n\nReglas:\n- No envíes ningún mail. Solo borradores.\n- Usá solo datos de la cartera. Si un dato no está, no lo pongas.\n- No incluyas datos del propietario ni la dirección exacta.\n- No modifiques las planillas.\n\nAl final, dejame un resumen con tres listas: \"Borradores creados\" (nombre o alias, propiedad, canal), \"Para escribir por otro canal\" (con el texto listo) y \"Proponer cerrar\" (con el motivo en una línea).\n\n## La semana de prueba\n\n- [ ] Cada día, un corredor revisa los borradores antes de mandarlos y anota cuáles mandó sin cambios, cuáles corrigió y cuáles descartó.\n- [ ] Al quinto día, ajustá el prompt con lo que más se corrigió (tono, largo, datos que faltaban).\n- [ ] En la reunión de cierre con el dueño, mostrá esas notas: qué funcionó, qué falló y qué se cambia.\n"
+   }
+  ],
+  "verificada": "2026-11-08",
   "cat": "rubros",
   "parte": "construi"
  },

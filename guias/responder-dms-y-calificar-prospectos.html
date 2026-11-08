@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena responder-dms-y-calificar-prospectos, Responder DMs y calificar prospectos con Claude, Un proyecto de Claude que clasifica tus mensajes, te dice quién está listo para hablar de compra y te deja un borrador con tu tono. Vos revisás y mandás. y 1b71218b -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena responder-dms-y-calificar-prospectos, Responder DMs y calificar prospectos con Claude, Un proyecto de Claude que clasifica tus mensajes, te dice quién está listo para hablar de compra y te deja un borrador con tu tono. Vos revisás y mandás. y e9815a09 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=1b71218b">
-<link rel="stylesheet" href="../web/cta.css?v=1b71218b">
-<link rel="stylesheet" href="../web/biblioteca.css?v=1b71218b">
-<link rel="stylesheet" href="../web/guia.css?v=1b71218b">
-<link rel="stylesheet" href="../web/tema.css?v=1b71218b">
-<link rel="stylesheet" href="../web/bienvenida.css?v=1b71218b">
-<script src="../web/tema.js?v=1b71218b"></script>
-<link rel="icon" href="../web/favicon.svg?v=1b71218b" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=e9815a09">
+<link rel="stylesheet" href="../web/cta.css?v=e9815a09">
+<link rel="stylesheet" href="../web/biblioteca.css?v=e9815a09">
+<link rel="stylesheet" href="../web/guia.css?v=e9815a09">
+<link rel="stylesheet" href="../web/tema.css?v=e9815a09">
+<link rel="stylesheet" href="../web/bienvenida.css?v=e9815a09">
+<script src="../web/tema.js?v=e9815a09"></script>
+<link rel="icon" href="../web/favicon.svg?v=e9815a09" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=1b71218b"></script>
-<script src="../web/guias-web.js?v=1b71218b"></script>
-<script src="../web/comun.js?v=1b71218b"></script>
+<script src="../web/redes.js?v=e9815a09"></script>
+<script src="../web/guias-web.js?v=e9815a09"></script>
+<script src="../web/comun.js?v=e9815a09"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="responder-dms-y-calificar-prospectos"></main>
 <script>var GUIA = {"slug": "responder-dms-y-calificar-prospectos", "t": "Responder DMs y calificar prospectos con Claude", "d": "Un proyecto de Claude que clasifica tus mensajes, te dice quién está listo para hablar de compra y te deja un borrador con tu tono. Vos revisás y mandás.", "tema": "Conseguí clientes", "min": 9, "fichaNombre": "Asistente de DMs", "ficha": [["Qué es", "Un proyecto de Claude con instrucciones para ordenar mensajes y preparar respuestas."], ["Necesitás", "Una cuenta de Claude, tu ficha de voz y una lista corta de lo que vendés con sus preguntas frecuentes."], ["Qué no hace", "No lee tu Instagram ni manda mensajes. Vos le pegás los mensajes y vos respondés."], ["Regla de oro", "Ningún borrador sale sin que lo leas."]], "secciones": [{"h": "Para qué sirve", "p": ["Cuando llegan muchos mensajes juntos, los que tienen intención de compra se mezclan con saludos, dudas sueltas y spam. Este asistente te los ordena y te deja una respuesta armada para cada uno, para que vos solo revises y ajustes."]}, {"h": "1. Creá el proyecto", "pasos": ["En Claude, andá a Proyectos → + New Project y ponele un nombre como Mensajes.", "En el conocimiento del proyecto subí: tu ficha de voz, qué vendés (qué incluye, para quién es y para quién no) y tus preguntas frecuentes con sus respuestas.", "Tocá \"Set project instructions\", pegá el texto de abajo y guardalo."], "prompts": [{"t": "Instrucciones del proyecto", "c": "Sos mi asistente para ordenar mensajes directos. No mandás nada: preparás borradores para que yo los revise.\n\nCuando te pegue mensajes, para cada uno:\n1. Clasificalo en una de estas categorías:\n   - Listo para hablar: pregunta por precio, condiciones, cómo empezar o pide una llamada.\n   - Interesado: tiene un problema que mi oferta resuelve, pero todavía no pregunta cómo comprar.\n   - Consulta: duda puntual que se responde con mis preguntas frecuentes.\n   - Cliente: ya compró y necesita ayuda.\n   - Otro: saludo, spam o algo que no tiene que ver.\n2. Explicá en una línea por qué lo pusiste ahí.\n3. Escribí un borrador de respuesta con mi ficha de voz: corto, como se escribe en un chat, terminando con una sola pregunta o un solo paso siguiente.\n4. Si la respuesta depende de algo que no está en mis documentos (precio, fecha, disponibilidad), no lo inventes: poné [CONFIRMAR: ...].\n\nAl final, dame un resumen: cuántos hay de cada categoría y en qué orden responder.\nNunca prometas resultados, descuentos ni plazos que no estén en mis documentos."}]}, {"h": "2. Usalo todos los días", "pasos": ["Copiá los mensajes nuevos (sin nombres completos ni datos personales que no hagan falta) y pegalos en un chat dentro del proyecto.", "Empezá por los \"Listo para hablar\".", "Leé cada borrador, cambiá lo que haga falta y completá todo lo que diga [CONFIRMAR].", "Mandá vos la respuesta desde Instagram."], "aviso": "No pegues datos sensibles de otras personas (documentos, datos de pago, temas de salud). Para clasificar alcanza con el texto del mensaje."}, {"h": "3. Las preguntas que califican", "p": ["Calificar es saber si la persona tiene el problema que resolvés, si es el momento y si puede avanzar. Pedile a Claude que, en los borradores para \"Interesado\", incluya una de estas preguntas según el caso."], "lista": ["Situación: \"¿Cómo lo estás resolviendo hoy?\"", "Urgencia: \"¿Para cuándo te gustaría tenerlo resuelto?\"", "Decisión: \"¿Lo decidís vos o lo hablás con alguien más?\"", "Encaje: \"¿Qué te hizo escribirme justo ahora?\""]}, {"h": "4. Opcional: convertilo en skill", "p": ["Si querés usar el mismo asistente fuera del proyecto, podés empaquetarlo como skill: una carpeta con un archivo skill.md que empieza con nombre y descripción, comprimida en .zip. Se sube en Customize → Skills → + → Create skill → Upload a skill (en español: Personalizar → Skills). Para usar skills tenés que tener activado \"Crear y editar archivos\" (Code execution and file creation) en Configuración → Capacidades."]}], "faq": [{"q": "¿Puede responder solo en Instagram?", "a": "Este método no. Está pensado para que vos revises cada respuesta. Si automatizás mensajes en Instagram, tenés que respetar las reglas de Meta, como la ventana de 24 horas."}, {"q": "Clasifica mal algunos mensajes", "a": "Decíselo con el ejemplo: \"este era Listo para hablar porque preguntó cómo empezar\". Si se repite, sumá esa regla a las instrucciones."}, {"q": "¿Me sirve para WhatsApp o mail?", "a": "Sí: el proyecto trabaja con el texto que le pegues, venga de donde venga."}], "fuentes": ["https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects", "https://support.claude.com/en/articles/12512180-use-skills-in-claude", "https://support.claude.com/en/articles/12512198-how-to-create-custom-skills", "https://help.manychat.com/hc/en-us/articles/14281199732892"], "cat": "clientes", "parte": "usalo"};</script>
 
-<script src="../web/rutas.js?v=1b71218b"></script>
-<script src="../web/logos.js?v=1b71218b"></script>
-<script src="../web/guia.js?v=1b71218b"></script>
-<script src="../web/bienvenida.js?v=1b71218b"></script>
+<script src="../web/rutas.js?v=e9815a09"></script>
+<script src="../web/logos.js?v=e9815a09"></script>
+<script src="../web/guia.js?v=e9815a09"></script>
+<script src="../web/bienvenida.js?v=e9815a09"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

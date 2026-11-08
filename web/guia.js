@@ -23,6 +23,45 @@ var ICONO_GUIA = {
   ruta: '<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/>',
   flecha: '<path d="M5 12h14M13 6l6 6-6 6"/>'
 };
+// Descarga un archivo generado en el navegador
+function bajar(nombre, datos, tipo) {
+  var url = URL.createObjectURL(new Blob([datos], { type: tipo }));
+  var a = document.createElement("a");
+  a.href = url; a.download = nombre;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
+}
+
+// ZIP sin compresión (método «store»): alcanza para archivos de texto y lo abre cualquier sistema
+function zip(archivos) {
+  var enc = new TextEncoder(), partes = [], central = [], offset = 0;
+  var tabla = zip.tabla || (zip.tabla = (function () {
+    var t = [];
+    for (var n = 0; n < 256; n++) { var c = n; for (var k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; }
+    return t;
+  })());
+  function crc(bytes) { var c = 0xffffffff; for (var i = 0; i < bytes.length; i++) c = tabla[(c ^ bytes[i]) & 0xff] ^ (c >>> 8); return (c ^ 0xffffffff) >>> 0; }
+  function cab(tam) { var b = new DataView(new ArrayBuffer(tam)); return b; }
+  archivos.forEach(function (f) {
+    var nombre = enc.encode(f.archivo), datos = enc.encode(f.contenido), c = crc(datos);
+    var l = cab(30);
+    l.setUint32(0, 0x04034b50, true); l.setUint16(4, 20, true); l.setUint16(6, 0x0800, true); l.setUint16(8, 0, true);
+    l.setUint32(14, c, true); l.setUint32(18, datos.length, true); l.setUint32(22, datos.length, true); l.setUint16(26, nombre.length, true);
+    partes.push(new Uint8Array(l.buffer), nombre, datos);
+    var d = cab(46);
+    d.setUint32(0, 0x02014b50, true); d.setUint16(4, 20, true); d.setUint16(6, 20, true); d.setUint16(8, 0x0800, true);
+    d.setUint32(16, c, true); d.setUint32(20, datos.length, true); d.setUint32(24, datos.length, true); d.setUint16(28, nombre.length, true);
+    d.setUint32(42, offset, true);
+    central.push(new Uint8Array(d.buffer), nombre);
+    offset += 30 + nombre.length + datos.length;
+  });
+  var tamCentral = central.reduce(function (t, x) { return t + x.length; }, 0);
+  var fin = cab(22);
+  fin.setUint32(0, 0x06054b50, true); fin.setUint16(8, archivos.length, true); fin.setUint16(10, archivos.length, true);
+  fin.setUint32(12, tamCentral, true); fin.setUint32(16, offset, true);
+  return new Blob(partes.concat(central, [new Uint8Array(fin.buffer)]));
+}
+
 function fechaLarga(iso) {
   var m = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
   var p = String(iso).split("-");
@@ -283,21 +322,18 @@ function pintarGuia(caja, g) {
   window.addEventListener("scroll", marcarIndice, { passive: true });
   marcarIndice();
 
-  // Descargas del kit: el archivo sale del contenido de la guía (sin servidor)
+  // Descargas del kit: los archivos salen del contenido de la guía (sin servidor).
+  // Un archivo dentro de una carpeta (por ejemplo una skill: carpeta/SKILL.md) baja como .zip con su carpeta,
+  // que es como se sube una skill a Claude. «Descargar todo» arma un solo .zip con el kit entero.
   caja.addEventListener("click", function (e) {
     var b = e.target.closest("[data-kit]");
     if (!b) return;
-    var lista = b.dataset.kit === "todo" ? g.kit : [g.kit[+b.dataset.kit]];
-    lista.forEach(function (k, i) {
-      setTimeout(function () {
-        var tipo = /\.json$/.test(k.archivo) ? "application/json" : /\.ya?ml$/.test(k.archivo) ? "text/yaml" : "text/markdown";
-        var url = URL.createObjectURL(new Blob([k.contenido], { type: tipo + ";charset=utf-8" }));
-        var a = document.createElement("a");
-        a.href = url; a.download = k.archivo.split("/").pop();
-        document.body.appendChild(a); a.click(); a.remove();
-        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
-      }, i * 350);
-    });
+    if (b.dataset.kit === "todo") bajar(g.slug + "-kit.zip", zip(g.kit), "application/zip");
+    else {
+      var k = g.kit[+b.dataset.kit];
+      if (k.archivo.indexOf("/") > -1) bajar(k.archivo.split("/")[0] + ".zip", zip([k]), "application/zip");
+      else bajar(k.archivo, k.contenido, "text/plain;charset=utf-8");
+    }
     b.textContent = "✓ Descargado";
   });
 

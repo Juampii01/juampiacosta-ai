@@ -250,7 +250,11 @@ details p { margin-top: 10px; }
 .g-ej-nota { font-size: 12.5px; color: var(--muted); }
 .g-fallas { display: grid; gap: 10px; }
 .g-fallas details { padding: 16px 18px; border-radius: 16px; }
-.g-fallas summary { cursor: pointer; font-weight: 600; }
+.g-fallas summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+.g-fallas summary::-webkit-details-marker { display: none; }
+.g-fallas summary::after { content: "+"; flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; color: var(--glow); background: rgba(255, 90, 31, .12); transition: transform .2s; }
+.g-fallas details[open] summary::after { transform: rotate(45deg); }
+#kit { margin-top: 40px; }
 .g-fallas p { margin-top: 10px; color: var(--muted); line-height: 1.6; }
 .g-kit { display: grid; gap: 10px; margin-top: 14px; }
 .g-kit-item { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 16px; }

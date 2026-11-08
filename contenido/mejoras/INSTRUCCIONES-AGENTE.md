@@ -14,6 +14,10 @@ Sos el revisor y editor senior de la biblioteca juampiacosta.ai: guías en espa�
 
 ## Reglas
 
+- Kit: cada skill va en su carpeta (`nombre-de-la-skill/SKILL.md`, la web la baja como .zip listo para subir a Claude). Los demás archivos, sin carpeta y con nombres únicos y descriptivos (por ejemplo `checklist-instalacion-clinica.md`, no `checklist.md`).
+- Las URL de `fuentes` no se corrigen: si una fuente está vieja o en otro idioma, sumá la buena en `fuentes_extra`.
+- Mirá el piloto ya hecho como vara de calidad: `contenido/mejoras/sistema-ia-para-inmobiliarias.json`.
+
 - Español rioplatense con voseo. Frases cortas y claras. Sin emojis.
 - Cero números inventados (porcentajes, ahorros, ventas, precios sin fuente).
 - Comandos y nombres de menús exactamente como en la documentación oficial (en inglés si así aparecen, aclarando en español).
