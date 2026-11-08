@@ -94,7 +94,7 @@ body.con-menu main { padding-top: 24px; }
 .ruta li a:hover { border-color: var(--sky); }
 .ruta li b { flex: none; width: 24px; height: 24px; border-radius: 8px; display: grid; place-items: center; background: var(--glass-2); font-size: 12px; }
 .ruta li small { margin-left: auto; color: var(--muted); white-space: nowrap; }
-.ruta-azul summary i { background: linear-gradient(135deg, #1aa0ff, #0057d8); }
+.ruta-azul summary i { background: rgba(255, 90, 31, .12); color: var(--sky); border: 1px solid rgba(255, 90, 31, .3); }
 .ruta-verde summary i { background: linear-gradient(135deg, #20c997, #0f8f6a); }
 .ruta-morado summary i { background: linear-gradient(135deg, #a46bff, #6a2bd9); }
 .ruta-rosa summary i { background: linear-gradient(135deg, #ff5fa2, #c72474); }
@@ -149,3 +149,10 @@ body.con-menu main { padding-top: 24px; }
 @media (max-width: 400px) {
   .menu-boton { width: 34px; height: 34px; }
 }
+
+/* Dónde estás, en la cabecera de la biblioteca */
+.cab-vista { display: none; }
+body.con-menu .cab-vista { display: inline-flex; align-items: center; gap: 8px; padding-left: 8px; font-size: 14px; color: var(--muted); white-space: nowrap; }
+.cab-vista i { font-style: normal; opacity: .5; }
+.cab-vista b { color: var(--ink); font-weight: 700; }
+@media (max-width: 1024px) { body.con-menu .cab-vista { display: none; } }

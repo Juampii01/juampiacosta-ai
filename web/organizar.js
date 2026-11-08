@@ -11,14 +11,23 @@ function organizar(caja, items, tarjeta, op) {
   items.forEach(function (x) { (porCat[x[clave]] = porCat[x[clave]] || []).push(x); });
   var pref = op.prefijo, visibles = op.visibles || 4, palabra = op.palabra || "guías";
 
-  // Índice: una fila por parte con las categorías como botones
-  var indice = '<nav class="org-indice' + (op.grupos ? ' org-indice--simple' : '') + '" aria-label="Categorías">' + partes.map(function (p, i) {
-    var enParte = cats.filter(function (c) { return c.parte === p.id && porCat[c.id]; });
-    if (!enParte.length) return "";
-    return '<div class="org-fila">' + (op.grupos ? '' : '<span class="org-parte-n">Parte ' + (i + 1) + '</span>') + '<div class="org-chips">' + enParte.map(function (c) {
-      return '<a class="org-chip' + (c.destacada ? ' org-chip--dest' : '') + '" href="#' + pref + c.id + '"><span aria-hidden="true">' + c.e + '</span>' + c.n + '<b>' + porCat[c.id].length + '</b></a>';
-    }).join("") + '</div></div>';
-  }).join("") + '</nav>';
+  // Índice: un mapa con una columna por parte (o una sola fila de botones en Skills, MCP y Herramientas)
+  var indice;
+  if (op.grupos) {
+    indice = '<nav class="org-indice org-indice--simple" aria-label="Categorías"><div class="org-chips">' + cats.filter(function (c) { return porCat[c.id]; }).map(function (c) {
+      return '<a class="org-chip" href="#' + pref + c.id + '">' + ICONOS_CAT(c.id) + c.n + '<b>' + porCat[c.id].length + '</b></a>';
+    }).join("") + '</div></nav>';
+  } else {
+    indice = '<nav class="org-mapa" aria-label="Categorías">' + partes.map(function (p, i) {
+      var enParte = cats.filter(function (c) { return c.parte === p.id && porCat[c.id]; });
+      if (!enParte.length) return "";
+      var total = enParte.reduce(function (t, c) { return t + porCat[c.id].length; }, 0);
+      return '<div class="org-col"><a class="org-col-cab" href="#' + pref + 'parte-' + p.id + '"><b>' + (i + 1) + '</b><span><small>Parte ' + (i + 1) + '</small>' + p.n.replace(/^Parte \d+ · /, "") + '</span><em>' + total + '</em></a>' +
+        enParte.map(function (c) {
+          return '<a class="org-fila-cat' + (c.destacada ? ' org-fila-cat--dest' : '') + '" href="#' + pref + c.id + '">' + ICONOS_CAT(c.id) + '<span>' + c.n + '</span><b>' + porCat[c.id].length + '</b></a>';
+        }).join("") + '</div>';
+    }).join("") + '</nav>';
+  }
 
   var cuerpo = partes.map(function (p, i) {
     var enParte = cats.filter(function (c) { return c.parte === p.id && porCat[c.id]; });
@@ -27,7 +36,7 @@ function organizar(caja, items, tarjeta, op) {
       enParte.map(function (c) {
         var lista = porCat[c.id], mas = lista.length - visibles;
         return '<div class="org-cat' + (c.destacada ? ' org-cat--dest' : '') + '" id="' + pref + c.id + '">' +
-          '<header class="org-cat-cab"><i aria-hidden="true">' + c.e + '</i><div><h4>' + c.n + '</h4><p>' + c.d + '</p></div><span>' +
+          '<header class="org-cat-cab"><i>' + ICONOS_CAT(c.id) + '</i><div><h4>' + c.n + '</h4><p>' + c.d + '</p></div><span>' +
           (leidas ? lista.filter(function (x) { return leidas[x.slug]; }).length + ' de ' + lista.length + ' leídas' : lista.length + ' ' + palabra) + '</span></header>' +
           '<div class="herrs org-lista">' + lista.map(function (x, k) { return tarjeta(x).replace(/^<(\w+) class="/, '<$1 class="' + (k >= visibles ? 'org-extra ' : '') + (leidas && leidas[x.slug] ? 'leida ' : '')); }).join("") + '</div>' +
           (mas > 0 ? '<button type="button" class="org-mas chip" data-n="' + lista.length + '">Ver las ' + lista.length + ' ' + palabra + ' ↓</button>' : '') +
@@ -46,7 +55,7 @@ function organizar(caja, items, tarjeta, op) {
       if (!abierta) cat.scrollIntoView({ block: "start" });
       return;
     }
-    var a = e.target.closest(".org-chip");
+    var a = e.target.closest(".org-chip, .org-fila-cat, .org-col-cab");
     if (a) {
       e.preventDefault();
       var destino = document.getElementById(a.getAttribute("href").slice(1));

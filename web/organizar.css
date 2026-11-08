@@ -57,3 +57,24 @@
 .seguir-prog em { display: block; height: 100%; min-width: 4px; border-radius: 6px; background: linear-gradient(90deg, #ff5a1f, #ffb889); }
 [data-tema="claro"] .seguir-prog i { background: rgba(120, 60, 20, .1); }
 .org-indice--simple .org-fila { grid-template-columns: 1fr; }
+
+/* Mapa de la sección: una columna por parte, cada categoría en su fila */
+.org-mapa { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 6px 0 30px; }
+.org-col { display: flex; flex-direction: column; gap: 2px; padding: 10px; border-radius: 20px; border: 1px solid var(--line); background: linear-gradient(160deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02)); }
+.org-col-cab { display: flex; align-items: center; gap: 10px; padding: 6px 8px 10px; margin-bottom: 4px; border-bottom: 1px solid var(--line); }
+.org-col-cab > b { flex: none; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 13px; }
+.org-col-cab span { display: flex; flex-direction: column; font-weight: 700; font-size: 15.5px; letter-spacing: -.01em; line-height: 1.2; }
+.org-col-cab small { font: 600 10.5px "JetBrains Mono", monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--glow); }
+.org-col-cab em, .org-fila-cat b { margin-left: auto; font-style: normal; font-size: 12px; font-weight: 600; color: var(--muted); }
+.org-fila-cat { display: flex; align-items: center; gap: 10px; padding: 9px 8px; border-radius: 12px; font-size: 14.5px; font-weight: 600; transition: background .15s; }
+.org-fila-cat:hover { background: rgba(255, 90, 31, .1); }
+.org-fila-cat svg { flex: none; width: 18px; height: 18px; color: var(--sky); }
+.org-fila-cat--dest span::after { content: "Recomendado"; margin-left: 8px; padding: 2px 7px; border-radius: 999px; font: 600 9.5px "JetBrains Mono", monospace; letter-spacing: .06em; text-transform: uppercase; color: #a15c00; background: rgba(255, 209, 102, .25); vertical-align: 2px; }
+.org-buscando .org-mapa { display: none; }
+.org-parte { scroll-margin-top: 90px; }
+.org-chip svg { width: 16px; height: 16px; color: var(--sky); }
+.org-cat-cab i svg { width: 22px; height: 22px; color: var(--sky); }
+[data-tema="claro"] .org-col { background: #fff; }
+@media (max-width: 900px) {
+  .org-mapa { grid-template-columns: 1fr; }
+}

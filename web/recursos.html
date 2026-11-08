@@ -31,6 +31,7 @@
 <script src="web/comun.js?v={{V}}"></script>
 <script src="web/rutas.js?v={{V}}"></script>
 <script src="web/categorias.js?v={{V}}"></script>
+<script src="web/iconos.js?v={{V}}"></script>
 <script src="web/organizar.js?v={{V}}"></script>
 <script src="web/recomendados.js?v={{V}}" defer></script>
 <script src="web/menu.js?v={{V}}"></script>
@@ -56,39 +57,39 @@
   </section>
 
   <section id="rutas">
-    <div class="tit"><div><span class="mono">Rutas de aprendizaje</span><h2>Seguí un camino, de fácil a difícil</h2></div></div>
+    <div class="tit"><div><span class="mono">Rutas por objetivo</span><h2>¿Ya sabés qué querés lograr? Seguí una ruta</h2><p class="tit-sub">Pasos cortos y en orden, de lo más simple a lo más avanzado. Abrí una y arrancá por el paso 1.</p></div></div>
     <div class="rutas" id="lista-rutas"></div>
   </section>
 
   <section id="ultimos-posts"></section>
 
   <section id="guias-web">
-    <div class="tit"><div><span class="mono">01 · Guías</span><h2>Guías paso a paso</h2><p class="tit-sub">Ordenadas en 3 partes: arrancá bien, ponelo a trabajar y después vendé y construí.</p></div></div>
+    <div class="tit"><div><span class="mono">Guías</span><h2>Guías paso a paso</h2><p class="tit-sub">Ordenadas en 3 partes: arrancá bien, ponelo a trabajar y después vendé y construí.</p></div></div>
     <div id="lista-guias-web"></div>
   </section>
 
   <section id="prompts">
-    <div class="tit"><div><span class="mono">02 · Prompts</span><h2>Prompts para copiar y pegar</h2><p class="tit-sub">Los mismos temas que las guías, para que encuentres el prompt justo al lado de lo que estás aprendiendo.</p></div></div>
+    <div class="tit"><div><span class="mono">Prompts</span><h2>Prompts para copiar y pegar</h2><p class="tit-sub">Los mismos temas que las guías, para que encuentres el prompt justo al lado de lo que estás aprendiendo.</p></div></div>
     <div id="lista-prompts"></div>
   </section>
 
   <section id="skills">
-    <div class="tit"><div><span class="mono">03 · Skills</span><h2>Skills para tu Claude</h2></div></div>
+    <div class="tit"><div><span class="mono">Skills</span><h2>Skills para tu Claude</h2></div></div>
     <div id="lista-skills"></div>
   </section>
 
   <section id="mcp">
-    <div class="tit"><div><span class="mono">04 · MCP</span><h2>Conectá Claude con tus apps</h2></div></div>
+    <div class="tit"><div><span class="mono">MCP</span><h2>Conectá Claude con tus apps</h2></div></div>
     <div id="lista-mcp"></div>
   </section>
 
   <section id="herramientas">
-    <div class="tit"><div><span class="mono">05 · Herramientas</span><h2>Plugins y apps</h2></div></div>
+    <div class="tit"><div><span class="mono">Herramientas</span><h2>Plugins y apps</h2></div></div>
     <div id="lista-herramientas"></div>
   </section>
 
   <section id="posts">
-    <div class="tit"><div><span class="mono">06 · De mis reels</span><h2>Lo que prometí en mis videos</h2></div></div>
+    <div class="tit"><div><span class="mono">De mis reels</span><h2>Lo que prometí en mis videos</h2></div></div>
     <div class="herrs" id="lista-posts"></div>
   </section>
   <p class="sin-resultados">No encontré nada con esa palabra.</p>
@@ -184,7 +185,7 @@ function tarjetaGuia(g, etiqueta) {
     '<div class="herr-cab"><span class="tipo">' + etiqueta + '</span><span class="herr-meta">' + g.min + ' min</span></div>' +
     '<h3>' + g.t + '</h3><p>' + g.d + '</p><span class="bajar">' + (cerrada ? '🔒 Desbloquear' : 'Leer la guía →') + '</span></a>';
 }
-organizar(document.getElementById("lista-guias-web"), GUIAS_WEB, function (g) { return tarjetaGuia(g, "Guía · " + g.tema); },
+organizar(document.getElementById("lista-guias-web"), GUIAS_WEB, function (g) { return tarjetaGuia(g, "Guía"); },
   { prefijo: "g-", visibles: 4, palabra: "guías", buscar: "Buscá en las guías…", leidas: true });
 document.getElementById("lista-posts").innerHTML = GUIAS_WEB.filter(function (g) { return g.post; }).map(function (g) { return tarjetaGuia(g, "Palabra · " + g.post); }).join("");
 

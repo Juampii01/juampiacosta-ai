@@ -235,7 +235,7 @@ def puertas(guias, prompts, en_biblioteca):
         muestra = "".join(
             (f'<li><a href="guias/{s}.html">' if en_biblioteca else "<li><span>") + e(por[s]["t"]) + (f"</a></li>" if en_biblioteca else "</span></li>")
             for s in p["muestra"])
-        temas = "".join(f"<span>{c['e']} {e(c['n'])}</span>" for c in cats)
+        temas = "".join(f"<span>{e(c['n'])}</span>" for c in cats)
         pie = f'<span>{len(gs)} guías</span><span>{n_packs} packs de prompts</span>'
         if en_biblioteca:
             pie += f'<span class="pt-prog" data-parte="{p["id"]}" data-total="{len(gs)}"></span>'

@@ -76,6 +76,11 @@ function menuLateral() {
   boton.addEventListener("click", function () { document.body.classList.toggle("menu-abierto"); });
   var cab = document.querySelector(".cab");
   cab.insertBefore(boton, cab.firstChild);
+  // Dónde estás: «Biblioteca / Guías» en el espacio libre de la cabecera
+  var miga = document.createElement("span");
+  miga.className = "cab-vista";
+  var marca = cab.querySelector(".marca");
+  cab.insertBefore(miga, marca ? marca.nextSibling : boton.nextSibling);
 
   // «Explorar la biblioteca ↓» baja a las clases dentro de Inicio, sin cambiar de vista
   document.querySelectorAll("[data-bajar-a]").forEach(function (a) {
@@ -87,6 +92,9 @@ function menuLateral() {
   window.addEventListener("hashchange", function () { verVista(location.hash.slice(1)); });
   verVista(location.hash.slice(1));
 }
+
+var RUTA_ICONO = { empezar: "primeros-pasos", conectar: "conectores", skills: "skills", negocio: "negocio", contenido: "contenido", agentes: "agentes",
+  "claude-code": "claude-code", desarrollo: "desarrollo", vender: "clientes", "sistema-base": "sistema-base" };
 
 function cerrarMenu() { document.body.classList.remove("menu-abierto"); }
 
@@ -100,6 +108,8 @@ function verVista(id) {
   var existe = id && document.getElementById(id) && document.getElementById(id).parentNode.tagName === "MAIN";
   var vista = existe ? id : "inicio";
   document.body.dataset.vista = vista;
+  var miga = document.querySelector(".cab-vista"), item = document.querySelector('.menu .m-item[data-vista="' + vista + '"]');
+  if (miga) miga.innerHTML = 'Biblioteca <i>/</i> <b>' + (item ? item.title : "Inicio") + '</b>';
   document.querySelectorAll("main > section").forEach(function (s) { s.classList.toggle("vista-activa", s.id === vista); });
   document.querySelectorAll(".menu .m-item[data-vista]").forEach(function (a) { a.classList.toggle("activo", a.dataset.vista === vista); });
   // En pantallas bajas la lista del menú se desplaza: que la sección activa quede a la vista
@@ -150,7 +160,7 @@ function pintarRutas(caja) {
       return '<li><a href="' + g.url + '"><b>' + (i + 1) + '</b><span>' + g.t + '</span>' + (g.min ? '<small>' + g.min + ' min</small>' : '') + '</a></li>';
     }).join("");
     var min = r.pasos.reduce(function (t, p) { return t + (typeof p === "string" ? porSlug[p].min : 0); }, 0);
-    return '<details id="ruta-' + r.id + '" class="ruta glass ruta-' + r.color + '" data-buscar="' + r.t + ' ' + r.d + ' ruta"><summary><i>' + svgMenu("rutas") + '</i><div><h3>' + r.t + '</h3><p>' + r.d + '</p>' +
+    return '<details id="ruta-' + r.id + '" class="ruta glass ruta-' + r.color + '" data-buscar="' + r.t + ' ' + r.d + ' ruta"><summary><i>' + (typeof ICONOS_CAT === "function" ? ICONOS_CAT(RUTA_ICONO[r.id] || r.id) : svgMenu("rutas")) + '</i><div><h3>' + r.t + '</h3><p>' + r.d + '</p>' +
       '<span class="meta">' + r.pasos.length + ' pasos · unos ' + min + ' min de lectura</span></div><span class="abrir">⌄</span></summary><ol>' + pasos + '</ol></details>';
   }).join("");
 }

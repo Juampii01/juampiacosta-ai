@@ -4,13 +4,6 @@ var EMPIEZA = ["configura-claude-en-10-minutos", "las-formas-de-usar-claude", "5
 
 var RUTAS = [
   {
-    id: "sistema-base", color: "azul", t: "El sistema base para vender IA a negocios",
-    d: "El método completo, módulo por módulo: la oferta, a quién venderle, el primer mensaje, el diagnóstico, la propuesta, la instalación, la entrega y el mantenimiento.",
-    pasos: ["sistema-base-modulo-1-la-oferta", "sistema-base-modulo-2-elegir-a-quien-venderle", "sistema-base-modulo-3-el-primer-mensaje",
-            "sistema-base-modulo-4-la-llamada-de-diagnostico", "sistema-base-modulo-5-propuesta-y-precio", "sistema-base-modulo-6-la-instalacion-paso-a-paso",
-            "sistema-base-modulo-7-entrega-y-capacitacion", "sistema-base-modulo-8-mantenimiento-mensual", "sistema-base-modulo-9-contrato-y-cuidados"]
-  },
-  {
     id: "empezar", color: "azul", t: "Empezá con Claude",
     d: "De cero a usarlo todos los días: configurarlo, elegir el modelo, pedirle bien y que tu plan rinda.",
     pasos: ["configura-claude-en-10-minutos", "las-formas-de-usar-claude", "que-modelo-de-claude-uso", "formula-para-pedirle-bien-a-claude",
@@ -29,13 +22,6 @@ var RUTAS = [
             "skill-de-tu-marca", "skill-de-presupuestos-para-tu-negocio", "skill-para-responder-clientes", "instalar-skills-de-github", "plugins-de-claude-desde-cero"]
   },
   {
-    id: "claude-code", color: "azul", t: "Claude Code a fondo",
-    d: "Sistemas que corren en tu compu: instalarlo sin miedo, planificar, trabajar con subagentes y dejar tareas programadas.",
-    pasos: ["claude-code-de-cero-sin-miedo", "comandos-de-claude-code-de-todos-los-dias", "modo-plan-de-claude-code", "claude-md-la-memoria-del-proyecto",
-            "permisos-y-modo-automatico-con-cuidado", "subagentes-en-claude-code", "tareas-programadas-en-claude-code", "claude-code-desde-el-celular-y-la-web",
-            "codex-dentro-de-claude-code", "tu-propio-jarvis-con-claude"]
-  },
-  {
     id: "negocio", color: "azul", t: "IA en tu negocio",
     d: "Qué automatizar primero, cómo armarlo y cuánto cobrar si lo hacés para otros.",
     pasos: ["cinco-preguntas-antes-de-meter-ia-en-tu-negocio", "el-plano-de-un-negocio-con-ia", "segundo-cerebro-de-tu-negocio",
@@ -50,16 +36,17 @@ var RUTAS = [
             "seguimiento-de-prospectos-sin-ser-pesado", "landing-en-tres-preguntas", "linkedin-agent-11-skills"]
   },
   {
-    id: "vender", color: "azul", t: "Vendé servicios de IA",
-    d: "Qué armar para otros negocios, con qué herramientas y cómo presentarlo y cobrarlo.",
-    pasos: ["el-plano-de-un-negocio-con-ia", "7-repos-para-vender-a-empresas", "4-agentes-whatsapp-para-vender", "oficina-de-agentes-ia",
-            "cuanto-cobrar-por-automatizar-con-ia", "propuesta-comercial-con-claude", "seguimiento-de-prospectos-sin-ser-pesado"]
-  },
-  {
     id: "agentes", color: "azul", t: "Armá tus propios agentes",
     d: "Qué es un agente de verdad, cómo diseñarlo, los que más sirven en un negocio y cómo usarlos con cuidado.",
     pasos: ["que-es-un-agente-de-ia-de-verdad", "disena-tu-agente-en-una-hoja", "agente-de-investigacion", "agente-de-atencion-con-base-de-conocimiento",
             "agente-que-califica-prospectos", "agente-de-contenido-semanal", "equipos-de-agentes-cuando-conviene", "seguridad-de-agentes", "agentes-con-el-claude-agent-sdk"]
+  },
+  {
+    id: "claude-code", color: "azul", t: "Claude Code a fondo",
+    d: "Sistemas que corren en tu compu: instalarlo sin miedo, planificar, trabajar con subagentes y dejar tareas programadas.",
+    pasos: ["claude-code-de-cero-sin-miedo", "comandos-de-claude-code-de-todos-los-dias", "modo-plan-de-claude-code", "claude-md-la-memoria-del-proyecto",
+            "permisos-y-modo-automatico-con-cuidado", "subagentes-en-claude-code", "tareas-programadas-en-claude-code", "claude-code-desde-el-celular-y-la-web",
+            "codex-dentro-de-claude-code", "tu-propio-jarvis-con-claude"]
   },
   {
     id: "desarrollo", color: "azul", t: "Desarrollá tu app con Claude Code",
@@ -67,5 +54,18 @@ var RUTAS = [
     pasos: ["escribi-la-especificacion-antes-de-programar", "de-idea-a-app-publicada-con-claude-code", "git-y-github-para-no-perder-nada",
             "base-de-datos-con-supabase-y-claude-code", "usuarios-y-login-sin-romperte-la-cabeza", "cobrar-dentro-de-tu-app",
             "publicar-tu-app-y-conectar-tu-dominio", "de-demo-a-producto", "mantener-una-app-hecha-con-ia"]
+  },
+  {
+    id: "vender", color: "azul", t: "Vendé servicios de IA",
+    d: "Qué armar para otros negocios, con qué herramientas y cómo presentarlo y cobrarlo.",
+    pasos: ["el-plano-de-un-negocio-con-ia", "7-repos-para-vender-a-empresas", "4-agentes-whatsapp-para-vender", "oficina-de-agentes-ia",
+            "cuanto-cobrar-por-automatizar-con-ia", "propuesta-comercial-con-claude", "seguimiento-de-prospectos-sin-ser-pesado"]
+  },
+  {
+    id: "sistema-base", color: "azul", t: "El sistema base para vender IA a negocios",
+    d: "El método completo, módulo por módulo: la oferta, a quién venderle, el primer mensaje, el diagnóstico, la propuesta, la instalación, la entrega y el mantenimiento.",
+    pasos: ["sistema-base-modulo-1-la-oferta", "sistema-base-modulo-2-elegir-a-quien-venderle", "sistema-base-modulo-3-el-primer-mensaje",
+            "sistema-base-modulo-4-la-llamada-de-diagnostico", "sistema-base-modulo-5-propuesta-y-precio", "sistema-base-modulo-6-la-instalacion-paso-a-paso",
+            "sistema-base-modulo-7-entrega-y-capacitacion", "sistema-base-modulo-8-mantenimiento-mensual", "sistema-base-modulo-9-contrato-y-cuidados"]
   }
 ];
