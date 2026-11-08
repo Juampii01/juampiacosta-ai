@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena de-donde-vienen-tus-clientes, De dónde vienen tus clientes (y cómo saberlo), Registrá el origen de cada cliente con enlaces etiquetados, una pregunta en el formulario y una planilla simple. Después Claude te dice qué canal rinde. y b7d295bc -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena de-donde-vienen-tus-clientes, De dónde vienen tus clientes (y cómo saberlo), Registrá el origen de cada cliente con enlaces etiquetados, una pregunta en el formulario y una planilla simple. Después Claude te dice qué canal rinde. y 9193350b -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,26 +9,28 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/cta.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/biblioteca.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/guia.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/tema.css?v=b7d295bc">
-<script src="../web/tema.js?v=b7d295bc"></script>
+<link rel="stylesheet" href="../web/base.css?v=9193350b">
+<link rel="stylesheet" href="../web/cta.css?v=9193350b">
+<link rel="stylesheet" href="../web/biblioteca.css?v=9193350b">
+<link rel="stylesheet" href="../web/guia.css?v=9193350b">
+<link rel="stylesheet" href="../web/tema.css?v=9193350b">
+<link rel="stylesheet" href="../web/bienvenida.css?v=9193350b">
+<script src="../web/tema.js?v=9193350b"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=b7d295bc"></script>
-<script src="../web/guias-web.js?v=b7d295bc"></script>
-<script src="../web/comun.js?v=b7d295bc"></script>
+<script src="../web/redes.js?v=9193350b"></script>
+<script src="../web/guias-web.js?v=9193350b"></script>
+<script src="../web/comun.js?v=9193350b"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="de-donde-vienen-tus-clientes"></main>
 <script>var GUIA = {"slug": "de-donde-vienen-tus-clientes", "t": "De dónde vienen tus clientes (y cómo saberlo)", "d": "Registrá el origen de cada cliente con enlaces etiquetados, una pregunta en el formulario y una planilla simple. Después Claude te dice qué canal rinde.", "tema": "Conseguí clientes", "min": 9, "fichaNombre": "Registro de origen", "ficha": [["Qué es", "Un sistema simple para saber qué canal te trae clientes de verdad."], ["Necesitás", "Tus enlaces, una pregunta en tu formulario o tu chat y una planilla."], ["Tiempo", "Una hora para armarlo. Después, un minuto por cliente."]], "secciones": [{"h": "Por qué importa", "p": ["Sin este dato, decidís dónde poner tiempo y plata por sensación. Con el dato, ves qué canal trae consultas, cuál trae ventas y cuál solo te da trabajo."]}, {"h": "1. Etiquetá tus enlaces (UTM)", "p": ["Los parámetros UTM son etiquetas que agregás al final de un enlace para que Google Analytics sepa de dónde vino la visita. Google recomienda usar siempre estos tres:"], "lista": ["utm_source: quién te mandó la visita (instagram, newsletter, google).", "utm_medium: el tipo de canal (social, email, cpc).", "utm_campaign: la campaña o promo (lanzamiento-curso, promo-invierno)."], "prompts": [{"t": "Ejemplo de enlace etiquetado", "c": "https://[TU-WEB].com/?utm_source=instagram&utm_medium=social&utm_campaign=[NOMBRE-CAMPAÑA]"}], "aviso": "Elegí una forma de escribir y no la cambies: \"instagram\" e \"Instagram\" quedan como dos fuentes distintas. Usá minúsculas y guiones."}, {"h": "2. Preguntalo directamente", "p": ["Muchos clientes no llegan por un enlace: te recomendaron, te vieron en un video o te buscaron por el nombre. Por eso sumá una pregunta en tu formulario, tu chat o al cerrar la venta."], "lista": ["Pregunta: \"¿Cómo nos conociste?\".", "Opciones cerradas: Instagram, Google, recomendación, YouTube, otro (con espacio para escribir).", "Si es recomendación: preguntá de quién. Te sirve para agradecer y para ver quién te manda clientes."]}, {"h": "3. Llevá una planilla", "pasos": ["Creá una planilla con estas columnas: Fecha, Cliente (o código), Origen según UTM, Origen según el cliente, Compró (sí/no), Importe.", "Cargá cada consulta nueva, compre o no.", "Cuando compra, actualizá Compró e Importe.", "Si tenés una automatización, que el formulario cargue la fila solo."]}, {"h": "4. Analizalo con Claude", "p": ["Una vez por mes, exportá la planilla en CSV o Excel y subila a Claude."], "prompts": [{"t": "Análisis de origen de clientes", "c": "Te adjunto mi registro de consultas y clientes de [PERÍODO]. Columnas: fecha, cliente, origen según UTM, origen según el cliente, compró y importe.\n1. Unificá los nombres de origen que sean lo mismo escrito distinto y mostrame qué unificaste.\n2. Por cada origen: cantidad de consultas, cantidad de ventas, porcentaje de conversión e importe total.\n3. Mostrá dónde no coinciden el origen del enlace y el que dijo el cliente.\n4. Decime los 2 canales que más rinden y el que más consultas trae sin convertir.\n5. Sugerí una sola acción concreta para el mes que viene.\nSi hay pocos datos para sacar conclusiones, decímelo en vez de forzarlas."}]}], "faq": [{"q": "¿Le creo al enlace o a lo que dice el cliente?", "a": "A los dos, sabiendo qué mide cada uno. El enlace dice por dónde entró la última vez. El cliente dice dónde te conoció. Muchas veces son distintos y está bien."}, {"q": "¿Cuántos datos necesito para sacar conclusiones?", "a": "Con muy pocos casos cualquier conclusión es ruido. Juntá varias semanas antes de cambiar algo importante, y pedile a Claude que te avise si los datos no alcanzan."}], "fuentes": ["https://support.google.com/analytics/answer/10917952", "https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude"], "cat": "clientes", "parte": "usalo"};</script>
 
-<script src="../web/rutas.js?v=b7d295bc"></script>
-<script src="../web/logos.js?v=b7d295bc"></script>
-<script src="../web/guia.js?v=b7d295bc"></script>
+<script src="../web/rutas.js?v=9193350b"></script>
+<script src="../web/logos.js?v=9193350b"></script>
+<script src="../web/guia.js?v=9193350b"></script>
+<script src="../web/bienvenida.js?v=9193350b"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

@@ -24,10 +24,15 @@ export const config = {
 export function decidir(ruta, nivel) {
   if (/^\/(contenido|supabase|lib|tests)\/|^\/build\.py$|^\/web\/guias-web\.json$/.test(ruta)) return { no: true };
   if (ruta === "/" || ruta === "/index.html") return { pasa: true };
-  if (!nivel) return ruta.startsWith("/web/") ? { prohibido: true } : { a: "/#entrar" };
+  const guia = ruta.match(/^\/guias\/([a-z0-9-]+?)(?:\.html)?$/);
+  // Sin sesión: si la guía es gratis (por ejemplo, la que se manda por una palabra clave), registro y de vuelta a esa guía
+  if (!nivel) {
+    if (ruta.startsWith("/web/")) return { prohibido: true };
+    if (guia && GUIAS_GRATIS.has(guia[1])) return { a: "/?volver=/guias/" + guia[1] + "#gratis" };
+    return { a: "/#entrar" };
+  }
   if (nivel === "pago") return { pasa: true };
   // Gratis
-  const guia = ruta.match(/^\/guias\/([a-z0-9-]+?)(?:\.html)?$/);
   if (guia) return GUIAS_GRATIS.has(guia[1]) ? { pasa: true } : { a: "/?bloqueada=" + guia[1] + "#precio" };
   if (ruta === "/web/prompts.js") return { reescribir: "/web/prompts-vista.js" };
   if (ruta === "/web/herramientas.js") return { reescribir: "/web/herramientas-vista.js" };

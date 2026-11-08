@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena videos-virales-plantilla-hypit, Convertí un video que funciona en una plantilla y armalo con IA, Hypit analiza un video y lo convierte en un flujo reutilizable; Claude Code con HyperFrames arma tu versión con tu voz o una voz de IA, y Rhubarb Lip Sync hace hablar a tu mascota digital. y b7d295bc -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena videos-virales-plantilla-hypit, Convertí un video que funciona en una plantilla y armalo con IA, Hypit analiza un video y lo convierte en un flujo reutilizable; Claude Code con HyperFrames arma tu versión con tu voz o una voz de IA, y Rhubarb Lip Sync hace hablar a tu mascota digital. y 9193350b -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,26 +9,28 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/cta.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/biblioteca.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/guia.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/tema.css?v=b7d295bc">
-<script src="../web/tema.js?v=b7d295bc"></script>
+<link rel="stylesheet" href="../web/base.css?v=9193350b">
+<link rel="stylesheet" href="../web/cta.css?v=9193350b">
+<link rel="stylesheet" href="../web/biblioteca.css?v=9193350b">
+<link rel="stylesheet" href="../web/guia.css?v=9193350b">
+<link rel="stylesheet" href="../web/tema.css?v=9193350b">
+<link rel="stylesheet" href="../web/bienvenida.css?v=9193350b">
+<script src="../web/tema.js?v=9193350b"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=b7d295bc"></script>
-<script src="../web/guias-web.js?v=b7d295bc"></script>
-<script src="../web/comun.js?v=b7d295bc"></script>
+<script src="../web/redes.js?v=9193350b"></script>
+<script src="../web/guias-web.js?v=9193350b"></script>
+<script src="../web/comun.js?v=9193350b"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="videos-virales-plantilla-hypit"></main>
 <script>var GUIA = {"slug": "videos-virales-plantilla-hypit", "t": "Convertí un video que funciona en una plantilla y armalo con IA", "d": "Hypit analiza un video y lo convierte en un flujo reutilizable; Claude Code con HyperFrames arma tu versión con tu voz o una voz de IA, y Rhubarb Lip Sync hace hablar a tu mascota digital.", "tema": "Contenido y redes", "min": 8, "ficha": [["Qué es", "Hypit convierte un video en una plantilla y Claude Code con HyperFrames arma tu video, con tu voz o una de IA."], ["Para quién", "Creadores que quieren partir de estructuras que ya funcionan."], ["Necesitás", "Claude Code, Hypit, HyperFrames y, para mascotas, Rhubarb Lip Sync."], ["Cuánto cuesta", "Las tres herramientas son gratis; los modelos de generación y las voces de IA se pagan aparte."], ["Ojo", "Copiá la estructura, no el contenido, la música ni la cara de otros."]], "secciones": [{"h": "Las piezas", "lista": ["Hypit: le da a tu agente un sistema para hacer video. Le pasás un video y lo clona como un flujo completo (gancho, ritmo, escenas, subtítulos y efectos). Es gratis, con licencia propia basada en Apache 2.0 con condiciones. <a href=\"https://github.com/hypit-ai/hypit\" target=\"_blank\" rel=\"noopener\">github.com/hypit-ai/hypit ↗<\/a>", "HyperFrames: escribís el video en HTML y lo convierte en MP4 (Apache 2.0). <a href=\"https://github.com/heygen-com/hyperframes\" target=\"_blank\" rel=\"noopener\">github.com/heygen-com/hyperframes ↗<\/a>", "Rhubarb Lip Sync: analiza tu audio y genera qué forma de boca va en cada momento, para animar a un personaje 2D (MIT). <a href=\"https://github.com/DanielSWolf/rhubarb-lip-sync\" target=\"_blank\" rel=\"noopener\">github.com/DanielSWolf/rhubarb-lip-sync ↗<\/a>", "Claude Code: el agente que junta todo."]}, {"h": "1. De video a plantilla", "lista": ["Instalación de Hypit, en la terminal: npx skills add hypit-ai/hypit -g. La primera vez, tu agente revisa si falta el programa de Hypit y te ayuda a prepararlo.", "Instalación de HyperFrames, en la terminal: claude plugin marketplace add heygen-com/hyperframes y claude plugin install hyperframes@hyperframes"], "prompts": [{"t": "Analizar", "c": "Usá Hypit para analizar este video [ARCHIVO o LINK] y convertilo en una plantilla reutilizable: gancho, ritmo, escenas, subtítulos y visuales. Quedate solo con la estructura, no con el contenido."}]}, {"h": "2. Que el agente arme el video", "prompts": [{"t": "Armar", "c": "Con la plantilla anterior y HyperFrames, armá un video vertical sobre [MI TEMA] con mi marca [COLORES, LOGO]. Usá estos recursos míos: [B-ROLL, FOTOS DE PRODUCTO, CLIPS]. Mostrame la vista previa antes de renderizar."}]}, {"h": "3. La voz: vos elegís", "lista": ["Grabá tu guion y pasale la pista de audio.", "O usá una voz de IA (por ejemplo ElevenLabs)."], "aviso": "Si usás una voz clonada, que sea la tuya o la de alguien que te dio permiso por escrito. Clonar la voz de otra persona sin permiso viola sus derechos."}, {"h": "4. Hacé hablar a tu mascota digital", "p": ["Rhubarb usa seis formas básicas de boca (A a F) y tres opcionales (G, H y X). Necesitás un dibujo de la boca de tu mascota para cada una."], "prompts": [{"t": "Sincronizar la boca", "c": "Con Rhubarb Lip Sync, sincronizá la boca de mi mascota [DIBUJOS DE LA BOCA: A, B, C, D, E, F y X] con este audio [ARCHIVO] e integralo en la escena de HyperFrames."}]}, {"h": "5. Dirigí la edición con tu voz", "prompts": [{"t": "Ajustes", "c": "Hacé el gancho más corto, subí los subtítulos para que no tapen la cara y cambiá la tercera escena por el clip [ARCHIVO]. Volvé a mostrarme la vista previa."}]}, {"h": "Lo que conviene saber", "lista": ["Copiá la estructura (gancho, ritmo, escenas), no el contenido, la música, las imágenes ni la cara de otros: todo eso tiene derechos.", "Usá solo caras y voces propias o con permiso.", "Indicá que es contenido hecho con IA cuando la plataforma lo pida.", "Los modelos de generación (de Hypit o tu propia API) tienen sus propias cuentas y costos."]}], "faq": [{"q": "¿Necesito saber editar?", "a": "No. Describís lo que querés y el agente arma el borrador; vos revisás."}, {"q": "¿Es todo gratis?", "a": "Hypit, HyperFrames y Rhubarb sí. Pagás tu plan de Claude y, si los usás, los modelos de generación y las voces de IA."}], "usos": [{"e": "Plantilla", "c": "azul", "t": "De video a plantilla", "d": "Gancho, ritmo y estructura con Hypit."}, {"e": "Armar", "c": "morado", "t": "El agente edita", "d": "HyperFrames escribe el video y lo renderiza."}, {"e": "Voz", "c": "verde", "t": "Tuya o de IA", "d": "Tu audio o una voz de IA con permiso."}, {"e": "Mascota", "c": "rosa", "t": "Que hable tu mascota", "d": "Rhubarb mueve la boca al ritmo del audio."}], "fuentes": ["https://github.com/hypit-ai/hypit", "https://github.com/heygen-com/hyperframes", "https://github.com/DanielSWolf/rhubarb-lip-sync"], "cat": "contenido", "parte": "usalo"};</script>
 
-<script src="../web/rutas.js?v=b7d295bc"></script>
-<script src="../web/logos.js?v=b7d295bc"></script>
-<script src="../web/guia.js?v=b7d295bc"></script>
+<script src="../web/rutas.js?v=9193350b"></script>
+<script src="../web/logos.js?v=9193350b"></script>
+<script src="../web/guia.js?v=9193350b"></script>
+<script src="../web/bienvenida.js?v=9193350b"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

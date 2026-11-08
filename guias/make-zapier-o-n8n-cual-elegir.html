@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena make-zapier-o-n8n-cual-elegir, Make, Zapier o n8n: cuál elegir para tu negocio, Una comparación honesta de las tres herramientas de automatización más usadas, sin precios que cambian cada mes: qué las diferencia y cómo elegir según tu caso. y b7d295bc -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena make-zapier-o-n8n-cual-elegir, Make, Zapier o n8n: cuál elegir para tu negocio, Una comparación honesta de las tres herramientas de automatización más usadas, sin precios que cambian cada mes: qué las diferencia y cómo elegir según tu caso. y 9193350b -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,26 +9,28 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/cta.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/biblioteca.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/guia.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/tema.css?v=b7d295bc">
-<script src="../web/tema.js?v=b7d295bc"></script>
+<link rel="stylesheet" href="../web/base.css?v=9193350b">
+<link rel="stylesheet" href="../web/cta.css?v=9193350b">
+<link rel="stylesheet" href="../web/biblioteca.css?v=9193350b">
+<link rel="stylesheet" href="../web/guia.css?v=9193350b">
+<link rel="stylesheet" href="../web/tema.css?v=9193350b">
+<link rel="stylesheet" href="../web/bienvenida.css?v=9193350b">
+<script src="../web/tema.js?v=9193350b"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=b7d295bc"></script>
-<script src="../web/guias-web.js?v=b7d295bc"></script>
-<script src="../web/comun.js?v=b7d295bc"></script>
+<script src="../web/redes.js?v=9193350b"></script>
+<script src="../web/guias-web.js?v=9193350b"></script>
+<script src="../web/comun.js?v=9193350b"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="make-zapier-o-n8n-cual-elegir"></main>
 <script>var GUIA = {"slug": "make-zapier-o-n8n-cual-elegir", "t": "Make, Zapier o n8n: cuál elegir para tu negocio", "d": "Una comparación honesta de las tres herramientas de automatización más usadas, sin precios que cambian cada mes: qué las diferencia y cómo elegir según tu caso.", "tema": "Conectores y MCP", "min": 9, "fichaNombre": "Make vs Zapier vs n8n", "ficha": [["Qué es", "Tres plataformas para conectar apps y que las tareas pasen solas de una a otra."], ["En común", "Las tres se pueden conectar a Claude con un servidor MCP oficial."], ["Precios", "No los ponemos porque cambian seguido. Mirá la página oficial de cada una el día que decidas."]], "secciones": [{"h": "Lo que tienen en común", "p": ["Las tres funcionan igual en lo básico: algo dispara la automatización (llega un mail, se completa un formulario, entra un mensaje) y después corren pasos uno detrás del otro.", "Las tres tienen un servidor MCP oficial, así que Claude puede usar tus automatizaciones como herramientas: le pedís algo en el chat y Claude dispara el flujo. Lo vas a ver en la sección de herramientas de esta biblioteca."]}, {"h": "Zapier", "p": ["Cada automatización se llama Zap. Es la más directa para empezar: elegís un disparador, sumás acciones y listo."], "lista": ["Cómo cobra: por tareas. Cada acción que se ejecuta bien cuenta como una tarea. Los disparadores no consumen tareas, y tampoco los pasos de filtro ni de formato.", "Para quién: si querés algo andando hoy y tus flujos son más bien lineales.", "Ojo con: flujos con muchos pasos que corren muy seguido, porque las tareas se suman rápido."]}, {"h": "Make", "p": ["Cada automatización se llama escenario y se arma en un lienzo visual, conectando módulos como si fueran piezas."], "lista": ["Cómo cobra: Make mide la actividad en operaciones y lo que pagás son créditos.", "Para quién: si tus flujos tienen ramas, condiciones o muchos datos que transformar, y te gusta ver todo el mapa.", "Ojo con: si nunca automatizaste nada, el lienzo puede abrumar al principio. Arrancá con un escenario de dos o tres módulos."]}, {"h": "n8n", "p": ["Se puede usar en n8n Cloud (lo administran ellos) o instalado en tu propio servidor."], "lista": ["Instalado por vos: tenés control total sobre dónde viven los datos, pero la instalación y el mantenimiento requieren conocimientos técnicos.", "En la nube: n8n lo recomienda para quien no tiene ese conocimiento, porque no hay nada que instalar ni mantener.", "Para quién: desarrolladores o equipos con alguien técnico, y flujos complejos.", "Ojo con: si lo instalás vos, los backups, las actualizaciones y la seguridad son tu responsabilidad. Si lo vas a usar para clientes, leé la licencia de n8n antes."]}, {"h": "Cómo elegir en 30 segundos", "lista": ["No sos técnico y querés algo ya: Zapier.", "Flujos con ramas y te gusta lo visual: Make.", "Sos técnico o querés que los datos queden en tu servidor: n8n.", "Vendés automatizaciones a clientes: usá la que el cliente pueda mantener cuando vos no estés, y en lo posible que la cuenta esté a nombre del cliente."], "prompts": [{"t": "Que Claude te ayude a elegir", "c": "Quiero automatizar esto en mi negocio: [DESCRIBÍ EL FLUJO PASO A PASO].\nUso estas apps: [LISTA].\nMás o menos, el flujo correría [CANTIDAD] veces por [DÍA/SEMANA/MES].\nEn mi equipo [HAY / NO HAY] alguien técnico.\nCompará Make, Zapier y n8n para este caso:\n1. Si las tres tienen integración con mis apps (si no estás seguro, decímelo y decime cómo verificarlo).\n2. Cuántos pasos tendría el flujo en cada una.\n3. Qué tan difícil sería de mantener para mi equipo.\n4. Tu recomendación y por qué.\nNo me des precios: los voy a revisar yo en las páginas oficiales."}]}], "faq": [{"q": "¿Puedo cambiar de herramienta después?", "a": "Sí, pero los flujos no se pasan solos de una a otra: hay que rearmarlos. Por eso conviene elegir bien al principio."}, {"q": "¿Cuál tiene más integraciones?", "a": "Las tres tienen muchas. Lo que importa es que estén las tuyas: buscá cada app en el directorio de integraciones de cada herramienta antes de decidir."}, {"q": "¿Necesito Claude para usarlas?", "a": "No. Funcionan solas. Claude suma cuando un paso necesita leer, escribir o decidir algo con texto."}], "fuentes": ["https://help.zapier.com/hc/en-us/articles/8496196837261-Tasks-in-Zapier", "https://help.make.com/credits-and-operations", "https://docs.n8n.io/choose-n8n/", "https://docs.zapier.com/mcp/get-started/connect/claude-code", "https://help.make.com/make-mcp-server", "https://docs.n8n.io/connect/connect-to-n8n-mcp-server"], "cat": "conectores", "parte": "aprende"};</script>
 
-<script src="../web/rutas.js?v=b7d295bc"></script>
-<script src="../web/logos.js?v=b7d295bc"></script>
-<script src="../web/guia.js?v=b7d295bc"></script>
+<script src="../web/rutas.js?v=9193350b"></script>
+<script src="../web/logos.js?v=9193350b"></script>
+<script src="../web/guia.js?v=9193350b"></script>
+<script src="../web/bienvenida.js?v=9193350b"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

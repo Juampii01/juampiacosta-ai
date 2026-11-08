@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena formula-para-pedirle-bien-a-claude, La fórmula para pedirle bien a Claude, Cuatro piezas que convierten un pedido vago en uno que sale bien a la primera: contexto, tarea, formato y criterios. Con un antes y un después. y b7d295bc -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena formula-para-pedirle-bien-a-claude, La fórmula para pedirle bien a Claude, Cuatro piezas que convierten un pedido vago en uno que sale bien a la primera: contexto, tarea, formato y criterios. Con un antes y un después. y 9193350b -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,26 +9,28 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/cta.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/biblioteca.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/guia.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/tema.css?v=b7d295bc">
-<script src="../web/tema.js?v=b7d295bc"></script>
+<link rel="stylesheet" href="../web/base.css?v=9193350b">
+<link rel="stylesheet" href="../web/cta.css?v=9193350b">
+<link rel="stylesheet" href="../web/biblioteca.css?v=9193350b">
+<link rel="stylesheet" href="../web/guia.css?v=9193350b">
+<link rel="stylesheet" href="../web/tema.css?v=9193350b">
+<link rel="stylesheet" href="../web/bienvenida.css?v=9193350b">
+<script src="../web/tema.js?v=9193350b"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=b7d295bc"></script>
-<script src="../web/guias-web.js?v=b7d295bc"></script>
-<script src="../web/comun.js?v=b7d295bc"></script>
+<script src="../web/redes.js?v=9193350b"></script>
+<script src="../web/guias-web.js?v=9193350b"></script>
+<script src="../web/comun.js?v=9193350b"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="formula-para-pedirle-bien-a-claude"></main>
 <script>var GUIA = {"slug": "formula-para-pedirle-bien-a-claude", "t": "La fórmula para pedirle bien a Claude", "d": "Cuatro piezas que convierten un pedido vago en uno que sale bien a la primera: contexto, tarea, formato y criterios. Con un antes y un después.", "tema": "Primeros pasos", "min": 8, "fichaNombre": "Fórmula de pedido", "ficha": [["Qué es", "Una estructura de cuatro partes para armar cualquier pedido a Claude."], ["Necesitás", "Una cuenta de Claude, gratis o paga."], ["Tiempo", "Un par de minutos extra por pedido. Se recuperan en correcciones que no hacés."], ["Qué no hace", "No hace magia: si no sabés qué querés, Claude tampoco lo va a adivinar."]], "secciones": [{"h": "Por qué los pedidos cortos salen flojos", "p": ["Anthropic, la empresa que hace Claude, lo explica con una imagen simple: tratá a Claude como a una persona muy capaz que acaba de entrar a tu negocio y no conoce cómo trabajás. Cuanto más preciso sos, mejor sale.", "Una prueba que proponen en su guía oficial: mostrale tu pedido a alguien que no sabe nada del tema. Si esa persona se confundiría, Claude también."]}, {"h": "Las cuatro piezas", "lista": ["Contexto: quién sos, para quién es esto y por qué lo necesitás. El porqué ayuda a que Claude entienda la intención y no solo la orden.", "Tarea: qué querés exactamente, con un verbo claro. \"Escribí\", \"compará\", \"corregí\", no \"¿me ayudás con...?\".", "Formato: cómo lo querés recibir. Largo, estructura, tono, si va en tabla, en lista o en párrafos.", "Ejemplos y criterios: uno o más ejemplos de lo que te gusta, y la lista de cosas que tiene que cumplir para que lo des por bueno."]}, {"h": "Antes y después", "p": ["Antes: \"Escribime un mail para mis clientes sobre los nuevos horarios.\" Claude no sabe qué negocio tenés, a quién le escribís, qué tono usás ni qué cambió.", "Después: el mismo pedido con las cuatro piezas, como el prompt de abajo. La diferencia no es el largo: es que ya no tiene que adivinar."], "prompts": [{"t": "Ejemplo armado con la fórmula", "c": "CONTEXTO\nTengo [TIPO DE NEGOCIO] en [CIUDAD]. Mis clientes son [QUIÉNES SON]. Les escribo con un tono [EJ.: CERCANO Y SIN VUELTAS].\nA partir del [FECHA] cambiamos los horarios: [HORARIO VIEJO] pasa a ser [HORARIO NUEVO]. Lo hacemos porque [MOTIVO].\n\nTAREA\nEscribí el mail que les voy a mandar avisando el cambio.\n\nFORMATO\n- Asunto de menos de 8 palabras.\n- Cuerpo de 4 a 6 líneas.\n- Los horarios nuevos en una lista.\n- Cerrá con una línea para que respondan si tienen dudas.\n\nEJEMPLOS Y CRITERIOS\nAsí suelo escribir: [PEGÁ UN MAIL TUYO ANTERIOR].\nTiene que cumplir: que se entienda en 10 segundos, que no suene a disculpa y que no use palabras en inglés."}]}, {"h": "Plantilla para cualquier pedido", "p": ["Guardala en tus notas y completala cada vez. Si una parte no aplica, borrala: no hace falta llenar todo siempre."], "prompts": [{"t": "Plantilla de la fórmula", "c": "CONTEXTO\n[QUIÉN SOS, PARA QUIÉN ES Y POR QUÉ LO NECESITÁS]\n\nTAREA\n[QUÉ QUERÉS, CON UN VERBO CLARO]\n\nFORMATO\n[LARGO, ESTRUCTURA, TONO, TABLA O LISTA]\n\nEJEMPLOS Y CRITERIOS\nEjemplo de lo que me gusta: [PEGÁ UN EJEMPLO]\nTiene que cumplir: [2 A 5 CONDICIONES]\n\nSi te falta algún dato importante para hacerlo bien, preguntame antes de empezar."}]}, {"h": "Tres ajustes que suman", "lista": ["Decí qué hacer, no qué evitar: \"escribí en párrafos corridos\" funciona mejor que \"no uses viñetas\".", "Separá las partes con etiquetas: cuando mezclás instrucciones, textos y ejemplos, marcarlos (por ejemplo con <ejemplo> y <\/ejemplo>) ayuda a que Claude no los confunda.", "Pedí acción si querés acción: \"corregí este texto\" hace los cambios; \"¿qué le cambiarías?\" solo te da sugerencias."]}], "faq": [{"q": "¿Tengo que escribir todo esto cada vez?", "a": "No. Para cosas rápidas alcanza con tarea y formato. La fórmula completa conviene cuando el resultado te importa o cuando ya te salió mal una vez."}, {"q": "¿Cuántos ejemplos le paso?", "a": "La guía oficial de Anthropic dice que los ejemplos son de las formas más confiables de marcar formato y tono, y sugiere varios y variados. Con uno bueno ya notás la diferencia; si querés más precisión, sumá algunos distintos entre sí."}, {"q": "¿Sirve también para ChatGPT o Gemini?", "a": "La lógica de dar contexto, tarea, formato y ejemplos es útil en cualquier asistente. Esta guía se basa en la documentación de Claude."}], "fuentes": ["https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"], "cat": "primeros-pasos", "parte": "aprende"};</script>
 
-<script src="../web/rutas.js?v=b7d295bc"></script>
-<script src="../web/logos.js?v=b7d295bc"></script>
-<script src="../web/guia.js?v=b7d295bc"></script>
+<script src="../web/rutas.js?v=9193350b"></script>
+<script src="../web/logos.js?v=9193350b"></script>
+<script src="../web/guia.js?v=9193350b"></script>
+<script src="../web/bienvenida.js?v=9193350b"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

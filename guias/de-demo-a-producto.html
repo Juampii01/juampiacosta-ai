@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena de-demo-a-producto, De demo a producto: lo que le falta a tu app, Secretos fuera del código, copias de seguridad, manejo de errores, registros, límites y copias antes de cada cambio grande. Lo que convierte una demo en algo que se puede usar de verdad. y b7d295bc -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena de-demo-a-producto, De demo a producto: lo que le falta a tu app, Secretos fuera del código, copias de seguridad, manejo de errores, registros, límites y copias antes de cada cambio grande. Lo que convierte una demo en algo que se puede usar de verdad. y 9193350b -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,26 +9,28 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/cta.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/biblioteca.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/guia.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/tema.css?v=b7d295bc">
-<script src="../web/tema.js?v=b7d295bc"></script>
+<link rel="stylesheet" href="../web/base.css?v=9193350b">
+<link rel="stylesheet" href="../web/cta.css?v=9193350b">
+<link rel="stylesheet" href="../web/biblioteca.css?v=9193350b">
+<link rel="stylesheet" href="../web/guia.css?v=9193350b">
+<link rel="stylesheet" href="../web/tema.css?v=9193350b">
+<link rel="stylesheet" href="../web/bienvenida.css?v=9193350b">
+<script src="../web/tema.js?v=9193350b"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=b7d295bc"></script>
-<script src="../web/guias-web.js?v=b7d295bc"></script>
-<script src="../web/comun.js?v=b7d295bc"></script>
+<script src="../web/redes.js?v=9193350b"></script>
+<script src="../web/guias-web.js?v=9193350b"></script>
+<script src="../web/comun.js?v=9193350b"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="de-demo-a-producto"></main>
 <script>var GUIA = {"slug": "de-demo-a-producto", "t": "De demo a producto: lo que le falta a tu app", "d": "Secretos fuera del código, copias de seguridad, manejo de errores, registros, límites y copias antes de cada cambio grande. Lo que convierte una demo en algo que se puede usar de verdad.", "tema": "Creá tu app", "min": 11, "secciones": [{"h": "Una demo no es un producto", "p": ["Una app hecha con IA puede verse perfecta en la demo y caerse el primer día con clientes reales. No por el diseño, sino por lo que no se ve: claves expuestas, datos sin copia, errores que nadie registra.", "Hacer cambios grandes sin copia es como correr scripts en producción sin backup: anda bien hasta el día que no, y ese día no hay vuelta atrás. Esta guía es la lista de lo que tiene que estar antes de abrirle la puerta a clientes."]}, {"h": "1. Secretos fuera del código", "lista": ["Variables de entorno: toda clave va en el archivo .env (local) y en la configuración de tu hosting. El código solo la llama por su nombre.", ".gitignore: el .env tiene que estar listado. Si ya lo subiste alguna vez, agregarlo al .gitignore no alcanza: hay que dejar de rastrearlo (git rm --cached) y rotar las claves.", "Que Claude no lo lea: podés agregar una regla de denegación como Read(./.env) en la configuración de permisos de Claude Code (.claude/settings.json).", "Red de seguridad en GitHub: la protección de push bloquea subidas que contienen secretos y viene activada por defecto para tus subidas a repositorios públicos."]}, {"h": "2. Copias de seguridad", "p": ["Averiguá qué copia automática te da tu base de datos y desde cuándo. En Supabase, los planes pagos tienen copias diarias; en el gratis, la recomendación es exportar seguido con el comando db dump y guardar la copia en otro lado. Los archivos subidos a Storage no entran en esas copias.", "Una copia que nunca probaste restaurar es una esperanza, no una copia. Probá restaurarla al menos una vez en un proyecto de prueba."]}, {"h": "3. Errores y registros (logs)", "lista": ["Mensajes claros: si algo falla, el usuario ve un mensaje entendible, no una pantalla en blanco ni el error técnico completo.", "Registro: cada error queda anotado con fecha y qué estaba pasando, sin guardar contraseñas ni claves.", "Dónde mirarlos: en Vercel, el comando vercel logs muestra los registros de tu proyecto. Si querés algo más completo, Sentry tiene un MCP oficial para que Claude lea los errores directamente."]}, {"h": "4. Límites", "p": ["Una app sin límites es una invitación al abuso o a una factura sorpresa. Pedile a Claude que agregue topes razonables: tamaño máximo de archivos, cantidad de intentos de login, cantidad de pedidos por minuto a las partes que cuestan plata (como llamadas a una IA). Y revisá en el panel de cada servicio si podés poner alertas o límites de gasto."]}, {"h": "5. Copia antes de cada cambio grande", "pasos": ["Guardá un commit con todo funcionando.", "Creá una rama nueva para el cambio grande.", "Probalo en la vista previa de Vercel o Netlify, no en producción.", "Si toca la base de datos, hacé una copia antes de aplicar la migración.", "Recién ahí lo pasás a la rama principal. Si algo sale mal, tenés Git y el Instant Rollback de Vercel."], "aviso": "Los checkpoints de Claude Code (/rewind) sirven para deshacer rápido dentro de una sesión, pero no reemplazan a Git: no siguen archivos cambiados solo por comandos ni cambios hechos fuera de la sesión."}, {"h": "Auditoría en un prompt", "prompts": [{"t": "¿Está lista para producción?", "c": "Revisá este proyecto como si mañana lo fueran a usar clientes reales. No cambies nada todavía.\nDame un informe con semáforo (verde, amarillo, rojo) para cada punto:\n1. Claves: ¿hay alguna escrita en el código o en archivos que se suben a Git?\n2. Datos: ¿hay copia de seguridad y cómo se restaura?\n3. Errores: ¿qué ve el usuario cuando algo falla? ¿queda registrado?\n4. Registros: ¿se guarda algún dato sensible en los logs?\n5. Límites: ¿hay topes de tamaño, intentos y uso de servicios pagos?\n6. Permisos: ¿un usuario puede ver o cambiar datos de otro?\nPara cada rojo, explicame el riesgo en una frase y proponé el arreglo más simple."}]}], "faq": [{"q": "Subí una clave a GitHub y la borré enseguida, ¿estoy a salvo?", "a": "No. Queda en el historial y puede haber sido copiada. Rotala (generá una nueva y anulá la vieja) en el servicio correspondiente."}, {"q": "¿Tengo que hacer todo esto para una app chica?", "a": "Secretos fuera del código y copia de los datos, siempre. El resto podés sumarlo a medida que crecen los usuarios."}, {"q": "¿Claude puede hacer esta revisión solo?", "a": "Puede encontrar mucho con el prompt de auditoría y con /security-review, pero la decisión final y las pruebas son tuyas."}], "fuentes": ["https://docs.github.com/en/get-started/git-basics/ignoring-files", "https://docs.github.com/en/code-security/concepts/secret-security/about-push-protection", "https://code.claude.com/docs/en/permissions", "https://supabase.com/docs/guides/platform/backups", "https://vercel.com/docs/cli", "https://sentry.io/cookbook/debug-with-sentry-mcp-claude-code", "https://vercel.com/docs/instant-rollback", "https://code.claude.com/docs/en/checkpointing", "https://code.claude.com/docs/en/commands"], "cat": "desarrollo", "parte": "construi"};</script>
 
-<script src="../web/rutas.js?v=b7d295bc"></script>
-<script src="../web/logos.js?v=b7d295bc"></script>
-<script src="../web/guia.js?v=b7d295bc"></script>
+<script src="../web/rutas.js?v=9193350b"></script>
+<script src="../web/logos.js?v=9193350b"></script>
+<script src="../web/guia.js?v=9193350b"></script>
+<script src="../web/bienvenida.js?v=9193350b"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

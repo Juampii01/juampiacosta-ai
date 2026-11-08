@@ -153,7 +153,7 @@
           <input id="nombre" name="nombre" type="text" autocomplete="given-name" maxlength="80" placeholder="Juan">
           <label for="email">Tu email</label>
           <input id="email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" required maxlength="254" placeholder="vos@mail.com">
-          <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content">
+          <input type="hidden" name="volver"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content">
           <p class="l-error" id="error-gratis"></p>
           <button class="l-boton" type="submit">Entrar gratis →</button>
           <p class="l-chico">Te escribo por mail cuando sumo recursos. Te das de baja cuando quieras.</p>
@@ -229,6 +229,13 @@
     var v = q.get(k), campo = document.querySelector('input[name="' + k + '"]');
     if (v && campo) campo.value = v.slice(0, 120);
   });
+  // Vino desde una guía gratis: después del registro vuelve a esa guía
+  var volver = q.get("volver");
+  if (volver && /^\/guias\/[a-z0-9-]{3,120}(\.html)?$/.test(volver)) {
+    document.querySelector('input[name="volver"]').value = volver;
+    var tit = document.querySelector("#gratis h2");
+    if (tit) tit.textContent = "Registrate gratis y te abro la guía que pediste";
+  }
   var errores = { clave: "Esa clave no es válida. Revisá que esté bien escrita.", espera: "Demasiados intentos. Esperá un minuto y probá de nuevo.",
     config: "No pudimos completar esto ahora. Escribime por Instagram.", email: "Revisá tu email: parece que tiene un error." };
   var e = q.get("error");

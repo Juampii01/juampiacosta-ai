@@ -100,11 +100,13 @@ def datos_js(prompts, herrs):
                                          f"var HERRAMIENTAS = {json.dumps(herrs, ensure_ascii=False)};\n")
 
 
-GRATIS_EXTRA = ["sistema-base-modulo-1-la-oferta"]
+# Módulo 1 y las 5 guías de «Gastá menos tokens» (las que se mandan por la palabra TOKEN)
+GRATIS_EXTRA = ["sistema-base-modulo-1-la-oferta", "errores-que-agotan-tu-plan-de-claude", "por-que-claude-se-vuelve-torpe-en-chats-largos",
+                "que-modelo-de-claude-uso", "markitdown-para-ahorrar-tokens", "ahorra-tokens-graphify-obsidian"]
 
 
 def es_gratis(g):
-    """Abiertas para quien se registra gratis: las guías de los reels y el Módulo 1 del sistema base."""
+    """Abiertas para quien se registra gratis: las guías de los reels, el Módulo 1 y las de gastar menos tokens."""
     return bool(g.get("post")) or g["slug"] in GRATIS_EXTRA
 
 

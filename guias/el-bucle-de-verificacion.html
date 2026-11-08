@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena el-bucle-de-verificacion, El bucle de verificación: que Claude revise su trabajo, Escribís una vez tu checklist de calidad y le pedís a Claude que revise cada entrega contra esa lista antes de dártela. y b7d295bc -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena el-bucle-de-verificacion, El bucle de verificación: que Claude revise su trabajo, Escribís una vez tu checklist de calidad y le pedís a Claude que revise cada entrega contra esa lista antes de dártela. y 9193350b -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,26 +9,28 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/cta.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/biblioteca.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/guia.css?v=b7d295bc">
-<link rel="stylesheet" href="../web/tema.css?v=b7d295bc">
-<script src="../web/tema.js?v=b7d295bc"></script>
+<link rel="stylesheet" href="../web/base.css?v=9193350b">
+<link rel="stylesheet" href="../web/cta.css?v=9193350b">
+<link rel="stylesheet" href="../web/biblioteca.css?v=9193350b">
+<link rel="stylesheet" href="../web/guia.css?v=9193350b">
+<link rel="stylesheet" href="../web/tema.css?v=9193350b">
+<link rel="stylesheet" href="../web/bienvenida.css?v=9193350b">
+<script src="../web/tema.js?v=9193350b"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=b7d295bc"></script>
-<script src="../web/guias-web.js?v=b7d295bc"></script>
-<script src="../web/comun.js?v=b7d295bc"></script>
+<script src="../web/redes.js?v=9193350b"></script>
+<script src="../web/guias-web.js?v=9193350b"></script>
+<script src="../web/comun.js?v=9193350b"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="el-bucle-de-verificacion"></main>
 <script>var GUIA = {"slug": "el-bucle-de-verificacion", "t": "El bucle de verificación: que Claude revise su trabajo", "d": "Escribís una vez tu checklist de calidad y le pedís a Claude que revise cada entrega contra esa lista antes de dártela.", "tema": "Sacale más jugo a Claude", "min": 8, "fichaNombre": "Bucle de verificación", "ficha": [["Qué es", "Una lista de control propia que Claude usa para revisar lo que hizo."], ["Necesitás", "Una cuenta de Claude. Mejor si usás proyectos para guardar la lista."], ["Tiempo", "Media hora para escribir tu primera checklist."], ["Qué no hace", "No reemplaza tu revisión final: te ahorra la primera pasada."]], "secciones": [{"h": "La idea", "p": ["La guía oficial de prompts de Anthropic sugiere cerrar los pedidos con algo como \"antes de terminar, verificá tu respuesta contra estos criterios\". El truco está en que esos criterios sean tuyos, concretos y escritos una sola vez.", "Pasa lo mismo que con un empleado nuevo: si le das la lista de lo que revisás vos, deja de traerte trabajo con los mismos errores."]}, {"h": "Cómo escribir tu checklist", "pasos": ["Juntá tres o cuatro trabajos que tuviste que corregir y anotá qué arreglaste en cada uno.", "Convertí cada corrección en una regla que se pueda responder con sí o no. \"Que esté bien escrito\" no sirve; \"cada párrafo tiene menos de 4 líneas\" sí.", "Quedate con entre 5 y 10 reglas. Más que eso se vuelve difícil de cumplir.", "Probala con un trabajo viejo y ajustá las reglas que no se entiendan."], "prompts": [{"t": "Armar la checklist con Claude", "c": "Quiero armar una checklist para revisar [TIPO DE TRABAJO, EJ.: PRESUPUESTOS PARA CLIENTES].\nTe paso trabajos que tuve que corregir y lo que les cambié:\n[PEGÁ EL TRABAJO 1] → Cambié: [QUÉ CORREGISTE]\n[PEGÁ EL TRABAJO 2] → Cambié: [QUÉ CORREGISTE]\nCon eso armame entre 5 y 10 reglas. Cada regla tiene que poder responderse con sí o no, sin interpretación. No agregues reglas que no salgan de mis correcciones."}]}, {"h": "El pedido con verificación", "p": ["Pegá esto al final de cualquier pedido, o guardalo en las instrucciones de un proyecto para que se aplique siempre."], "prompts": [{"t": "Cierre de verificación", "c": "Antes de darme la versión final, revisala contra esta checklist:\n[PEGÁ TU CHECKLIST]\nPara cada regla escribí: CUMPLE o NO CUMPLE, y una línea de por qué.\nSi alguna no cumple, corregí el trabajo y volvé a revisar.\nAl final dame: 1) la tabla de revisión, 2) la versión corregida. Si una regla no se puede comprobar con lo que tenés, decímelo en vez de dar por hecho que cumple."}]}, {"h": "Dejarla fija en un proyecto", "p": ["Los proyectos de Claude tienen instrucciones propias que se aplican a todos los chats de adentro. Si pegás ahí tu checklist y el cierre de verificación, no tenés que acordarte de pedirlo cada vez."], "pasos": ["Creá un proyecto con el nombre del tipo de trabajo (por ejemplo, Presupuestos).", "En las instrucciones del proyecto pegá tu checklist y el cierre de verificación.", "Cada vez que encuentres un error nuevo, sumalo como regla."]}, {"h": "Límites que conviene conocer", "lista": ["Revisa contra lo que le diste: si la checklist no menciona algo, no lo va a mirar.", "No confirma datos externos solo: si hay precios, fechas o nombres, chequealos vos o pedile que use la búsqueda web y te muestre la fuente.", "Puede marcar como cumplido algo dudoso: por eso le pedís el porqué de cada regla, para que vos puedas ver en qué se basó."], "aviso": "La revisión de Claude es una primera pasada. Lo que sale con tu nombre lo revisás vos."}], "faq": [{"q": "¿Y si la revisión dice que todo cumple pero yo veo un error?", "a": "Agregá ese error como regla nueva. La checklist mejora con el uso."}, {"q": "¿Sirve para cosas que no son texto?", "a": "Sí, para planillas, presentaciones o código, siempre que las reglas se puedan comprobar mirando el resultado."}, {"q": "¿Hace falta con los modelos más nuevos?", "a": "La guía de Anthropic aclara que algunos modelos recientes ya verifican bastante por su cuenta, y que agregar verificaciones genéricas de más puede sobrar. Por eso conviene que tu checklist sea concreta y tuya, no un \"revisá todo\" genérico."}], "fuentes": ["https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices", "https://support.claude.com/en/articles/9517075-what-are-projects"], "cat": "mas-jugo", "parte": "aprende"};</script>
 
-<script src="../web/rutas.js?v=b7d295bc"></script>
-<script src="../web/logos.js?v=b7d295bc"></script>
-<script src="../web/guia.js?v=b7d295bc"></script>
+<script src="../web/rutas.js?v=9193350b"></script>
+<script src="../web/logos.js?v=9193350b"></script>
+<script src="../web/guia.js?v=9193350b"></script>
+<script src="../web/bienvenida.js?v=9193350b"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

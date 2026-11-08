@@ -58,7 +58,8 @@ export default async function handler(req, res) {
   const clave = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!secreto || !url || !clave) { console.error("Faltan variables: ACCESS_SECRET, SUPABASE_URL o SUPABASE_SECRET_KEY"); return volver("config"); }
 
-  const fila = limpiarRegistro(await leerCuerpo(req));
+  const cuerpo = await leerCuerpo(req);
+  const fila = limpiarRegistro(cuerpo);
   if (!fila) return volver("email");
 
   try {
@@ -80,6 +81,8 @@ export default async function handler(req, res) {
     ]);
   }
   res.statusCode = 303;
-  res.setHeader("Location", "/recursos");
+  // Si vino desde una guía gratis, vuelve a esa guía; si no, a la biblioteca
+  const destino = String(cuerpo.volver || "");
+  res.setHeader("Location", /^\/guias\/[a-z0-9-]{3,120}(\.html)?$/.test(destino) ? destino : "/recursos");
   res.end();
 }

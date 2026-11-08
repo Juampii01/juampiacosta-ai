@@ -133,6 +133,7 @@
 
   /* ---------- El formulario ---------- */
   var nombre = cookie("jpa_nombre");
+  var enGuia = /^\/guias\//.test(location.pathname);
   var st = { i: 0, resp: {}, etapa: "intro", timer: 0, pref: "" };
   var el = {};
 
@@ -284,11 +285,13 @@
       '<h2 class="bv-tit" tabindex="-1">¡Listo' + (nombre ? ", " + esc(nombre) : "") + '! Ya sé qué te sirve</h2>' +
       (ruta ? '<div class="bv-ruta"><small>Tu ruta recomendada · ' + ruta.pasos.length + ' pasos</small><b>' + esc(ruta.t) + '</b><span>' + esc(ruta.d) + '</span></div>' : '') +
       (instalar ? '<a class="bv-extra" href="' + dm + '" target="_blank" rel="noopener"><span class="e">🛠️</span><span><b>¿Querés que te lo instale yo?</b><br>Escribime «INSTALAR» por Instagram y vemos tu caso.</span></a>' : '') +
-      '<p class="bv-texto">Y te armé arriba de todo tu sección <b>Recomendados para vos</b>' + (window.recomendar ? ', con ' + recomendar(st.resp).length + ' guías elegidas para lo tuyo' : '') + '.</p>' +
-      '<button class="bv-ok" type="button" id="bv-ir">Ver mis recomendados →</button></div>';
+      (enGuia ? '<p class="bv-texto">Con esto te armé tu sección <b>Recomendados para vos</b> en la biblioteca.</p>' : '<p class="bv-texto">Y te armé arriba de todo tu sección <b>Recomendados para vos</b>' + (window.recomendar ? ', con ' + recomendar(st.resp).length + ' guías elegidas para lo tuyo' : '') + '.</p>') +
+      (enGuia ? '<button class="bv-ok" type="button" id="bv-ir">Seguir con la guía →</button><a class="bv-saltar" href="/recursos#inicio">Ver mis recomendados</a></div>'
+        : '<button class="bv-ok" type="button" id="bv-ir">Ver mis recomendados →</button></div>');
     enfocar(".bv-tit");
     $("#bv-ir").addEventListener("click", function () {
       cerrar();
+      if (enGuia) return;
       if (window.pintarRecomendados) pintarRecomendados();
       history.replaceState(null, "", "#inicio"); if (window.verVista) verVista("inicio");
       setTimeout(function () { var c = document.getElementById("para-vos"); if (c) c.scrollIntoView({ behavior: sinMovimiento() ? "auto" : "smooth", block: "start" }); }, 80);
