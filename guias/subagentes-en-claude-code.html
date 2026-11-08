@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena subagentes-en-claude-code, Subagentes: ayudantes que trabajan aparte, Claude le pasa una parte del trabajo a un ayudante con su propia memoria y te devuelve solo el resultado. Cuándo conviene y cómo crear el tuyo. y 43c1f0cb -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena subagentes-en-claude-code, Subagentes: ayudantes que trabajan aparte, Claude le pasa una parte del trabajo a un ayudante con su propia memoria y te devuelve solo el resultado. Cuándo conviene y cómo crear el tuyo. y 74fe0f0f -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/cta.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/biblioteca.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/guia.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/tema.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/bienvenida.css?v=43c1f0cb">
-<script src="../web/tema.js?v=43c1f0cb"></script>
-<link rel="icon" href="../web/favicon.svg?v=43c1f0cb" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/cta.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/biblioteca.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/guia.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/tema.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/bienvenida.css?v=74fe0f0f">
+<script src="../web/tema.js?v=74fe0f0f"></script>
+<link rel="icon" href="../web/favicon.svg?v=74fe0f0f" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=43c1f0cb"></script>
-<script src="../web/guias-web.js?v=43c1f0cb"></script>
-<script src="../web/comun.js?v=43c1f0cb"></script>
+<script src="../web/redes.js?v=74fe0f0f"></script>
+<script src="../web/guias-web.js?v=74fe0f0f"></script>
+<script src="../web/comun.js?v=74fe0f0f"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="subagentes-en-claude-code"></main>
 <script>var GUIA = {"slug": "subagentes-en-claude-code", "t": "Subagentes: ayudantes que trabajan aparte", "d": "Claude le pasa una parte del trabajo a un ayudante con su propia memoria y te devuelve solo el resultado. Cuándo conviene y cómo crear el tuyo.", "tema": "Claude Code", "min": 8, "secciones": [{"h": "Qué es un subagente", "p": ["Un ayudante especializado que trabaja en una conversación aparte, con sus propias instrucciones y las herramientas que vos le habilites. Cuando termina, le devuelve a Claude un resumen.", "La gran ventaja: la búsqueda larga, los registros y los archivos que tuvo que leer se quedan en su espacio y no llenan tu conversación principal."]}, {"h": "Los que ya vienen incluidos", "lista": ["Explore: busca y analiza tu proyecto. Solo lee, no puede editar.", "Plan: junta información cuando estás en modo plan. También solo lee.", "General-purpose: para tareas de varios pasos que necesitan investigar y también hacer cambios."], "p": ["Claude los usa solo cuando le parece. No tenés que hacer nada para activarlos."]}, {"h": "Cuándo conviene uno propio", "lista": ["Tareas que generan mucho texto que después no vas a mirar: revisar muchas páginas, leer registros, buscar en todo el proyecto.", "Tareas que repetís y querés hacer siempre igual: revisar textos, chequear enlaces rotos, revisar código antes de publicar.", "Cuando querés limitar qué puede hacer: por ejemplo, un revisor que solo lee y nunca edita."], "p": ["Para idas y vueltas rápidas o cambios chicos, mejor quedate en la conversación principal."]}, {"h": "Crealo pidiéndoselo a Claude", "p": ["La forma más simple es describirlo con tus palabras y decirle dónde guardarlo. En ~/.claude/agents/ queda para todos tus proyectos; en .claude/agents/ dentro de la carpeta, solo para ese proyecto."], "prompts": [{"t": "Crear un subagente revisor", "c": "Creá un subagente personal en ~/.claude/agents/ llamado revisor-textos.\nQué hace: revisa los textos de páginas web y documentos antes de publicar.\nQué busca: errores de ortografía, frases confusas, promesas exageradas y textos que no usan voseo rioplatense.\nCómo responde: una lista con cada problema, el texto actual y la versión corregida.\nQue sea de solo lectura: no puede editar archivos."}], "pasos": ["Pegá el prompt en Claude Code y aprobá cuando quiera crear el archivo.", "Abrí el archivo que creó y revisá que diga lo que pediste.", "Si Claude no lo encuentra, cerrá y abrí Claude Code: pasa cuando la carpeta agents no existía al empezar la sesión."]}, {"h": "Cómo se ve el archivo", "p": ["Es un archivo de texto con un encabezado y, abajo, las instrucciones. Solo name y description son obligatorios; tools limita las herramientas y model elige el modelo."], "prompts": [{"t": "Ejemplo de archivo (~/.claude/agents/revisor-textos.md)", "c": "---\nname: revisor-textos\ndescription: Revisa textos de páginas y documentos antes de publicar. Usalo cuando haya textos nuevos o modificados.\ntools: Read, Grep, Glob\n---\n\nSos un revisor de textos en español rioplatense. Para cada problema que encuentres, mostrá el texto actual, explicá el problema en una línea y proponé la versión corregida."}]}, {"h": "Usarlo", "lista": ["Por nombre: \"Usá el subagente revisor-textos para revisar la carpeta de la landing\".", "Con @: escribí @ y elegilo de la lista. Así te asegurás de que lo use.", "Para ver lo que corre en segundo plano, incluidos los subagentes, escribí /tasks."], "aviso": "El subagente no ve tu conversación: arranca solo con lo que Claude le pasa. Y si edita archivos, /rewind puede no deshacer esos cambios. Guardá tu trabajo con git antes."}], "faq": [{"q": "Escribo /agents y solo me muestra un mensaje", "a": "En las versiones actuales, /agents solo te recuerda que se los pidas a Claude o que edites la carpeta agents directamente. Es normal."}, {"q": "¿Gastan más?", "a": "Cada subagente es otra conversación con Claude, así que usa parte de tu límite. A cambio, mantiene tu conversación principal liviana."}], "fuentes": ["https://code.claude.com/docs/en/sub-agents", "https://code.claude.com/docs/en/commands", "https://code.claude.com/docs/en/checkpointing"], "cat": "claude-code", "parte": "construi"};</script>
 
-<script src="../web/rutas.js?v=43c1f0cb"></script>
-<script src="../web/logos.js?v=43c1f0cb"></script>
-<script src="../web/guia.js?v=43c1f0cb"></script>
-<script src="../web/bienvenida.js?v=43c1f0cb"></script>
+<script src="../web/rutas.js?v=74fe0f0f"></script>
+<script src="../web/logos.js?v=74fe0f0f"></script>
+<script src="../web/guia.js?v=74fe0f0f"></script>
+<script src="../web/bienvenida.js?v=74fe0f0f"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

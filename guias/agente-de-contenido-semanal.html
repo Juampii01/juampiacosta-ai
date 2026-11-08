@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena agente-de-contenido-semanal, Agente de contenido semanal: ideas y borradores que vos aprobás, Un asistente que cada semana mira qué se está hablando en tu nicho, te propone ideas con su porqué y te arma borradores con tu tono. Publicar sigue siendo cosa tuya. y 43c1f0cb -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena agente-de-contenido-semanal, Agente de contenido semanal: ideas y borradores que vos aprobás, Un asistente que cada semana mira qué se está hablando en tu nicho, te propone ideas con su porqué y te arma borradores con tu tono. Publicar sigue siendo cosa tuya. y 74fe0f0f -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/cta.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/biblioteca.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/guia.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/tema.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/bienvenida.css?v=43c1f0cb">
-<script src="../web/tema.js?v=43c1f0cb"></script>
-<link rel="icon" href="../web/favicon.svg?v=43c1f0cb" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/cta.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/biblioteca.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/guia.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/tema.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/bienvenida.css?v=74fe0f0f">
+<script src="../web/tema.js?v=74fe0f0f"></script>
+<link rel="icon" href="../web/favicon.svg?v=74fe0f0f" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=43c1f0cb"></script>
-<script src="../web/guias-web.js?v=43c1f0cb"></script>
-<script src="../web/comun.js?v=43c1f0cb"></script>
+<script src="../web/redes.js?v=74fe0f0f"></script>
+<script src="../web/guias-web.js?v=74fe0f0f"></script>
+<script src="../web/comun.js?v=74fe0f0f"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="agente-de-contenido-semanal"></main>
 <script>var GUIA = {"slug": "agente-de-contenido-semanal", "t": "Agente de contenido semanal: ideas y borradores que vos aprobás", "d": "Un asistente que cada semana mira qué se está hablando en tu nicho, te propone ideas con su porqué y te arma borradores con tu tono. Publicar sigue siendo cosa tuya.", "tema": "Agentes", "min": 8, "fichaNombre": "Agente de contenido", "ficha": [["Qué hace", "Investiga temas del momento en tu nicho, propone ideas y escribe borradores."], ["Necesitás", "Un Proyecto de Claude con tu guía de marca y búsqueda web activada."], ["Qué no hace", "No publica. No tiene acceso a tus redes."], ["Tiempo", "Una hora la primera vez; después, 20 minutos por semana."]], "secciones": [{"h": "El flujo de cada semana", "pasos": ["Investigación: busca de qué se habla en tu nicho esta semana, con links.", "Ideas: te propone 8 a 10 ideas, cada una con por qué ahora y para quién.", "Tu filtro: vos elegís 3 o 4. Este paso no se delega.", "Borradores: escribe guiones o textos solo de las que elegiste, con tu tono.", "Tu revisión: corregís, grabás o diseñás y publicás vos."]}, {"h": "Armá el proyecto", "pasos": ["Creá un Proyecto \"Contenido\" en Claude.", "Subí al conocimiento: tu guía de marca o ficha de voz, 5 publicaciones tuyas que funcionaron y una descripción de tu público.", "Pegá las instrucciones de abajo.", "En cada chat de la semana, activá la búsqueda web desde el botón +."], "prompts": [{"t": "Instrucciones del agente de contenido", "c": "Sos mi asistente de contenido para [TU NICHO]. Mi público es [QUIÉN]. Publico en [REDES] con formato [REELS / CARRUSELES / POSTS].\n\nTrabajás en dos etapas y nunca saltás a la segunda sin mi aprobación:\n\nETAPA 1 - IDEAS\n1. Buscá en la web qué se está hablando en mi nicho en los últimos días: novedades, preguntas frecuentes, debates.\n2. Proponé 8 ideas. Para cada una: título, por qué es relevante ahora (con link), a quién le sirve y qué formato usarías.\n3. Marcá cuáles son tendencia pasajera y cuáles sirven por más tiempo.\n4. Terminá preguntándome cuáles elijo.\n\nETAPA 2 - BORRADORES\nSolo de las ideas que elegí: un borrador con gancho, desarrollo y cierre, usando mi tono de los documentos.\n\nReglas:\n- No copies textos de otros creadores: inspirate y escribí algo propio.\n- Si un dato no tiene fuente, no lo uses.\n- No prometas resultados ni ingresos."}]}, {"h": "El pedido de los lunes", "prompts": [{"t": "Arrancar la semana", "c": "Arrancamos la semana. Hacé la ETAPA 1.\nEsta semana quiero enfocarme en [TEMA O OBJETIVO, POR EJEMPLO: CONSEGUIR CONSULTAS PARA MI SERVICIO X].\nEvitá estos temas que ya usé: [LISTA]."}, {"t": "Pasar a borradores", "c": "Elijo las ideas [NÚMEROS]. Hacé la ETAPA 2.\nPara la idea [NÚMERO], dame además 3 ganchos alternativos."}]}, {"h": "¿Y si quiero que corra solo?", "p": ["Claude Code tiene tareas programadas que pueden correr cada semana y dejarte un archivo con la etapa 1 lista (en la guía de tareas programadas está cómo). Aun así, mantené la regla: la tarea solo investiga y propone. Los borradores y la publicación pasan por vos."], "aviso": "No le des acceso para publicar en tus redes. Un error publicado a tu nombre cuesta mucho más que los 20 minutos que te ahorra."}], "faq": [{"q": "¿Por qué dos etapas y no todo junto?", "a": "Porque elegir qué decir es lo que hace que tu contenido sea tuyo. Y escribir borradores de ideas que vas a descartar es gastar tu límite de uso de más."}, {"q": "Los borradores suenan genéricos", "a": "Sumá más ejemplos tuyos al conocimiento del proyecto y pedile que te diga qué rasgos de tu tono detectó. Corregí esa lista."}], "fuentes": ["https://support.claude.com/en/articles/10684626-enable-and-use-web-search", "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects", "https://code.claude.com/docs/en/routines"], "cat": "agentes", "parte": "usalo"};</script>
 
-<script src="../web/rutas.js?v=43c1f0cb"></script>
-<script src="../web/logos.js?v=43c1f0cb"></script>
-<script src="../web/guia.js?v=43c1f0cb"></script>
-<script src="../web/bienvenida.js?v=43c1f0cb"></script>
+<script src="../web/rutas.js?v=74fe0f0f"></script>
+<script src="../web/logos.js?v=74fe0f0f"></script>
+<script src="../web/guia.js?v=74fe0f0f"></script>
+<script src="../web/bienvenida.js?v=74fe0f0f"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

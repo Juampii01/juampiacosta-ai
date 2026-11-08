@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena skills-globales-o-por-proyecto, Skills globales o por proyecto: dónde ponerlas, Una skill puede vivir en tu cuenta, en tu compu o dentro de un proyecto. Te explico cada lugar y cómo decidir cuál te conviene. y 43c1f0cb -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena skills-globales-o-por-proyecto, Skills globales o por proyecto: dónde ponerlas, Una skill puede vivir en tu cuenta, en tu compu o dentro de un proyecto. Te explico cada lugar y cómo decidir cuál te conviene. y 74fe0f0f -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/cta.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/biblioteca.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/guia.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/tema.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/bienvenida.css?v=43c1f0cb">
-<script src="../web/tema.js?v=43c1f0cb"></script>
-<link rel="icon" href="../web/favicon.svg?v=43c1f0cb" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/cta.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/biblioteca.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/guia.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/tema.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/bienvenida.css?v=74fe0f0f">
+<script src="../web/tema.js?v=74fe0f0f"></script>
+<link rel="icon" href="../web/favicon.svg?v=74fe0f0f" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=43c1f0cb"></script>
-<script src="../web/guias-web.js?v=43c1f0cb"></script>
-<script src="../web/comun.js?v=43c1f0cb"></script>
+<script src="../web/redes.js?v=74fe0f0f"></script>
+<script src="../web/guias-web.js?v=74fe0f0f"></script>
+<script src="../web/comun.js?v=74fe0f0f"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="skills-globales-o-por-proyecto"></main>
 <script>var GUIA = {"slug": "skills-globales-o-por-proyecto", "t": "Skills globales o por proyecto: dónde ponerlas", "d": "Una skill puede vivir en tu cuenta, en tu compu o dentro de un proyecto. Te explico cada lugar y cómo decidir cuál te conviene.", "tema": "Skills y plugins", "min": 7, "secciones": [{"h": "Los lugares donde puede vivir una skill", "lista": ["Tu cuenta de Claude (Personalizar → Skills): la usás en la web y en la app de escritorio. Si entrás a Claude Code con la misma cuenta, también se carga ahí.", "Personal en Claude Code (~/.claude/skills/nombre/SKILL.md): está en todos tus proyectos, pero solo en esa compu.", "De proyecto (.claude/skills/nombre/SKILL.md dentro de la carpeta del proyecto): solo existe cuando trabajás en ese proyecto. Si el proyecto se comparte por git, tu equipo también la recibe.", "Dentro de un plugin: viene con el plugin y se llama /nombre-del-plugin:nombre-de-la-skill.", "De tu organización: en planes Team y Enterprise, un Owner puede darle skills a todo el equipo."]}, {"h": "Cómo decidir", "lista": ["Global (cuenta o ~/.claude/skills): para lo que usás en cualquier tema, como tu tono o tu marca.", "Por proyecto (.claude/skills): para lo que solo tiene sentido en un trabajo, como el formato de informes de un cliente.", "En tu cuenta: si querés la misma skill en la app y en Claude Code sin copiarla a mano.", "En un plugin: si querés repartir varias skills juntas, o una skill con el conector que usa."], "aviso": "Regla práctica: empezá global. Si ves que una skill solo la usás en un proyecto, movela ahí."}, {"h": "Si hay dos skills con el mismo nombre", "p": ["En Claude Code gana la de la organización sobre la personal, y la personal sobre la del proyecto. Por ejemplo, si tenés presupuestos en ~/.claude/skills y otra presupuestos en el proyecto, /presupuestos corre la personal.", "Las de plugins no chocan porque llevan el nombre del plugin adelante. Igual, lo más simple es no repetir nombres."]}, {"h": "Mover una skill de lugar en Claude Code", "pasos": ["Escribí /skills para ver las skills que tenés cargadas.", "Pegá el prompt de abajo para moverla.", "Claude Code detecta el cambio sin reiniciar. Si creaste una carpeta skills que no existía al abrir la sesión, escribí /reload-skills."], "prompts": [{"t": "Mover una skill", "c": "Mové la skill [NOMBRE] de [.claude/skills de este proyecto | ~/.claude/skills] a [~/.claude/skills | .claude/skills de este proyecto].\nAntes de moverla, fijate si ya hay otra skill con el mismo nombre en el destino y avisame.\nDespués confirmame dónde quedó y mostrame la ruta completa del SKILL.md."}]}, {"h": "Proyectos de la app y skills no son lo mismo", "p": ["En la app de Claude, un Proyecto guarda conocimiento de fondo que está siempre cargado en sus chats. Una skill se carga solo cuando la tarea coincide, y está disponible en todas tus charlas.", "Se complementan: en el Proyecto dejás la información del cliente y en la skill el procedimiento. Podés nombrar la skill en las instrucciones del Proyecto para que Claude la tenga presente."], "prompts": [{"t": "Instrucción para un Proyecto", "c": "En este proyecto trabajamos para [CLIENTE]. Cuando te pida [TAREA], usá la skill [NOMBRE-DE-LA-SKILL] y tomá los datos del cliente de los archivos de este proyecto."}]}], "faq": [{"q": "¿Las skills que creo en Claude Code aparecen en la app?", "a": "No. Claude Code baja las skills de tu cuenta, pero nunca sube las tuyas. Si la querés en la app, subila como .zip en Personalizar → Skills."}, {"q": "¿Qué pasa si clono un proyecto que trae skills?", "a": "Se cargan cuando trabajás ahí. Leelas antes: una skill puede pedir permisos amplios con el campo allowed-tools, y la documentación recomienda revisarlo en los repos que no son tuyos."}, {"q": "¿Cuál es más segura?", "a": "Ninguna en particular. Lo que importa es de dónde viene la skill y que la hayas leído antes de usarla."}], "fuentes": ["https://code.claude.com/docs/en/skills", "https://claude.com/docs/skills/overview", "https://support.claude.com/en/articles/12512180-use-skills-in-claude", "https://support.claude.com/en/articles/12512176-what-are-skills"], "cat": "skills", "parte": "aprende"};</script>
 
-<script src="../web/rutas.js?v=43c1f0cb"></script>
-<script src="../web/logos.js?v=43c1f0cb"></script>
-<script src="../web/guia.js?v=43c1f0cb"></script>
-<script src="../web/bienvenida.js?v=43c1f0cb"></script>
+<script src="../web/rutas.js?v=74fe0f0f"></script>
+<script src="../web/logos.js?v=74fe0f0f"></script>
+<script src="../web/guia.js?v=74fe0f0f"></script>
+<script src="../web/bienvenida.js?v=74fe0f0f"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

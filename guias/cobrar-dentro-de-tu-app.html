@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena cobrar-dentro-de-tu-app, Cobrar dentro de tu app: Stripe y Mercado Pago, Las formas de cobrar (link, checkout y suscripciones), qué es un webhook sin tecnicismos, cómo probar sin plata real y qué pedirle a Claude Code. y 43c1f0cb -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena cobrar-dentro-de-tu-app, Cobrar dentro de tu app: Stripe y Mercado Pago, Las formas de cobrar (link, checkout y suscripciones), qué es un webhook sin tecnicismos, cómo probar sin plata real y qué pedirle a Claude Code. y 74fe0f0f -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/cta.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/biblioteca.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/guia.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/tema.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/bienvenida.css?v=43c1f0cb">
-<script src="../web/tema.js?v=43c1f0cb"></script>
-<link rel="icon" href="../web/favicon.svg?v=43c1f0cb" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/cta.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/biblioteca.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/guia.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/tema.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/bienvenida.css?v=74fe0f0f">
+<script src="../web/tema.js?v=74fe0f0f"></script>
+<link rel="icon" href="../web/favicon.svg?v=74fe0f0f" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=43c1f0cb"></script>
-<script src="../web/guias-web.js?v=43c1f0cb"></script>
-<script src="../web/comun.js?v=43c1f0cb"></script>
+<script src="../web/redes.js?v=74fe0f0f"></script>
+<script src="../web/guias-web.js?v=74fe0f0f"></script>
+<script src="../web/comun.js?v=74fe0f0f"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="cobrar-dentro-de-tu-app"></main>
 <script>var GUIA = {"slug": "cobrar-dentro-de-tu-app", "t": "Cobrar dentro de tu app: Stripe y Mercado Pago", "d": "Las formas de cobrar (link, checkout y suscripciones), qué es un webhook sin tecnicismos, cómo probar sin plata real y qué pedirle a Claude Code.", "tema": "Creá tu app", "min": 12, "fichaNombre": "Cobros en tu app", "ficha": [["Qué es", "Conectar tu app con Stripe o Mercado Pago para que la gente pague y la app se entere sola."], ["Necesitás", "Una cuenta en Stripe o Mercado Pago y tu app con un servidor (Vercel o Netlify sirven)."], ["Regla de oro", "Todo en modo prueba primero. Recién cuando funciona, pasás a cobrar de verdad."], ["Qué no hace", "Esta guía no cubre impuestos ni facturación: consultalo con tu contador."]], "secciones": [{"h": "Tres formas de cobrar", "lista": ["Link de pago (Stripe Payment Links): lo creás desde el panel de Stripe sin programar y lo compartís por mail, mensaje o redes. Sirve para vender un producto, una suscripción o recibir donaciones.", "Checkout: tu app manda al cliente a una página de pago de Stripe o de Mercado Pago (Checkout Pro) y después lo devuelve. En Checkout Pro, el comprador paga en un ambiente de Mercado Pago, con opciones como tarjeta, cuenta de Mercado Pago, Rapipago o Pago Fácil.", "Suscripciones: cobros que se repiten. En Stripe podés crear un link de pago de suscripción. En Mercado Pago existen las suscripciones con plan asociado (por ejemplo, un plan mensual y uno anual) y sin plan asociado."], "p": ["Si recién empezás, un link de pago es lo más rápido: no necesitás que tu app sepa nada de pagos. Cuando querés que la app dé acceso automático después de pagar, pasás a checkout con webhooks."]}, {"h": "Webhooks, explicado simple", "p": ["Un webhook es un aviso que Stripe o Mercado Pago le mandan a tu app cuando pasa algo: un pago aprobado, una suscripción renovada, un contracargo. Es como el portero que te toca el timbre para avisarte que llegó un paquete.", "¿Por qué hace falta? Porque la pantalla de \"gracias por tu compra\" no prueba nada: el cliente puede cerrarla, o alguien puede escribir esa dirección a mano. Lo que confirma el pago es el aviso que llega del procesador.", "Dos cosas no negociables: tu app tiene que verificar que el aviso viene de verdad de Stripe (firma en el encabezado Stripe-Signature) o de Mercado Pago (firma x-signature con tu clave secreta), y tiene que responder rápido que lo recibió (un código 200). Si no responde, ambos reintentan el envío."], "aviso": "Sin verificar la firma, cualquiera podría mandarle a tu app un aviso falso de \"pago aprobado\" y llevarse el producto gratis."}, {"h": "Modo prueba antes que nada", "lista": ["Stripe: trabajá en un sandbox, un entorno de prueba donde las operaciones no mueven plata. Usá las claves de prueba y la tarjeta 4242 4242 4242 4242 con cualquier fecha futura (como 12/34) y cualquier código de 3 dígitos. Stripe prohíbe probar en modo real con tarjetas reales.", "Mercado Pago: usás cuentas de prueba, como mínimo una vendedora y una compradora, del mismo país. En Checkout Pro, la cuenta vendedora de prueba se crea sola al crear la aplicación y sus credenciales son tus credenciales de prueba.", "Webhooks en tu compu: con la CLI de Stripe podés recibir los avisos en tu máquina con stripe listen --forward-to y la dirección local de tu app, sin publicar nada."]}, {"h": "Qué pedirle a Claude", "prompts": [{"t": "Cobrar con Stripe Checkout", "c": "Quiero cobrar en esta app con Stripe Checkout, en modo prueba (sandbox).\nQué vendo: [PRODUCTO O PLAN].\nTipo de cobro: [PAGO ÚNICO o SUSCRIPCIÓN].\nQué pasa después de pagar: [EJ.: SE ACTIVA EL ACCESO A LA SECCIÓN PREMIUM].\nReglas:\n1. Las claves van en variables de entorno, nunca en el código ni en el chat.\n2. El acceso se da solo cuando llega el webhook verificado con la firma Stripe-Signature, no por la página de éxito.\n3. Guardá qué avisos ya procesaste para no dar acceso dos veces si llega repetido.\n4. Explicame cómo lo pruebo en mi compu con la CLI de Stripe.\nMostrame el plan antes de escribir código."}, {"t": "Cobrar con Mercado Pago Checkout Pro", "c": "Quiero cobrar en esta app con Mercado Pago Checkout Pro, usando cuentas y credenciales de prueba.\nQué vendo: [PRODUCTO], precio: [PRECIO EN TU MONEDA].\nQué pasa después de pagar: [QUÉ SE ACTIVA].\nReglas:\n1. Credenciales en variables de entorno del servidor, nunca en el código ni en el chat.\n2. Recibí las notificaciones Webhooks, validá la firma x-signature con la clave secreta y respondé 200.\n3. Confirmá el estado del pago antes de dar acceso; no confíes en la página de regreso.\n4. Decime qué tengo que configurar yo en Tus integraciones.\nMostrame el plan antes de escribir código."}]}, {"h": "Antes de cobrar de verdad", "pasos": ["Hiciste al menos un pago de prueba completo y la app dio el acceso sola.", "Probaste un pago rechazado y la app no dio acceso.", "Tu app ignora un aviso repetido (no da el acceso dos veces).", "Las claves de producción están cargadas en las variables de entorno de tu hosting, no en el código.", "Configuraste la dirección del webhook de producción (en HTTPS) en el panel de Stripe o en Tus integraciones de Mercado Pago."], "aviso": "Las claves secretas de Stripe son como tu usuario y contraseña: Stripe recomienda no compartirlas por mail ni por chat, y Stripe nunca te las va a pedir. Si se filtran, rotalas."}], "faq": [{"q": "¿Qué conviene en Argentina, Stripe o Mercado Pago?", "a": "Depende de dónde estén tus clientes y de qué cuenta podés abrir. Podés tener los dos; pedile a Claude que los integre por separado y probá cada uno en modo prueba."}, {"q": "El pago salió bien pero mi app no se enteró", "a": "Casi siempre es el webhook: la dirección está mal, la app tardó en responder o la verificación de firma falla. En Stripe, mirá las entregas del webhook en Workbench; el error de firma suele ser por usar el secreto equivocado."}, {"q": "¿Puedo empezar sin webhooks?", "a": "Sí, con un link de pago y dando el acceso a mano. Cuando el volumen crece, automatizalo con checkout y webhooks."}], "fuentes": ["https://docs.stripe.com/payments/no-code", "https://docs.stripe.com/get-started/use-cases/startup", "https://docs.stripe.com/testing", "https://docs.stripe.com/webhooks", "https://docs.stripe.com/keys-best-practices", "https://www.mercadopago.com.ar/developers/es/docs/checkout-pro-preferences/overview", "https://www.mercadopago.com.mx/developers/es/docs/checkout-pro/test-accounts", "https://www.mercadopago.com.br/developers/es/docs/checkout-pro/payment-notifications", "https://www.mercadopago.com.mx/developers/es/docs/subscriptions/integration-configuration/subscription-associated-plan"], "cat": "desarrollo", "parte": "construi"};</script>
 
-<script src="../web/rutas.js?v=43c1f0cb"></script>
-<script src="../web/logos.js?v=43c1f0cb"></script>
-<script src="../web/guia.js?v=43c1f0cb"></script>
-<script src="../web/bienvenida.js?v=43c1f0cb"></script>
+<script src="../web/rutas.js?v=74fe0f0f"></script>
+<script src="../web/logos.js?v=74fe0f0f"></script>
+<script src="../web/guia.js?v=74fe0f0f"></script>
+<script src="../web/bienvenida.js?v=74fe0f0f"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

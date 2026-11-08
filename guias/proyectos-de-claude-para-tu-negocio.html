@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena proyectos-de-claude-para-tu-negocio, Proyectos de Claude: un asistente por área de tu negocio, Armá un Proyecto con tus documentos y tus reglas para que cada chat arranque sabiendo cómo trabaja tu negocio. y 43c1f0cb -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena proyectos-de-claude-para-tu-negocio, Proyectos de Claude: un asistente por área de tu negocio, Armá un Proyecto con tus documentos y tus reglas para que cada chat arranque sabiendo cómo trabaja tu negocio. y 74fe0f0f -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/cta.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/biblioteca.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/guia.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/tema.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/bienvenida.css?v=43c1f0cb">
-<script src="../web/tema.js?v=43c1f0cb"></script>
-<link rel="icon" href="../web/favicon.svg?v=43c1f0cb" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/cta.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/biblioteca.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/guia.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/tema.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/bienvenida.css?v=74fe0f0f">
+<script src="../web/tema.js?v=74fe0f0f"></script>
+<link rel="icon" href="../web/favicon.svg?v=74fe0f0f" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=43c1f0cb"></script>
-<script src="../web/guias-web.js?v=43c1f0cb"></script>
-<script src="../web/comun.js?v=43c1f0cb"></script>
+<script src="../web/redes.js?v=74fe0f0f"></script>
+<script src="../web/guias-web.js?v=74fe0f0f"></script>
+<script src="../web/comun.js?v=74fe0f0f"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="proyectos-de-claude-para-tu-negocio"></main>
 <script>var GUIA = {"slug": "proyectos-de-claude-para-tu-negocio", "t": "Proyectos de Claude: un asistente por área de tu negocio", "d": "Armá un Proyecto con tus documentos y tus reglas para que cada chat arranque sabiendo cómo trabaja tu negocio.", "tema": "Sacale más jugo a Claude", "min": 9, "fichaNombre": "Proyectos", "ficha": [["Qué es", "Un espacio con chats, conocimiento (archivos) e instrucciones propias."], ["Necesitás", "Cualquier plan. En el gratis, hasta cinco proyectos."], ["Tiempo", "20 minutos el primero."], ["Qué no hace", "Los chats de un proyecto no se leen entre sí: lo que tiene que estar siempre, va al conocimiento."]], "secciones": [{"h": "Qué proyectos armar primero", "lista": ["Atención al cliente: tus preguntas frecuentes, políticas de envío y cambios. Claude te redacta respuestas en tu tono.", "Ventas y propuestas: tus servicios, precios y propuestas que ya ganaste. Te arma propuestas nuevas con la misma estructura.", "Contenido: tu guía de marca, ejemplos de posts que funcionaron y tu público. Te ayuda a escribir sin sonar genérico.", "Operación: procesos, checklists y manuales internos, para consultar o para capacitar a alguien nuevo."]}, {"h": "Crealo", "pasos": ["Entrá a Projects en la barra de la izquierda o andá a claude.ai/projects.", "Tocá + New Project, arriba a la derecha.", "Ponele nombre y descripción. Ojo: Claude no lee esos datos, son para vos.", "En Team o Enterprise elegí si queda privado o compartido con tu organización."], "p": ["Los nombres de los menús están como aparecen en la ayuda oficial de Claude (en inglés). Si tenés Claude en español, vas a ver la traducción en el mismo lugar."]}, {"h": "Cargale el conocimiento", "pasos": ["Adentro del proyecto, a la derecha, está el conocimiento. Tocá +.", "Subí documentos, textos o fragmentos de código. Poneles nombres claros (\"Preguntas frecuentes 2026.pdf\").", "Subí lo que vas a usar seguido, no todo lo que tenés. Si un archivo ya no sirve, borralo."], "p": ["En los planes pagos, cuando el conocimiento se acerca al límite, Claude activa solo un modo de búsqueda (RAG) para que entre más material."], "aviso": "No subas contraseñas, datos de tarjetas ni datos sensibles de tus clientes."}, {"h": "Escribí las instrucciones", "p": ["Tocá Set project instructions, escribí cómo querés que trabaje en ese proyecto y guardá con Save instructions. Se aplican a todos los chats del proyecto.", "Que sean cortas y generales. Lo específico de cada tarea lo pedís en el chat."], "prompts": [{"t": "Instrucciones de un proyecto de atención al cliente", "c": "Sos el asistente de atención al cliente de [TU NEGOCIO].\nUsá solo la información de los documentos del proyecto.\nCuando te pegue el mensaje de un cliente:\n1. Escribí una respuesta corta, amable y en voseo.\n2. Si la respuesta depende de una política (envíos, cambios, garantías), citá cuál.\n3. Si no está en los documentos, decime qué dato falta. No inventes precios ni plazos.\n4. Al final, sugerí si conviene ofrecerle algo más."}, {"t": "Que Claude escriba las instrucciones", "c": "Voy a armar un Proyecto de Claude para [ÁREA DE MI NEGOCIO]. Lo voy a usar para [TAREAS].\nHaceme 5 preguntas para entender cómo trabajo y después escribime las instrucciones del proyecto: menos de 150 palabras, en segunda persona, con reglas claras de qué hacer y qué no."}]}, {"h": "Memoria y equipo", "p": ["Cada proyecto tiene su propia memoria. Si querés que un proyecto no use lo que Claude sabe de vos en general, apagá Use account memory en la sección Memory de la página del proyecto.", "En el plan Team podés compartirlo: botón Share project, al lado del nombre. Agregás personas y elegís Can view (solo ver) o Can edit (editar)."]}], "faq": [{"q": "¿Cuántos archivos puedo subir?", "a": "Depende del tamaño. En los planes pagos, si te acercás al límite, Claude cambia solo a un modo de búsqueda para que entre más."}, {"q": "Abrí un chat nuevo y no se acuerda del anterior", "a": "Es normal: los chats de un proyecto no comparten lo que hablaron. Lo que tiene que saber siempre, subilo al conocimiento."}, {"q": "¿Las instrucciones del proyecto reemplazan a las mías?", "a": "Las del proyecto se aplican solo adentro de ese proyecto. Las tuyas siguen valiendo para todo."}], "fuentes": ["https://support.claude.com/en/articles/9519177", "https://support.claude.com/en/articles/11817273", "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work"], "cat": "mas-jugo", "parte": "aprende"};</script>
 
-<script src="../web/rutas.js?v=43c1f0cb"></script>
-<script src="../web/logos.js?v=43c1f0cb"></script>
-<script src="../web/guia.js?v=43c1f0cb"></script>
-<script src="../web/bienvenida.js?v=43c1f0cb"></script>
+<script src="../web/rutas.js?v=74fe0f0f"></script>
+<script src="../web/logos.js?v=74fe0f0f"></script>
+<script src="../web/guia.js?v=74fe0f0f"></script>
+<script src="../web/bienvenida.js?v=74fe0f0f"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

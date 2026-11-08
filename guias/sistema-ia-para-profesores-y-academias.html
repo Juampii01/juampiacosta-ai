@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena sistema-ia-para-profesores-y-academias, Sistema con Claude para profesores y academias, Planificación de clases, ejercicios por nivel, devoluciones en borrador y comunicación con alumnos y familias: el sistema para un profesor particular o una academia. y 43c1f0cb -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena sistema-ia-para-profesores-y-academias, Sistema con Claude para profesores y academias, Planificación de clases, ejercicios por nivel, devoluciones en borrador y comunicación con alumnos y familias: el sistema para un profesor particular o una academia. y 74fe0f0f -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/cta.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/biblioteca.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/guia.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/tema.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/bienvenida.css?v=43c1f0cb">
-<script src="../web/tema.js?v=43c1f0cb"></script>
-<link rel="icon" href="../web/favicon.svg?v=43c1f0cb" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/cta.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/biblioteca.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/guia.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/tema.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/bienvenida.css?v=74fe0f0f">
+<script src="../web/tema.js?v=74fe0f0f"></script>
+<link rel="icon" href="../web/favicon.svg?v=74fe0f0f" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=43c1f0cb"></script>
-<script src="../web/guias-web.js?v=43c1f0cb"></script>
-<script src="../web/comun.js?v=43c1f0cb"></script>
+<script src="../web/redes.js?v=74fe0f0f"></script>
+<script src="../web/guias-web.js?v=74fe0f0f"></script>
+<script src="../web/comun.js?v=74fe0f0f"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="sistema-ia-para-profesores-y-academias"></main>
 <script>var GUIA = {"slug": "sistema-ia-para-profesores-y-academias", "t": "Sistema con Claude para profesores y academias", "d": "Planificación de clases, ejercicios por nivel, devoluciones en borrador y comunicación con alumnos y familias: el sistema para un profesor particular o una academia.", "tema": "Sistemas listos por rubro", "min": 9, "fichaNombre": "Profesores y academias", "ficha": [["Qué es", "Un asistente con el programa, los materiales y las reglas de la academia para planificar, practicar y comunicar."], ["Necesitás", "Una cuenta de Claude del negocio (las tareas programadas piden plan pago), sus documentos y las cuentas de Google que ya usan."], ["Tiempo", "Ejemplo: una tarde para la demo y una o dos semanas de ajustes con el dueño."], ["Qué no hace", "No corrige ni pone notas por su cuenta. Las devoluciones y las calificaciones las decide el docente."]], "secciones": [{"h": "Lo que les come el tiempo", "lista": ["Planificar clases y adaptar el mismo tema a distintos niveles.", "Armar ejercicios, prácticas y evaluaciones nuevas.", "Escribir devoluciones a cada alumno.", "Responder consultas de inscripción, precios y horarios.", "Comunicar a familias: avisos, avances y cambios.", "Ordenar materiales que están desparramados en carpetas."]}, {"h": "El sistema", "lista": ["Proyecto \"Academia\": programa por nivel, materiales propios, criterios de corrección, horarios, precios y reglas de comunicación con familias.", "Skill de planificación: arma la clase a partir del programa, con objetivo, actividades y tiempo.", "Skill de práctica por nivel: genera ejercicios con su solución en tres niveles de dificultad.", "Skill de devolución en borrador: con las notas del docente sobre un trabajo, redacta una devolución clara y amable para que el docente la revise.", "Conectores: Google Drive para materiales, Google Calendar para la grilla y Gmail para borradores a familias.", "Automatización: una tarea programada que el domingo arma el plan de la semana según la grilla y el avance del programa."], "aviso": "Las skills necesitan que esté prendida la ejecución de código (Settings → Capabilities). Las tareas programadas están en los planes pagos. Revisá la ayuda oficial antes de prometer algo que depende del plan del cliente."}, {"h": "Prompts y skills listos", "prompts": [{"t": "Clase planificada", "c": "Tema: [TEMA]. Nivel: [NIVEL]. Duración: [MINUTOS].\nUsá el programa y los materiales del Proyecto.\nArmá la clase con: objetivo en una frase, actividad de arranque, explicación, práctica, cierre y tarea. Poné cuánto tiempo lleva cada parte.\nSi el tema no está en el programa del nivel, avisame antes de armarla."}, {"t": "Ejercicios en tres niveles", "c": "Tema: [TEMA].\nArmá 4 ejercicios en cada nivel: base, intermedio y desafío.\nPara cada uno, la solución paso a paso en una sección aparte al final.\nRevisá tus soluciones antes de entregarlas y marcá cualquier ejercicio donde no estés seguro del resultado."}, {"t": "Devolución en borrador", "c": "Notas del docente sobre el trabajo de un alumno (sin nombre): [PEGÁ LAS NOTAS].\nCriterios de corrección: los del Proyecto.\nEscribí una devolución de hasta 120 palabras: qué hizo bien, qué tiene que mejorar con un ejemplo concreto y un próximo paso.\nNo pongas nota ni agregues errores que el docente no marcó."}]}, {"h": "Cómo instalarlo", "pasos": ["Pedí el programa por nivel, materiales propios y los criterios de corrección.", "Armá el Proyecto \"Academia\" y probá la skill de planificación con una semana real.", "Revisá con el docente los ejercicios generados: las soluciones las chequea una persona antes de usarlas.", "Definí cómo se identifican los alumnos en las pruebas: iniciales o un código, nunca datos completos.", "Conectá Drive, Calendar y Gmail con la cuenta de la academia y programá el plan del domingo.", "Dejá una guía corta para los docentes: qué pedirle a Claude y qué no."]}, {"h": "Cómo ofrecérselo", "prompts": [{"t": "Mensaje de primer contacto", "c": "Hola [NOMBRE], soy [TU NOMBRE]. Armo sistemas con Claude para profesores y academias.\nLo que más se repite es que la planificación, los ejercicios y las devoluciones se comen las noches del docente. Lo que hago es dejarte un asistente con tu programa y tus materiales que te arma la clase, la práctica por nivel y el borrador de cada devolución. Vos corregís y decidís.\n¿Te muestro cómo armaría tu próxima clase?"}], "lista": ["Argumento central: \"Recuperás horas de preparación sin bajar la calidad, y todos los docentes trabajan con el mismo programa y el mismo orden.\"", "Buen gancho: armar en vivo ejercicios en tres niveles sobre un tema que el profesor esté dando esta semana."]}, {"h": "Cuidados del rubro", "lista": ["Menores: si hay alumnos menores de edad, nada de nombres completos, fotos, notas ni datos de contacto en el Proyecto. La comunicación con familias la manda siempre una persona.", "Errores: Claude puede equivocarse en ejercicios y soluciones. El docente los revisa antes de darlos.", "Publicidad: no prometer aprobados, puntajes ni ingresos a carreras."], "aviso": "Claude no reemplaza al docente. Con menores, el cuidado de los datos es todavía más estricto: seguí las leyes de cada país y las reglas de la institución, y que todo pase por revisión humana."}], "faq": [{"q": "¿Los alumnos pueden usar el sistema directamente?", "a": "Este sistema es para el docente. Darles acceso a alumnos, sobre todo si son menores, es otra decisión que tiene que tomar la institución con sus propias reglas."}, {"q": "¿Sirve para un profesor particular?", "a": "Sí. Con el Proyecto y la skill de ejercicios ya cambia la semana."}], "fuentes": ["https://support.claude.com/en/articles/9517075-what-are-projects", "https://support.claude.com/en/articles/12512180-use-skills-in-claude", "https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities", "https://support.claude.com/en/articles/10166901-use-google-workspace-connectors", "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork"], "cat": "rubros", "parte": "construi"};</script>
 
-<script src="../web/rutas.js?v=43c1f0cb"></script>
-<script src="../web/logos.js?v=43c1f0cb"></script>
-<script src="../web/guia.js?v=43c1f0cb"></script>
-<script src="../web/bienvenida.js?v=43c1f0cb"></script>
+<script src="../web/rutas.js?v=74fe0f0f"></script>
+<script src="../web/logos.js?v=74fe0f0f"></script>
+<script src="../web/guia.js?v=74fe0f0f"></script>
+<script src="../web/bienvenida.js?v=74fe0f0f"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

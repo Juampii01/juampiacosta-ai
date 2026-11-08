@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena ahorra-tokens-graphify-obsidian, Ahorrá tokens en Claude Code con Graphify y Obsidian, Graphify convierte tu proyecto en un mapa que Claude consulta en lugar de releer archivos, y Obsidian le da una memoria de notas en texto plano. Cómo instalar las dos y conectarlas. y 43c1f0cb -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena ahorra-tokens-graphify-obsidian, Ahorrá tokens en Claude Code con Graphify y Obsidian, Graphify convierte tu proyecto en un mapa que Claude consulta en lugar de releer archivos, y Obsidian le da una memoria de notas en texto plano. Cómo instalar las dos y conectarlas. y 74fe0f0f -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/cta.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/biblioteca.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/guia.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/tema.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/bienvenida.css?v=43c1f0cb">
-<script src="../web/tema.js?v=43c1f0cb"></script>
-<link rel="icon" href="../web/favicon.svg?v=43c1f0cb" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/cta.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/biblioteca.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/guia.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/tema.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/bienvenida.css?v=74fe0f0f">
+<script src="../web/tema.js?v=74fe0f0f"></script>
+<link rel="icon" href="../web/favicon.svg?v=74fe0f0f" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=43c1f0cb"></script>
-<script src="../web/guias-web.js?v=43c1f0cb"></script>
-<script src="../web/comun.js?v=43c1f0cb"></script>
+<script src="../web/redes.js?v=74fe0f0f"></script>
+<script src="../web/guias-web.js?v=74fe0f0f"></script>
+<script src="../web/comun.js?v=74fe0f0f"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="ahorra-tokens-graphify-obsidian"></main>
 <script>var GUIA = {"slug": "ahorra-tokens-graphify-obsidian", "t": "Ahorrá tokens en Claude Code con Graphify y Obsidian", "d": "Graphify convierte tu proyecto en un mapa que Claude consulta en lugar de releer archivos, y Obsidian le da una memoria de notas en texto plano. Cómo instalar las dos y conectarlas.", "tema": "Gastá menos tokens", "min": 7, "ficha": [["Qué es", "Graphify convierte tu proyecto en un mapa que Claude consulta y Obsidian le da una memoria de notas."], ["Para quién", "Quien gasta mucho uso porque Claude relee todos sus archivos al arrancar."], ["Necesitás", "Claude Code, Python 3.10 o más nuevo con uv, Obsidian y las obsidian-skills."], ["Cuánto cuesta", "Graphify es de código abierto (Apache 2.0) y Obsidian es gratis, también para trabajo."], ["Ojo", "Las cifras de ahorro que publican son de sus pruebas: medilo vos con /context."]], "secciones": [{"h": "El problema", "p": ["Cada vez que arranca una sesión, Claude vuelve a leer tus archivos para entender el proyecto, y eso se come tokens y parte de tu límite de uso. La idea es darle dos cosas: un mapa del proyecto para consultar y una memoria que no tenga que releer entera."]}, {"h": "1. Graphify: el mapa del proyecto", "p": ["Graphify arma un grafo (un mapa de conexiones) con tu código, documentos, PDF e imágenes, y Claude lo consulta en lugar de buscar archivo por archivo. El mapa del código se arma en tu compu sin usar IA, así que esa parte no gasta tokens. Los documentos, PDF e imágenes sí pasan por el modelo de tu asistente, y eso sí consume."], "lista": ["Repositorio: <a href=\"https://github.com/Graphify-Labs/graphify\" target=\"_blank\" rel=\"noopener\">github.com/Graphify-Labs/graphify ↗<\/a>", "Necesitás: Python 3.10 o más nuevo y uv (o pipx).", "Instalación, en la terminal: uv tool install graphifyy y después graphify install (detecta tu asistente y registra la skill).", "Para usarlo, dentro de Claude Code: /graphify ."], "prompts": [{"t": "Instalarlo", "c": "Instalá Graphify (github.com/Graphify-Labs/graphify) en este proyecto siguiendo su README, generá el mapa y configurá Claude Code para que lo consulte antes de leer archivos. Después compará cuánto contexto usás en una misma pregunta con y sin el mapa."}], "aviso": "Los porcentajes de ahorro que publican son de sus propias pruebas, y algunos son de su versión paga en la nube (Graphify Cloud), que es otra cosa. Medilo vos en tu proyecto."}, {"h": "2. Obsidian: la memoria", "p": ["Obsidian guarda tus notas como archivos de texto en tu compu. Con las obsidian-skills de Steph Ango (kepano), del equipo de Obsidian, Claude aprende a leer y escribir esas notas en el formato de Obsidian: decisiones, aprendizajes, clientes."], "lista": ["Obsidian (gratis, también para uso laboral): <a href=\"https://obsidian.md\" target=\"_blank\" rel=\"noopener\">obsidian.md ↗<\/a>", "Skills para Obsidian: <a href=\"https://github.com/kepano/obsidian-skills\" target=\"_blank\" rel=\"noopener\">github.com/kepano/obsidian-skills ↗<\/a>", "Instalación, dentro de Claude Code: /plugin marketplace add kepano/obsidian-skills y después /plugin install obsidian@obsidian-skills"], "prompts": [{"t": "Conectarlo", "c": "Ya instalé las obsidian-skills (github.com/kepano/obsidian-skills). Mi bóveda de Obsidian está en [RUTA]. Creá las notas decisiones.md, aprendizajes.md y proyectos.md, y agregá a mi CLAUDE.md que las lea al empezar y las actualice al terminar cada tarea."}]}, {"h": "3. Las dos juntas en 10 minutos", "pasos": ["Instalá Graphify en tu proyecto y generá el mapa.", "Instalá Obsidian y las obsidian-skills.", "En tu CLAUDE.md: primero consultá el mapa de Graphify, después la memoria de Obsidian, y recién ahí abrí archivos puntuales.", "Probá con una pregunta sobre tu proyecto y mirá el uso con /context."]}], "faq": [{"q": "¿Cuesta algo?", "a": "Graphify es de código abierto y Obsidian es gratis, incluso para trabajo. Lo que se procesa con IA (documentos, PDF, imágenes) gasta de tu plan de Claude."}, {"q": "¿Sirve para un negocio y no solo para código?", "a": "Sí: Graphify también lee documentos y PDF, y en Obsidian podés guardar cualquier nota."}], "usos": [{"e": "Mapa", "c": "azul", "t": "Tu proyecto en un grafo", "d": "Claude lo consulta en lugar de releer archivos."}, {"e": "Memoria", "c": "morado", "t": "Notas en Obsidian", "d": "Archivos de texto que Claude lee y escribe."}, {"e": "Negocio", "c": "verde", "t": "No solo código", "d": "También lee documentos y PDF."}, {"e": "Medir", "c": "naranja", "t": "Comprobá el ahorro", "d": "Hacé una pregunta y mirá el uso con /context."}], "fuentes": ["https://github.com/Graphify-Labs/graphify", "https://github.com/kepano/obsidian-skills", "https://obsidian.md/blog/free-for-work/"], "cat": "ahorrar", "parte": "aprende"};</script>
 
-<script src="../web/rutas.js?v=43c1f0cb"></script>
-<script src="../web/logos.js?v=43c1f0cb"></script>
-<script src="../web/guia.js?v=43c1f0cb"></script>
-<script src="../web/bienvenida.js?v=43c1f0cb"></script>
+<script src="../web/rutas.js?v=74fe0f0f"></script>
+<script src="../web/logos.js?v=74fe0f0f"></script>
+<script src="../web/guia.js?v=74fe0f0f"></script>
+<script src="../web/bienvenida.js?v=74fe0f0f"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

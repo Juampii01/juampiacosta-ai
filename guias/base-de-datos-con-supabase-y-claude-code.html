@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena base-de-datos-con-supabase-y-claude-code, Base de datos con Supabase y Claude Code, Creá el proyecto, armá las tablas, activá la seguridad por filas (RLS) y conectá tu app sin exponer claves. Explicado sin tecnicismos. y 43c1f0cb -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena base-de-datos-con-supabase-y-claude-code, Base de datos con Supabase y Claude Code, Creá el proyecto, armá las tablas, activá la seguridad por filas (RLS) y conectá tu app sin exponer claves. Explicado sin tecnicismos. y 74fe0f0f -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/cta.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/biblioteca.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/guia.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/tema.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/bienvenida.css?v=43c1f0cb">
-<script src="../web/tema.js?v=43c1f0cb"></script>
-<link rel="icon" href="../web/favicon.svg?v=43c1f0cb" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/cta.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/biblioteca.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/guia.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/tema.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/bienvenida.css?v=74fe0f0f">
+<script src="../web/tema.js?v=74fe0f0f"></script>
+<link rel="icon" href="../web/favicon.svg?v=74fe0f0f" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=43c1f0cb"></script>
-<script src="../web/guias-web.js?v=43c1f0cb"></script>
-<script src="../web/comun.js?v=43c1f0cb"></script>
+<script src="../web/redes.js?v=74fe0f0f"></script>
+<script src="../web/guias-web.js?v=74fe0f0f"></script>
+<script src="../web/comun.js?v=74fe0f0f"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="base-de-datos-con-supabase-y-claude-code"></main>
 <script>var GUIA = {"slug": "base-de-datos-con-supabase-y-claude-code", "t": "Base de datos con Supabase y Claude Code", "d": "Creá el proyecto, armá las tablas, activá la seguridad por filas (RLS) y conectá tu app sin exponer claves. Explicado sin tecnicismos.", "tema": "Creá tu app", "min": 11, "fichaNombre": "Supabase", "ficha": [["Qué es", "Un servicio con base de datos Postgres, usuarios y login, todo en el mismo proyecto."], ["Necesitás", "Una cuenta de Supabase y tu proyecto abierto en Claude Code."], ["Lo más importante", "Activar la seguridad por filas (RLS) en cada tabla y escribir sus reglas."], ["Qué no hace", "No te protege solo: si dejás una tabla sin RLS o usás la clave secreta en el navegador, tus datos quedan expuestos."]], "secciones": [{"h": "Las dos llaves de tu proyecto", "p": ["Supabase te da dos tipos de clave. Entender la diferencia es lo que separa una app segura de una que cualquiera puede vaciar."], "lista": ["Clave publicable (empieza con sb_publishable_): puede ir en la página web o en la app. Solo llega a lo que las reglas de RLS permiten.", "Clave secreta (empieza con sb_secret_): da acceso total y se saltea RLS. Va solo en el servidor. Nunca en el navegador, nunca en GitHub, nunca en el chat.", "Claves viejas: si tu proyecto muestra anon y service_role, son las versiones anteriores de las mismas dos (anon = publicable, service_role = secreta)."], "aviso": "Si una clave secreta se filtró (la subiste a GitHub o la pegaste en algún lado), rotala desde Supabase de inmediato."}, {"h": "RLS explicado simple", "p": ["Pensalo como un portero en cada tabla. Cuando activás RLS, el portero no deja pasar a nadie que venga con la clave publicable hasta que vos escribas las reglas (políticas) de quién puede leer o escribir qué.", "La regla más común es \"cada usuario ve solo sus filas\". Supabase la arma comparando el usuario que inició sesión (auth.uid()) con una columna de la tabla que guarda de quién es cada fila.", "Supabase recomienda activar RLS en todas las tablas de un esquema expuesto. Una tabla con RLS activado y sin políticas no es un error: simplemente está cerrada hasta que agregues reglas."]}, {"h": "Crear las tablas con Claude Code", "p": ["Lo ideal es que los cambios a la base queden guardados como archivos (migraciones) dentro del proyecto, así quedan en Git y se pueden repetir. Para eso Claude puede usar la CLI de Supabase: se instala en el proyecto con npm install supabase --save-dev y se usa con npx supabase."], "prompts": [{"t": "Diseñar las tablas con RLS", "c": "Leé @ESPECIFICACION.md, sección Datos.\nProponeme las tablas para Supabase (nombre, columnas y tipo de cada columna) en una tabla simple, sin código todavía.\nPara cada tabla:\n1. Activá RLS.\n2. Escribí en palabras quién puede leer, crear, editar y borrar filas.\n3. Agregá una columna que diga de qué usuario es cada fila, si corresponde.\nCuando yo apruebe, creá la migración como archivo dentro del proyecto. No la apliques a ningún proyecto de Supabase sin preguntarme."}]}, {"h": "Conectar la app sin exponer nada", "pasos": ["En Supabase, copiá la URL del proyecto y la clave publicable.", "Pedile a Claude que cree un archivo .env.local para guardarlas y que confirme que .env.local está en el .gitignore.", "Pegá vos los valores en ese archivo con tu editor. No se los pegues a Claude en el chat.", "Si alguna parte necesita la clave secreta (por ejemplo, una tarea de administrador), pedile que la use solo en código que corre en el servidor."], "prompts": [{"t": "Conectar con la clave correcta", "c": "Conectá esta app a Supabase usando variables de entorno (no escribas ninguna clave en el código).\nEn el navegador usá solo la clave publicable. Si algo necesita la clave secreta, explicame por qué y ponelo solo en código de servidor.\nConfirmá que el archivo .env.local está en .gitignore antes de seguir."}]}, {"h": "Si usás el MCP oficial de Supabase", "p": ["Con el MCP de Supabase, Claude puede ver tus tablas, leer registros y revisar los asesores de seguridad y rendimiento del proyecto. Es cómodo, pero tiene poder real sobre tu base."], "lista": ["Proyecto de prueba: Supabase recomienda conectarlo a producción solo cuando la tarea de verdad lo necesita.", "Modo solo lectura: agregando read_only=true a la dirección del MCP, las consultas corren con un usuario que no puede modificar nada.", "Un solo proyecto: limitá el MCP a un proyecto para que no pueda tocar los demás de tu cuenta.", "Skills oficiales: Supabase publica skills para agentes (npx skills add supabase/agent-skills) con buenas prácticas de tablas y políticas RLS."]}, {"h": "Copias de seguridad", "p": ["Los planes pagos de Supabase hacen copias diarias automáticas. En el plan gratis, Supabase recomienda exportar tus datos seguido con el comando db dump de la CLI y guardar la copia en otro lugar.", "Ojo: esas copias son de la base de datos. Los archivos que subís a Storage no están incluidos."]}], "faq": [{"q": "Activé RLS y la app dejó de mostrar datos", "a": "Es lo esperado: con RLS activo y sin políticas, la clave publicable no ve nada. Pedile a Claude que escriba las políticas que faltan según quién tiene que ver cada fila."}, {"q": "¿Puedo usar la clave secreta en el frontend para que \"funcione\"?", "a": "No. Esa clave se saltea todas las reglas y da acceso total. Supabase incluso bloquea su uso desde el navegador. Arreglá las políticas en lugar de esquivarlas."}, {"q": "¿Necesito el MCP para usar Supabase con Claude Code?", "a": "No. Claude puede trabajar con archivos de migración y la CLI. El MCP suma comodidad para mirar el proyecto, y conviene usarlo en modo solo lectura o con un proyecto de prueba."}], "fuentes": ["https://supabase.com/docs/guides/api/api-keys", "https://supabase.com/docs/guides/database/postgres/row-level-security", "https://supabase.com/docs/guides/local-development/cli/getting-started", "https://supabase.com/docs/guides/mcp", "https://supabase.com/docs/guides/ai-tools/ai-skills", "https://supabase.com/docs/guides/platform/backups"], "cat": "desarrollo", "parte": "construi"};</script>
 
-<script src="../web/rutas.js?v=43c1f0cb"></script>
-<script src="../web/logos.js?v=43c1f0cb"></script>
-<script src="../web/guia.js?v=43c1f0cb"></script>
-<script src="../web/bienvenida.js?v=43c1f0cb"></script>
+<script src="../web/rutas.js?v=74fe0f0f"></script>
+<script src="../web/logos.js?v=74fe0f0f"></script>
+<script src="../web/guia.js?v=74fe0f0f"></script>
+<script src="../web/bienvenida.js?v=74fe0f0f"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

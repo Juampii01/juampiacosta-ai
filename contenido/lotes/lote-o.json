@@ -426,27 +426,6 @@
   {
    "cat": "Herramientas",
    "tipo": "App",
-   "t": "Repomix",
-   "d": "Empaqueta todo un repositorio en un solo archivo prolijo para pasárselo a una IA, contando tokens y salteando lo que no importa. También funciona como MCP.",
-   "para": "Pasarle a Claude un proyecto entero de una, por ejemplo para que lo analice o lo documente.",
-   "cmds": [
-    {
-     "donde": "Terminal",
-     "c": "npx repomix@latest"
-    },
-    {
-     "donde": "Terminal",
-     "c": "claude mcp add repomix -- npx -y repomix --mcp"
-    }
-   ],
-   "url": "https://github.com/yamadashy/repomix",
-   "repo": "yamadashy/repomix",
-   "licencia": "MIT",
-   "fuente": "https://github.com/yamadashy/repomix#readme"
-  },
-  {
-   "cat": "Herramientas",
-   "tipo": "App",
    "t": "Graphify",
    "d": "Convierte una carpeta de código, documentos o PDFs en un mapa de conocimiento navegable, para que Claude consulte el mapa en vez de releer todo.",
    "para": "Entender rápido un proyecto grande o heredado sin quemar tokens.",

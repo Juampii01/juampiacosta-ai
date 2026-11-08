@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena api-mas-barata-cache-y-lotes, La API de Claude más barata: caché, lotes y contar tokens, Para quien programa con la API: elegir el modelo justo, contar tokens antes de mandar, usar prompt caching y mandar en lote lo que no es urgente. Con los descuentos oficiales. y 43c1f0cb -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena api-mas-barata-cache-y-lotes, La API de Claude más barata: caché, lotes y contar tokens, Para quien programa con la API: elegir el modelo justo, contar tokens antes de mandar, usar prompt caching y mandar en lote lo que no es urgente. Con los descuentos oficiales. y 74fe0f0f -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/cta.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/biblioteca.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/guia.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/tema.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/bienvenida.css?v=43c1f0cb">
-<script src="../web/tema.js?v=43c1f0cb"></script>
-<link rel="icon" href="../web/favicon.svg?v=43c1f0cb" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/cta.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/biblioteca.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/guia.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/tema.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/bienvenida.css?v=74fe0f0f">
+<script src="../web/tema.js?v=74fe0f0f"></script>
+<link rel="icon" href="../web/favicon.svg?v=74fe0f0f" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=43c1f0cb"></script>
-<script src="../web/guias-web.js?v=43c1f0cb"></script>
-<script src="../web/comun.js?v=43c1f0cb"></script>
+<script src="../web/redes.js?v=74fe0f0f"></script>
+<script src="../web/guias-web.js?v=74fe0f0f"></script>
+<script src="../web/comun.js?v=74fe0f0f"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="api-mas-barata-cache-y-lotes"></main>
 <script>var GUIA = {"slug": "api-mas-barata-cache-y-lotes", "t": "La API de Claude más barata: caché, lotes y contar tokens", "d": "Para quien programa con la API: elegir el modelo justo, contar tokens antes de mandar, usar prompt caching y mandar en lote lo que no es urgente. Con los descuentos oficiales.", "tema": "Gastá menos tokens", "min": 9, "ficha": [["Qué es", "Cuatro formas oficiales de pagar menos por la API de Claude."], ["Necesitás", "Una cuenta en la Claude Console con clave de API, y el SDK oficial de Claude para tu lenguaje (los ejemplos son en Python)."], ["Cuánto cuesta", "Contar tokens es gratis. El caché y los lotes bajan el precio de lo que ya mandabas."], ["Qué no hace", "No sirve para la suscripción Pro o Max: es solo para quien paga la API por uso."]], "secciones": [{"h": "Qué es lo que pagás", "p": ["En la API pagás por token: lo que mandás (entrada) y lo que Claude responde (salida). La salida es más cara que la entrada, y el precio cambia mucho según el modelo. El razonamiento extendido se cobra como salida.", "Algunos precios de la tabla oficial, por millón de tokens (precios a noviembre de 2026, revisalos en la página oficial):"], "lista": ["Claude Opus 5.5: US$4 de entrada y US$20 de salida.", "Claude Sonnet 5.5: US$2 de entrada y US$10 de salida.", "Claude Haiku 5.5 (pedidos de hasta 100.000 tokens): US$0,10 de entrada y US$0,50 de salida."]}, {"h": "Elegí el modelo justo", "pasos": ["Escribí 10 o 20 ejemplos reales de lo que le vas a pedir, con la respuesta que esperás.", "Probalos primero con el modelo más barato que creas que puede hacerlo.", "Si falla en algo importante, subí un escalón y volvé a probar.", "Quedate con el más barato que pase tus ejemplos. Repetí la prueba cuando salgan modelos nuevos."]}, {"h": "Contá los tokens antes de mandar", "p": ["El endpoint POST /v1/messages/count_tokens te dice cuántos tokens de entrada tiene un mensaje antes de mandarlo. Es gratis, tiene sus propios límites por minuto (no te gasta los de mensajes) y el número es una estimación que puede variar un poco.", "Sirve para saber cuánto te va a costar un documento largo, o para cortar la entrada antes de pasarte."], "prompts": [{"t": "Contar tokens en Python", "c": "import anthropic\n\nclient = anthropic.Anthropic()\n\nresponse = client.messages.count_tokens(\n    model=\"claude-opus-5-5\",\n    system=\"You are a scientist\",\n    messages=[{\"role\": \"user\", \"content\": \"Hello, Claude\"}],\n)\n\nprint(response.json())"}]}, {"h": "Prompt caching: no pagues dos veces lo mismo", "p": ["Si mandás muchas veces el mismo comienzo (instrucciones largas, un documento, las herramientas), el caché hace que la API retome desde ahí en vez de procesarlo todo otra vez. El orden importa: primero herramientas, después system y después mensajes. Lo que cambie al principio rompe el caché de todo lo que viene después.", "La forma más simple es el caché automático: un solo cache_control en la raíz del pedido, y la API va moviendo el punto de corte a medida que crece la conversación. Si querés control fino, ponés cache_control en bloques puntuales."], "lista": ["Duración: por defecto, 5 minutos, y se renueva gratis cada vez que se usa. Si no te alcanza, hay una opción de 1 hora con \"ttl\": \"1h\".", "Precio de escribir en caché: 1,25 veces el precio de entrada (5 minutos) o 2 veces (1 hora).", "Precio de leer del caché: 0,1 veces el precio de entrada. En algunos modelos es todavía menos: 0,05 veces en Opus 5.5 y Sonnet 5.5.", "Mínimo: si lo que querés cachear es más corto que el mínimo del modelo (512 tokens en Opus 5.5, Sonnet 5.5 y Haiku 5.5), no se cachea y no te avisa con un error.", "Cómo saber si funcionó: en la respuesta, usage trae cache_creation_input_tokens y cache_read_input_tokens. Si los dos son 0, no se cacheó.", "Qué lo rompe: cambiar las definiciones de herramientas invalida todo el caché; agregar o sacar imágenes, o cambiar los parámetros de razonamiento, invalida la parte de mensajes."], "prompts": [{"t": "Caché automático en Python", "c": "import anthropic\n\nclient = anthropic.Anthropic()\n\nresponse = client.messages.create(\n    model=\"claude-opus-5-5\",\n    max_tokens=1024,\n    cache_control={\"type\": \"ephemeral\"},\n    system=\"You are a helpful assistant that remembers our conversation.\",\n    messages=[{\"role\": \"user\", \"content\": \"My name is Alex. I work on machine learning.\"}],\n)\nprint(response.usage.model_dump_json())"}]}, {"h": "Message Batches: la mitad de precio si podés esperar", "p": ["Si no necesitás la respuesta en el momento (clasificar mil mails, resumir un catálogo, evaluar respuestas), mandalo en lote. Todo lo que pasa por la API de lotes se cobra al 50% del precio normal, en entrada y en salida."], "lista": ["Tiempo: la mayoría de los lotes terminan en menos de una hora. Si no terminan en 24 horas, vencen.", "Tamaño: hasta 100.000 pedidos o 256 MB por lote, lo que llegue primero.", "Resultados: los podés bajar durante 29 días.", "Se combina con el caché: los dos descuentos se suman, pero en lotes los aciertos de caché no están garantizados."], "prompts": [{"t": "Crear un lote en Python", "c": "import anthropic\nfrom anthropic.types.message_create_params import MessageCreateParamsNonStreaming\nfrom anthropic.types.messages.batch_create_params import Request\n\nclient = anthropic.Anthropic()\n\nmessage_batch = client.messages.batches.create(\n    requests=[\n        Request(\n            custom_id=\"my-first-request\",\n            params=MessageCreateParamsNonStreaming(\n                model=\"claude-opus-5-5\",\n                max_tokens=1024,\n                messages=[\n                    {\n                        \"role\": \"user\",\n                        \"content\": \"Hello, world\",\n                    }\n                ],\n            ),\n        ),\n    ]\n)\n\nprint(message_batch)"}]}, {"h": "Pedile a Claude que revise tu código", "prompts": [{"t": "Auditoría de costos de mi integración", "c": "Revisá cómo uso la API de Claude en [ARCHIVO O CARPETA]. Decime:\n1) qué modelo uso en cada llamada y si alguna podría ir con uno más barato,\n2) qué parte de mis pedidos se repite siempre y conviene cachear (y dónde poner cache_control),\n3) qué llamadas no necesitan respuesta inmediata y podrían ir por Message Batches,\n4) dónde conviene contar tokens antes de mandar.\nNo cambies nada todavía: primero mostrame el plan. Usá solo lo que dice la documentación oficial de Claude; si no estás seguro de algo, decímelo."}]}], "faq": [{"q": "¿Contar tokens me cobra?", "a": "No. Es gratis, aunque tiene un límite de pedidos por minuto según tu nivel de uso."}, {"q": "¿El caché sirve si mando un pedido cada media hora?", "a": "Con la duración normal de 5 minutos, no llega. Podés usar la opción de 1 hora, que es más cara al escribir. Hacé la cuenta con tus números."}, {"q": "¿Puedo usar lotes para un chat con clientes?", "a": "No conviene: un lote puede tardar hasta 24 horas. Es para trabajos que pueden esperar."}], "fuentes": ["https://platform.claude.com/docs/en/about-claude/pricing", "https://platform.claude.com/docs/en/build-with-claude/token-counting", "https://platform.claude.com/docs/en/build-with-claude/prompt-caching", "https://platform.claude.com/docs/en/build-with-claude/batch-processing", "https://code.claude.com/docs/en/costs"], "cat": "ahorrar", "parte": "aprende"};</script>
 
-<script src="../web/rutas.js?v=43c1f0cb"></script>
-<script src="../web/logos.js?v=43c1f0cb"></script>
-<script src="../web/guia.js?v=43c1f0cb"></script>
-<script src="../web/bienvenida.js?v=43c1f0cb"></script>
+<script src="../web/rutas.js?v=74fe0f0f"></script>
+<script src="../web/logos.js?v=74fe0f0f"></script>
+<script src="../web/guia.js?v=74fe0f0f"></script>
+<script src="../web/bienvenida.js?v=74fe0f0f"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena archivos-sin-desperdiciar-tokens, Archivos sin desperdiciar tokens: mandá solo lo que importa, Cómo pesan los archivos que adjuntás, cómo mandar solo las partes que sirven, qué cambia entre texto, PDF e imágenes, y cómo resumir un documento largo una sola vez para reutilizarlo. y 43c1f0cb -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena archivos-sin-desperdiciar-tokens, Archivos sin desperdiciar tokens: mandá solo lo que importa, Cómo pesan los archivos que adjuntás, cómo mandar solo las partes que sirven, qué cambia entre texto, PDF e imágenes, y cómo resumir un documento largo una sola vez para reutilizarlo. y 74fe0f0f -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/cta.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/biblioteca.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/guia.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/tema.css?v=43c1f0cb">
-<link rel="stylesheet" href="../web/bienvenida.css?v=43c1f0cb">
-<script src="../web/tema.js?v=43c1f0cb"></script>
-<link rel="icon" href="../web/favicon.svg?v=43c1f0cb" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/cta.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/biblioteca.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/guia.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/tema.css?v=74fe0f0f">
+<link rel="stylesheet" href="../web/bienvenida.css?v=74fe0f0f">
+<script src="../web/tema.js?v=74fe0f0f"></script>
+<link rel="icon" href="../web/favicon.svg?v=74fe0f0f" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=43c1f0cb"></script>
-<script src="../web/guias-web.js?v=43c1f0cb"></script>
-<script src="../web/comun.js?v=43c1f0cb"></script>
+<script src="../web/redes.js?v=74fe0f0f"></script>
+<script src="../web/guias-web.js?v=74fe0f0f"></script>
+<script src="../web/comun.js?v=74fe0f0f"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="archivos-sin-desperdiciar-tokens"></main>
 <script>var GUIA = {"slug": "archivos-sin-desperdiciar-tokens", "t": "Archivos sin desperdiciar tokens: mandá solo lo que importa", "d": "Cómo pesan los archivos que adjuntás, cómo mandar solo las partes que sirven, qué cambia entre texto, PDF e imágenes, y cómo resumir un documento largo una sola vez para reutilizarlo.", "tema": "Gastá menos tokens", "min": 7, "secciones": [{"h": "Cómo pesan los archivos", "p": ["Todo lo que adjuntás entra en la memoria de trabajo del chat (la ventana de contexto) y suma a tu consumo. El centro de ayuda cuenta el largo de los archivos entre las cosas que más afectan tu límite.", "Lo que cuenta es el contenido: cuanto más largo el archivo, más pesa. Y el archivo pasa a ser parte del chat, que se vuelve más largo, y el largo del chat también suma."]}, {"h": "Mandá solo lo que importa", "pasos": ["Antes de adjuntar, preguntate qué parte del documento necesitás de verdad.", "Si es un capítulo, unas páginas o una tabla, sacá solo eso (copiá el texto o guardá esas páginas como un PDF aparte).", "Si tiene que ser el documento entero, decile a Claude en qué páginas mirar. Usá los números de página que muestra tu visor de PDF, no los que están impresos en el documento.", "Si el archivo es muy grande, partilo en tramos y trabajá cada uno en su chat."], "prompts": [{"t": "Ir directo a lo que sirve", "c": "Te adjunto [NOMBRE DEL ARCHIVO]. Solo me interesan las páginas [NÚMEROS] (según mi visor de PDF).\nNecesito: [QUÉ QUERÉS SACAR].\nNo resumas el resto del documento."}]}, {"h": "Texto, PDF o imagen: qué lee Claude de cada uno", "lista": ["Word, TXT, CSV y similares: Claude extrae solo el texto. Si tienen imágenes adentro, no las ve.", "PDF de hasta 100 páginas: Claude lee el texto y también mira lo visual (gráficos, imágenes, tablas como dibujo).", "PDF de 101 a 1000 páginas: solo procesa el texto, no lo visual. Más de 1000 páginas no se puede subir.", "PDF escaneado (fotos de páginas): si es largo, partilo en tramos de hasta 100 páginas o pasalo a texto antes, porque pasadas las 100 Claude no mira lo visual.", "Imágenes: JPEG, PNG, GIF o WebP. La ayuda recomienda que tengan al menos 1000 x 1000 píxeles para que salgan bien.", "Planillas Excel (XLSX): para subirlas tenés que tener activada la ejecución de código y creación de archivos."], "aviso": "Si lo que importa son los números de una tabla, mandá la planilla o el CSV, no una captura: así Claude trabaja con los datos exactos."}, {"h": "Resumí una vez, reutilizá muchas", "p": ["Si vas a consultar el mismo documento largo en varios chats (un contrato, un manual, un informe), no lo subas cada vez. Pedí un resumen de trabajo una sola vez y usá ese resumen después."], "pasos": ["En un chat nuevo, subí el documento y pedí el resumen con el prompt de abajo.", "Revisá el resumen contra el original en lo importante: números, fechas, nombres.", "Guardalo como archivo de texto.", "Subí ese resumen a tu Proyecto o pegalo en los chats donde lo necesites. Volvé al original solo cuando haga falta un detalle que el resumen no tiene."], "prompts": [{"t": "Resumen de trabajo de un documento", "c": "Te adjunto [DOCUMENTO]. Lo voy a consultar muchas veces para [PARA QUÉ LO USO].\nArmame un resumen de trabajo con:\n1. De qué trata, en 3 líneas.\n2. Todos los datos concretos: números, fechas, plazos, nombres y montos, tal cual aparecen.\n3. Las reglas, condiciones u obligaciones, en viñetas.\n4. Un índice: qué hay en cada sección y en qué página.\nNo interpretes ni agregues nada que no diga el documento. Si algo no está claro, marcalo con [VER ORIGINAL]."}]}, {"h": "Pasar a texto antes de subir", "p": ["Otra forma de ahorrar es convertir el archivo a texto limpio antes de dárselo a Claude. Para eso ya tenemos la guía \"MarkItDown: Claude lee tus archivos gastando menos\", con la instalación paso a paso."]}, {"h": "Los límites para tener a mano", "lista": ["En un chat: hasta 500 MB por archivo y hasta 20 archivos por chat.", "Imágenes: hasta 8000 x 8000 píxeles.", "PDF: hasta 1000 páginas.", "En un Proyecto: hasta 30 MB por archivo. Claude extrae solo el texto, salvo en los PDF."]}], "faq": [{"q": "¿Es mejor pegar el texto o adjuntar el archivo?", "a": "Si necesitás solo una parte, pegá esa parte. Si necesitás el documento con sus gráficos, adjuntá el PDF. Lo importante es no mandar más de lo que hace falta."}, {"q": "¿Claude ve las imágenes que hay dentro de un Word?", "a": "No. De los documentos que no son PDF, Claude extrae solo el texto."}, {"q": "Si subo el documento a un Proyecto, ¿ya no gasta?", "a": "Sigue gastando, pero el material de un Proyecto cuenta menos cuando se reutiliza mientras está en caché. Lo explicamos en la guía de Proyectos y caché de esta categoría."}], "fuentes": ["https://support.claude.com/en/articles/8241126-upload-files-to-claude", "https://support.claude.com/en/articles/9797557-usage-limit-best-practices", "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work", "https://support.claude.com/en/articles/10684626-enable-and-use-web-search"], "cat": "ahorrar", "parte": "aprende"};</script>
 
-<script src="../web/rutas.js?v=43c1f0cb"></script>
-<script src="../web/logos.js?v=43c1f0cb"></script>
-<script src="../web/guia.js?v=43c1f0cb"></script>
-<script src="../web/bienvenida.js?v=43c1f0cb"></script>
+<script src="../web/rutas.js?v=74fe0f0f"></script>
+<script src="../web/logos.js?v=74fe0f0f"></script>
+<script src="../web/guia.js?v=74fe0f0f"></script>
+<script src="../web/bienvenida.js?v=74fe0f0f"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);
