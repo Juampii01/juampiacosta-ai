@@ -77,11 +77,11 @@
  },
  "si_falla": [
   {
-   "sintoma": "En claude mcp list el servidor aparece como \"! Needs authentication\" y Claude no lo puede usar.",
+   "sintoma": "En claude mcp list el servidor aparece como Needs authentication y Claude no lo puede usar.",
    "solucion": "Abrí Claude Code, escribí /mcp, elegí el servidor y seguí el inicio de sesión en el navegador. Si el navegador no se abre solo, copiá la URL que te muestra y pegala a mano. En Mercado Pago, hacé clic en needs authentication y elegí el país de tu cuenta."
   },
   {
-   "sintoma": "GitHub queda como \"✘ Failed to connect\" aunque el comando se aceptó sin errores.",
+   "sintoma": "GitHub queda como \"Failed to connect\" aunque el comando se aceptó sin errores.",
    "solucion": "claude mcp add guarda la configuración sin validar el token, así que un token mal pegado se acepta igual. Corré claude mcp get github y mirá la línea Issue. Revisá que el Personal Access Token tenga permiso sobre los repos, que no esté vencido y que no se haya pegado con un espacio o salto de línea al final."
   },
   {
