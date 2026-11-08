@@ -1,0 +1,81 @@
+{
+ "slug": "oficina-de-agentes-ia",
+ "verificada": "2026-11-08",
+ "correcciones": [
+  {
+   "antes": "Michael, tu clon: es el único agente al que le hablás. Le das el objetivo, lo divide en tareas y se las pasa al agente que corresponde.",
+   "despues": "Michael, tu clon: es el orquestador, el agente al que le hablás para dar objetivos. Le das el objetivo, lo divide en tareas y se las pasa al agente que corresponde. Si hace falta, también podés abrir la terminal de cualquier agente y escribirle directo.",
+   "motivo": "El README describe a Michael como \"el clon con el que hablás\", que reparte el trabajo, y aclara que cada agente es un CLI real en su propia terminal en vivo. La versión Pro además suma salas por agente con conversación y terminal. Decir que es el único agente al que se le habla afirma de más.",
+   "fuente": "https://github.com/HarnessMD/munder-difflin"
+  },
+  {
+   "antes": "Freno de gasto: presupuesto de tokens por agente y un corte automático si un agente se traba en un bucle o gasta de más.",
+   "despues": "Freno de gasto: presupuesto de tokens por agente y un freno automático por escalones si un agente se traba en un bucle, repite errores o gasta de más: primero lo redirige, después lo limita y, si sigue, lo frena.",
+   "motivo": "El README describe el circuit breaker como una escalera de tres pasos (steer, constrain, stop) que se activa con bucles, errores repetidos o exceso de presupuesto, no como un corte directo.",
+   "fuente": "https://github.com/HarnessMD/munder-difflin"
+  },
+  {
+   "antes": "Hay una versión Pro paga con más funciones (por ejemplo, transcripción de reuniones). La versión Classic es gratis.",
+   "despues": "La versión Classic es gratis. Hay una versión Pro paga, con pago único por 30 o 365 días y para una compu a la vez, que suma un espacio de trabajo con barra lateral (tareas, bandeja, automatizaciones, memoria), un catálogo de capacidades (MCP, skills y herramientas) y el Stapler, que dicta y graba y transcribe reuniones. Mirá el precio vigente en munderdiffl.in antes de comprar.",
+   "motivo": "La web oficial detalla que Pro es un pago único sin renovación automática por 30 o 365 días, limitado a una máquina a la vez, y lista lo que agrega. El ejemplo de transcripción era correcto pero incompleto.",
+   "fuente": "https://munderdiffl.in/"
+  }
+ ],
+ "fuentes_extra": [
+  "https://munderdiffl.in/",
+  "https://munderdiffl.in/blog/launching-munder-difflin-v0-5-2/",
+  "https://github.com/HarnessMD/munder-difflin"
+ ],
+ "ejemplo": {
+  "titulo": "Ejemplo resuelto: un freelancer arma su oficina para entregar una landing",
+  "negocio": "Ejemplo inventado: un desarrollador freelance en Guadalajara que hace sitios para comercios de su zona. Trabaja solo, paga Claude Code y Codex, y usa Windows.",
+  "punto_de_partida": "Para cada landing salta entre dos terminales: en una escribe con Claude Code y en la otra le pide a Codex que revise. Copia y pega entre las dos y pierde el hilo de qué revisó cada uno.",
+  "pasos": [
+   "Abrió claude y codex en la terminal, cada uno en una carpeta de prueba, y confirmó que respondían con su cuenta antes de instalar nada.",
+   "Bajó la app desde harnessmd.com/download. Windows mostró un aviso de SmartScreen; confirmó que el archivo venía de ahí y siguió. En el asistente de inicio no instaló agentes que no iba a usar, y en Settings apagó la telemetría.",
+   "Creó la carpeta panaderia-landing con git init y un archivo datos-negocio.md con lo que le pasó el cliente, una panadería de barrio: horarios, productos, dirección y fotos.",
+   "Abrió esa carpeta como piso y sumó tres agentes: Claude Code para construir, Codex para revisar errores y accesibilidad, y otra sesión de Claude Code para los textos. Le puso presupuesto de tokens a cada uno.",
+   "Le pegó a Michael el pedido 2 del pack del kit, con la regla de avisarle para aprobar los textos antes de construir.",
+   "Miró el tablero: Michael armó cinco tareas y las asignó. Cuando le llegaron los textos a la cola de aprobaciones, cambió una frase que prometía \"el mejor pan de la ciudad\" y aprobó.",
+   "El agente revisor le mandó por el buzón al constructor dos problemas: el formulario no tenía etiquetas y faltaba el texto alternativo de las fotos. Él vio el intercambio en el tablero sin tener que copiar nada.",
+   "Al final revisó los cambios en el visor de git de la app, abrió la landing en el navegador y la probó en el celular antes de mostrársela al cliente.",
+   "Le pidió a Michael el cierre del día del pack y leyó las notas de memoria de cada agente para borrar una que estaba mal."
+  ],
+  "resultado": "Quedó un piso por proyecto, con tres agentes que se pasan el trabajo por el tablero y el buzón, y él decide solo en la cola de aprobaciones y en la revisión final. Cada agente gasta de su propio plan, y él ve el consumo por agente."
+ },
+ "si_falla": [
+  {
+   "sintoma": "Un agente no arranca en la oficina, o en Windows aparece \"cannot create process, error code: 2\".",
+   "solucion": "La app no encuentra el comando del agente. Abrí una terminal nueva y probá el comando solo (claude, codex, etc.). Si no responde, reinstalá el agente y volvé a abrir la app. Si responde, actualizá Munder Difflin: una versión corrigió justo este error en Windows buscando claude en las rutas de instalación estándar."
+  },
+  {
+   "sintoma": "Windows bloquea el instalador con un aviso de SmartScreen.",
+   "solucion": "Algunas versiones para Windows salieron sin firma de código. Confirmá que lo bajaste de harnessmd.com/download o de la página de releases del repositorio y compará el archivo con SHA256SUMS.txt de esa versión. Si no coincide, no lo instales."
+  },
+  {
+   "sintoma": "Quiero abrir la misma carpeta en dos pisos y no me deja.",
+   "solucion": "Es así a propósito: una carpeta se abre en un solo piso. Si querés dos equipos sobre el mismo proyecto, usá una copia de la carpeta o un worktree de git aparte para el segundo piso."
+  },
+  {
+   "sintoma": "Un agente se queda dando vueltas y el consumo de su plan sube rápido.",
+   "solucion": "Bajale el presupuesto de tokens a ese agente y dejá que actúe el freno. Después achicá la tarea en el tablero: las tareas difusas son las que más se traban. Si el agente sigue igual, frenalo y reasigná la tarea a otro."
+  },
+  {
+   "sintoma": "Al compilar desde el código, la app no arranca con un error de node-pty.",
+   "solucion": "node-pty se compila para la versión de Electron. Revisá que tengas Node.js 18 o más nuevo y las herramientas de compilación de C/C++ (en Mac, xcode-select --install) y volvé a correr npm install."
+  }
+ ],
+ "kit": [
+  {
+   "archivo": "checklist-primer-piso-munder-difflin.md",
+   "que_es": "Checklist en orden para instalar la oficina, abrir el primer piso con permisos mínimos, dar el primer encargo y revisar la primera semana.",
+   "contenido": "# Checklist: tu primer piso en Munder Difflin\n\nPara instalar la oficina sin sorpresas y con lo justo de permisos. Tildá en orden.\n\n## Antes de instalar\n\n- [ ] Cada agente que vas a sumar funciona solo en la terminal con tu cuenta. Probá, por ejemplo, abrir claude en una carpeta cualquiera y pedirle \"decime qué archivos hay acá\". Hacé lo mismo con el segundo agente (codex, gemini, cursor-agent u otro).\n- [ ] Sabés qué plan tiene cada agente y dónde se ve su consumo.\n- [ ] Creaste una carpeta de prueba vacía, por ejemplo oficina-prueba, fuera de tus proyectos de clientes.\n- [ ] Si la carpeta va a ser un repositorio, hiciste git init y un primer commit. Así podés volver atrás cualquier cambio.\n\n## Instalación\n\n- [ ] Bajaste la app desde harnessmd.com/download o desde la página de releases del repositorio, no desde un sitio de terceros.\n- [ ] Si estás en Windows y aparece un aviso de SmartScreen, revisaste que el archivo venga de esos dos lugares antes de aceptar.\n- [ ] Completaste el asistente de inicio y dejaste que instale solo lo que sabés qué es.\n- [ ] En Settings revisaste la telemetría: las versiones oficiales mandan eventos de uso anónimos y se puede apagar.\n\n## Primer piso\n\n- [ ] Abriste como piso la carpeta de prueba, no tu carpeta de usuario ni todo el disco.\n- [ ] Sumaste 2 o 3 agentes, no más.\n- [ ] Le pusiste presupuesto de tokens a cada agente.\n- [ ] Configuraste qué puede hacer cada agente solo y qué tiene que pasar por la cola de aprobaciones: borrar archivos, instalar paquetes, publicar y gastar, siempre a la cola.\n\n## Primer encargo\n\n- [ ] El objetivo entra en un párrafo y tiene un entregable que podés revisar en 10 minutos.\n- [ ] El objetivo dice qué carpeta pueden tocar y qué no.\n- [ ] El objetivo dice cuándo te tienen que avisar.\n- [ ] Miraste el tablero para ver cómo Michael repartió las tareas.\n- [ ] Revisaste el resultado y los cambios (git diff o el visor de git de la app) antes de darlo por bueno.\n\n## Después de la primera semana\n\n- [ ] Revisaste el consumo de cada agente en su plan.\n- [ ] Leíste las notas de memoria que dejó cada agente y borraste lo que esté mal o desactualizado.\n- [ ] Decidiste si suma tener la oficina o si con un solo agente alcanzaba para este tipo de trabajo.\n"
+  },
+  {
+   "archivo": "objetivos-para-michael-orquestador.md",
+   "que_es": "Pack de cinco pedidos para el orquestador (revisión sin tocar nada, landing, error con hipótesis en paralelo, documentación y cierre del día) con la misma estructura de objetivo, reparto, límites y avisos.",
+   "contenido": "# Objetivos para Michael: pack de pedidos para la oficina\n\nPedidos para pegarle al orquestador. Todos siguen la misma estructura: objetivo, reparto, límites y cuándo avisarte. Cambiá los corchetes.\n\n## Estructura base\n\nObjetivo: [QUÉ TIENE QUE EXISTIR AL FINAL, EN UNA FRASE].\nEntregable: [ARCHIVO O CARPETA QUE VOY A REVISAR].\nReparto: [QUÉ AGENTE HACE QUÉ, O \"REPARTILO VOS Y MOSTRAME EL REPARTO EN EL TABLERO ANTES DE ARRANCAR\"].\nLímites: solo pueden tocar [CARPETA]. Nadie instala paquetes nuevos, borra archivos ni publica sin pasar por la cola de aprobaciones.\nAvisame: [CUÁNDO: AL TENER EL PLAN / ANTES DE CADA CAMBIO GRANDE / AL TERMINAR].\n\n## 1. Revisión de un proyecto existente (sin tocar nada)\n\nObjetivo: un informe de problemas del proyecto en [CARPETA].\nEntregable: revision.md en la raíz.\nReparto: un agente revisa errores y casos sin manejar, otro revisa accesibilidad y textos, otro revisa dependencias desactualizadas o sin uso.\nLímites: nadie edita archivos salvo revision.md. Cada hallazgo lleva archivo y línea.\nAvisame: al terminar, con los 5 hallazgos más importantes arriba.\n\n## 2. Landing para un cliente\n\nObjetivo: una landing de una página para [NEGOCIO] con formulario de contacto.\nEntregable: la carpeta landing/ y un LEEME.md con cómo verla en local.\nReparto: un agente escribe los textos a partir de [ARCHIVO CON DATOS DEL NEGOCIO], otro construye, otro revisa errores, accesibilidad y que ningún texto prometa resultados.\nLímites: solo trabajan en landing/. Sin servicios pagos ni claves.\nAvisame: para aprobar los textos antes de construir, y antes de publicar cualquier cosa.\n\n## 3. Arreglar un error con hipótesis en paralelo\n\nObjetivo: encontrar por qué [DESCRIPCIÓN DEL ERROR].\nEntregable: diagnostico.md con la causa y el cambio propuesto.\nReparto: cada agente prueba una hipótesis distinta: [HIPÓTESIS 1], [HIPÓTESIS 2], [HIPÓTESIS 3]. Que se manden por el buzón lo que descartan.\nLímites: pueden leer todo y correr los tests, pero ningún cambio se aplica sin mi aprobación.\nAvisame: cuando dos agentes coincidan en la causa.\n\n## 4. Documentación de un proyecto\n\nObjetivo: que alguien nuevo pueda levantar el proyecto [NOMBRE] en una tarde.\nEntregable: docs/ con instalación, estructura de carpetas y cómo correr los tests.\nReparto: un agente lee el código y arma la estructura, otro sigue los pasos desde cero en una carpeta aparte y anota dónde se traba, otro escribe.\nLímites: solo escriben en docs/.\nAvisame: al terminar, con la lista de pasos donde se trabó el agente que probó.\n\n## 5. Cierre del día\n\nMichael, antes de cerrar: resumime en 5 líneas qué quedó hecho, qué quedó a medias y qué necesita mi decisión. Pedile a cada agente que guarde en su memoria lo que aprendió hoy de este proyecto, en una lista corta.\n"
+  }
+ ],
+ "notas_revision": "No pude abrir el repositorio github.com/chaitanyagiri/munder-difflin (allowlist y sin acceso por la API de GitHub). Verifiqué con el README del repositorio HarnessMD/munder-difflin, que parece ser el mismo proyecto mudado de organización (la web oficial sigue linkeando a chaitanyagiri como fuente), con munderdiffl.in y con el blog oficial de la versión 0.5.2. Confirmado: licencia MIT, agentes soportados (Claude Code, Codex, Grok, Kimi Code, Antigravity, Gemini CLI, Qwen, OpenCode, Crush, pi, Copilot CLI, Cursor, comandos propios y modelos locales), Michael, buzón, tablero, cola de aprobaciones, memoria en markdown, presupuestos y freno, pisos por carpeta, descarga en harnessmd.com/download, asistente de inicio, versión 0.5.6 marcada como pre-release, Classic gratis y Pro pago, telemetría anónima que se puede apagar. El precio de Pro no va en la guía porque cambia; la web lo lista. No pude confirmar qué funciones exactas de Cómo funciona están en Classic y cuáles solo en Pro: el README las presenta como funciones de la app y el blog dice que Pro suma la barra lateral con tareas, bandeja y memoria. La falta de firma en Windows sale de las notas de la versión 0.1.8 y puede haber cambiado. El arte de LimeZu incluido tiene su propia licencia; no lo agregué a la guía porque no afecta el uso de la app."
+}
