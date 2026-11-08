@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena modo-plan-de-claude-code, Modo plan: que Claude piense antes de construir, Claude investiga tu proyecto y te escribe un plan sin tocar tu código. Lo corregís, lo aprobás y recién ahí construye. y 74fe0f0f -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena modo-plan-de-claude-code, Modo plan: que Claude piense antes de construir, Claude investiga tu proyecto y te escribe un plan sin tocar tu código. Lo corregís, lo aprobás y recién ahí construye. y 5108ba2f -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=74fe0f0f">
-<link rel="stylesheet" href="../web/cta.css?v=74fe0f0f">
-<link rel="stylesheet" href="../web/biblioteca.css?v=74fe0f0f">
-<link rel="stylesheet" href="../web/guia.css?v=74fe0f0f">
-<link rel="stylesheet" href="../web/tema.css?v=74fe0f0f">
-<link rel="stylesheet" href="../web/bienvenida.css?v=74fe0f0f">
-<script src="../web/tema.js?v=74fe0f0f"></script>
-<link rel="icon" href="../web/favicon.svg?v=74fe0f0f" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=5108ba2f">
+<link rel="stylesheet" href="../web/cta.css?v=5108ba2f">
+<link rel="stylesheet" href="../web/biblioteca.css?v=5108ba2f">
+<link rel="stylesheet" href="../web/guia.css?v=5108ba2f">
+<link rel="stylesheet" href="../web/tema.css?v=5108ba2f">
+<link rel="stylesheet" href="../web/bienvenida.css?v=5108ba2f">
+<script src="../web/tema.js?v=5108ba2f"></script>
+<link rel="icon" href="../web/favicon.svg?v=5108ba2f" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=74fe0f0f"></script>
-<script src="../web/guias-web.js?v=74fe0f0f"></script>
-<script src="../web/comun.js?v=74fe0f0f"></script>
+<script src="../web/redes.js?v=5108ba2f"></script>
+<script src="../web/guias-web.js?v=5108ba2f"></script>
+<script src="../web/comun.js?v=5108ba2f"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="modo-plan-de-claude-code"></main>
 <script>var GUIA = {"slug": "modo-plan-de-claude-code", "t": "Modo plan: que Claude piense antes de construir", "d": "Claude investiga tu proyecto y te escribe un plan sin tocar tu código. Lo corregís, lo aprobás y recién ahí construye.", "tema": "Claude Code", "min": 7, "secciones": [{"h": "Qué es y por qué te ahorra problemas", "p": ["En modo plan, Claude lee tus archivos y puede correr comandos para explorar, pero no edita tu código. Al final te presenta un plan y espera que lo apruebes.", "Es como pedirle un presupuesto al albañil antes de que rompa la pared: ves qué va a hacer, en qué orden y qué archivos toca. Si algo no te cierra, lo cambiás en el papel y no en la obra."]}, {"h": "Cómo entrar", "lista": ["Shift+Tab: en la terminal, cambiás de modo hasta que diga plan.", "/plan [tarea]: entra en modo plan y arranca directo con esa tarea. Ejemplo: /plan agregar un formulario de contacto.", "claude --permission-mode plan: abre Claude Code ya en modo plan.", "App de escritorio o web: elegí Plan en el selector de modo, debajo del cuadro de mensaje."]}, {"h": "Pedí un buen plan", "p": ["Contale el objetivo, no solo la tarea. Y pedile que te pregunte lo que no sabe: un plan con dudas resueltas sale mucho mejor."], "prompts": [{"t": "Plan antes de construir", "c": "/plan Quiero [LO QUE QUERÉS CONSTRUIR O CAMBIAR].\nPara qué es: [EL OBJETIVO, EN UNA LÍNEA].\nQuién lo va a usar: [TU CLIENTE O VOS].\nAntes de armar el plan:\n1. Revisá cómo está hecho el proyecto hoy.\n2. Haceme hasta 5 preguntas sobre lo que no te quede claro.\nDespués armá el plan con:\n- Los pasos en orden, explicados simple.\n- Qué archivos vas a crear o modificar.\n- Qué podría salir mal y cómo lo evitás.\n- Cómo voy a comprobar yo que funciona."}]}, {"h": "Cuando el plan está listo", "p": ["Claude te muestra el plan y te da tres opciones (los nombres aparecen en inglés):"], "lista": ["Yes, and use auto mode: lo aprobás y construye en modo automático, con controles de seguridad en segundo plano. Si ese modo no está disponible, dice Yes, auto-accept edits.", "Yes, manually approve edits: lo aprobás, pero te pregunta antes de cada cambio. La más segura si estás empezando.", "No, keep planning: seguís en modo plan y le decís qué corregir."], "aviso": "Con Ctrl+G abrís el plan en tu editor y lo cambiás vos a mano antes de que siga."}, {"h": "Cuándo usarlo y cuándo no", "lista": ["Sí: cambios que tocan varios archivos, cosas nuevas que no sabés bien cómo encarar, o cuando trabajás sobre algo que ya usan tus clientes.", "No hace falta: cambios chiquitos y claros, como corregir un texto o un color.", "Truco: si el plan es largo, pedile que lo divida en etapas y aprobá una por vez."]}], "faq": [{"q": "¿En modo plan puede romper algo?", "a": "No edita tu código hasta que apruebes. Igual puede correr comandos para explorar, así que leé lo que te pide si aparece un aviso de permiso."}, {"q": "Aprobé el plan y no me gusta cómo va", "a": "Frenalo con Esc (en la app, con el botón de stop) y decile qué cambiar. Si ya hizo cambios, /rewind te deja volver a un punto anterior."}, {"q": "¿Puedo guardar el plan?", "a": "Sí: pedile que lo escriba en un archivo, por ejemplo plan.md, para retomarlo en otra sesión."}], "fuentes": ["https://code.claude.com/docs/en/permission-modes", "https://code.claude.com/docs/en/commands", "https://code.claude.com/docs/en/desktop-quickstart"], "cat": "claude-code", "parte": "construi"};</script>
 
-<script src="../web/rutas.js?v=74fe0f0f"></script>
-<script src="../web/logos.js?v=74fe0f0f"></script>
-<script src="../web/guia.js?v=74fe0f0f"></script>
-<script src="../web/bienvenida.js?v=74fe0f0f"></script>
+<script src="../web/rutas.js?v=5108ba2f"></script>
+<script src="../web/logos.js?v=5108ba2f"></script>
+<script src="../web/guia.js?v=5108ba2f"></script>
+<script src="../web/bienvenida.js?v=5108ba2f"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

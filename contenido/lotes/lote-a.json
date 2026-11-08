@@ -649,7 +649,7 @@
      "lista": [
       "El modelo más potente para todo: Haiku es el que menos gasta y alcanza para resúmenes y tareas simples. Opus y Fable, para lo que de verdad los necesita.",
       "Esfuerzo alto en tareas de rutina: bajá el nivel de esfuerzo o apagá el razonamiento extendido cuando no hace falta.",
-      "Conectores y búsqueda web siempre prendidos: las herramientas consumen mucho. Apagalas en los chats donde no las usás."
+      "Conectores y herramientas siempre prendidos: consumen mucho. Revisá qué tenés activado (en la versión nueva de la app, los conectores están en Customize → Connectors) y dejá solo lo que vas a usar en ese chat."
      ]
     }
    ],

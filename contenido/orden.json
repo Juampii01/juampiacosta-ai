@@ -75,13 +75,15 @@
    "d": "Trucos para que rinda más, gaste menos y se equivoque menos.",
    "guias": [
     "el-bucle-de-verificacion",
+    "lo-que-aprendio-la-comunidad-usando-claude-en-la-app",
     "artifacts-apps-sin-programar",
     "proyectos-de-claude-para-tu-negocio",
     "5-cosas-para-montar-con-claude-el-finde"
    ],
    "prompts": [
     "Pedidos bien armados",
-    "Revisión antes de entregar"
+    "Revisión antes de entregar",
+    "Proyectos de Claude que no se desordenan"
    ]
   },
   {
@@ -235,8 +237,13 @@
     "comandos-de-claude-code-de-todos-los-dias",
     "claude-md-la-memoria-del-proyecto",
     "modo-plan-de-claude-code",
+    "el-flujo-de-trabajo-que-recomienda-la-comunidad",
+    "claude-md-que-funciona-ejemplos-reales",
     "permisos-y-modo-automatico-con-cuidado",
+    "comandos-personalizados-y-subagentes-de-la-comunidad",
     "subagentes-en-claude-code",
+    "hooks-de-claude-code-para-no-romper-nada",
+    "varias-sesiones-de-claude-code-en-paralelo",
     "tareas-programadas-en-claude-code",
     "claude-code-desde-el-celular-y-la-web",
     "codex-dentro-de-claude-code",
@@ -245,7 +252,8 @@
    "prompts": [
     "Instalar con un solo mensaje",
     "Revisar y entender un proyecto",
-    "Arreglar errores sin pánico"
+    "Arreglar errores sin pánico",
+    "El flujo de la comunidad, prompt por prompt"
    ]
   },
   {
@@ -325,5 +333,201 @@
     "Armá la demo para un rubro"
    ]
   }
- ]
+ ],
+ "herramientas": {
+  "Skills": [
+   {
+    "id": "sk-oficiales",
+    "e": "🏛️",
+    "n": "Oficiales de Anthropic",
+    "d": "Las skills y plugins que publica Anthropic: el lugar más seguro para empezar.",
+    "items": [
+     "Skills oficiales de Anthropic (documentos y ejemplos)",
+     "skill-creator",
+     "Marketplace oficial de plugins",
+     "Knowledge Work Plugins",
+     "Frontend Design",
+     "code-review",
+     "claude-md-management",
+     "claude-code-setup",
+     "agent-sdk-dev"
+    ]
+   },
+   {
+    "id": "sk-negocio",
+    "e": "💼",
+    "n": "Para tu negocio y contenido",
+    "d": "Skills listas para tareas de marketing y redes.",
+    "items": [
+     "LinkedIn Agent: 11 skills"
+    ]
+   },
+   {
+    "id": "sk-colecciones",
+    "e": "🌎",
+    "n": "Colecciones de la comunidad",
+    "d": "Packs grandes de agentes, comandos y plantillas para elegir lo que te sirve.",
+    "items": [
+     "Marketplace de la comunidad",
+     "Agents de wshobson (94 plugins)",
+     "Awesome Claude Code Subagents (VoltAgent)",
+     "Everything Claude Code",
+     "Claude Code Templates",
+     "oh-my-claudecode"
+    ]
+   },
+   {
+    "id": "sk-metodos",
+    "e": "🧭",
+    "n": "Métodos de trabajo",
+    "d": "Formas probadas de trabajar con Claude Code: planificar, construir y revisar.",
+    "items": [
+     "Superpowers",
+     "BMAD Method",
+     "SuperClaude Framework",
+     "gstack (Garry Tan)",
+     "Andrej Karpathy Skills (CLAUDE.md)"
+    ]
+   },
+   {
+    "id": "sk-ahorro",
+    "e": "💸",
+    "n": "Memoria y ahorro de tokens",
+    "d": "Que Claude recuerde más y gaste menos.",
+    "items": [
+     "claude-mem",
+     "Caveman"
+    ]
+   }
+  ],
+  "MCP": [
+   {
+    "id": "mcp-negocio",
+    "e": "💼",
+    "n": "Tu negocio: mail, documentos y ventas",
+    "d": "Conectá Claude con las apps que ya usás todos los días.",
+    "items": [
+     "Google Workspace MCP",
+     "Notion MCP",
+     "HubSpot (conector para Claude)",
+     "Mercado Pago MCP",
+     "Stripe MCP",
+     "Canva MCP",
+     "Figma MCP",
+     "Atlassian Rovo MCP",
+     "Linear MCP"
+    ]
+   },
+   {
+    "id": "mcp-auto",
+    "e": "⚙️",
+    "n": "Automatizaciones",
+    "d": "Claude manejando tus flujos de Zapier, Make y n8n.",
+    "items": [
+     "Zapier MCP",
+     "Make MCP",
+     "n8n MCP (a nivel instancia)",
+     "n8n-MCP (documentación de nodos)",
+     "Composio"
+    ]
+   },
+   {
+    "id": "mcp-web",
+    "e": "🔎",
+    "n": "Buscar y leer la web y tus archivos",
+    "d": "Información actualizada, documentación al día y archivos en texto limpio.",
+    "items": [
+     "Exa (búsqueda web)",
+     "Firecrawl",
+     "Context7",
+     "MarkItDown",
+     "Playwright",
+     "Chrome DevTools MCP"
+    ]
+   },
+   {
+    "id": "mcp-dev",
+    "e": "💻",
+    "n": "Para desarrollar",
+    "d": "Repos, bases de datos, despliegues y errores, desde Claude.",
+    "items": [
+     "GitHub MCP",
+     "Supabase MCP",
+     "Vercel MCP",
+     "Netlify MCP",
+     "Sentry MCP",
+     "Serena",
+     "MCP Inspector"
+    ]
+   }
+  ],
+  "Herramientas": [
+   {
+    "id": "h-apps",
+    "e": "📱",
+    "n": "Apps y plugins de Claude",
+    "d": "Dónde usar Claude: terminal, escritorio, navegador y voz.",
+    "items": [
+     "Claude Code",
+     "Claude Desktop",
+     "Claude en Chrome",
+     "Jarvis por voz",
+     "Legal (knowledge-work-plugins)"
+    ]
+   },
+   {
+    "id": "h-ahorro",
+    "e": "💸",
+    "n": "Medir y gastar menos",
+    "d": "Mirá cuánto consumís y achicá el contexto.",
+    "items": [
+     "ccusage",
+     "Claude Code Usage Monitor",
+     "ccstatusline",
+     "Repomix",
+     "Graphify",
+     "RTK (edición abierta)"
+    ]
+   },
+   {
+    "id": "h-paralelo",
+    "e": "🔀",
+    "n": "Varias sesiones y otros modelos",
+    "d": "Trabajar con varias sesiones a la vez o sumar otros modelos.",
+    "items": [
+     "Claude Squad",
+     "CCManager",
+     "CloudCLI (Claude Code UI)",
+     "Claude Code Router",
+     "Codex dentro de Claude Code"
+    ]
+   },
+   {
+    "id": "h-dev",
+    "e": "🚀",
+    "n": "Para desarrollar y publicar",
+    "d": "De la especificación al deploy, con seguridad.",
+    "items": [
+     "Spec Kit (GitHub)",
+     "Claude Code GitHub Actions",
+     "Security Guidance",
+     "Vercel CLI",
+     "Supabase CLI",
+     "Stripe CLI",
+     "Supabase Agent Skills"
+    ]
+   },
+   {
+    "id": "h-agentes",
+    "e": "🤖",
+    "n": "Construí tus propios agentes",
+    "d": "El SDK oficial para meter Claude adentro de tus apps.",
+    "items": [
+     "Claude Agent SDK para Python",
+     "Claude Agent SDK para TypeScript",
+     "Claude Agent SDK Demos"
+    ]
+   }
+  ]
+ }
 }

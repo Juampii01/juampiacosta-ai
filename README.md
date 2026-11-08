@@ -58,7 +58,7 @@ Para verlo de nuevo: /recursos?bienvenida=1. Los que eligieron «Que me lo insta
 
 ## Orden de la biblioteca y recomendados
 
-- `contenido/orden.json` define las 3 partes y las 13 categorías, y en qué orden va cada guía y cada pack de prompts.
+- `contenido/orden.json` define las 3 partes y las 13 categorías, en qué orden va cada guía y cada pack de prompts, y los grupos de Skills, MCP y Herramientas (cada herramienta nueva tiene que sumarse a un grupo).
   Una guía nueva tiene que sumarse ahí o la construcción falla (así nada queda suelto).
 - Con las respuestas del formulario, `web/recomendados.js` arma «Recomendados para vos» arriba de todo en Inicio:
   9 guías elegidas (por rubro, por lo que quiere resolver, objetivo, situación y nivel, y siempre una para gastar menos tokens), su ruta y packs de prompts.

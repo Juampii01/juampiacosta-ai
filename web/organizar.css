@@ -56,3 +56,4 @@
 .seguir-prog i { display: block; height: 6px; border-radius: 6px; background: rgba(255, 255, 255, .1); overflow: hidden; }
 .seguir-prog em { display: block; height: 100%; min-width: 4px; border-radius: 6px; background: linear-gradient(90deg, #ff5a1f, #ffb889); }
 [data-tema="claro"] .seguir-prog i { background: rgba(120, 60, 20, .1); }
+.org-indice--simple .org-fila { grid-template-columns: 1fr; }

@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena sistema-base-modulo-8-mantenimiento-mensual, Módulo 8 · El mantenimiento mensual y cómo mostrar su valor, Qué incluye el mensual, una rutina de revisión que podés repetir con cada cliente, un reporte que muestra lo que se hizo y cuándo tiene sentido subir el precio. y 74fe0f0f -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena sistema-base-modulo-8-mantenimiento-mensual, Módulo 8 · El mantenimiento mensual y cómo mostrar su valor, Qué incluye el mensual, una rutina de revisión que podés repetir con cada cliente, un reporte que muestra lo que se hizo y cuándo tiene sentido subir el precio. y 5108ba2f -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=74fe0f0f">
-<link rel="stylesheet" href="../web/cta.css?v=74fe0f0f">
-<link rel="stylesheet" href="../web/biblioteca.css?v=74fe0f0f">
-<link rel="stylesheet" href="../web/guia.css?v=74fe0f0f">
-<link rel="stylesheet" href="../web/tema.css?v=74fe0f0f">
-<link rel="stylesheet" href="../web/bienvenida.css?v=74fe0f0f">
-<script src="../web/tema.js?v=74fe0f0f"></script>
-<link rel="icon" href="../web/favicon.svg?v=74fe0f0f" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=5108ba2f">
+<link rel="stylesheet" href="../web/cta.css?v=5108ba2f">
+<link rel="stylesheet" href="../web/biblioteca.css?v=5108ba2f">
+<link rel="stylesheet" href="../web/guia.css?v=5108ba2f">
+<link rel="stylesheet" href="../web/tema.css?v=5108ba2f">
+<link rel="stylesheet" href="../web/bienvenida.css?v=5108ba2f">
+<script src="../web/tema.js?v=5108ba2f"></script>
+<link rel="icon" href="../web/favicon.svg?v=5108ba2f" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=74fe0f0f"></script>
-<script src="../web/guias-web.js?v=74fe0f0f"></script>
-<script src="../web/comun.js?v=74fe0f0f"></script>
+<script src="../web/redes.js?v=5108ba2f"></script>
+<script src="../web/guias-web.js?v=5108ba2f"></script>
+<script src="../web/comun.js?v=5108ba2f"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="sistema-base-modulo-8-mantenimiento-mensual"></main>
 <script>var GUIA = {"slug": "sistema-base-modulo-8-mantenimiento-mensual", "t": "Módulo 8 · El mantenimiento mensual y cómo mostrar su valor", "d": "Qué incluye el mensual, una rutina de revisión que podés repetir con cada cliente, un reporte que muestra lo que se hizo y cuándo tiene sentido subir el precio.", "tema": "El sistema para vender IA", "min": 9, "secciones": [{"h": "Por qué existe el mensual", "p": ["El negocio cambia: suben los precios, aparece un servicio nuevo, cambia una política. Si nadie actualiza el proyecto, en tres meses Claude responde con datos viejos y el equipo deja de confiar.", "Las herramientas también cambian. Las funciones de Claude se actualizan seguido y lo que hoy se configura de una forma mañana puede estar en otro lado. El mensual cubre ese trabajo de mantener todo al día."]}, {"h": "Qué incluye (escribilo así)", "lista": ["Revisión mensual: probar las skills y la automatización con casos nuevos y revisar que los documentos estén al día.", "Ajustes: corregir instrucciones, documentos y skills cuando algo responde mal o cambió en el negocio.", "Mejoras chicas: una cantidad fija por mes (por ejemplo, hasta dos cambios chicos o una skill nueva sencilla). Lo que pase de ahí se cotiza aparte.", "Reporte: un resumen corto de lo que se hizo y lo que se ve que falta.", "Soporte: un canal y un tiempo de respuesta acordados (por ejemplo, en el día hábil siguiente).", "Qué no incluye: rehacer el sistema, capacitar a personas nuevas cada mes o proyectos nuevos. Esos son extras."]}, {"h": "La rutina de cada mes", "pasos": ["Pedile al cliente, una semana antes, qué cambió: precios, servicios, políticas, personas del equipo.", "Pedile tres casos reales del mes que salieron bien y tres que salieron mal o le costaron.", "Actualizá los documentos del proyecto y volvé a probar las skills con esos casos.", "Revisá que los conectores sigan conectados y que la tarea programada haya corrido.", "Revisá accesos: que no haya personas que ya no están en el equipo con acceso al proyecto.", "Armá el reporte con el prompt de abajo y mandalo."]}, {"h": "Cómo reportar el valor sin inventarlo", "p": ["El reporte muestra lo que hiciste y lo que se puede medir. No inventes horas ahorradas. Si querés mostrar ahorro, medilo con el cliente: cuántos presupuestos armaron con la skill este mes y cuánto tardaban antes, según lo que anotaron en el diagnóstico.", "Un buen reporte tiene cinco partes: qué se usó, qué se ajustó, qué problemas aparecieron, qué se propone para el mes que viene y una pregunta para el cliente."], "prompts": [{"t": "Reporte mensual", "c": "Armá el reporte mensual de mantenimiento para [NEGOCIO], mes de [MES].\nDatos:\n- Uso que me contó el cliente: [EJ: CANTIDAD DE PRESUPUESTOS O RESPUESTAS HECHOS CON CLAUDE, SI LO SABE]\n- Cómo era antes, según el diagnóstico: [DATO DEL MÓDULO 4]\n- Ajustes que hice: [LISTA]\n- Problemas que aparecieron y cómo se resolvieron: [LISTA]\n- Lo que veo que falta o se podría sumar: [LISTA]\n\nFormato: máximo una página, en voseo, con secciones Qué se usó, Qué ajustamos, Qué problemas hubo, Qué propongo para el mes que viene, Una pregunta para vos.\nSi comparás con el antes, mostrá la cuenta y aclarala como estimación. No inventes números que no te pasé."}]}, {"h": "Cuándo subir el precio", "lista": ["Cuando el alcance creció: si cada mes hacés más de lo acordado, o ofrecés más mejoras de las que entran, o lo cobrás aparte o subís el mensual.", "Cuando tu paquete mejoró: para clientes nuevos, si sumaste piezas o ya tenés casos que mostrar.", "Cuando cambian tus costos: si tu valor hora cambió, revisá la fórmula del Módulo 5.", "Cómo hacerlo: avisá por escrito con anticipación (por ejemplo, 30 días), explicá qué cambia y respetá lo que firmaste. Nunca en medio de un período ya pagado.", "Cuándo no: si el cliente casi no lo usa. Ahí primero resolvé por qué, o proponé bajar el alcance."]}], "faq": [{"q": "¿Y si el cliente quiere cortar el mensual?", "a": "Que pueda hacerlo con un aviso simple. Todo queda en sus cuentas y sigue funcionando; solo deja de tener quién lo mantenga. Sacá tus accesos ese mismo día."}, {"q": "¿Puedo ofrecer el mantenimiento sin la instalación?", "a": "Sí, a negocios que ya usan Claude. Arrancá con una revisión como la del Módulo 6 para saber qué hay antes de comprometerte."}, {"q": "¿Qué hago si el cliente no me manda los casos del mes?", "a": "Revisá igual con casos que inventes vos a partir de sus documentos y decilo en el reporte. Si pasa varios meses, hablalo: puede que no lo estén usando."}], "fuentes": [], "cat": "sistema-base", "parte": "construi"};</script>
 
-<script src="../web/rutas.js?v=74fe0f0f"></script>
-<script src="../web/logos.js?v=74fe0f0f"></script>
-<script src="../web/guia.js?v=74fe0f0f"></script>
-<script src="../web/bienvenida.js?v=74fe0f0f"></script>
+<script src="../web/rutas.js?v=5108ba2f"></script>
+<script src="../web/logos.js?v=5108ba2f"></script>
+<script src="../web/guia.js?v=5108ba2f"></script>
+<script src="../web/bienvenida.js?v=5108ba2f"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

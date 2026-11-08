@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena conectores-claude-dentro-de-tus-apps, Conectores: Claude adentro de tu mail, tu agenda y tu Drive, Conectá Gmail, Google Calendar, Google Drive y otras apps para que Claude trabaje con tus datos reales. Y si tu herramienta no está, agregala como conector personalizado. y 74fe0f0f -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena conectores-claude-dentro-de-tus-apps, Conectores: Claude adentro de tu mail, tu agenda y tu Drive, Conectá Gmail, Google Calendar, Google Drive y otras apps para que Claude trabaje con tus datos reales. Y si tu herramienta no está, agregala como conector personalizado. y 5108ba2f -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=74fe0f0f">
-<link rel="stylesheet" href="../web/cta.css?v=74fe0f0f">
-<link rel="stylesheet" href="../web/biblioteca.css?v=74fe0f0f">
-<link rel="stylesheet" href="../web/guia.css?v=74fe0f0f">
-<link rel="stylesheet" href="../web/tema.css?v=74fe0f0f">
-<link rel="stylesheet" href="../web/bienvenida.css?v=74fe0f0f">
-<script src="../web/tema.js?v=74fe0f0f"></script>
-<link rel="icon" href="../web/favicon.svg?v=74fe0f0f" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=5108ba2f">
+<link rel="stylesheet" href="../web/cta.css?v=5108ba2f">
+<link rel="stylesheet" href="../web/biblioteca.css?v=5108ba2f">
+<link rel="stylesheet" href="../web/guia.css?v=5108ba2f">
+<link rel="stylesheet" href="../web/tema.css?v=5108ba2f">
+<link rel="stylesheet" href="../web/bienvenida.css?v=5108ba2f">
+<script src="../web/tema.js?v=5108ba2f"></script>
+<link rel="icon" href="../web/favicon.svg?v=5108ba2f" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=74fe0f0f"></script>
-<script src="../web/guias-web.js?v=74fe0f0f"></script>
-<script src="../web/comun.js?v=74fe0f0f"></script>
+<script src="../web/redes.js?v=5108ba2f"></script>
+<script src="../web/guias-web.js?v=5108ba2f"></script>
+<script src="../web/comun.js?v=5108ba2f"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="conectores-claude-dentro-de-tus-apps"></main>
 <script>var GUIA = {"slug": "conectores-claude-dentro-de-tus-apps", "t": "Conectores: Claude adentro de tu mail, tu agenda y tu Drive", "d": "Conectá Gmail, Google Calendar, Google Drive y otras apps para que Claude trabaje con tus datos reales. Y si tu herramienta no está, agregala como conector personalizado.", "tema": "Conectores y MCP", "min": 9, "fichaNombre": "Conectores", "ficha": [["Qué es", "Permisos para que Claude lea y use datos de tus apps desde el chat."], ["Necesitás", "Una cuenta en la app que querés conectar. Los conectores web están en todos los planes."], ["Qué no hace", "En Gmail no lee el contenido de los adjuntos, solo sus datos (nombre, tipo)."]], "secciones": [{"h": "Conectá tu primera app", "pasos": ["Desde un chat: tocá + abajo a la izquierda (o escribí /), pasá por Connectors y elegí Manage connectors.", "O desde la configuración: Customize → Connectors.", "Tocá el + al lado de Connectors, elegí la app y tocá Connect o Install.", "Iniciá sesión en la app y aceptá los permisos."], "p": ["Los nombres de los menús están como aparecen en la ayuda oficial de Claude (en inglés). Si tenés Claude en español, vas a ver la traducción en el mismo lugar.", "En Team y Enterprise, primero el dueño de la cuenta lo habilita en Organization settings → Connectors. Después cada persona conecta su propia cuenta."]}, {"h": "Qué puede hacer con Google", "lista": ["Gmail: buscar y leer mails, ver borradores, redactar, y también enviar, responder y reenviar. Por defecto te pide aprobación antes de cada envío.", "Google Calendar: ver tus eventos, crear, mover y borrar reuniones, buscar horarios libres en común y responder invitaciones.", "Google Drive: buscar y leer Docs, Sheets, Slides, PDF y archivos de Office; guardar archivos que arma Claude; compartir, mover o mandar a la papelera, con tu aprobación."]}, {"h": "Prendelos solo cuando los usás", "p": ["En cada chat podés elegir qué conectores están activos: + → Connectors y prendés o apagás cada uno. Las herramientas consumen bastante de tu límite, así que dejá prendido solo lo que necesitás."], "prompts": [{"t": "Resumen de la mañana", "c": "Con Gmail y Google Calendar:\n1. Decime qué reuniones tengo hoy, a qué hora y con quién.\n2. Listá los mails de las últimas 24 horas que necesitan respuesta mía (no promociones ni newsletters).\n3. Para los 3 más importantes, preparame un borrador de respuesta corto. No envíes nada."}, {"t": "Buscar en Drive", "c": "Buscá en mi Google Drive el documento más reciente sobre [TEMA] y haceme un resumen en 5 puntos, con lo que haya que decidir o hacer."}]}, {"h": "Conectores personalizados", "p": ["Si tu herramienta no está en el directorio pero tiene un servidor MCP remoto (una dirección web que le da acceso a Claude), la podés agregar. En el plan gratis podés tener uno."], "pasos": ["Andá a Customize → Connectors y tocá Add.", "Pasá por Custom y elegí Web.", "Poné un nombre y la URL del servidor MCP remoto. Tocá Continue.", "En Authentication elegí cómo inicia sesión: Sign in now, Sign in when needed o No sign in.", "Tocá Add y terminá la conexión."], "aviso": "Los conectores personalizados no están verificados por Anthropic. Agregá solo servidores de empresas o personas en las que confiás."}, {"h": "Si algo falla", "lista": ["Error con Google: Customize → Connectors, elegí el conector, Disconnect, y volvé a conectarlo.", "\"Access blocked\" en una cuenta de empresa de Google: el administrador de Google Workspace tiene que marcar la app de Claude como confiable.", "Claude no usa el conector: revisá que esté prendido en ese chat y nombralo en el pedido (\"buscá en mi Gmail...\")."]}], "faq": [{"q": "¿Claude puede borrar o mandar cosas sin preguntarme?", "a": "Puede modificar datos según los permisos de tu cuenta. En Gmail y Drive, por defecto te pide aprobación antes de enviar, compartir, mover o borrar. Leé siempre lo que te propone antes de aprobar."}, {"q": "¿Usan mis mails para entrenar a Claude?", "a": "Según la ayuda oficial, los datos de los conectores de Google no se usan para entrenar. Pero si en un plan personal aceptaste compartir tus chats para entrenamiento, lo que copies de esos datos a la conversación sí podría usarse."}, {"q": "¿Funciona en el celular?", "a": "Sí. Los conectores web andan en la web, la app de escritorio y las apps de iOS y Android."}], "fuentes": ["https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities", "https://support.claude.com/en/articles/10166901", "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work"], "cat": "conectores", "parte": "aprende"};</script>
 
-<script src="../web/rutas.js?v=74fe0f0f"></script>
-<script src="../web/logos.js?v=74fe0f0f"></script>
-<script src="../web/guia.js?v=74fe0f0f"></script>
-<script src="../web/bienvenida.js?v=74fe0f0f"></script>
+<script src="../web/rutas.js?v=5108ba2f"></script>
+<script src="../web/logos.js?v=5108ba2f"></script>
+<script src="../web/guia.js?v=5108ba2f"></script>
+<script src="../web/bienvenida.js?v=5108ba2f"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

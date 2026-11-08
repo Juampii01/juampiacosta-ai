@@ -75,11 +75,34 @@ def ordenar(guias, prompts):
             p_out.append({**por_p[t], "tema": c["n"], "cat": c["id"], "parte": c["parte"]})
     faltan = [g["slug"] for g in guias if g["slug"] not in usados_g] + [p["t"] for p in prompts if p["t"] not in usados_p]
     assert not faltan, f"orden.json: falta ubicar {faltan}"
-    cats = [{k: c[k] for k in ("id", "parte", "e", "n", "d") } | ({"destacada": True} if c.get("destacada") else {}) for c in o["categorias"]]
+    cats = [{k: c[k] for k in ("id", "parte", "e", "n", "d")} | ({"destacada": True} if c.get("destacada") else {}) for c in o["categorias"]]
     (WEB / "categorias.js").write_text("// Generado por build.py desde contenido/orden.json: partes y categorías de la biblioteca.\n"
                                        f"var PARTES = {json.dumps(o['partes'], ensure_ascii=False)};\n"
                                        f"var CATEGORIAS = {json.dumps(cats, ensure_ascii=False)};\n")
     return g_out, p_out, [c["n"] for c in o["categorias"]]
+
+
+def ordenar_herramientas(herrs):
+    """Grupos dentro de Skills, MCP y Herramientas (orden.json → herramientas). Cada herramienta en un solo grupo."""
+    o = json.loads((RAIZ / "contenido" / "orden.json").read_text())["herramientas"]
+    por = {}
+    for h in herrs:
+        assert (h["cat"], h["t"]) not in por, f"herramienta repetida: {h['t']}"
+        por[(h["cat"], h["t"])] = h
+    salida, usados, grupos = [], set(), []
+    for cat, lista in o.items():
+        for gr in lista:
+            grupos.append({"id": gr["id"], "seccion": cat, "e": gr["e"], "n": gr["n"], "d": gr["d"]})
+            for t in gr["items"]:
+                assert (cat, t) in por, f"orden.json: la herramienta «{t}» no está en {cat}"
+                assert (cat, t) not in usados, f"orden.json: «{t}» está en dos grupos"
+                usados.add((cat, t))
+                salida.append({**por[(cat, t)], "grupo": gr["id"]})
+    faltan = [t for (c, t) in por if (c, t) not in usados]
+    assert not faltan, f"orden.json: falta ubicar las herramientas {faltan}"
+    with open(WEB / "categorias.js", "a") as f:
+        f.write(f"var GRUPOS_HERR = {json.dumps(grupos, ensure_ascii=False)};\n")
+    return salida
 
 
 BLOQUEADO = "🔒 Disponible con el acceso completo."
@@ -289,6 +312,7 @@ if __name__ == "__main__":
     herrs = json.loads((RAIZ / "contenido" / "base-herramientas.json").read_text()) + h_lotes
     validar(guias, prompts, herrs)
     guias, prompts, ORDEN_CATS = ordenar(guias, prompts)
+    herrs = ordenar_herramientas(herrs)
     rutas = (WEB / "rutas.js").read_text()
     slugs = {g["slug"] for g in guias}
     faltan = [s for s in re.findall(r'"([a-z0-9-]{8,})"', rutas) if s not in slugs and s not in ("empezar", "conectar", "skills", "claude-code", "negocio", "contenido", "vender", "sistema-base", "agentes", "desarrollo")]

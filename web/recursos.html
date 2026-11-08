@@ -77,17 +77,17 @@
 
   <section id="skills">
     <div class="tit"><div><span class="mono">03 · Skills</span><h2>Skills para tu Claude</h2></div></div>
-    <div class="herrs" id="lista-skills"></div>
+    <div id="lista-skills"></div>
   </section>
 
   <section id="mcp">
     <div class="tit"><div><span class="mono">04 · MCP</span><h2>Conectá Claude con tus apps</h2></div></div>
-    <div class="herrs" id="lista-mcp"></div>
+    <div id="lista-mcp"></div>
   </section>
 
   <section id="herramientas">
     <div class="tit"><div><span class="mono">05 · Herramientas</span><h2>Plugins y apps</h2></div></div>
-    <div class="herrs" id="lista-herramientas"></div>
+    <div id="lista-herramientas"></div>
   </section>
 
   <section id="posts">
@@ -140,7 +140,10 @@ function tarjetaHerramienta(h) {
 }
 ["Skills", "MCP", "Herramientas"].forEach(function (cat) {
   var id = { Skills: "lista-skills", MCP: "lista-mcp", Herramientas: "lista-herramientas" }[cat];
-  document.getElementById(id).innerHTML = HERRAMIENTAS.filter(function (h) { return h.cat === cat; }).map(tarjetaHerramienta).join("");
+  var palabra = { Skills: "skills", MCP: "conectores", Herramientas: "herramientas" }[cat];
+  organizar(document.getElementById(id), HERRAMIENTAS.filter(function (h) { return h.cat === cat; }), tarjetaHerramienta,
+    { prefijo: "h-", visibles: 4, palabra: palabra, buscar: "Buscá en " + palabra + "…", clave: "grupo",
+      grupos: GRUPOS_HERR.filter(function (g) { return g.seccion === cat; }) });
 });
 
 // Packs de prompts: cada prompt con su botón «Copiar», plegados hasta tocar «Ver los N prompts»
