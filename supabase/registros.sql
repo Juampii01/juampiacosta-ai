@@ -32,3 +32,14 @@ alter table public.registros
   add column if not exists inversion text check (length(inversion) <= 60),
   add column if not exists perfil_completo boolean not null default false,
   add column if not exists actualizado timestamptz;
+
+-- Opiniones de la biblioteca (sección «Tu opinión», api/opinion.js). Solo escribe el servidor.
+create table if not exists public.opiniones (
+  id bigint generated always as identity primary key,
+  email text, nivel text,
+  nota smallint check (nota between 1 and 5),
+  gusta text, mejorar text, sobra text, falta text, vista text,
+  creado timestamptz not null default now()
+);
+alter table public.opiniones enable row level security;
+grant insert, select on public.opiniones to service_role;

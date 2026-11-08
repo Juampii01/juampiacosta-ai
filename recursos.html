@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de /recursos. No abrir esta: build.py la copia a ../recursos.html y pone la versión (e80405c6) -->
+<!-- Plantilla de /recursos. No abrir esta: build.py la copia a ../recursos.html y pone la versión (7408cb35) -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -8,33 +8,33 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="web/base.css?v=e80405c6">
-<link rel="stylesheet" href="web/cta.css?v=e80405c6">
-<link rel="stylesheet" href="web/biblioteca.css?v=e80405c6">
-<link rel="stylesheet" href="web/menu.css?v=e80405c6">
-<link rel="stylesheet" href="web/camino.css?v=e80405c6">
-<link rel="stylesheet" href="web/organizar.css?v=e80405c6">
-<link rel="stylesheet" href="web/recomendados.css?v=e80405c6">
-<link rel="stylesheet" href="web/tema.css?v=e80405c6">
-<link rel="stylesheet" href="web/bienvenida.css?v=e80405c6">
-<script src="web/tema.js?v=e80405c6"></script>
-<link rel="icon" href="web/favicon.svg?v=e80405c6" type="image/svg+xml">
+<link rel="stylesheet" href="web/base.css?v=7408cb35">
+<link rel="stylesheet" href="web/cta.css?v=7408cb35">
+<link rel="stylesheet" href="web/biblioteca.css?v=7408cb35">
+<link rel="stylesheet" href="web/menu.css?v=7408cb35">
+<link rel="stylesheet" href="web/camino.css?v=7408cb35">
+<link rel="stylesheet" href="web/organizar.css?v=7408cb35">
+<link rel="stylesheet" href="web/recomendados.css?v=7408cb35">
+<link rel="stylesheet" href="web/tema.css?v=7408cb35">
+<link rel="stylesheet" href="web/bienvenida.css?v=7408cb35">
+<script src="web/tema.js?v=7408cb35"></script>
+<link rel="icon" href="web/favicon.svg?v=7408cb35" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="web/redes.js?v=e80405c6"></script>
-<script src="web/guias-web.js?v=e80405c6"></script>
-<script src="web/herramientas.js?v=e80405c6"></script>
-<script src="web/prompts.js?v=e80405c6"></script>
-<script src="web/datos.js?v=e80405c6"></script>
-<script src="web/comun.js?v=e80405c6"></script>
-<script src="web/rutas.js?v=e80405c6"></script>
-<script src="web/categorias.js?v=e80405c6"></script>
-<script src="web/iconos.js?v=e80405c6"></script>
-<script src="web/organizar.js?v=e80405c6"></script>
-<script src="web/recomendados.js?v=e80405c6" defer></script>
-<script src="web/menu.js?v=e80405c6"></script>
+<script src="web/redes.js?v=7408cb35"></script>
+<script src="web/guias-web.js?v=7408cb35"></script>
+<script src="web/herramientas.js?v=7408cb35"></script>
+<script src="web/prompts.js?v=7408cb35"></script>
+<script src="web/datos.js?v=7408cb35"></script>
+<script src="web/comun.js?v=7408cb35"></script>
+<script src="web/rutas.js?v=7408cb35"></script>
+<script src="web/categorias.js?v=7408cb35"></script>
+<script src="web/iconos.js?v=7408cb35"></script>
+<script src="web/organizar.js?v=7408cb35"></script>
+<script src="web/recomendados.js?v=7408cb35" defer></script>
+<script src="web/menu.js?v=7408cb35"></script>
 <script>document.write(cabecera());</script>
 
 <main>
@@ -92,6 +92,31 @@
     <div class="tit"><div><span class="mono">De mis reels</span><h2>Lo que prometí en mis videos</h2></div></div>
     <div class="herrs" id="lista-posts"></div>
   </section>
+  <section id="opinion">
+    <div class="tit"><div><span class="mono">Tu opinión</span><h2>Ayudame a mejorar la biblioteca</h2><p class="tit-sub">Lo leo yo, una por una. Contame qué te sirve, qué cambiarías y qué te falta: lo que más se repite es lo primero que sumo.</p></div></div>
+    <form class="op glass" id="form-opinion" novalidate>
+      <fieldset class="op-nota">
+        <legend>¿Qué tan útil te resulta la biblioteca?</legend>
+        <div class="op-escala">
+          <label><input type="radio" name="nota" value="1"><span><b>1</b>Poco</span></label>
+          <label><input type="radio" name="nota" value="2"><span><b>2</b>Algo</span></label>
+          <label><input type="radio" name="nota" value="3"><span><b>3</b>Bastante</span></label>
+          <label><input type="radio" name="nota" value="4"><span><b>4</b>Mucho</span></label>
+          <label><input type="radio" name="nota" value="5"><span><b>5</b>Muchísimo</span></label>
+        </div>
+      </fieldset>
+      <label class="op-campo"><span>¿Qué es lo que más te sirve?</span><textarea name="gusta" rows="3" maxlength="2000" placeholder="Una guía, un prompt, cómo está ordenado…"></textarea></label>
+      <label class="op-campo"><span>¿Qué cambiarías o mejorarías?</span><textarea name="mejorar" rows="3" maxlength="2000" placeholder="Algo que no se entiende, que cuesta encontrar o que no te funcionó."></textarea></label>
+      <label class="op-campo"><span>¿Qué sentís que está de más?</span><textarea name="sobra" rows="3" maxlength="2000" placeholder="Secciones, guías o cosas que no usás o te confunden."></textarea></label>
+      <label class="op-campo"><span>¿Qué te gustaría que sume?</span><textarea name="falta" rows="3" maxlength="2000" placeholder="Un tema, una herramienta, un rubro, un video…"></textarea></label>
+      <div class="op-pie"><button class="btn" type="submit">Enviar mi opinión →</button><p class="op-estado" role="status"></p></div>
+    </form>
+    <div class="op-gracias glass" id="op-gracias" hidden>
+      <b>¡Gracias!</b>
+      <p>Ya me llegó. Si querés contarme algo más en detalle, escribime por Instagram.</p>
+      <button type="button" class="chip" id="op-otra">Mandar otra opinión</button>
+    </div>
+  </section>
   <p class="sin-resultados">No encontré nada con esa palabra.</p>
 </main>
 
@@ -142,6 +167,28 @@ if (GRATIS) document.getElementById("hero-nivel").textContent = "Plan gratis";
       setTimeout(function () { var d = document.getElementById("g-parte-" + a.dataset.parte); if (d) d.scrollIntoView({ block: "start" }); }, 80);
     });
   });
+})();
+// Tu opinión: se guarda en Supabase por /api/opinion (el email sale de la cookie)
+(function () {
+  var f = document.getElementById("form-opinion"), ok = document.getElementById("op-gracias"), estado = f.querySelector(".op-estado");
+  f.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var datos = { vista: "opinion" };
+    var nota = f.querySelector('input[name="nota"]:checked');
+    if (nota) datos.nota = Number(nota.value);
+    ["gusta", "mejorar", "sobra", "falta"].forEach(function (k) { var v = f.elements[k].value.trim(); if (v) datos[k] = v; });
+    if (Object.keys(datos).length < 2) { estado.textContent = "Elegí una nota o escribí algo antes de enviar."; return; }
+    var boton = f.querySelector("button[type=submit]");
+    boton.disabled = true; estado.textContent = "Enviando…";
+    fetch("/api/opinion", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datos), credentials: "same-origin" })
+      .then(function (r) {
+        boton.disabled = false;
+        if (!r.ok) throw new Error(r.status);
+        f.reset(); estado.textContent = ""; f.hidden = true; ok.hidden = false;
+      })
+      .catch(function () { boton.disabled = false; estado.textContent = "No se pudo enviar. Probá de nuevo en un rato o escribime por Instagram."; });
+  });
+  document.getElementById("op-otra").addEventListener("click", function () { ok.hidden = true; f.hidden = false; });
 })();
 // Skills, MCP y herramientas: qué hace, para qué te sirve, comando para copiar y link
 function tarjetaHerramienta(h) {
@@ -199,6 +246,6 @@ ultimosPosts(document.getElementById("ultimos-posts"));
 pintarRutas(document.getElementById("lista-rutas"));
 menuLateral();
 </script>
-<script src="web/bienvenida.js?v=e80405c6"></script>
+<script src="web/bienvenida.js?v=7408cb35"></script>
 </body>
 </html>

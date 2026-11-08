@@ -243,3 +243,27 @@ section { margin-top: 90px; }
 .herr.cerrada { opacity: .72; }
 .herr.cerrada:hover { opacity: 1; }
 .herr.cerrada .bajar { color: var(--glow); }
+
+/* Tu opinión */
+.op { display: grid; gap: 18px; max-width: 760px; margin-top: 8px; padding: clamp(18px, 3vw, 28px); border-radius: 24px; }
+.op fieldset { border: 0; padding: 0; margin: 0; }
+.op legend, .op-campo > span { display: block; margin-bottom: 8px; font-weight: 700; font-size: 16px; }
+.op-escala { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.op-escala input { position: absolute; opacity: 0; pointer-events: none; }
+.op-escala span { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 12px 6px; border-radius: 14px; cursor: pointer; font-size: 12.5px; color: var(--muted);
+  border: 1px solid var(--line); background: rgba(255, 255, 255, .04); transition: transform .15s, border-color .15s, background .15s; }
+.op-escala b { font-size: 20px; color: var(--ink); }
+.op-escala label:hover span { transform: translateY(-2px); border-color: rgba(255, 138, 76, .6); }
+.op-escala input:checked + span { background: var(--blue); border-color: var(--blue); color: #fff; }
+.op-escala input:checked + span b { color: #fff; }
+.op-escala input:focus-visible + span { outline: 2px solid var(--sky); outline-offset: 2px; }
+.op-campo textarea { width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255, 255, 255, .04);
+  color: var(--ink); font: inherit; font-size: 15px; line-height: 1.5; resize: vertical; }
+.op-campo textarea:focus { outline: none; border-color: var(--sky); }
+.op-pie { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.op-estado { color: var(--muted); font-size: 14px; }
+.op-gracias { max-width: 760px; margin-top: 8px; padding: 28px; border-radius: 24px; display: grid; gap: 8px; justify-items: start; border: 1px solid rgba(255, 90, 31, .45); }
+.op-gracias b { font-size: 24px; }
+.op-gracias p { color: var(--muted); }
+[data-tema="claro"] .op-escala span, [data-tema="claro"] .op-campo textarea { background: #fff; }
+@media (max-width: 520px) { .op-escala span { font-size: 11px; padding: 10px 2px; } }

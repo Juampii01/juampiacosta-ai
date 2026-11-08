@@ -11,6 +11,7 @@ var ICONO_MENU = {
   mcp: '<path d="M9 7V3M15 7V3M7 7h10v5a5 5 0 0 1-10 0zM12 17v4"/>',
   herramientas: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/>',
   posts: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/>',
+  opinion: '<path d="M4 5h16v11H9l-5 4z"/><path d="m12 7.5.9 1.9 2.1.3-1.5 1.5.4 2.1-1.9-1-1.9 1 .4-2.1-1.5-1.5 2.1-.3z"/>',
   mapa: '<path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/>',
   comunidad: '<path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c0 2.5 2.5 5 5 5l1.2-1.2-1.8-1-1 .8a4 4 0 0 1-2-2l.8-1-1-1.8z"/>',
   llamada: '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>'
@@ -24,7 +25,8 @@ var MENU = [
   { id: "skills", t: "Skills y plugins" },
   { id: "mcp", t: "MCP" },
   { id: "herramientas", t: "Herramientas" },
-  { id: "posts", t: "De mis reels" }
+  { id: "posts", t: "De mis reels" },
+  { id: "opinion", t: "Tu opinión" }
 ];
 
 function svgMenu(id) {
