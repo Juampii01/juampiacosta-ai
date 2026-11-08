@@ -1,0 +1,72 @@
+{
+ "slug": "seguimiento-de-prospectos-sin-ser-pesado",
+ "verificada": "2026-11-08",
+ "correcciones": [
+  {
+   "antes": "Usá mi ficha de voz. Dame dos versiones: una más cálida y una más directa.",
+   "despues": "Usá mi ficha de voz (está en las instrucciones del Proyecto o te la pego abajo; si no tengo, te pego dos o tres mensajes míos para que copies el tono). Dame dos versiones: una más cálida y una más directa.",
+   "motivo": "El prompt da por hecho que Claude ya tiene una ficha de voz. En un chat suelto no la tiene: solo ve lo que le pegás o lo que está en las instrucciones y los archivos del Proyecto, según la ayuda oficial de Proyectos. Sin ese contexto inventa un tono y el mensaje deja de sonar a vos.",
+   "fuente": "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects"
+  }
+ ],
+ "fuentes_extra": [
+  "https://support.google.com/docs/answer/40608",
+  "https://developers.facebook.com/docs/messenger-platform/policy/policy-overview",
+  "https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/overview"
+ ],
+ "ejemplo": {
+  "titulo": "Ejemplo resuelto: el seguimiento de una fotógrafa de producto",
+  "negocio": "Ejemplo inventado: una fotógrafa de producto que trabaja sola en Guadalajara, México. Hace fotos para tiendas online chicas: velas, cosmética, mates, ropa. Los contactos le llegan por Instagram, por mail y por recomendación.",
+  "punto_de_partida": "Tenía conversaciones abiertas en tres lugares y se acordaba de seguir solo a las que le escribían de nuevo. Cuando escribía, su mensaje era \"¿pudiste ver la propuesta?\".",
+  "pasos": [
+   "Descargó la planilla del kit, la importó en Google Sheets con Archivo → Importar, borró las filas EJEMPLO y cargó a las personas con las que había hablado el último mes.",
+   "Creó un Proyecto llamado Seguimientos, pegó en las instrucciones su ficha de voz y tres mensajes suyos que le gustaban, y subió la skill seguimiento-de-prospectos en Customize → Skills.",
+   "El lunes ordenó la planilla por próximo contacto. Le tocaban dos personas. Copió las dos filas y las pegó en el Proyecto con \"¿qué les escribo hoy?\".",
+   "Para la dueña de una tienda de velas que ya había tenido un mal fotógrafo (mensaje 3, la objeción), Claude propuso contarle cómo trabaja la prueba con dos productos antes de cerrar todo el catálogo. Eligió la versión más directa, le cambió una palabra y la mandó a mano por Instagram.",
+   "Para un contacto de Instagram que no respondía hacía más de una semana, revisó la regla: su herramienta de automatización ya no podía mandarle nada. Le escribió a mano y anotó en notas que, si no contestaba, el próximo paso era por mail, que la persona le había pasado.",
+   "Actualizó en la planilla último contacto, mensaje número y próximo contacto de cada fila con la fecha que sugirió Claude.",
+   "Cuando una persona le contestó \"ahora no, en enero\", le preguntó qué fecha le venía bien, pasó la fila a \"más adelante\" y puso esa fecha en próximo contacto."
+  ],
+  "resultado": "Quedó una sola planilla con todas las conversaciones, una rutina corta cada mañana y mensajes que siempre suman algo y suenan a ella. Los manda ella, a mano, y nadie queda olvidado ni recibe mensajes de más."
+ },
+ "si_falla": [
+  {
+   "sintoma": "Al importar el CSV en Google Sheets todo queda en una sola columna.",
+   "solucion": "Volvé a importar y en Tipo de separador (Separator character) elegí Coma en vez de Detectar automáticamente. Si alguna nota tiene comas, pedile a Claude que ponga entre comillas los textos con comas."
+  },
+  {
+   "sintoma": "Las tildes y las eñes aparecen como símbolos raros, o las fechas quedan mezcladas (día y mes invertidos).",
+   "solucion": "Guardá el archivo con codificación UTF-8 (en el Bloc de notas, Guardar como → Codificación UTF-8). Para las fechas, pedile a Claude que use siempre el formato AAAA-MM-DD: Sheets lo entiende igual en cualquier idioma."
+  },
+  {
+   "sintoma": "Tu herramienta de Instagram (por ejemplo ManyChat) no manda el seguimiento o tira error de ventana.",
+   "solucion": "Pasaron más de 24 horas desde la última interacción de la persona y ya no se permiten mensajes automáticos. Hasta 7 días podés responder a mano con la etiqueta Human Agent, si tu herramienta la tiene. Después, escribile por otro canal que la persona haya aceptado."
+  },
+  {
+   "sintoma": "Usás la API de WhatsApp Business (con un proveedor o con n8n) y el mensaje de seguimiento no sale.",
+   "solucion": "Fuera de la ventana de atención al cliente, WhatsApp solo deja mandar plantillas aprobadas. Armá una plantilla de seguimiento y hacé que la aprueben, o mandá el seguimiento a mano desde la app de WhatsApp Business."
+  },
+  {
+   "sintoma": "Claude escribe cosas que nunca hablaste con la persona o todos los mensajes suenan iguales.",
+   "solucion": "Pasale lo último que hablaron en concreto (una o dos frases) y la objeción con sus palabras. Pegá tu ficha de voz o mensajes tuyos. Si dice algo que no pasó, pedile que te marque de qué dato salió cada frase."
+  }
+ ],
+ "kit": [
+  {
+   "archivo": "planilla-seguimiento-prospectos.csv",
+   "que_es": "La planilla lista para importar en Google Sheets, con las columnas de la guía, fechas en formato AAAA-MM-DD y tres filas EJEMPLO para borrar.",
+   "contenido": "nombre,canal,de_donde_vino,que_necesita,objecion_principal,ultimo_contacto,mensaje_numero,proximo_contacto,estado,notas\nEJEMPLO Laura (tienda de velas),Instagram,Respondió una historia,Fotos de producto para la tienda online,Ya pagó un fotógrafo y no le gustó,2026-11-03,1,2026-11-06,en conversación,Le interesa fondo blanco y ambientadas\nEJEMPLO Martín (marca de mates),Mail,Recomendación de un cliente,Fotos para el lanzamiento de diciembre,Precio,2026-10-30,3,2026-11-06,propuesta enviada,Decide con la socia\nEJEMPLO Sofía (cosmética natural),WhatsApp,Formulario de la web,Renovar fotos del catálogo,No sabe si es el momento,2026-10-20,5,2027-01-15,más adelante,Pidió que le escriba en enero\n"
+  },
+  {
+   "archivo": "como-usar-planilla-seguimiento.md",
+   "que_es": "Cómo importar la planilla, las reglas de cada columna, la rutina diaria de 10 minutos y espacios sugeridos entre mensajes.",
+   "contenido": "# Planilla de seguimiento: cómo usarla\n\nEste kit trae `planilla-seguimiento-prospectos.csv`, lista para importar.\n\n## Importarla en Google Sheets\n\n1. Descargá el archivo .csv.\n2. En Google Sheets, abrí una hoja nueva y andá a Archivo → Importar (File → Import).\n3. Elegí la pestaña Subir (Upload) y seleccioná el archivo.\n4. En la ubicación elegí Reemplazar hoja actual o Insertar hojas nuevas.\n5. En Tipo de separador (Separator character) dejá Detectar automáticamente o elegí Coma.\n6. Tocá Importar.\n7. Borrá las filas que empiezan con EJEMPLO.\n\n## Reglas de la planilla\n\n- Fechas siempre como AAAA-MM-DD (2026-11-08). Así Sheets las ordena bien sin importar el idioma de tu cuenta.\n- `mensaje_numero` es el último que mandaste, del 1 al 5.\n- `estado` solo puede ser: nuevo, en conversación, propuesta enviada, ganado, perdido, más adelante.\n- `notas`: lo que te sirva para el próximo mensaje. Nada de datos sensibles.\n\n## Las dos vistas que usás todos los días\n\n- Seleccioná la fila 1 y andá a Datos → Crear un filtro. Filtrá `estado` para ocultar ganado y perdido.\n- Ordená por `proximo_contacto` de la A a la Z. Arriba quedan los de hoy y los atrasados.\n\n## Rutina diaria (10 minutos)\n\n1. Mirá las filas con `proximo_contacto` de hoy o anterior.\n2. Para cada una, usá el prompt de seguimiento con los datos de la fila.\n3. Mandá el mensaje vos, a mano.\n4. Actualizá `ultimo_contacto`, sumá 1 a `mensaje_numero` y poné el nuevo `proximo_contacto`.\n5. Si contestó, cambiá el `estado` y anotá lo que dijo.\n\n## Espacios sugeridos entre mensajes (ajustalos a tu rubro)\n\nEs un punto de partida, no una regla. Si la persona te dijo una fecha, manda esa fecha.\n\n- Mensaje 1: a los pocos días de la última charla.\n- Mensaje 2: una semana después del 1.\n- Mensaje 3: una semana después del 2.\n- Mensaje 4: dos semanas después del 3.\n- Mensaje 5: dos semanas después del 4. Después, `más adelante` con fecha de revisión.\n\nEn Instagram con automatizaciones, tené en cuenta la ventana de 24 horas que explica la guía: los mensajes 2 a 5 suelen caer fuera y tienen que ir a mano o por otro canal que la persona aceptó.\n"
+  },
+  {
+   "archivo": "seguimiento-de-prospectos/SKILL.md",
+   "que_es": "Skill que lee una o varias filas de la planilla, dice a quién escribir hoy y arma el mensaje que toca en dos versiones. Guardala en una carpeta seguimiento-de-prospectos, comprimila en ZIP y subila en Customize → Skills.",
+   "contenido": "---\nname: seguimiento-de-prospectos\ndescription: Escribe mensajes de seguimiento a prospectos que aportan algo nuevo, con mi tono y sin presionar. Usala cuando pegue una fila de mi planilla de seguimiento o pida un mensaje de seguimiento.\n---\n\n# Seguimiento de prospectos\n\nEscribís el próximo mensaje para una persona que todavía no compró. Cada mensaje tiene que darle una razón para responder. Nunca lo mandás vos: lo entregás para que el usuario lo revise y lo mande.\n\n## Qué te pasan\n\nUna fila de la planilla (nombre, canal, de dónde vino, qué necesita, objeción principal, último contacto, mensaje número, próximo contacto, estado, notas) o esos mismos datos sueltos. A veces, el último mensaje de la conversación.\n\nSi te pasan varias filas, primero decí a quién toca escribir hoy (próximo contacto igual o anterior a la fecha que te den) y después escribí un mensaje por persona.\n\n## Qué mensaje toca\n\nMirá `mensaje_numero` (el último que se mandó) y escribí el siguiente:\n\n1. **Recordatorio útil**: retomá lo que hablaron y sumá un recurso corto ligado a su problema.\n2. **Prueba**: un ejemplo parecido a su caso en dos o tres líneas. Usá solo ejemplos que el usuario te haya dado. Si no tenés ninguno, pedilo.\n3. **La objeción**: respondé la objeción principal antes de que vuelva a aparecer.\n4. **Pregunta directa**: \"¿Sigue siendo prioridad o lo dejamos para más adelante?\", con tus palabras.\n5. **Cierre amable**: avisá que no vas a insistir más y dejá la puerta abierta.\n\nSi el estado es `más adelante` y llegó la fecha, escribí un mensaje de reencuentro: retomá lo que pidió y preguntá si es buen momento.\n\n## Reglas\n\n- Que aporte algo nuevo: una idea, un ejemplo o una respuesta.\n- Chat (Instagram, WhatsApp): máximo 4 líneas. Mail: máximo 6 líneas y un asunto corto.\n- Una sola pregunta al final.\n- Prohibido: \"solo quería saber si viste mi mensaje\", \"¿pudiste verlo?\", culpa, urgencia falsa, descuentos que el usuario no autorizó.\n- No inventes datos de la conversación anterior. Si las notas no alcanzan para el mensaje que toca, decí qué te falta.\n- Si en las notas dice que pidió no recibir más mensajes, no escribas nada: avisá que hay que marcarlo como perdido.\n- Usá el tono de la ficha de voz o de los mensajes de ejemplo que te pase el usuario. Si no hay ninguno, escribí cercano, de vos y sin exagerar, y avisá que conviene pasarte ejemplos.\n\n## Qué entregás\n\nPara cada persona:\n1. Qué mensaje toca y por qué (una línea).\n2. Versión más cálida.\n3. Versión más directa.\n4. La fecha sugerida para el próximo contacto, para que el usuario la anote en la planilla.\n"
+  }
+ ],
+ "notas_revision": "Verifiqué: importación de CSV en Google Sheets (Archivo > Importar, opciones de ubicación, Separator character con Detect automatically / Tab / Comma / Custom, botón Import), política de Meta para Messenger e IG (ventana de 24 horas, Human Agent tag de 7 días para respuestas manuales; según ManyChat funciona en Instagram y no permite mensajes automáticos en esa ventana; OTN y otras etiquetas no están para Instagram) y plantillas de WhatsApp (únicas permitidas fuera de la ventana de atención). El aviso de la guía sobre Instagram es correcto. No pude abrir la página oficial de la ventana de WhatsApp con su duración, por eso el si_falla no la cuantifica. Los nombres en español de los menús de Sheets (Subir, Tipo de separador, Datos > Crear un filtro) los puse junto al nombre en inglés de la ayuda; no los verifiqué en una cuenta en español. La solución de UTF-8 en el Bloc de notas no la verifiqué en doc oficial de Microsoft."
+}

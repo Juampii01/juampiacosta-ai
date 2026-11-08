@@ -1,0 +1,98 @@
+{
+ "slug": "videos-virales-plantilla-hypit",
+ "verificada": "2026-11-08",
+ "correcciones": [
+  {
+   "antes": "Hypit convierte un video en una plantilla y Claude Code con HyperFrames arma tu video, con tu voz o una de IA.",
+   "despues": "Hypit convierte un video en un flujo reutilizable y, con Claude Code, arma tu versión hasta el video terminado, con tu voz o una de IA. HyperFrames suma piezas hechas con código, como placas y gráficos.",
+   "motivo": "Según su README, Hypit no se queda en la plantilla: el agente clona el video como un flujo completo (material, subtítulos, B-roll y efectos), genera lo que falta y arma la composición terminada, con su propio Studio para revisar y exportar. HyperFrames es un framework aparte, de HeyGen, que convierte HTML en MP4.",
+   "fuente": "https://github.com/hypit-ai/hypit"
+  },
+  {
+   "antes": "HyperFrames: escribís el video en HTML y lo convierte en MP4 (Apache 2.0).",
+   "despues": "HyperFrames: escribís el video en HTML y lo convierte en MP4 (Apache 2.0). Es un proyecto aparte de Hypit, de HeyGen, ideal para placas, títulos animados, gráficos y subtítulos hechos con código. Pide Node.js 22 o más nuevo y FFmpeg.",
+   "motivo": "El README de HyperFrames indica como requisitos Node.js 22+ y FFmpeg, y lo describe como un framework para convertir HTML, CSS, medios y animaciones en MP4. No es parte de Hypit, que tiene su propio sistema de composición.",
+   "fuente": "https://github.com/heygen-com/hyperframes"
+  },
+  {
+   "antes": "Usá Hypit para analizar este video [ARCHIVO o LINK] y convertilo en una plantilla reutilizable: gancho, ritmo, escenas, subtítulos y visuales. Quedate solo con la estructura, no con el contenido.",
+   "despues": "/hypit Analizá este video [ARCHIVO] y convertilo en un flujo reutilizable: gancho, ritmo, escenas, subtítulos y visuales. Quedate solo con la estructura, no con el guion, la música, las imágenes ni la cara de nadie. Antes de usar modelos pagos, decime cuáles y cuánto cuestan.",
+   "motivo": "El README de Hypit muestra que se invoca con la skill /hypit y que se le pasa un archivo de video (por ejemplo /path/to/video.mp4). También aclara que los modelos de generación son opcionales y que cada servicio cobra aparte, así que conviene pedir el costo antes.",
+   "fuente": "https://github.com/hypit-ai/hypit"
+  },
+  {
+   "antes": "Con la plantilla anterior y HyperFrames, armá un video vertical sobre [MI TEMA] con mi marca [COLORES, LOGO]. Usá estos recursos míos: [B-ROLL, FOTOS DE PRODUCTO, CLIPS]. Mostrame la vista previa antes de renderizar.",
+   "despues": "/hypit Con el flujo anterior, armá un video vertical sobre [MI TEMA] con mi marca [COLORES, LOGO]. Usá estos recursos míos: [B-ROLL, FOTOS DE PRODUCTO, CLIPS]. Si hace falta una placa o un gráfico hecho con código, hacelo con HyperFrames. Mostrame la vista previa antes de exportar.",
+   "motivo": "Hypit arma y exporta el video con su propio sistema (composición, Studio para revisar y exportación por separado). Pedirle que use \"la plantilla de Hypit con HyperFrames\" mezcla dos sistemas distintos; HyperFrames encaja mejor como fuente de piezas sueltas hechas en HTML.",
+   "fuente": "https://github.com/hypit-ai/hypit"
+  },
+  {
+   "antes": "Rhubarb usa seis formas básicas de boca (A a F) y tres opcionales (G, H y X). Necesitás un dibujo de la boca de tu mascota para cada una.",
+   "despues": "Rhubarb usa seis formas básicas de boca (A a F), que son obligatorias, y tres opcionales (G, H y X). Necesitás un dibujo de la boca de tu mascota para cada forma que uses. Ojo con el idioma: el reconocedor que viene por defecto solo entiende inglés; para audio en español hay que usar el reconocedor phonetic (-r phonetic). Y el audio tiene que estar en WAV u OGG.",
+   "motivo": "El README de Rhubarb dice que el reconocedor por defecto (PocketSphinx) solo reconoce diálogo en inglés y que para otros idiomas hay que usar phonetic. También aclara que los formatos de entrada admitidos son WAVE (.wav) y Ogg Vorbis (.ogg), y que A a F son el mínimo que hay que dibujar.",
+   "fuente": "https://github.com/DanielSWolf/rhubarb-lip-sync"
+  }
+ ],
+ "fuentes_extra": [
+  "https://raw.githubusercontent.com/hypit-ai/hypit/HEAD/LICENSE",
+  "https://raw.githubusercontent.com/hypit-ai/hypit/HEAD/docs/guide/agents.md",
+  "https://github.com/DanielSWolf/rhubarb-lip-sync/releases",
+  "https://hyperframes.heygen.com/quickstart"
+ ],
+ "ejemplo": {
+  "titulo": "Ejemplo resuelto: un video de ranking para una tienda de mates con su mascota",
+  "negocio": "Ejemplo inventado: una tienda online de mates y bombillas de Rosario, Santa Fe. La manejan dos socios, venden por Instagram y TikTok, y tienen una mascota dibujada: un termo con cara que usan en el logo.",
+  "punto_de_partida": "Vieron un video de ranking de otra cuenta (cinco cosas ordenadas de peor a mejor) que les pareció que retenía muy bien. Quieren uno igual de estructura sobre tipos de mate, con su mascota hablando, sin copiar el original ni pagar un editor.",
+  "pasos": [
+   "En la terminal instalaron la skill de Hypit con npx skills add hypit-ai/hypit -g y el plugin de HyperFrames con claude plugin marketplace add heygen-com/hyperframes y claude plugin install hyperframes@hyperframes. Comprobaron que tenían Node.js 22 o más y FFmpeg.",
+   "Bajaron el video de referencia a la carpeta del proyecto y completaron la plantilla de estructura del kit: gancho de 2 segundos con una pregunta polémica, cinco tramos con un cartel de ranking y remate con el número uno.",
+   "En Claude Code escribieron /hypit con el prompt de análisis corregido. El agente explicó por qué retenía el video, armó el flujo y avisó qué partes podía hacer sin modelos pagos (subtítulos, tablero de ranking, fotos propias) y cuáles necesitarían uno.",
+   "Decidieron no usar modelos de generación: le pasaron fotos propias de cada mate y el logo. Uno de los socios grabó el guion con su voz en el celular.",
+   "Para la mascota dibujaron las seis bocas básicas y la de reposo (A a F y X) con el mismo encuadre. Con la skill mascota-que-habla del kit, el agente convirtió el audio a WAV, corrió rhubarb -r phonetic --extendedShapes X -f json -o boca.json voz.wav y armó la capa de la boca.",
+   "Pidieron una placa de cierre con HyperFrames: el logo, el usuario de la cuenta y una entrada suave.",
+   "Revisaron la vista previa y dirigieron con frases del pack de prompts: acortar el gancho, subir los subtítulos y bajar la música. Con la revisión final del pack confirmaron que no quedara nada del video original.",
+   "Exportaron la versión final y la publicaron con música de la biblioteca de la red."
+  ],
+  "resultado": "Tienen un video de ranking con su estructura propia, su voz, sus fotos y su mascota hablando, sin nada copiado del original. El flujo queda guardado en el proyecto, así que el próximo ranking (bombillas, yerbas) se arma cambiando el contenido y volviendo a grabar la voz."
+ },
+ "si_falla": [
+  {
+   "sintoma": "Rhubarb mueve la boca de la mascota casi al azar con un audio en español.",
+   "solucion": "Estás usando el reconocedor por defecto, que solo entiende inglés. Agregá -r phonetic al comando. Si tu mascota no tiene dibujos G y H, sumá --extendedShapes X (o --extendedShapes \"\" si tampoco tiene X)."
+  },
+  {
+   "sintoma": "Rhubarb no abre el audio o tira un error con el archivo de entrada.",
+   "solucion": "Solo acepta WAV u OGG. Convertí el audio con FFmpeg, por ejemplo ffmpeg -i voz.mp3 -ac 1 -ar 44100 voz.wav, y pasale el archivo convertido como último argumento del comando."
+  },
+  {
+   "sintoma": "La vista previa de Hypit o de HyperFrames te da una dirección localhost que no abre en tu compu.",
+   "solucion": "Pasa cuando el agente corre en una máquina remota. La guía de Hypit aclara que un localhost de la máquina remota no es una dirección de tu compu: usá la función de reenvío de vista previa o de entrega de archivos de ese entorno, o corré Claude Code en tu propia compu."
+  },
+  {
+   "sintoma": "HyperFrames no renderiza o falla al arrancar.",
+   "solucion": "Revisá los requisitos: Node.js 22 o más nuevo (node --version) y FFmpeg instalado (ffmpeg -version). Si instalaste las skills con npx skills add y no coinciden con tu versión del programa, el README recomienda npx hyperframes skills update, que baja las skills de la misma versión que tu CLI."
+  },
+  {
+   "sintoma": "Hypit te pide credenciales de servicios o te avisa costos que no esperabas.",
+   "solucion": "Los modelos de generación son opcionales y cada servicio cobra aparte. Pedile que arme el video solo con subtítulos, gráficos y tus recursos, o que te diga qué modelo y servicio va a usar y cuánto cuesta antes de generar."
+  }
+ ],
+ "kit": [
+  {
+   "archivo": "mascota-que-habla/SKILL.md",
+   "que_es": "Skill para Claude Code que guía todo el proceso de Rhubarb: convertir el audio, elegir el reconocedor según el idioma, generar el JSON de bocas y armar la capa de la boca en HyperFrames o Hypit. Copiala en .claude/skills/mascota-que-habla/ o subila como ZIP.",
+   "contenido": "---\nname: mascota-que-habla\ndescription: Hace hablar a una mascota o personaje 2D sincronizando sus dibujos de boca con un audio usando Rhubarb Lip Sync, y arma la capa de la boca para una escena de HyperFrames o de Hypit. Usala cuando el usuario quiera que su mascota, logo con cara o personaje dibujado mueva la boca al ritmo de una voz grabada o de una voz de IA.\n---\n\n# Mascota que habla (Rhubarb Lip Sync)\n\nConvertís un audio en una lista de formas de boca con tiempos y la usás para cambiar el dibujo de la boca en el video. No generás la voz ni dibujás la mascota: eso lo trae la persona.\n\n## Qué te tienen que pasar\n\n1. El audio de la voz (cualquier formato; lo convertís vos).\n2. Los dibujos de la boca, uno por forma, con nombres boca-A.png, boca-B.png, boca-C.png, boca-D.png, boca-E.png, boca-F.png y, si los tiene, boca-G.png, boca-H.png y boca-X.png. Mismo tamaño y mismo encuadre en todos.\n3. El dibujo de la mascota sin boca (o con la boca en reposo) y dónde va la boca.\n4. El idioma del audio.\n\nSi falta alguno de los seis básicos (A a F), frená y pedilo: Rhubarb los necesita sí o sí. G, H y X son opcionales.\n\n## Pasos\n\n1. Comprobá que Rhubarb esté instalado: rhubarb --version. Si no está, guiá a la persona para bajar la última versión para su sistema desde la página de releases del repositorio oficial (DanielSWolf/rhubarb-lip-sync) y descomprimirla. En macOS, si el sistema bloquea el programa la primera vez, explicale cómo permitirlo desde la configuración de seguridad.\n2. Rhubarb solo lee WAV u OGG. Si el audio viene en otro formato, convertilo con FFmpeg:\n   ffmpeg -i voz-original.mp3 -ac 1 -ar 44100 voz.wav\n3. Elegí el reconocedor:\n   - Audio en inglés: el de siempre (no hace falta poner nada).\n   - Cualquier otro idioma, incluido el español: -r phonetic.\n4. Elegí las formas opcionales según los dibujos que haya. Si solo tiene X además de A a F: --extendedShapes X. Si no tiene ninguna opcional: --extendedShapes \"\".\n5. Corré Rhubarb con salida JSON. Ejemplo para español con X:\n   rhubarb -r phonetic --extendedShapes X -f json -o boca.json voz.wav\n   Para inglés podés sumar el guion con -d guion.txt, que mejora el resultado.\n6. Abrí boca.json. Tiene una lista mouthCues con start, end (en segundos) y value (la letra de la boca). Mostrale a la persona las primeras líneas para que vea que salió bien.\n7. Armá la capa de la boca:\n   - En HyperFrames: una imagen de la boca encima de la mascota que cambia de archivo según el tiempo, siguiendo boca.json, con la misma duración que el audio. Usá la skill /hyperframes para que la animación sea compatible con su render.\n   - En Hypit: describí la capa de la boca como un componente del proyecto que lee boca.json, siguiendo las referencias de la skill de Hypit.\n8. Mostrá la vista previa con el audio antes de renderizar o exportar.\n\n## Revisión antes de entregar\n\n- La boca se cierra (A) en las P, B y M.\n- En las pausas queda en reposo (X, o A si no hay X).\n- No hay saltos raros entre C, D y E: si los hay, revisá que los dibujos tengan el mismo encuadre.\n- Si la voz es clonada, confirmá que sea de la persona o de alguien que dio permiso por escrito.\n"
+  },
+  {
+   "archivo": "plantilla-estructura-video-referencia.md",
+   "que_es": "Plantilla para desarmar un video que funciona en tramos, separar lo que se puede reusar de lo que tiene dueño y armar el pedido para /hypit.",
+   "contenido": "# Plantilla de estructura de un video de referencia\n\nCompletá una por cada video que te gusta. Sirve para pedirle a Hypit (o a Claude) un video nuevo con la misma estructura, sin copiar lo que es de otro.\n\n## 1. El video de referencia\n\n- Link o archivo: [LINK]\n- Cuenta: [@CUENTA]\n- Duración: [SEGUNDOS]\n- Formato: [vertical / cuadrado / horizontal]\n- Por qué lo elegí: [qué me hizo quedarme mirando]\n\n## 2. La estructura (esto sí se puede reusar)\n\n| Tramo | Desde - hasta | Qué pasa | Qué lo hace funcionar |\n|---|---|---|---|\n| Gancho | [0 - 2 s] | [pregunta, frase rara, imagen que sorprende] | [por qué no lo pasás] |\n| Promesa | [2 - 5 s] | [qué vas a ver si te quedás] | |\n| Desarrollo 1 | | | |\n| Desarrollo 2 | | | |\n| Remate | | [la respuesta, el giro, el resultado] | |\n| Cierre o llamado | | [seguí, comentá, link] | |\n\n- Ritmo: [cada cuánto cambia el plano, si hay cortes al ritmo de la música o de las palabras]\n- Subtítulos: [palabra por palabra / frase completa, posición, color que resalta]\n- Recursos visuales: [B-roll, capturas, emojis, carteles, zoom]\n- Sonido: [voz en off, música de fondo, efectos en momentos clave]\n\n## 3. Lo que NO se copia (tiene dueño)\n\n- [ ] El guion o los chistes textuales del video.\n- [ ] La música (usá música con licencia o de la biblioteca de la red).\n- [ ] Las imágenes, clips o capturas del video original.\n- [ ] La cara, la voz o el nombre de la persona que aparece.\n- [ ] El logo o la marca de la cuenta.\n\n## 4. Mi versión\n\n- Tema: [MI TEMA]\n- Mi gancho (con mis palabras): [GANCHO]\n- Qué cambia en cada tramo: [una línea por tramo]\n- Mis recursos: [mis clips, fotos de producto, capturas propias]\n- Voz: [la mía grabada / voz de IA con permiso / mascota]\n- Marca: [colores, tipografía, logo]\n- ¿Lleva personas, voces o escenas realistas hechas con IA? [sí / no] Si es sí, marcarlo como IA al publicar.\n\n## 5. Pedido para el agente (copiá y completá)\n\n/hypit Tomá como referencia este video [ARCHIVO] solo por su estructura: [PEGAR LA TABLA DE LA SECCIÓN 2]. Armá mi versión con lo de la sección 4. No uses su guion, su música, sus imágenes ni la cara o la voz de nadie que aparezca. Antes de generar material con modelos pagos, decime qué vas a usar y cuánto cuesta. Mostrame la vista previa antes de exportar.\n"
+  },
+  {
+   "archivo": "pack-prompts-direccion-video-hypit.md",
+   "que_es": "Prompts listos para preparar el entorno sin gastar de más, clonar la estructura, hacer variantes de gancho, sumar placas con HyperFrames y revisar antes de exportar.",
+   "contenido": "# Pack de prompts para dirigir el video con el agente\n\nPara usar en Claude Code con la skill de Hypit (y HyperFrames si sumás placas hechas con código). Cambiá lo que está entre corchetes.\n\n## Preparar el terreno\n\n**Revisar el entorno**\n/hypit Antes de empezar, revisá si está todo lo que necesitás en mi compu para hacer un video. Decime qué falta y qué vas a instalar, y esperá mi OK antes de instalar nada.\n\n**Cuentas y costos**\n/hypit No uses ningún modelo pago todavía. Decime qué partes de este video se pueden hacer solo con subtítulos, gráficos y mis recursos, sin llamar a un modelo de generación, y cuáles necesitarían uno y con qué servicio.\n\n## Clonar la estructura\n\n**Analizar**\n/hypit Mirá este video [ARCHIVO], revisá sus cuadros y lo que se dice, y explicame en criollo por qué retiene: gancho, ritmo, cortes, subtítulos y remate. Después armá el flujo para hacer uno nuevo con esa estructura, sin usar su guion, su música, sus imágenes ni la cara de nadie.\n\n**Mi versión**\n/hypit Con ese flujo, armá mi versión sobre [TEMA], con mi marca [COLORES, LOGO] y estos recursos míos: [CLIPS, FOTOS]. Voz: [ARCHIVO DE MI VOZ / VOZ DE IA]. Mostrame la vista previa en Studio antes de exportar.\n\n**Variantes de gancho**\n/hypit Hacé 3 versiones del mismo video cambiando solo los primeros 2 segundos: [GANCHO 1], [GANCHO 2], [GANCHO 3]. El resto queda igual.\n\n## Una placa o gráfico con HyperFrames\n\n/hyperframes Armá una placa vertical de 4 segundos con el título [TÍTULO], mis colores [COLORES] y una entrada suave. Mostrame la vista previa y después renderizala a MP4 para sumarla al video.\n\n## Ajustes con tu voz\n\n- \"El gancho dura mucho, cortalo a la mitad.\"\n- \"Subí los subtítulos: tapan la cara.\"\n- \"Cambiá la tercera escena por este clip [ARCHIVO].\"\n- \"La música tapa la voz, bajala.\"\n- \"Ese corte llega tarde: que caiga justo en la palabra [PALABRA].\"\n- \"Volvé a mostrarme la vista previa.\"\n\n## Antes de publicar\n\n/hypit Revisá el video final: errores en subtítulos, cortes bruscos, partes donde la voz y la imagen no coinciden, y cualquier cosa que haya quedado del video de referencia (texto, logo, música). Listame lo que encuentres antes de exportar la versión final.\n"
+  }
+ ],
+ "notas_revision": "Verificado con los README crudos de los tres repos (raw.githubusercontent.com): Hypit (npx skills add hypit-ai/hypit -g, skill /hypit, gratis con licencia propia basada en Apache 2.0, modelos opcionales y pagos aparte, Studio y exportación propios; licencia: uso comercial propio y para clientes permitido, no como servicio multi-tenant ni reventa), HyperFrames (comandos de plugin correctos, Apache 2.0, requisitos Node.js 22+ y FFmpeg, Studio app con plan Pro opcional) y Rhubarb (formas A-F obligatorias y G, H, X opcionales, MIT, entrada solo WAV/OGG, reconocedor phonetic para idiomas distintos del inglés, formato JSON con mouthCues). La guía de agentes de Hypit sobre localhost remoto también se leyó en el repo. No se probó la instalación ni el render. No verifiqué que Hypit pueda leer un componente que consuma el JSON de Rhubarb: en la skill quedó como algo a armar siguiendo las referencias de Hypit. ElevenLabs no se verificó (solo se menciona como ejemplo)."
+}

@@ -1,0 +1,72 @@
+{
+ "slug": "guiones-de-reels-con-tu-voz",
+ "verificada": "2026-11-08",
+ "correcciones": [
+  {
+   "antes": "Estilo personalizado: en el selector de estilos del chat elegí \"Create & Edit Styles\" → \"Create Custom Style\" → \"Add Writing Example\" y pegá tus textos. Claude arma un estilo que podés elegir en cualquier chat.",
+   "despues": "Estilo personalizado: en el chat abrí el menú de herramientas junto al cuadro de mensaje (según tu versión, Search and tools o el botón +), elegí Use style → Create & edit styles → Create custom style → Add Writing Example. Pegá tus textos o subí un archivo (PDF, DOC o TXT) y tocá Create style. Claude arma un estilo que podés elegir en cualquier chat.",
+   "motivo": "La ayuda oficial describe el camino completo: el menú Search and tools abajo a la izquierda del chat, Use style, Create & edit styles, Create custom style, Add Writing Example y, al final, Create style. También indica que los ejemplos pueden subirse como archivo (pdf, doc, txt) o pegarse. La guía salteaba la entrada al menú y el botón final.",
+   "fuente": "https://support.claude.com/en/articles/10181068-configuring-and-using-styles"
+  },
+  {
+   "antes": "La memoria de un chat no pasa a otro chat del mismo proyecto. Lo que querés que recuerde siempre tiene que estar en el conocimiento o en las instrucciones.",
+   "despues": "No cuentes con que un chat se acuerde de lo que dijiste en otro. Si tenés la memoria prendida (Settings → Memory), cada proyecto tiene su propia memoria, pero es un resumen que arma Claude y no sabés qué guarda. Lo que querés que use siempre, como tu ficha de voz, tiene que estar en el conocimiento o en las instrucciones del proyecto.",
+   "motivo": "La ayuda de Proyectos dice que el contexto no se comparte entre chats de un proyecto salvo lo que está en el conocimiento, pero la ayuda de memoria aclara que, con la memoria prendida, cada proyecto tiene su propio espacio de memoria y su resumen. Decir que la memoria \"no pasa\" era más tajante que la documentación. El consejo de fondo (poner la ficha en el conocimiento) se mantiene.",
+   "fuente": "https://support.claude.com/en/articles/11817273-how-does-claude-s-memory-work"
+  }
+ ],
+ "fuentes_extra": [
+  "https://support.claude.com/en/articles/10181068-configuring-and-using-styles",
+  "https://support.claude.com/en/articles/11817273-how-does-claude-s-memory-work"
+ ],
+ "ejemplo": {
+  "titulo": "Ejemplo resuelto: guiones con la voz de una asesora de seguros",
+  "negocio": "Ejemplo inventado: una asesora de seguros independiente en Guadalajara, México. Trabaja sola, vende seguros de auto y de gastos médicos a familias y pequeños negocios, y graba reels con el celular en su oficina.",
+  "punto_de_partida": "Probó pedir guiones sin contexto y le salían frases como \"protegé lo que más amás\", que nunca diría. Habla de tú, directo y con ejemplos de clientes, y sus reels improvisados funcionan mejor que los escritos.",
+  "pasos": [
+   "Juntó las transcripciones de cuatro reels donde hablaba suelto y un audio largo que le mandó a una clienta explicando un deducible, sacando el nombre de la clienta.",
+   "Pegó todo en el prompt \"Ficha de voz\". En la ficha corrigió dos cosas: Claude había puesto que usa \"básicamente\" (lo dijo una sola vez) y faltaba que siempre cierra con \"¿me explico?\".",
+   "Pasó la ficha a la plantilla del kit, creó el proyecto Reels en Proyectos → + New Project, la subió al conocimiento y pegó la instrucción de la plantilla en Set project instructions.",
+   "Subió la skill guion-de-reel-con-mi-voz del kit y pidió un guion sobre qué cubre y qué no un seguro de auto básico, con el pedido final de comentar la palabra PÓLIZA.",
+   "De los tres ganchos eligió el que contradecía una creencia: \"Tu seguro no paga todo lo que crees, y te enteras el día del choque\". La skill dejó [DATO] donde hacía falta un monto, y lo completó con un ejemplo de su propia cartera, sin nombres.",
+   "Leyó el guion en voz alta y marcó dos frases donde se trababa. Las pegó con el prompt de ajuste, diciendo cómo las diría ella.",
+   "Claude propuso una regla nueva: \"No digo 'cobertura integral', digo 'te cubre todo esto'\". La sumó a la sección 7 de la ficha y reemplazó el archivo en el proyecto."
+  ],
+  "resultado": "Quedó un proyecto con su ficha de voz y una skill que arma cada guion con tres ganchos, bloques con lo que se ve en pantalla y un solo pedido. Los guiones nuevos ya traen sus muletillas y cada corrección queda guardada como regla en la ficha."
+ },
+ "si_falla": [
+  {
+   "sintoma": "No encontrás la opción de estilos en el chat.",
+   "solucion": "Abrí el menú de herramientas del cuadro de mensaje (Search and tools o el botón +, según tu versión) y buscá Use style. Si sigue sin aparecer, probá desde un chat nuevo en claude.ai en la compu: es más fácil de encontrar que en el celular."
+  },
+  {
+   "sintoma": "Dentro del proyecto, Claude escribe el guion sin usar la ficha de voz.",
+   "solucion": "Revisá que la ficha esté en el conocimiento del proyecto y no solo pegada en un chat viejo. Poné en Set project instructions que la use siempre, y en el pedido nombrala: \"usá mi ficha de voz del conocimiento del proyecto\"."
+  },
+  {
+   "sintoma": "El guion sigue sonando genérico aunque tenga la ficha.",
+   "solucion": "Casi siempre es porque los textos de base eran escritos (posts, mails) y no hablados. Sumá transcripciones de cosas que dijiste a cámara o en audios. Y corregí con ejemplos concretos: pegale la frase que sonó a máquina y cómo la dirías vos."
+  },
+  {
+   "sintoma": "El guion trae datos, porcentajes o casos que vos nunca le diste.",
+   "solucion": "Borralos antes de grabar y repetile la regla: \"No inventes datos: si hace falta uno, dejá [DATO]\". Si usás la skill del kit, ya la tiene. Sumá la regla también a la ficha de voz."
+  },
+  {
+   "sintoma": "Usás estilo y proyecto a la vez y los guiones salen con un tono raro.",
+   "solucion": "Pueden estar diciendo cosas distintas. Si el estilo lo armaste con textos escritos y la ficha con textos hablados, para guiones de reels apagá el estilo y dejá que mande la ficha del proyecto."
+  }
+ ],
+ "kit": [
+  {
+   "archivo": "guion-de-reel-con-mi-voz/SKILL.md",
+   "que_es": "Skill que escribe el guion con tu ficha de voz: tres ganchos, bloques con lo que se ve en pantalla, un solo pedido y las frases a probar en voz alta, sin inventar datos. Guardala en una carpeta guion-de-reel-con-mi-voz, comprimila en ZIP y subila en Customize → Skills.",
+   "contenido": "---\nname: guion-de-reel-con-mi-voz\ndescription: Escribe guiones de reels hablados con la voz del usuario a partir de su ficha de voz, con tres ganchos, desarrollo en bloques con lo que se ve en pantalla y un solo pedido final, sin inventar datos. Usala cuando el usuario pida un guion, un reel, un video corto para Instagram, TikTok o Shorts, o quiera ajustar un guion que no le suena natural.\n---\n\n# Guion de reel con mi voz\n\nEscribís guiones para decir a cámara, no para leer. Tienen que sonar a la persona, no a un manual.\n\n## Antes de escribir\n\n1. Buscá la ficha de voz: en el conocimiento del proyecto, en las instrucciones o en el chat. Si no está, pedila. Si la persona no tiene una, ofrecé armarla con 3 a 5 transcripciones suyas y no escribas el guion hasta tenerla.\n2. Confirmá que tenés: tema, a quién le habla, la idea que se tiene que llevar la persona y el pedido final. Si falta algo, preguntá todo junto en un solo mensaje.\n\n## Cómo escribís\n\n- Usá las expresiones que la ficha marca como propias. No uses ninguna de la lista de palabras que no usa.\n- Frases del largo que dice la ficha. Si no lo dice, cortas: una idea por frase.\n- Nada de \"hola, ¿cómo están?\", \"en este video te voy a contar\" ni \"sin más preámbulos\".\n- Nada de cifras, porcentajes, nombres de clientes ni resultados que no estén en lo que te pasaron. Si hace falta un dato, escribí [DATO].\n- Si la idea necesita más de tres bloques para explicarse, avisá que da para dos reels y proponé cómo partirla.\n\n## Qué entregás, en este orden\n\n1. **Tres ganchos distintos**: uno con pregunta, uno con un ejemplo concreto, uno que contradiga algo que se cree. Cada uno, una sola frase.\n2. **Desarrollo**: dos o tres bloques. Cada bloque con lo que se dice y, entre corchetes, lo que se ve en pantalla.\n3. **Prueba**: un ejemplo, un caso o algo que se muestra. Si la persona no te dio ninguno, dejá [EJEMPLO TUYO] y sugerí qué tipo de ejemplo serviría.\n4. **Cierre**: el pedido final en una sola frase.\n5. **Para revisar en voz alta**: hasta tres frases del guion que tienen más riesgo de no sonar naturales, para que la persona las pruebe primero.\n\n## Cuando la persona te corrige\n\nSi te dice \"esto no lo diría así\" y cómo lo diría:\n1. Reescribí solo esas partes y ajustá lo que está alrededor para que combine.\n2. Proponé una regla nueva para la ficha de voz en una línea, por ejemplo: \"No uso 'potenciar': digo 'mejorar'\".\n"
+  },
+  {
+   "archivo": "plantilla-ficha-de-voz.md",
+   "que_es": "La plantilla de la ficha de voz con las seis partes del prompt, una sección para ir sumando reglas al corregir y la instrucción lista para pegar en el proyecto.",
+   "contenido": "# Ficha de voz: plantilla\n\nCompletala con ayuda del prompt \"Ficha de voz\" de la guía, corregila a mano y subila al conocimiento de tu proyecto de contenido. Cada vez que corrijas un guion y la corrección se repita, sumala acá.\n\n## Datos de base\n\n- Nombre o cuenta: [@TU_CUENTA]\n- A qué me dedico, en una línea: [UNA LÍNEA]\n- A quién le hablo: [TU PÚBLICO]\n- Trato: [VOS / TÚ / USTED]\n- Textos de los que salió esta ficha: [CUÁNTOS Y DE QUÉ: REELS, AUDIOS, POSTS]\n\n## 1. Cómo arranco\n\n- Cuando explico algo, arranco con: [EJEMPLO REAL DE UNA FRASE TUYA]\n- Nunca arranco con: [EJEMPLO: \"HOLA A TODOS\"]\n\n## 2. Ritmo\n\n- Mis frases son: [CORTAS / LARGAS / MEZCLA]\n- Hago pausas o remates con: [EJEMPLO: \"¿Y sabés qué?\", \"Punto.\"]\n\n## 3. Palabras y expresiones que uso seguido\n\n- [EXPRESIÓN 1]\n- [EXPRESIÓN 2]\n- [EXPRESIÓN 3]\n\n## 4. Palabras que no uso nunca\n\n- [PALABRA QUE SUENA FORZADA PARA VOS]\n- [PALABRA DE MANUAL QUE NO DIRÍAS]\n\n## 5. Cómo cierro\n\n- Lo que suelo pedir al final: [EJEMPLO: \"COMENTÁ LA PALABRA GUIA\"]\n- Cómo lo digo: [LA FRASE TAL CUAL]\n\n## 6. Tres frases que suenan a mí\n\n1. [FRASE]\n2. [FRASE]\n3. [FRASE]\n\n## 7. Reglas que fui sumando al corregir\n\nUna línea por regla, con la fecha. Ejemplo: \"2026-11-08: no digo 'potenciar', digo 'mejorar'.\"\n\n- [AAAA-MM-DD]: [REGLA]\n\n## Instrucción para el proyecto\n\nPegá esto en las instrucciones del proyecto (Set project instructions):\n\n\"Para cualquier guion, post o texto que vaya a decir o publicar, usá siempre la ficha de voz que está en el conocimiento de este proyecto. Si algo de lo que escribís choca con la ficha, gana la ficha. No inventes datos: si hace falta uno, dejá [DATO].\"\n"
+  }
+ ],
+ "notas_revision": "Verifiqué en la ayuda oficial el camino para crear un estilo personalizado (Search and tools > Use style > Create & edit styles > Create custom style > Add Writing Example > Create style, y la alternativa Describe style instead), los formatos de los ejemplos, la creación de proyectos (Projects > + New Project, Set project instructions) y cómo funciona la memoria por proyecto (Settings > Memory; cada proyecto con memoria propia; contexto no compartido entre chats salvo el conocimiento). La ayuda de estilos menciona el menú Search and tools; otras ayudas actuales describen el botón + del cuadro de mensaje, por eso la corrección nombra los dos. No pude confirmar si los estilos personalizados funcionan igual en todos los planes ni dentro de proyectos: la guía no lo afirma."
+}
