@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de /recursos. No abrir esta: build.py la copia a ../recursos.html y pone la versión (8757e687) -->
+<!-- Plantilla de /recursos. No abrir esta: build.py la copia a ../recursos.html y pone la versión (6b38c51f) -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -8,32 +8,32 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="web/base.css?v=8757e687">
-<link rel="stylesheet" href="web/cta.css?v=8757e687">
-<link rel="stylesheet" href="web/biblioteca.css?v=8757e687">
-<link rel="stylesheet" href="web/menu.css?v=8757e687">
-<link rel="stylesheet" href="web/vitrina.css?v=8757e687">
-<link rel="stylesheet" href="web/organizar.css?v=8757e687">
-<link rel="stylesheet" href="web/recomendados.css?v=8757e687">
-<link rel="stylesheet" href="web/tema.css?v=8757e687">
-<link rel="stylesheet" href="web/bienvenida.css?v=8757e687">
-<script src="web/tema.js?v=8757e687"></script>
-<link rel="icon" href="web/favicon.svg?v=8757e687" type="image/svg+xml">
+<link rel="stylesheet" href="web/base.css?v=6b38c51f">
+<link rel="stylesheet" href="web/cta.css?v=6b38c51f">
+<link rel="stylesheet" href="web/biblioteca.css?v=6b38c51f">
+<link rel="stylesheet" href="web/menu.css?v=6b38c51f">
+<link rel="stylesheet" href="web/camino.css?v=6b38c51f">
+<link rel="stylesheet" href="web/organizar.css?v=6b38c51f">
+<link rel="stylesheet" href="web/recomendados.css?v=6b38c51f">
+<link rel="stylesheet" href="web/tema.css?v=6b38c51f">
+<link rel="stylesheet" href="web/bienvenida.css?v=6b38c51f">
+<script src="web/tema.js?v=6b38c51f"></script>
+<link rel="icon" href="web/favicon.svg?v=6b38c51f" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="web/redes.js?v=8757e687"></script>
-<script src="web/guias-web.js?v=8757e687"></script>
-<script src="web/herramientas.js?v=8757e687"></script>
-<script src="web/prompts.js?v=8757e687"></script>
-<script src="web/datos.js?v=8757e687"></script>
-<script src="web/comun.js?v=8757e687"></script>
-<script src="web/rutas.js?v=8757e687"></script>
-<script src="web/categorias.js?v=8757e687"></script>
-<script src="web/organizar.js?v=8757e687"></script>
-<script src="web/recomendados.js?v=8757e687" defer></script>
-<script src="web/menu.js?v=8757e687"></script>
+<script src="web/redes.js?v=6b38c51f"></script>
+<script src="web/guias-web.js?v=6b38c51f"></script>
+<script src="web/herramientas.js?v=6b38c51f"></script>
+<script src="web/prompts.js?v=6b38c51f"></script>
+<script src="web/datos.js?v=6b38c51f"></script>
+<script src="web/comun.js?v=6b38c51f"></script>
+<script src="web/rutas.js?v=6b38c51f"></script>
+<script src="web/categorias.js?v=6b38c51f"></script>
+<script src="web/organizar.js?v=6b38c51f"></script>
+<script src="web/recomendados.js?v=6b38c51f" defer></script>
+<script src="web/menu.js?v=6b38c51f"></script>
 <script>document.write(cabecera());</script>
 
 <main>
@@ -42,19 +42,17 @@
     <div class="b b-hero glass">
       <div>
         <span class="mono" style="color:var(--glow)" id="hero-nivel">Acceso fundador</span>
-        <h1 class="saludo">Bienvenido a la biblioteca: todo lo que uso para <em>armar sistemas con Claude</em>.</h1>
-        <p>Guías, prompts, skills y conectores en un solo lugar. Cada semana se suman recursos nuevos.</p>
+        <h1 class="saludo" id="saludo">Bienvenido a la biblioteca: todo lo que uso para <em>armar sistemas con Claude</em>.</h1>
+        <p>No tenés que leer todo: seguí tu próximo paso y avanzá por partes. Cada semana se suman recursos nuevos.</p>
       </div>
-      <a class="btn" href="#rutas" data-bajar-a="ruta-recomendada" style="align-self:flex-start">Empezar por acá ↓</a>
     </div>
     <a class="b b-red glass" id="b-ig" target="_blank" rel="noopener"></a>
     <a class="b b-red glass" id="b-dm" target="_blank" rel="noopener"></a>
-    <div class="b b-num glass"><b id="n-recursos"></b><span>recursos</span></div>
-    <div class="b b-num glass"><b id="n-guias"></b><span>guías paso a paso</span></div>
+    <a class="b b-paso glass" id="b-paso"></a>
   </div>
   <div id="para-vos"></div>
-  <div class="tit" style="margin-top:44px"><div><span class="mono">Lo más completo</span><h2>Empezá por lo que más te va a servir</h2></div></div>
-  <div class="v-grid"><article class="v-card v-card--grande"><div class="v-top"><span class="v-etq"><i></i>El método</span><span class="v-num">9</span></div><h3>El sistema base para vender IA a negocios</h3><p>Paso a paso para armar tu oferta, conseguir a quién venderle, hacer la llamada de diagnóstico, cobrar, instalarlo y mantenerlo todos los meses. Con plantillas para cada etapa.</p><ol class="v-pasos"><li><a href="guias/sistema-base-modulo-1-la-oferta.html"><b>01</b><span>La oferta: Claude instalado en tu negocio</span><small>9 min</small></a></li><li><a href="guias/sistema-base-modulo-2-elegir-a-quien-venderle.html"><b>02</b><span>Elegir a quién venderle y armar tu lista de 50</span><small>8 min</small></a></li><li><a href="guias/sistema-base-modulo-3-el-primer-mensaje.html"><b>03</b><span>El primer mensaje: pedir 15 minutos sin hacer spam</span><small>9 min</small></a></li><li><a href="guias/sistema-base-modulo-4-la-llamada-de-diagnostico.html"><b>04</b><span>La llamada de diagnóstico de 15 minutos</span><small>10 min</small></a></li><li><a href="guias/sistema-base-modulo-5-propuesta-y-precio.html"><b>05</b><span>Propuesta de una página y cómo ponerle precio</span><small>10 min</small></a></li><li><a href="guias/sistema-base-modulo-6-la-instalacion-paso-a-paso.html"><b>06</b><span>La instalación paso a paso</span><small>12 min</small></a></li><li><a href="guias/sistema-base-modulo-7-entrega-y-capacitacion.html"><b>07</b><span>Entrega y capacitación de 30 minutos</span><small>8 min</small></a></li><li><a href="guias/sistema-base-modulo-8-mantenimiento-mensual.html"><b>08</b><span>El mantenimiento mensual y cómo mostrar su valor</span><small>9 min</small></a></li><li><a href="guias/sistema-base-modulo-9-contrato-y-cuidados.html"><b>09</b><span>Un acuerdo simple por escrito y los cuidados</span><small>8 min</small></a></li></ol><span class="v-etq" style="align-self:flex-start;margin-top:6px"><i></i>Plantillas incluidas</span><div class="v-chips"><span>Sistema base · Prospección</span><span>Sistema base · Diagnóstico</span><span>Sistema base · Propuesta</span><span>Propuesta de automatización para un cliente</span><span>Sistema base · Instalación</span><span>Sistema base · Reporte mensual</span><span>Sistema base · Objeciones</span><span>Detectá qué automatizar en un rubro</span><span>Adaptá el sistema a un rubro nuevo</span><span>Armá la demo para un rubro</span></div><div class="v-pie"><span>9 guías</span><span>~83 min de lectura</span><span>10 packs de plantillas</span></div><a class="v-ir" href="guias/sistema-base-modulo-1-la-oferta.html">Empezar por el módulo 1 →</a></article><article class="v-card"><div class="v-top"><span class="v-etq"><i></i>Listo para replicar</span><span class="v-num">9</span></div><h3>Sistemas por rubro</h3><p>Qué le come el tiempo a cada negocio, qué le instalás, los prompts listos y cómo ofrecérselo.</p><div class="v-chips"><a href="guias/sistema-ia-para-inmobiliarias.html">Inmobiliarias</a><a href="guias/sistema-ia-para-clinicas-y-centros-de-estetica.html">Clínicas y centros de estética</a><a href="guias/sistema-ia-para-restaurantes-y-gastronomia.html">Restaurantes y gastronomía</a><a href="guias/sistema-ia-para-estudios-contables.html">Estudios contables</a><a href="guias/sistema-ia-para-tiendas-online.html">Tiendas online</a><a href="guias/sistema-ia-para-gimnasios-y-entrenadores.html">Gimnasios y entrenadores</a><a href="guias/sistema-ia-para-estudios-juridicos.html">Estudios jurídicos</a><a href="guias/sistema-ia-para-agencias-de-marketing.html">Agencias de marketing</a><a href="guias/sistema-ia-para-profesores-y-academias.html">Profesores y academias</a></div><div class="v-pie"><span>9 guías</span><span>~80 min de lectura</span></div></article><article class="v-card"><div class="v-top"><span class="v-etq"><i></i>Oficiales y verificadas</span><span class="v-num">76</span></div><h3>Skills, MCP y herramientas</h3><p>Cada una con el comando exacto para instalarla, sacado de la documentación de quien la publica.</p><div class="v-logos"><i><img src="web/logos/claude.svg" alt="" loading="lazy"></i><i><img src="web/logos/github.svg" alt="" loading="lazy"></i><i><img src="web/logos/notion.svg" alt="" loading="lazy"></i><i><img src="web/logos/supabase.svg" alt="" loading="lazy"></i><i><img src="web/logos/vercel.svg" alt="" loading="lazy"></i><i><img src="web/logos/n8n.svg" alt="" loading="lazy"></i><i><img src="web/logos/zapier.svg" alt="" loading="lazy"></i><i><img src="web/logos/make.svg" alt="" loading="lazy"></i><i><img src="web/logos/figma.svg" alt="" loading="lazy"></i><i><img src="web/logos/googledrive.svg" alt="" loading="lazy"></i><i><img src="web/logos/gmail.svg" alt="" loading="lazy"></i><i><img src="web/logos/whatsapp.svg" alt="" loading="lazy"></i></div><div class="v-pie"><span>23 skills</span><span>27 MCP</span><span>26 herramientas</span></div><a class="v-ir" href="#mcp">Ver las herramientas →</a></article><article class="v-card v-card--franja"><div class="v-franja-txt"><div class="v-top"><span class="v-etq"><i></i>Que no se te corte el plan</span><span class="v-num">15</span></div><h3>Gastá menos tokens con Claude</h3><p>Que no se te corte el plan a mitad de semana: buenas prácticas para que Claude rinda más con el mismo plan.</p><div class="v-pie"><span>15 guías</span><span>~109 min de lectura</span></div><a class="v-ir" href="guias/medidor-de-uso-y-limites-de-claude.html">Empezar por acá →</a></div><div><ol class="v-pasos"><li><a href="guias/medidor-de-uso-y-limites-de-claude.html"><b>01</b><span>Cómo leer tu uso de Claude y planificar la semana</span><small>7 min</small></a></li><li><a href="guias/errores-que-agotan-tu-plan-de-claude.html"><b>02</b><span>7 errores que te agotan el plan de Claude</span><small>7 min</small></a></li><li><a href="guias/pedidos-que-salen-a-la-primera.html"><b>03</b><span>Pedidos que salen a la primera: menos ida y vuelta, más plan</span><small>6 min</small></a></li><li><a href="guias/por-que-claude-se-vuelve-torpe-en-chats-largos.html"><b>04</b><span>Por qué Claude se pone torpe en chats largos (y cómo seguir en limpio)</span><small>7 min</small></a></li><li><a href="guias/proyectos-y-cache-para-gastar-menos.html"><b>05</b><span>Proyectos y caché: subí tu material una vez y gastá menos</span><small>7 min</small></a></li><li><a href="guias/archivos-sin-desperdiciar-tokens.html"><b>06</b><span>Archivos sin desperdiciar tokens: mandá solo lo que importa</span><small>7 min</small></a></li></ol><span class="v-mas">+ 9 guías más en la categoría</span></div></article><article class="v-card"><div class="v-top"><span class="v-etq"><i></i>Agentes</span><span class="v-num">9</span></div><h3>Armá tus propios agentes</h3><p>De qué es un agente de verdad al Agent SDK oficial: investigación, atención, ventas, contenido y seguridad.</p><ol class="v-pasos"><li><a href="guias/que-es-un-agente-de-ia-de-verdad.html"><b>01</b><span>Qué es un agente de IA de verdad (y cuándo no te hace falta)</span><small>7 min</small></a></li><li><a href="guias/disena-tu-agente-en-una-hoja.html"><b>02</b><span>Diseñá tu agente en una hoja antes de construirlo</span><small>8 min</small></a></li><li><a href="guias/agente-de-investigacion.html"><b>03</b><span>Un agente de investigación que busca, compara y te deja un informe</span><small>10 min</small></a></li><li><a href="guias/agente-de-atencion-con-base-de-conocimiento.html"><b>04</b><span>Agente de atención que responde solo con tu información</span><small>10 min</small></a></li><li><a href="guias/agente-que-califica-prospectos.html"><b>05</b><span>Agente que califica prospectos: puntúa, resume y te avisa</span><small>9 min</small></a></li></ol><span class="v-mas">+ 4 guías más en la ruta</span><div class="v-pie"><span>9 guías</span><span>~83 min de lectura</span></div><a class="v-ir" href="guias/que-es-un-agente-de-ia-de-verdad.html">Empezar la ruta →</a></article><article class="v-card"><div class="v-top"><span class="v-etq"><i></i>Desarrollo</span><span class="v-num">9</span></div><h3>De la idea a tu app publicada</h3><p>Especificación, base de datos, login, cobros con Stripe y Mercado Pago, dominio y lo que le falta a una demo para ser producto.</p><ol class="v-pasos"><li><a href="guias/escribi-la-especificacion-antes-de-programar.html"><b>01</b><span>Escribí la especificación antes de programar</span><small>7 min</small></a></li><li><a href="guias/de-idea-a-app-publicada-con-claude-code.html"><b>02</b><span>De idea a app publicada con Claude Code</span><small>11 min</small></a></li><li><a href="guias/git-y-github-para-no-perder-nada.html"><b>03</b><span>Git y GitHub para no perder nada</span><small>9 min</small></a></li><li><a href="guias/base-de-datos-con-supabase-y-claude-code.html"><b>04</b><span>Base de datos con Supabase y Claude Code</span><small>11 min</small></a></li><li><a href="guias/usuarios-y-login-sin-romperte-la-cabeza.html"><b>05</b><span>Usuarios y login sin romperte la cabeza</span><small>9 min</small></a></li></ol><span class="v-mas">+ 4 guías más en la ruta</span><div class="v-pie"><span>9 guías</span><span>~89 min de lectura</span></div><a class="v-ir" href="guias/escribi-la-especificacion-antes-de-programar.html">Empezar la ruta →</a></article><article class="v-card"><div class="v-top"><span class="v-etq"><i></i>Claude Code</span><span class="v-num">10</span></div><h3>Claude Code a fondo</h3><p>Instalarlo sin miedo, planificar, memoria del proyecto, subagentes, tareas programadas y permisos con cuidado.</p><ol class="v-pasos"><li><a href="guias/claude-code-de-cero-sin-miedo.html"><b>01</b><span>Claude Code de cero y sin miedo</span><small>9 min</small></a></li><li><a href="guias/comandos-de-claude-code-de-todos-los-dias.html"><b>02</b><span>Los comandos de Claude Code que vas a usar todos los días</span><small>8 min</small></a></li><li><a href="guias/modo-plan-de-claude-code.html"><b>03</b><span>Modo plan: que Claude piense antes de construir</span><small>7 min</small></a></li><li><a href="guias/claude-md-la-memoria-del-proyecto.html"><b>04</b><span>CLAUDE.md: la memoria de tu proyecto, corta y útil</span><small>8 min</small></a></li><li><a href="guias/permisos-y-modo-automatico-con-cuidado.html"><b>05</b><span>Permisos y modo automático, sin romper nada</span><small>10 min</small></a></li></ol><span class="v-mas">+ 5 guías más en la ruta</span><div class="v-pie"><span>10 guías</span><span>~87 min de lectura</span></div><a class="v-ir" href="guias/claude-code-de-cero-sin-miedo.html">Empezar la ruta →</a></article></div>
+  <div class="tit" style="margin-top:44px"><div><span class="mono">El camino</span><h2>De cero a venderlo, en 3 partes</h2><p class="tit-sub">Arrancá por la Parte 1 y avanzá cuando la necesites. Todo lo demás está en el menú.</p></div></div>
+  <div class="camino"><article class="pt"><div class="pt-top"><b>1</b><span class="mono">Parte 1</span></div><h3>Arrancá bien</h3><p>Configurá Claude, aprendé a pedirle bien y hacé rendir tu plan. Es la base de todo lo demás.</p><div class="pt-temas"><span>🌱 Primeros pasos</span><span>🧠 Sacale más jugo a Claude</span><span>💸 Gastá menos tokens</span></div><small class="pt-ej">Por ejemplo</small><ul><li><a href="guias/configura-claude-en-10-minutos.html">Configurá Claude en 10 minutos para que sepa quién sos</a></li><li><a href="guias/formula-para-pedirle-bien-a-claude.html">La fórmula para pedirle bien a Claude</a></li><li><a href="guias/errores-que-agotan-tu-plan-de-claude.html">7 errores que te agotan el plan de Claude</a></li></ul><div class="pt-pie"><span>25 guías</span><span>9 packs de prompts</span><span class="pt-prog" data-parte="aprende" data-total="25"></span></div><a class="pt-ir" href="#guias-web" data-parte="aprende">Ver la parte 1 →</a></article><article class="pt"><div class="pt-top"><b>2</b><span class="mono">Parte 2</span></div><h3>Ponelo a trabajar</h3><p>Tu negocio, tu contenido y tus clientes, con skills, conectores y agentes que hacen el trabajo repetido.</p><div class="pt-temas"><span>🏢 IA en tu negocio</span><span>🎬 Contenido y redes</span><span>🎯 Conseguí clientes</span><span>🧩 Skills y plugins</span><span>🔌 Conectores y MCP</span><span>🤖 Agentes</span></div><small class="pt-ej">Por ejemplo</small><ul><li><a href="guias/analizar-planillas-con-claude.html">Analizar planillas con Claude sin saber fórmulas</a></li><li><a href="guias/guiones-de-reels-con-tu-voz.html">Guiones de reels que suenan a vos</a></li><li><a href="guias/4-agentes-whatsapp-para-vender.html">4 agentes de IA para WhatsApp que podés crear y ofrecer</a></li></ul><div class="pt-pie"><span>54 guías</span><span>20 packs de prompts</span><span class="pt-prog" data-parte="usalo" data-total="54"></span></div><a class="pt-ir" href="#guias-web" data-parte="usalo">Ver la parte 2 →</a></article><article class="pt"><div class="pt-top"><b>3</b><span class="mono">Parte 3</span></div><h3>Vendé y construí</h3><p>El sistema para venderle IA a empresas, los rubros listos para replicar y tus propias apps con Claude Code.</p><div class="pt-temas"><span>💼 El sistema para vender IA</span><span>🏪 Sistemas listos por rubro</span><span>💻 Claude Code</span><span>🚀 Creá tu app</span></div><small class="pt-ej">Por ejemplo</small><ul><li><a href="guias/sistema-base-modulo-1-la-oferta.html">Módulo 1 · La oferta: Claude instalado en tu negocio</a></li><li><a href="guias/cuanto-cobrar-por-automatizar-con-ia.html">Cuánto cobrar por automatizar con IA</a></li><li><a href="guias/de-idea-a-app-publicada-con-claude-code.html">De idea a app publicada con Claude Code</a></li></ul><div class="pt-pie"><span>44 guías</span><span>19 packs de prompts</span><span class="pt-prog" data-parte="construi" data-total="44"></span></div><a class="pt-ir" href="#guias-web" data-parte="construi">Ver la parte 3 →</a></article></div>
   </section>
 
   <section id="rutas">
@@ -62,11 +60,10 @@
     <div class="rutas" id="lista-rutas"></div>
   </section>
 
-  <section id="ruta-recomendada"></section>
   <section id="ultimos-posts"></section>
 
   <section id="guias-web">
-    <div class="tit"><div><span class="mono">01 · Guías</span><h2>Guías paso a paso</h2><p class="tit-sub">Ordenadas en 3 partes: primero aprendés Claude, después lo usás en tu negocio y al final construís y vendés.</p></div></div>
+    <div class="tit"><div><span class="mono">01 · Guías</span><h2>Guías paso a paso</h2><p class="tit-sub">Ordenadas en 3 partes: arrancá bien, ponelo a trabajar y después vendé y construí.</p></div></div>
     <div id="lista-guias-web"></div>
   </section>
 
@@ -109,24 +106,42 @@ if (GRATIS) {
   aviso.innerHTML = '<span class="mono">Plan gratis</span><b>Tenés abiertas ' + GUIAS_WEB.filter(function (g) { return g.gratis; }).length + ' guías: las de mis reels, las de gastar menos tokens y el Módulo 1.</b><span>Desbloqueá las ' + GUIAS_WEB.length + ' guías, los prompts y las herramientas →</span>';
   document.querySelector("main").insertBefore(aviso, document.querySelector("main").firstChild);
 }
-// Total: guías + packs de prompts + skills, MCP y herramientas (los de «De mis reels» ya son guías: no se cuentan dos veces)
 if (GRATIS) document.getElementById("hero-nivel").textContent = "Plan gratis";
-// Seguí donde dejaste + cuántas leíste
+// Saludo con el nombre (lo deja el registro)
 (function () {
-  var ult = PROGRESO.ultima(), leidas = PROGRESO.leidas(), n = Object.keys(leidas).length;
-  var g = ult && GUIAS_WEB.filter(function (x) { return x.slug === ult.slug; })[0];
-  if (!g && !n) return;
-  var caja = document.createElement("div");
-  caja.className = "seguir";
-  var abierta = !GRATIS || g && g.gratis;
-  caja.innerHTML = (g && !leidas[g.slug] && abierta ? '<a class="seguir-guia" href="guias/' + g.slug + '.html"><small>Seguí donde dejaste</small><b>' + g.t + '</b><em>Seguir leyendo →</em></a>' : '') +
-    '<div class="seguir-prog"><small>Tu progreso</small><b>' + n + ' de ' + GUIAS_WEB.length + ' guías leídas</b><i><em style="width:' + Math.round(n / GUIAS_WEB.length * 100) + '%"></em></i></div>';
-  var hero = document.querySelector(".b-hero");
-  hero.appendChild(caja);
+  var n = (document.cookie.match(/(?:^|;\s*)jpa_nombre=([^;]+)/) || [])[1];
+  try { n = n && decodeURIComponent(n).replace(/[<>&"]/g, ""); } catch (e) { n = ""; }
+  if (n) document.getElementById("saludo").innerHTML = "Hola, " + n + ". Esta es tu biblioteca para <em>armar sistemas con Claude</em>.";
 })();
-document.getElementById("n-recursos").textContent = GUIAS_WEB.length + PROMPTS.length + HERRAMIENTAS.length;
-document.getElementById("n-guias").textContent = GUIAS_WEB.length;
-
+// Tu próximo paso: seguí donde dejaste o la primera guía sin leer del camino (en el orden de las partes)
+(function () {
+  var leidas = PROGRESO.leidas(), ult = PROGRESO.ultima(), n = GUIAS_WEB.filter(function (g) { return leidas[g.slug]; }).length;
+  function abierta(g) { return !GRATIS || g.gratis; }
+  var g = ult && GUIAS_WEB.filter(function (x) { return x.slug === ult.slug && !leidas[x.slug] && abierta(x); })[0], etiqueta = "Seguí donde dejaste";
+  if (!g) { g = GUIAS_WEB.filter(function (x) { return !leidas[x.slug] && abierta(x); })[0]; etiqueta = n ? "Tu próximo paso" : "Empezá por acá"; }
+  var caja = document.getElementById("b-paso");
+  var barra = '<i class="b-paso-barra"><em style="width:' + Math.round(n / GUIAS_WEB.length * 100) + '%"></em></i><span class="b-paso-prog">' + n + ' de ' + GUIAS_WEB.length + ' guías leídas</span>';
+  if (g) {
+    var parte = PARTES.map(function (p) { return p.id; }).indexOf(g.parte) + 1;
+    caja.href = "guias/" + g.slug + ".html";
+    caja.innerHTML = '<small>' + etiqueta + '</small><b>' + g.t + '</b><span class="b-paso-meta">Parte ' + parte + ' · ' + g.tema + ' · ' + g.min + ' min</span>' + barra + '<em class="b-paso-ir">Leer →</em>';
+  } else {
+    caja.href = "/#precio";
+    caja.innerHTML = '<small>Leíste todo lo abierto</small><b>Desbloqueá las ' + GUIAS_WEB.length + ' guías y seguí el camino</b>' + barra + '<em class="b-paso-ir">Ver el acceso →</em>';
+  }
+  // Progreso de cada parte, y «Ver la parte» lleva a esa parte dentro de Guías
+  document.querySelectorAll(".pt-prog").forEach(function (el) {
+    var k = GUIAS_WEB.filter(function (x) { return x.parte === el.dataset.parte && leidas[x.slug]; }).length;
+    if (k) el.textContent = k + " de " + el.dataset.total + " leídas";
+  });
+  document.querySelectorAll(".pt-ir").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      location.hash = "guias-web";
+      setTimeout(function () { var d = document.getElementById("g-parte-" + a.dataset.parte); if (d) d.scrollIntoView({ block: "start" }); }, 80);
+    });
+  });
+})();
 // Skills, MCP y herramientas: qué hace, para qué te sirve, comando para copiar y link
 function tarjetaHerramienta(h) {
   var cmds = h.cmds.map(function (c) {
@@ -179,11 +194,10 @@ ig.innerHTML = ICONO.ig + '<div><strong>Instagram</strong><small>' + REDES.igUsu
 var dm = document.getElementById("b-dm");
 dm.href = REDES.dm;
 dm.innerHTML = ICONO.ig + '<div><strong>¿Una duda?</strong><small>Escribime por DM</small></div>';
-empiezaAqui(document.getElementById("ruta-recomendada"));
 ultimosPosts(document.getElementById("ultimos-posts"));
 pintarRutas(document.getElementById("lista-rutas"));
 menuLateral();
 </script>
-<script src="web/bienvenida.js?v=8757e687"></script>
+<script src="web/bienvenida.js?v=6b38c51f"></script>
 </body>
 </html>

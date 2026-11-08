@@ -23,7 +23,7 @@ function organizar(caja, items, tarjeta, op) {
   var cuerpo = partes.map(function (p, i) {
     var enParte = cats.filter(function (c) { return c.parte === p.id && porCat[c.id]; });
     if (!enParte.length) return "";
-    return '<div class="org-parte">' + (op.grupos ? '' : '<div class="org-parte-cab"><span class="mono">Parte ' + (i + 1) + '</span><h3>' + p.n.replace(/^Parte \d+ · /, "") + '</h3><p>' + p.d + '</p></div>') +
+    return '<div class="org-parte" id="' + pref + 'parte-' + p.id + '">' + (op.grupos ? '' : '<div class="org-parte-cab"><span class="mono">Parte ' + (i + 1) + '</span><h3>' + p.n.replace(/^Parte \d+ · /, "") + '</h3><p>' + p.d + '</p></div>') +
       enParte.map(function (c) {
         var lista = porCat[c.id], mas = lista.length - visibles;
         return '<div class="org-cat' + (c.destacada ? ' org-cat--dest' : '') + '" id="' + pref + c.id + '">' +

@@ -50,7 +50,7 @@
     "Atención y WhatsApp": ["agentes", "negocio"], "Contenido y redes": ["contenido"], "Ventas y seguimiento": ["clientes"],
     "Administración y planillas": ["negocio"], "Crear apps o webs": ["desarrollo", "claude-code"]
   };
-  var MAX = 9;
+  var MAX = 6;
 
   function rubroDe(texto) {
     for (var i = 0; i < RUBROS.length; i++) if (RUBROS[i][0].test(texto || "")) return RUBROS[i][1];

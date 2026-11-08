@@ -220,3 +220,26 @@ section { margin-top: 90px; }
   .b-red, .b-num { height: 56px; min-height: 0; padding: 0 14px; gap: 10px; }
   .b-num b { font-size: 24px; }
 }
+
+/* Tu próximo paso (recursos.html): ocupa las dos columnas de la derecha, debajo de Instagram y DM */
+.b-paso { grid-column: span 2; display: flex; flex-direction: column; gap: 6px; padding: 18px 20px; border: 1px solid rgba(255, 90, 31, .55);
+  background: radial-gradient(90% 120% at 100% 0%, rgba(255, 90, 31, .22), transparent 60%), linear-gradient(160deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02));
+  transition: transform .2s, border-color .2s; }
+.b-paso:hover { transform: translateY(-2px); border-color: var(--sky); }
+.b-paso small { font: 600 11px "JetBrains Mono", monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--glow); }
+.b-paso b { font-size: 19px; line-height: 1.25; letter-spacing: -.015em; }
+.b-paso-meta, .b-paso-prog { font-size: 12.5px; color: var(--muted); }
+.b-paso-barra { display: block; height: 6px; margin-top: auto; border-radius: 999px; background: rgba(255, 255, 255, .08); overflow: hidden; }
+.b-paso-barra em { display: block; height: 100%; min-width: 4px; border-radius: inherit; background: var(--blue); }
+.b-paso-ir { align-self: flex-end; margin-top: -18px; font-style: normal; font-weight: 700; color: var(--sky); }
+[data-tema="claro"] .b-paso { background: #fff; }
+[data-tema="claro"] .b-paso-barra { background: rgba(120, 60, 20, .08); }
+@media (max-width: 560px) { .b-paso { padding: 14px 16px; } .b-paso b { font-size: 16.5px; } }
+/* Plan gratis: aviso arriba y guías cerradas */
+.aviso-gratis { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; padding: 16px 20px; border-radius: 18px; margin-bottom: 18px;
+  border: 1px solid rgba(255, 90, 31, .5); background: linear-gradient(90deg, rgba(255, 90, 31, .18), rgba(255, 255, 255, .03)); }
+.aviso-gratis .mono { color: var(--glow); }
+.aviso-gratis span:last-child { color: var(--sky); font-weight: 700; margin-left: auto; }
+.herr.cerrada { opacity: .72; }
+.herr.cerrada:hover { opacity: 1; }
+.herr.cerrada .bajar { color: var(--glow); }

@@ -218,122 +218,45 @@ def guias_web(v, datos):
     return len(datos)
 
 
-# ---------------------------------------------------------------- Vitrina
+# ---------------------------------------------------------------- Camino (landing y biblioteca)
 ORDEN_CATS = []  # lo llena ordenar() con el orden de contenido/orden.json
-LOGOS_VITRINA = ["claude", "github", "notion", "supabase", "vercel", "n8n", "zapier", "make", "figma", "googledrive", "gmail", "whatsapp"]
 
 
-def rutas_py():
-    """Lee web/rutas.js: id -> lista de slugs."""
-    t = (WEB / "rutas.js").read_text()
-    salida = {}
-    for m in re.finditer(r'id: "([a-z0-9-]+)".*?pasos: \[(.*?)\]', t, flags=re.S):
-        salida[m.group(1)] = re.findall(r'"([a-z0-9-]+)"', m.group(2))
-    return salida
-
-
-def vitrina(guias, prompts, herrs, en_biblioteca):
-    """Tarjetas grandes con lo más completo. En la biblioteca cada guía es un link; en el inicio, solo texto."""
-    por = {g["slug"]: g for g in guias}
-    rutas = rutas_py()
-    e = html.escape
-
-    def item(i, slug, quitar=""):
-        g = por[slug]
-        titulo = e(re.sub(quitar, "", g["t"])) if quitar else e(g["t"])
-        dentro = f'<b>{i:02d}</b><span>{titulo}</span><small>{g["min"]} min</small>'
-        return f'<li><a href="guias/{slug}.html">{dentro}</a></li>' if en_biblioteca else f"<li>{dentro}</li>"
-
-    def pie(slugs, extra=()):
-        minutos = sum(por[s]["min"] for s in slugs)
-        return '<div class="v-pie">' + "".join(f"<span>{x}</span>" for x in (f"{len(slugs)} guías", f"~{minutos} min de lectura", *extra)) + "</div>"
-
-    def ir(slug_o_hash, texto):
-        if not en_biblioteca:
-            return ""
-        return f'<a class="v-ir" href="{slug_o_hash}">{texto} →</a>'
-
-    tarjetas = []
-    # 1. El sistema base (grande)
-    sb = rutas["sistema-base"]
-    plantillas = [p for p in prompts if p.get("cat") in ("sistema-base", "rubros")]
-    tarjetas.append(
-        '<article class="v-card v-card--grande"><div class="v-top"><span class="v-etq"><i></i>El método</span><span class="v-num">9</span></div>'
-        "<h3>El sistema base para vender IA a negocios</h3>"
-        "<p>Paso a paso para armar tu oferta, conseguir a quién venderle, hacer la llamada de diagnóstico, cobrar, instalarlo y mantenerlo todos los meses. Con plantillas para cada etapa.</p>"
-        '<ol class="v-pasos">' + "".join(item(i + 1, s, r"^Módulo \d+ · ") for i, s in enumerate(sb)) + "</ol>"
-        + '<span class="v-etq" style="align-self:flex-start;margin-top:6px"><i></i>Plantillas incluidas</span>'
-        + '<div class="v-chips">' + "".join(f"<span>{e(p['t'])}</span>" for p in plantillas) + "</div>"
-        + pie(sb, (f"{len(plantillas)} packs de plantillas",)) + ir(f"guias/{sb[0]}.html", "Empezar por el módulo 1") + "</article>")
-    # 2. Rubros
-    rubros = [g["slug"] for g in guias if g["slug"].startswith("sistema-ia-para-")]
-    chips = "".join(
-        (f'<a href="guias/{s}.html">' if en_biblioteca else "<span>") + e(re.sub(r"^Sistema con Claude para ", "", por[s]["t"]).split(",")[0]).capitalize()
-        + ("</a>" if en_biblioteca else "</span>") for s in rubros)
-    tarjetas.append(
-        f'<article class="v-card"><div class="v-top"><span class="v-etq"><i></i>Listo para replicar</span><span class="v-num">{len(rubros)}</span></div>'
-        "<h3>Sistemas por rubro</h3><p>Qué le come el tiempo a cada negocio, qué le instalás, los prompts listos y cómo ofrecérselo.</p>"
-        f'<div class="v-chips">{chips}</div>' + pie(rubros) + "</article>")
-    # 3. Herramientas con logos
-    cuenta = {c: sum(1 for h in herrs if h["cat"] == c) for c in ("Skills", "MCP", "Herramientas")}
-    logos = "".join(f'<i><img src="web/logos/{n}.svg" alt="" loading="lazy"></i>' for n in LOGOS_VITRINA)
-    tarjetas.append(
-        f'<article class="v-card"><div class="v-top"><span class="v-etq"><i></i>Oficiales y verificadas</span><span class="v-num">{len(herrs)}</span></div>'
-        "<h3>Skills, MCP y herramientas</h3><p>Cada una con el comando exacto para instalarla, sacado de la documentación de quien la publica.</p>"
-        f'<div class="v-logos">{logos}</div><div class="v-pie"><span>{cuenta["Skills"]} skills</span><span>{cuenta["MCP"]} MCP</span><span>{cuenta["Herramientas"]} herramientas</span></div>'
-        + ir("#mcp", "Ver las herramientas") + "</article>")
-    # 4. Gastá menos tokens: franja ancha y destacada
-    cat = next(c for c in json.loads((RAIZ / "contenido" / "orden.json").read_text())["categorias"] if c["id"] == "ahorrar")
-    ah = cat["guias"]
-    tarjetas.append(
-        '<article class="v-card v-card--franja"><div class="v-franja-txt"><div class="v-top"><span class="v-etq"><i></i>Que no se te corte el plan</span>'
-        f'<span class="v-num">{len(ah)}</span></div><h3>Gastá menos tokens con Claude</h3><p>{e(cat["d"])}</p>'
-        + pie(ah) + ir(f"guias/{ah[0]}.html", "Empezar por acá") + "</div>"
-        '<div><ol class="v-pasos">' + "".join(item(i + 1, sl) for i, sl in enumerate(ah[:6])) + "</ol>"
-        + (f'<span class="v-mas">+ {len(ah) - 6} guías más en la categoría</span>' if len(ah) > 6 else "") + "</div></article>")
-    # 5-7. Agentes, desarrollo, Claude Code
-    for rid, etq, titulo, desc, n_items in (
-        ("agentes", "Agentes", "Armá tus propios agentes", "De qué es un agente de verdad al Agent SDK oficial: investigación, atención, ventas, contenido y seguridad.", 5),
-        ("desarrollo", "Desarrollo", "De la idea a tu app publicada", "Especificación, base de datos, login, cobros con Stripe y Mercado Pago, dominio y lo que le falta a una demo para ser producto.", 5),
-        ("claude-code", "Claude Code", "Claude Code a fondo", "Instalarlo sin miedo, planificar, memoria del proyecto, subagentes, tareas programadas y permisos con cuidado.", 5),
-    ):
-        slugs = rutas[rid]
-        mas = len(slugs) - n_items
-        tarjetas.append(
-            f'<article class="v-card"><div class="v-top"><span class="v-etq"><i></i>{etq}</span><span class="v-num">{len(slugs)}</span></div>'
-            f"<h3>{titulo}</h3><p>{desc}</p>"
-            '<ol class="v-pasos">' + "".join(item(i + 1, s) for i, s in enumerate(slugs[:n_items])) + "</ol>"
-            + (f'<span class="v-mas">+ {mas} guías más en la ruta</span>' if mas > 0 else "")
-            + pie(slugs) + ir(f"guias/{slugs[0]}.html", "Empezar la ruta") + "</article>")
-    return '<div class="v-grid">' + "".join(tarjetas) + "</div>"
-
-
-def catalogo(guias, en_biblioteca):
-    """Todas las guías: pestañas agrupadas por parte (como la biblioteca) y una grilla con las guías de la categoría elegida."""
+def puertas(guias, prompts, en_biblioteca):
+    """El camino en 3 partes: una tarjeta por parte con 3 guías de muestra. En la biblioteca, cada tarjeta lleva a su parte y muestra el progreso."""
     o = json.loads((RAIZ / "contenido" / "orden.json").read_text())
-    grupos = {}
-    for g in guias:
-        grupos.setdefault(g["cat"], []).append(g)
-    cats = [c for c in o["categorias"] if c["id"] in grupos]
+    por = {g["slug"]: g for g in guias}
     e = html.escape
-    filas = []
+    out = []
     for i, p in enumerate(o["partes"], 1):
-        tabs = "".join(f'<button type="button" class="v-tab" role="tab" aria-selected="{"true" if c is cats[0] else "false"}" data-tema="{c["id"]}">'
-                       f'{c["e"]} {e(c["n"])}<span>{len(grupos[c["id"]])}</span></button>' for c in cats if c["parte"] == p["id"])
-        filas.append(f'<div class="v-tabs-parte"><small>Parte {i}</small><div class="v-tabs" role="tablist" aria-label="{e(p["n"])}">{tabs}</div></div>')
-    paneles = []
-    for c in cats:
-        tarjetas = [f'<p class="v-panel-intro">{e(c["d"])}</p>']
-        for n, g in enumerate(grupos[c["id"]], 1):
-            cuerpo = (f'<span class="v-g-num">{n:02d}</span><h4>{e(g["t"])}</h4><p>{e(g["d"])}</p>'
-                      f'<span class="v-g-pie"><b>{g["min"]} min</b>' + (f'<i>Reel · {e(g["post"])}</i>' if g.get("post") else "") + '</span>')
-            tarjetas.append(f'<a class="v-g" href="guias/{g["slug"]}.html">{cuerpo}</a>' if en_biblioteca else f'<div class="v-g">{cuerpo}</div>')
-        paneles.append(f'<div class="v-panel" role="tabpanel" data-tema="{c["id"]}"{"" if c is cats[0] else " hidden"}>' + "".join(tarjetas) + "</div>")
-    script = ("<script>(function(){var c=document.currentScript.previousElementSibling;"
-              "c.addEventListener('click',function(ev){var b=ev.target.closest('.v-tab');if(!b)return;"
-              "c.querySelectorAll('.v-tab').forEach(function(x){x.setAttribute('aria-selected',x===b);});"
-              "c.querySelectorAll('.v-panel').forEach(function(p){p.hidden=p.dataset.tema!==b.dataset.tema;});});})();</script>")
-    return '<div class="v-catalogo">' + "".join(filas) + "".join(paneles) + "</div>" + script
+        gs = [g for g in guias if g["parte"] == p["id"]]
+        n_packs = sum(1 for x in prompts if x.get("parte") == p["id"])
+        cats = [c for c in o["categorias"] if c["parte"] == p["id"]]
+        muestra = "".join(
+            (f'<li><a href="guias/{s}.html">' if en_biblioteca else "<li><span>") + e(por[s]["t"]) + (f"</a></li>" if en_biblioteca else "</span></li>")
+            for s in p["muestra"])
+        temas = "".join(f"<span>{c['e']} {e(c['n'])}</span>" for c in cats)
+        pie = f'<span>{len(gs)} guías</span><span>{n_packs} packs de prompts</span>'
+        if en_biblioteca:
+            pie += f'<span class="pt-prog" data-parte="{p["id"]}" data-total="{len(gs)}"></span>'
+        ir = f'<a class="pt-ir" href="#guias-web" data-parte="{p["id"]}">Ver la parte {i} →</a>' if en_biblioteca else ""
+        out.append(f'<article class="pt"><div class="pt-top"><b>{i}</b><span class="mono">Parte {i}</span></div>'
+                   f'<h3>{e(p["n"].split(" · ", 1)[-1])}</h3><p>{e(p["d"])}</p>'
+                   f'<div class="pt-temas">{temas}</div><small class="pt-ej">Por ejemplo</small><ul>{muestra}</ul>'
+                   f'<div class="pt-pie">{pie}</div>{ir}</article>')
+    return '<div class="camino">' + "".join(out) + "</div>"
+
+
+def video_html(cfg, n_guias, n_prompts, n_skills):
+    """Video de presentación (config.json: «video», un link de YouTube o un .mp4 en web/). Sin video, una línea con lo que hay adentro."""
+    url = (cfg.get("video") or "").strip()
+    m = re.search(r"(?:youtu\.be/|v=|shorts/|embed/)([\w-]{11})", url)
+    if m:
+        return (f'<div class="l-video"><iframe src="https://www.youtube-nocookie.com/embed/{m.group(1)}?rel=0" title="Presentación de la biblioteca" loading="lazy" '
+                'allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe></div>')
+    if url.endswith(".mp4"):
+        return f'<div class="l-video"><video src="{html.escape(url)}" controls playsinline preload="metadata"></video></div>'
+    return f'<p class="l-linea"><b>{n_guias}</b> guías · <b>{n_prompts}</b> prompts · <b>{n_skills}</b> skills listas para subir · se actualiza cada semana</p>'
 
 
 def inicio(v):
@@ -347,12 +270,13 @@ def inicio(v):
     n_packs = js.count('"tema":')
     prompts = json.loads(re.search(r"var PROMPTS = (.*);\n", js).group(1))
     herrs = json.loads(re.search(r"var HERRAMIENTAS = (.*);\n", (WEB / "herramientas.js").read_text()).group(1))
+    n_skills = sum(1 for f in (RAIZ / "contenido" / "mejoras").glob("*.json") for k in json.loads(f.read_text()).get("kit", []) if k["archivo"].endswith("SKILL.md"))
     if cfg.get("pago_url"):
         url, target, nota = cfg["pago_url"], 'target="_blank" rel="noopener"', "Pago seguro. Después del pago te llega tu clave de acceso."
     else:
         url, target, nota = "https://ig.me/m/juampiiacosta.ia", 'target="_blank" rel="noopener"', "Escribime «ACCESO» por Instagram y te paso el link de pago y tu clave."
     reemplazos = {"{{V}}": v, "{{PRECIO}}": cfg["precio"], "{{PRECIO_DESPUES}}": cfg["precio_despues"], "{{PAGO_URL}}": html.escape(url),
-                  "{{PAGO_TARGET}}": target, "{{PAGO_NOTA}}": nota, "{{VITRINA}}": vitrina(guias, prompts, herrs, False), "{{CATALOGO}}": catalogo(guias, False),
+                  "{{PAGO_TARGET}}": target, "{{PAGO_NOTA}}": nota, "{{PUERTAS}}": puertas(guias, prompts, False), "{{VIDEO}}": video_html(cfg, len(guias), n_prompts, n_skills),
                   "{{N_GUIAS}}": str(len(guias)), "{{N_PROMPTS}}": str(n_prompts), "{{N_RECURSOS}}": str(len(guias) + n_packs + n_herr)}
     t = (WEB / "inicio.html").read_text()
     for k, val in reemplazos.items():
@@ -384,7 +308,7 @@ if __name__ == "__main__":
     v = version()
     n = guias_web(v, guias)
     (RAIZ / "recursos.html").write_text((WEB / "recursos.html").read_text().replace("{{V}}", v)
-                                        .replace("{{VITRINA}}", vitrina(guias, prompts, herrs, True)))
+                                        .replace("{{PUERTAS}}", puertas(guias, prompts, True)))
     inicio(v)
     if SKILLS_LARGAS:
         print(f"aviso: {len(SKILLS_LARGAS)} skills con description de más de 200 caracteres (la app no las acepta)")

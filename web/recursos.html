@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="web/cta.css?v={{V}}">
 <link rel="stylesheet" href="web/biblioteca.css?v={{V}}">
 <link rel="stylesheet" href="web/menu.css?v={{V}}">
-<link rel="stylesheet" href="web/vitrina.css?v={{V}}">
+<link rel="stylesheet" href="web/camino.css?v={{V}}">
 <link rel="stylesheet" href="web/organizar.css?v={{V}}">
 <link rel="stylesheet" href="web/recomendados.css?v={{V}}">
 <link rel="stylesheet" href="web/tema.css?v={{V}}">
@@ -42,19 +42,17 @@
     <div class="b b-hero glass">
       <div>
         <span class="mono" style="color:var(--glow)" id="hero-nivel">Acceso fundador</span>
-        <h1 class="saludo">Bienvenido a la biblioteca: todo lo que uso para <em>armar sistemas con Claude</em>.</h1>
-        <p>Guías, prompts, skills y conectores en un solo lugar. Cada semana se suman recursos nuevos.</p>
+        <h1 class="saludo" id="saludo">Bienvenido a la biblioteca: todo lo que uso para <em>armar sistemas con Claude</em>.</h1>
+        <p>No tenés que leer todo: seguí tu próximo paso y avanzá por partes. Cada semana se suman recursos nuevos.</p>
       </div>
-      <a class="btn" href="#rutas" data-bajar-a="ruta-recomendada" style="align-self:flex-start">Empezar por acá ↓</a>
     </div>
     <a class="b b-red glass" id="b-ig" target="_blank" rel="noopener"></a>
     <a class="b b-red glass" id="b-dm" target="_blank" rel="noopener"></a>
-    <div class="b b-num glass"><b id="n-recursos"></b><span>recursos</span></div>
-    <div class="b b-num glass"><b id="n-guias"></b><span>guías paso a paso</span></div>
+    <a class="b b-paso glass" id="b-paso"></a>
   </div>
   <div id="para-vos"></div>
-  <div class="tit" style="margin-top:44px"><div><span class="mono">Lo más completo</span><h2>Empezá por lo que más te va a servir</h2></div></div>
-  {{VITRINA}}
+  <div class="tit" style="margin-top:44px"><div><span class="mono">El camino</span><h2>De cero a venderlo, en 3 partes</h2><p class="tit-sub">Arrancá por la Parte 1 y avanzá cuando la necesites. Todo lo demás está en el menú.</p></div></div>
+  {{PUERTAS}}
   </section>
 
   <section id="rutas">
@@ -62,11 +60,10 @@
     <div class="rutas" id="lista-rutas"></div>
   </section>
 
-  <section id="ruta-recomendada"></section>
   <section id="ultimos-posts"></section>
 
   <section id="guias-web">
-    <div class="tit"><div><span class="mono">01 · Guías</span><h2>Guías paso a paso</h2><p class="tit-sub">Ordenadas en 3 partes: primero aprendés Claude, después lo usás en tu negocio y al final construís y vendés.</p></div></div>
+    <div class="tit"><div><span class="mono">01 · Guías</span><h2>Guías paso a paso</h2><p class="tit-sub">Ordenadas en 3 partes: arrancá bien, ponelo a trabajar y después vendé y construí.</p></div></div>
     <div id="lista-guias-web"></div>
   </section>
 
@@ -109,24 +106,42 @@ if (GRATIS) {
   aviso.innerHTML = '<span class="mono">Plan gratis</span><b>Tenés abiertas ' + GUIAS_WEB.filter(function (g) { return g.gratis; }).length + ' guías: las de mis reels, las de gastar menos tokens y el Módulo 1.</b><span>Desbloqueá las ' + GUIAS_WEB.length + ' guías, los prompts y las herramientas →</span>';
   document.querySelector("main").insertBefore(aviso, document.querySelector("main").firstChild);
 }
-// Total: guías + packs de prompts + skills, MCP y herramientas (los de «De mis reels» ya son guías: no se cuentan dos veces)
 if (GRATIS) document.getElementById("hero-nivel").textContent = "Plan gratis";
-// Seguí donde dejaste + cuántas leíste
+// Saludo con el nombre (lo deja el registro)
 (function () {
-  var ult = PROGRESO.ultima(), leidas = PROGRESO.leidas(), n = Object.keys(leidas).length;
-  var g = ult && GUIAS_WEB.filter(function (x) { return x.slug === ult.slug; })[0];
-  if (!g && !n) return;
-  var caja = document.createElement("div");
-  caja.className = "seguir";
-  var abierta = !GRATIS || g && g.gratis;
-  caja.innerHTML = (g && !leidas[g.slug] && abierta ? '<a class="seguir-guia" href="guias/' + g.slug + '.html"><small>Seguí donde dejaste</small><b>' + g.t + '</b><em>Seguir leyendo →</em></a>' : '') +
-    '<div class="seguir-prog"><small>Tu progreso</small><b>' + n + ' de ' + GUIAS_WEB.length + ' guías leídas</b><i><em style="width:' + Math.round(n / GUIAS_WEB.length * 100) + '%"></em></i></div>';
-  var hero = document.querySelector(".b-hero");
-  hero.appendChild(caja);
+  var n = (document.cookie.match(/(?:^|;\s*)jpa_nombre=([^;]+)/) || [])[1];
+  try { n = n && decodeURIComponent(n).replace(/[<>&"]/g, ""); } catch (e) { n = ""; }
+  if (n) document.getElementById("saludo").innerHTML = "Hola, " + n + ". Esta es tu biblioteca para <em>armar sistemas con Claude</em>.";
 })();
-document.getElementById("n-recursos").textContent = GUIAS_WEB.length + PROMPTS.length + HERRAMIENTAS.length;
-document.getElementById("n-guias").textContent = GUIAS_WEB.length;
-
+// Tu próximo paso: seguí donde dejaste o la primera guía sin leer del camino (en el orden de las partes)
+(function () {
+  var leidas = PROGRESO.leidas(), ult = PROGRESO.ultima(), n = GUIAS_WEB.filter(function (g) { return leidas[g.slug]; }).length;
+  function abierta(g) { return !GRATIS || g.gratis; }
+  var g = ult && GUIAS_WEB.filter(function (x) { return x.slug === ult.slug && !leidas[x.slug] && abierta(x); })[0], etiqueta = "Seguí donde dejaste";
+  if (!g) { g = GUIAS_WEB.filter(function (x) { return !leidas[x.slug] && abierta(x); })[0]; etiqueta = n ? "Tu próximo paso" : "Empezá por acá"; }
+  var caja = document.getElementById("b-paso");
+  var barra = '<i class="b-paso-barra"><em style="width:' + Math.round(n / GUIAS_WEB.length * 100) + '%"></em></i><span class="b-paso-prog">' + n + ' de ' + GUIAS_WEB.length + ' guías leídas</span>';
+  if (g) {
+    var parte = PARTES.map(function (p) { return p.id; }).indexOf(g.parte) + 1;
+    caja.href = "guias/" + g.slug + ".html";
+    caja.innerHTML = '<small>' + etiqueta + '</small><b>' + g.t + '</b><span class="b-paso-meta">Parte ' + parte + ' · ' + g.tema + ' · ' + g.min + ' min</span>' + barra + '<em class="b-paso-ir">Leer →</em>';
+  } else {
+    caja.href = "/#precio";
+    caja.innerHTML = '<small>Leíste todo lo abierto</small><b>Desbloqueá las ' + GUIAS_WEB.length + ' guías y seguí el camino</b>' + barra + '<em class="b-paso-ir">Ver el acceso →</em>';
+  }
+  // Progreso de cada parte, y «Ver la parte» lleva a esa parte dentro de Guías
+  document.querySelectorAll(".pt-prog").forEach(function (el) {
+    var k = GUIAS_WEB.filter(function (x) { return x.parte === el.dataset.parte && leidas[x.slug]; }).length;
+    if (k) el.textContent = k + " de " + el.dataset.total + " leídas";
+  });
+  document.querySelectorAll(".pt-ir").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      location.hash = "guias-web";
+      setTimeout(function () { var d = document.getElementById("g-parte-" + a.dataset.parte); if (d) d.scrollIntoView({ block: "start" }); }, 80);
+    });
+  });
+})();
 // Skills, MCP y herramientas: qué hace, para qué te sirve, comando para copiar y link
 function tarjetaHerramienta(h) {
   var cmds = h.cmds.map(function (c) {
@@ -179,7 +194,6 @@ ig.innerHTML = ICONO.ig + '<div><strong>Instagram</strong><small>' + REDES.igUsu
 var dm = document.getElementById("b-dm");
 dm.href = REDES.dm;
 dm.innerHTML = ICONO.ig + '<div><strong>¿Una duda?</strong><small>Escribime por DM</small></div>';
-empiezaAqui(document.getElementById("ruta-recomendada"));
 ultimosPosts(document.getElementById("ultimos-posts"));
 pintarRutas(document.getElementById("lista-rutas"));
 menuLateral();

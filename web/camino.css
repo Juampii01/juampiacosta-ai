@@ -1,0 +1,29 @@
+/* El camino en 3 partes (build.py puertas()): en la landing y en el inicio de la biblioteca */
+.camino { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 26px; counter-reset: pt; }
+.pt { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 22px; border-radius: 22px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02)); border: 1px solid var(--line); }
+.pt:first-child { border-color: rgba(255, 90, 31, .55); box-shadow: 0 30px 70px -45px rgba(255, 90, 31, .7); }
+.pt:not(:last-child)::after { content: "→"; position: absolute; right: -13px; top: 30px; z-index: 1; display: grid; place-items: center;
+  width: 24px; height: 24px; border-radius: 50%; font-size: 13px; color: #fff; background: var(--blue); }
+.pt-top { display: flex; align-items: center; gap: 10px; }
+.pt-top b { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 16px; }
+.pt-top .mono { color: var(--glow); }
+.pt h3 { font-size: 21px; letter-spacing: -.02em; line-height: 1.15; }
+.pt > p { color: var(--muted); font-size: 14.5px; line-height: 1.5; }
+.pt-temas { display: flex; flex-wrap: wrap; gap: 6px; }
+.pt-temas span { padding: 4px 9px; border-radius: 999px; font-size: 12px; color: var(--muted); background: rgba(255, 255, 255, .05); border: 1px solid var(--line); }
+.pt-ej { margin-top: 4px; font: 600 10.5px "JetBrains Mono", monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--glow); }
+.pt ul { list-style: none; display: grid; gap: 6px; }
+.pt li > * { display: block; padding: 9px 12px; border-radius: 12px; font-size: 14px; line-height: 1.35; background: rgba(255, 255, 255, .04); border: 1px solid var(--line); }
+.pt li a:hover { border-color: var(--sky); }
+.pt-pie { margin-top: auto; padding-top: 6px; display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 12.5px; color: var(--muted); }
+.pt-prog:empty { display: none; }
+.pt-prog { color: var(--sky); font-weight: 600; }
+.pt-ir { align-self: flex-start; font-weight: 700; color: var(--sky); }
+[data-tema="claro"] .pt { background: #fff; }
+[data-tema="claro"] .pt-temas span, [data-tema="claro"] .pt li > * { background: rgba(120, 60, 20, .04); }
+@media (max-width: 900px) {
+  .camino { grid-template-columns: 1fr; }
+  .pt:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -13px; transform: translateX(-50%); }
+  .pt-temas { display: none; }
+}

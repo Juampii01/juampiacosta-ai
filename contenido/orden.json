@@ -3,18 +3,33 @@
  "partes": [
   {
    "id": "aprende",
-   "n": "Parte 1 · Aprendé Claude",
-   "d": "De cero a usarlo bien: configuración, skills y conectores."
+   "n": "Parte 1 · Arrancá bien",
+   "d": "Configurá Claude, aprendé a pedirle bien y hacé rendir tu plan. Es la base de todo lo demás.",
+   "muestra": [
+    "configura-claude-en-10-minutos",
+    "formula-para-pedirle-bien-a-claude",
+    "errores-que-agotan-tu-plan-de-claude"
+   ]
   },
   {
    "id": "usalo",
-   "n": "Parte 2 · Usalo en tu negocio",
-   "d": "Tareas reales: operación, contenido, clientes y agentes."
+   "n": "Parte 2 · Ponelo a trabajar",
+   "d": "Tu negocio, tu contenido y tus clientes, con skills, conectores y agentes que hacen el trabajo repetido.",
+   "muestra": [
+    "analizar-planillas-con-claude",
+    "guiones-de-reels-con-tu-voz",
+    "4-agentes-whatsapp-para-vender"
+   ]
   },
   {
    "id": "construi",
-   "n": "Parte 3 · Construí y vendé",
-   "d": "Claude Code, tus propias apps y el sistema para vender IA a empresas."
+   "n": "Parte 3 · Vendé y construí",
+   "d": "El sistema para venderle IA a empresas, los rubros listos para replicar y tus propias apps con Claude Code.",
+   "muestra": [
+    "sistema-base-modulo-1-la-oferta",
+    "cuanto-cobrar-por-automatizar-con-ia",
+    "de-idea-a-app-publicada-con-claude-code"
+   ]
   }
  ],
  "categorias": [
@@ -34,6 +49,25 @@
    "prompts": [
     "Tu primera semana con Claude",
     "Pedile bien las cosas"
+   ]
+  },
+  {
+   "id": "mas-jugo",
+   "parte": "aprende",
+   "e": "🧠",
+   "n": "Sacale más jugo a Claude",
+   "d": "Trucos para que rinda más, gaste menos y se equivoque menos.",
+   "guias": [
+    "el-bucle-de-verificacion",
+    "lo-que-aprendio-la-comunidad-usando-claude-en-la-app",
+    "artifacts-apps-sin-programar",
+    "proyectos-de-claude-para-tu-negocio",
+    "5-cosas-para-montar-con-claude-el-finde"
+   ],
+   "prompts": [
+    "Pedidos bien armados",
+    "Revisión antes de entregar",
+    "Proyectos de Claude que no se desordenan"
    ]
   },
   {
@@ -65,68 +99,6 @@
     "Del chat largo al chat nuevo",
     "Pedidos de una sola vez",
     "Claude Code liviano"
-   ]
-  },
-  {
-   "id": "mas-jugo",
-   "parte": "aprende",
-   "e": "🧠",
-   "n": "Sacale más jugo a Claude",
-   "d": "Trucos para que rinda más, gaste menos y se equivoque menos.",
-   "guias": [
-    "el-bucle-de-verificacion",
-    "lo-que-aprendio-la-comunidad-usando-claude-en-la-app",
-    "artifacts-apps-sin-programar",
-    "proyectos-de-claude-para-tu-negocio",
-    "5-cosas-para-montar-con-claude-el-finde"
-   ],
-   "prompts": [
-    "Pedidos bien armados",
-    "Revisión antes de entregar",
-    "Proyectos de Claude que no se desordenan"
-   ]
-  },
-  {
-   "id": "skills",
-   "parte": "aprende",
-   "e": "🧩",
-   "n": "Skills y plugins",
-   "d": "Enseñale a Claude tu forma de trabajar y sumale habilidades.",
-   "guias": [
-    "que-es-una-skill-y-como-crear-la-tuya",
-    "convertir-una-tarea-manual-en-skill",
-    "skills-globales-o-por-proyecto",
-    "instalar-skills-de-github",
-    "plugins-de-claude-desde-cero",
-    "22-skills-claude-code",
-    "skill-de-tu-marca",
-    "skill-para-responder-clientes",
-    "skill-de-presupuestos-para-tu-negocio"
-   ],
-   "prompts": [
-    "Diseñá tus skills",
-    "Revisá antes de instalar",
-    "Probá y mejorá tus skills"
-   ]
-  },
-  {
-   "id": "conectores",
-   "parte": "aprende",
-   "e": "🔌",
-   "n": "Conectores y MCP",
-   "d": "Conectá Claude con tu mail, tu agenda, tus archivos y tus apps.",
-   "guias": [
-    "conectores-claude-dentro-de-tus-apps",
-    "4-conectores-que-claude-deberia-tener",
-    "como-elegir-y-revisar-un-mcp-antes-de-instalarlo",
-    "mcp-oficiales-para-tu-negocio",
-    "make-zapier-o-n8n-cual-elegir",
-    "8-apps-clonadas-gratis",
-    "5-repos-que-matan-apps-de-pago"
-   ],
-   "prompts": [
-    "Tu día con MCP: arrancar, seguir y cerrar",
-    "Usar MCP con cuidado: revisar antes de que Claude toque algo"
    ]
   },
   {
@@ -200,6 +172,49 @@
    ]
   },
   {
+   "id": "skills",
+   "parte": "usalo",
+   "e": "🧩",
+   "n": "Skills y plugins",
+   "d": "Enseñale a Claude tu forma de trabajar y sumale habilidades.",
+   "guias": [
+    "que-es-una-skill-y-como-crear-la-tuya",
+    "convertir-una-tarea-manual-en-skill",
+    "skills-globales-o-por-proyecto",
+    "instalar-skills-de-github",
+    "plugins-de-claude-desde-cero",
+    "22-skills-claude-code",
+    "skill-de-tu-marca",
+    "skill-para-responder-clientes",
+    "skill-de-presupuestos-para-tu-negocio"
+   ],
+   "prompts": [
+    "Diseñá tus skills",
+    "Revisá antes de instalar",
+    "Probá y mejorá tus skills"
+   ]
+  },
+  {
+   "id": "conectores",
+   "parte": "usalo",
+   "e": "🔌",
+   "n": "Conectores y MCP",
+   "d": "Conectá Claude con tu mail, tu agenda, tus archivos y tus apps.",
+   "guias": [
+    "conectores-claude-dentro-de-tus-apps",
+    "4-conectores-que-claude-deberia-tener",
+    "como-elegir-y-revisar-un-mcp-antes-de-instalarlo",
+    "mcp-oficiales-para-tu-negocio",
+    "make-zapier-o-n8n-cual-elegir",
+    "8-apps-clonadas-gratis",
+    "5-repos-que-matan-apps-de-pago"
+   ],
+   "prompts": [
+    "Tu día con MCP: arrancar, seguir y cerrar",
+    "Usar MCP con cuidado: revisar antes de que Claude toque algo"
+   ]
+  },
+  {
    "id": "agentes",
    "parte": "usalo",
    "e": "🤖",
@@ -224,6 +239,58 @@
     "Instrucciones para agentes de atención y ventas",
     "Instrucciones para agentes de investigación y contenido",
     "Probá tu agente antes de soltarlo"
+   ]
+  },
+  {
+   "id": "sistema-base",
+   "parte": "construi",
+   "e": "💼",
+   "n": "El sistema para vender IA",
+   "d": "El método completo para vender e instalar IA en negocios, módulo por módulo.",
+   "guias": [
+    "sistema-base-modulo-1-la-oferta",
+    "sistema-base-modulo-2-elegir-a-quien-venderle",
+    "sistema-base-modulo-3-el-primer-mensaje",
+    "sistema-base-modulo-4-la-llamada-de-diagnostico",
+    "sistema-base-modulo-5-propuesta-y-precio",
+    "sistema-base-modulo-6-la-instalacion-paso-a-paso",
+    "sistema-base-modulo-7-entrega-y-capacitacion",
+    "sistema-base-modulo-8-mantenimiento-mensual",
+    "sistema-base-modulo-9-contrato-y-cuidados",
+    "cuanto-cobrar-por-automatizar-con-ia",
+    "7-repos-para-vender-a-empresas"
+   ],
+   "prompts": [
+    "Sistema base · Prospección",
+    "Sistema base · Diagnóstico",
+    "Sistema base · Propuesta",
+    "Propuesta de automatización para un cliente",
+    "Sistema base · Instalación",
+    "Sistema base · Reporte mensual",
+    "Sistema base · Objeciones"
+   ]
+  },
+  {
+   "id": "rubros",
+   "parte": "construi",
+   "e": "🏪",
+   "n": "Sistemas listos por rubro",
+   "d": "Qué automatizar en cada tipo de negocio, listo para instalar y vender.",
+   "guias": [
+    "sistema-ia-para-inmobiliarias",
+    "sistema-ia-para-clinicas-y-centros-de-estetica",
+    "sistema-ia-para-restaurantes-y-gastronomia",
+    "sistema-ia-para-estudios-contables",
+    "sistema-ia-para-tiendas-online",
+    "sistema-ia-para-gimnasios-y-entrenadores",
+    "sistema-ia-para-estudios-juridicos",
+    "sistema-ia-para-agencias-de-marketing",
+    "sistema-ia-para-profesores-y-academias"
+   ],
+   "prompts": [
+    "Detectá qué automatizar en un rubro",
+    "Adaptá el sistema a un rubro nuevo",
+    "Armá la demo para un rubro"
    ]
   },
   {
@@ -279,58 +346,6 @@
     "Depurar errores de producción",
     "Revisar la seguridad de tu app",
     "Preparar tu app para producción"
-   ]
-  },
-  {
-   "id": "sistema-base",
-   "parte": "construi",
-   "e": "💼",
-   "n": "El sistema para vender IA",
-   "d": "El método completo para vender e instalar IA en negocios, módulo por módulo.",
-   "guias": [
-    "sistema-base-modulo-1-la-oferta",
-    "sistema-base-modulo-2-elegir-a-quien-venderle",
-    "sistema-base-modulo-3-el-primer-mensaje",
-    "sistema-base-modulo-4-la-llamada-de-diagnostico",
-    "sistema-base-modulo-5-propuesta-y-precio",
-    "sistema-base-modulo-6-la-instalacion-paso-a-paso",
-    "sistema-base-modulo-7-entrega-y-capacitacion",
-    "sistema-base-modulo-8-mantenimiento-mensual",
-    "sistema-base-modulo-9-contrato-y-cuidados",
-    "cuanto-cobrar-por-automatizar-con-ia",
-    "7-repos-para-vender-a-empresas"
-   ],
-   "prompts": [
-    "Sistema base · Prospección",
-    "Sistema base · Diagnóstico",
-    "Sistema base · Propuesta",
-    "Propuesta de automatización para un cliente",
-    "Sistema base · Instalación",
-    "Sistema base · Reporte mensual",
-    "Sistema base · Objeciones"
-   ]
-  },
-  {
-   "id": "rubros",
-   "parte": "construi",
-   "e": "🏪",
-   "n": "Sistemas listos por rubro",
-   "d": "Qué automatizar en cada tipo de negocio, listo para instalar y vender.",
-   "guias": [
-    "sistema-ia-para-inmobiliarias",
-    "sistema-ia-para-clinicas-y-centros-de-estetica",
-    "sistema-ia-para-restaurantes-y-gastronomia",
-    "sistema-ia-para-estudios-contables",
-    "sistema-ia-para-tiendas-online",
-    "sistema-ia-para-gimnasios-y-entrenadores",
-    "sistema-ia-para-estudios-juridicos",
-    "sistema-ia-para-agencias-de-marketing",
-    "sistema-ia-para-profesores-y-academias"
-   ],
-   "prompts": [
-    "Detectá qué automatizar en un rubro",
-    "Adaptá el sistema a un rubro nuevo",
-    "Armá la demo para un rubro"
    ]
   }
  ],
