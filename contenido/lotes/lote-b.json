@@ -481,6 +481,7 @@
   },
   {
    "slug": "tareas-programadas-en-claude-code",
+   "post": "SOLO",
    "t": "Tareas programadas: Claude Code trabajando solo",
    "d": "Tres formas oficiales de dejar a Claude Code haciendo algo a una hora o cada cierto tiempo: en la nube, en tu compu o mientras tenés la sesión abierta.",
    "tema": "Claude Code",

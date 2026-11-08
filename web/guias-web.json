@@ -2869,6 +2869,7 @@
  },
  {
   "slug": "segundo-cerebro-de-tu-negocio",
+  "post": "CEREBRO",
   "t": "El segundo cerebro de tu negocio en un Proyecto de Claude",
   "d": "Procesos, precios, preguntas frecuentes y políticas en un solo lugar, para que cualquiera del equipo consulte y responda igual que vos.",
   "tema": "IA en tu negocio",
@@ -3050,6 +3051,7 @@
  },
  {
   "slug": "analizar-planillas-con-claude",
+  "post": "EXCEL",
   "t": "Analizar planillas con Claude sin saber fórmulas",
   "d": "Subís tu Excel o CSV, le hacés preguntas en criollo, le pedís gráficos y verificás los números antes de usarlos.",
   "tema": "IA en tu negocio",
@@ -4123,6 +4125,7 @@
  },
  {
   "slug": "youtube-skills-claude",
+  "post": "YOUTUBE",
   "t": "Claude te ayuda con tu canal de YouTube: 11 skills gratis",
   "d": "Guiones con 21 fórmulas de gancho, título y miniatura pensados juntos, qué cortar, el segundo exacto en que se va la gente y qué funciona en tu nicho. Gratis y de código abierto.",
   "tema": "Contenido y redes",
@@ -6112,6 +6115,7 @@
  },
  {
   "slug": "22-skills-claude-code",
+  "post": "SKILLS",
   "t": "Las 22 mejores skills para Claude Code, con su instalación",
   "d": "Repos de GitHub para construir, diseñar, investigar y hacer marketing con Claude, con el comando para instalar cada uno, para que tus sistemas para clientes no se vean genéricos.",
   "tema": "Skills y plugins",
@@ -7179,6 +7183,7 @@
  },
  {
   "slug": "8-apps-clonadas-gratis",
+  "post": "CLON",
   "t": "8 apps de pago con alternativa gratis y abierta: links e instalación",
   "d": "Motion design con agentes, un asistente de correo, Figma, Word, Excel, PowerPoint, Intercom y beehiiv: alternativas de código abierto que podés instalar con ayuda de Claude Code.",
   "tema": "Conectores y MCP",
@@ -7334,6 +7339,7 @@
  },
  {
   "slug": "5-repos-que-matan-apps-de-pago",
+  "post": "REPOS",
   "t": "5 repos de GitHub que reemplazan apps que pagás",
   "d": "Compañeros de IA siempre activos, un asesor de finanzas que deja tus datos en tu compu, piezas 3D desde una frase, videos de motion escritos como una web y 45 tipos de diagrama: links y cómo instalarlos.",
   "tema": "Conectores y MCP",
@@ -8185,6 +8191,7 @@
  },
  {
   "slug": "4-agentes-whatsapp-para-vender",
+  "post": "WHATSAPP",
   "t": "4 agentes de IA para WhatsApp que podés crear y ofrecer",
   "d": "Recepcionista, ventas, atención al cliente y turnos: qué hace cada uno, cómo se arma con la API oficial y cómo ofrecérselo a negocios con un abono mensual.",
   "tema": "Agentes",
@@ -8315,6 +8322,7 @@
  },
  {
   "slug": "oficina-de-agentes-ia",
+  "post": "OFICINA",
   "t": "Tu oficina de agentes de IA: gratis, de código abierto y en tu compu",
   "d": "Munder Difflin junta los agentes que ya usás (Claude Code, Codex, Gemini, Grok, Kimi, Cursor…) en una oficina: un orquestador reparte el trabajo, cada agente tiene memoria y buzón, y los ves trabajar.",
   "tema": "Agentes",
@@ -9719,6 +9727,7 @@
  },
  {
   "slug": "7-repos-para-vender-a-empresas",
+  "post": "VENDER",
   "t": "No armes un SaaS: 7 repos gratis para vender servicios de IA a empresas",
   "d": "CRM con agentes, auditoría SEO, monitor de competencia, rediseño de webs, informes en PowerPoint, listas de prospectos y OCR de papeles: qué ofrecer, a quién y cómo presentarlo.",
   "tema": "El sistema para vender IA",
@@ -9850,6 +9859,7 @@
  },
  {
   "slug": "sistema-ia-para-inmobiliarias",
+  "post": "INMOBILIARIA",
   "t": "Sistema con Claude para inmobiliarias, listo para instalar y vender",
   "d": "Qué tareas le sacás de encima a una inmobiliaria, qué piezas lleva el sistema y cómo se lo ofrecés al dueño sin prometer cosas que no podés cumplir.",
   "tema": "Sistemas listos por rubro",
@@ -12285,6 +12295,7 @@
  },
  {
   "slug": "tareas-programadas-en-claude-code",
+  "post": "SOLO",
   "t": "Tareas programadas: Claude Code trabajando solo",
   "d": "Tres formas oficiales de dejar a Claude Code haciendo algo a una hora o cada cierto tiempo: en la nube, en tu compu o mientras tenés la sesión abierta.",
   "tema": "Claude Code",
@@ -12819,6 +12830,7 @@
  },
  {
   "slug": "de-idea-a-app-publicada-con-claude-code",
+  "post": "APP",
   "t": "De idea a app publicada con Claude Code",
   "d": "El recorrido completo en cinco tramos: idea, especificación, construir, probar y publicar en Vercel o Netlify. Con los prompts de cada paso.",
   "tema": "Creá tu app",

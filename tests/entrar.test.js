@@ -39,7 +39,7 @@ test("sin cookie: solo el inicio; lo privado nunca", () => {
   assert.deepEqual(decidir("/web/prompts.js", null), { prohibido: true });
   // Guía gratis sin sesión: al registro y de vuelta a la guía. Guía paga sin sesión: a entrar.
   assert.deepEqual(decidir("/guias/errores-que-agotan-tu-plan-de-claude.html", null), { a: "/?volver=/guias/errores-que-agotan-tu-plan-de-claude#gratis" });
-  assert.deepEqual(decidir("/guias/sistema-ia-para-inmobiliarias.html", null), { a: "/#entrar" });
+  assert.deepEqual(decidir("/guias/sistema-ia-para-clinicas-y-centros-de-estetica.html", null), { a: "/#entrar" });
   assert.deepEqual(decidir("/web/guias-web.json", "pago"), { no: true });
   assert.deepEqual(decidir("/contenido/config.json", "pago"), { no: true });
   assert.deepEqual(decidir("/supabase/registros.sql", "pago"), { no: true });

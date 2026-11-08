@@ -2,6 +2,7 @@
   "guias": [
     {
       "slug": "youtube-skills-claude",
+      "post": "YOUTUBE",
       "t": "Claude te ayuda con tu canal de YouTube: 11 skills gratis",
       "d": "Guiones con 21 fórmulas de gancho, título y miniatura pensados juntos, qué cortar, el segundo exacto en que se va la gente y qué funciona en tu nicho. Gratis y de código abierto.",
       "tema": "Contenido",
@@ -491,6 +492,7 @@
     },
     {
       "slug": "oficina-de-agentes-ia",
+      "post": "OFICINA",
       "t": "Tu oficina de agentes de IA: gratis, de código abierto y en tu compu",
       "d": "Munder Difflin junta los agentes que ya usás (Claude Code, Codex, Gemini, Grok, Kimi, Cursor…) en una oficina: un orquestador reparte el trabajo, cada agente tiene memoria y buzón, y los ves trabajar.",
       "tema": "Automatizar",
@@ -657,6 +659,7 @@
     },
     {
       "slug": "22-skills-claude-code",
+      "post": "SKILLS",
       "t": "Las 22 mejores skills para Claude Code, con su instalación",
       "d": "Repos de GitHub para construir, diseñar, investigar y hacer marketing con Claude, con el comando para instalar cada uno, para que tus sistemas para clientes no se vean genéricos.",
       "tema": "Skills",
@@ -1350,6 +1353,7 @@
     },
     {
       "slug": "4-agentes-whatsapp-para-vender",
+      "post": "WHATSAPP",
       "t": "4 agentes de IA para WhatsApp que podés crear y ofrecer",
       "d": "Recepcionista, ventas, atención al cliente y turnos: qué hace cada uno, cómo se arma con la API oficial y cómo ofrecérselo a negocios con un abono mensual.",
       "tema": "Ventas",
@@ -1478,6 +1482,7 @@
     },
     {
       "slug": "8-apps-clonadas-gratis",
+      "post": "CLON",
       "t": "8 apps de pago con alternativa gratis y abierta: links e instalación",
       "d": "Motion design con agentes, un asistente de correo, Figma, Word, Excel, PowerPoint, Intercom y beehiiv: alternativas de código abierto que podés instalar con ayuda de Claude Code.",
       "tema": "Productividad",
@@ -1631,6 +1636,7 @@
     },
     {
       "slug": "7-repos-para-vender-a-empresas",
+      "post": "VENDER",
       "t": "No armes un SaaS: 7 repos gratis para vender servicios de IA a empresas",
       "d": "CRM con agentes, auditoría SEO, monitor de competencia, rediseño de webs, informes en PowerPoint, listas de prospectos y OCR de papeles: qué ofrecer, a quién y cómo presentarlo.",
       "tema": "Negocio",
@@ -1760,6 +1766,7 @@
     },
     {
       "slug": "5-repos-que-matan-apps-de-pago",
+      "post": "REPOS",
       "t": "5 repos de GitHub que reemplazan apps que pagás",
       "d": "Compañeros de IA siempre activos, un asesor de finanzas que deja tus datos en tu compu, piezas 3D desde una frase, videos de motion escritos como una web y 45 tipos de diagrama: links y cómo instalarlos.",
       "tema": "Productividad",

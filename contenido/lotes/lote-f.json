@@ -345,6 +345,7 @@
   },
   {
    "slug": "analizar-planillas-con-claude",
+   "post": "EXCEL",
    "t": "Analizar planillas con Claude sin saber fórmulas",
    "d": "Subís tu Excel o CSV, le hacés preguntas en criollo, le pedís gráficos y verificás los números antes de usarlos.",
    "tema": "Productividad",

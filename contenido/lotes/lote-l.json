@@ -2,6 +2,7 @@
  "guias": [
   {
    "slug": "sistema-ia-para-inmobiliarias",
+   "post": "INMOBILIARIA",
    "t": "Sistema con Claude para inmobiliarias, listo para instalar y vender",
    "d": "Qué tareas le sacás de encima a una inmobiliaria, qué piezas lleva el sistema y cómo se lo ofrecés al dueño sin prometer cosas que no podés cumplir.",
    "tema": "Vender IA",

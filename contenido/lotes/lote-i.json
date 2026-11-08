@@ -2,6 +2,7 @@
  "guias": [
   {
    "slug": "de-idea-a-app-publicada-con-claude-code",
+   "post": "APP",
    "t": "De idea a app publicada con Claude Code",
    "d": "El recorrido completo en cinco tramos: idea, especificación, construir, probar y publicar en Vercel o Netlify. Con los prompts de cada paso.",
    "tema": "Desarrollo",
