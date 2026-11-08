@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena investigar-un-mercado-con-claude, Investigar tu mercado con Claude, con fuentes a la vista, Usá la búsqueda web y la función Research de Claude para mapear competidores y entender a tus clientes, revisando cada fuente. y 6b4c5579 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena investigar-un-mercado-con-claude, Investigar tu mercado con Claude, con fuentes a la vista, Usá la búsqueda web y la función Research de Claude para mapear competidores y entender a tus clientes, revisando cada fuente. y 43c1f0cb -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=6b4c5579">
-<link rel="stylesheet" href="../web/cta.css?v=6b4c5579">
-<link rel="stylesheet" href="../web/biblioteca.css?v=6b4c5579">
-<link rel="stylesheet" href="../web/guia.css?v=6b4c5579">
-<link rel="stylesheet" href="../web/tema.css?v=6b4c5579">
-<link rel="stylesheet" href="../web/bienvenida.css?v=6b4c5579">
-<script src="../web/tema.js?v=6b4c5579"></script>
-<link rel="icon" href="../web/favicon.svg?v=6b4c5579" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=43c1f0cb">
+<link rel="stylesheet" href="../web/cta.css?v=43c1f0cb">
+<link rel="stylesheet" href="../web/biblioteca.css?v=43c1f0cb">
+<link rel="stylesheet" href="../web/guia.css?v=43c1f0cb">
+<link rel="stylesheet" href="../web/tema.css?v=43c1f0cb">
+<link rel="stylesheet" href="../web/bienvenida.css?v=43c1f0cb">
+<script src="../web/tema.js?v=43c1f0cb"></script>
+<link rel="icon" href="../web/favicon.svg?v=43c1f0cb" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=6b4c5579"></script>
-<script src="../web/guias-web.js?v=6b4c5579"></script>
-<script src="../web/comun.js?v=6b4c5579"></script>
+<script src="../web/redes.js?v=43c1f0cb"></script>
+<script src="../web/guias-web.js?v=43c1f0cb"></script>
+<script src="../web/comun.js?v=43c1f0cb"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="investigar-un-mercado-con-claude"></main>
 <script>var GUIA = {"slug": "investigar-un-mercado-con-claude", "t": "Investigar tu mercado con Claude, con fuentes a la vista", "d": "Usá la búsqueda web y la función Research de Claude para mapear competidores y entender a tus clientes, revisando cada fuente.", "tema": "IA en tu negocio", "min": 9, "fichaNombre": "Investigación de mercado", "ficha": [["Qué es", "Búsqueda web con citas y Research, que hace varias búsquedas encadenadas sobre un tema."], ["Necesitás", "Búsqueda web activada. Research es solo para planes pagos (Pro, Max, Ultra, Team o Enterprise)."], ["Dónde", "Web, app de escritorio y app del celular."], ["Qué no hace", "No tiene acceso a información paga o privada de tus competidores: trabaja con lo que está publicado."]], "secciones": [{"h": "Búsqueda web y Research: la diferencia", "lista": ["Búsqueda web: Claude busca en internet para responder una pregunta concreta. Según el centro de ayuda, cada respuesta incluye citas para que verifiques las fuentes.", "Research: Claude hace varias búsquedas que se van apoyando una en la otra y decide qué explorar después según lo que encuentra. Sirve para preguntas amplias, y gasta tu límite de uso más rápido."]}, {"h": "Activalas", "pasos": ["En un chat, tocá el botón + de abajo a la izquierda y elegí \"Búsqueda web\". Si en tu cuenta no aparece el interruptor, Claude busca en la web solo cuando le parece útil.", "Para Research, en el mismo botón + elegí \"Research\". Aparece un indicador azul abajo del chat; tocándolo de nuevo lo apagás.", "Research necesita la búsqueda web encendida para funcionar.", "En planes de equipo o empresa, el administrador tiene que habilitar la búsqueda web para toda la organización."]}, {"h": "Mapear la competencia", "prompts": [{"t": "Mapa de competidores", "c": "Investigá la competencia de [TU NEGOCIO, EN UNA LÍNEA] en [CIUDAD O PAÍS].\nQuiero una tabla con 5 a 10 competidores y estas columnas: nombre, qué venden, a quién le apuntan, cómo se presentan (su promesa principal), precios si están publicados y link a la fuente.\nDespués decime:\n1. Qué hacen casi todos igual.\n2. Qué huecos ves que nadie está cubriendo.\nReglas: cada dato con su fuente. Si un dato no lo encontraste publicado, poné \"NO ENCONTRADO\". No estimes precios."}]}, {"h": "Entender a tus clientes", "prompts": [{"t": "Qué dicen los clientes", "c": "Buscá qué dicen en internet las personas que compran [TU TIPO DE PRODUCTO O SERVICIO] en [PAÍS]: reseñas públicas, foros y comentarios.\nArmame:\n1. Las 5 quejas más repetidas, con 1 o 2 citas textuales cortas y el link de cada una.\n2. Lo que más valoran.\n3. Las palabras que usan para describir su problema (me sirven para mis textos).\nSi encontrás pocos datos para mi país, decímelo en vez de completar con otros países sin aclararlo."}]}, {"h": "Revisá las fuentes, siempre", "pasos": ["Abrí al menos los links que sostienen las conclusiones más importantes.", "Fijate la fecha de cada fuente: un precio de hace años no te sirve.", "Si una afirmación no tiene link, tratala como hipótesis, no como dato.", "Pedile que separe lo que encontró de lo que deduce."], "prompts": [{"t": "Separar datos de conclusiones", "c": "De tu investigación, separá en dos listas:\nA) Datos que encontraste publicados, cada uno con su link.\nB) Conclusiones o deducciones tuyas.\nPara cada conclusión, decime en qué datos de la lista A se apoya."}], "aviso": "La investigación te da un punto de partida. Antes de invertir plata en una decisión, hablá con clientes reales."}], "faq": [{"q": "¿Puedo usar Research en el plan gratis?", "a": "No. Según el centro de ayuda, Research está en los planes pagos Pro, Max, Ultra, Team y Enterprise. La búsqueda web común sí podés usarla, dentro de tus límites."}, {"q": "¿Puede ver las ventas de mis competidores?", "a": "No. Trabaja con lo que está publicado en internet."}, {"q": "¿Por qué se me termina el uso tan rápido con Research?", "a": "Porque busca en muchas fuentes. El centro de ayuda avisa que estas sesiones pueden gastar tus límites más rápido."}], "fuentes": ["https://support.claude.com/en/articles/10684626-enable-and-use-web-search", "https://support.claude.com/en/articles/11088861-use-research-on-claude"], "cat": "negocio", "parte": "usalo"};</script>
 
-<script src="../web/rutas.js?v=6b4c5579"></script>
-<script src="../web/logos.js?v=6b4c5579"></script>
-<script src="../web/guia.js?v=6b4c5579"></script>
-<script src="../web/bienvenida.js?v=6b4c5579"></script>
+<script src="../web/rutas.js?v=43c1f0cb"></script>
+<script src="../web/logos.js?v=43c1f0cb"></script>
+<script src="../web/guia.js?v=43c1f0cb"></script>
+<script src="../web/bienvenida.js?v=43c1f0cb"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

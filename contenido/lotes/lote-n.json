@@ -1,0 +1,644 @@
+{
+  "guias": [
+    {
+      "slug": "claude-code-liviano",
+      "t": "Claude Code liviano: que no se te llene el contexto",
+      "d": "Los hábitos y comandos oficiales para que cada mensaje cargue menos: limpiar entre tareas, compactar bien, CLAUDE.md corto, menos MCP, subagentes, modo plan y el modelo justo.",
+      "tema": "Claude Code",
+      "min": 8,
+      "fichaNombre": "Claude Code liviano",
+      "ficha": [
+        [
+          "Qué es",
+          "Una forma de trabajar con Claude Code que mantiene chica la conversación para que tu plan o tu crédito rinda más."
+        ],
+        [
+          "Necesitás",
+          "Claude Code instalado y una sesión abierta en tu proyecto."
+        ],
+        [
+          "Cuánto cuesta",
+          "Nada extra: son comandos y ajustes que ya vienen."
+        ],
+        [
+          "Qué no hace",
+          "No sube tus límites: hace que gastes menos de lo que ya tenés."
+        ]
+      ],
+      "secciones": [
+        {
+          "h": "Por qué una sesión larga gasta más",
+          "p": [
+            "Claude Code le manda al modelo toda la conversación en cada pedido. Cada vez que Claude usa una herramienta (leer un archivo, correr un comando) se manda otro pedido con esos resultados. Por eso, una pregunta de una línea en una sesión abierta todo el día igual consume por toda la conversación.",
+            "Claude Code ya ahorra solo de dos formas: guarda en caché lo que se repite y, cuando la conversación se acerca al límite, la resume sola (compactación automática). Lo que sigue te ayuda a que no tenga que llegar a eso."
+          ]
+        },
+        {
+          "h": "Mirá qué está ocupando lugar",
+          "lista": [
+            "/context: te muestra una grilla de colores con lo que ocupa el contexto, y sugerencias para herramientas pesadas, memoria inflada y avisos de capacidad. Con /context all ves el detalle completo.",
+            "/usage: tu consumo en la sesión y los límites de tu plan. /cost es lo mismo.",
+            "Línea de estado: podés tener siempre a la vista el porcentaje de contexto usado. Lo armás con /statusline (está explicado en la guía de cómo medir tu consumo)."
+          ],
+          "p": [
+            "Mirá /context al arrancar: lo que aparece ahí antes de que escribas nada (CLAUDE.md, memoria automática, nombres de herramientas MCP, descripciones de skills) se carga en cada sesión."
+          ]
+        },
+        {
+          "h": "Limpiá entre tareas y compactá con criterio",
+          "pasos": [
+            "Terminaste una tarea y vas a otra que no tiene nada que ver: corré /rename con un nombre claro para encontrarla después.",
+            "Corré /clear. Empezás una conversación vacía; tu CLAUDE.md se sigue cargando. Si querés volver a la anterior, usá /resume.",
+            "Si seguís con la misma tarea pero la charla se hizo larga, usá /compact con instrucciones, por ejemplo: /compact Focus on code samples and API usage. Así decidís vos qué conserva el resumen.",
+            "Si querés que la compactación siempre cuide algo, agregá en tu CLAUDE.md una sección \"# Compact instructions\" con lo que tiene que mantener."
+          ],
+          "aviso": "/compact también gasta: tiene que leer toda la conversación para resumirla. Si no necesitás continuidad, /clear no cuesta nada.",
+          "prompts": [
+            {
+              "t": "Resumen antes de /clear",
+              "c": "Antes de que limpie la sesión, escribime un resumen corto para arrancar de cero: objetivo, qué archivos tocamos, decisiones que tomamos y qué falta. Máximo 15 líneas. No hagas cambios."
+            }
+          ]
+        },
+        {
+          "h": "Un CLAUDE.md corto",
+          "p": [
+            "CLAUDE.md se carga al empezar cada sesión, así que todo lo que tiene se paga siempre. La documentación oficial recomienda apuntar a menos de 200 líneas por archivo: los archivos largos ocupan más contexto y Claude los sigue peor.",
+            "Lo que es para un trabajo puntual (cómo revisar un PR, cómo hacer una migración) pasalo a una skill: las skills se cargan solo cuando se usan. Las reglas que valen solo para una carpeta podés ponerlas en .claude/rules/ con un campo paths, y se cargan cuando Claude lee esos archivos."
+          ],
+          "prompts": [
+            {
+              "t": "Achicá tu CLAUDE.md",
+              "c": "Leé mi CLAUDE.md. Proponeme una versión de menos de 200 líneas que deje solo lo que hace falta en todas las sesiones: qué es el proyecto, comandos para correr y probar, y reglas que nunca hay que romper. Lo que sea de un flujo puntual, marcámelo para pasarlo a una skill o a .claude/rules/. Mostrame el cambio antes de guardarlo."
+            }
+          ]
+        },
+        {
+          "h": "Apagá los MCP que no estás usando",
+          "p": [
+            "Las herramientas de los servidores MCP se cargan diferidas: hasta que Claude usa una, en el contexto entran solo los nombres y las instrucciones del servidor. Igual suman."
+          ],
+          "lista": [
+            "/mcp: abre la lista de servidores para ver cuáles tenés y apagar los que no usás.",
+            "/mcp disable [nombre]: apaga uno sin abrir la lista. Con /mcp enable [nombre] lo volvés a prender.",
+            "Si hay una herramienta de terminal para lo mismo (gh, aws, gcloud, sentry-cli), la documentación dice que gasta menos contexto que un MCP."
+          ]
+        },
+        {
+          "h": "Subagentes y modo plan",
+          "lista": [
+            "Subagentes: correr tests, leer documentación o revisar logs largos llena el contexto. Si lo hace un subagente, toda esa salida queda en su contexto y a tu conversación vuelve solo el resumen. Ojo: lo que usa el subagente también cuenta para tu consumo.",
+            "Modo plan: apretá Shift+Tab hasta llegar al modo plan, o escribí /plan seguido de la tarea. Claude investiga y te propone cómo hacerlo antes de tocar nada, y evitás rehacer trabajo si el rumbo era otro.",
+            "Cortá a tiempo: si ves que va para otro lado, apretá Esc. Con /rewind (o Esc dos veces) volvés a un punto anterior."
+          ],
+          "prompts": [
+            {
+              "t": "Tests en un subagente",
+              "c": "Usá un subagente para correr los tests y que me informe solo los que fallan, con su mensaje de error."
+            }
+          ]
+        },
+        {
+          "h": "El modelo y el esfuerzo justos",
+          "lista": [
+            "/model: cambiás de modelo en la sesión. Según la documentación oficial, Sonnet resuelve bien la mayoría de las tareas de código y cuesta menos que Opus; dejá Opus para decisiones de arquitectura o razonamiento de varios pasos.",
+            "opusplan: con /model opusplan usa Opus en el modo plan y pasa a Sonnet para ejecutar.",
+            "Subagentes simples: en la configuración del subagente podés poner model: haiku.",
+            "/effort: bajá el nivel de esfuerzo (por ejemplo /effort low) para tareas simples. El razonamiento extendido se cobra como tokens de salida."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿/clear me borra el trabajo?",
+          "a": "No. Tus archivos quedan igual. Solo empieza una conversación nueva y podés volver a la anterior con /resume."
+        },
+        {
+          "q": "¿Cuándo uso /clear y cuándo /compact?",
+          "a": "/clear cuando cambiás de tarea. /compact cuando seguís con lo mismo pero la charla se hizo larga y necesitás que recuerde lo hablado."
+        },
+        {
+          "q": "Si Claude Code compacta solo, ¿para qué lo hago yo?",
+          "a": "Porque la compactación automática adivina qué es importante. Si compactás vos con instrucciones, elegís qué se queda. Y si limpiás entre tareas, muchas veces ni hace falta."
+        }
+      ],
+      "fuentes": [
+        "https://code.claude.com/docs/en/costs",
+        "https://code.claude.com/docs/en/commands",
+        "https://code.claude.com/docs/fr/context-window",
+        "https://code.claude.com/docs/en/memory",
+        "https://code.claude.com/docs/en/sub-agents",
+        "https://code.claude.com/docs/en/model-config"
+      ]
+    },
+    {
+      "slug": "cuanto-gastas-en-claude-code",
+      "t": "Cuánto gastás en Claude Code: cómo medirlo",
+      "d": "Qué comando te muestra tu consumo según pagues suscripción o API, cómo leer el desglose, cómo tenerlo siempre a la vista en la línea de estado y qué hacer cuando llegás al límite.",
+      "tema": "Claude Code",
+      "min": 7,
+      "secciones": [
+        {
+          "h": "Primero: ¿estás usando tu plan o la API?",
+          "p": [
+            "Parece obvio, pero es el error más caro. Si en tu compu está la variable ANTHROPIC_API_KEY y aceptaste usarla, Claude Code se autentica con esa clave en vez de tu suscripción, y lo que uses se cobra como API."
+          ],
+          "pasos": [
+            "Dentro de Claude Code, corré /status. Te muestra la versión, el modelo, la cuenta y el método con el que entraste.",
+            "Si querés usar tu suscripción y ves una clave de API, salí y en la terminal corré: unset ANTHROPIC_API_KEY",
+            "Volvé a entrar y corré /status otra vez para confirmar. Si entraste con una cuenta de Console, usá /login para pasar a tu suscripción."
+          ]
+        },
+        {
+          "h": "/usage: el comando que muestra tu consumo",
+          "p": [
+            "/usage muestra el costo de la sesión, los límites de tu plan y estadísticas de actividad. /cost y /stats son atajos del mismo comando (/stats abre directo la pestaña de estadísticas). Lo podés correr mientras Claude está respondiendo."
+          ],
+          "lista": [
+            "Si pagás suscripción (Pro, Max o Ultra): mirá las barras de uso del plan. El monto en dólares del bloque Session es para usuarios de API; con suscripción no es lo que pagás.",
+            "Si pagás API: el bloque Session te da tokens por modelo y un costo estimado, calculado en tu compu a precio de lista. Se reinicia cuando hacés /clear. Para la factura real, mirá la página de uso en la Claude Console (platform.claude.com/usage)."
+          ]
+        },
+        {
+          "h": "El desglose: qué se está comiendo tu plan",
+          "p": [
+            "En los planes Pro, Max, Team y Enterprise, /usage también te muestra qué parte del uso reciente se fue en skills, subagentes, plugins y cada servidor MCP, más recomendaciones concretas. Cada recomendación arranca con el porcentaje del uso al que aplica (como mínimo 10%), no con lo que vas a ahorrar."
+          ],
+          "lista": [
+            "d o w: cambiás entre las últimas 24 horas y los últimos 7 días.",
+            "f: si abajo aparece algo como \"f to fix 2 of 3\", apretás f y Claude Code aplica las recomendaciones que puede, mostrándote cada cambio antes. Necesita la versión 2.1.305 o posterior.",
+            "Ojo: el desglose sale del historial de esta compu. No incluye lo que usaste en otros dispositivos ni en claude.ai."
+          ]
+        },
+        {
+          "h": "Tenelo siempre a la vista: la línea de estado",
+          "p": [
+            "La línea de estado es una barra abajo de Claude Code que muestra lo que quieras. La forma fácil es pedírsela con /statusline: Claude Code arma el script y actualiza tu configuración solo."
+          ],
+          "prompts": [
+            {
+              "t": "Línea de estado con contexto",
+              "c": "/statusline show model name and context percentage with a progress bar"
+            }
+          ],
+          "lista": [
+            "Contexto: el dato context_window.used_percentage es el porcentaje de contexto usado.",
+            "Límites del plan: rate_limits.five_hour.used_percentage y rate_limits.seven_day.used_percentage muestran cuánto usaste de la ventana de 5 horas y de la semanal. Solo aparecen en suscriptores Pro y Max de claude.ai, después de la primera respuesta.",
+            "Costo: cost.total_cost_usd es un costo estimado a precio de lista. Puede no coincidir con tu factura y vuelve a cero con /clear."
+          ]
+        },
+        {
+          "h": "Otros datos que te sirven",
+          "lista": [
+            "El contador al lado del spinner: mientras Claude trabaja ves algo como (10m 27s · ↓ 5.5k tokens). Cuenta solo la salida del turno actual, no todo lo que se manda.",
+            "/insights: te arma un informe HTML sobre cómo trabajás (en qué proyectos, dónde se traba, qué probar). Sirve para detectar malos hábitos. Ojo: el análisis también consume de tu plan o tu crédito.",
+            "ccusage: herramienta de la comunidad que lee los datos que Claude Code guarda en tu compu y te arma reportes por día, mes o sesión. Está en la biblioteca, en Herramientas. Sus números también son estimaciones."
+          ]
+        },
+        {
+          "h": "Cuando llegás al límite",
+          "lista": [
+            "\"You've hit your session limit\" o \"weekly limit\": es el límite de tu plan, compartido entre todos los modelos. Cambiar de modelo no lo destraba. El mensaje te dice cuándo se renueva.",
+            "\"You've hit your Opus limit\" o \"Sonnet limit\": es un límite de ese modelo. Ahí sí podés seguir pasando a otro con /model.",
+            "/usage-credits: en Pro y Max abre la configuración de créditos de uso en claude.ai, para seguir pasado el límite pagando aparte. No funciona si entraste con clave de API.",
+            "Un aviso de contexto o de autocompactación no es un límite de uso: es la conversación que se llenó. Mirá la guía de Claude Code liviano."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿/cost y /usage son distintos?",
+          "a": "No. /cost es un atajo de /usage. /stats también, pero abre en la pestaña de estadísticas."
+        },
+        {
+          "q": "Tengo Pro y /usage me muestra un costo en dólares. ¿Me lo van a cobrar?",
+          "a": "No. Ese monto es para usuarios de API. Con suscripción lo que cuenta son las barras de uso de tu plan."
+        },
+        {
+          "q": "¿Lo que uso en claude.ai cuenta para el mismo límite?",
+          "a": "Sí. Según la ayuda oficial, el uso en Claude y en Claude Code cuenta para los mismos límites. El desglose de /usage, en cambio, solo ve lo de esta compu."
+        }
+      ],
+      "fuentes": [
+        "https://code.claude.com/docs/en/costs",
+        "https://code.claude.com/docs/en/commands",
+        "https://code.claude.com/docs/en/statusline",
+        "https://code.claude.com/docs/en/iam",
+        "https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-max-or-ultra-plan"
+      ]
+    },
+    {
+      "slug": "pro-max-o-api-cual-te-conviene",
+      "t": "Pro, Max o API: cuál te conviene para Claude Code",
+      "d": "Cómo funcionan los planes de suscripción y la API que se paga por uso, los precios oficiales a noviembre de 2026 y cómo saber si tenés que subir de plan o usar mejor el que tenés.",
+      "tema": "Claude Code",
+      "min": 7,
+      "ficha": [
+        [
+          "Qué es",
+          "Una comparación de las formas de pagar Claude Code: suscripción (Pro, Max, Ultra) o API por uso."
+        ],
+        [
+          "Necesitás",
+          "Saber cuánto usás hoy: corré /usage en Claude Code."
+        ],
+        [
+          "Cuánto cuesta",
+          "Pro US$20, Max US$100 y Ultra US$200 por mes (precios a noviembre de 2026, revisalos en la página oficial). La API se paga por token."
+        ],
+        [
+          "Qué no hace",
+          "No te dice cuántos mensajes exactos tenés: los límites dependen de cómo usás Claude."
+        ]
+      ],
+      "secciones": [
+        {
+          "h": "Dos formas de pagar",
+          "lista": [
+            "Suscripción (Pro, Max o Ultra): pagás un monto fijo por mes. Con la misma cuenta usás Claude en la web, el escritorio, el celular y Claude Code. Todo lo que hacés en cualquiera de ellos cuenta para los mismos límites.",
+            "API (pago por uso): entrás a Claude Code con una cuenta de la Claude Console y pagás por cada token que se procesa, a los precios de la API. No tenés los límites de 5 horas ni el semanal del plan, pero tampoco hay techo de gasto si no lo ponés vos."
+          ]
+        },
+        {
+          "h": "Los precios oficiales",
+          "p": [
+            "Precios a noviembre de 2026, revisalos en la página oficial (claude.com/pricing) antes de decidir. Son en dólares, con impuestos según tu región, y en la app del celular pueden ser distintos."
+          ],
+          "lista": [
+            "Pro: US$20 por mes. Incluye Claude Code.",
+            "Max: US$100 por mes, solo mensual. Te da cinco veces el uso de Pro cada 5 horas y cada semana.",
+            "Ultra: US$200 por mes. Te da diez veces el uso semanal de Pro, y las cuentas verificadas no tienen límite de 5 horas. Es el plan que antes se llamaba Max 20x.",
+            "API: se paga por millón de tokens y el precio cambia según el modelo. Mirá la guía para usar la API más barata."
+          ],
+          "aviso": "Los precios y los planes pueden cambiar. Si ves una diferencia con lo que dice acá, vale lo que diga la página oficial."
+        },
+        {
+          "h": "Cómo funcionan los límites de los planes",
+          "lista": [
+            "Pro y Max tienen un límite por sesión que se renueva cada 5 horas y otro semanal.",
+            "El límite semanal se renueva a una hora fija asignada a tu cuenta.",
+            "Max y Ultra tienen además un límite semanal aparte para los modelos Fable.",
+            "Si te quedás sin uso, podés esperar a que se renueve, activar créditos de uso (se pagan aparte) o pasar a una cuenta de Console y pagar API a precio normal."
+          ]
+        },
+        {
+          "h": "Antes de subir de plan, revisá esto",
+          "pasos": [
+            "Corré /usage y mirá el desglose de los últimos 7 días (tecla w). Fijate qué se lleva la mayor parte: un CLAUDE.md enorme, un MCP, subagentes, sesiones larguísimas.",
+            "Aplicá lo de la guía Claude Code liviano: /clear entre tareas, CLAUDE.md corto, MCP apagados.",
+            "Usá Sonnet para el día a día y dejá Opus para lo difícil (/model).",
+            "Probalo una o dos semanas. Si seguís chocando con el límite casi todos los días, ahí sí subí de plan."
+          ]
+        },
+        {
+          "h": "Cuándo conviene cada uno",
+          "lista": [
+            "Pro: si usás Claude Code algunas horas por semana y no chocás seguido con el límite.",
+            "Max: si trabajás con Claude Code casi todos los días y el límite de Pro te frena aunque ya uses bien el plan.",
+            "Ultra: si es tu herramienta principal de trabajo y Max no te alcanza en la semana.",
+            "API: si lo vas a usar en automatizaciones, en un servidor o en un equipo donde querés pagar exactamente lo que se usa. En la Console podés poner límites de gasto por espacio de trabajo. Si es para vos solo y lo usás mucho, compará contra el plan antes."
+          ],
+          "p": [
+            "Como referencia, Anthropic cuenta que en empresas el gasto promedio con API ronda US$13 por desarrollador por día activo y entre US$150 y US$250 por mes. Es un promedio de empresas: tu número puede ser muy distinto."
+          ]
+        },
+        {
+          "h": "Pedile a Claude que te ayude a decidir",
+          "prompts": [
+            {
+              "t": "¿Subo de plan?",
+              "c": "Te pego lo que me muestra /usage de los últimos 7 días:\n[PEGÁ ACÁ]\nMi plan actual: [PRO / MAX / API].\nCómo uso Claude Code: [CUÁNTAS HORAS POR DÍA Y PARA QUÉ].\nDecime: 1) qué es lo que más me está consumiendo, 2) qué puedo cambiar en mi forma de trabajar antes de pagar más, y 3) si con esos cambios igual me convendría otro plan. No inventes precios: si los necesitás, decime que los revise en claude.com/pricing."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Con Pro puedo usar Claude Code?",
+          "a": "Sí. Pro incluye Claude Code en la terminal y comparte los límites con el chat."
+        },
+        {
+          "q": "Si me paso del límite, ¿me cobran solo?",
+          "a": "No, salvo que tengas activados los créditos de uso. Si no, Claude Code se frena hasta que se renueva el límite."
+        },
+        {
+          "q": "Tengo suscripción, ¿por qué me llegó un cobro de API?",
+          "a": "Probablemente tenés la variable ANTHROPIC_API_KEY configurada y Claude Code la usó. Corré /status para ver con qué entraste y mirá la guía de cómo medir tu consumo."
+        }
+      ],
+      "fuentes": [
+        "https://support.anthropic.com/en/articles/8325610-how-much-does-claude-pro-cost",
+        "https://support.claude.com/en/articles/8324991-about-claude-s-pro-plan-usage",
+        "https://support.claude.com/en/articles/11049741-what-is-the-max-plan",
+        "https://support.claude.com/en/articles/17728952-what-is-the-ultra-plan",
+        "https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-max-or-ultra-plan",
+        "https://code.claude.com/docs/en/costs",
+        "https://code.claude.com/docs/en/iam"
+      ]
+    },
+    {
+      "slug": "api-mas-barata-cache-y-lotes",
+      "t": "La API de Claude más barata: caché, lotes y contar tokens",
+      "d": "Para quien programa con la API: elegir el modelo justo, contar tokens antes de mandar, usar prompt caching y mandar en lote lo que no es urgente. Con los descuentos oficiales.",
+      "tema": "Claude Code",
+      "min": 9,
+      "ficha": [
+        [
+          "Qué es",
+          "Cuatro formas oficiales de pagar menos por la API de Claude."
+        ],
+        [
+          "Necesitás",
+          "Una cuenta en la Claude Console con clave de API, y el SDK oficial de Claude para tu lenguaje (los ejemplos son en Python)."
+        ],
+        [
+          "Cuánto cuesta",
+          "Contar tokens es gratis. El caché y los lotes bajan el precio de lo que ya mandabas."
+        ],
+        [
+          "Qué no hace",
+          "No sirve para la suscripción Pro o Max: es solo para quien paga la API por uso."
+        ]
+      ],
+      "secciones": [
+        {
+          "h": "Qué es lo que pagás",
+          "p": [
+            "En la API pagás por token: lo que mandás (entrada) y lo que Claude responde (salida). La salida es más cara que la entrada, y el precio cambia mucho según el modelo. El razonamiento extendido se cobra como salida.",
+            "Algunos precios de la tabla oficial, por millón de tokens (precios a noviembre de 2026, revisalos en la página oficial):"
+          ],
+          "lista": [
+            "Claude Opus 5.5: US$4 de entrada y US$20 de salida.",
+            "Claude Sonnet 5.5: US$2 de entrada y US$10 de salida.",
+            "Claude Haiku 5.5 (pedidos de hasta 100.000 tokens): US$0,10 de entrada y US$0,50 de salida."
+          ]
+        },
+        {
+          "h": "Elegí el modelo justo",
+          "pasos": [
+            "Escribí 10 o 20 ejemplos reales de lo que le vas a pedir, con la respuesta que esperás.",
+            "Probalos primero con el modelo más barato que creas que puede hacerlo.",
+            "Si falla en algo importante, subí un escalón y volvé a probar.",
+            "Quedate con el más barato que pase tus ejemplos. Repetí la prueba cuando salgan modelos nuevos."
+          ]
+        },
+        {
+          "h": "Contá los tokens antes de mandar",
+          "p": [
+            "El endpoint POST /v1/messages/count_tokens te dice cuántos tokens de entrada tiene un mensaje antes de mandarlo. Es gratis, tiene sus propios límites por minuto (no te gasta los de mensajes) y el número es una estimación que puede variar un poco.",
+            "Sirve para saber cuánto te va a costar un documento largo, o para cortar la entrada antes de pasarte."
+          ],
+          "prompts": [
+            {
+              "t": "Contar tokens en Python",
+              "c": "import anthropic\n\nclient = anthropic.Anthropic()\n\nresponse = client.messages.count_tokens(\n    model=\"claude-opus-5-5\",\n    system=\"You are a scientist\",\n    messages=[{\"role\": \"user\", \"content\": \"Hello, Claude\"}],\n)\n\nprint(response.json())"
+            }
+          ]
+        },
+        {
+          "h": "Prompt caching: no pagues dos veces lo mismo",
+          "p": [
+            "Si mandás muchas veces el mismo comienzo (instrucciones largas, un documento, las herramientas), el caché hace que la API retome desde ahí en vez de procesarlo todo otra vez. El orden importa: primero herramientas, después system y después mensajes. Lo que cambie al principio rompe el caché de todo lo que viene después.",
+            "La forma más simple es el caché automático: un solo cache_control en la raíz del pedido, y la API va moviendo el punto de corte a medida que crece la conversación. Si querés control fino, ponés cache_control en bloques puntuales."
+          ],
+          "lista": [
+            "Duración: por defecto, 5 minutos, y se renueva gratis cada vez que se usa. Si no te alcanza, hay una opción de 1 hora con \"ttl\": \"1h\".",
+            "Precio de escribir en caché: 1,25 veces el precio de entrada (5 minutos) o 2 veces (1 hora).",
+            "Precio de leer del caché: 0,1 veces el precio de entrada. En algunos modelos es todavía menos: 0,05 veces en Opus 5.5 y Sonnet 5.5.",
+            "Mínimo: si lo que querés cachear es más corto que el mínimo del modelo (512 tokens en Opus 5.5, Sonnet 5.5 y Haiku 5.5), no se cachea y no te avisa con un error.",
+            "Cómo saber si funcionó: en la respuesta, usage trae cache_creation_input_tokens y cache_read_input_tokens. Si los dos son 0, no se cacheó.",
+            "Qué lo rompe: cambiar las definiciones de herramientas invalida todo el caché; agregar o sacar imágenes, o cambiar los parámetros de razonamiento, invalida la parte de mensajes."
+          ],
+          "prompts": [
+            {
+              "t": "Caché automático en Python",
+              "c": "import anthropic\n\nclient = anthropic.Anthropic()\n\nresponse = client.messages.create(\n    model=\"claude-opus-5-5\",\n    max_tokens=1024,\n    cache_control={\"type\": \"ephemeral\"},\n    system=\"You are a helpful assistant that remembers our conversation.\",\n    messages=[{\"role\": \"user\", \"content\": \"My name is Alex. I work on machine learning.\"}],\n)\nprint(response.usage.model_dump_json())"
+            }
+          ]
+        },
+        {
+          "h": "Message Batches: la mitad de precio si podés esperar",
+          "p": [
+            "Si no necesitás la respuesta en el momento (clasificar mil mails, resumir un catálogo, evaluar respuestas), mandalo en lote. Todo lo que pasa por la API de lotes se cobra al 50% del precio normal, en entrada y en salida."
+          ],
+          "lista": [
+            "Tiempo: la mayoría de los lotes terminan en menos de una hora. Si no terminan en 24 horas, vencen.",
+            "Tamaño: hasta 100.000 pedidos o 256 MB por lote, lo que llegue primero.",
+            "Resultados: los podés bajar durante 29 días.",
+            "Se combina con el caché: los dos descuentos se suman, pero en lotes los aciertos de caché no están garantizados."
+          ],
+          "prompts": [
+            {
+              "t": "Crear un lote en Python",
+              "c": "import anthropic\nfrom anthropic.types.message_create_params import MessageCreateParamsNonStreaming\nfrom anthropic.types.messages.batch_create_params import Request\n\nclient = anthropic.Anthropic()\n\nmessage_batch = client.messages.batches.create(\n    requests=[\n        Request(\n            custom_id=\"my-first-request\",\n            params=MessageCreateParamsNonStreaming(\n                model=\"claude-opus-5-5\",\n                max_tokens=1024,\n                messages=[\n                    {\n                        \"role\": \"user\",\n                        \"content\": \"Hello, world\",\n                    }\n                ],\n            ),\n        ),\n    ]\n)\n\nprint(message_batch)"
+            }
+          ]
+        },
+        {
+          "h": "Pedile a Claude que revise tu código",
+          "prompts": [
+            {
+              "t": "Auditoría de costos de mi integración",
+              "c": "Revisá cómo uso la API de Claude en [ARCHIVO O CARPETA]. Decime:\n1) qué modelo uso en cada llamada y si alguna podría ir con uno más barato,\n2) qué parte de mis pedidos se repite siempre y conviene cachear (y dónde poner cache_control),\n3) qué llamadas no necesitan respuesta inmediata y podrían ir por Message Batches,\n4) dónde conviene contar tokens antes de mandar.\nNo cambies nada todavía: primero mostrame el plan. Usá solo lo que dice la documentación oficial de Claude; si no estás seguro de algo, decímelo."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Contar tokens me cobra?",
+          "a": "No. Es gratis, aunque tiene un límite de pedidos por minuto según tu nivel de uso."
+        },
+        {
+          "q": "¿El caché sirve si mando un pedido cada media hora?",
+          "a": "Con la duración normal de 5 minutos, no llega. Podés usar la opción de 1 hora, que es más cara al escribir. Hacé la cuenta con tus números."
+        },
+        {
+          "q": "¿Puedo usar lotes para un chat con clientes?",
+          "a": "No conviene: un lote puede tardar hasta 24 horas. Es para trabajos que pueden esperar."
+        }
+      ],
+      "fuentes": [
+        "https://platform.claude.com/docs/en/about-claude/pricing",
+        "https://platform.claude.com/docs/en/build-with-claude/token-counting",
+        "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+        "https://platform.claude.com/docs/en/build-with-claude/batch-processing",
+        "https://code.claude.com/docs/en/costs"
+      ]
+    },
+    {
+      "slug": "repos-grandes-sin-gastar-de-mas",
+      "t": "Proyectos grandes en Claude Code sin gastar de más",
+      "d": "Cómo trabajar en un repo grande sin que Claude lea todo: pedidos con archivos concretos, reglas para que no entre a ciertas carpetas, un mapa del proyecto en CLAUDE.md y Repomix cuando lo necesitás.",
+      "tema": "Claude Code",
+      "min": 8,
+      "secciones": [
+        {
+          "h": "Por qué un repo grande se come el plan",
+          "p": [
+            "Cada archivo que Claude lee entra al contexto y se vuelve a mandar en cada mensaje siguiente. En un proyecto chico no se nota; en uno grande, un pedido vago como \"mejorá este código\" hace que Claude recorra medio repo para entender de qué le hablás.",
+            "La documentación oficial lo dice así: los pedidos vagos disparan búsquedas amplias; los específicos dejan que Claude trabaje leyendo pocos archivos."
+          ]
+        },
+        {
+          "h": "Decile exactamente dónde mirar",
+          "lista": [
+            "Nombrá el archivo y la función: en vez de \"arreglá el login\", decí \"agregá validación de datos a la función de login en auth.ts\".",
+            "Usá @ para mencionar archivos: escribí @ y la ruta (por ejemplo @src/auth.ts) para pasarle ese archivo directo, sin que tenga que buscarlo.",
+            "Decile qué no tocar: \"no leas ni cambies nada fuera de src/pagos/\"."
+          ],
+          "prompts": [
+            {
+              "t": "Cambio acotado",
+              "c": "Trabajá solo en @[RUTA/ARCHIVO] (y en @[OTRO ARCHIVO] si hace falta).\nQuiero: [EL CAMBIO, EN UNA O DOS FRASES].\nNo leas otras carpetas salvo que sea imprescindible; si lo es, decime cuál y por qué antes de abrirla.\nCuando termines, decime qué cambiaste y cómo lo pruebo."
+            }
+          ]
+        },
+        {
+          "h": "Que no entre a ciertas carpetas: reglas de permisos",
+          "p": [
+            "Claude Code no usa un archivo tipo .claudeignore. El mecanismo oficial son las reglas de permisos: una regla deny con Read bloquea que las herramientas de Claude lean un archivo o carpeta. Usan la misma sintaxis que .gitignore.",
+            "Ponelas en .claude/settings.json del proyecto (se comparte con tu equipo) o en .claude/settings.local.json (solo para vos). También las podés agregar desde el comando /permissions."
+          ],
+          "prompts": [
+            {
+              "t": "Ejemplo de .claude/settings.json",
+              "c": "{\n  \"permissions\": {\n    \"deny\": [\n      \"Read(./node_modules/**)\",\n      \"Read(./dist/**)\",\n      \"Read(./.env)\",\n      \"Read(./secrets/**)\"\n    ]\n  }\n}"
+            }
+          ],
+          "aviso": "Estas reglas aplican a las herramientas de archivos de Claude y a comandos que Claude Code reconoce, como cat, head o tail. No frenan un grep -r ni un script que abra archivos por su cuenta. Si necesitás un bloqueo real a nivel sistema, la documentación recomienda activar el sandbox."
+        },
+        {
+          "h": "Un mapa del proyecto en CLAUDE.md",
+          "p": [
+            "Si Claude ya sabe cómo está armado el proyecto, no tiene que explorarlo para entenderlo. Poné en CLAUDE.md un resumen corto: qué hace cada carpeta principal, dónde está la lógica importante y cómo se corren los tests. Mantenelo corto: la recomendación oficial es menos de 200 líneas."
+          ],
+          "lista": [
+            "CLAUDE.md por carpeta: los CLAUDE.md que están dentro de subcarpetas no se cargan al arrancar, sino cuando Claude lee archivos de esa carpeta. Ideal para explicar un módulo solo cuando hace falta.",
+            "Reglas por ruta: en .claude/rules/ podés crear reglas con un campo paths (por ejemplo \"src/api/**/*.ts\") que se cargan solo cuando Claude trabaja con esos archivos.",
+            "Importar en vez de copiar: con @ruta dentro de CLAUDE.md importás otro archivo. Ojo: lo importado se carga al arrancar, así que no ahorra; sirve para ordenar.",
+            "Monorepos: con el ajuste claudeMdExcludes salteás CLAUDE.md de otros equipos que no te sirven."
+          ],
+          "prompts": [
+            {
+              "t": "Armá el mapa del proyecto",
+              "c": "Explorá este proyecto con un subagente y armame un mapa para CLAUDE.md de no más de 40 líneas: qué hace cada carpeta principal, dónde está la lógica central, cómo se instala, cómo se corren los tests y qué carpetas no hace falta leer nunca. Mostrámelo antes de guardarlo."
+            }
+          ]
+        },
+        {
+          "h": "Explorar sin ensuciar tu conversación",
+          "lista": [
+            "Subagente Explore: es un subagente de solo lectura pensado para buscar y analizar código. Lo que lee queda en su contexto y a vos te llega el resumen.",
+            "Modo plan: con Shift+Tab o /plan, Claude investiga y te propone el camino antes de tocar archivos.",
+            "Plugins de inteligencia de código: para lenguajes con tipos, dejan que Claude vaya directo a la definición de una función en vez de buscar con grep y abrir varios archivos.",
+            "Hooks para salidas largas: un hook puede filtrar, por ejemplo, la salida de los tests para que a Claude le lleguen solo los errores. La página oficial de costos tiene un ejemplo listo."
+          ]
+        },
+        {
+          "h": "Repomix: cuando necesitás todo en un solo archivo",
+          "p": [
+            "Repomix es una herramienta de código abierto que junta tu repo (o una parte) en un solo archivo pensado para IA. En Claude Code casi nunca hace falta, porque Claude ya lee los archivos que necesita. Sirve cuando querés pasarle una parte del proyecto a un chat de claude.ai o a otra herramienta.",
+            "La clave es no meter todo: elegí qué entra y comprimí."
+          ],
+          "lista": [
+            "npx repomix@latest: lo corrés en la carpeta del proyecto sin instalar nada y te genera repomix-output.xml.",
+            "repomix --include \"src/**/*.ts,**/*.md\": solo los archivos que coinciden.",
+            "repomix --ignore \"**/*.log,tmp/\": suma exclusiones. Ya respeta .gitignore y .repomixignore.",
+            "repomix --compress: deja la estructura del código (clases, funciones) y saca el resto, para que pese menos.",
+            "repomix --token-count-tree: te muestra qué archivos pesan más. Cuenta con un tokenizador que no es el de Claude, así que tomalo como aproximado."
+          ],
+          "aviso": "Repomix revisa con Secretlint que no se cuelen claves conocidas, pero igual mirá el archivo antes de pegarlo en cualquier lado."
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Existe .claudeignore?",
+          "a": "No en la documentación oficial. Para que Claude no lea carpetas se usan reglas deny con Read en .claude/settings.json."
+        },
+        {
+          "q": "¿Le paso el repomix-output.xml a Claude Code para que entienda todo?",
+          "a": "No conviene: estarías cargando todo el proyecto en el contexto. En Claude Code es mejor apuntar a archivos concretos y tener un buen mapa en CLAUDE.md."
+        },
+        {
+          "q": "¿Y si quiero un mapa visual del proyecto?",
+          "a": "Mirá la guía de Graphify y Obsidian de la biblioteca, que arma un grafo del código."
+        }
+      ],
+      "fuentes": [
+        "https://code.claude.com/docs/en/costs",
+        "https://code.claude.com/docs/en/permissions",
+        "https://code.claude.com/docs/en/memory",
+        "https://code.claude.com/docs/en/sub-agents",
+        "https://code.claude.com/docs/fr/context-window",
+        "https://www.npmjs.com/package/repomix",
+        "https://github.com/yamadashy/repomix"
+      ]
+    }
+  ],
+  "prompts": [
+    {
+      "tema": "Claude Code",
+      "t": "Claude Code liviano",
+      "d": "Pedidos para que Claude Code trabaje con menos contexto: memoria corta, resúmenes antes de limpiar, planes antes de tocar código y cambios acotados.",
+      "para": "Que tu plan o tu crédito de API rinda más sin trabajar peor.",
+      "prompts": [
+        {
+          "t": "CLAUDE.md corto",
+          "c": "Armame un CLAUDE.md para este proyecto de menos de 60 líneas. Incluí solo:\n- Qué es el proyecto, en 2 líneas.\n- Cómo se instala, se corre y se prueba (comandos exactos).\n- Qué hace cada carpeta principal, una línea por carpeta.\n- Reglas que nunca hay que romper.\n- Una sección \"# Compact instructions\" que diga qué conservar al compactar: [EJ.: CAMBIOS DE CÓDIGO Y RESULTADOS DE TESTS].\nNada de explicaciones largas ni flujos puntuales: eso va en skills. Mostrámelo antes de guardarlo."
+        },
+        {
+          "t": "Resumen antes de /clear",
+          "c": "Voy a limpiar la sesión con /clear. Antes, escribime un resumen para pegar en la sesión nueva:\n- Objetivo de la tarea.\n- Archivos que tocamos (rutas).\n- Decisiones que tomamos y por qué.\n- Qué quedó pendiente y cuál es el próximo paso.\nMáximo 15 líneas. No hagas ningún cambio."
+        },
+        {
+          "t": "Plan antes de tocar código",
+          "c": "/plan Quiero [LO QUE QUERÉS LOGRAR].\nAntes de cambiar nada:\n1) Decime qué archivos necesitás leer y por qué. Leé solo esos.\n2) Proponeme el plan en pasos cortos, con los archivos que vas a tocar en cada uno.\n3) Decime qué podría salir mal y cómo lo pruebo.\nEsperá mi OK antes de editar."
+        },
+        {
+          "t": "Cambio acotado a archivos",
+          "c": "Trabajá solo en @[RUTA/ARCHIVO 1] y @[RUTA/ARCHIVO 2].\nCambio: [QUÉ QUERÉS, EN UNA O DOS FRASES].\nNo leas otras carpetas salvo que sea imprescindible; si lo es, avisame antes.\nNo reformatees ni cambies nada que no tenga que ver con el pedido.\nAl final, decime en 3 líneas qué cambiaste."
+        },
+        {
+          "t": "Lo pesado, en un subagente",
+          "c": "Usá un subagente para [CORRER LOS TESTS / REVISAR EL LOG EN RUTA / BUSCAR DÓNDE SE USA FUNCIÓN].\nQue me devuelva solo un resumen: [EJ.: LOS TESTS QUE FALLAN CON SU ERROR / LAS 5 LÍNEAS DE ERROR MÁS IMPORTANTES / LA LISTA DE ARCHIVOS Y LÍNEAS].\nNo pegues la salida completa en esta conversación."
+        },
+        {
+          "t": "Auditá lo que se carga siempre",
+          "c": "Revisá mi CLAUDE.md, los archivos que importa con @ y mis reglas en .claude/rules/.\nDecime qué partes se cargan en todas las sesiones y no hacen falta siempre, y para cada una proponé dónde moverla: una skill, una regla con paths o un CLAUDE.md dentro de la carpeta que corresponde.\nNo cambies nada: mostrame la propuesta primero."
+        }
+      ]
+    }
+  ],
+  "herramientas": [
+    {
+      "cat": "Herramientas",
+      "tipo": "App",
+      "t": "Repomix",
+      "d": "Herramienta de terminal que junta tu repositorio, o la parte que elijas, en un solo archivo pensado para IA. Puede comprimir el código y mostrarte cuántos tokens pesa cada archivo.",
+      "para": "Pasarle una parte de tu proyecto a un chat de IA sin copiar archivo por archivo.",
+      "cmds": [
+        {
+          "donde": "Terminal",
+          "c": "npx repomix@latest"
+        },
+        {
+          "donde": "Terminal",
+          "c": "npx repomix@latest --include \"src/**/*.ts,**/*.md\" --compress"
+        },
+        {
+          "donde": "Claude Code",
+          "c": "/plugin marketplace add yamadashy/repomix"
+        },
+        {
+          "donde": "Claude Code",
+          "c": "/plugin install repomix-explorer@repomix"
+        }
+      ],
+      "url": "https://github.com/yamadashy/repomix",
+      "repo": "yamadashy/repomix",
+      "licencia": "MIT",
+      "fuente": "https://www.npmjs.com/package/repomix"
+    }
+  ]
+}

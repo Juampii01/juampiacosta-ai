@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena git-y-github-para-no-perder-nada, Git y GitHub para no perder nada, Commits, ramas y cómo volver atrás, explicado para no programadores. Y cómo pedirle todo a Claude Code sin escribir un solo comando. y 6b4c5579 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena git-y-github-para-no-perder-nada, Git y GitHub para no perder nada, Commits, ramas y cómo volver atrás, explicado para no programadores. Y cómo pedirle todo a Claude Code sin escribir un solo comando. y 43c1f0cb -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=6b4c5579">
-<link rel="stylesheet" href="../web/cta.css?v=6b4c5579">
-<link rel="stylesheet" href="../web/biblioteca.css?v=6b4c5579">
-<link rel="stylesheet" href="../web/guia.css?v=6b4c5579">
-<link rel="stylesheet" href="../web/tema.css?v=6b4c5579">
-<link rel="stylesheet" href="../web/bienvenida.css?v=6b4c5579">
-<script src="../web/tema.js?v=6b4c5579"></script>
-<link rel="icon" href="../web/favicon.svg?v=6b4c5579" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=43c1f0cb">
+<link rel="stylesheet" href="../web/cta.css?v=43c1f0cb">
+<link rel="stylesheet" href="../web/biblioteca.css?v=43c1f0cb">
+<link rel="stylesheet" href="../web/guia.css?v=43c1f0cb">
+<link rel="stylesheet" href="../web/tema.css?v=43c1f0cb">
+<link rel="stylesheet" href="../web/bienvenida.css?v=43c1f0cb">
+<script src="../web/tema.js?v=43c1f0cb"></script>
+<link rel="icon" href="../web/favicon.svg?v=43c1f0cb" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=6b4c5579"></script>
-<script src="../web/guias-web.js?v=6b4c5579"></script>
-<script src="../web/comun.js?v=6b4c5579"></script>
+<script src="../web/redes.js?v=43c1f0cb"></script>
+<script src="../web/guias-web.js?v=43c1f0cb"></script>
+<script src="../web/comun.js?v=43c1f0cb"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="git-y-github-para-no-perder-nada"></main>
 <script>var GUIA = {"slug": "git-y-github-para-no-perder-nada", "t": "Git y GitHub para no perder nada", "d": "Commits, ramas y cómo volver atrás, explicado para no programadores. Y cómo pedirle todo a Claude Code sin escribir un solo comando.", "tema": "Creá tu app", "min": 9, "secciones": [{"h": "Cuatro palabras y listo", "lista": ["Commit: una foto guardada de tu proyecto con un mensaje (\"agrego el formulario de contacto\"). Podés volver a cualquier foto.", "Rama: una copia paralela para probar algo sin tocar la versión buena. La principal suele llamarse main.", "Push: subir tus commits a GitHub, que es la copia en la nube.", "Pull request: un pedido para juntar una rama con la principal. Ahí revisás los cambios antes de aceptarlos."]}, {"h": "Pedíselo a Claude Code", "p": ["No necesitás aprender los comandos. Claude Code maneja Git por vos; lo que sí tenés que hacer es pedirle commits seguido y leer lo que te muestra antes de aprobar."], "prompts": [{"t": "Guardar un commit", "c": "Guardá un commit con los cambios de ahora. Antes, mostrame la lista de archivos que entran y un mensaje corto en español que explique qué cambió. Revisá que no haya claves ni archivos .env."}, {"t": "Probar algo en una rama", "c": "Quiero probar [EL CAMBIO] sin tocar la versión que funciona. Creá una rama nueva llamada [NOMBRE], hacé el cambio ahí y avisame cómo vuelvo a main si no me gusta."}, {"t": "Pull request", "c": "Creá un pull request de esta rama hacia main. En la descripción, explicá en lenguaje simple qué cambia, cómo lo probé y qué riesgos ves."}]}, {"h": "Volver atrás: tres niveles", "lista": ["Dentro de la sesión: /rewind (o Esc dos veces con el cuadro vacío) abre los puntos de control de Claude Code. Podés restaurar el código, la conversación o las dos cosas.", "En Git: revertir un commit crea un commit nuevo que deshace aquel cambio. El original queda en el historial, así que no perdés nada.", "En la web publicada: si la versión nueva rompió algo, el Instant Rollback de Vercel vuelve a una versión anterior en segundos."], "prompts": [{"t": "Deshacer un cambio con Git", "c": "La app dejó de funcionar después de [LO QUE CAMBIÓ]. Mostrame los últimos 10 commits en lenguaje simple y decime cuál creés que lo rompió. Proponé revertirlo con un commit nuevo (sin borrar historial) y esperá mi OK."}]}, {"h": "Lo que nunca tiene que subir", "p": ["El archivo .gitignore le dice a Git qué ignorar. Ahí van tus archivos .env, las carpetas de dependencias como node_modules y cualquier archivo con datos de clientes.", "Ojo: si un archivo ya se subió, agregarlo después al .gitignore no lo saca. Hay que dejar de rastrearlo y, si tenía claves, rotarlas. Como red extra, GitHub bloquea por defecto tus subidas de secretos a repositorios públicos."]}, {"h": "Rutina para no perder nada", "pasos": ["Al empezar a trabajar, pedile a Claude que te diga en qué rama estás y si hay cambios sin guardar.", "Cada vez que algo funciona, commit.", "Para cambios grandes, rama nueva.", "Al terminar el día, push a GitHub.", "Antes de juntar con main, revisá los cambios con /diff o /code-review."]}], "faq": [{"q": "¿Cuál es la diferencia entre /rewind y Git?", "a": "/rewind es un deshacer rápido dentro de la sesión. Git es el historial permanente. Claude Code mismo aclara que sus checkpoints no reemplazan a Git."}, {"q": "¿Cada cuánto hago commit?", "a": "Cada vez que algo funciona y no querrías perderlo. Muchos commits chicos son mejores que uno gigante."}, {"q": "¿Mi repositorio tiene que ser público?", "a": "No. Puede ser privado. Lo que sí: ni público ni privado tiene que tener claves adentro."}], "fuentes": ["https://code.claude.com/docs/en/checkpointing", "https://code.claude.com/docs/en/commands", "https://code.claude.com/docs/en/common-workflows", "https://docs.github.com/en/desktop/managing-commits/reverting-a-commit-in-github-desktop", "https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/merging-a-pull-request", "https://docs.github.com/en/get-started/git-basics/ignoring-files", "https://docs.github.com/en/code-security/concepts/secret-security/about-push-protection", "https://vercel.com/docs/instant-rollback"], "cat": "desarrollo", "parte": "construi"};</script>
 
-<script src="../web/rutas.js?v=6b4c5579"></script>
-<script src="../web/logos.js?v=6b4c5579"></script>
-<script src="../web/guia.js?v=6b4c5579"></script>
-<script src="../web/bienvenida.js?v=6b4c5579"></script>
+<script src="../web/rutas.js?v=43c1f0cb"></script>
+<script src="../web/logos.js?v=43c1f0cb"></script>
+<script src="../web/guia.js?v=43c1f0cb"></script>
+<script src="../web/bienvenida.js?v=43c1f0cb"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

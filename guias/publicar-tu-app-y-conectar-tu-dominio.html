@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena publicar-tu-app-y-conectar-tu-dominio, Publicar tu app y conectar tu dominio, Conectá tu repositorio de GitHub a Vercel (o Netlify), cargá las variables de entorno y poné tu propio dominio. y 6b4c5579 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena publicar-tu-app-y-conectar-tu-dominio, Publicar tu app y conectar tu dominio, Conectá tu repositorio de GitHub a Vercel (o Netlify), cargá las variables de entorno y poné tu propio dominio. y 43c1f0cb -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=6b4c5579">
-<link rel="stylesheet" href="../web/cta.css?v=6b4c5579">
-<link rel="stylesheet" href="../web/biblioteca.css?v=6b4c5579">
-<link rel="stylesheet" href="../web/guia.css?v=6b4c5579">
-<link rel="stylesheet" href="../web/tema.css?v=6b4c5579">
-<link rel="stylesheet" href="../web/bienvenida.css?v=6b4c5579">
-<script src="../web/tema.js?v=6b4c5579"></script>
-<link rel="icon" href="../web/favicon.svg?v=6b4c5579" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=43c1f0cb">
+<link rel="stylesheet" href="../web/cta.css?v=43c1f0cb">
+<link rel="stylesheet" href="../web/biblioteca.css?v=43c1f0cb">
+<link rel="stylesheet" href="../web/guia.css?v=43c1f0cb">
+<link rel="stylesheet" href="../web/tema.css?v=43c1f0cb">
+<link rel="stylesheet" href="../web/bienvenida.css?v=43c1f0cb">
+<script src="../web/tema.js?v=43c1f0cb"></script>
+<link rel="icon" href="../web/favicon.svg?v=43c1f0cb" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=6b4c5579"></script>
-<script src="../web/guias-web.js?v=6b4c5579"></script>
-<script src="../web/comun.js?v=6b4c5579"></script>
+<script src="../web/redes.js?v=43c1f0cb"></script>
+<script src="../web/guias-web.js?v=43c1f0cb"></script>
+<script src="../web/comun.js?v=43c1f0cb"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="publicar-tu-app-y-conectar-tu-dominio"></main>
 <script>var GUIA = {"slug": "publicar-tu-app-y-conectar-tu-dominio", "t": "Publicar tu app y conectar tu dominio", "d": "Conectá tu repositorio de GitHub a Vercel (o Netlify), cargá las variables de entorno y poné tu propio dominio.", "tema": "Creá tu app", "min": 10, "secciones": [{"h": "Antes de empezar: tu código en GitHub", "p": ["Vercel y Netlify toman tu código desde un repositorio de GitHub (también aceptan GitLab y Bitbucket). Si todavía no lo subiste, pedíselo a Claude Code."], "prompts": [{"t": "Subir el proyecto a GitHub", "c": "Quiero subir este proyecto a un repositorio nuevo de GitHub llamado [NOMBRE].\nAntes de subir nada:\n1. Revisá que no haya claves, contraseñas ni archivos .env en lo que se va a subir.\n2. Confirmá que .gitignore excluye .env, .env.local y node_modules.\n3. Mostrame la lista de archivos que se van a subir.\nEsperá mi OK antes de hacer el push."}]}, {"h": "Publicar en Vercel", "pasos": ["Entrá a Vercel y tocá New Project.", "Elegí tu repositorio de la lista (si no aparece, conectá tu cuenta de GitHub).", "Revisá el Framework Preset (Vercel suele detectarlo solo) y la carpeta raíz.", "Cargá las variables de entorno en esa misma pantalla.", "Tocá Deploy y esperá el link que termina en vercel.app."]}, {"h": "Cada vez que subís cambios", "p": ["Desde ahí, Vercel publica solo. Lo que subas a la rama principal (normalmente main) se convierte en la versión de producción. Lo que subas a cualquier otra rama genera una versión de vista previa, con su propio link, para probar sin tocar lo que ven tus clientes.", "Si algo se rompe en producción, desde el panel tenés Instant Rollback para volver a una versión anterior. En el plan Hobby podés volver a la inmediatamente anterior."]}, {"h": "Variables de entorno", "lista": ["Dónde: en la configuración del proyecto, sección Environment Variables. También podés importar un archivo .env.", "Tres ambientes: Production (la versión real), Preview (las vistas previas) y Development (cuando corrés la app en tu compu).", "Cambios: solo se aplican en publicaciones nuevas. Si cambiás una variable, volvé a publicar.", "Ojo con NEXT_PUBLIC_: en Next.js, las variables con ese prefijo quedan metidas en el código que llega al navegador. Nunca le pongas ese prefijo a una clave secreta.", "En tu compu: vercel env pull crea el archivo .env con las variables de Development."]}, {"h": "Tu propio dominio", "pasos": ["En el proyecto de Vercel, andá a Settings → Domains y tocá Add Domain.", "Escribí tu dominio. Si es el principal (ejemplo.com), Vercel te sugiere sumar también www.", "Vercel te muestra qué registro cargar donde compraste el dominio: un registro A para el dominio principal, o un CNAME para un subdominio (como app.ejemplo.com).", "Cargalo en el panel de tu proveedor de dominio y esperá. Los cambios de DNS pueden tardar en propagarse.", "Cuando Vercel lo verifica, el dominio aparece como listo."], "aviso": "Si elegís cambiar los nameservers en vez de cargar un registro, copiá antes tus registros existentes (sobre todo los MX del mail). Si no, podés dejar de recibir correos."}, {"h": "Si preferís Netlify", "lista": ["Publicar: en tu equipo de Netlify, Add new project → Import an existing project, elegís el proveedor de Git, autorizás y confirmás con Publish.", "Variables: en Project configuration → Environment variables. Después de crearlas o cambiarlas, hace falta publicar de nuevo.", "Dominio: Domain management → Production domains → Add a domain. Podés comprar uno ahí o traer uno que ya tengas.", "Desde la terminal: la CLI de Netlify (npm install -g netlify-cli) permite publicar con netlify deploy y pasar a producción con netlify deploy --prod."]}], "faq": [{"q": "Vercel no me deja publicar mi repositorio privado", "a": "En el plan Hobby no se puede publicar desde un repositorio privado que pertenece a una organización de GitHub. Si el repositorio es tuyo personal, funciona; si es de una organización, Vercel sugiere hacerlo público o pasar a Pro."}, {"q": "Cambié una variable y la app sigue igual", "a": "Las variables se leen al publicar. Volvé a publicar el proyecto para que tome el valor nuevo."}, {"q": "¿Tengo que comprar el dominio en Vercel?", "a": "No. Podés usar uno que ya tengas en cualquier proveedor y cargar los registros que Vercel te indica."}], "fuentes": ["https://vercel.com/docs/git", "https://vercel.com/kb/guide/how-to-add-vercel-environment-variables", "https://vercel.com/docs/domains/add-a-domain", "https://vercel.com/docs/instant-rollback", "https://docs.netlify.com/start/quickstarts/deploy-from-repository", "https://docs.netlify.com/build/environment-variables/get-started/", "https://docs.netlify.com/api-and-cli-guides/cli-guides/get-started-with-cli"], "cat": "desarrollo", "parte": "construi"};</script>
 
-<script src="../web/rutas.js?v=6b4c5579"></script>
-<script src="../web/logos.js?v=6b4c5579"></script>
-<script src="../web/guia.js?v=6b4c5579"></script>
-<script src="../web/bienvenida.js?v=6b4c5579"></script>
+<script src="../web/rutas.js?v=43c1f0cb"></script>
+<script src="../web/logos.js?v=43c1f0cb"></script>
+<script src="../web/guia.js?v=43c1f0cb"></script>
+<script src="../web/bienvenida.js?v=43c1f0cb"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena usuarios-y-login-sin-romperte-la-cabeza, Usuarios y login sin romperte la cabeza, Qué opción elegir (Supabase Auth o Clerk), qué pedirle a Claude Code y los errores de seguridad que más se repiten en apps hechas con IA. y 6b4c5579 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena usuarios-y-login-sin-romperte-la-cabeza, Usuarios y login sin romperte la cabeza, Qué opción elegir (Supabase Auth o Clerk), qué pedirle a Claude Code y los errores de seguridad que más se repiten en apps hechas con IA. y 43c1f0cb -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=6b4c5579">
-<link rel="stylesheet" href="../web/cta.css?v=6b4c5579">
-<link rel="stylesheet" href="../web/biblioteca.css?v=6b4c5579">
-<link rel="stylesheet" href="../web/guia.css?v=6b4c5579">
-<link rel="stylesheet" href="../web/tema.css?v=6b4c5579">
-<link rel="stylesheet" href="../web/bienvenida.css?v=6b4c5579">
-<script src="../web/tema.js?v=6b4c5579"></script>
-<link rel="icon" href="../web/favicon.svg?v=6b4c5579" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=43c1f0cb">
+<link rel="stylesheet" href="../web/cta.css?v=43c1f0cb">
+<link rel="stylesheet" href="../web/biblioteca.css?v=43c1f0cb">
+<link rel="stylesheet" href="../web/guia.css?v=43c1f0cb">
+<link rel="stylesheet" href="../web/tema.css?v=43c1f0cb">
+<link rel="stylesheet" href="../web/bienvenida.css?v=43c1f0cb">
+<script src="../web/tema.js?v=43c1f0cb"></script>
+<link rel="icon" href="../web/favicon.svg?v=43c1f0cb" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=6b4c5579"></script>
-<script src="../web/guias-web.js?v=6b4c5579"></script>
-<script src="../web/comun.js?v=6b4c5579"></script>
+<script src="../web/redes.js?v=43c1f0cb"></script>
+<script src="../web/guias-web.js?v=43c1f0cb"></script>
+<script src="../web/comun.js?v=43c1f0cb"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="usuarios-y-login-sin-romperte-la-cabeza"></main>
 <script>var GUIA = {"slug": "usuarios-y-login-sin-romperte-la-cabeza", "t": "Usuarios y login sin romperte la cabeza", "d": "Qué opción elegir (Supabase Auth o Clerk), qué pedirle a Claude Code y los errores de seguridad que más se repiten en apps hechas con IA.", "tema": "Creá tu app", "min": 9, "secciones": [{"h": "No construyas el login desde cero", "p": ["Guardar contraseñas, mandar mails de confirmación, recuperar cuentas: todo eso ya lo resuelven servicios especializados. Pedirle a Claude que lo invente desde cero es abrir la puerta a errores de seguridad difíciles de ver.", "La pregunta no es cómo hacer el login, sino qué servicio usar."]}, {"h": "Las dos opciones más simples", "lista": ["Supabase Auth: viene incluido si ya usás Supabase para la base de datos. Ofrece email y contraseña (con confirmación y recuperación), enlace mágico por mail, código por SMS y login con Google, GitHub, Apple y otros. Se integra con RLS: las reglas de tus tablas saben qué usuario está pidiendo los datos.", "Clerk: trae componentes listos (botones de ingresar y registrarse, menú de usuario) y para Next.js usa el paquete @clerk/nextjs. Usa dos claves: una pública (NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY) y una secreta (CLERK_SECRET_KEY) que nunca va en código del navegador."], "p": ["Regla práctica: si tus datos están en Supabase, empezá con Supabase Auth y te ahorrás conectar dos servicios. Si querés pantallas de login armadas y no usás Supabase, Clerk es un buen atajo."]}, {"h": "Qué pedirle a Claude", "prompts": [{"t": "Agregar login", "c": "Quiero agregar usuarios y login a esta app usando [SUPABASE AUTH o CLERK].\nFormas de entrar: [EJ.: EMAIL Y CONTRASEÑA, Y GOOGLE].\nQué ve cada uno:\n- Sin iniciar sesión: [PANTALLAS PÚBLICAS].\n- Con sesión: [PANTALLAS PRIVADAS].\n- Administrador (si hay): [QUÉ PUEDE HACER DE MÁS].\nReglas:\n1. Usá el sistema de login del servicio, no inventes uno propio.\n2. Las claves van en variables de entorno; en el navegador solo la clave pública.\n3. La protección tiene que estar en el servidor o en la base (RLS), no solo en esconder botones.\nAntes de escribir código, mostrame el plan y la lista de archivos que vas a tocar."}]}, {"h": "Los errores de seguridad que más se repiten", "lista": ["Esconder en vez de proteger: ocultar el botón de \"Administrar\" no impide que alguien entre a esa dirección. El permiso se chequea en el servidor o en la base.", "Clave secreta en el navegador: la clave secreta de Supabase o CLERK_SECRET_KEY metidas en código que llega al usuario.", "Tablas sin RLS: el login funciona, pero cualquiera con la clave publicable puede leer la tabla entera.", "Confiar en lo que manda el navegador: si la app recibe \"soy el usuario 15\" desde la página y lo cree, cualquiera puede hacerse pasar por otro.", "El archivo .env en GitHub: tus claves quedan públicas aunque después borres el archivo."]}, {"h": "Probalo con dos usuarios", "pasos": ["Creá dos cuentas de prueba (por ejemplo, Ana y Beto).", "Con Ana, cargá algunos datos.", "Cerrá sesión, entrá con Beto y fijate que no vea nada de Ana.", "Sin iniciar sesión, intentá abrir directamente la dirección de una pantalla privada.", "Pedile a Claude que haga la misma revisión mirando el código."], "prompts": [{"t": "Revisión de permisos", "c": "Revisá cómo está protegido el acceso en esta app.\nPara cada pantalla y cada tabla, decime: quién puede verla, dónde se chequea ese permiso (navegador, servidor o base) y si un usuario podría ver datos de otro.\nMarcá en rojo cualquier lugar donde la protección dependa solo de esconder algo en la pantalla. No cambies nada todavía."}]}], "faq": [{"q": "¿Puedo cambiar de Clerk a Supabase Auth después?", "a": "Se puede, pero implica migrar usuarios y tocar varias partes. Por eso conviene decidirlo en la especificación, antes de construir."}, {"q": "¿El login con Google es más seguro?", "a": "Te evita guardar contraseñas, que ya es una ventaja. Pero la seguridad de tus datos sigue dependiendo de tus reglas: RLS en Supabase o chequeos en el servidor."}, {"q": "Claude me dice que el login funciona, ¿alcanza?", "a": "No. Que puedas entrar no significa que los datos estén protegidos. Hacé siempre la prueba de los dos usuarios."}], "fuentes": ["https://supabase.com/auth", "https://supabase.com/docs/guides/database/postgres/row-level-security", "https://supabase.com/docs/guides/api/api-keys", "https://clerk.com/docs/raw/_prompts/nextjs-quickstart.md"], "cat": "desarrollo", "parte": "construi"};</script>
 
-<script src="../web/rutas.js?v=6b4c5579"></script>
-<script src="../web/logos.js?v=6b4c5579"></script>
-<script src="../web/guia.js?v=6b4c5579"></script>
-<script src="../web/bienvenida.js?v=6b4c5579"></script>
+<script src="../web/rutas.js?v=43c1f0cb"></script>
+<script src="../web/logos.js?v=43c1f0cb"></script>
+<script src="../web/guia.js?v=43c1f0cb"></script>
+<script src="../web/bienvenida.js?v=43c1f0cb"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

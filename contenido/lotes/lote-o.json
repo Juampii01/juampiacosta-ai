@@ -1,0 +1,577 @@
+{
+ "guias": [],
+ "prompts": [],
+ "herramientas": [
+  {
+   "cat": "MCP",
+   "tipo": "MCP",
+   "t": "Chrome DevTools MCP",
+   "d": "El servidor MCP oficial del equipo de Chrome: Claude abre tu sitio en Chrome, lee la consola, mira las peticiones de red, saca capturas y mide el rendimiento.",
+   "para": "Que Claude pruebe y arregle tu web viendo lo mismo que ves vos en el navegador.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest"
+    },
+    {
+     "donde": "Claude Code",
+     "c": "/plugin marketplace add ChromeDevTools/chrome-devtools-mcp"
+    },
+    {
+     "donde": "Claude Code",
+     "c": "/plugin install chrome-devtools-mcp@chrome-devtools-plugins"
+    }
+   ],
+   "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+   "repo": "ChromeDevTools/chrome-devtools-mcp",
+   "licencia": "Apache-2.0",
+   "fuente": "https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/docs/client-configurations.md"
+  },
+  {
+   "cat": "MCP",
+   "tipo": "MCP",
+   "t": "n8n-MCP (documentación de nodos)",
+   "d": "Le da a Claude la documentación de los más de mil nodos de n8n y plantillas de flujos, y si le pasás la URL de tu n8n también puede crear y editar flujos.",
+   "para": "Armar automatizaciones en n8n pidiéndolas en castellano, sin buscar nodo por nodo.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "claude mcp add n8n-mcp -e MCP_MODE=stdio -e LOG_LEVEL=error -e DISABLE_CONSOLE_OUTPUT=true -- npx n8n-mcp"
+    }
+   ],
+   "url": "https://github.com/czlonkowski/n8n-mcp",
+   "repo": "czlonkowski/n8n-mcp",
+   "licencia": "MIT",
+   "fuente": "https://github.com/czlonkowski/n8n-mcp/blob/main/docs/CLAUDE_CODE_SETUP.md"
+  },
+  {
+   "cat": "MCP",
+   "tipo": "MCP",
+   "t": "Google Workspace MCP",
+   "d": "Conecta Claude con Gmail, Drive, Calendar, Docs, Sheets y más servicios de Google. Necesitás crear antes un cliente OAuth gratis en Google Cloud Console.",
+   "para": "Que Claude lea y ordene tu correo, agenda y planillas del negocio desde un solo lugar.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "uvx workspace-mcp --transport streamable-http --tool-tier core"
+    },
+    {
+     "donde": "Terminal",
+     "c": "claude mcp add --transport http workspace-mcp http://localhost:8000/mcp"
+    }
+   ],
+   "url": "https://github.com/taylorwilsdon/google_workspace_mcp",
+   "repo": "taylorwilsdon/google_workspace_mcp",
+   "licencia": "MIT",
+   "fuente": "https://github.com/taylorwilsdon/google_workspace_mcp#readme"
+  },
+  {
+   "cat": "MCP",
+   "tipo": "Plugin",
+   "t": "Exa (búsqueda web)",
+   "d": "Buscador web pensado para IA: Claude busca en la web, trae el contenido de las páginas y hace investigaciones de varios pasos. Funciona sin cuenta con límites de uso, o con una clave para más.",
+   "para": "Investigar mercado, competencia o prospectos sin salir de Claude.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "claude plugin install exa@claude-plugins-official"
+    }
+   ],
+   "url": "https://github.com/exa-labs/exa-mcp-server",
+   "repo": "exa-labs/exa-mcp-server",
+   "licencia": "MIT",
+   "fuente": "https://github.com/exa-labs/exa-mcp-server#readme"
+  },
+  {
+   "cat": "MCP",
+   "tipo": "MCP",
+   "t": "Serena",
+   "d": "Le da a Claude herramientas de programador para moverse por el código por símbolos (funciones, clases) en vez de leer archivos enteros. Rinde mucho en proyectos grandes.",
+   "para": "Trabajar con repos grandes gastando menos tokens y con cambios más precisos.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "uv tool install -p 3.13 serena-agent"
+    },
+    {
+     "donde": "Terminal",
+     "c": "serena init"
+    },
+    {
+     "donde": "Terminal",
+     "c": "claude mcp add --scope user serena -- serena start-mcp-server --context claude-code --project-from-cwd"
+    }
+   ],
+   "url": "https://github.com/oraios/serena",
+   "repo": "oraios/serena",
+   "licencia": "GPL-3.0 (el módulo SolidLSP es MIT)",
+   "estrellas": "26 mil",
+   "fuente": "https://github.com/oraios/serena/blob/main/docs/02-usage/030_clients.md"
+  },
+  {
+   "cat": "MCP",
+   "tipo": "App",
+   "t": "MCP Inspector",
+   "d": "La herramienta oficial del proyecto MCP para probar un servidor MCP: abre una página web donde ves sus herramientas y las ejecutás a mano.",
+   "para": "Ver qué hace un MCP antes de conectarlo a Claude, o probar el tuyo si lo estás armando.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "npx @modelcontextprotocol/inspector"
+    }
+   ],
+   "url": "https://github.com/modelcontextprotocol/inspector",
+   "repo": "modelcontextprotocol/inspector",
+   "licencia": "Apache-2.0 y MIT (en transición de MIT a Apache-2.0)",
+   "fuente": "https://github.com/modelcontextprotocol/inspector#readme"
+  },
+  {
+   "cat": "Skills",
+   "tipo": "Plugin",
+   "t": "Agents de wshobson (94 plugins)",
+   "d": "Un marketplace con 94 plugins que suman subagentes, skills y comandos por área: desarrollo, infraestructura, seguridad, datos y más. Instalás solo los que usás.",
+   "para": "Sumar especialistas a Claude Code sin cargar todo de una.",
+   "cmds": [
+    {
+     "donde": "Claude Code",
+     "c": "/plugin marketplace add wshobson/agents"
+    },
+    {
+     "donde": "Claude Code",
+     "c": "/plugin install python-development@claude-code-workflows"
+    }
+   ],
+   "url": "https://github.com/wshobson/agents",
+   "repo": "wshobson/agents",
+   "licencia": "MIT",
+   "estrellas": "38 mil",
+   "fuente": "https://github.com/wshobson/agents#readme"
+  },
+  {
+   "cat": "Skills",
+   "tipo": "Plugin",
+   "t": "Awesome Claude Code Subagents (VoltAgent)",
+   "d": "Colección de más de 160 subagentes listos, agrupados en plugins por tema: lenguajes, infraestructura, calidad, datos y más.",
+   "para": "Tener un revisor, un tester o un experto en tu lenguaje sin escribir el subagente vos.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "claude plugin marketplace add VoltAgent/awesome-claude-code-subagents"
+    },
+    {
+     "donde": "Terminal",
+     "c": "claude plugin install voltagent-lang"
+    }
+   ],
+   "url": "https://github.com/VoltAgent/awesome-claude-code-subagents",
+   "repo": "VoltAgent/awesome-claude-code-subagents",
+   "licencia": "MIT",
+   "estrellas": "23 mil",
+   "fuente": "https://github.com/VoltAgent/awesome-claude-code-subagents#readme"
+  },
+  {
+   "cat": "Skills",
+   "tipo": "Plugin",
+   "t": "Caveman",
+   "d": "Skill que hace que Claude responda corto y al grano, sin relleno, para que las sesiones largas gasten muchos menos tokens.",
+   "para": "Estirar tu plan o tu presupuesto de API cuando trabajás muchas horas seguidas.",
+   "cmds": [
+    {
+     "donde": "Claude Code",
+     "c": "/plugin marketplace add JuliusBrussee/caveman"
+    },
+    {
+     "donde": "Claude Code",
+     "c": "/plugin install caveman@caveman"
+    }
+   ],
+   "url": "https://github.com/JuliusBrussee/caveman",
+   "repo": "JuliusBrussee/caveman",
+   "licencia": "Apache-2.0",
+   "estrellas": "58 mil",
+   "fuente": "https://github.com/JuliusBrussee/caveman#readme"
+  },
+  {
+   "cat": "Skills",
+   "tipo": "Plugin",
+   "t": "claude-mem",
+   "d": "Le da memoria entre sesiones a Claude Code: guarda en tu compu lo que hizo y lo vuelve a traer cuando hace falta. Ojo: trae estadísticas de uso anónimas activadas, se apagan con npx claude-mem telemetry disable.",
+   "para": "Que Claude se acuerde de tu proyecto de un día para el otro sin repetirle todo.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "npx claude-mem install"
+    },
+    {
+     "donde": "Claude Code",
+     "c": "/plugin marketplace add thedotmack/claude-mem"
+    },
+    {
+     "donde": "Claude Code",
+     "c": "/plugin install claude-mem"
+    }
+   ],
+   "url": "https://github.com/thedotmack/claude-mem",
+   "repo": "thedotmack/claude-mem",
+   "licencia": "Apache-2.0",
+   "estrellas": "75 mil",
+   "fuente": "https://github.com/thedotmack/claude-mem#readme"
+  },
+  {
+   "cat": "Skills",
+   "tipo": "Plugin",
+   "t": "Andrej Karpathy Skills (CLAUDE.md)",
+   "d": "Un CLAUDE.md corto con reglas de trabajo inspiradas en Andrej Karpathy: pensar antes de programar, no complicar de más y verificar. Lo usás como plugin o lo copiás a tu proyecto.",
+   "para": "Arrancar con un CLAUDE.md probado por miles en vez de escribirlo de cero.",
+   "cmds": [
+    {
+     "donde": "Claude Code",
+     "c": "/plugin marketplace add forrestchang/andrej-karpathy-skills"
+    },
+    {
+     "donde": "Claude Code",
+     "c": "/plugin install andrej-karpathy-skills@karpathy-skills"
+    },
+    {
+     "donde": "Terminal",
+     "c": "curl -o CLAUDE.md https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/CLAUDE.md"
+    }
+   ],
+   "url": "https://github.com/forrestchang/andrej-karpathy-skills",
+   "repo": "forrestchang/andrej-karpathy-skills",
+   "licencia": "MIT (declarada en el README)",
+   "estrellas": "125 mil",
+   "fuente": "https://github.com/forrestchang/andrej-karpathy-skills#readme"
+  },
+  {
+   "cat": "Skills",
+   "tipo": "Skill",
+   "t": "gstack (Garry Tan)",
+   "d": "El set de skills que usa Garry Tan, presidente de Y Combinator: revisión de planes como CEO, diseño, QA con navegador propio, revisión de código y lanzamiento.",
+   "para": "Trabajar con un equipo virtual de producto, diseño y QA dentro de Claude Code.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/.claude/skills/gstack && cd ~/.claude/skills/gstack && ./setup"
+    }
+   ],
+   "url": "https://github.com/garrytan/gstack",
+   "repo": "garrytan/gstack",
+   "licencia": "MIT",
+   "fuente": "https://github.com/garrytan/gstack#readme"
+  },
+  {
+   "cat": "Skills",
+   "tipo": "Skill",
+   "t": "BMAD Method",
+   "d": "Un método ágil con agentes por rol (analista, product manager, arquitecto, desarrollador) que te lleva de la idea al código con documentos en cada paso.",
+   "para": "Ordenar un proyecto grande o de cliente con etapas claras en vez de pedir todo de una.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "npx bmad-method install"
+    }
+   ],
+   "url": "https://github.com/bmad-code-org/BMAD-METHOD",
+   "repo": "bmad-code-org/BMAD-METHOD",
+   "licencia": "MIT",
+   "estrellas": "50 mil",
+   "fuente": "https://github.com/bmad-code-org/BMAD-METHOD#readme"
+  },
+  {
+   "cat": "Skills",
+   "tipo": "Librería",
+   "t": "SuperClaude Framework",
+   "d": "Suma unos 30 comandos /sc: a Claude Code para investigar, hacer lluvia de ideas, implementar, testear y gestionar proyectos.",
+   "para": "Tener atajos listos para las tareas que repetís todos los días.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "pipx install superclaude"
+    },
+    {
+     "donde": "Terminal",
+     "c": "superclaude install"
+    }
+   ],
+   "url": "https://github.com/SuperClaude-Org/SuperClaude_Framework",
+   "repo": "SuperClaude-Org/SuperClaude_Framework",
+   "licencia": "MIT",
+   "estrellas": "24 mil",
+   "fuente": "https://github.com/SuperClaude-Org/SuperClaude_Framework#readme"
+  },
+  {
+   "cat": "Skills",
+   "tipo": "Plugin",
+   "t": "Everything Claude Code",
+   "d": "Una configuración completa armada por un ganador de hackathon de Anthropic: agentes, skills, hooks, comandos y reglas, con un instalador guiado (también en Windows).",
+   "para": "Copiar una configuración avanzada entera sin armarla pieza por pieza.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "npx ecc-universal@2.2.3 setup"
+    }
+   ],
+   "url": "https://github.com/affaan-m/everything-claude-code",
+   "repo": "affaan-m/everything-claude-code",
+   "licencia": "MIT",
+   "estrellas": "179 mil",
+   "fuente": "https://github.com/affaan-m/everything-claude-code#readme"
+  },
+  {
+   "cat": "Skills",
+   "tipo": "Plugin",
+   "t": "oh-my-claudecode",
+   "d": "Orquestación de varios agentes para Claude Code: modos que reparten una tarea entre agentes especializados y la siguen hasta terminarla.",
+   "para": "Delegar tareas largas y que varios agentes trabajen en paralelo.",
+   "cmds": [
+    {
+     "donde": "Claude Code",
+     "c": "/plugin marketplace add https://github.com/Yeachan-Heo/oh-my-claudecode"
+    },
+    {
+     "donde": "Claude Code",
+     "c": "/plugin install oh-my-claudecode"
+    }
+   ],
+   "url": "https://github.com/Yeachan-Heo/oh-my-claudecode",
+   "repo": "Yeachan-Heo/oh-my-claudecode",
+   "licencia": "MIT",
+   "estrellas": "33 mil",
+   "fuente": "https://github.com/Yeachan-Heo/oh-my-claudecode#readme"
+  },
+  {
+   "cat": "Skills",
+   "tipo": "App",
+   "t": "Claude Code Templates",
+   "d": "Un instalador con cientos de componentes listos: agentes, comandos, hooks, MCP, configuraciones y skills. Elegís desde un menú o instalás uno puntual.",
+   "para": "Probar hooks, comandos y agentes de la comunidad con un solo comando.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "npx claude-code-templates@latest"
+    },
+    {
+     "donde": "Terminal",
+     "c": "npx claude-code-templates@latest --hook git/conventional-commits"
+    }
+   ],
+   "url": "https://github.com/davila7/claude-code-templates",
+   "repo": "davila7/claude-code-templates",
+   "licencia": "MIT",
+   "estrellas": "27 mil",
+   "fuente": "https://github.com/davila7/claude-code-templates#readme"
+  },
+  {
+   "cat": "Herramientas",
+   "tipo": "App",
+   "t": "Spec Kit (GitHub)",
+   "d": "El kit de GitHub para programar a partir de especificaciones: primero escribís qué querés, después el plan y las tareas, y recién ahí Claude programa.",
+   "para": "Que Claude construya lo que pediste y no lo que se imaginó.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "uv tool install specify-cli"
+    },
+    {
+     "donde": "Terminal",
+     "c": "specify init mi-proyecto --integration claude"
+    }
+   ],
+   "url": "https://github.com/github/spec-kit",
+   "repo": "github/spec-kit",
+   "licencia": "MIT",
+   "fuente": "https://github.com/github/spec-kit/blob/main/docs/installation.md"
+  },
+  {
+   "cat": "Herramientas",
+   "tipo": "App",
+   "t": "Claude Code Usage Monitor",
+   "d": "Un monitor en la terminal que muestra en tiempo real cuántos tokens gastás, a qué ritmo, y cuándo vas a llegar al límite de tu plan.",
+   "para": "Saber si te alcanza el plan antes de que te corte en medio de un trabajo.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "uv tool install claude-monitor"
+    },
+    {
+     "donde": "Terminal",
+     "c": "claude-monitor"
+    }
+   ],
+   "url": "https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor",
+   "repo": "Maciek-roboblog/Claude-Code-Usage-Monitor",
+   "licencia": "MIT",
+   "estrellas": "8 mil",
+   "fuente": "https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor#readme"
+  },
+  {
+   "cat": "Herramientas",
+   "tipo": "App",
+   "t": "ccstatusline",
+   "d": "Una barra de estado configurable para Claude Code que muestra modelo, rama de git, uso de contexto, tokens y costo de la sesión.",
+   "para": "Ver de un vistazo cuánto contexto y plata llevás gastados.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "npx -y ccstatusline@latest"
+    }
+   ],
+   "url": "https://github.com/sirmalloc/ccstatusline",
+   "repo": "sirmalloc/ccstatusline",
+   "licencia": "MIT",
+   "estrellas": "12 mil",
+   "fuente": "https://github.com/sirmalloc/ccstatusline#readme"
+  },
+  {
+   "cat": "Herramientas",
+   "tipo": "App",
+   "t": "Repomix",
+   "d": "Empaqueta todo un repositorio en un solo archivo prolijo para pasárselo a una IA, contando tokens y salteando lo que no importa. También funciona como MCP.",
+   "para": "Pasarle a Claude un proyecto entero de una, por ejemplo para que lo analice o lo documente.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "npx repomix@latest"
+    },
+    {
+     "donde": "Terminal",
+     "c": "claude mcp add repomix -- npx -y repomix --mcp"
+    }
+   ],
+   "url": "https://github.com/yamadashy/repomix",
+   "repo": "yamadashy/repomix",
+   "licencia": "MIT",
+   "fuente": "https://github.com/yamadashy/repomix#readme"
+  },
+  {
+   "cat": "Herramientas",
+   "tipo": "App",
+   "t": "Graphify",
+   "d": "Convierte una carpeta de código, documentos o PDFs en un mapa de conocimiento navegable, para que Claude consulte el mapa en vez de releer todo.",
+   "para": "Entender rápido un proyecto grande o heredado sin quemar tokens.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "uv tool install graphifyy"
+    },
+    {
+     "donde": "Terminal",
+     "c": "graphify install"
+    },
+    {
+     "donde": "Claude Code",
+     "c": "/graphify ."
+    }
+   ],
+   "url": "https://github.com/safishamsi/graphify",
+   "repo": "safishamsi/graphify",
+   "licencia": "Apache-2.0",
+   "estrellas": "47 mil",
+   "fuente": "https://github.com/safishamsi/graphify#readme"
+  },
+  {
+   "cat": "Herramientas",
+   "tipo": "App",
+   "t": "RTK (edición abierta)",
+   "d": "Un intermediario que achica la salida de los comandos (git, tests, logs) antes de que la lea Claude, para gastar menos tokens. La edición rtk-oss es la 100% Apache-2.0.",
+   "para": "Bajar el consumo de tokens en sesiones de programación largas.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "brew install rtk-ai/tap/rtk-oss"
+    },
+    {
+     "donde": "Terminal",
+     "c": "rtk init -g"
+    }
+   ],
+   "url": "https://github.com/rtk-ai/rtk",
+   "repo": "rtk-ai/rtk",
+   "licencia": "Apache-2.0 (edición rtk-oss)",
+   "fuente": "https://github.com/rtk-ai/rtk#readme"
+  },
+  {
+   "cat": "Herramientas",
+   "tipo": "App",
+   "t": "Claude Code Router",
+   "d": "Un intermediario que te deja usar Claude Code con otros proveedores y modelos, y elegir qué modelo usar para cada tipo de tarea, desde una página de configuración.",
+   "para": "Probar modelos más baratos para tareas simples sin dejar de usar Claude Code.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "npm install -g @musistudio/claude-code-router"
+    },
+    {
+     "donde": "Terminal",
+     "c": "ccr ui"
+    }
+   ],
+   "url": "https://github.com/musistudio/claude-code-router",
+   "repo": "musistudio/claude-code-router",
+   "licencia": "MIT",
+   "estrellas": "34 mil",
+   "fuente": "https://github.com/musistudio/claude-code-router#readme"
+  },
+  {
+   "cat": "Herramientas",
+   "tipo": "App",
+   "t": "CloudCLI (Claude Code UI)",
+   "d": "Una interfaz web abierta para Claude Code: ves tus sesiones, archivos y git desde el navegador, también desde el celular. Tiene una versión en la nube paga, pero la que instalás vos es gratis.",
+   "para": "Usar Claude Code con ventanas y botones en vez de solo la terminal.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "npx @cloudcli-ai/cloudcli"
+    }
+   ],
+   "url": "https://github.com/siteboon/claudecodeui",
+   "repo": "siteboon/claudecodeui",
+   "licencia": "AGPL-3.0",
+   "fuente": "https://github.com/siteboon/claudecodeui#readme"
+  },
+  {
+   "cat": "Herramientas",
+   "tipo": "App",
+   "t": "CCManager",
+   "d": "Administra varias sesiones de Claude Code en paralelo, cada una en su propia copia del repo (git worktree), y te avisa en cuál te están esperando.",
+   "para": "Llevar varias tareas o clientes a la vez sin que se pisen.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "npm install -g ccmanager"
+    },
+    {
+     "donde": "Terminal",
+     "c": "npx ccmanager"
+    }
+   ],
+   "url": "https://github.com/kbwo/ccmanager",
+   "repo": "kbwo/ccmanager",
+   "licencia": "MIT",
+   "fuente": "https://github.com/kbwo/ccmanager#readme"
+  },
+  {
+   "cat": "Herramientas",
+   "tipo": "App",
+   "t": "Claude Squad",
+   "d": "Una app de terminal para manejar varios Claude Code a la vez, cada uno en su espacio aislado, y revisar los cambios antes de aplicarlos.",
+   "para": "Poner a trabajar varios agentes en paralelo y controlarlos desde una sola pantalla.",
+   "cmds": [
+    {
+     "donde": "Terminal",
+     "c": "brew install claude-squad"
+    },
+    {
+     "donde": "Terminal",
+     "c": "cs"
+    }
+   ],
+   "url": "https://github.com/smtg-ai/claude-squad",
+   "repo": "smtg-ai/claude-squad",
+   "licencia": "AGPL-3.0",
+   "estrellas": "9 mil",
+   "fuente": "https://github.com/smtg-ai/claude-squad#readme"
+  }
+ ]
+}

@@ -53,12 +53,18 @@
     "markitdown-para-ahorrar-tokens",
     "herramientas-y-esfuerzo-justos",
     "que-modelo-de-claude-uso",
-    "ahorra-tokens-graphify-obsidian"
+    "pro-max-o-api-cual-te-conviene",
+    "claude-code-liviano",
+    "cuanto-gastas-en-claude-code",
+    "repos-grandes-sin-gastar-de-mas",
+    "ahorra-tokens-graphify-obsidian",
+    "api-mas-barata-cache-y-lotes"
    ],
    "prompts": [
     "Chats ordenados",
     "Del chat largo al chat nuevo",
-    "Pedidos de una sola vez"
+    "Pedidos de una sola vez",
+    "Claude Code liviano"
    ]
   },
   {
