@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena agentes-con-el-claude-agent-sdk, Claude Agent SDK: tu agente adentro de tu propia app, Qué es el SDK oficial para armar agentes en Python o TypeScript, para quién es, un ejemplo mínimo de la documentación y cómo se cobra, sin vueltas. y 9193350b -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena agentes-con-el-claude-agent-sdk, Claude Agent SDK: tu agente adentro de tu propia app, Qué es el SDK oficial para armar agentes en Python o TypeScript, para quién es, un ejemplo mínimo de la documentación y cómo se cobra, sin vueltas. y 12560169 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,28 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=9193350b">
-<link rel="stylesheet" href="../web/cta.css?v=9193350b">
-<link rel="stylesheet" href="../web/biblioteca.css?v=9193350b">
-<link rel="stylesheet" href="../web/guia.css?v=9193350b">
-<link rel="stylesheet" href="../web/tema.css?v=9193350b">
-<link rel="stylesheet" href="../web/bienvenida.css?v=9193350b">
-<script src="../web/tema.js?v=9193350b"></script>
+<link rel="stylesheet" href="../web/base.css?v=12560169">
+<link rel="stylesheet" href="../web/cta.css?v=12560169">
+<link rel="stylesheet" href="../web/biblioteca.css?v=12560169">
+<link rel="stylesheet" href="../web/guia.css?v=12560169">
+<link rel="stylesheet" href="../web/tema.css?v=12560169">
+<link rel="stylesheet" href="../web/bienvenida.css?v=12560169">
+<script src="../web/tema.js?v=12560169"></script>
+<link rel="icon" href="../web/favicon.svg?v=12560169" type="image/svg+xml">
+<meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=9193350b"></script>
-<script src="../web/guias-web.js?v=9193350b"></script>
-<script src="../web/comun.js?v=9193350b"></script>
+<script src="../web/redes.js?v=12560169"></script>
+<script src="../web/guias-web.js?v=12560169"></script>
+<script src="../web/comun.js?v=12560169"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="agentes-con-el-claude-agent-sdk"></main>
 <script>var GUIA = {"slug": "agentes-con-el-claude-agent-sdk", "t": "Claude Agent SDK: tu agente adentro de tu propia app", "d": "Qué es el SDK oficial para armar agentes en Python o TypeScript, para quién es, un ejemplo mínimo de la documentación y cómo se cobra, sin vueltas.", "tema": "Agentes", "min": 11, "fichaNombre": "Claude Agent SDK", "ficha": [["Qué es", "Una librería oficial que te da el mismo motor de Claude Code (herramientas, bucle, permisos) para usar desde tu código."], ["Necesitás", "Python 3.10 o más, o Node.js 18 o más, y una clave de API de la Claude Console."], ["Cuánto cuesta", "Se paga por uso de la API: por los tokens que consume, según el precio de cada modelo."], ["Qué no hace", "No usa tu suscripción de claude.ai para que otros usen tu producto."]], "secciones": [{"h": "Qué es y para quién", "p": ["El Claude Agent SDK es Claude Code como librería. Te da sus herramientas incluidas (leer y editar archivos, correr comandos, buscar en la web), el bucle del agente, permisos, sesiones, hooks, subagentes y conexión con MCP, todo manejable desde Python o TypeScript.", "Es para vos si querés meter un agente adentro de un producto o de un proceso tuyo: un servicio que corre en un servidor, un panel para un cliente o una tarea automática. Si solo querés usar un agente vos, Claude Code alcanza y no necesitás programar."], "lista": ["Claude Code: lo usás vos, en la terminal o la app.", "Agent SDK: lo metés en tu aplicación y corre en un proceso que manejás vos.", "Client SDK: llamás a la API directo y el bucle de herramientas lo escribís vos."]}, {"h": "Instalalo", "pasos": ["Creá una carpeta para tu agente y entrá en ella desde la terminal.", "Python: creá un entorno virtual y corré pip install claude-agent-sdk. TypeScript: corré npm install @anthropic-ai/claude-agent-sdk.", "Sacá una clave de API en la Claude Console (platform.claude.com).", "En la misma terminal donde vas a correr el agente: export ANTHROPIC_API_KEY=tu-clave (en Windows PowerShell: $env:ANTHROPIC_API_KEY = \"tu-clave\")."], "p": ["Los dos paquetes traen incluido Claude Code, así que en la mayoría de los casos no tenés que instalarlo aparte. El SDK no lee archivos .env solo: si guardás la clave ahí, la tenés que cargar vos."], "aviso": "Nunca pegues tu clave de API dentro del código ni la subas a GitHub."}, {"h": "El ejemplo mínimo (de la documentación oficial)", "p": ["Este es el ejemplo del quickstart oficial en Python: un agente que revisa un archivo, encuentra errores y los arregla. Guardalo como agent.py y corrélo con python agent.py."], "prompts": [{"t": "agent.py", "c": "import asyncio\nfrom claude_agent_sdk import query, ClaudeAgentOptions, AssistantMessage, ResultMessage\n\n\nasync def main():\n    # Agentic loop: streams messages as Claude works\n    async for message in query(\n        prompt=\"Review utils.py for bugs that would cause crashes. Fix any issues you find.\",\n        options=ClaudeAgentOptions(\n            allowed_tools=[\"Read\", \"Edit\", \"Glob\"],  # Auto-approve these tools\n            permission_mode=\"acceptEdits\",  # Auto-approve file edits\n        ),\n    ):\n        # Print human-readable output\n        if isinstance(message, AssistantMessage):\n            for block in message.content:\n                if hasattr(block, \"text\"):\n                    print(block.text)  # Claude's reasoning\n                elif hasattr(block, \"name\"):\n                    print(f\"Tool: {block.name}\")  # Tool being called\n        elif isinstance(message, ResultMessage):\n            print(f\"Done: {message.subtype}\")  # Final result\n\n\nasyncio.run(main())"}], "lista": ["prompt: lo que querés que haga. Cambialo por tu tarea.", "allowed_tools: las herramientas que usa sin pedir permiso. Para un agente que solo lee, dejá Read, Glob y Grep.", "permission_mode: cuánta supervisión querés. acceptEdits aprueba solo las ediciones de archivos.", "system_prompt: otra opción donde ponés las instrucciones de tu agente."]}, {"h": "Ponele límites desde el principio", "lista": ["max_turns: corta el agente después de cierta cantidad de vueltas con herramientas.", "max_budget_usd: corta cuando el gasto estimado llega al tope que vos pongas.", "Herramientas mínimas: sumá Bash (comandos) o WebSearch solo si de verdad las necesita."], "p": ["Sin límites, el agente sigue hasta que termina solo. Para tareas abiertas eso puede ser mucho tiempo y mucho consumo. La documentación recomienda poner un presupuesto como punto de partida en producción."]}, {"h": "Cómo se cobra", "lista": ["Usa la API de Claude con tu clave: pagás por uso, según los tokens de entrada y salida de cada modelo. Los precios están en la página oficial de precios.", "Algunas herramientas tienen un cargo aparte además de los tokens, como la búsqueda web de la API.", "Al terminar, el SDK te muestra un costo (total_cost_usd), pero es una estimación calculada en tu compu. El gasto real lo ves en la página Usage de la Claude Console.", "Si armás un producto para otros, no podés hacer que inicien sesión con su cuenta de claude.ai salvo aprobación previa de Anthropic: se usa autenticación con clave de API."], "aviso": "No le cobres a tus clientes según el costo estimado del SDK: la propia documentación dice que no es un dato de facturación."}], "faq": [{"q": "¿Puedo usar mi plan Pro o Max?", "a": "Para un producto que usan otras personas, no: Anthropic no permite ofrecer el inicio de sesión de claude.ai en productos de terceros salvo aprobación previa. Usá una clave de API."}, {"q": "¿Puedo llamar a mi producto \"Claude Code algo\"?", "a": "No. Según la guía de marca podés usar, por ejemplo, \"Tu Agente Powered by Claude\", pero no \"Claude Code\" ni elementos visuales que imiten a Claude Code."}, {"q": "¿Hay ejemplos más completos?", "a": "Sí: Anthropic tiene un repositorio de demos (asistente de mail, agente de investigación y otros) pensados para probar en tu compu, no para producción."}], "fuentes": ["https://code.claude.com/docs/en/agent-sdk/overview", "https://code.claude.com/docs/en/agent-sdk/quickstart", "https://code.claude.com/docs/en/agent-sdk/agent-loop", "https://code.claude.com/docs/en/agent-sdk/cost-tracking", "https://platform.claude.com/docs/en/about-claude/pricing"], "cat": "agentes", "parte": "usalo"};</script>
 
-<script src="../web/rutas.js?v=9193350b"></script>
-<script src="../web/logos.js?v=9193350b"></script>
-<script src="../web/guia.js?v=9193350b"></script>
-<script src="../web/bienvenida.js?v=9193350b"></script>
+<script src="../web/rutas.js?v=12560169"></script>
+<script src="../web/logos.js?v=12560169"></script>
+<script src="../web/guia.js?v=12560169"></script>
+<script src="../web/bienvenida.js?v=12560169"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena sistema-ia-para-estudios-juridicos, Sistema con Claude para estudios jurídicos, Primera atención de consultas, borradores a partir de modelos propios, resúmenes de expedientes y comunicación con clientes, con el secreto profesional como regla número uno. y 9193350b -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena sistema-ia-para-estudios-juridicos, Sistema con Claude para estudios jurídicos, Primera atención de consultas, borradores a partir de modelos propios, resúmenes de expedientes y comunicación con clientes, con el secreto profesional como regla número uno. y 12560169 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,28 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=9193350b">
-<link rel="stylesheet" href="../web/cta.css?v=9193350b">
-<link rel="stylesheet" href="../web/biblioteca.css?v=9193350b">
-<link rel="stylesheet" href="../web/guia.css?v=9193350b">
-<link rel="stylesheet" href="../web/tema.css?v=9193350b">
-<link rel="stylesheet" href="../web/bienvenida.css?v=9193350b">
-<script src="../web/tema.js?v=9193350b"></script>
+<link rel="stylesheet" href="../web/base.css?v=12560169">
+<link rel="stylesheet" href="../web/cta.css?v=12560169">
+<link rel="stylesheet" href="../web/biblioteca.css?v=12560169">
+<link rel="stylesheet" href="../web/guia.css?v=12560169">
+<link rel="stylesheet" href="../web/tema.css?v=12560169">
+<link rel="stylesheet" href="../web/bienvenida.css?v=12560169">
+<script src="../web/tema.js?v=12560169"></script>
+<link rel="icon" href="../web/favicon.svg?v=12560169" type="image/svg+xml">
+<meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=9193350b"></script>
-<script src="../web/guias-web.js?v=9193350b"></script>
-<script src="../web/comun.js?v=9193350b"></script>
+<script src="../web/redes.js?v=12560169"></script>
+<script src="../web/guias-web.js?v=12560169"></script>
+<script src="../web/comun.js?v=12560169"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="sistema-ia-para-estudios-juridicos"></main>
 <script>var GUIA = {"slug": "sistema-ia-para-estudios-juridicos", "t": "Sistema con Claude para estudios jurídicos", "d": "Primera atención de consultas, borradores a partir de modelos propios, resúmenes de expedientes y comunicación con clientes, con el secreto profesional como regla número uno.", "tema": "Sistemas listos por rubro", "min": 10, "fichaNombre": "Estudios jurídicos", "ficha": [["Qué es", "Un asistente para la organización del estudio: ordenar consultas, preparar borradores desde modelos propios y comunicar avances."], ["Necesitás", "Una cuenta de Claude del negocio (las tareas programadas piden plan pago), sus documentos y las cuentas de Google que ya usan."], ["Tiempo", "Ejemplo: una tarde para la demo y una o dos semanas de ajustes con el dueño."], ["Qué no hace", "No da consejo legal, no firma y no reemplaza la revisión del abogado en ningún escrito."]], "secciones": [{"h": "Lo que les come el tiempo", "lista": ["Primeras consultas: escuchar el caso, ver si el estudio lo toma y qué documentación pedir.", "Borradores repetidos: cartas, intimaciones y escritos que salen de un modelo y se adaptan.", "Resumir documentos largos para entender un caso rápido.", "Contarle al cliente en qué está su tema, en palabras simples.", "Agenda de audiencias, plazos y vencimientos.", "Ordenar mails y archivos por caso."]}, {"h": "El sistema", "lista": ["Proyecto \"Estudio\": áreas que atiende, honorarios, modelos propios del estudio (sin datos de clientes), checklist de documentación por tipo de caso y tono de comunicación.", "Skill de primera consulta: ordena lo que contó la persona en hechos, fechas, documentación que falta y preguntas para la entrevista. No opina sobre el caso.", "Skill de borrador desde modelo: completa un modelo del estudio con los datos que carga el abogado y marca todo lo que hay que revisar.", "Skill de novedades al cliente: convierte una nota técnica del abogado en un mensaje simple.", "Conectores: Google Calendar para plazos que carga el estudio, Gmail para borradores, Google Drive para modelos y carpetas.", "Automatización: una tarea programada que cada mañana lista los plazos y audiencias de los próximos días según el calendario del estudio."], "aviso": "Las skills necesitan que esté prendida la ejecución de código (Settings → Capabilities). Las tareas programadas están en los planes pagos. Revisá la ayuda oficial antes de prometer algo que depende del plan del cliente."}, {"h": "Prompts y skills listos", "p": ["Para revisar contratos puntuales, mirá también la guía \"Revisar contratos con Claude (sin reemplazar a tu abogado)\"."], "prompts": [{"t": "Ordenar una primera consulta", "c": "Esto es lo que contó una persona en la primera consulta (sin nombres ni datos que la identifiquen): [PEGÁ LAS NOTAS].\nÁrea: [ÁREA].\nOrdenalo así:\n1. Hechos en orden cronológico.\n2. Fechas que pueden importar para plazos (marcalas para que las revise el abogado).\n3. Documentación que habría que pedir, según el checklist del Proyecto.\n4. Diez preguntas para la próxima entrevista.\nNo des opinión sobre quién tiene razón ni sobre qué conviene hacer."}, {"t": "Borrador desde modelo del estudio", "c": "Usá el modelo [NOMBRE DEL MODELO] del Proyecto.\nDatos que carga el abogado: [DATOS].\nCompletá el modelo sin cambiar su estructura ni agregar cláusulas o argumentos nuevos.\nMarcá entre corchetes [REVISAR] cada lugar donde tuviste que interpretar algo, y al final listá lo que falta.\nEsto es un borrador: lo revisa y firma el abogado."}, {"t": "Novedades para el cliente", "c": "Nota técnica del abogado sobre el estado del caso: [PEGÁ].\nEscribí un mensaje para el cliente de hasta 150 palabras: qué pasó, qué sigue y si tiene que hacer algo. Sin tecnicismos y sin prometer resultados ni plazos que no estén en la nota."}]}, {"h": "Cómo instalarlo", "pasos": ["Lo primero es la conversación sobre confidencialidad: el estudio decide por escrito qué información puede pasar por Claude y cuál no. Si el estudio usa un plan de equipo, que revise la configuración de la organización.", "Juntá los modelos del estudio, limpios de datos de clientes, y los checklists de documentación.", "Armá el Proyecto y escribí instrucciones que prohíban opinar sobre el fondo de los casos.", "Probá cada skill con casos viejos anonimizados y que un abogado revise todo.", "Conectá Calendar, Gmail y Drive con la cuenta del estudio. Los plazos los sigue cargando una persona.", "Armá la tarea programada de plazos y aclarale al equipo que es un recordatorio, no el control oficial."]}, {"h": "Cómo ofrecérselo", "prompts": [{"t": "Mensaje de primer contacto", "c": "Hola [NOMBRE], soy [TU NOMBRE]. Armo sistemas con Claude para estudios jurídicos.\nNo es para que la IA haga el trabajo del abogado. Es para lo de alrededor: ordenar las primeras consultas, completar borradores desde los modelos del estudio y contarle al cliente en qué está su tema en palabras simples. Todo pasa por la revisión del abogado y se arma pensando en el secreto profesional desde el día uno.\n¿Te muestro en 15 minutos cómo ordenaría una primera consulta?"}], "lista": ["Argumento central: \"Los abogados dedican su tiempo a pensar el caso, no a copiar y pegar modelos ni a explicar lo mismo diez veces.\"", "Abrí con la confidencialidad antes de que te la pregunten. En este rubro, eso es lo que define si te escuchan."]}, {"h": "Cuidados del rubro", "lista": ["Secreto profesional: es la regla número uno. Nada de datos que identifiquen a un cliente sin que el estudio lo haya autorizado.", "Datos sensibles: causas penales, de familia o de salud tienen un cuidado extra. Lo más seguro es no cargarlas.", "Citas legales: Claude puede equivocarse con leyes, artículos o fallos. Todo lo que cite, el abogado lo verifica en la fuente.", "Publicidad: muchas jurisdicciones limitan cómo se promociona un abogado. Que el estudio lo revise antes de publicar contenido."], "aviso": "Claude no da consejo legal ni reemplaza al abogado. Nada sale del estudio sin revisión profesional, y los datos personales se cuidan según las leyes y las normas de ética de cada país."}], "faq": [{"q": "¿Claude puede buscar jurisprudencia?", "a": "Puede ayudar a ordenar una búsqueda, pero puede equivocarse con citas. No lo vendas como buscador jurídico: lo que cite, se verifica en la fuente oficial."}, {"q": "¿Cómo trato la información de los clientes en las pruebas?", "a": "Usá casos viejos con nombres, fechas y lugares cambiados. Y dejá por escrito con el estudio qué se puede cargar."}, {"q": "¿Qué es lo primero que conviene instalar?", "a": "La skill de primera consulta. Ahorra tiempo sin tocar el fondo del trabajo legal."}], "fuentes": ["https://support.claude.com/en/articles/9517075-what-are-projects", "https://support.claude.com/en/articles/12512180-use-skills-in-claude", "https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities", "https://support.claude.com/en/articles/10166901-use-google-workspace-connectors", "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork"], "cat": "rubros", "parte": "construi"};</script>
 
-<script src="../web/rutas.js?v=9193350b"></script>
-<script src="../web/logos.js?v=9193350b"></script>
-<script src="../web/guia.js?v=9193350b"></script>
-<script src="../web/bienvenida.js?v=9193350b"></script>
+<script src="../web/rutas.js?v=12560169"></script>
+<script src="../web/logos.js?v=12560169"></script>
+<script src="../web/guia.js?v=12560169"></script>
+<script src="../web/bienvenida.js?v=12560169"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

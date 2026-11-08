@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena tu-propio-jarvis-con-claude, Tu propio Jarvis con Claude, Le hablás, te contesta con voz y se conecta a tu mail y tu calendario. De código abierto: vive en tu compu y nadie te cobra después. y 9193350b -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena tu-propio-jarvis-con-claude, Tu propio Jarvis con Claude, Le hablás, te contesta con voz y se conecta a tu mail y tu calendario. De código abierto: vive en tu compu y nadie te cobra después. y 12560169 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,28 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=9193350b">
-<link rel="stylesheet" href="../web/cta.css?v=9193350b">
-<link rel="stylesheet" href="../web/biblioteca.css?v=9193350b">
-<link rel="stylesheet" href="../web/guia.css?v=9193350b">
-<link rel="stylesheet" href="../web/tema.css?v=9193350b">
-<link rel="stylesheet" href="../web/bienvenida.css?v=9193350b">
-<script src="../web/tema.js?v=9193350b"></script>
+<link rel="stylesheet" href="../web/base.css?v=12560169">
+<link rel="stylesheet" href="../web/cta.css?v=12560169">
+<link rel="stylesheet" href="../web/biblioteca.css?v=12560169">
+<link rel="stylesheet" href="../web/guia.css?v=12560169">
+<link rel="stylesheet" href="../web/tema.css?v=12560169">
+<link rel="stylesheet" href="../web/bienvenida.css?v=12560169">
+<script src="../web/tema.js?v=12560169"></script>
+<link rel="icon" href="../web/favicon.svg?v=12560169" type="image/svg+xml">
+<meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=9193350b"></script>
-<script src="../web/guias-web.js?v=9193350b"></script>
-<script src="../web/comun.js?v=9193350b"></script>
+<script src="../web/redes.js?v=12560169"></script>
+<script src="../web/guias-web.js?v=12560169"></script>
+<script src="../web/comun.js?v=12560169"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="tu-propio-jarvis-con-claude"></main>
 <script>var GUIA = {"slug": "tu-propio-jarvis-con-claude", "fuentes": ["https://github.com/Juampii01/jarvi-os/tree/main/voz", "https://github.com/Itsme23476/jarvis-os", "https://elevenlabs.io/docs"], "post": "JARVIS", "t": "Tu propio Jarvis con Claude", "d": "Le hablás, te contesta con voz y se conecta a tu mail y tu calendario. De código abierto: vive en tu compu y nadie te cobra después.", "tema": "IA en tu negocio", "min": 10, "fichaNombre": "Jarvis por voz", "ficha": [["Qué es", "Una cara y una voz para Claude Code: le hablás por el micrófono y te responde hablando."], ["Necesitás", "Claude Code con sesión iniciada, Python 3, una cuenta gratis de ElevenLabs y Chrome."], ["Cuánto cuesta", "Nada extra: usa tu plan de Claude y el plan gratis de ElevenLabs."], ["Repo", "github.com/Juampii01/jarvi-os (carpeta voz)"]], "secciones": [{"h": "Instalalo con un solo mensaje", "p": ["Abrí Claude Code en una terminal y pegale esto. Después seguí desde \"Tu clave de ElevenLabs\"."], "prompts": [{"t": "Instalar Jarvis", "c": "Descargá https://github.com/Juampii01/jarvi-os en mi carpeta de usuario y dejá listo el Jarvis por voz que está en la carpeta \"voz\": creá el archivo .env copiando .env.example y decime qué me falta completar. No arranques el servidor vos: decime cómo arrancarlo yo."}]}, {"h": "Tu clave de ElevenLabs", "pasos": ["Entrá a elevenlabs.io → tu perfil → API Keys y creá una clave.", "Abrí el archivo .env de la carpeta voz y pegala después de ELEVENLABS_API_KEY=.", "Para que hable en español: en la Voice Library elegí una voz en español, copiá su Voice ID y pegalo en ELEVENLABS_VOICE_ID=."]}, {"h": "Conectá tu mail y tu calendario", "pasos": ["En claude.ai → Configuración → Conectores, conectá Gmail y Google Calendar con la misma cuenta de Claude Code.", "Abrí Claude Code, escribí /mcp y fijate que aparezcan."]}, {"h": "Arrancalo y hablale", "pasos": ["Windows: doble clic en iniciar.bat. Mac: doble clic en iniciar.command (si pide permiso: clic derecho → Abrir).", "Se abre solo en el navegador: http://localhost:8730.", "Tocá ◉ VOICE, aceptá el micrófono y hablá. Para terminar, tocá el botón de nuevo."], "lista": ["\"¿Qué tengo hoy en el calendario?\"", "\"¿Qué mails importantes tengo sin responder?\"", "\"Preparame un borrador para Juan diciéndole que la reunión pasa al jueves.\""], "aviso": "Arrancalo desde el explorador de archivos o una terminal normal, no desde adentro de Claude Code."}, {"h": "Los botones", "lista": ["/new: empieza una charla nueva.", "/profile: le enseñás algo de vos y lo recuerda.", "/goal: le ponés tu objetivo principal.", "/personality: le cambiás el tono.", "/kanban: suma una tarea a tu lista o te la lee.", "/background: le das una tarea larga y te avisa cuando termina."]}, {"h": "Seguridad", "p": ["Para que los conectores funcionen, Jarvis corre Claude Code sin pedir permiso en cada acción (JARVIS_PERMISSION=bypass). Por eso tiene la regla de no mandar nada sin que se lo pidas: prepara borradores y espera tu confirmación. Usalo solo en tu compu."]}], "faq": [{"q": "Me transcribe pero nunca contesta", "a": "Revisá que Claude Code tenga la sesión iniciada: claude → /login."}, {"q": "No habla", "a": "Revisá que la clave de ElevenLabs esté bien pegada en .env, sin espacios."}, {"q": "Dice \"core went quiet\"", "a": "Claude tardó demasiado. Volvé a preguntar o subí JARVIS_TIMEOUT en .env."}], "idea": [], "cat": "negocio", "parte": "usalo"};</script>
 
-<script src="../web/rutas.js?v=9193350b"></script>
-<script src="../web/logos.js?v=9193350b"></script>
-<script src="../web/guia.js?v=9193350b"></script>
-<script src="../web/bienvenida.js?v=9193350b"></script>
+<script src="../web/rutas.js?v=12560169"></script>
+<script src="../web/logos.js?v=12560169"></script>
+<script src="../web/guia.js?v=12560169"></script>
+<script src="../web/bienvenida.js?v=12560169"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

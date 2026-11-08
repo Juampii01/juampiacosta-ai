@@ -111,3 +111,11 @@ function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").
 function buscable(o) {
   return [o.t || o.n, o.d || "", o.cat || ""].join(" ").replace(/"/g, "");
 }
+
+// Progreso de lectura (solo en este navegador): guías leídas y la última que abriste
+var PROGRESO = {
+  leidas: function () { try { return JSON.parse(localStorage.getItem("jpa_leidas") || "{}"); } catch (e) { return {}; } },
+  marcar: function (slug) { try { var l = PROGRESO.leidas(); if (l[slug]) return false; l[slug] = Date.now(); localStorage.setItem("jpa_leidas", JSON.stringify(l)); return true; } catch (e) { return false; } },
+  ultima: function () { try { return JSON.parse(localStorage.getItem("jpa_ultima") || "null"); } catch (e) { return null; } },
+  abrir: function (slug) { try { localStorage.setItem("jpa_ultima", JSON.stringify({ slug: slug, at: Date.now() })); } catch (e) {} }
+};

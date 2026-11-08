@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de /recursos. No abrir esta: build.py la copia a ../recursos.html y pone la versión (9193350b) -->
+<!-- Plantilla de /recursos. No abrir esta: build.py la copia a ../recursos.html y pone la versión (12560169) -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -8,30 +8,32 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="web/base.css?v=9193350b">
-<link rel="stylesheet" href="web/cta.css?v=9193350b">
-<link rel="stylesheet" href="web/biblioteca.css?v=9193350b">
-<link rel="stylesheet" href="web/menu.css?v=9193350b">
-<link rel="stylesheet" href="web/vitrina.css?v=9193350b">
-<link rel="stylesheet" href="web/organizar.css?v=9193350b">
-<link rel="stylesheet" href="web/recomendados.css?v=9193350b">
-<link rel="stylesheet" href="web/tema.css?v=9193350b">
-<link rel="stylesheet" href="web/bienvenida.css?v=9193350b">
-<script src="web/tema.js?v=9193350b"></script>
+<link rel="stylesheet" href="web/base.css?v=12560169">
+<link rel="stylesheet" href="web/cta.css?v=12560169">
+<link rel="stylesheet" href="web/biblioteca.css?v=12560169">
+<link rel="stylesheet" href="web/menu.css?v=12560169">
+<link rel="stylesheet" href="web/vitrina.css?v=12560169">
+<link rel="stylesheet" href="web/organizar.css?v=12560169">
+<link rel="stylesheet" href="web/recomendados.css?v=12560169">
+<link rel="stylesheet" href="web/tema.css?v=12560169">
+<link rel="stylesheet" href="web/bienvenida.css?v=12560169">
+<script src="web/tema.js?v=12560169"></script>
+<link rel="icon" href="web/favicon.svg?v=12560169" type="image/svg+xml">
+<meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="web/redes.js?v=9193350b"></script>
-<script src="web/guias-web.js?v=9193350b"></script>
-<script src="web/herramientas.js?v=9193350b"></script>
-<script src="web/prompts.js?v=9193350b"></script>
-<script src="web/datos.js?v=9193350b"></script>
-<script src="web/comun.js?v=9193350b"></script>
-<script src="web/rutas.js?v=9193350b"></script>
-<script src="web/categorias.js?v=9193350b"></script>
-<script src="web/organizar.js?v=9193350b"></script>
-<script src="web/recomendados.js?v=9193350b" defer></script>
-<script src="web/menu.js?v=9193350b"></script>
+<script src="web/redes.js?v=12560169"></script>
+<script src="web/guias-web.js?v=12560169"></script>
+<script src="web/herramientas.js?v=12560169"></script>
+<script src="web/prompts.js?v=12560169"></script>
+<script src="web/datos.js?v=12560169"></script>
+<script src="web/comun.js?v=12560169"></script>
+<script src="web/rutas.js?v=12560169"></script>
+<script src="web/categorias.js?v=12560169"></script>
+<script src="web/organizar.js?v=12560169"></script>
+<script src="web/recomendados.js?v=12560169" defer></script>
+<script src="web/menu.js?v=12560169"></script>
 <script>document.write(cabecera());</script>
 
 <main>
@@ -39,7 +41,7 @@
   <div class="bento">
     <div class="b b-hero glass">
       <div>
-        <span class="mono" style="color:var(--glow)">Acceso fundador</span>
+        <span class="mono" style="color:var(--glow)" id="hero-nivel">Acceso fundador</span>
         <h1 class="saludo">Bienvenido a la biblioteca: todo lo que uso para <em>armar sistemas con Claude</em>.</h1>
         <p>Guías, prompts, skills y conectores en un solo lugar. Cada semana se suman recursos nuevos.</p>
       </div>
@@ -104,10 +106,24 @@ if (GRATIS) {
   var aviso = document.createElement("a");
   aviso.className = "aviso-gratis glass";
   aviso.href = "/#precio";
-  aviso.innerHTML = '<span class="mono">Plan gratis</span><b>Tenés abiertas las guías de mis reels y el Módulo 1.</b><span>Desbloqueá las ' + GUIAS_WEB.length + ' guías, los prompts y las herramientas →</span>';
+  aviso.innerHTML = '<span class="mono">Plan gratis</span><b>Tenés abiertas ' + GUIAS_WEB.filter(function (g) { return g.gratis; }).length + ' guías: las de mis reels, las de gastar menos tokens y el Módulo 1.</b><span>Desbloqueá las ' + GUIAS_WEB.length + ' guías, los prompts y las herramientas →</span>';
   document.querySelector("main").insertBefore(aviso, document.querySelector("main").firstChild);
 }
 // Total: guías + packs de prompts + skills, MCP y herramientas (los de «De mis reels» ya son guías: no se cuentan dos veces)
+if (GRATIS) document.getElementById("hero-nivel").textContent = "Plan gratis";
+// Seguí donde dejaste + cuántas leíste
+(function () {
+  var ult = PROGRESO.ultima(), leidas = PROGRESO.leidas(), n = Object.keys(leidas).length;
+  var g = ult && GUIAS_WEB.filter(function (x) { return x.slug === ult.slug; })[0];
+  if (!g && !n) return;
+  var caja = document.createElement("div");
+  caja.className = "seguir";
+  var abierta = !GRATIS || g && g.gratis;
+  caja.innerHTML = (g && !leidas[g.slug] && abierta ? '<a class="seguir-guia" href="guias/' + g.slug + '.html"><small>Seguí donde dejaste</small><b>' + g.t + '</b><em>Seguir leyendo →</em></a>' : '') +
+    '<div class="seguir-prog"><small>Tu progreso</small><b>' + n + ' de ' + GUIAS_WEB.length + ' guías leídas</b><i><em style="width:' + Math.round(n / GUIAS_WEB.length * 100) + '%"></em></i></div>';
+  var hero = document.querySelector(".b-hero");
+  hero.appendChild(caja);
+})();
 document.getElementById("n-recursos").textContent = GUIAS_WEB.length + PROMPTS.length + HERRAMIENTAS.length;
 document.getElementById("n-guias").textContent = GUIAS_WEB.length;
 
@@ -151,7 +167,7 @@ function tarjetaGuia(g, etiqueta) {
     '<h3>' + g.t + '</h3><p>' + g.d + '</p><span class="bajar">' + (cerrada ? '🔒 Desbloquear' : 'Leer la guía →') + '</span></a>';
 }
 organizar(document.getElementById("lista-guias-web"), GUIAS_WEB, function (g) { return tarjetaGuia(g, "Guía · " + g.tema); },
-  { prefijo: "g-", visibles: 4, palabra: "guías", buscar: "Buscá en las guías…" });
+  { prefijo: "g-", visibles: 4, palabra: "guías", buscar: "Buscá en las guías…", leidas: true });
 document.getElementById("lista-posts").innerHTML = GUIAS_WEB.filter(function (g) { return g.post; }).map(function (g) { return tarjetaGuia(g, "Palabra · " + g.post); }).join("");
 
 var ig = document.getElementById("b-ig");
@@ -165,6 +181,6 @@ ultimosPosts(document.getElementById("ultimos-posts"));
 pintarRutas(document.getElementById("lista-rutas"));
 menuLateral();
 </script>
-<script src="web/bienvenida.js?v=9193350b"></script>
+<script src="web/bienvenida.js?v=12560169"></script>
 </body>
 </html>

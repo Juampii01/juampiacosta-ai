@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena claude-code-desde-el-celular-y-la-web, Claude Code desde el celular y el navegador, Lanzá tareas desde claude.ai/code o la app de Claude, y seguí desde el teléfono una sesión que corre en tu compu. y 9193350b -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena claude-code-desde-el-celular-y-la-web, Claude Code desde el celular y el navegador, Lanzá tareas desde claude.ai/code o la app de Claude, y seguí desde el teléfono una sesión que corre en tu compu. y 12560169 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,28 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=9193350b">
-<link rel="stylesheet" href="../web/cta.css?v=9193350b">
-<link rel="stylesheet" href="../web/biblioteca.css?v=9193350b">
-<link rel="stylesheet" href="../web/guia.css?v=9193350b">
-<link rel="stylesheet" href="../web/tema.css?v=9193350b">
-<link rel="stylesheet" href="../web/bienvenida.css?v=9193350b">
-<script src="../web/tema.js?v=9193350b"></script>
+<link rel="stylesheet" href="../web/base.css?v=12560169">
+<link rel="stylesheet" href="../web/cta.css?v=12560169">
+<link rel="stylesheet" href="../web/biblioteca.css?v=12560169">
+<link rel="stylesheet" href="../web/guia.css?v=12560169">
+<link rel="stylesheet" href="../web/tema.css?v=12560169">
+<link rel="stylesheet" href="../web/bienvenida.css?v=12560169">
+<script src="../web/tema.js?v=12560169"></script>
+<link rel="icon" href="../web/favicon.svg?v=12560169" type="image/svg+xml">
+<meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=9193350b"></script>
-<script src="../web/guias-web.js?v=9193350b"></script>
-<script src="../web/comun.js?v=9193350b"></script>
+<script src="../web/redes.js?v=12560169"></script>
+<script src="../web/guias-web.js?v=12560169"></script>
+<script src="../web/comun.js?v=12560169"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="claude-code-desde-el-celular-y-la-web"></main>
 <script>var GUIA = {"slug": "claude-code-desde-el-celular-y-la-web", "t": "Claude Code desde el celular y el navegador", "d": "Lanzá tareas desde claude.ai/code o la app de Claude, y seguí desde el teléfono una sesión que corre en tu compu.", "tema": "Claude Code", "min": 9, "fichaNombre": "Claude Code en la web y el celular", "ficha": [["En la web", "claude.ai/code: Claude trabaja en la nube sobre un repositorio de GitHub."], ["En el celular", "La app de Claude para iOS y Android, pestaña Code. No hay una app aparte."], ["Remote Control", "Manejás desde el teléfono una sesión que corre en tu compu, con tus archivos."], ["Necesitás", "Cuenta de claude.ai con plan pago. Con una clave de API no funciona."]], "secciones": [{"h": "Dos maneras, una diferencia clave", "lista": ["Sesión en la nube: el trabajo corre en una máquina de Anthropic. Sigue aunque cierres la compu o el navegador. Necesita un repositorio en GitHub.", "Remote Control: el trabajo corre en tu compu, con tus archivos y tus herramientas. El teléfono o el navegador son solo la ventana. Tu compu tiene que quedar prendida y Claude Code abierto."], "p": ["Las sesiones en la nube están en los planes Pro, Max y Team, y en Enterprise según el tipo de licencia. Remote Control está en Pro, Max, Team y Enterprise (en Team y Enterprise lo tiene que habilitar el administrador)."]}, {"h": "Primera vez en claude.ai/code", "pasos": ["Entrá a claude.ai/code e iniciá sesión con tu cuenta de Claude.", "Conectá tu cuenta de GitHub cuando te lo pida y aprobá el permiso.", "Para trabajar en repositorios privados, instalá la app de Claude en GitHub sobre esa cuenta u organización.", "En Pro y Max se crea solo un entorno llamado Default. Para empezar, dejalo como está.", "Elegí el repositorio debajo del cuadro de mensaje, elegí el modo (Auto, Accept edits o Plan) y escribí la tarea.", "Cuando termina, tocá el indicador de cambios (por ejemplo +42 -18) para ver qué hizo y, si te gusta, tocá Create PR."], "aviso": "Si todavía no tenés el proyecto en GitHub, creá un repositorio con un README primero. Si no querés usar GitHub, usá Remote Control."}, {"h": "Desde el celular", "pasos": ["Instalá la app de Claude para iOS o Android. Desde Claude Code en la compu, /mobile te muestra un código QR que lleva a la tienda correcta.", "Iniciá sesión con la misma cuenta que usás en Claude Code.", "Tocá Code en la navegación de la app: ahí están tus sesiones en la nube y las de Remote Control.", "Para una tarea nueva en la nube, elegí repositorio y rama, describí la tarea y mandala. Después podés cerrar la app."], "prompts": [{"t": "Tarea para mandar desde el teléfono", "c": "En este repositorio, [LO QUE QUERÉS, POR EJEMPLO: CAMBIÁ EL TELÉFONO DE CONTACTO DEL PIE DE PÁGINA POR [NÚMERO NUEVO]].\nHacé solo ese cambio, revisá que no se rompa nada más y dejame un resumen de 3 líneas de lo que tocaste para revisarlo desde el celular."}]}, {"h": "Remote Control: tu compu en el bolsillo", "pasos": ["En la compu, en la carpeta del proyecto, corré claude remote-control. La primera vez te pregunta si querés habilitarlo: respondé y.", "Apretá la barra espaciadora para ver un código QR y escanealo con el teléfono.", "O abrí la app de Claude, tocá Code y elegí la sesión de la lista.", "Si ya tenés una sesión abierta, escribí /remote-control (o /rc) y queda disponible desde el teléfono."], "p": ["Si tu compu se duerme o se corta internet, se vuelve a conectar sola cuando vuelve. Con Remote Control activo, Claude te puede mandar notificaciones al teléfono, por ejemplo cuando termina algo largo."]}, {"h": "Pasar de un lado al otro", "lista": ["/teleport: en la terminal, trae una sesión de la nube a tu compu.", "claude --cloud: desde la terminal, arranca una sesión en la nube.", "/desktop: pasa la sesión de la terminal a la app de escritorio (Mac o Windows x64)."]}], "faq": [{"q": "No veo la pestaña Code en la app del celular", "a": "Tu plan u organización puede no incluirla. Revisá que entraste con la misma cuenta y organización que usás en Claude Code."}, {"q": "Cerré la pestaña y la tarea siguió", "a": "Es a propósito: las sesiones en la nube siguen hasta terminar. Podés archivarlas o borrarlas desde la barra lateral."}, {"q": "Desde el celular, ¿puedo usar todos los comandos?", "a": "No todos. Los que solo funcionan en la terminal, como /plugin o /resume, no andan desde la app."}], "fuentes": ["https://code.claude.com/docs/en/web-quickstart", "https://code.claude.com/docs/en/mobile", "https://code.claude.com/docs/en/remote-control", "https://code.claude.com/docs/en/commands"], "cat": "claude-code", "parte": "construi"};</script>
 
-<script src="../web/rutas.js?v=9193350b"></script>
-<script src="../web/logos.js?v=9193350b"></script>
-<script src="../web/guia.js?v=9193350b"></script>
-<script src="../web/bienvenida.js?v=9193350b"></script>
+<script src="../web/rutas.js?v=12560169"></script>
+<script src="../web/logos.js?v=12560169"></script>
+<script src="../web/guia.js?v=12560169"></script>
+<script src="../web/bienvenida.js?v=12560169"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

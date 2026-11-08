@@ -228,27 +228,31 @@ def vitrina(guias, prompts, herrs, en_biblioteca):
 
 
 def catalogo(guias, en_biblioteca):
-    """Todas las guías: pestañas por tema y una grilla de tarjetas del tema elegido (la primera, abierta)."""
+    """Todas las guías: pestañas agrupadas por parte (como la biblioteca) y una grilla con las guías de la categoría elegida."""
+    o = json.loads((RAIZ / "contenido" / "orden.json").read_text())
     grupos = {}
     for g in guias:
-        grupos.setdefault(g["tema"], []).append(g)
-    orden = [t for t in ORDEN_CATS if t in grupos]
+        grupos.setdefault(g["cat"], []).append(g)
+    cats = [c for c in o["categorias"] if c["id"] in grupos]
     e = html.escape
-    tabs = "".join(f'<button type="button" class="v-tab" role="tab" aria-selected="{"true" if k == 0 else "false"}" data-tema="{k}">'
-                   f'{e(tema)}<span>{len(grupos[tema])}</span></button>' for k, tema in enumerate(orden))
+    filas = []
+    for i, p in enumerate(o["partes"], 1):
+        tabs = "".join(f'<button type="button" class="v-tab" role="tab" aria-selected="{"true" if c is cats[0] else "false"}" data-tema="{c["id"]}">'
+                       f'{c["e"]} {e(c["n"])}<span>{len(grupos[c["id"]])}</span></button>' for c in cats if c["parte"] == p["id"])
+        filas.append(f'<div class="v-tabs-parte"><small>Parte {i}</small><div class="v-tabs" role="tablist" aria-label="{e(p["n"])}">{tabs}</div></div>')
     paneles = []
-    for k, tema in enumerate(orden):
-        tarjetas = []
-        for n, g in enumerate(grupos[tema], 1):
+    for c in cats:
+        tarjetas = [f'<p class="v-panel-intro">{e(c["d"])}</p>']
+        for n, g in enumerate(grupos[c["id"]], 1):
             cuerpo = (f'<span class="v-g-num">{n:02d}</span><h4>{e(g["t"])}</h4><p>{e(g["d"])}</p>'
                       f'<span class="v-g-pie"><b>{g["min"]} min</b>' + (f'<i>Reel · {e(g["post"])}</i>' if g.get("post") else "") + '</span>')
             tarjetas.append(f'<a class="v-g" href="guias/{g["slug"]}.html">{cuerpo}</a>' if en_biblioteca else f'<div class="v-g">{cuerpo}</div>')
-        paneles.append(f'<div class="v-panel" role="tabpanel" data-tema="{k}"{"" if k == 0 else " hidden"}>' + "".join(tarjetas) + "</div>")
+        paneles.append(f'<div class="v-panel" role="tabpanel" data-tema="{c["id"]}"{"" if c is cats[0] else " hidden"}>' + "".join(tarjetas) + "</div>")
     script = ("<script>(function(){var c=document.currentScript.previousElementSibling;"
-              "c.querySelector('.v-tabs').addEventListener('click',function(ev){var b=ev.target.closest('.v-tab');if(!b)return;"
+              "c.addEventListener('click',function(ev){var b=ev.target.closest('.v-tab');if(!b)return;"
               "c.querySelectorAll('.v-tab').forEach(function(x){x.setAttribute('aria-selected',x===b);});"
               "c.querySelectorAll('.v-panel').forEach(function(p){p.hidden=p.dataset.tema!==b.dataset.tema;});});})();</script>")
-    return f'<div class="v-catalogo"><div class="v-tabs" role="tablist">{tabs}</div>' + "".join(paneles) + "</div>" + script
+    return '<div class="v-catalogo">' + "".join(filas) + "".join(paneles) + "</div>" + script
 
 
 def inicio(v):

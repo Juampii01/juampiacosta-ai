@@ -2,6 +2,7 @@
    Las partes y categorías vienen de web/categorias.js (generado desde contenido/orden.json).
    organizar(caja, items, tarjeta, { prefijo, visibles, palabra, buscar }) */
 function organizar(caja, items, tarjeta, op) {
+  var leidas = op.leidas ? PROGRESO.leidas() : null;
   var porCat = {};
   items.forEach(function (x) { (porCat[x.cat] = porCat[x.cat] || []).push(x); });
   var pref = op.prefijo, visibles = op.visibles || 4, palabra = op.palabra || "guías";
@@ -22,8 +23,9 @@ function organizar(caja, items, tarjeta, op) {
       cats.map(function (c) {
         var lista = porCat[c.id], mas = lista.length - visibles;
         return '<div class="org-cat' + (c.destacada ? ' org-cat--dest' : '') + '" id="' + pref + c.id + '">' +
-          '<header class="org-cat-cab"><i aria-hidden="true">' + c.e + '</i><div><h4>' + c.n + '</h4><p>' + c.d + '</p></div><span>' + lista.length + ' ' + palabra + '</span></header>' +
-          '<div class="herrs org-lista">' + lista.map(function (x, k) { return tarjeta(x).replace(/^<(\w+) class="/, '<$1 class="' + (k >= visibles ? 'org-extra ' : '')); }).join("") + '</div>' +
+          '<header class="org-cat-cab"><i aria-hidden="true">' + c.e + '</i><div><h4>' + c.n + '</h4><p>' + c.d + '</p></div><span>' +
+          (leidas ? lista.filter(function (x) { return leidas[x.slug]; }).length + ' de ' + lista.length + ' leídas' : lista.length + ' ' + palabra) + '</span></header>' +
+          '<div class="herrs org-lista">' + lista.map(function (x, k) { return tarjeta(x).replace(/^<(\w+) class="/, '<$1 class="' + (k >= visibles ? 'org-extra ' : '') + (leidas && leidas[x.slug] ? 'leida ' : '')); }).join("") + '</div>' +
           (mas > 0 ? '<button type="button" class="org-mas chip" data-n="' + lista.length + '">Ver las ' + lista.length + ' ' + palabra + ' ↓</button>' : '') +
           '</div>';
       }).join("") + '</div>';

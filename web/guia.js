@@ -217,6 +217,12 @@ function pintarGuia(caja, g) {
     return '<a class="glass" href="' + x.slug + '.html">' + (l ? placaLogo(l, RAIZ) : '') + '<span class="tipo">' + x.tema + '</span><b>' + x.t + '</b><small>' + x.min + ' min</small></a>';
   }).join("") + '</div></section>';
 
+  // Plan gratis: después de una guía abierta, mostrar lo que hay del otro lado
+  if (/(?:^|;\s*)jpa_nivel=gratis/.test(document.cookie)) {
+    var abiertas = GUIAS_WEB.filter(function (x) { return x.gratis; }).length;
+    html += '<a class="g-mas-acceso glass" href="/#precio"><span class="g-etq">Plan gratis</span><b>Tenés abiertas ' + abiertas + ' de las ' + GUIAS_WEB.length + ' guías de la biblioteca.</b>' +
+      '<span>Con el acceso completo abrís las ' + (GUIAS_WEB.length - abiertas) + ' que faltan, más los prompts para copiar y las herramientas con su instalación.</span><em>Ver el acceso completo →</em></a>';
+  }
   html += '<div class="cta-card"><h3>¿Querés que te lo instale en tu negocio?</h3><p>Escribime por Instagram, contame qué hacés y te digo qué le automatizaría.</p><a class="btn-blanco" href="' + REDES.dm + '" target="_blank" rel="noopener">Escribime →</a></div>';
   caja.innerHTML = html;
   activarPasos(caja);
@@ -237,6 +243,25 @@ function pintarGuia(caja, g) {
   }
   window.addEventListener("scroll", marcarIndice, { passive: true });
   marcarIndice();
+
+  // Progreso: la guía queda como «última abierta» y se marca leída al llegar al final
+  PROGRESO.abrir(g.slug);
+  var fin = caja.querySelector(".relacionadas") || caja.querySelector(".cta-card");
+  if (fin && "IntersectionObserver" in window) {
+    var obs = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return;
+      obs.disconnect();
+      if (PROGRESO.marcar(g.slug)) {
+        var t = document.createElement("div");
+        t.className = "g-leida-toast";
+        var total = Object.keys(PROGRESO.leidas()).length;
+        t.textContent = "✓ Guía leída · llevás " + total + " de " + GUIAS_WEB.length;
+        document.body.appendChild(t);
+        setTimeout(function () { t.remove(); }, 3200);
+      }
+    }, { threshold: .2 });
+    obs.observe(fin);
+  }
 }
 
 // Copia el prompt y cambia el texto del botón un momento

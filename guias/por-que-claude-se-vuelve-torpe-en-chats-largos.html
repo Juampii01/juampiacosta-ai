@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena por-que-claude-se-vuelve-torpe-en-chats-largos, Por qué Claude se pone torpe en chats largos (y cómo seguir en limpio), Qué pasa cuando una conversación se estira demasiado, cuándo te conviene abrir un chat nuevo y un prompt de traspaso para no perder nada. y 9193350b -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena por-que-claude-se-vuelve-torpe-en-chats-largos, Por qué Claude se pone torpe en chats largos (y cómo seguir en limpio), Qué pasa cuando una conversación se estira demasiado, cuándo te conviene abrir un chat nuevo y un prompt de traspaso para no perder nada. y 12560169 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,28 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=9193350b">
-<link rel="stylesheet" href="../web/cta.css?v=9193350b">
-<link rel="stylesheet" href="../web/biblioteca.css?v=9193350b">
-<link rel="stylesheet" href="../web/guia.css?v=9193350b">
-<link rel="stylesheet" href="../web/tema.css?v=9193350b">
-<link rel="stylesheet" href="../web/bienvenida.css?v=9193350b">
-<script src="../web/tema.js?v=9193350b"></script>
+<link rel="stylesheet" href="../web/base.css?v=12560169">
+<link rel="stylesheet" href="../web/cta.css?v=12560169">
+<link rel="stylesheet" href="../web/biblioteca.css?v=12560169">
+<link rel="stylesheet" href="../web/guia.css?v=12560169">
+<link rel="stylesheet" href="../web/tema.css?v=12560169">
+<link rel="stylesheet" href="../web/bienvenida.css?v=12560169">
+<script src="../web/tema.js?v=12560169"></script>
+<link rel="icon" href="../web/favicon.svg?v=12560169" type="image/svg+xml">
+<meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=9193350b"></script>
-<script src="../web/guias-web.js?v=9193350b"></script>
-<script src="../web/comun.js?v=9193350b"></script>
+<script src="../web/redes.js?v=12560169"></script>
+<script src="../web/guias-web.js?v=12560169"></script>
+<script src="../web/comun.js?v=12560169"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="por-que-claude-se-vuelve-torpe-en-chats-largos"></main>
 <script>var GUIA = {"slug": "por-que-claude-se-vuelve-torpe-en-chats-largos", "t": "Por qué Claude se pone torpe en chats largos (y cómo seguir en limpio)", "d": "Qué pasa cuando una conversación se estira demasiado, cuándo te conviene abrir un chat nuevo y un prompt de traspaso para no perder nada.", "tema": "Gastá menos tokens", "min": 7, "secciones": [{"h": "Qué es la ventana de contexto", "p": ["Claude trabaja con una cantidad limitada de información a la vez dentro de cada chat: eso se llama ventana de contexto. Todo entra ahí: tus mensajes, sus respuestas, los archivos que subiste y lo que traen los conectores o la búsqueda web.", "Cuando el chat se acerca a ese límite, si tenés activada la ejecución de código, Claude resume los mensajes anteriores para poder seguir. Si ves el aviso de que está ordenando sus ideas, es eso. Según el centro de ayuda de Anthropic, esas conversaciones largas consumen más de tu límite de uso."]}, {"h": "Señales de que es hora de cambiar de chat", "lista": ["Mezcla cosas: usa datos de una versión vieja del trabajo que ya descartaste.", "Se olvida reglas: vuelve a hacer algo que le pediste que no haga.", "Cambiaste de tema: arrancaste con un presupuesto y ahora estás con el logo.", "Se te termina el uso más rápido: el centro de ayuda recomienda abrir un chat nuevo si te acercás al límite en una conversación larga."]}, {"h": "El traspaso en tres pasos", "pasos": ["En el chat viejo, pegá el prompt de traspaso de abajo.", "Leé el resumen y corregí lo que esté mal o falte. Es tu nueva fuente de verdad.", "Abrí un chat nuevo, pegá el resumen corregido y escribí qué querés hacer ahora."], "prompts": [{"t": "Prompt de traspaso", "c": "Vamos a seguir este trabajo en un chat nuevo. Armame un resumen de traspaso para pegar allá, con estas partes:\n1. Objetivo: qué estamos haciendo y para quién.\n2. Decisiones tomadas: lo que ya quedó definido, en viñetas cortas.\n3. Reglas que te di: tono, formato y cosas a evitar.\n4. Estado actual: la última versión del trabajo, completa.\n5. Pendientes: lo que falta, en orden.\n6. Descartado: ideas que probamos y no van, para no repetirlas.\nNo agregues nada que no hayamos hablado. Si algo quedó ambiguo, marcalo con [A CONFIRMAR]."}]}, {"h": "Si trabajás seguido en lo mismo, usá un proyecto", "p": ["Los proyectos de Claude son espacios con su propio historial de chats, sus archivos y sus instrucciones. Subís tus documentos de referencia y escribís las reglas una sola vez, y cada chat nuevo dentro del proyecto ya arranca con eso.", "Así podés abrir chats cortos y enfocados sin tener que explicar todo de nuevo. El centro de ayuda también aconseja mantener las instrucciones del proyecto breves y sacar archivos que ya no uses."], "aviso": "En el plan gratis los proyectos tienen un límite de cantidad. Revisá el centro de ayuda para ver el de tu cuenta."}, {"h": "Otras formas de cuidar el contexto", "lista": ["Desconectá lo que no usás: los conectores y las herramientas gastan bastante contexto.", "Pedile que no busque en la web cuando no necesitás información actual.", "Un chat, un tema: es más fácil de retomar y de encontrar después."]}], "faq": [{"q": "¿Si abro un chat nuevo pierdo lo anterior?", "a": "No, el chat viejo queda guardado. Lo que pasa es que el nuevo no lo ve: por eso le pasás el resumen de traspaso."}, {"q": "¿Claude no se acuerda solo de mis otros chats?", "a": "Depende de tu configuración y tu plan. Para no depender de eso, el resumen de traspaso o un proyecto son lo más seguro."}, {"q": "¿Cada cuánto conviene cambiar de chat?", "a": "No hay un número fijo. Cambiá cuando veas las señales de arriba o cuando cambies de tema."}], "fuentes": ["https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work", "https://support.claude.com/en/articles/9517075-what-are-projects"], "cat": "ahorrar", "parte": "aprende"};</script>
 
-<script src="../web/rutas.js?v=9193350b"></script>
-<script src="../web/logos.js?v=9193350b"></script>
-<script src="../web/guia.js?v=9193350b"></script>
-<script src="../web/bienvenida.js?v=9193350b"></script>
+<script src="../web/rutas.js?v=12560169"></script>
+<script src="../web/logos.js?v=12560169"></script>
+<script src="../web/guia.js?v=12560169"></script>
+<script src="../web/bienvenida.js?v=12560169"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

@@ -18,6 +18,8 @@
 <link rel="stylesheet" href="web/tema.css?v={{V}}">
 <link rel="stylesheet" href="web/bienvenida.css?v={{V}}">
 <script src="web/tema.js?v={{V}}"></script>
+<link rel="icon" href="web/favicon.svg?v={{V}}" type="image/svg+xml">
+<meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
@@ -39,7 +41,7 @@
   <div class="bento">
     <div class="b b-hero glass">
       <div>
-        <span class="mono" style="color:var(--glow)">Acceso fundador</span>
+        <span class="mono" style="color:var(--glow)" id="hero-nivel">Acceso fundador</span>
         <h1 class="saludo">Bienvenido a la biblioteca: todo lo que uso para <em>armar sistemas con Claude</em>.</h1>
         <p>Guías, prompts, skills y conectores en un solo lugar. Cada semana se suman recursos nuevos.</p>
       </div>
@@ -104,10 +106,24 @@ if (GRATIS) {
   var aviso = document.createElement("a");
   aviso.className = "aviso-gratis glass";
   aviso.href = "/#precio";
-  aviso.innerHTML = '<span class="mono">Plan gratis</span><b>Tenés abiertas las guías de mis reels y el Módulo 1.</b><span>Desbloqueá las ' + GUIAS_WEB.length + ' guías, los prompts y las herramientas →</span>';
+  aviso.innerHTML = '<span class="mono">Plan gratis</span><b>Tenés abiertas ' + GUIAS_WEB.filter(function (g) { return g.gratis; }).length + ' guías: las de mis reels, las de gastar menos tokens y el Módulo 1.</b><span>Desbloqueá las ' + GUIAS_WEB.length + ' guías, los prompts y las herramientas →</span>';
   document.querySelector("main").insertBefore(aviso, document.querySelector("main").firstChild);
 }
 // Total: guías + packs de prompts + skills, MCP y herramientas (los de «De mis reels» ya son guías: no se cuentan dos veces)
+if (GRATIS) document.getElementById("hero-nivel").textContent = "Plan gratis";
+// Seguí donde dejaste + cuántas leíste
+(function () {
+  var ult = PROGRESO.ultima(), leidas = PROGRESO.leidas(), n = Object.keys(leidas).length;
+  var g = ult && GUIAS_WEB.filter(function (x) { return x.slug === ult.slug; })[0];
+  if (!g && !n) return;
+  var caja = document.createElement("div");
+  caja.className = "seguir";
+  var abierta = !GRATIS || g && g.gratis;
+  caja.innerHTML = (g && !leidas[g.slug] && abierta ? '<a class="seguir-guia" href="guias/' + g.slug + '.html"><small>Seguí donde dejaste</small><b>' + g.t + '</b><em>Seguir leyendo →</em></a>' : '') +
+    '<div class="seguir-prog"><small>Tu progreso</small><b>' + n + ' de ' + GUIAS_WEB.length + ' guías leídas</b><i><em style="width:' + Math.round(n / GUIAS_WEB.length * 100) + '%"></em></i></div>';
+  var hero = document.querySelector(".b-hero");
+  hero.appendChild(caja);
+})();
 document.getElementById("n-recursos").textContent = GUIAS_WEB.length + PROMPTS.length + HERRAMIENTAS.length;
 document.getElementById("n-guias").textContent = GUIAS_WEB.length;
 
@@ -151,7 +167,7 @@ function tarjetaGuia(g, etiqueta) {
     '<h3>' + g.t + '</h3><p>' + g.d + '</p><span class="bajar">' + (cerrada ? '🔒 Desbloquear' : 'Leer la guía →') + '</span></a>';
 }
 organizar(document.getElementById("lista-guias-web"), GUIAS_WEB, function (g) { return tarjetaGuia(g, "Guía · " + g.tema); },
-  { prefijo: "g-", visibles: 4, palabra: "guías", buscar: "Buscá en las guías…" });
+  { prefijo: "g-", visibles: 4, palabra: "guías", buscar: "Buscá en las guías…", leidas: true });
 document.getElementById("lista-posts").innerHTML = GUIAS_WEB.filter(function (g) { return g.post; }).map(function (g) { return tarjetaGuia(g, "Palabra · " + g.post); }).join("");
 
 var ig = document.getElementById("b-ig");

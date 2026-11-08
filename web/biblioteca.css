@@ -186,7 +186,7 @@ section { margin-top: 90px; }
 @media (max-width: 560px) {
   /* En móvil el botón va arriba y el texto usa todo el ancho */
   .prompt { padding: 42px 14px 14px; font-size: 12.5px; }
-  .prompt button { top: 8px; right: 8px; }
+  .prompt button { top: 8px; right: 8px; padding: 9px 14px; font-size: 12px; }
 }
 
 /* Packs de prompts plegados: solo se ve el pack y el botón para abrir sus prompts */
