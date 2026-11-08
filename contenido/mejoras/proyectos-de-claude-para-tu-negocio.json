@@ -1,0 +1,73 @@
+{
+ "slug": "proyectos-de-claude-para-tu-negocio",
+ "verificada": "2026-11-08",
+ "correcciones": [
+  {
+   "antes": "En el plan Team podés compartirlo: botón Share project, al lado del nombre. Agregás personas y elegís Can view (solo ver) o Can edit (editar).",
+   "despues": "En los planes Team y Enterprise podés compartirlo (salvo que el administrador lo haya desactivado): botón Share project, a la derecha del nombre. Agregás personas por nombre o mail, elegís Can view (ven el contenido, el conocimiento y las instrucciones y chatean en el Proyecto, pero no lo editan) o Can edit (cambian instrucciones y conocimiento) y tocás Share.",
+   "motivo": "La ayuda oficial indica que compartir Proyectos está en Team y Enterprise, que un admin lo puede desactivar, y que Can view también permite chatear dentro del Proyecto. Decir solo ver hace pensar que el invitado no puede usarlo.",
+   "fuente": "https://support.claude.com/en/articles/9519177"
+  },
+  {
+   "antes": "Depende del tamaño. En los planes pagos, si te acercás al límite, Claude cambia solo a un modo de búsqueda para que entre más.",
+   "despues": "No hay un número fijo de archivos: cada uno puede pesar hasta 30 MB y el total tiene que entrar en el contexto de Claude. En los planes pagos, si te acercás al límite, Claude cambia solo a un modo de búsqueda (RAG) para que entre más.",
+   "motivo": "La ayuda oficial sobre subida de archivos fija el máximo de 30 MB por archivo en Proyectos y aclara que no hay límite de cantidad, pero el contenido total tiene que entrar en la ventana de contexto. Es el dato que la persona necesita cuando un archivo no sube.",
+   "fuente": "https://support.claude.com/en/articles/8241126"
+  }
+ ],
+ "fuentes_extra": [
+  "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects",
+  "https://support.claude.com/en/articles/8241126",
+  "https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features"
+ ],
+ "ejemplo": {
+  "titulo": "Ejemplo resuelto: dos Proyectos para una tienda online de cosmética natural",
+  "negocio": "Ejemplo inventado: una tienda online de cosmética natural en Medellín, Colombia, con la dueña y una persona que responde mensajes. Venden por Instagram y por su web, con envíos a todo el país. La dueña tiene un plan Pro.",
+  "punto_de_partida": "Las respuestas a clientes las escribía cada una a su manera, y cada vez que alguien preguntaba por cambios o por el tiempo de envío había que buscar la política en un documento viejo.",
+  "pasos": [
+   "La dueña juntó lo que ya tenía: las preguntas frecuentes, la política de envíos y cambios, los medios de pago y ocho respuestas que le gustaban. Separó la política en dos archivos, uno de envíos y otro de cambios, y los nombró con el mes.",
+   "Entró a Projects, tocó + New Project y lo llamó Atención al cliente. En la descripción puso para qué era, sabiendo que Claude no la lee.",
+   "Subió los archivos con el + del conocimiento, a la derecha. Pasó la checklist del kit: ningún archivo superaba los 30 MB y sacó de las respuestas modelo los nombres y teléfonos de clientes.",
+   "Pegó el bloque de atención al cliente de las plantillas del kit en Set project instructions, completó los corchetes con el nombre de la tienda y el canal (Instagram) y guardó con Save instructions.",
+   "Hizo la prueba de 5 preguntas del kit. Claude citó bien los archivos, pero a la quinta (si hacían envíos al exterior) inventó una respuesta. Agregó en las instrucciones que, si no está en los archivos, lo diga, y repitió la prueba hasta que contestó que no estaba.",
+   "Armó un segundo Proyecto, Contenido, con la guía de marca y los posts que mejor les fueron, usando el bloque 3 de las plantillas.",
+   "Como el plan Pro no permite compartir Proyectos, la persona que responde mensajes usa la misma cuenta del negocio para el Proyecto de atención. La dueña dejó anotado que, si pasan a Team, lo van a compartir con Share project y permiso Can view."
+  ],
+  "resultado": "La tienda tiene un Proyecto de atención que responde con las políticas vigentes y marca lo que falta confirmar, y otro de contenido con la guía de marca cargada. Cuando cambia una política, se reemplaza el archivo y todos los chats nuevos la usan."
+ },
+ "si_falla": [
+  {
+   "sintoma": "Un archivo no se sube al conocimiento del Proyecto.",
+   "solucion": "En Proyectos el máximo es 30 MB por archivo. Partí el PDF en partes por tema o exportalo de nuevo con menos calidad de imagen. Si es una planilla .xlsx, activá la ejecución de código y creación de archivos en Settings → Capabilities. Si el Proyecto ya tiene mucho material, borrá archivos que no uses: el total tiene que entrar en el contexto de Claude."
+  },
+  {
+   "sintoma": "Claude responde algo que no está en los archivos o mezcla datos de una versión vieja.",
+   "solucion": "Fijate que no haya dos versiones del mismo archivo (borrá la vieja). En las instrucciones pedile que nombre de qué archivo saca cada dato y que diga que no está cuando no lo encuentra. Hacé la prueba de 5 preguntas del kit para comprobarlo."
+  },
+  {
+   "sintoma": "No aparece el botón Share project.",
+   "solucion": "Compartir Proyectos es solo de Team y Enterprise. En esos planes, si igual no aparece, el administrador desactivó el uso compartido. En Free, Pro o Max no hay forma de compartir el Proyecto con otra cuenta."
+  },
+  {
+   "sintoma": "El Proyecto usa cosas que hablaste con Claude fuera de él.",
+   "solucion": "Cada Proyecto tiene su memoria, pero también usa la memoria de tu cuenta de los chats fuera de Proyectos. Entrá a la página del Proyecto y, en Memory, apagá Use account memory."
+  },
+  {
+   "sintoma": "En el plan gratis no te deja crear otro Proyecto.",
+   "solucion": "En Free el máximo es cinco Proyectos. Juntá en uno los que se parecen (por ejemplo, Contenido y Redes) o borrá uno que no uses. Si necesitás más, es de un plan pago."
+  }
+ ],
+ "kit": [
+  {
+   "archivo": "instrucciones-4-proyectos-de-negocio.md",
+   "que_es": "Instrucciones listas para pegar en cuatro Proyectos (atención al cliente, ventas y propuestas, contenido y operación), con la lista de archivos que conviene subir a cada uno.",
+   "contenido": "# Instrucciones listas para cuatro Proyectos de tu negocio\n\nCada bloque va en Set project instructions de su Proyecto. Completá los corchetes y guardá con Save instructions. Los datos (precios, políticas, ejemplos) no van acá: van como archivos en el conocimiento del Proyecto. Al final de cada bloque está la lista de archivos que conviene subir.\n\n## 1. Atención al cliente\n\n```\nSos el asistente de atención al cliente de [NEGOCIO], un [RUBRO] de [CIUDAD].\nCuando te pegue el mensaje de un cliente:\n1. Escribí una respuesta corta y amable, en voseo, lista para mandar por [WHATSAPP / MAIL / INSTAGRAM].\n2. Usá solo los archivos del Proyecto. Si la respuesta depende de una política (envíos, cambios, garantías, medios de pago), nombrá cuál.\n3. Si el dato no está en los archivos, no lo completes: escribí la respuesta con [CONFIRMAR: ...] donde falte y avisame qué falta.\n4. Si el cliente está enojado, primero reconocé el problema en una frase, después la solución. Sin excusas largas.\n5. Nunca prometas plazos, descuentos ni reintegros que no estén en las políticas.\n6. Al final, en una línea aparte, sugerí si conviene ofrecerle algo más y por qué.\n```\n\nArchivos: Preguntas frecuentes [AÑO].pdf, Políticas de envío y cambios.pdf, Medios de pago.txt, Respuestas modelo.md (5 a 10 respuestas reales que te gustaron).\n\n## 2. Ventas y propuestas\n\n```\nSos mi asistente de ventas en [NEGOCIO]. Armás propuestas y presupuestos.\n1. Antes de escribir una propuesta, preguntame de a una lo que no sepas: qué necesita el cliente, para cuándo, presupuesto aproximado y quién decide.\n2. Usá la estructura de las propuestas ganadas del Proyecto: mismo orden de secciones y mismo largo.\n3. Los precios salen solo del archivo de precios. Si el servicio no está, marcá [PRECIO A DEFINIR].\n4. Escribí beneficios concretos para el rubro del cliente, sin frases genéricas.\n5. Cerrá con un próximo paso claro y una fecha.\n6. Al final listá en viñetas lo que diste por supuesto.\n```\n\nArchivos: Servicios y precios [AÑO].pdf, 2 o 3 propuestas que ganaste (sin datos personales del cliente), Objeciones frecuentes.md.\n\n## 3. Contenido\n\n```\nSos el redactor de contenido de [NEGOCIO]. Le hablamos a [CLIENTE IDEAL EN UNA LÍNEA].\n1. Seguí la guía de marca del Proyecto: tono, palabras que sí y que no.\n2. Antes de escribir, proponé 3 ángulos distintos en una línea cada uno y esperá que elija.\n3. Usá como referencia los posts que funcionaron, sin copiarlos.\n4. Nada de datos, cifras ni testimonios que no estén en los archivos.\n5. Entregá el texto y, aparte, una idea de imagen o video en una línea.\n```\n\nArchivos: Guía de marca.pdf, Posts que funcionaron.md (5 a 10, con el texto completo), Público y preguntas frecuentes de clientes.md.\n\n## 4. Operación\n\n```\nSos el asistente de operación de [NEGOCIO]. Respondés consultas sobre cómo se hacen las cosas y ayudás a capacitar gente nueva.\n1. Respondé solo con los procesos y manuales del Proyecto. Nombrá de qué archivo y qué sección sale cada paso.\n2. Si un proceso no está escrito, decilo y ofrecé armar un borrador para que yo lo revise.\n3. Cuando expliques un proceso, hacelo en pasos numerados cortos, con lo que puede salir mal en cada uno.\n4. Si dos documentos se contradicen, no elijas: mostrame la diferencia.\n```\n\nArchivos: un archivo por proceso (Apertura y cierre.pdf, Carga de pedidos.pdf, Proveedores.pdf), Checklist de ingreso de personal.md.\n"
+  },
+  {
+   "archivo": "checklist-conocimiento-del-proyecto.md",
+   "que_es": "Checklist para preparar y subir los archivos, una prueba de 5 preguntas para ver si Claude los usa bien y el mantenimiento mensual del Proyecto.",
+   "contenido": "# Checklist del conocimiento de un Proyecto\n\nPasala al armar el Proyecto y repetila una vez por mes.\n\n## Antes de subir\n\n- [ ] Cada archivo tiene un nombre que dice qué es y de cuándo es: \"Precios 2026-11.pdf\", no \"final_v3.pdf\".\n- [ ] Un tema por archivo. Si un PDF mezcla precios y políticas, separalo.\n- [ ] Ningún archivo pesa más de 30 MB (es el máximo por archivo en Proyectos).\n- [ ] Saqué contraseñas, datos de tarjetas, cuentas bancarias y datos sensibles de clientes.\n- [ ] Si es una planilla .xlsx, tengo activada la ejecución de código y creación de archivos (Settings → Capabilities), que es lo que pide la ayuda oficial para subir XLSX.\n- [ ] Si un documento tiene imágenes importantes (una tabla escaneada, un gráfico), lo subo en PDF: de otros formatos Claude solo saca el texto.\n\n## Después de subir: prueba de 5 preguntas\n\nAbrí un chat nuevo en el Proyecto y pegá:\n\n```\nRespondé estas 5 preguntas usando solo los archivos del Proyecto. Para cada una, nombrá el archivo de donde sale la respuesta. Si no está, decí \"no está en los archivos\".\n1. [PREGUNTA CUYA RESPUESTA ESTÁ EN UN ARCHIVO]\n2. [OTRA, DE OTRO ARCHIVO]\n3. [UNA QUE DEPENDA DE UN PRECIO]\n4. [UNA QUE DEPENDA DE UNA POLÍTICA]\n5. [UNA CUYA RESPUESTA NO ESTÉ EN NINGÚN ARCHIVO]\n```\n\n- [ ] Las cuatro primeras citan el archivo correcto.\n- [ ] La quinta dice que no está. Si inventó una respuesta, reforzá en las instrucciones: \"si no está en los archivos, decilo\".\n\n## Mantenimiento mensual\n\n- [ ] Reemplacé los archivos que cambiaron (precios, políticas). Borré la versión vieja, no dejé las dos.\n- [ ] Borré los archivos que ya no uso.\n- [ ] Revisé las instrucciones: siguen siendo cortas y no tienen datos que cambien seguido.\n- [ ] Si algo que decidimos en un chat tiene que valer siempre, lo pasé a un archivo. Los chats del Proyecto no se leen entre sí.\n- [ ] Si el Proyecto tiene que quedar aislado de lo que Claude sabe de mí en otros chats, Use account memory está apagado en la sección Memory.\n"
+  }
+ ],
+ "notas_revision": "Verifiqué contra la ayuda oficial de Proyectos (9519177): claude.ai/projects, + New Project arriba a la derecha, Claude no ve nombre ni descripción, privado o compartido en Team y Enterprise, conocimiento a la derecha con el botón +, modo RAG automático en planes pagos, Set project instructions y Save instructions, chats sin contexto compartido fuera del conocimiento, memoria por Proyecto y Use account memory, Free con hasta cinco Proyectos, Share project con Can view y Can edit (Team y Enterprise). Del artículo de subida de archivos (8241126): 30 MB por archivo en Proyectos, sin límite de cantidad pero dentro de la ventana de contexto, XLSX requiere ejecución de código, de formatos que no son PDF solo se extrae texto. De personalización (10185728): las instrucciones de cuenta valen para todos los chats. Ese artículo es inconsistente sobre si las instrucciones de Proyecto son de planes pagos (en un lugar dice que los Proyectos están en todos los planes y en otro que las instrucciones de Proyecto son solo pagas); como el artículo de Proyectos describe Set project instructions sin restricción de plan, no lo corregí. No pude confirmar los nombres de los menús en español."
+}
