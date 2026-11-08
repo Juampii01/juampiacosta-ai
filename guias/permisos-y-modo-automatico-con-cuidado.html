@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena permisos-y-modo-automatico-con-cuidado, Permisos y modo automático, sin romper nada, Qué hace cada modo de permisos, qué aprobar sin miedo, qué leer dos veces y por qué tenés que guardar una copia antes de dejarlo solo. y 5108ba2f -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena permisos-y-modo-automatico-con-cuidado, Permisos y modo automático, sin romper nada, Qué hace cada modo de permisos, qué aprobar sin miedo, qué leer dos veces y por qué tenés que guardar una copia antes de dejarlo solo. y 1b71218b -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/cta.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/biblioteca.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/guia.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/tema.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/bienvenida.css?v=5108ba2f">
-<script src="../web/tema.js?v=5108ba2f"></script>
-<link rel="icon" href="../web/favicon.svg?v=5108ba2f" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=1b71218b">
+<link rel="stylesheet" href="../web/cta.css?v=1b71218b">
+<link rel="stylesheet" href="../web/biblioteca.css?v=1b71218b">
+<link rel="stylesheet" href="../web/guia.css?v=1b71218b">
+<link rel="stylesheet" href="../web/tema.css?v=1b71218b">
+<link rel="stylesheet" href="../web/bienvenida.css?v=1b71218b">
+<script src="../web/tema.js?v=1b71218b"></script>
+<link rel="icon" href="../web/favicon.svg?v=1b71218b" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=5108ba2f"></script>
-<script src="../web/guias-web.js?v=5108ba2f"></script>
-<script src="../web/comun.js?v=5108ba2f"></script>
+<script src="../web/redes.js?v=1b71218b"></script>
+<script src="../web/guias-web.js?v=1b71218b"></script>
+<script src="../web/comun.js?v=1b71218b"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="permisos-y-modo-automatico-con-cuidado"></main>
 <script>var GUIA = {"slug": "permisos-y-modo-automatico-con-cuidado", "t": "Permisos y modo automático, sin romper nada", "d": "Qué hace cada modo de permisos, qué aprobar sin miedo, qué leer dos veces y por qué tenés que guardar una copia antes de dejarlo solo.", "tema": "Claude Code", "min": 10, "secciones": [{"h": "Primero, la copia de seguridad", "p": ["Darle permisos amplios a Claude sin guardar antes tu trabajo es como correr scripts en producción sin backup: casi siempre sale bien, y el día que no, no hay vuelta atrás.", "Claude Code guarda puntos de control y con /rewind podés volver atrás. Pero no reemplazan a git: lo que cambia un comando de terminal no siempre se puede deshacer, ni los cambios que hicieron subagentes. Antes de cualquier tarea grande, hacé un commit (o una copia de la carpeta)."], "prompts": [{"t": "Guardar todo antes de empezar", "c": "Antes de hacer cualquier cambio:\n1. Fijate si esta carpeta ya usa git. Si no, inicializalo.\n2. Hacé un commit con todo como está ahora, con el mensaje \"punto seguro antes de [TAREA]\".\n3. Decime cómo vuelvo a este punto si algo sale mal, explicado simple.\nRecién después esperá mi próximo pedido."}]}, {"h": "Los modos", "lista": ["Manual (default): solo lee sin preguntar. Para todo lo demás te pide permiso. El más seguro.", "acceptEdits: edita archivos y hace operaciones comunes de carpetas (crear, mover, copiar) sin preguntar. Lo demás lo consulta.", "plan: lee y explora, pero no edita tu código hasta que apruebes el plan.", "auto: un modelo revisa cada acción en segundo plano y frena las riesgosas en vez de preguntarte. Menos interrupciones, pero no es garantía.", "dontAsk: para scripts automáticos. Lo que necesitaría permiso, lo rechaza.", "bypassPermissions: hace todo sin preguntar. Solo para entornos aislados, nunca en tu compu de trabajo."], "p": ["En la terminal, Shift+Tab pasa de un modo al otro. En la app de escritorio y en la web, el modo está debajo del cuadro de mensaje (Manual, Accept edits, Plan, Auto)."]}, {"h": "Qué aprobar y qué leer dos veces", "lista": ["Aprobá tranquilo: que lea archivos, que busque en el proyecto, que edite un archivo que vos le pediste cambiar.", "Leé antes de aprobar: comandos que instalan programas, que borran (rm, del), que mueven muchas cosas o que tocan archivos fuera de tu proyecto.", "Frená y preguntá: publicar o subir a producción, mandar mensajes o mails, forzar cambios en git, cualquier cosa con contraseñas o claves.", "Si no entendés un comando, no lo aprobés: pedile que te lo explique en una línea."], "prompts": [{"t": "Que te explique antes de pedirte permiso", "c": "Desde ahora, cada vez que me pidas permiso para correr un comando, explicame antes en una línea qué hace, si se puede deshacer y qué archivos toca. Si borra algo, avisame en mayúsculas."}]}, {"h": "Reglas fijas con /permissions", "p": ["Con /permissions armás reglas de tres tipos: lo que puede hacer sin preguntar (allow), lo que siempre te tiene que consultar (ask) y lo que tiene prohibido (deny).", "Las reglas deny bloquean en todos los modos, incluso en bypassPermissions. Además, hay archivos protegidos (como la carpeta .git, la carpeta .claude o la configuración de la terminal) que Claude no modifica sin permiso, salvo en bypassPermissions."]}, {"h": "El modo automático, bien usado", "p": ["En auto, Claude trabaja de corrido y un clasificador frena por defecto cosas como forzar cambios en git, borrar cambios sin guardar o publicar en producción. Si lo frena varias veces seguidas, vuelve a preguntarte.", "La guía oficial lo dice claro: reduce los avisos, pero no garantiza seguridad. Usalo para tareas donde confiás en el rumbo general, no como reemplazo de revisar lo sensible."], "pasos": ["Hacé un commit antes de empezar.", "Pedile primero un plan y aprobalo.", "Recién ahí pasá a auto.", "Al terminar, revisá todo con /diff antes de publicar."]}, {"h": "Si algo salió mal", "pasos": ["Frenalo con Esc.", "Escribí /rewind (o Esc dos veces con el cuadro vacío) y elegí el punto anterior al problema. Podés restaurar código, conversación o los dos.", "Si algo no volvió, pedile a Claude que te ayude a volver al último commit con git, explicándote cada paso antes de hacerlo."], "aviso": "Nunca abras Claude Code con --dangerously-skip-permissions en tu compu de trabajo. Ese modo es solo para contenedores o máquinas virtuales aisladas."}], "faq": [{"q": "Me cansa aprobar todo, ¿qué hago?", "a": "Usá acceptEdits para que edite sin preguntar y seguí aprobando los comandos. O sumá reglas allow en /permissions para lo que siempre aprobás."}, {"q": "¿El modo auto está en mi plan?", "a": "Según la guía oficial está en todos los planes, pero depende del modelo que uses y, en Team y Enterprise, de que el administrador no lo haya apagado."}, {"q": "¿/rewind deshace todo?", "a": "No. Deshace lo que Claude cambió con sus herramientas de edición. Un archivo que solo cambió un comando de terminal, o cambios que hiciste vos afuera, no se recuperan así. Por eso, git."}], "fuentes": ["https://code.claude.com/docs/en/permission-modes", "https://code.claude.com/docs/en/checkpointing", "https://code.claude.com/docs/en/commands", "https://code.claude.com/docs/en/desktop-quickstart"], "cat": "claude-code", "parte": "construi"};</script>
 
-<script src="../web/rutas.js?v=5108ba2f"></script>
-<script src="../web/logos.js?v=5108ba2f"></script>
-<script src="../web/guia.js?v=5108ba2f"></script>
-<script src="../web/bienvenida.js?v=5108ba2f"></script>
+<script src="../web/rutas.js?v=1b71218b"></script>
+<script src="../web/logos.js?v=1b71218b"></script>
+<script src="../web/guia.js?v=1b71218b"></script>
+<script src="../web/bienvenida.js?v=1b71218b"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

@@ -23,6 +23,12 @@ var ICONO_GUIA = {
   ruta: '<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/>',
   flecha: '<path d="M5 12h14M13 6l6 6-6 6"/>'
 };
+function fechaLarga(iso) {
+  var m = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+  var p = String(iso).split("-");
+  return p.length === 3 ? (+p[2]) + " de " + m[+p[1] - 1] + " de " + p[0] : iso;
+}
+
 function svgGuia(id) {
   return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + ICONO_GUIA[id] + '</svg>';
 }
@@ -143,6 +149,9 @@ function pintarGuia(caja, g) {
   if (g.ficha) atajos.push(["ficha", "Ficha"]);
   if (g.usos) atajos.push(["usos", "Para qué sirve"]);
   g.secciones.forEach(function (s, i) { atajos.push(["parte-" + (i + 1), s.h]); });
+  if (g.ejemplo) atajos.push(["ejemplo", "Ejemplo resuelto"]);
+  if (g.si_falla && g.si_falla.length) atajos.push(["si-falla", "Si algo falla"]);
+  if (g.kit && g.kit.length) atajos.push(["kit", "Tu kit"]);
   if (g.faq && g.faq.length) atajos.push(["preguntas", "Preguntas"]);
 
   var html = '<a class="volver" href="' + RAIZ + 'recursos.html#' + (g.post ? 'posts' : 'guias-web') + '">← Volver a la biblioteca</a>';
@@ -153,7 +162,9 @@ function pintarGuia(caja, g) {
     '<div class="meta"><span class="tipo">' + (g.post ? 'Recurso · ' + g.post : 'Guía · ' + g.tema) + '</span>' +
     '<span class="g-dato">' + svgGuia("reloj") + g.min + ' min</span>' +
     (pasos ? '<span class="g-dato">' + pasos + ' pasos</span>' : '') +
-    (prompts ? '<span class="g-dato">' + prompts + (prompts === 1 ? ' prompt' : ' prompts') + '</span>' : '') + '</div>' +
+    (prompts ? '<span class="g-dato">' + prompts + (prompts === 1 ? ' prompt' : ' prompts') + '</span>' : '') +
+    (g.kit && g.kit.length ? '<span class="g-dato">' + svgGuia("caja") + 'Kit de ' + g.kit.length + (g.kit.length === 1 ? ' archivo' : ' archivos') + '</span>' : '') +
+    (g.verificada ? '<span class="g-dato g-verificada" title="Cada dato revisado contra la documentación oficial">' + svgGuia("check") + 'Verificada el ' + fechaLarga(g.verificada) + '</span>' : '') + '</div>' +
     '<h1>' + g.t + '</h1></header>';
 
   // En corto
@@ -191,6 +202,34 @@ function pintarGuia(caja, g) {
     if (s.aviso) html += '<div class="g-aviso"><i>' + svgGuia("ojo") + '</i><p><b>Ojo:</b> ' + adornar(s.aviso) + '</p></div>';
     html += '</section>';
   });
+
+  // Ejemplo resuelto, si algo falla y kit descargable (vienen de contenido/mejoras/)
+  var n = g.secciones.length;
+  if (g.ejemplo) {
+    var ej = g.ejemplo; n++;
+    html += '<section id="ejemplo" class="g-parte"><span class="g-num"><i>' + svgGuia("persona") + '</i>' + dosCifras(n) + ' · Ejemplo</span><h2>' + ej.titulo + '</h2>' +
+      '<div class="g-ejemplo glass"><div class="g-ej-quien"><span class="g-etq">El negocio</span><p>' + adornar(ej.negocio) + '</p></div>' +
+      '<div class="g-ej-antes"><span class="g-etq">Antes</span><p>' + adornar(ej.punto_de_partida) + '</p></div>' +
+      '<ol class="g-ej-pasos">' + ej.pasos.map(function (p) { return '<li>' + adornar(p) + '</li>'; }).join("") + '</ol>' +
+      '<div class="g-ej-fin"><span class="g-etq">Cómo quedó</span><p>' + adornar(ej.resultado) + '</p></div>' +
+      '<p class="g-ej-nota">Ejemplo ilustrativo: el negocio es inventado, los pasos son los de esta guía.</p></div></section>';
+  }
+  if (g.si_falla && g.si_falla.length) {
+    n++;
+    html += '<section id="si-falla" class="g-parte"><span class="g-num"><i>' + svgGuia("ojo") + '</i>' + dosCifras(n) + ' · Si algo falla</span><h2>Si algo no sale como esperabas</h2>' +
+      '<div class="g-fallas">' + g.si_falla.map(function (f) {
+        return '<details class="glass"><summary>' + f.sintoma + '</summary><p>' + adornar(f.solucion) + '</p></details>';
+      }).join("") + '</div></section>';
+  }
+  if (g.kit && g.kit.length) {
+    n++;
+    html += '<section id="kit" class="g-parte"><span class="g-num"><i>' + svgGuia("caja") + '</i>' + dosCifras(n) + ' · Kit</span><h2>Tu kit para descargar</h2>' +
+      '<p>Archivos listos para usar con esta guía. Los armamos nosotros: no los vas a encontrar en otro lado.</p><div class="g-kit">' +
+      g.kit.map(function (k, i) {
+        return '<div class="g-kit-item glass"><i>' + svgGuia("instalar") + '</i><div><b>' + esc(k.archivo) + '</b><span>' + adornar(k.que_es) + '</span></div>' +
+          '<button type="button" data-kit="' + i + '">Descargar</button></div>';
+      }).join("") + (g.kit.length > 1 ? '<button type="button" class="g-kit-todo" data-kit="todo">Descargar todo el kit</button>' : '') + '</div></section>';
+  }
 
   // Preguntas
   if (g.faq && g.faq.length) {
@@ -243,6 +282,24 @@ function pintarGuia(caja, g) {
   }
   window.addEventListener("scroll", marcarIndice, { passive: true });
   marcarIndice();
+
+  // Descargas del kit: el archivo sale del contenido de la guía (sin servidor)
+  caja.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-kit]");
+    if (!b) return;
+    var lista = b.dataset.kit === "todo" ? g.kit : [g.kit[+b.dataset.kit]];
+    lista.forEach(function (k, i) {
+      setTimeout(function () {
+        var tipo = /\.json$/.test(k.archivo) ? "application/json" : /\.ya?ml$/.test(k.archivo) ? "text/yaml" : "text/markdown";
+        var url = URL.createObjectURL(new Blob([k.contenido], { type: tipo + ";charset=utf-8" }));
+        var a = document.createElement("a");
+        a.href = url; a.download = k.archivo.split("/").pop();
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      }, i * 350);
+    });
+    b.textContent = "✓ Descargado";
+  });
 
   // Progreso: la guía queda como «última abierta» y se marca leída al llegar al final
   PROGRESO.abrir(g.slug);

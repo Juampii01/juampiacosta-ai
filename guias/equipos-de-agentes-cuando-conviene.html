@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena equipos-de-agentes-cuando-conviene, Equipos de agentes: cuándo conviene y cuándo te complica, Un coordinador con especialistas suena bien, pero no siempre suma. Qué ofrece Claude Code (subagentes y equipos de agentes), cuándo vale la pena y cómo empezar sin quemar tu límite. y 5108ba2f -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena equipos-de-agentes-cuando-conviene, Equipos de agentes: cuándo conviene y cuándo te complica, Un coordinador con especialistas suena bien, pero no siempre suma. Qué ofrece Claude Code (subagentes y equipos de agentes), cuándo vale la pena y cómo empezar sin quemar tu límite. y 1b71218b -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/cta.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/biblioteca.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/guia.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/tema.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/bienvenida.css?v=5108ba2f">
-<script src="../web/tema.js?v=5108ba2f"></script>
-<link rel="icon" href="../web/favicon.svg?v=5108ba2f" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=1b71218b">
+<link rel="stylesheet" href="../web/cta.css?v=1b71218b">
+<link rel="stylesheet" href="../web/biblioteca.css?v=1b71218b">
+<link rel="stylesheet" href="../web/guia.css?v=1b71218b">
+<link rel="stylesheet" href="../web/tema.css?v=1b71218b">
+<link rel="stylesheet" href="../web/bienvenida.css?v=1b71218b">
+<script src="../web/tema.js?v=1b71218b"></script>
+<link rel="icon" href="../web/favicon.svg?v=1b71218b" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=5108ba2f"></script>
-<script src="../web/guias-web.js?v=5108ba2f"></script>
-<script src="../web/comun.js?v=5108ba2f"></script>
+<script src="../web/redes.js?v=1b71218b"></script>
+<script src="../web/guias-web.js?v=1b71218b"></script>
+<script src="../web/comun.js?v=1b71218b"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="equipos-de-agentes-cuando-conviene"></main>
 <script>var GUIA = {"slug": "equipos-de-agentes-cuando-conviene", "t": "Equipos de agentes: cuándo conviene y cuándo te complica", "d": "Un coordinador con especialistas suena bien, pero no siempre suma. Qué ofrece Claude Code (subagentes y equipos de agentes), cuándo vale la pena y cómo empezar sin quemar tu límite.", "tema": "Agentes", "min": 10, "fichaNombre": "Equipos de agentes", "ficha": [["Subagentes", "Ayudantes dentro de una sesión. Hacen su parte y le devuelven el resultado al principal."], ["Equipos de agentes", "Varias sesiones de Claude Code coordinadas por una principal, que se mandan mensajes entre sí. Función experimental."], ["Costo", "Más agentes, más consumo. Cada uno trabaja con su propio contexto."], ["Empezá por", "Tareas de investigación o revisión, no de construir."]], "secciones": [{"h": "La idea: coordinador y especialistas", "p": ["Un agente coordinador recibe el pedido, lo parte en tareas y se las pasa a especialistas: uno investiga, otro escribe, otro revisa. Al final junta todo.", "Funciona cuando las partes son independientes. Si cada paso depende del anterior, un solo agente lo hace mejor y más barato."]}, {"h": "Cuándo vale la pena", "lista": ["Investigar desde varios ángulos a la vez: mercado, competencia y clientes, cada uno por su lado.", "Revisar con distintas miradas: uno busca errores de datos, otro de tono, otro de promesas exageradas.", "Partes que no se pisan: cada especialista trabaja en archivos distintos."]}, {"h": "Cuándo te complica", "lista": ["Tareas en secuencia: si el paso 2 necesita el resultado del 1, en paralelo no ganás nada.", "Varios editando el mismo archivo: se sobreescriben.", "Tareas chicas: coordinar cuesta más que hacer.", "Cuando no podés revisar: más agentes es más trabajo para leer al final."], "aviso": "La documentación oficial avisa que los equipos de agentes usan bastante más consumo que una sola sesión, porque cada integrante es una instancia aparte de Claude."}, {"h": "Opción 1: subagentes (la recomendada para empezar)", "p": ["Vos hablás con Claude Code, que hace de coordinador, y él delega en subagentes. Cada uno trabaja en su propio contexto y solo le devuelve un resumen. Podés crear los tuyos en .claude/agents/ con sus instrucciones y herramientas."], "prompts": [{"t": "Coordinar especialistas con subagentes", "c": "Necesito un informe sobre [TEMA] para decidir [DECISIÓN].\nOrganizalo así:\n- Lanzá en paralelo tres subagentes: uno investiga [ÁNGULO 1], otro [ÁNGULO 2] y otro [ÁNGULO 3]. Cada uno devuelve hallazgos con links.\n- Cuando terminen, escribí vos el informe en informe.md juntando todo.\n- Después usá un subagente revisor que lea el informe y marque datos sin fuente o contradicciones.\nNo edites ningún otro archivo."}]}, {"h": "Opción 2: equipos de agentes (experimental)", "p": ["En los equipos de agentes, una sesión es la líder y las demás son compañeras que se mandan mensajes y comparten una lista de tareas. Vienen apagados. Se prenden con la variable CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS en 1, en tu settings.json o en tu terminal."], "prompts": [{"t": "Activarlos en settings.json", "c": "{\n  \"env\": {\n    \"CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS\": \"1\"\n  }\n}"}, {"t": "Pedir un equipo", "c": "Armá un equipo de 3 compañeros para revisar mi landing en la carpeta [CARPETA]:\n- uno revisa claridad del mensaje,\n- uno revisa promesas y datos que haya que respaldar,\n- uno hace de cliente escéptico y busca objeciones.\nQue cada uno reporte sus hallazgos y que discutan entre ellos los puntos en los que no coinciden. Al final, dame una lista priorizada. Nadie edita archivos."}], "lista": ["Empezá con 3 a 5 compañeros: es lo que sugiere la documentación.", "Solo funcionan en sesiones interactivas, no en modo -p ni desde el Agent SDK.", "Tienen limitaciones conocidas: por ejemplo, retomar una sesión no recupera a los compañeros que corrían adentro de tu terminal."]}], "faq": [{"q": "¿Qué uso: subagentes o equipos?", "a": "Subagentes cuando solo te importa el resultado de cada parte. Equipos cuando los especialistas necesitan discutir entre ellos y coordinarse solos."}, {"q": "¿Cuántos agentes pongo?", "a": "Los menos posibles. Tres especialistas bien definidos suelen rendir más que cinco con tareas difusas."}, {"q": "Prendí los equipos y ahora arma equipos sin que se lo pida", "a": "Con la función activa, cuando Claude le pone nombre a un subagente lo lanza como compañero de equipo. Si no los querés, poné la variable en 0."}], "fuentes": ["https://code.claude.com/docs/en/agent-teams", "https://code.claude.com/docs/en/sub-agents"], "cat": "agentes", "parte": "usalo"};</script>
 
-<script src="../web/rutas.js?v=5108ba2f"></script>
-<script src="../web/logos.js?v=5108ba2f"></script>
-<script src="../web/guia.js?v=5108ba2f"></script>
-<script src="../web/bienvenida.js?v=5108ba2f"></script>
+<script src="../web/rutas.js?v=1b71218b"></script>
+<script src="../web/logos.js?v=1b71218b"></script>
+<script src="../web/guia.js?v=1b71218b"></script>
+<script src="../web/bienvenida.js?v=1b71218b"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

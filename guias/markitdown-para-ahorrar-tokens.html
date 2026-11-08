@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena markitdown-para-ahorrar-tokens, MarkItDown: Claude lee tus archivos gastando menos, La herramienta gratis de Microsoft que convierte PDF, Word, Excel, PowerPoint y hasta videos de YouTube en texto limpio. Claude lo lee mejor y gasta menos. y 5108ba2f -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena markitdown-para-ahorrar-tokens, MarkItDown: Claude lee tus archivos gastando menos, La herramienta gratis de Microsoft que convierte PDF, Word, Excel, PowerPoint y hasta videos de YouTube en texto limpio. Claude lo lee mejor y gasta menos. y 1b71218b -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/cta.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/biblioteca.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/guia.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/tema.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/bienvenida.css?v=5108ba2f">
-<script src="../web/tema.js?v=5108ba2f"></script>
-<link rel="icon" href="../web/favicon.svg?v=5108ba2f" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=1b71218b">
+<link rel="stylesheet" href="../web/cta.css?v=1b71218b">
+<link rel="stylesheet" href="../web/biblioteca.css?v=1b71218b">
+<link rel="stylesheet" href="../web/guia.css?v=1b71218b">
+<link rel="stylesheet" href="../web/tema.css?v=1b71218b">
+<link rel="stylesheet" href="../web/bienvenida.css?v=1b71218b">
+<script src="../web/tema.js?v=1b71218b"></script>
+<link rel="icon" href="../web/favicon.svg?v=1b71218b" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=5108ba2f"></script>
-<script src="../web/guias-web.js?v=5108ba2f"></script>
-<script src="../web/comun.js?v=5108ba2f"></script>
+<script src="../web/redes.js?v=1b71218b"></script>
+<script src="../web/guias-web.js?v=1b71218b"></script>
+<script src="../web/comun.js?v=1b71218b"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="markitdown-para-ahorrar-tokens"></main>
 <script>var GUIA = {"slug": "markitdown-para-ahorrar-tokens", "fuentes": ["https://github.com/microsoft/markitdown", "https://github.com/microsoft/markitdown/tree/main/packages/markitdown-mcp", "https://docs.astral.sh/uv/getting-started/installation/", "https://modelcontextprotocol.io/quickstart/user"], "post": "TOKEN", "t": "MarkItDown: Claude lee tus archivos gastando menos", "d": "La herramienta gratis de Microsoft que convierte PDF, Word, Excel, PowerPoint y hasta videos de YouTube en texto limpio. Claude lo lee mejor y gasta menos.", "tema": "Gastá menos tokens", "min": 7, "fichaNombre": "markitdown-mcp", "ficha": [["Qué es", "Un servidor MCP que le da a Claude Desktop la herramienta convert_to_markdown."], ["Necesitás", "Claude Desktop y uv (un instalador de Python liviano). 5 minutos."], ["Qué no hace", "No lee PDF escaneados (fotos): ahí no hay texto."], ["Repo", "github.com/microsoft/markitdown"]], "secciones": [{"h": "1. Instalá uv", "prompts": [{"t": "Windows (PowerShell)", "c": "powershell -ExecutionPolicy ByPass -c \"irm https://astral.sh/uv/install.ps1 | iex\""}, {"t": "Mac (Terminal)", "c": "curl -LsSf https://astral.sh/uv/install.sh | sh"}], "p": ["Cerrá la ventana, abrí una nueva y escribí uv --version: si responde con un número, está listo."]}, {"h": "2. Probá MarkItDown", "prompts": [{"t": "Prueba", "c": "uvx markitdown-mcp --help"}], "p": ["La primera vez tarda uno o dos minutos. Si ves un texto de ayuda, funciona."]}, {"h": "3. Conectalo a Claude Desktop", "pasos": ["En Claude Desktop: Configuración → Desarrollador → Editar configuración.", "Abrí claude_desktop_config.json con el Bloc de notas o TextEdit.", "Si está vacío, reemplazá todo por el bloque de abajo. Si ya tenía servidores, sumá solo \"markitdown\" junto a los demás.", "Guardá y cerrá Claude Desktop por completo (Salir, no solo la ventana). Volvé a abrirlo."], "prompts": [{"t": "claude_desktop_config.json", "c": "{\n  \"mcpServers\": {\n    \"markitdown\": {\n      \"command\": \"uvx\",\n      \"args\": [\"markitdown-mcp\"]\n    }\n  }\n}"}]}, {"h": "Cómo usarlo", "p": ["Pasale a Claude la ruta del archivo o un link y decile qué querés."], "prompts": [{"t": "Ejemplo", "c": "Convertí [RUTA DEL ARCHIVO] a markdown y decime cuándo vence."}, {"t": "Para que lo use solo (en las instrucciones de un Proyecto)", "c": "Cuando te pase la ruta de un archivo o un link, convertilo primero con la herramienta markitdown y trabajá sobre ese texto."}], "aviso": "El servidor puede leer cualquier archivo de tu usuario. Usalo solo en tu compu."}], "faq": [{"q": "No aparece markitdown en Claude", "a": "Cerrá Claude Desktop por completo y abrilo de nuevo. Revisá que el JSON no tenga comas de más."}, {"q": "Error \"spawn uvx ENOENT\"", "a": "Claude no encuentra uv: poné la ruta completa (where uvx en Windows, which uvx en Mac) en \"command\"."}], "idea": [], "cat": "ahorrar", "parte": "aprende"};</script>
 
-<script src="../web/rutas.js?v=5108ba2f"></script>
-<script src="../web/logos.js?v=5108ba2f"></script>
-<script src="../web/guia.js?v=5108ba2f"></script>
-<script src="../web/bienvenida.js?v=5108ba2f"></script>
+<script src="../web/rutas.js?v=1b71218b"></script>
+<script src="../web/logos.js?v=1b71218b"></script>
+<script src="../web/guia.js?v=1b71218b"></script>
+<script src="../web/bienvenida.js?v=1b71218b"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

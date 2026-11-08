@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena agente-que-califica-prospectos, Agente que califica prospectos: puntúa, resume y te avisa, Convertí las respuestas de tus formularios en una lista ordenada con puntaje, motivo y siguiente paso. El agente propone, vos decidís a quién llamar. y 5108ba2f -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena agente-que-califica-prospectos, Agente que califica prospectos: puntúa, resume y te avisa, Convertí las respuestas de tus formularios en una lista ordenada con puntaje, motivo y siguiente paso. El agente propone, vos decidís a quién llamar. y 1b71218b -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/cta.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/biblioteca.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/guia.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/tema.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/bienvenida.css?v=5108ba2f">
-<script src="../web/tema.js?v=5108ba2f"></script>
-<link rel="icon" href="../web/favicon.svg?v=5108ba2f" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=1b71218b">
+<link rel="stylesheet" href="../web/cta.css?v=1b71218b">
+<link rel="stylesheet" href="../web/biblioteca.css?v=1b71218b">
+<link rel="stylesheet" href="../web/guia.css?v=1b71218b">
+<link rel="stylesheet" href="../web/tema.css?v=1b71218b">
+<link rel="stylesheet" href="../web/bienvenida.css?v=1b71218b">
+<script src="../web/tema.js?v=1b71218b"></script>
+<link rel="icon" href="../web/favicon.svg?v=1b71218b" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=5108ba2f"></script>
-<script src="../web/guias-web.js?v=5108ba2f"></script>
-<script src="../web/comun.js?v=5108ba2f"></script>
+<script src="../web/redes.js?v=1b71218b"></script>
+<script src="../web/guias-web.js?v=1b71218b"></script>
+<script src="../web/comun.js?v=1b71218b"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="agente-que-califica-prospectos"></main>
 <script>var GUIA = {"slug": "agente-que-califica-prospectos", "t": "Agente que califica prospectos: puntúa, resume y te avisa", "d": "Convertí las respuestas de tus formularios en una lista ordenada con puntaje, motivo y siguiente paso. El agente propone, vos decidís a quién llamar.", "tema": "Agentes", "min": 9, "fichaNombre": "Calificador de prospectos", "ficha": [["Qué hace", "Lee formularios o mensajes, les pone un puntaje con tus criterios, resume y marca los urgentes."], ["Entradas", "Un archivo exportado de tu formulario (CSV) o mensajes pegados."], ["Dónde", "En un Proyecto de Claude o en una carpeta con Claude Code."], ["Regla", "No contacta a nadie. Vos revisás y decidís."]], "secciones": [{"h": "Primero, tus criterios en puntos", "p": ["El agente solo es tan bueno como tus criterios. Escribí qué hace que alguien sea un buen cliente para vos y cuánto vale cada cosa. Sumá hasta 100."], "lista": ["Encaje (hasta 30): ¿tiene el problema que resolvés y es el tipo de negocio que atendés?", "Urgencia (hasta 25): ¿dijo para cuándo lo necesita?", "Capacidad (hasta 25): ¿mencionó presupuesto, tamaño o algo que indique que puede pagar?", "Decisión (hasta 20): ¿decide esa persona o tiene que consultarlo?"], "aviso": "No uses criterios que discriminen por edad, género, origen u otros datos personales. Puntuá el negocio y la necesidad, no a la persona."}, {"h": "Las instrucciones del agente", "prompts": [{"t": "Instrucciones del calificador", "c": "Sos el calificador de prospectos de [TU NEGOCIO]. Vendemos [QUÉ VENDÉS] a [A QUIÉN].\n\nPara cada respuesta de formulario o mensaje:\n1. Puntuá con estos criterios y mostrá el puntaje de cada uno:\n   - Encaje (0-30): [QUÉ ES ENCAJE PARA VOS]\n   - Urgencia (0-25): [QUÉ ES URGENCIA]\n   - Capacidad (0-25): [QUÉ SEÑALES CUENTAN]\n   - Decisión (0-20): [QUÉ SEÑALES CUENTAN]\n2. Sumá el total y clasificá: CALIENTE (70 o más), TIBIO (40 a 69), FRÍO (menos de 40).\n3. Escribí un resumen de 2 líneas con lo que necesita, usando sus palabras.\n4. Proponé el siguiente paso: llamar hoy, mandar información o nada por ahora.\n5. Si falta un dato para puntuar, poné 0 en ese criterio y anotá FALTA: [dato]. No supongas.\n\nEntregá una tabla ordenada de mayor a menor puntaje y, arriba de todo, los CALIENTES en una lista aparte.\nNunca contactes a nadie ni redactes promesas de precio o plazo."}]}, {"h": "Opción A: en un Proyecto de Claude", "pasos": ["Creá un proyecto \"Prospectos\" y pegá las instrucciones de arriba.", "Subí al conocimiento una descripción corta de lo que vendés y de tu cliente ideal.", "Exportá las respuestas de tu formulario como CSV (Google Forms y la mayoría de los formularios lo permiten desde su planilla).", "Subí el archivo a un chat del proyecto, o pegá las filas nuevas, y pedí la tabla."]}, {"h": "Opción B: en una carpeta con Claude Code", "p": ["Si lo hacés todas las semanas, armá una carpeta con una subcarpeta entradas para los CSV y un subagente calificador que solo pueda leer y escribir archivos."], "prompts": [{"t": "Crear el subagente calificador", "c": "Creá un subagente en .claude/agents/calificador.md.\nQué hace: lee los CSV nuevos de la carpeta entradas, califica cada prospecto con los criterios de criterios.md y escribe el resultado en resultados/[fecha].md con la tabla ordenada y los CALIENTES arriba.\nHerramientas: solo Read, Glob y Write.\nReglas: no modifica los archivos de entradas, no inventa datos faltantes y no contacta a nadie."}]}, {"h": "El aviso y la revisión humana", "lista": ["El aviso más simple: abrís el archivo de resultados o el chat y mirás la lista de CALIENTES primero.", "Si querés que corra solo, Claude Code tiene tareas programadas (mirá la guía de tareas programadas). Igual, el resultado es una lista para vos, no un mensaje al cliente.", "Revisá todas las semanas 5 prospectos al azar: ¿estás de acuerdo con el puntaje? Si no, ajustá los criterios, no el resultado a mano."], "aviso": "Que el agente puntúe bajo a alguien no significa que no valga la pena. Usalo para ordenar, no para descartar sin mirar."}], "faq": [{"q": "¿En qué se diferencia de la guía de responder DMs?", "a": "Esa guía ordena mensajes y te prepara respuestas. Esta pone un puntaje con criterios fijos a muchos prospectos juntos, por ejemplo de un formulario, para decidir a quién llamar primero."}, {"q": "¿Puedo pasarle datos personales de los prospectos?", "a": "Pasale solo lo necesario para calificar. Si podés, sacá teléfonos, documentos y direcciones antes de subir el archivo."}, {"q": "Los puntajes me parecen raros", "a": "Pedile que te explique el puntaje de 3 casos. Casi siempre el problema es un criterio escrito de forma ambigua."}], "fuentes": ["https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects", "https://code.claude.com/docs/en/sub-agents", "https://code.claude.com/docs/en/desktop-scheduled-tasks"], "cat": "agentes", "parte": "usalo"};</script>
 
-<script src="../web/rutas.js?v=5108ba2f"></script>
-<script src="../web/logos.js?v=5108ba2f"></script>
-<script src="../web/guia.js?v=5108ba2f"></script>
-<script src="../web/bienvenida.js?v=5108ba2f"></script>
+<script src="../web/rutas.js?v=1b71218b"></script>
+<script src="../web/logos.js?v=1b71218b"></script>
+<script src="../web/guia.js?v=1b71218b"></script>
+<script src="../web/bienvenida.js?v=1b71218b"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

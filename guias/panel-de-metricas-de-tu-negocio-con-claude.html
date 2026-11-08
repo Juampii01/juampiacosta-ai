@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena panel-de-metricas-de-tu-negocio-con-claude, Panel de métricas de tu negocio con Claude, Subís tus datos de ventas y Claude te arma un panel visual o una planilla con los números que importan. Con el prompt listo y cómo no comerte errores. y 5108ba2f -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena panel-de-metricas-de-tu-negocio-con-claude, Panel de métricas de tu negocio con Claude, Subís tus datos de ventas y Claude te arma un panel visual o una planilla con los números que importan. Con el prompt listo y cómo no comerte errores. y 1b71218b -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/cta.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/biblioteca.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/guia.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/tema.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/bienvenida.css?v=5108ba2f">
-<script src="../web/tema.js?v=5108ba2f"></script>
-<link rel="icon" href="../web/favicon.svg?v=5108ba2f" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=1b71218b">
+<link rel="stylesheet" href="../web/cta.css?v=1b71218b">
+<link rel="stylesheet" href="../web/biblioteca.css?v=1b71218b">
+<link rel="stylesheet" href="../web/guia.css?v=1b71218b">
+<link rel="stylesheet" href="../web/tema.css?v=1b71218b">
+<link rel="stylesheet" href="../web/bienvenida.css?v=1b71218b">
+<script src="../web/tema.js?v=1b71218b"></script>
+<link rel="icon" href="../web/favicon.svg?v=1b71218b" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=5108ba2f"></script>
-<script src="../web/guias-web.js?v=5108ba2f"></script>
-<script src="../web/comun.js?v=5108ba2f"></script>
+<script src="../web/redes.js?v=1b71218b"></script>
+<script src="../web/guias-web.js?v=1b71218b"></script>
+<script src="../web/comun.js?v=1b71218b"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="panel-de-metricas-de-tu-negocio-con-claude"></main>
 <script>var GUIA = {"slug": "panel-de-metricas-de-tu-negocio-con-claude", "t": "Panel de métricas de tu negocio con Claude", "d": "Subís tus datos de ventas y Claude te arma un panel visual o una planilla con los números que importan. Con el prompt listo y cómo no comerte errores.", "tema": "IA en tu negocio", "min": 9, "fichaNombre": "Panel de métricas", "ficha": [["Qué es", "Un panel con tus números clave, armado por Claude a partir de una exportación de tus datos."], ["Necesitás", "Claude con \"Crear y editar archivos\" activado y un CSV o Excel con tus ventas."], ["Dos caminos", "Un artifact (panel visual dentro de Claude) o una planilla de Excel descargable."], ["Qué no hace", "No se actualiza solo a partir de un archivo: si los datos cambian, volvés a subirlos."]], "secciones": [{"h": "Elegí tus 5 números", "p": ["Un panel con 30 gráficos no lo mira nadie. Antes de abrir Claude, decidí qué cinco números querés ver cada semana. Algunos que suelen servir:"], "lista": ["Ventas del período: total y comparado con el período anterior.", "Cantidad de ventas y ticket promedio: para saber si vendés más veces o más caro.", "Clientes nuevos y clientes que vuelven.", "Producto o servicio que más vende.", "De dónde vienen los clientes: si ya lo registrás (hay una guía sobre esto en la biblioteca)."]}, {"h": "Prepará los datos", "pasos": ["Exportá tus ventas desde tu sistema, tienda o planilla en CSV o Excel.", "Revisá que tenga una fila por venta y columnas claras: fecha, cliente, producto, cantidad, importe.", "Borrá columnas con datos sensibles que no hacen falta: documentos, teléfonos, direcciones.", "En Claude andá a Configuración → Capacidades y activá \"Crear y editar archivos\", para que pueda leer y procesar el archivo."], "aviso": "Subí solo lo que te sientas cómodo compartiendo. Si los nombres de clientes no hacen falta para el panel, reemplazalos por un código."}, {"h": "Camino 1: un panel visual (artifact)", "p": ["Un artifact es algo que Claude arma y se abre al costado del chat: puede ser un documento, una página o un panel. Te sirve para mirar los números y compartirlos."], "prompts": [{"t": "Panel visual de ventas", "c": "Te adjunto la exportación de ventas de mi negocio de [RUBRO], del [FECHA INICIO] al [FECHA FIN].\nAntes de armar nada:\n1. Decime qué columnas encontraste y si ves datos raros (fechas mal cargadas, importes vacíos, filas duplicadas).\n2. Esperá a que te confirme cómo tratarlos.\nDespués armá un panel en un artifact con:\n- Arriba: ventas totales, cantidad de ventas, ticket promedio y clientes nuevos, cada uno comparado con el período anterior.\n- Un gráfico de ventas por semana.\n- Los 5 productos que más venden.\n- [OTRO NÚMERO QUE QUIERAS]\nQue se lea bien en el celular. Debajo de cada número, en letra chica, poné cómo lo calculaste."}]}, {"h": "Camino 2: una planilla que podés seguir usando", "p": ["Si preferís algo que viva en tu compu y puedas actualizar pegando datos nuevos, pedile un Excel con fórmulas en lugar de números fijos."], "prompts": [{"t": "Planilla de métricas con fórmulas", "c": "Con este archivo de ventas, armame un Excel descargable con:\n1. Una hoja \"Datos\" con las ventas tal cual, en formato tabla.\n2. Una hoja \"Panel\" con ventas del mes, cantidad, ticket promedio y clientes nuevos, calculados con fórmulas que lean la hoja Datos (no números escritos a mano).\n3. Un gráfico de ventas por mes.\n4. Una hoja \"Cómo usar\" que explique cómo pegar datos nuevos para que el panel se actualice.\nUsá nombres de columnas en español y no cambies los datos originales."}]}, {"h": "Cómo no comerte un error", "lista": ["Pedí los cálculos: que te diga con qué fórmula sacó cada número.", "Chequeá uno a mano: elegí un número del panel y calculalo vos con la planilla original.", "Ojo con las fechas: los formatos día/mes y mes/día se confunden fácil. Decile cuál usás.", "Guardá el prompt: el mes que viene subís el archivo nuevo y pegás el mismo prompt, así comparás peras con peras."]}], "faq": [{"q": "¿Funciona en el plan gratis?", "a": "Crear artifacts y subir archivos para analizar está disponible en todos los planes. Las plantillas y conectar apps a un artifact son de los planes pagos."}, {"q": "¿Se puede conectar directo a mi sistema para que se actualice solo?", "a": "En los planes pagos hay opciones para conectar apps. Si tu sistema no tiene conector, lo más simple es exportar y subir el archivo cada semana o cada mes."}, {"q": "¿Puedo compartir el panel con mi socio?", "a": "Sí: los artifacts arrancan privados y después podés compartirlos o exportarlos. La planilla de Excel la mandás como cualquier archivo."}], "fuentes": ["https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them", "https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude"], "cat": "negocio", "parte": "usalo"};</script>
 
-<script src="../web/rutas.js?v=5108ba2f"></script>
-<script src="../web/logos.js?v=5108ba2f"></script>
-<script src="../web/guia.js?v=5108ba2f"></script>
-<script src="../web/bienvenida.js?v=5108ba2f"></script>
+<script src="../web/rutas.js?v=1b71218b"></script>
+<script src="../web/logos.js?v=1b71218b"></script>
+<script src="../web/guia.js?v=1b71218b"></script>
+<script src="../web/bienvenida.js?v=1b71218b"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena de-idea-a-app-publicada-con-claude-code, De idea a app publicada con Claude Code, El recorrido completo en cinco tramos: idea, especificación, construir, probar y publicar en Vercel o Netlify. Con los prompts de cada paso. y 5108ba2f -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena de-idea-a-app-publicada-con-claude-code, De idea a app publicada con Claude Code, El recorrido completo en cinco tramos: idea, especificación, construir, probar y publicar en Vercel o Netlify. Con los prompts de cada paso. y 1b71218b -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/cta.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/biblioteca.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/guia.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/tema.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/bienvenida.css?v=5108ba2f">
-<script src="../web/tema.js?v=5108ba2f"></script>
-<link rel="icon" href="../web/favicon.svg?v=5108ba2f" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=1b71218b">
+<link rel="stylesheet" href="../web/cta.css?v=1b71218b">
+<link rel="stylesheet" href="../web/biblioteca.css?v=1b71218b">
+<link rel="stylesheet" href="../web/guia.css?v=1b71218b">
+<link rel="stylesheet" href="../web/tema.css?v=1b71218b">
+<link rel="stylesheet" href="../web/bienvenida.css?v=1b71218b">
+<script src="../web/tema.js?v=1b71218b"></script>
+<link rel="icon" href="../web/favicon.svg?v=1b71218b" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=5108ba2f"></script>
-<script src="../web/guias-web.js?v=5108ba2f"></script>
-<script src="../web/comun.js?v=5108ba2f"></script>
+<script src="../web/redes.js?v=1b71218b"></script>
+<script src="../web/guias-web.js?v=1b71218b"></script>
+<script src="../web/comun.js?v=1b71218b"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="de-idea-a-app-publicada-con-claude-code"></main>
 <script>var GUIA = {"slug": "de-idea-a-app-publicada-con-claude-code", "t": "De idea a app publicada con Claude Code", "d": "El recorrido completo en cinco tramos: idea, especificación, construir, probar y publicar en Vercel o Netlify. Con los prompts de cada paso.", "tema": "Creá tu app", "min": 11, "fichaNombre": "De idea a app", "ficha": [["Qué es", "Un mapa del camino entero para que no te pierdas a mitad de proyecto."], ["Necesitás", "Claude Code, una cuenta de GitHub y una cuenta de Vercel o Netlify."], ["Orden", "Idea → especificación → construir por partes → probar → publicar."], ["Qué no hace", "No reemplaza probar vos la app: Claude construye, vos decidís si está bien."]], "secciones": [{"h": "El camino en cinco tramos", "p": ["La mayoría de las apps hechas con IA se traban por lo mismo: se arranca a programar sin saber bien qué se quiere, y a la tercera vuelta nadie entiende qué hace cada cosa. Si seguís estos tramos en orden, cada uno te deja listo el siguiente."], "lista": ["Idea: una frase que diga qué hace la app y para quién.", "Especificación: un documento corto con pantallas, datos y lo que la app NO hace.", "Construir: Claude Code arma la app por partes, siguiendo ese documento.", "Probar: la usás como si fueras el cliente y anotás lo que falla.", "Publicar: la subís a GitHub y la conectás con Vercel o Netlify para tener un link real."]}, {"h": "Tramos 1 y 2: de la idea al documento", "p": ["No le pidas a Claude \"haceme una app de turnos\". Pedile primero que te entreviste y que escriba la especificación. Ese archivo va a ser la referencia de todo lo que venga después.", "Cuando termine, leela entera. Si algo no es como lo imaginabas, corregilo ahora: cambiar una línea de texto es gratis, cambiar una app armada no."], "prompts": [{"t": "Prompt de especificación", "c": "Quiero construir una app y antes de escribir código necesito una especificación corta.\nMi idea en una frase: [QUÉ HACE TU APP].\nPara quién es: [QUIÉN LA VA A USAR].\nEntrevistame de a una pregunta por vez hasta tener claro:\n1. Qué problema resuelve y cómo sabemos que funciona.\n2. Quién la usa (y si hay distintos tipos de usuario, como cliente y administrador).\n3. Las pantallas, en orden, y qué se puede hacer en cada una.\n4. Qué datos se guardan y quién puede ver o cambiar cada uno.\n5. Qué NO hace en esta primera versión.\nCuando tengas todo, armá el documento en un archivo ESPECIFICACION.md, con lenguaje simple, sin código. Al final agregá una lista de preguntas abiertas. No empieces a programar."}]}, {"h": "Tramo 3: construir por partes", "pasos": ["Pedile a Claude que lea ESPECIFICACION.md y te proponga un plan dividido en partes chicas (por ejemplo: pantalla de inicio, formulario, guardar datos, login).", "Aprobá el plan o corregilo antes de que toque un archivo.", "Pedile la primera parte sola. Cuando funcione, pedile que guarde un commit en Git con un mensaje claro.", "Repetí parte por parte. Si una parte sale mal, volvés al último commit y no perdés lo anterior."], "prompts": [{"t": "Construir siguiendo la especificación", "c": "Leé @ESPECIFICACION.md.\nProponeme un plan para construir la app en partes chicas, en orden, donde cada parte se pueda probar sola.\nNo escribas código todavía. Cuando yo apruebe, hacé solo la parte 1, explicame cómo la pruebo y esperá mi OK antes de seguir.\nSi algo de la especificación no está claro, preguntame en vez de inventar."}]}, {"h": "Tramo 4: probar como si fueras el cliente", "p": ["Abrí la app y usala de punta a punta, como lo haría alguien que nunca la vio. Probá también lo que no debería poder hacerse: dejar campos vacíos, poner letras donde van números, entrar sin estar logueado.", "Antes de publicar, en Claude Code tenés /diff para ver qué cambió y /code-review para que revise los cambios buscando errores."], "prompts": [{"t": "Lista de pruebas", "c": "Según @ESPECIFICACION.md, armame una lista de pruebas para hacer a mano, como si yo fuera un cliente que usa la app por primera vez.\nIncluí casos que deberían fallar a propósito (campos vacíos, datos raros, usuario sin permiso).\nPara cada prueba: qué hago, qué debería pasar. Formato de lista para tildar."}]}, {"h": "Tramo 5: publicar", "pasos": ["Pedile a Claude que suba el proyecto a un repositorio de GitHub (revisando antes que no haya claves en el código).", "En Vercel: botón New Project, elegís el repositorio, revisás la configuración y tocás Deploy. En Netlify: Add new project → Import an existing project.", "Cargá las variables de entorno (las claves) en la configuración del proyecto, no en el código.", "Abrí el link que te dan y repetí las pruebas del tramo 4 en la versión publicada."], "aviso": "Nunca pegues claves secretas en el chat ni las dejes escritas en el código. Van en las variables de entorno de Vercel o Netlify."}], "faq": [{"q": "¿Puedo saltear la especificación si la app es chica?", "a": "Podés, pero aunque sea escribí cinco líneas: qué hace, para quién y qué no hace. Es lo que evita que Claude agregue cosas que no pediste."}, {"q": "¿Vercel o Netlify?", "a": "Las dos conectan tu repositorio de GitHub y publican solas cada vez que subís cambios. Elegí una y quedate con esa; la guía de publicar te muestra los pasos de ambas."}, {"q": "¿Cuánto tarda todo el camino?", "a": "Depende del tamaño de la app. Lo que sí podés controlar es que cada parte quede probada y guardada antes de pasar a la siguiente."}], "fuentes": ["https://code.claude.com/docs/en/common-workflows", "https://code.claude.com/docs/en/commands", "https://vercel.com/docs/git", "https://docs.netlify.com/start/quickstarts/deploy-from-repository"], "cat": "desarrollo", "parte": "construi"};</script>
 
-<script src="../web/rutas.js?v=5108ba2f"></script>
-<script src="../web/logos.js?v=5108ba2f"></script>
-<script src="../web/guia.js?v=5108ba2f"></script>
-<script src="../web/bienvenida.js?v=5108ba2f"></script>
+<script src="../web/rutas.js?v=1b71218b"></script>
+<script src="../web/logos.js?v=1b71218b"></script>
+<script src="../web/guia.js?v=1b71218b"></script>
+<script src="../web/bienvenida.js?v=1b71218b"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

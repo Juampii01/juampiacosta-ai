@@ -55,6 +55,48 @@ def validar(guias, prompts, herrs):
         assert x.get("cat") in ("Skills", "MCP", "Herramientas") and x.get("t") and x.get("url") and isinstance(x.get("cmds"), list), f"herramienta incompleta: {x.get('t')}"
 
 
+def mejorar(guias):
+    """contenido/mejoras/<slug>.json: correcciones verificadas, ejemplo, si algo falla, kit y fecha de verificación.
+    Cada corrección tiene que encontrar su texto exacto en la guía, si no la construcción falla."""
+    por = {g["slug"]: g for g in guias}
+    n = 0
+    for f in sorted((RAIZ / "contenido" / "mejoras").glob("*.json")):
+        m = json.loads(f.read_text())
+        g = por.get(m["slug"])
+        assert g, f"{f.name}: no existe la guía {m['slug']}"
+
+        def reemplazar(x, antes, despues, cuenta):
+            if isinstance(x, str):
+                if antes in x:
+                    cuenta[0] += 1
+                    return x.replace(antes, despues)
+                return x
+            if isinstance(x, list):
+                return [reemplazar(y, antes, despues, cuenta) for y in x]
+            if isinstance(x, dict):
+                return {k: (v if k in ("slug", "fuentes") else reemplazar(v, antes, despues, cuenta)) for k, v in x.items()}
+            return x
+
+        for c in m.get("correcciones", []):
+            cuenta = [0]
+            nuevo = reemplazar(g, c["antes"], c["despues"], cuenta)
+            assert cuenta[0], f"{f.name}: no encontré el texto a corregir: {c['antes'][:80]}"
+            g.clear(); g.update(nuevo)
+        fu = list(g.get("fuentes", []))
+        for u in m.get("fuentes_extra", []) + [c["fuente"] for c in m.get("correcciones", []) if c.get("fuente")]:
+            if u not in fu:
+                fu.append(u)
+        if fu:
+            g["fuentes"] = fu
+        for k in ("ejemplo", "si_falla", "kit", "verificada"):
+            if m.get(k):
+                g[k] = m[k]
+        for k in m.get("kit", []):
+            assert k.get("archivo") and k.get("contenido") and k.get("que_es"), f"{f.name}: archivo del kit incompleto"
+        n += 1
+    return n
+
+
 def ordenar(guias, prompts):
     """contenido/orden.json manda: cada guía y cada pack va en una sola categoría, en el orden de la lista.
     Pisa el tema de origen con el nombre de la categoría (así toda la web usa los mismos nombres) y suma cat y parte."""
@@ -311,6 +353,7 @@ if __name__ == "__main__":
     prompts = json.loads((RAIZ / "contenido" / "base-prompts.json").read_text()) + p_lotes
     herrs = json.loads((RAIZ / "contenido" / "base-herramientas.json").read_text()) + h_lotes
     validar(guias, prompts, herrs)
+    n_mejoras = mejorar(guias)
     guias, prompts, ORDEN_CATS = ordenar(guias, prompts)
     herrs = ordenar_herramientas(herrs)
     rutas = (WEB / "rutas.js").read_text()
@@ -324,4 +367,4 @@ if __name__ == "__main__":
     (RAIZ / "recursos.html").write_text((WEB / "recursos.html").read_text().replace("{{V}}", v)
                                         .replace("{{VITRINA}}", vitrina(guias, prompts, herrs, True)))
     inicio(v)
-    print(f"ok · {n} guías · versión {v}")
+    print(f"ok · {n} guías · {n_mejoras} elevadas · versión {v}")

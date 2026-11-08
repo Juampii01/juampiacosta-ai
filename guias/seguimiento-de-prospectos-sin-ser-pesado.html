@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena seguimiento-de-prospectos-sin-ser-pesado, Seguimiento de prospectos sin ser pesado, Una secuencia de mensajes donde cada uno aporta algo nuevo, una planilla para no perder a nadie y un prompt para escribir los seguimientos con tu tono. y 5108ba2f -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena seguimiento-de-prospectos-sin-ser-pesado, Seguimiento de prospectos sin ser pesado, Una secuencia de mensajes donde cada uno aporta algo nuevo, una planilla para no perder a nadie y un prompt para escribir los seguimientos con tu tono. y 1b71218b -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/cta.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/biblioteca.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/guia.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/tema.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/bienvenida.css?v=5108ba2f">
-<script src="../web/tema.js?v=5108ba2f"></script>
-<link rel="icon" href="../web/favicon.svg?v=5108ba2f" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=1b71218b">
+<link rel="stylesheet" href="../web/cta.css?v=1b71218b">
+<link rel="stylesheet" href="../web/biblioteca.css?v=1b71218b">
+<link rel="stylesheet" href="../web/guia.css?v=1b71218b">
+<link rel="stylesheet" href="../web/tema.css?v=1b71218b">
+<link rel="stylesheet" href="../web/bienvenida.css?v=1b71218b">
+<script src="../web/tema.js?v=1b71218b"></script>
+<link rel="icon" href="../web/favicon.svg?v=1b71218b" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=5108ba2f"></script>
-<script src="../web/guias-web.js?v=5108ba2f"></script>
-<script src="../web/comun.js?v=5108ba2f"></script>
+<script src="../web/redes.js?v=1b71218b"></script>
+<script src="../web/guias-web.js?v=1b71218b"></script>
+<script src="../web/comun.js?v=1b71218b"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="seguimiento-de-prospectos-sin-ser-pesado"></main>
 <script>var GUIA = {"slug": "seguimiento-de-prospectos-sin-ser-pesado", "t": "Seguimiento de prospectos sin ser pesado", "d": "Una secuencia de mensajes donde cada uno aporta algo nuevo, una planilla para no perder a nadie y un prompt para escribir los seguimientos con tu tono.", "tema": "Conseguí clientes", "min": 8, "fichaNombre": "Secuencia de seguimiento", "ficha": [["Qué es", "Un sistema simple de seguimiento: secuencia, planilla y prompts."], ["Necesitás", "Claude y Google Sheets (o la planilla que uses)."], ["Tiempo", "Media hora para armarlo. Después, unos minutos por día."], ["Qué no hace", "No manda los mensajes por vos."]], "secciones": [{"h": "La regla: cada mensaje suma algo", "p": ["\"¿Pudiste ver lo que te mandé?\" no aporta nada y empuja a la persona a no contestar. Un buen seguimiento le da una razón para responder: una idea, un ejemplo, una respuesta a una duda que tenía o una salida fácil."]}, {"h": "La secuencia", "p": ["Un punto de partida. Ajustá los tiempos a tu rubro y a cómo te habló la persona."], "lista": ["Mensaje 1, recordatorio útil: retomá lo que habló y sumá un recurso corto relacionado con su problema.", "Mensaje 2, prueba: un ejemplo o caso parecido al suyo, contado en dos o tres líneas.", "Mensaje 3, la objeción: respondé la duda que mostró antes de que la vuelva a plantear.", "Mensaje 4, pregunta directa: \"¿Sigue siendo prioridad o lo dejamos para más adelante?\"", "Mensaje 5, cierre amable: avisá que no vas a insistir más y dejá la puerta abierta."], "aviso": "En Instagram, si usás automatizaciones: pasadas 24 horas desde la última interacción, los mensajes automáticos no están permitidos. Con la etiqueta Human Agent una persona puede responder a mano hasta 7 días. Los seguimientos más largos, por otro canal que la persona haya aceptado."}, {"h": "La planilla", "p": ["Una fila por persona. Pedile a Claude que te arme la plantilla y la importás en Google Sheets."], "prompts": [{"t": "Plantilla de seguimiento", "c": "Armame una plantilla de seguimiento de prospectos en formato CSV, separada por comas, en un bloque de código.\nColumnas: nombre, canal, de dónde vino, qué necesita (en una línea), objeción principal, último contacto (fecha), mensaje número, próximo contacto (fecha), estado, notas.\nEstados posibles: nuevo, en conversación, propuesta enviada, ganado, perdido, más adelante.\nAgregá 3 filas de ejemplo inventadas y marcadas como EJEMPLO para que se entienda cómo completarla."}], "pasos": ["Guardá el CSV en un archivo .csv.", "En Google Sheets: Archivo → Importar, subí el archivo y tocá Importar.", "Borrá las filas de ejemplo y cargá tus prospectos.", "Cada día, ordená por \"próximo contacto\" y empezá por los de hoy."]}, {"h": "Escribí cada seguimiento", "prompts": [{"t": "Seguimiento personalizado", "c": "Escribime el mensaje de seguimiento número [NÚMERO] para esta persona.\nQué necesita: [EN UNA LÍNEA].\nLo último que hablamos: [RESUMEN].\nObjeción que mostró: [OBJECIÓN].\nCanal: [INSTAGRAM, WHATSAPP O MAIL].\n\nReglas:\n- Que aporte algo nuevo: una idea, un ejemplo o una respuesta.\n- Máximo 4 líneas si es chat, 6 si es mail.\n- Una sola pregunta al final.\n- Sin culpa, sin presión y sin \"solo quería saber si viste mi mensaje\".\nUsá mi ficha de voz. Dame dos versiones: una más cálida y una más directa."}]}, {"h": "Cuándo parar", "p": ["Si después del mensaje de cierre no hay respuesta, pasalo a \"más adelante\" y anotá una fecha para revisar en un par de meses. Si alguien te pide que no le escribas más, respetalo y marcalo como perdido."]}], "faq": [{"q": "¿Y si me contesta \"ahora no\"?", "a": "Preguntale cuándo le conviene que le escribas de nuevo, anotá esa fecha en la planilla y cumplila."}, {"q": "¿Puedo pasarle la planilla a Claude?", "a": "Sí: exportala o copiala y pegala en un chat. Pedile que te diga a quién escribir hoy y que te prepare los mensajes."}], "fuentes": ["https://support.google.com/docs/answer/40608?hl=en", "https://help.manychat.com/hc/en-us/articles/14281199732892", "https://developers.facebook.com/docs/messenger-platform/send-messages"], "cat": "clientes", "parte": "usalo"};</script>
 
-<script src="../web/rutas.js?v=5108ba2f"></script>
-<script src="../web/logos.js?v=5108ba2f"></script>
-<script src="../web/guia.js?v=5108ba2f"></script>
-<script src="../web/bienvenida.js?v=5108ba2f"></script>
+<script src="../web/rutas.js?v=1b71218b"></script>
+<script src="../web/logos.js?v=1b71218b"></script>
+<script src="../web/guia.js?v=1b71218b"></script>
+<script src="../web/bienvenida.js?v=1b71218b"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena revisar-contratos-con-claude, Revisar contratos con Claude (sin reemplazar a tu abogado), Qué te puede aportar Claude antes de firmar, qué no puede hacer, un prompt de revisión y el plugin legal oficial de Anthropic. y 5108ba2f -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena revisar-contratos-con-claude, Revisar contratos con Claude (sin reemplazar a tu abogado), Qué te puede aportar Claude antes de firmar, qué no puede hacer, un prompt de revisión y el plugin legal oficial de Anthropic. y 1b71218b -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/cta.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/biblioteca.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/guia.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/tema.css?v=5108ba2f">
-<link rel="stylesheet" href="../web/bienvenida.css?v=5108ba2f">
-<script src="../web/tema.js?v=5108ba2f"></script>
-<link rel="icon" href="../web/favicon.svg?v=5108ba2f" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=1b71218b">
+<link rel="stylesheet" href="../web/cta.css?v=1b71218b">
+<link rel="stylesheet" href="../web/biblioteca.css?v=1b71218b">
+<link rel="stylesheet" href="../web/guia.css?v=1b71218b">
+<link rel="stylesheet" href="../web/tema.css?v=1b71218b">
+<link rel="stylesheet" href="../web/bienvenida.css?v=1b71218b">
+<script src="../web/tema.js?v=1b71218b"></script>
+<link rel="icon" href="../web/favicon.svg?v=1b71218b" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=5108ba2f"></script>
-<script src="../web/guias-web.js?v=5108ba2f"></script>
-<script src="../web/comun.js?v=5108ba2f"></script>
+<script src="../web/redes.js?v=1b71218b"></script>
+<script src="../web/guias-web.js?v=1b71218b"></script>
+<script src="../web/comun.js?v=1b71218b"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="revisar-contratos-con-claude"></main>
 <script>var GUIA = {"slug": "revisar-contratos-con-claude", "t": "Revisar contratos con Claude (sin reemplazar a tu abogado)", "d": "Qué te puede aportar Claude antes de firmar, qué no puede hacer, un prompt de revisión y el plugin legal oficial de Anthropic.", "tema": "IA en tu negocio", "min": 9, "fichaNombre": "Revisión de contratos", "ficha": [["Qué es", "Una primera lectura para entender un contrato y llegar con preguntas claras a tu abogado."], ["Necesitás", "El contrato en texto o PDF y una cuenta de Claude."], ["Qué no hace", "No da asesoramiento legal ni conoce la situación completa de tu caso."], ["Aviso", "Antes de firmar algo importante, consultá con un abogado matriculado de tu país."]], "secciones": [{"h": "Lo que puede y lo que no", "lista": ["Puede: explicarte en palabras simples qué dice cada cláusula.", "Puede: marcar lo que conviene mirar con atención (plazos, penalidades, renovaciones, exclusividad, quién paga qué).", "Puede: armarte la lista de preguntas para tu abogado o para la otra parte.", "No puede: decirte si el contrato es válido o conveniente según la ley de tu país.", "No puede: reemplazar el criterio de un profesional que conoce tu caso y te responde por su consejo."], "aviso": "Esta guía no es asesoramiento legal. Claude puede equivocarse o pasar algo por alto. Usalo para entender y preparar preguntas, no para decidir solo."}, {"h": "Antes de subir el contrato", "pasos": ["Revisá si el contrato tiene cláusula de confidencialidad que te impida compartirlo.", "Si podés, tapá datos que no hacen falta para entenderlo: números de documento, cuentas bancarias, direcciones.", "Tené a mano tu objetivo: qué querés lograr con este acuerdo y qué te preocupa."]}, {"h": "El prompt de revisión", "prompts": [{"t": "Primera lectura de un contrato", "c": "Te paso un contrato de [TIPO, EJ.: PRESTACIÓN DE SERVICIOS] entre [MI EMPRESA O YO] y [LA OTRA PARTE]. Yo soy [QUÉ PARTE SOS]. Mi objetivo es [QUÉ QUERÉS LOGRAR]. Me preocupa [TU DUDA PRINCIPAL].\n<contrato>\n[PEGÁ EL CONTRATO O SUBILO]\n<\/contrato>\nNo me des asesoramiento legal. Ayudame a entenderlo:\n1. Resumen en 10 líneas: qué me obligo a hacer y qué recibo.\n2. Tabla de cláusulas para mirar con atención: número de cláusula, cita textual, qué significa en palabras simples y por qué conviene revisarla.\n3. Plazos, fechas, renovaciones automáticas y penalidades, en una lista aparte.\n4. Cosas que suelen estar en este tipo de contrato y acá no encontré.\n5. Preguntas concretas para hacerle a mi abogado.\nCitá siempre el texto exacto. Si algo depende de la ley de mi país ([PAÍS]), decilo y no lo des por resuelto."}]}, {"h": "Después de la revisión", "pasos": ["Chequeá cada cita contra el contrato original: tiene que estar escrita igual.", "Llevale a tu abogado el resumen y la lista de preguntas. La consulta va a ser más corta y más concreta.", "Si negociás cambios, pedile a Claude que te ayude a redactar el mail con tus pedidos, y que tu abogado lo revise antes de mandarlo."]}, {"h": "El plugin legal oficial de Anthropic", "p": ["Anthropic publicó en GitHub un plugin legal dentro de su repositorio de plugins para trabajo de oficina. Está pensado principalmente para Cowork, la app de escritorio de Claude, y también funciona en Claude Code. Está orientado a equipos legales internos de empresas.", "Incluye comandos como /review-contract, que revisa un contrato contra el manual de negociación de tu organización, y /triage-nda, que clasifica acuerdos de confidencialidad en verde, amarillo o rojo. Para que sirva, hay que escribir un archivo de manual (legal.local.md) con tus posiciones estándar.", "Su propio repositorio aclara que no da asesoramiento legal, que las conclusiones deben verificarse con profesionales y que los ejemplos que trae responden a jurisdicciones de Estados Unidos. Si trabajás con otra legislación, hay que adaptar el manual antes de confiar en su análisis."]}], "faq": [{"q": "¿Puedo firmar si Claude dice que está todo bien?", "a": "No te bases solo en eso. Claude no da asesoramiento legal. Para acuerdos importantes, la última palabra la tiene un abogado de tu país."}, {"q": "¿El plugin legal sirve para contratos de Argentina o España?", "a": "Sus ejemplos de fábrica están basados en jurisdicciones de Estados Unidos. El repositorio indica que, si operás con otra legislación, tenés que adaptar el manual antes de usar su análisis."}, {"q": "¿Es seguro subir un contrato?", "a": "Depende de lo que diga el contrato sobre confidencialidad y de lo que te sientas cómodo compartiendo. Ante la duda, tapá los datos sensibles o consultá antes."}], "fuentes": ["https://github.com/anthropics/knowledge-work-plugins/blob/main/legal/README.md", "https://github.com/anthropics/knowledge-work-plugins", "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"], "cat": "negocio", "parte": "usalo"};</script>
 
-<script src="../web/rutas.js?v=5108ba2f"></script>
-<script src="../web/logos.js?v=5108ba2f"></script>
-<script src="../web/guia.js?v=5108ba2f"></script>
-<script src="../web/bienvenida.js?v=5108ba2f"></script>
+<script src="../web/rutas.js?v=1b71218b"></script>
+<script src="../web/logos.js?v=1b71218b"></script>
+<script src="../web/guia.js?v=1b71218b"></script>
+<script src="../web/bienvenida.js?v=1b71218b"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);
