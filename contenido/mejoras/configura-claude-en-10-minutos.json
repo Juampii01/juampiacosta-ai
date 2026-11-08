@@ -1,0 +1,89 @@
+{
+ "slug": "configura-claude-en-10-minutos",
+ "verificada": "2026-11-08",
+ "correcciones": [
+  {
+   "antes": "La memoria viene activada en los planes individuales. En Team y Enterprise depende de lo que decida quien administra la cuenta.",
+   "despues": "La memoria viene activada en los planes individuales (Free, Pro, Max y Ultra). En Team y Enterprise el owner decide si está disponible y, según la organización, puede arrancar prendida o apagada para cada miembro.",
+   "motivo": "La ayuda oficial dice que la memoria está prendida por defecto en Free, Pro, Max y Ultra, que en Team y Enterprise los owners deciden si está disponible, y que en algunas organizaciones arranca prendida para cada miembro y en otras apagada hasta que cada uno la prende.",
+   "fuente": "https://support.claude.com/en/articles/11817273"
+  },
+  {
+   "antes": "Los estilos personalizados que tenías se pasan solos a skills, que vienen apagadas: las prendés en Customize → Skills.",
+   "despues": "Los estilos personalizados que tenías se pasan solos a skills, que vienen apagadas: las prendés en Customize → Skills. Para que las skills funcionen tiene que estar prendida la opción Code execution and file creation (en el diseño nuevo se llama Create and edit files), en Settings → Capabilities.",
+   "motivo": "La ayuda de skills aclara que la función requiere la ejecución de código prendida, con el nombre exacto de la opción en cada diseño de Settings. Sin eso, los estilos migrados no se pueden usar.",
+   "fuente": "https://support.claude.com/en/articles/12512180-use-skills-in-claude"
+  },
+  {
+   "antes": "Ese chat incógnito no se guarda y Claude no lo va a buscar después.",
+   "despues": "Ese chat incógnito no queda en tu historial ni en la memoria, y Claude no lo va a buscar después. Igual Anthropic lo conserva 30 días por seguridad (o más, si tu organización tiene otra política de retención).",
+   "motivo": "La ayuda oficial de chats incógnito dice que no se guardan en el historial ni en la memoria, pero que se conservan 30 días por defecto por seguridad. Decir que no se guarda afirma de más.",
+   "fuente": "https://support.claude.com/en/articles/12260368"
+  },
+  {
+   "antes": "Hacelas más cortas y concretas. Si un proyecto tiene sus propias instrucciones, esas mandan dentro del proyecto.",
+   "despues": "Hacelas más cortas y concretas. Dentro de un proyecto también cuentan las instrucciones del proyecto: revisá que no digan lo contrario que las tuyas.",
+   "motivo": "La ayuda oficial explica que las instrucciones de la cuenta se aplican a todas las conversaciones y las del proyecto a los chats de ese proyecto, pero no dice que unas pisen a las otras. Se reescribe para no afirmar una prioridad que la fuente no confirma.",
+   "fuente": "https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features"
+  }
+ ],
+ "fuentes_extra": [
+  "https://support.claude.com/en/articles/12260368",
+  "https://support.claude.com/en/articles/12512180-use-skills-in-claude"
+ ],
+ "ejemplo": {
+  "titulo": "Ejemplo resuelto: una estética deja Claude listo antes de abrir el turno",
+  "negocio": "Ejemplo inventado: un centro de estética en Rosario, con la dueña y dos cosmetólogas. Los turnos entran por WhatsApp e Instagram, y la dueña usa Claude en el plan Pro desde la compu y el celular.",
+  "punto_de_partida": "Cada vez que le pedía a Claude una respuesta para una clienta tenía que explicarle de nuevo qué tratamientos hacen, cómo escribe y que no ponga precios. Las respuestas le salían formales, con \"estimada\" y signos de exclamación.",
+  "pasos": [
+   "Abrió un chat nuevo y pegó el prompt Que Claude te entreviste. Contestó las 8 preguntas y Claude le devolvió sus instrucciones en primera persona.",
+   "Las comparó con la plantilla A del kit y sumó dos líneas que faltaban: que los precios salen de la lista que ella pasa y que nunca se confirman turnos sin revisar la agenda.",
+   "En Settings → Your Claude pegó el texto en Instructions. En un chat nuevo probó: \"Sin buscar en internet: ¿qué sabés de mí y de mi negocio?\". La respuesta coincidió con lo que había escrito.",
+   "Abrió Manage al lado de Your memory. Borró un tema viejo de cuando usaba Claude para la facultad y le dijo en un chat: \"acordate de que trabajamos solo con turno previo\".",
+   "Dejó prendido Search and reference chats para poder pedirle \"buscá lo que hablamos del tratamiento nuevo\".",
+   "Prendió Code execution and file creation en Settings → Capabilities, completó la skill tono-de-mi-negocio del kit con tres mensajes suyos de WhatsApp como ejemplo, la comprimió en ZIP y la subió en Customize → Skills.",
+   "Para una consulta con datos de salud de una clienta usó un chat incógnito, así no quedó en la memoria."
+  ],
+  "resultado": "Claude ya arranca sabiendo qué hace el centro, cómo escribe la dueña y qué no tiene que inventar. Las respuestas para clientas salen en voseo, cortas y con [A CONFIRMAR] donde falta un precio, y la dueña revisa la memoria una vez por mes con la checklist."
+ },
+ "si_falla": [
+  {
+   "sintoma": "En Settings no aparece Your Claude.",
+   "solucion": "Tenés el diseño anterior de Settings. Las instrucciones están en Settings → Account, en el campo Instructions for Claude, y la memoria en Settings → Memory. Es lo mismo con otro nombre."
+  },
+  {
+   "sintoma": "Prendí un estilo migrado en Customize → Skills pero no cambia nada, o la sección Skills está en gris.",
+   "solucion": "Prendé Code execution and file creation (o Create and edit files) en Settings → Capabilities. En una cuenta Enterprise, si sigue en gris, el owner tiene que habilitar la ejecución de código y las skills en Organization settings → Plugins & skills."
+  },
+  {
+   "sintoma": "Claude no se acuerda de algo que hablamos dentro de un proyecto.",
+   "solucion": "Cada proyecto tiene su propia memoria, separada del resto, y la búsqueda de chats dentro de un proyecto solo mira los chats de ese proyecto. Pedíselo desde un chat del mismo proyecto, o sumá ese dato a los archivos del proyecto."
+  },
+  {
+   "sintoma": "Le pido que busque un chat viejo y dice que no lo encuentra.",
+   "solucion": "Revisá tres cosas: que tengas un plan pago, que Search and reference chats esté prendido en Settings → Your Claude y que ese chat no haya sido incógnito, porque esos no se buscan nunca."
+  },
+  {
+   "sintoma": "En una cuenta de la empresa (Team o Enterprise) no veo la memoria o no la puedo prender.",
+   "solucion": "En esos planes la memoria depende del owner de la organización. Pedile que la habilite. Mientras tanto, poné lo importante en tus instrucciones, que funcionan igual."
+  }
+ ],
+ "kit": [
+  {
+   "archivo": "instrucciones-personales-tres-plantillas.md",
+   "que_es": "Tres plantillas de instrucciones personales (dueño de negocio, freelancer, dev junior) para completar y pegar en Settings → Your Claude → Instructions.",
+   "contenido": "# Instrucciones personales para Claude: tres plantillas\n\nElegí la que más se parece a vos, completá los corchetes y pegala en Settings → Your Claude → Instructions (en el diseño anterior: Settings → Account → Instructions for Claude). Que quede en menos de 200 palabras: si te pasás, sacá lo que Claude ya haría igual.\n\n## A. Dueño o dueña de un negocio\n\nMe llamo [NOMBRE] y tengo [NEGOCIO: RUBRO Y CIUDAD]. Somos [CANTIDAD] personas.\nMis clientes son [QUIÉNES SON] y llegan por [CANALES: WHATSAPP, INSTAGRAM, LOCAL, MAIL].\nTe voy a usar sobre todo para: [EJ.: responder consultas, armar presupuestos, escribir posteos].\n\nCómo quiero que me respondas:\n- En español rioplatense, con voseo. Directo, sin introducciones.\n- Si un texto es para un cliente, dámelo listo para copiar y pegar.\n- Nunca inventes precios, stock ni condiciones: si no te los di, preguntame.\n- Si mi idea tiene un problema, decímelo antes de hacerla.\n- Cuando haya pasos, numeralos.\n\n## B. Freelancer\n\nSoy [NOMBRE], [PROFESIÓN] freelance en [PAÍS]. Trabajo con [TIPO DE CLIENTES] y cobro [POR HORA / POR PROYECTO].\nTe voy a usar para: [EJ.: propuestas, mails a clientes, ordenar mi semana, revisar entregas].\n\nCómo quiero que me respondas:\n- Corto y al grano. Si te pido un mail, solo el mail.\n- Tono profesional y cercano, en voseo, salvo que te diga que el cliente es de otro país.\n- Si un pedido de cliente es ambiguo, señalame qué tengo que preguntarle.\n- No me des listas de consejos genéricos: dame la próxima acción concreta.\n\n## C. Dev junior\n\nSoy [NOMBRE], desarrollador junior. Trabajo con [LENGUAJES Y HERRAMIENTAS].\nEstoy aprendiendo [TEMA], así que prefiero entender antes que copiar.\n\nCómo quiero que me respondas:\n- Cuando me des código, explicá en 2 o 3 líneas qué hace y por qué.\n- Si hay una forma más simple, mostrámela primero.\n- Si no estás seguro de cómo funciona una librería o una versión, decímelo y no inventes.\n- Respondé en español; los nombres de comandos y funciones, tal cual en inglés.\n\n## Para probar que quedó bien\n\nAbrí un chat nuevo y pegá: \"Sin buscar en internet: ¿qué sabés de mí y cómo me vas a responder?\". Si algo no coincide con lo que escribiste, reescribilo más corto y concreto.\n"
+  },
+  {
+   "archivo": "tono-de-mi-negocio/SKILL.md",
+   "que_es": "Skill que reemplaza a un estilo de respuesta: escribe todo lo que va a un cliente con tu tono y sin inventar datos. Completá los corchetes, guardala en una carpeta tono-de-mi-negocio, comprimila en ZIP y subila en Customize → Skills.",
+   "contenido": "---\nname: tono-de-mi-negocio\ndescription: Escribe cualquier texto para clientes con el tono de mi negocio (mensajes, mails, posteos, respuestas a consultas). Usala cuando te pida escribir, responder o reescribir algo que va a leer un cliente, o cuando diga \"con mi tono\" o \"como escribo yo\".\n---\n\n# Tono de mi negocio\n\nEscribís textos que van a leer los clientes de [NOMBRE DEL NEGOCIO]. Completá los corchetes una sola vez antes de subir la skill.\n\n## Quién escribe\n\n- Negocio: [QUÉ HACÉS, EN UNA LÍNEA].\n- Clientes: [QUIÉNES SON, EN UNA LÍNEA].\n- Firma: [NOMBRE CON EL QUE FIRMÁS, O \"SIN FIRMA\"].\n\n## Cómo suena\n\n- Español rioplatense, con voseo.\n- Frases cortas. Una idea por oración.\n- Cercano pero profesional: [EJEMPLO: \"como le hablo a un cliente que ya conozco\"].\n- Sin signos de exclamación salvo para saludar o felicitar.\n- Palabras que uso: [3 A 5 PALABRAS O EXPRESIONES TUYAS].\n- Palabras que no uso nunca: [EJEMPLO: \"estimado\", \"a la brevedad\", \"no dude en contactarnos\"].\n\n## Largo según el canal\n\n- WhatsApp o mensaje directo: de 2 a 4 líneas.\n- Mail: asunto de menos de 8 palabras y cuerpo de 4 a 8 líneas.\n- Posteo: un gancho en la primera línea, 3 a 5 líneas de cuerpo y un cierre que diga qué hacer.\n\nSi no te digo el canal, preguntámelo antes de escribir.\n\n## Reglas\n\n- No inventes precios, horarios, plazos ni condiciones. Si el texto los necesita y no te los di, dejá [A CONFIRMAR] y avisame al final.\n- No prometas cosas que no están en lo que te pasé.\n- Si el cliente está enojado, primero reconocé el problema en una línea y después la solución. Sin disculpas largas.\n\n## Un texto mío de ejemplo\n\n[PEGÁ ACÁ UN MENSAJE O MAIL QUE HAYAS ESCRITO VOS Y TE GUSTE CÓMO QUEDÓ]\n\nUsalo para copiar el tono, no el contenido.\n"
+  },
+  {
+   "archivo": "checklist-configuracion-inicial-claude.md",
+   "que_es": "Checklist para dejar instrucciones, memoria, búsqueda de chats, skills y privacidad configuradas, con una revisión mensual de 5 minutos.",
+   "contenido": "# Checklist: Claude configurado en 10 minutos\n\nMarcá cada punto. Los nombres de los menús están como en la ayuda oficial (en inglés); en Claude en español los ves traducidos en el mismo lugar.\n\n## Instrucciones (todos los planes)\n- [ ] Entré a Settings → Your Claude (o Account en el diseño anterior).\n- [ ] Pegué mis instrucciones en Instructions, en menos de 200 palabras.\n- [ ] Probé en un chat nuevo que las usa.\n\n## Memoria\n- [ ] Revisé que Generate memory from chats esté como quiero (prendida o pausada).\n- [ ] Abrí Manage al lado de Your memory y corregí o borré lo que no va.\n- [ ] Le dije en un chat una cosa que quiero que recuerde (\"acordate de que...\").\n- [ ] Sé que resetear borra todo, también la memoria de los proyectos, y no se puede deshacer.\n- [ ] (Team o Enterprise) Si no veo la memoria, le pregunté al owner de la cuenta.\n\n## Búsqueda de chats (planes pagos)\n- [ ] Search and reference chats está prendido.\n- [ ] Sé que dentro de un proyecto solo busca en los chats de ese proyecto.\n\n## Skills\n- [ ] Prendí Code execution and file creation (o Create and edit files) en Settings → Capabilities.\n- [ ] En Customize → Skills prendí los estilos migrados que quiero usar, o subí la skill tono-de-mi-negocio.\n\n## Privacidad\n- [ ] Sé abrir un chat incógnito (fantasma arriba a la derecha, en un chat nuevo fuera de un proyecto).\n- [ ] Sé apagar la memoria para un solo chat: + en la caja de mensaje, Memory apagado, antes del primer mensaje.\n\n## Revisión mensual (5 minutos)\n- [ ] Releo mis instrucciones: ¿siguen siendo ciertas?\n- [ ] Reviso Your memory y borro lo viejo.\n"
+  }
+ ],
+ "notas_revision": "Verifiqué contra la ayuda oficial: ubicación de Instructions (Settings > Your Claude, o Account e Instructions for Claude en el diseño anterior), memoria (prendida por defecto en Free, Pro, Max y Ultra; Generate memory from chats, Manage al lado de Your memory, pausar y resetear, reset borra también la memoria de proyectos; Team/Enterprise según owner), búsqueda de chats (planes pagos, Search and reference chats, alcance por proyecto), incógnito (fantasma, fuera de proyectos, 30 días de retención), apagar memoria por chat (+, Memory, antes del primer mensaje), estilos migrados a skills apagadas en Customize > Skills, y requisito de ejecución de código para skills. No pude confirmar si hay un botón de guardar explícito en el campo Instructions, ni qué pasa cuando las instrucciones de la cuenta y las del proyecto se contradicen; la corrección de la FAQ evita afirmarlo."
+}

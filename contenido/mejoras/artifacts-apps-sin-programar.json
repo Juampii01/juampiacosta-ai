@@ -1,0 +1,96 @@
+{
+ "slug": "artifacts-apps-sin-programar",
+ "verificada": "2026-11-08",
+ "correcciones": [
+  {
+   "antes": "Activá Cloud code execution and file creation.",
+   "despues": "Activá Cloud code execution and file creation. En el diseño nuevo de Settings la misma opción se llama Create and edit files.",
+   "motivo": "La ayuda oficial indica que la opción se llama Cloud code execution and file creation y que en el diseño actualizado de Settings aparece como Create and edit files. Sin esa aclaración, quien tiene el diseño nuevo no la encuentra.",
+   "fuente": "https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them"
+  },
+  {
+   "antes": "Free, Pro y Max: abrí el artifact, revisá que sea la versión correcta y tocá Publish. Copiá el link.",
+   "despues": "Artifacts nuevos (los creados desde el 16 de septiembre de 2026): arrancan privados. En Pro y Max, en las opciones para compartir del artifact cambiá Only you por Anyone with the link y copiá el link, o invitá a personas puntuales por mail (en beta). Artifacts viejos (legacy), en Free, Pro y Max: abrilos, revisá que sea la versión correcta y tocá Publish. Copiá el link.",
+   "motivo": "La ayuda oficial separa dos modelos. Los artifacts creados en chats antes del 16 de septiembre de 2026 son legacy y se comparten con Publish. Los nuevos arrancan privados y se comparten eligiendo Only you o Anyone with the link (más invitaciones por mail en beta) en Pro, Max y Ultra.",
+   "fuente": "https://support.claude.com/en/articles/9547008"
+  },
+  {
+   "antes": "Para meterlo en tu web: Get embed code, y en Allowed domains poné las direcciones de tu sitio.",
+   "despues": "Para meterlo en tu web (artifacts publicados con Publish): después de publicarlo tocá Get embed code, y en Allowed domains poné las direcciones de tu sitio, separadas por comas.",
+   "motivo": "La ayuda oficial describe el código para insertar como un paso posterior a publicar con Publish y pide los dominios separados por comas. No describe esa opción para los artifacts nuevos, así que la guía no debería prometerla para todos.",
+   "fuente": "https://support.claude.com/en/articles/9547008"
+  },
+  {
+   "antes": "Team y Enterprise: tocá Share y después Share & copy link. Solo lo ven personas de tu organización.",
+   "despues": "Team y Enterprise: en los artifacts nuevos elegís entre Only people invited, Anyone at [tu organización] o Anyone with the link (esta última solo si el owner habilitó compartir afuera), con permiso Can view, Commenter o Can edit. En los artifacts viejos: Share y después Share & copy link, y lo abren las personas de tu organización con su cuenta.",
+   "motivo": "La ayuda oficial indica que en Team y Enterprise los artifacts nuevos se comparten con esas tres opciones y tres niveles de acceso, que por defecto quedan dentro de la organización y que el owner decide si se puede compartir afuera. Share & copy link es el camino de los artifacts legacy.",
+   "fuente": "https://support.claude.com/en/articles/9547008"
+  },
+  {
+   "antes": "Para verlo y usarlo, no. Se le pide cuenta solo para funciones como personalizarlo o las partes que usan IA.",
+   "despues": "En general, no: la mayoría de los artifacts compartidos por link se abren sin cuenta. Las excepciones: los documentos piden iniciar sesión y son solo de lectura, algunos artifacts (como los tableros) muestran parte del contenido solo con sesión iniciada, y las partes que usan Claude o apps conectadas piden cuenta y gastan del plan de quien las usa. En Team y Enterprise, si lo compartís dentro de la organización, la persona necesita su cuenta.",
+   "motivo": "La ayuda oficial aclara que los Docs requieren iniciar sesión, que algunos artifacts como los tableros muestran contenido solo después de iniciar sesión y que quien abre solo con el link, sin sesión, no puede usar las partes que dependen de Claude o de apps conectadas.",
+   "fuente": "https://support.claude.com/en/articles/9547008"
+  },
+  {
+   "antes": "Revisá que esté activado Cloud code execution and file creation en Settings → Capabilities.",
+   "despues": "Revisá que esté activado Cloud code execution and file creation (Create and edit files en el diseño nuevo) en Settings → Capabilities. En Team y Enterprise lo activa quien administra, en Organization settings → Capabilities.",
+   "motivo": "La ayuda oficial indica que el nombre cambia en el diseño nuevo de Settings y que en los planes de equipo la opción la maneja el administrador, así que el usuario puede no verla en su propio Settings.",
+   "fuente": "https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them"
+  }
+ ],
+ "fuentes_extra": [
+  "https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them",
+  "https://support.claude.com/en/articles/9547008"
+ ],
+ "ejemplo": {
+  "titulo": "Ejemplo resuelto: un cotizador de remeras estampadas que los clientes abren desde un link",
+  "negocio": "Ejemplo inventado: un taller de estampado de remeras en Asunción, Paraguay, con el dueño y dos empleados. Hacen remeras para colegios, eventos y empresas, y los pedidos llegan por WhatsApp e Instagram. El dueño tiene un plan Pro.",
+  "punto_de_partida": "Cada consulta de precio la responde el dueño a mano, sacando la cuenta con una planilla que solo él entiende. Los clientes preguntan lo mismo varias veces al cambiar la cantidad o los colores.",
+  "pasos": [
+   "En Settings → Capabilities revisó que estuviera activada la opción de ejecución de código y creación de archivos (en su pantalla figuraba como Create and edit files).",
+   "Completó el brief del kit con sus precios reales: precio base por remera según el talle, recargo por cada color extra de estampa, descuento por cantidad y recargo por entrega urgente. Aclaró que los precios no incluyen impuestos.",
+   "Pegó el brief en un chat nuevo. Claude le resumió qué iba a armar y le preguntó si el descuento por cantidad se aplicaba antes o después del recargo por urgencia. Respondió y le dio el OK.",
+   "Con el prompt de prueba del kit le pidió que corriera tres casos: un pedido chico, uno grande con todos los extras y uno con cantidad cero. En el segundo la cuenta no le daba igual que en su planilla; Claude corrigió el orden de los descuentos.",
+   "Pidió cambios en el chat: el total más grande, una leyenda de precio estimado y un botón Pedir este presupuesto que arma el texto para mandar por WhatsApp.",
+   "Pasó la checklist del kit. Sacó una columna con el costo de la tinta que había quedado visible y lo abrió desde el celular para ver que se leyera bien.",
+   "Como era un artifact nuevo, en las opciones para compartir cambió Only you por Anyone with the link, copió el link y lo sumó al mensaje que manda cuando le piden precio por WhatsApp o Instagram."
+  ],
+  "resultado": "El taller tiene un cotizador que el cliente abre desde el celular sin cuenta de Claude, porque no usa IA ni apps conectadas. El cliente arma su pedido, ve el precio estimado y manda el resumen por WhatsApp. El dueño solo confirma el precio final."
+ },
+ "si_falla": [
+  {
+   "sintoma": "Claude te responde con código en el chat en vez de abrir el artifact al costado.",
+   "solucion": "Revisá en Settings → Capabilities que esté activada Cloud code execution and file creation (o Create and edit files). Si está activada, pedilo explícito: armalo como artifact interactivo. En Team y Enterprise, si no ves la opción, la tiene que activar quien administra en Organization settings → Capabilities."
+  },
+  {
+   "sintoma": "El artifact muestra un error o una pantalla en blanco.",
+   "solucion": "Tocá Try fixing with Claude al lado del error: copia el detalle a un mensaje nuevo para que lo arregle. No siempre sale a la primera. Si después de dos intentos sigue igual, pedile que lo rehaga más simple, con menos funciones, y sumalas de a una."
+  },
+  {
+   "sintoma": "Mandaste el link y la otra persona no lo puede abrir.",
+   "solucion": "Los artifacts nuevos arrancan privados: fijate que en las opciones para compartir diga Anyone with the link y no Only you. En Team y Enterprise, compartir con gente de afuera solo funciona si el owner lo habilitó; si no, solo lo abren personas de tu organización con su cuenta. Si el artifact se hizo dentro de un Proyecto, quien lo abre también necesita acceso a ese Proyecto."
+  },
+  {
+   "sintoma": "La parte que usa Claude o una app conectada no le funciona a tu cliente.",
+   "solucion": "Esas partes piden iniciar sesión con una cuenta de Claude y gastan del plan de quien las usa. Las apps conectadas son las de cada persona: si tu cliente no tiene esa app conectada, ve un error. Si tu cliente no tiene cuenta, pedile a Claude una versión sin IA ni conectores."
+  },
+  {
+   "sintoma": "Se borraron los datos que guardaba un artifact viejo.",
+   "solucion": "En los artifacts legacy, despublicar con Unpublish borra para siempre los datos guardados, y no se puede volver a publicar. Antes de despublicar, pedile a Claude un botón para copiar o descargar los datos como texto. Para compartirlo de nuevo, tenés que crear un artifact nuevo."
+  }
+ ],
+ "kit": [
+  {
+   "archivo": "brief-para-pedir-un-artifact.md",
+   "que_es": "Brief para completar y pegar en un chat nuevo: Claude arma el cotizador, la calculadora o el tablero con tus datos reales y tus reglas de cálculo. Incluye el prompt para probarlo con tres casos.",
+   "contenido": "# Brief para pedirle un artifact a Claude\n\nCompletá este brief y pegalo entero en un chat nuevo. Cuanto más concreto, menos vueltas. Lo que no sepas, dejalo con [NO SÉ] y Claude te va a preguntar.\n\n```\nArmame un artifact interactivo: [QUÉ ES, EJ.: COTIZADOR, CALCULADORA DE MÁRGENES, CHECKLIST DE ONBOARDING, TABLERO DE VENTAS].\n\nPara quién es: [YO / MI EQUIPO / MIS CLIENTES DESDE UN LINK].\nQué tiene que poder hacer la persona que lo usa:\n1. [ACCIÓN 1, EJ.: ELEGIR EL SERVICIO]\n2. [ACCIÓN 2, EJ.: MARCAR EXTRAS]\n3. [ACCIÓN 3, EJ.: VER EL TOTAL AL INSTANTE]\n\nDatos que usa (copiá tus datos reales, no ejemplos):\n[LISTA O TABLA: SERVICIOS Y PRECIOS, COSTOS, PASOS, NÚMEROS DEL MES]\n\nReglas de cálculo:\n[EJ.: QUÉ RECARGOS SUMAN, DESDE QUÉ CANTIDAD HAY DESCUENTO, EN QUÉ ORDEN SE APLICAN, SI LOS PRECIOS INCLUYEN IMPUESTOS]\n\nQué tiene que mostrar al final: [EJ.: TOTAL GRANDE, DETALLE LÍNEA POR LÍNEA, LEYENDA \"PRECIO ESTIMADO, SUJETO A CONFIRMACIÓN\"].\n\n¿Tiene que guardar datos entre usos? [NO / SÍ, SOLO PARA CADA PERSONA / SÍ, COMPARTIDOS PARA TODOS]\n¿Tiene que usar Claude por dentro? [NO / SÍ, PARA: ...]\n\nEstilo: limpio, que se lea bien en el celular, todo en español, colores [TUS COLORES O \"SOBRIOS\"].\nAntes de armarlo, decime en 5 líneas qué vas a hacer y qué supuestos tomás. Esperá mi OK.\n```\n\n## Después de que lo arma: prueba en 5 minutos\n\nPegá esto en el mismo chat:\n\n```\nProbá el artifact con estos tres casos y decime el resultado de cada uno, mostrando la cuenta:\n1. [CASO NORMAL]\n2. [CASO CON TODOS LOS EXTRAS]\n3. [CASO RARO: CANTIDAD 0, CAMPO VACÍO, NÚMERO ENORME]\nSi algún resultado no coincide con mis reglas de cálculo, corregilo y avisame qué cambiaste.\n```\n\nHacé vos la cuenta de al menos un caso con la calculadora. Si no te da lo mismo, no lo compartas hasta que coincida.\n"
+  },
+  {
+   "archivo": "checklist-antes-de-compartir-un-artifact.md",
+   "que_es": "Checklist para pasar antes de mandar el link: datos, almacenamiento, quién lo puede ver, partes con IA y el mensaje para acompañar el link.",
+   "contenido": "# Checklist antes de compartir un artifact\n\nPasala cada vez que vayas a mandar el link a un cliente o a tu equipo.\n\n## Contenido\n\n- [ ] Los precios, costos y datos son los reales y están al día.\n- [ ] Probé al menos tres casos y la cuenta me dio igual que hecha a mano.\n- [ ] Dice en algún lado que es un precio estimado (si es un cotizador).\n- [ ] No quedó ningún dato interno a la vista: márgenes, costos, nombres de proveedores, notas para mí.\n- [ ] Se ve bien en el celular (lo abrí desde el teléfono).\n\n## Datos guardados\n\n- [ ] Sé si el artifact guarda datos y de qué tipo: personal (cada persona ve lo suyo) o compartido (todos ven lo mismo).\n- [ ] Si es compartido, no le pido a nadie que cargue datos sensibles (documentos, teléfonos de terceros, datos de salud o de tarjetas).\n- [ ] Sé que guardar datos entre sesiones es de Pro en adelante y tiene un límite de 20 MB por artifact, solo texto.\n\n## Quién lo puede ver\n\n- [ ] Artifact nuevo: elegí bien entre Only you y Anyone with the link (en Team y Enterprise: Only people invited, Anyone at mi organización o Anyone with the link, si el owner lo permite).\n- [ ] Artifact viejo (legacy, hecho en un chat antes del 16 de septiembre de 2026): lo publiqué con Publish. Sé que si lo despublico con Unpublish no lo puedo volver a publicar y se borran sus datos guardados.\n- [ ] En Team con artifacts viejos: revisé que en el chat de origen no haya archivos sensibles, porque quien lo ve también accede a ellos.\n- [ ] Si lo meto en mi web: después de publicarlo, Get embed code, y en Allowed domains puse mi dominio (si son varios, separados por comas).\n\n## Partes que usan Claude o apps conectadas\n\n- [ ] Sé que cada persona que usa la parte con IA gasta de su propio plan y tiene que iniciar sesión con su cuenta de Claude.\n- [ ] Si usa apps conectadas (por ejemplo Google Calendar), cada persona usa las suyas. Quien no tenga esa app conectada va a ver un error: lo aclaré en el mensaje con el link.\n- [ ] Sé que quien abre el link sin iniciar sesión o desde fuera de mi organización no puede usar las partes con Claude ni con apps conectadas.\n\n## Mensaje para mandar con el link\n\n```\nTe paso [EL COTIZADOR / LA CALCULADORA]: [LINK]\nSe abre desde el celular o la compu. [SI TIENE IA: LA PARTE DE [X] TE PIDE INICIAR SESIÓN CON UNA CUENTA DE CLAUDE.]\nLos valores son estimados; el presupuesto final te lo confirmo yo.\n```\n"
+  }
+ ],
+ "notas_revision": "Verifiqué contra la ayuda oficial (artículos 17153992 y 9547008): nombre de la opción Cloud code execution and file creation y su nombre nuevo Create and edit files, ruta en Settings > Capabilities y Organization settings > Capabilities, crear artifacts en todos los planes, Edit with Claude, Try fixing with Claude, pestaña Artifacts, exportación de plantillas, artifacts que usan Claude (gastan del plan de cada usuario, sin claves de API), almacenamiento persistente (Pro en adelante, 20 MB, solo texto, personal o compartido), conectores en artifacts (Pro en adelante, cada persona usa los suyos), Publish, Get embed code, Allowed domains, Unpublish (no se puede republicar y borra los datos), Share & copy link y el modelo nuevo de compartir. La guía describía solo el modelo de artifacts legacy: lo corregí. No encontré en la ayuda el nombre exacto del botón para compartir los artifacts nuevos ni si el plan Free puede compartirlos por link (la ayuda lista Pro, Max y Ultra), así que las correcciones hablan de las opciones para compartir sin nombrar el botón y no prometen nada para Free. Tampoco confirmé si los artifacts nuevos tienen código para insertar en una web. El artículo 9487310 que cita la guía hoy muestra el mismo contenido que 17153992; lo sumé en fuentes_extra."
+}

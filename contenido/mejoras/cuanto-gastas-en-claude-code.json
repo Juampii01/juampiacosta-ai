@@ -1,0 +1,58 @@
+{
+ "slug": "cuanto-gastas-en-claude-code",
+ "verificada": "2026-11-08",
+ "correcciones": [],
+ "fuentes_extra": [
+  "https://code.claude.com/docs/en/statusline#troubleshooting"
+ ],
+ "ejemplo": {
+  "titulo": "Ejemplo resuelto: una dev junior descubre que estaba pagando API sin saberlo",
+  "negocio": "Ejemplo inventado: una desarrolladora junior en una software factory de Guadalajara con unas veinte personas. En la empresa tiene una clave de API para un proyecto interno, y para sus trabajos por su cuenta paga un plan Pro.",
+  "punto_de_partida": "Usaba Claude Code de noche para sus proyectos personales pensando que gastaba su plan Pro. Un día su líder le preguntó por un consumo alto en la Console del proyecto interno.",
+  "pasos": [
+   "Abrió Claude Code y corrió /status. Vio que estaba entrando con una clave de API y no con su cuenta de claude.ai.",
+   "En la terminal corrió echo $ANTHROPIC_API_KEY y encontró la clave del trabajo. Estaba en su ~/.zshrc desde que configuró el proyecto interno.",
+   "Borró esa línea del ~/.zshrc y la pasó a un archivo que carga solo cuando trabaja en ese proyecto. Abrió una terminal nueva, entró a Claude Code y corrió /status otra vez: ahora decía su cuenta de claude.ai.",
+   "Corrió /usage. Como ya estaba con su suscripción, ignoró el monto en dólares del bloque Session y miró las barras del plan. Apretó w para ver los últimos 7 días del desglose.",
+   "Copió el script del kit a ~/.claude/statusline-consumo.sh, le dio permisos con chmod +x y sumó el bloque statusLine del kit a su ~/.claude/settings.json.",
+   "Desde entonces, la línea de estado le muestra el modelo, el porcentaje de contexto y cuánto usó de la ventana de 5 horas y de la semana. Cuando trabaja en el proyecto de la empresa con la clave, la misma línea le muestra el costo estimado de la sesión.",
+   "Le contó a su líder qué había pasado y le mostró la checklist de la guía Pro, Max o API para que el equipo revise lo mismo."
+  ],
+  "resultado": "Quedó separada la clave de la empresa de su uso personal, y con la línea de estado sabe en todo momento si está gastando su plan o la API. Para la factura real de la empresa, el equipo mira la página de uso de la Console."
+ },
+ "si_falla": [
+  {
+   "sintoma": "Hiciste unset ANTHROPIC_API_KEY, pero al abrir otra terminal Claude Code vuelve a usar la clave.",
+   "solucion": "unset solo vale para esa terminal. La variable seguramente está en ~/.zshrc, ~/.bashrc o en las variables de entorno de Windows: borrá o comentá esa línea y abrí una terminal nueva. Si alguna vez aprobaste la clave, también podés cambiarlo en /config con el interruptor Use custom API key, que aparece solo mientras la variable existe."
+  },
+  {
+   "sintoma": "Configuraste la línea de estado y abajo no aparece nada.",
+   "solucion": "Revisá en orden: que el script sea ejecutable (chmod +x ~/.claude/statusline-consumo.sh), que tengas jq instalado, que hayas aceptado el aviso de confianza de la carpeta (workspace trust) y que el script imprima algo si lo corrés a mano. En Windows con Git Bash, escribí la ruta del script con barras /, no con \\. Si nada funciona, abrí Claude Code con claude --debug para ver el error del script."
+  },
+  {
+   "sintoma": "La línea de estado no muestra los porcentajes de 5 horas ni de la semana.",
+   "solucion": "Esos datos (rate_limits) llegan solo para suscriptores Pro y Max de claude.ai y después de la primera respuesta de la sesión. Si entrás con clave de API no aparecen: ahí lo que ves es el costo estimado. Mandá un mensaje y esperá la respuesta antes de mirar."
+  },
+  {
+   "sintoma": "/usage muestra \"Showing last-known usage\" o \"rate limited until\" con una hora.",
+   "solucion": "No es tu límite de trabajo: es que Claude Code no puede volver a consultar tus límites hasta esa hora. Te muestra los últimos datos que cargó en la última hora. Apretá r después de la hora indicada para traer datos nuevos."
+  },
+  {
+   "sintoma": "Apretás f en /usage y se cierra con \"Nothing was sent. Turn off Remote Control to use fixes.\"",
+   "solucion": "Con Remote Control conectado, f no funciona. Desconectá Remote Control, volvé a correr /usage y apretá f. Si en el pie no ves la pista \"f to fix\", revisá que tengas la versión 2.1.305 o posterior (claude --version)."
+  }
+ ],
+ "kit": [
+  {
+   "archivo": "statusline-consumo.sh",
+   "que_es": "Script de línea de estado que muestra el modelo, el porcentaje de contexto y, según cómo pagás, el uso de 5 horas y semanal (Pro y Max) o el costo estimado de la sesión (API). Guardalo como ~/.claude/statusline-consumo.sh y dale permisos con chmod +x. Necesita jq.",
+   "contenido": "#!/bin/bash\n# Línea de estado de consumo para Claude Code (kit juampiacosta.ai)\n# Muestra: modelo, % de contexto, y según cómo pagás:\n#  - suscripción Pro o Max: % usado de la ventana de 5 horas y de la semana\n#  - API: costo estimado de la sesión (a precio de lista, no es tu factura)\n# Necesita jq instalado.\n\ninput=$(cat)\n\nMODELO=$(echo \"$input\" | jq -r '.model.display_name // \"modelo ?\"')\nCTX=$(echo \"$input\" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1)\nH5=$(echo \"$input\" | jq -r '.rate_limits.five_hour.used_percentage // empty' | cut -d. -f1)\nSEM=$(echo \"$input\" | jq -r '.rate_limits.seven_day.used_percentage // empty' | cut -d. -f1)\nCOSTO=$(echo \"$input\" | jq -r '.cost.total_cost_usd // 0')\n\nLINEA=\"[$MODELO] contexto ${CTX}%\"\nif [ \"$CTX\" -ge 70 ] 2>/dev/null; then\n  LINEA=\"$LINEA (pensá en /clear o /compact)\"\nfi\n\nif [ -n \"$H5\" ] || [ -n \"$SEM\" ]; then\n  if [ -n \"$H5\" ]; then LINEA=\"$LINEA | 5h ${H5}%\"; fi\n  if [ -n \"$SEM\" ]; then LINEA=\"$LINEA | semana ${SEM}%\"; fi\nelse\n  COSTO_FMT=$(LC_NUMERIC=C printf '%.2f' \"$COSTO\")\n  LINEA=\"$LINEA | costo estimado US\\$${COSTO_FMT}\"\nfi\n\necho \"$LINEA\"\n"
+  },
+  {
+   "archivo": "settings-statusline-consumo.json",
+   "que_es": "El bloque para sumar a tu ~/.claude/settings.json y activar el script. Si ese archivo ya tiene contenido, agregá solo la clave statusLine dentro de las llaves que ya existen.",
+   "contenido": "{\n  \"statusLine\": {\n    \"type\": \"command\",\n    \"command\": \"~/.claude/statusline-consumo.sh\",\n    \"padding\": 0\n  }\n}\n"
+  }
+ ],
+ "notas_revision": "Verifiqué todo contra la doc oficial y no encontré errores: /status (versión, modelo, cuenta, método), precedencia de ANTHROPIC_API_KEY con aprobación y unset, /login para pasar de Console a suscripción, /usage con /cost y /stats como alias (stats abre la pestaña Stats), que corre mientras Claude responde, bloque Session para usuarios de API con costo local a precio de lista que se reinicia con /clear, Console usage page, desglose en Pro/Max/Team/Enterprise con skills, subagentes, plugins y MCP, recomendaciones desde 10%, teclas d/w, f desde v2.1.305, desglose solo de esta compu, /statusline con descripción, campos context_window.used_percentage, rate_limits.five_hour/seven_day (solo Pro y Max de claude.ai, después de la primera respuesta) y cost.total_cost_usd, contador del spinner (solo salida del turno), /insights (HTML, consume del plan), mensajes de límite de sesión/semana vs Opus/Sonnet, /usage-credits (no funciona con clave de API) y avisos de contexto. El script del kit lo probé con JSON de ejemplo (suscripción, API y campos vacíos) y sale con código 0; usa LC_NUMERIC=C para que el costo no falle con configuraciones regionales que usan coma decimal. No pude abrir el repo de ccusage (allowlist), así que no verifiqué sus reportes; la guía lo describe en general y lo marca como herramienta de la comunidad con números estimados."
+}
