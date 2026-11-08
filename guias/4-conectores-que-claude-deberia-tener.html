@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena 4-conectores-que-claude-deberia-tener, Los 4 conectores que Claude debería tener, Context7, Firecrawl, Playwright y Composio: documentación al día, cualquier web en texto, un navegador de verdad y más de 1.000 apps conectadas. y 14a3efd1 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena 4-conectores-que-claude-deberia-tener, Los 4 conectores que Claude debería tener, Context7, Firecrawl, Playwright y Composio: documentación al día, cualquier web en texto, un navegador de verdad y más de 1.000 apps conectadas. y 3db65d83 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,26 +9,26 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=14a3efd1">
-<link rel="stylesheet" href="../web/cta.css?v=14a3efd1">
-<link rel="stylesheet" href="../web/biblioteca.css?v=14a3efd1">
-<link rel="stylesheet" href="../web/guia.css?v=14a3efd1">
-<link rel="stylesheet" href="../web/tema.css?v=14a3efd1">
-<script src="../web/tema.js?v=14a3efd1"></script>
+<link rel="stylesheet" href="../web/base.css?v=3db65d83">
+<link rel="stylesheet" href="../web/cta.css?v=3db65d83">
+<link rel="stylesheet" href="../web/biblioteca.css?v=3db65d83">
+<link rel="stylesheet" href="../web/guia.css?v=3db65d83">
+<link rel="stylesheet" href="../web/tema.css?v=3db65d83">
+<script src="../web/tema.js?v=3db65d83"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=14a3efd1"></script>
-<script src="../web/guias-web.js?v=14a3efd1"></script>
-<script src="../web/comun.js?v=14a3efd1"></script>
+<script src="../web/redes.js?v=3db65d83"></script>
+<script src="../web/guias-web.js?v=3db65d83"></script>
+<script src="../web/comun.js?v=3db65d83"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="4-conectores-que-claude-deberia-tener"></main>
 <script>var GUIA = {"slug": "4-conectores-que-claude-deberia-tener", "fuentes": ["https://github.com/upstash/context7", "https://github.com/firecrawl/firecrawl-mcp-server", "https://github.com/microsoft/playwright-mcp", "https://docs.composio.dev/docs/composio-connect"], "post": "CONECTOR", "t": "Los 4 conectores que Claude debería tener", "d": "Context7, Firecrawl, Playwright y Composio: documentación al día, cualquier web en texto, un navegador de verdad y más de 1.000 apps conectadas.", "tema": "Conectores", "min": 8, "secciones": [{"h": "Los 4 conectores", "lista": ["Context7: documentación actualizada de librerías, para que no programe con información vieja. Funciona sin cuenta.", "Firecrawl: saca el contenido de cualquier página web en texto limpio. Cuenta gratis en firecrawl.dev.", "Playwright: abre un navegador de verdad, hace clic y completa formularios. No necesita cuenta.", "Composio: conecta Claude a más de 1.000 apps (Gmail, Notion, Slack, GitHub…). Cuenta gratis en composio.dev."]}, {"h": "Opción 1: Claude Code, un solo mensaje", "prompts": [{"t": "Instalar los 4", "c": "Instalá estos 4 servidores MCP a nivel usuario (--scope user) para que estén en todos mis proyectos. Ejecutá los comandos uno por uno y avisame si alguno falla:\n\n1. claude mcp add --scope user --transport http context7 https://mcp.context7.com/mcp\n2. claude mcp add --scope user --transport http firecrawl https://mcp.firecrawl.dev/v2/mcp-oauth\n3. claude mcp add --scope user playwright -- npx @playwright/mcp@latest\n4. claude mcp add --scope user --transport http composio https://connect.composio.dev/mcp\n\nDespués corré \"claude mcp list\" y mostrame el estado de cada uno. Si Playwright falla porque falta Node.js, decime cómo instalarlo."}], "aviso": "Firecrawl y Composio piden iniciar sesión: escribí /mcp, elegí cada uno y tocá Authenticate."}, {"h": "Opción 2: app de Claude", "pasos": ["En el cuadro de mensaje: + → Conectores → Agregar conector → Agregar conector personalizado.", "Context7: https://mcp.context7.com/mcp", "Firecrawl: https://mcp.firecrawl.dev/v2/mcp-oauth", "Composio: https://connect.composio.dev/mcp", "Playwright va en el archivo de configuración de Claude Desktop (necesita Node.js)."], "prompts": [{"t": "Playwright en claude_desktop_config.json", "c": "\"playwright\": {\n  \"command\": \"npx\",\n  \"args\": [\"@playwright/mcp@latest\"]\n}"}]}, {"h": "Cómo usarlos", "prompts": [{"t": "Context7", "c": "Usá Context7 y armá la configuración de autenticación con la última versión de [LIBRERÍA]."}, {"t": "Firecrawl", "c": "Extraé con Firecrawl la página de precios de esta web y pasámela en una tabla: [URL]"}, {"t": "Playwright", "c": "Abrí mi web con Playwright, revisá si el formulario de contacto funciona y decime qué falla: [URL]"}, {"t": "Composio", "c": "Con Composio, buscá en mi Gmail los mails de clientes de esta semana y creá una tarea en Notion por cada uno."}], "aviso": "Composio y Playwright actúan en tu nombre: leé lo que Claude te propone antes de aprobarlo."}], "faq": [{"q": "claude mcp list dice \"Needs authentication\"", "a": "Escribí /mcp, elegí el conector y tocá Authenticate."}, {"q": "Playwright: \"npx no se reconoce\"", "a": "Falta Node.js: instalalo desde nodejs.org y reiniciá la terminal."}], "idea": []};</script>
 
-<script src="../web/rutas.js?v=14a3efd1"></script>
-<script src="../web/logos.js?v=14a3efd1"></script>
-<script src="../web/guia.js?v=14a3efd1"></script>
+<script src="../web/rutas.js?v=3db65d83"></script>
+<script src="../web/logos.js?v=3db65d83"></script>
+<script src="../web/guia.js?v=3db65d83"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

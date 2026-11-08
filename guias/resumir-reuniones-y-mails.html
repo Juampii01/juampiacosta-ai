@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena resumir-reuniones-y-mails, De la reunión a las tareas: resumir reuniones y mails con Claude, Convertí una transcripción en decisiones, tareas y responsables, y usá el conector de Gmail para ponerte al día con tu bandeja. y 14a3efd1 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena resumir-reuniones-y-mails, De la reunión a las tareas: resumir reuniones y mails con Claude, Convertí una transcripción en decisiones, tareas y responsables, y usá el conector de Gmail para ponerte al día con tu bandeja. y 3db65d83 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,26 +9,26 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=14a3efd1">
-<link rel="stylesheet" href="../web/cta.css?v=14a3efd1">
-<link rel="stylesheet" href="../web/biblioteca.css?v=14a3efd1">
-<link rel="stylesheet" href="../web/guia.css?v=14a3efd1">
-<link rel="stylesheet" href="../web/tema.css?v=14a3efd1">
-<script src="../web/tema.js?v=14a3efd1"></script>
+<link rel="stylesheet" href="../web/base.css?v=3db65d83">
+<link rel="stylesheet" href="../web/cta.css?v=3db65d83">
+<link rel="stylesheet" href="../web/biblioteca.css?v=3db65d83">
+<link rel="stylesheet" href="../web/guia.css?v=3db65d83">
+<link rel="stylesheet" href="../web/tema.css?v=3db65d83">
+<script src="../web/tema.js?v=3db65d83"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=14a3efd1"></script>
-<script src="../web/guias-web.js?v=14a3efd1"></script>
-<script src="../web/comun.js?v=14a3efd1"></script>
+<script src="../web/redes.js?v=3db65d83"></script>
+<script src="../web/guias-web.js?v=3db65d83"></script>
+<script src="../web/comun.js?v=3db65d83"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="resumir-reuniones-y-mails"></main>
 <script>var GUIA = {"slug": "resumir-reuniones-y-mails", "t": "De la reunión a las tareas: resumir reuniones y mails con Claude", "d": "Convertí una transcripción en decisiones, tareas y responsables, y usá el conector de Gmail para ponerte al día con tu bandeja.", "tema": "Productividad", "min": 8, "secciones": [{"h": "Lo que necesitás", "lista": ["Para reuniones: la transcripción en texto. La da tu herramienta de videollamadas o de notas, o la escribís vos. Claude trabaja sobre el texto que le pasás.", "Para mails: el conector de Gmail de Claude, disponible para todos los usuarios en la web y en la app de escritorio.", "Para los dos: cinco minutos para revisar el resultado antes de mandarlo."]}, {"h": "De la transcripción a las acciones", "p": ["Pegá la transcripción o subila como archivo y usá el prompt de abajo. Pedir que cite la frase de donde saca cada tarea te deja comprobar rápido que no inventó nada: la propia guía de Anthropic recomienda pedir citas textuales cuando trabajás con documentos largos."], "prompts": [{"t": "Resumen de reunión con responsables", "c": "Te paso la transcripción de una reunión de [TEMA] con [PARTICIPANTES].\n<transcripcion>\n[PEGÁ LA TRANSCRIPCIÓN]\n<\/transcripcion>\nArmame:\n1. Resumen en 5 líneas.\n2. Decisiones tomadas.\n3. Tabla de tareas con: tarea, responsable, fecha límite y la frase textual de la transcripción de donde sale.\n4. Temas que quedaron abiertos.\nReglas: si una tarea no tiene responsable o fecha claros, poné \"SIN DEFINIR\". No asignes responsables por tu cuenta."}]}, {"h": "El mail de seguimiento", "prompts": [{"t": "Mail post reunión", "c": "Con el resumen y la tabla de tareas de arriba, escribí el mail de seguimiento para los participantes.\n- Asunto claro con el tema y la fecha.\n- Tres líneas de resumen.\n- Las tareas en lista, con responsable y fecha.\n- Una línea pidiendo que avisen si algo está mal.\nTono [EJ.: PROFESIONAL Y CERCANO]."}], "aviso": "Revisá nombres, fechas y montos antes de mandarlo. Si en la transcripción alguien habló poco claro, puede haber errores."}, {"h": "Activá el conector de Gmail", "pasos": ["En un chat, tocá el botón + de abajo a la izquierda y entrá a Conectores.", "Activá Gmail e iniciá sesión con tu cuenta de Google.", "En planes de equipo o empresa, primero lo tiene que habilitar el administrador de la organización.", "Si te aparece un aviso de acceso bloqueado, el administrador de Google Workspace tiene que marcar a Claude como app de confianza."]}, {"h": "Resumí tu bandeja", "p": ["Con el conector, Claude puede buscar y leer tus mails con pedidos en lenguaje común, armar borradores y, si se lo pedís, responder o reenviar. Por defecto te pide aprobación antes de enviar, responder o reenviar."], "prompts": [{"t": "Puesta al día de la bandeja", "c": "Buscá en mi Gmail los mails de los últimos [CANTIDAD] días que no sean promociones ni newsletters.\nArmame:\n1. Los que necesitan respuesta mía, ordenados por urgencia, con una línea de qué piden.\n2. Los que son solo para enterarme, en una línea cada uno.\n3. Para los 3 más urgentes, un borrador de respuesta. No los envíes: dejalos como borrador.\nSi un mail menciona un archivo adjunto, avisame: no podés leer el contenido de los adjuntos."}], "aviso": "Según el centro de ayuda, el conector ve los datos de los adjuntos (nombre, tipo) pero no su contenido."}], "faq": [{"q": "¿Claude puede mandar mails solo?", "a": "Puede enviar, responder y reenviar, pero por defecto te pide aprobación antes de cada una de esas acciones. Para empezar, lo más prudente es que solo arme borradores."}, {"q": "¿Puedo pasarle el audio de la reunión?", "a": "Esta guía trabaja con la transcripción en texto, que es lo que te asegura mejores controles. Si tu herramienta de reuniones genera transcripción, usá esa."}, {"q": "¿Necesito un plan pago para el conector de Gmail?", "a": "El centro de ayuda indica que Gmail está disponible para todos los usuarios, incluidos los planes individuales. En equipos, depende de que el administrador lo habilite."}], "fuentes": ["https://support.claude.com/en/articles/10166901-use-google-workspace-connectors", "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"]};</script>
 
-<script src="../web/rutas.js?v=14a3efd1"></script>
-<script src="../web/logos.js?v=14a3efd1"></script>
-<script src="../web/guia.js?v=14a3efd1"></script>
+<script src="../web/rutas.js?v=3db65d83"></script>
+<script src="../web/logos.js?v=3db65d83"></script>
+<script src="../web/guia.js?v=3db65d83"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

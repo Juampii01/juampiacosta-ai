@@ -62,10 +62,20 @@ test("el nivel viaja firmado en la cookie; las viejas sin nivel son de pago", as
   assert.equal(nivelDe(null), null);
 });
 
-test("registro: valida el email, lo pasa a minúsculas y guarda los utm", () => {
-  assert.equal(limpiarRegistro({ email: "no-es-mail" }), null);
-  assert.deepEqual(limpiarRegistro({ email: " Juan@Mail.COM ", nombre: "  Juan  Pérez ", utm_source: "ig" }),
-    { email: "juan@mail.com", nombre: "Juan Pérez", origen: "web", utm_source: "ig" });
+test("registro: valida los datos, normaliza y guarda los utm", () => {
+  const ok = { email: " Juan@Mail.COM ", nombre: "  Juan  Pérez ", whatsapp: "+54 9 236 412-3456", pais: "Argentina",
+    perfil: "Tengo un negocio", rubro: " Inmobiliaria ", nivel: "La uso todos los días", objetivo: "Que me lo instalen en mi negocio", utm_source: "ig" };
+  const { fila } = limpiarRegistro(ok);
+  assert.equal(fila.email, "juan@mail.com");
+  assert.equal(fila.nombre, "Juan Pérez");
+  assert.equal(fila.rubro, "Inmobiliaria");
+  assert.equal(fila.objetivo, "Que me lo instalen en mi negocio");
+  assert.equal(fila.utm_source, "ig");
+  assert.equal(limpiarRegistro({ ...ok, email: "no-es-mail" }).error, "email");
+  assert.equal(limpiarRegistro({ ...ok, whatsapp: "123" }).error, "whatsapp");
+  assert.equal(limpiarRegistro({ ...ok, pais: "Narnia" }).error, "datos");
+  assert.equal(limpiarRegistro({ ...ok, nombre: " " }).error, "datos");
+  assert.equal(limpiarRegistro({ ...ok, rubro: "" }).fila.rubro, null);
 });
 
 test("guarda en Supabase con la clave del servidor y sin duplicar emails", async () => {
@@ -77,7 +87,7 @@ test("guarda en Supabase con la clave del servidor y sin duplicar emails", async
   assert.equal(llamada.opciones.headers.Authorization, undefined);
   await guardarEnSupabase({ email: "a@b.com" }, { url: "https://x.supabase.co", clave: "eyJvieja", fetchImpl: fetchFalso });
   assert.equal(llamada.opciones.headers.Authorization, "Bearer eyJvieja");
-  assert.match(llamada.opciones.headers.Prefer, /ignore-duplicates/);
+  assert.match(llamada.opciones.headers.Prefer, /merge-duplicates/);
   const fetchMalo = async () => ({ ok: false, status: 401, text: async () => "no" });
   await assert.rejects(guardarEnSupabase({ email: "a@b.com" }, { url: "https://x", clave: "k", fetchImpl: fetchMalo }));
 });

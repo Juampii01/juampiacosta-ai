@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena plugins-de-claude-desde-cero, Plugins de Claude desde cero: qué son y cómo instalarlos, Un plugin junta skills, conectores, comandos y agentes en un solo paquete. Qué es un marketplace, cómo instalar y cómo sacar lo que no usás, en la app y en Claude Code. y 14a3efd1 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena plugins-de-claude-desde-cero, Plugins de Claude desde cero: qué son y cómo instalarlos, Un plugin junta skills, conectores, comandos y agentes en un solo paquete. Qué es un marketplace, cómo instalar y cómo sacar lo que no usás, en la app y en Claude Code. y 3db65d83 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,26 +9,26 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=14a3efd1">
-<link rel="stylesheet" href="../web/cta.css?v=14a3efd1">
-<link rel="stylesheet" href="../web/biblioteca.css?v=14a3efd1">
-<link rel="stylesheet" href="../web/guia.css?v=14a3efd1">
-<link rel="stylesheet" href="../web/tema.css?v=14a3efd1">
-<script src="../web/tema.js?v=14a3efd1"></script>
+<link rel="stylesheet" href="../web/base.css?v=3db65d83">
+<link rel="stylesheet" href="../web/cta.css?v=3db65d83">
+<link rel="stylesheet" href="../web/biblioteca.css?v=3db65d83">
+<link rel="stylesheet" href="../web/guia.css?v=3db65d83">
+<link rel="stylesheet" href="../web/tema.css?v=3db65d83">
+<script src="../web/tema.js?v=3db65d83"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=14a3efd1"></script>
-<script src="../web/guias-web.js?v=14a3efd1"></script>
-<script src="../web/comun.js?v=14a3efd1"></script>
+<script src="../web/redes.js?v=3db65d83"></script>
+<script src="../web/guias-web.js?v=3db65d83"></script>
+<script src="../web/comun.js?v=3db65d83"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="plugins-de-claude-desde-cero"></main>
 <script>var GUIA = {"slug": "plugins-de-claude-desde-cero", "t": "Plugins de Claude desde cero: qué son y cómo instalarlos", "d": "Un plugin junta skills, conectores, comandos y agentes en un solo paquete. Qué es un marketplace, cómo instalar y cómo sacar lo que no usás, en la app y en Claude Code.", "tema": "Skills", "min": 10, "fichaNombre": "Plugins", "ficha": [["Qué es", "Un paquete que agrega varias piezas a Claude de una sola vez."], ["Dónde", "App web y de escritorio (Personalizar → Plugins), Cowork y Claude Code."], ["Qué no hace", "No te conecta solo a otros servicios: cada conector del plugin lo conectás vos."]], "secciones": [{"h": "Qué trae un plugin", "p": ["Un plugin es una carpeta con un archivo de datos (.claude-plugin/plugin.json) y cualquier combinación de estas piezas. No todas funcionan en todos lados:"], "lista": ["Skills: instrucciones para una tarea. Funcionan en el chat, en Cowork y en Claude Code.", "Comandos: acciones con nombre que corrés con /plugin:comando en Cowork y Claude Code. En el chat se cargan como una skill.", "Conectores MCP: acceso a otra app o servicio. Los agregás y conectás desde la pestaña Conectores del plugin.", "Agentes: especialistas a los que Claude les pasa parte del trabajo. Solo en Cowork y Claude Code."]}, {"h": "Qué es un marketplace", "p": ["Un marketplace es un catálogo de plugins guardado en un repositorio de GitHub. Agregás el catálogo una vez y después instalás lo que quieras de ahí."], "lista": ["claude-plugins-official: el oficial de Anthropic. Claude Code lo agrega solo la primera vez que lo abrís en la terminal.", "claude-community: plugins de terceros que pasaron por el envío a Anthropic. Se agrega con /plugin marketplace add anthropics/claude-plugins-community.", "claude-code-plugins: el de demostración, en anthropics/claude-code. Muchos de sus plugins también están en el oficial: instalalos desde el oficial para no tener dos copias.", "De terceros: cualquier otro. Anthropic no los revisa."]}, {"h": "Instalar un plugin en la app", "pasos": ["Entrá a Personalizar → Plugins.", "En Descubrir elegí uno, leé qué trae y tocá Agregar.", "Para sumar un catálogo: Agregar → Agregar marketplace, y pegá la URL del repo o dueño/repo.", "Para un plugin que tenés en tu compu: Agregar → Subir plugin, con el .zip o el archivo .plugin.", "Abrí el plugin, andá a la pestaña Conectores y conectá los que necesite."], "p": ["El plugin queda guardado en tu cuenta. Lo tenés también en Cowork y, la próxima vez que abras Claude Code con esa cuenta, se descarga solo (escribí /reload-plugins para cargarlo en esa sesión)."]}, {"h": "Instalar un plugin en Claude Code", "pasos": ["Escribí /plugin. Se abre en la pestaña Discover con los plugins de tus catálogos.", "O andá directo: /plugin install commit-commands@claude-plugins-official. Eso abre la ficha del plugin, todavía no instala nada.", "Leé la sección Will install: ahí ves qué comandos, skills, agentes, hooks y servidores agrega.", "Elegí el alcance: solo vos en todos tus proyectos, todo el equipo en este repo, o solo vos en este repo.", "Leé el resumen final. Si dice Run /reload-plugins to apply, Claude Code lo recarga por vos.", "Comprobá: escribí / y buscá las skills del plugin con la forma /plugin:skill."], "prompts": [{"t": "Revisar un plugin antes de instalarlo", "c": "Antes de instalar el plugin [NOMBRE]@[MARKETPLACE], buscá su carpeta en el repositorio del marketplace y leé hooks/hooks.json, .mcp.json y la carpeta bin/ si existen.\nExplicame en palabras simples:\n1. Qué comandos corre en mi compu y cuándo.\n2. A qué servidores o páginas se conecta.\n3. Si pide claves o permisos.\nNo instales nada: solo contame y esperá que te diga."}]}, {"h": "Desactivar, desinstalar y actualizar", "lista": ["En la app: abrí el plugin en Personalizar → Plugins. El interruptor Disable plugin lo apaga, y en su menú tenés Quitar.", "En Claude Code: /plugin y pestaña Installed. Con Espacio lo activás o desactivás, con Enter ves sus opciones (desactivar, actualizar, desinstalar).", "Desde la terminal: claude plugin disable, claude plugin enable y claude plugin uninstall, seguidos de nombre@marketplace.", "Actualizaciones: el catálogo oficial se actualiza solo. Los de terceros vienen con la actualización automática apagada; actualizás con claude plugin update nombre@marketplace.", "Sacar un catálogo: /plugin marketplace remove nombre. Ojo, desinstala todos los plugins que vinieron de ahí."]}, {"h": "Antes de instalar, pensá en seguridad", "p": ["En Claude Code, un plugin puede correr código en tu compu con tus mismos permisos: sus hooks y sus servidores corren por fuera de las reglas de permisos de Claude. Además, si el catálogo se actualiza solo, los archivos que revisaste pueden cambiar."], "aviso": "Instalá plugins solo de fuentes en las que confiás y leé qué traen antes de aceptar."}], "faq": [{"q": "¿Qué diferencia hay entre una skill y un plugin?", "a": "La skill es una sola tarea. El plugin es la caja: puede traer varias skills, conectores, comandos y agentes juntos."}, {"q": "¿Lo que instalo en Claude Code aparece en la app?", "a": "No. Lo que instalás desde la terminal queda en esa compu. Al revés sí funciona: lo que agregás a tu cuenta en la app se descarga en Claude Code."}, {"q": "¿Qué alcance elijo?", "a": "Si es para vos, el de usuario (todos tus proyectos). El de proyecto solo si trabajás en equipo sobre el mismo repo y todos lo necesitan."}], "fuentes": ["https://claude.com/docs/plugins/overview", "https://claude.com/docs/plugins/build", "https://code.claude.com/docs/en/discover-plugins", "https://code.claude.com/docs/en/plugins/anthropic-marketplaces", "https://code.claude.com/docs/en/plugins/security", "https://github.com/anthropics/claude-plugins-official"]};</script>
 
-<script src="../web/rutas.js?v=14a3efd1"></script>
-<script src="../web/logos.js?v=14a3efd1"></script>
-<script src="../web/guia.js?v=14a3efd1"></script>
+<script src="../web/rutas.js?v=3db65d83"></script>
+<script src="../web/logos.js?v=3db65d83"></script>
+<script src="../web/guia.js?v=3db65d83"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

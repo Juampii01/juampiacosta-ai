@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena carruseles-con-claude-paso-a-paso, Carruseles con Claude, paso a paso, De un texto, un reel o una idea suelta a un carrusel de 7 a 10 slides: primero el contenido slide por slide, después el diseño con un artifact o con Canva. y 14a3efd1 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena carruseles-con-claude-paso-a-paso, Carruseles con Claude, paso a paso, De un texto, un reel o una idea suelta a un carrusel de 7 a 10 slides: primero el contenido slide por slide, después el diseño con un artifact o con Canva. y 3db65d83 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,26 +9,26 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=14a3efd1">
-<link rel="stylesheet" href="../web/cta.css?v=14a3efd1">
-<link rel="stylesheet" href="../web/biblioteca.css?v=14a3efd1">
-<link rel="stylesheet" href="../web/guia.css?v=14a3efd1">
-<link rel="stylesheet" href="../web/tema.css?v=14a3efd1">
-<script src="../web/tema.js?v=14a3efd1"></script>
+<link rel="stylesheet" href="../web/base.css?v=3db65d83">
+<link rel="stylesheet" href="../web/cta.css?v=3db65d83">
+<link rel="stylesheet" href="../web/biblioteca.css?v=3db65d83">
+<link rel="stylesheet" href="../web/guia.css?v=3db65d83">
+<link rel="stylesheet" href="../web/tema.css?v=3db65d83">
+<script src="../web/tema.js?v=3db65d83"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=14a3efd1"></script>
-<script src="../web/guias-web.js?v=14a3efd1"></script>
-<script src="../web/comun.js?v=14a3efd1"></script>
+<script src="../web/redes.js?v=3db65d83"></script>
+<script src="../web/guias-web.js?v=3db65d83"></script>
+<script src="../web/comun.js?v=3db65d83"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="carruseles-con-claude-paso-a-paso"></main>
 <script>var GUIA = {"slug": "carruseles-con-claude-paso-a-paso", "t": "Carruseles con Claude, paso a paso", "d": "De un texto, un reel o una idea suelta a un carrusel de 7 a 10 slides: primero el contenido slide por slide, después el diseño con un artifact o con Canva.", "tema": "Contenido", "min": 9, "fichaNombre": "Carrusel en dos pasos", "ficha": [["Qué es", "Un proceso para separar el texto del diseño: Claude arma el contenido y después lo maqueta."], ["Necesitás", "Claude. Para el camino de Canva, además una cuenta de Canva y el conector de Canva en Claude."], ["Tiempo", "Entre 20 y 40 minutos por carrusel."], ["Qué no hace", "No publica en Instagram. El posteo lo hacés vos."]], "secciones": [{"h": "Primero el texto, después el diseño", "p": ["El error más común es pedir el carrusel terminado de una. Sale lindo pero flojo, o con buen contenido metido en un diseño que no se lee.", "Hacelo en dos vueltas: primero cerrás qué dice cada slide y después lo pasás a diseño. Así corregís cada cosa por separado."]}, {"h": "1. Armá el guion de slides", "p": ["Podés partir de un texto largo, la transcripción de un reel, un mail que mandaste o tus notas."], "prompts": [{"t": "Guion del carrusel", "c": "Convertí este material en un carrusel de Instagram de [ENTRE 7 Y 10] slides.\n\n[PEGÁ EL TEXTO]\n\nReglas:\n- Slide 1: un título que diga qué gana la persona si lo lee. Máximo 10 palabras.\n- Slide 2: por qué le importa (el problema, en una o dos frases).\n- Slides del medio: una idea por slide. Título corto y como máximo 25 palabras de texto.\n- Anteúltima: resumen en una lista de 3 puntos.\n- Última: un solo pedido (guardar, comentar una palabra o seguirme).\nDevolvelo como tabla con columnas: número, título, texto, idea visual.\nUsá mi tono: [DESCRIBÍ TU TONO O PEDILE QUE USE TU FICHA DE VOZ]. No inventes datos."}], "pasos": ["Leé la tabla y sacá todo lo que se repite.", "Revisá que cada slide se entienda sola: mucha gente entra por la mitad.", "Recién cuando el texto te cierra, pasá al diseño."]}, {"h": "2A. Diseño con un artifact", "p": ["Los artifacts son piezas que Claude te muestra en una ventana al lado del chat. Entre los tipos que puede armar están páginas HTML y componentes interactivos, así que te puede maquetar todas las slides en una sola vista para revisar."], "prompts": [{"t": "Maquetar en artifact", "c": "Con esta tabla de slides, armame un artifact HTML que muestre cada slide como una tarjeta vertical, todas del mismo tamaño, una debajo de la otra.\nColores: [TUS COLORES EN HEX]. Tipografía: [TU TIPOGRAFÍA O \"UNA SANS SERIF SIMPLE\"].\nTexto grande y con mucho aire, que se lea desde el celular. Numerá cada slide en una esquina.\n\n[PEGÁ LA TABLA]"}], "aviso": "Si no ves el panel del artifact, revisá que los artifacts estén activados en tu configuración (tu nombre abajo a la izquierda)."}, {"h": "2B. Diseño con Canva", "p": ["Canva tiene un conector oficial para Claude. Según la documentación de Canva, con el conector Claude puede crear diseños vacíos, autocompletar plantillas, buscar tus diseños y exportarlos como PDF o imagen."], "pasos": ["En Claude, abrí un chat nuevo y tocá el botón de herramientas junto al cuadro de mensaje → Manage connectors (en español puede decir \"Administrar conectores\").", "Buscá Canva y tocá Connect. Si no aparece, entrá a Browse connectors.", "Autorizá el acceso a tu cuenta de Canva.", "Probalo con: \"Mostrame mi último diseño editado en Canva\" y aprobá la herramienta cuando te lo pida.", "Pedile que use tu tabla de slides para armar el diseño, y terminá los detalles a mano en Canva."], "aviso": "Canva aclara que algunas funciones dependen del plan: por ejemplo, autocompletar plantillas puede estar limitado a Canva Enterprise. Exportar está en todos los planes. Revisá también qué plan de Claude te pide el conector."}, {"h": "3. Control antes de publicar", "lista": ["Portada: ¿se entiende de qué va sin leer el resto?", "Una idea por slide: si tenés que achicar la letra para que entre, partila en dos.", "Contraste: texto oscuro sobre fondo claro o al revés. Nada de texto encima de fotos cargadas.", "Pedido final: uno solo y claro.", "Datos: todo número o afirmación tiene que poder respaldarse. Si no, sacalo."]}], "faq": [{"q": "¿Cómo paso el artifact a imágenes?", "a": "La forma simple es sacar una captura de cada tarjeta. Si querés archivos prolijos, usá el camino de Canva, que exporta como imagen o PDF."}, {"q": "¿Cuántas slides conviene?", "a": "Las que necesite la idea. Arrancá con 7 a 10 y sacá cualquier slide que no sume nada nuevo."}, {"q": "No me aparece Canva en los conectores", "a": "Buscalo en Browse connectors. Si tampoco está, revisá que tu plan de Claude incluya conectores."}], "fuentes": ["https://support.claude.com/en/articles/9487310-what-are-artifacts", "https://www.canva.dev/docs/connect/canva-mcp-server-setup"]};</script>
 
-<script src="../web/rutas.js?v=14a3efd1"></script>
-<script src="../web/logos.js?v=14a3efd1"></script>
-<script src="../web/guia.js?v=14a3efd1"></script>
+<script src="../web/rutas.js?v=3db65d83"></script>
+<script src="../web/logos.js?v=3db65d83"></script>
+<script src="../web/guia.js?v=3db65d83"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);
