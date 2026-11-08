@@ -1,0 +1,90 @@
+{
+ "slug": "22-skills-claude-code",
+ "verificada": "2026-11-08",
+ "correcciones": [
+  {
+   "antes": "gstack: un equipo de desarrollo virtual (producto, arquitectura, diseño, revisión) en una sola instalación. Instalación: git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/gstack y después cd ~/gstack && ./setup",
+   "despues": "gstack: un equipo de desarrollo virtual (producto, arquitectura, diseño, revisión) en una sola instalación. Necesita Git y Bun (la versión probada es la 1.4.2 o más nueva). Instalación para Claude Code: git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/.claude/skills/gstack y después cd ~/.claude/skills/gstack && ./setup",
+   "motivo": "El README indica que para Claude Code el repo se clona en ~/.claude/skills/gstack y ahí se corre ./setup. La ruta ~/gstack es la del modo para varios agentes, que se usa con ./setup --host auto. También lista como requisitos Git y Bun v1.4.2 o más nuevo; el setup rechaza Bun anterior a 1.3.3.",
+   "fuente": "https://github.com/garrytan/gstack"
+  },
+  {
+   "antes": "hyperframes: escribís HTML y sale un video MP4. Instalación:",
+   "despues": "hyperframes: escribís HTML y sale un video MP4. Necesita Node.js 22 o más nuevo y FFmpeg instalado. Instalación:",
+   "motivo": "El README lista como requisitos Node.js 22+ y FFmpeg. Sin FFmpeg, el render a MP4 no funciona.",
+   "fuente": "https://github.com/heygen-com/hyperframes"
+  },
+  {
+   "antes": "ui-ux-pro-max: criterio de diseño, paletas y tipografías. Instalación:",
+   "despues": "ui-ux-pro-max: criterio de diseño, paletas y tipografías. Su buscador de estilos corre con Python 3 (comprobalo con python3 --version). Instalación:",
+   "motivo": "El README aclara que Python 3.x es necesario para el script de búsqueda de la skill (usa solo la biblioteca estándar).",
+   "fuente": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill"
+  },
+  {
+   "antes": "skills (buscador): el instalador abierto de skills: busca e instala la que necesitás. Instalación:",
+   "despues": "skills (buscador): el instalador abierto de skills: busca e instala la que necesitás. Necesita Node.js 22.20 o más nuevo, igual que todos los comandos npx skills de esta lista. Instalación:",
+   "motivo": "El README del instalador indica que requiere Node.js 22.20 o posterior. Varias entradas de la guía (emil, gsap, remotion, marketingskills, social-media-research-skills, agent-browser) dependen de ese mismo comando.",
+   "fuente": "https://github.com/vercel-labs/skills"
+  },
+  {
+   "antes": "No. Cada skill suma instrucciones; instalá en cada proyecto las que vayas a usar.",
+   "despues": "No. La descripción de cada skill se carga en el contexto de todas tus sesiones (el contenido completo carga solo cuando se usa), y algunos plugins traen hooks que corren siempre. Instalá las que vayas a usar y, si dos hacen lo mismo, quedate con una.",
+   "motivo": "La documentación de skills explica que las descripciones se cargan en el contexto de cada sesión y el contenido completo solo al invocarla. La de seguridad de plugins explica que los hooks corren como comandos en puntos del ciclo de vida, sin que se los llame. Esa es la razón concreta para no instalar todo.",
+   "fuente": "https://code.claude.com/docs/en/skills"
+  }
+ ],
+ "fuentes_extra": [
+  "https://code.claude.com/docs/en/skills",
+  "https://code.claude.com/docs/en/discover-plugins",
+  "https://code.claude.com/docs/en/plugins/troubleshooting"
+ ],
+ "ejemplo": {
+  "titulo": "Ejemplo resuelto: el kit mínimo de una diseñadora web freelance",
+  "negocio": "Ejemplo inventado: una diseñadora y desarrolladora web freelance en Medellín, Colombia. Arma sitios para comercios del barrio (una peluquería, una tienda de bicicletas) y trabaja sola con Claude Code.",
+  "punto_de_partida": "Los sitios le salían prolijos pero parecidos entre sí, y los textos sonaban a plantilla. Había instalado varias skills de un video y ya no sabía cuáles tenía.",
+  "pasos": [
+   "Corrió /plugin list, npx skills list y revisó ~/.claude/skills/. Anotó todo en el registro del kit y sacó lo que no había usado con claude plugin uninstall y npx skills remove.",
+   "Comprobó node --version y python3 --version. Tenía Node 20, así que lo actualizó a 22 antes de seguir.",
+   "Siguió el perfil B del plan del kit: instaló ui-ux-pro-max con sus dos comandos /plugin y, en la carpeta del sitio de la peluquería, corrió npx impeccable install. Recargó Claude Code y corrió /impeccable init, que le hizo preguntas sobre el negocio y escribió PRODUCT.md.",
+   "Le pidió a Claude Code que propusiera paleta y tipografías para la peluquería con ui-ux-pro-max, y después corrió /impeccable critique sobre la portada que ya tenía.",
+   "Para los textos instaló humanizer y pasó por /humanizer:humanizer la sección Quiénes somos que le había mandado la dueña.",
+   "Al terminar la semana revisó el registro: siguió usando las tres y no instaló nada más."
+  ],
+  "resultado": "Quedaron tres herramientas anotadas en el registro, con su comando para sacarlas. Cada sitio nuevo arranca con /impeccable init y una consulta de paleta, y los textos pasan por humanizer antes de entregarse."
+ },
+ "si_falla": [
+  {
+   "sintoma": "Pegás un comando /plugin y Claude responde \"/plugin isn't available in this environment\".",
+   "solucion": "Estás en la pestaña Code de la app de escritorio, en la extensión de VS Code o en Claude Code en la web. Abrí una terminal, corré claude y pegá el comando ahí. Otra opción: usá la versión de terminal, claude plugin marketplace add DUEÑO/REPO y claude plugin install NOMBRE@MARKETPLACE, o el comando npx skills add si el README lo ofrece."
+  },
+  {
+   "sintoma": "La misma skill aparece dos veces en el menú / (por ejemplo, last30days).",
+   "solucion": "La instalaste por dos caminos (plugin y npx skills) y Claude Code no junta las copias. Quedate con uno: sacá la copia de npx con npx skills remove NOMBRE -g, o la del plugin con claude plugin uninstall NOMBRE@MARKETPLACE."
+  },
+  {
+   "sintoma": "Un comando npx skills add o un plugin que usa Node falla apenas arranca, con errores de sintaxis o de versión.",
+   "solucion": "Corré node --version. El instalador npx skills pide 22.20 o más nuevo, taste-skill y hyperframes piden 22 o más, y claude-hud 22.18 o más. Actualizá Node (desde nodejs.org o con tu gestor de versiones), cerrá la terminal, abrila de nuevo y repetí."
+  },
+  {
+   "sintoma": "Instalaste graphify con uv tool install graphifyy pero la terminal dice que graphify no existe.",
+   "solucion": "La carpeta de herramientas de uv no está en tu PATH. Corré uv tool update-shell, cerrá y abrí la terminal, y después graphify install."
+  },
+  {
+   "sintoma": "Al instalar aparece Plugin \"NOMBRE\" not found in marketplace \"MARKETPLACE\".",
+   "solucion": "Casi siempre es el nombre. Abrí /plugin, pestaña Discover, y copiá el nombre exacto de la lista. Si el plugin es nuevo, refrescá el catálogo con /plugin marketplace update MARKETPLACE y probá de nuevo. Si el error dice Marketplace not found, te falta el paso /plugin marketplace add DUEÑO/REPO."
+  }
+ ],
+ "kit": [
+  {
+   "archivo": "plan-de-instalacion-skills-por-perfil.md",
+   "que_es": "Plan corto para instalar solo lo que te sirve según tu perfil (negocio, freelancer web, dev junior, investigación), con los comandos verificados, los requisitos y una prueba para cada bloque.",
+   "contenido": "# Plan de instalación por perfil (22 skills para Claude Code)\n\nNo instales todo. Elegí tu perfil, instalá solo ese bloque, usalo una semana y recién después sumá otra.\n\n## Antes de empezar (todos)\n\n1. Abrí una terminal y corré `claude --version`. Si `/plugin` no existe, actualizá Claude Code.\n2. Corré `node --version`. Varias de estas skills piden Node.js 22 o más nuevo (el instalador `npx skills` pide 22.20 o más nuevo).\n3. Los comandos que empiezan con `/plugin` van dentro de una sesión de Claude Code en la terminal (no en la pestaña Code de la app de escritorio ni en la extensión de VS Code). Los que empiezan con `npx`, `npm`, `uv`, `git` o `claude plugin` van en la terminal, fuera de la sesión.\n4. Abrí el registro (registro-skills-instaladas.md) y anotá cada cosa que instales.\n\n## Perfil A: dueño de negocio que arma textos y contenido\n\nObjetivo: textos que no suenen a IA y piezas de marketing.\n\n- humanizer: `/plugin marketplace add blader/humanizer` y `/plugin install humanizer@humanizer`. Se usa con `/humanizer:humanizer`.\n- marketingskills: `npx skills add coreyhaines31/marketingskills --list` para ver la lista, y después instalá solo las que vas a usar con `npx skills add coreyhaines31/marketingskills --skill NOMBRE`.\n\nPrueba: pegá un texto tuyo y pedile \"pasalo por humanizer y decime qué cambiaste\".\n\n## Perfil B: freelancer que entrega webs a clientes\n\nObjetivo: que el sitio no se vea genérico.\n\n- ui-ux-pro-max: `/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill` y `/plugin install ui-ux-pro-max@ui-ux-pro-max-skill`. Su buscador usa Python 3: comprobalo con `python3 --version`.\n- impeccable: en la carpeta del proyecto, `npx impeccable install`. Recargá Claude Code y corré `/impeccable init` una vez por proyecto.\n- humanizer, para los textos del sitio (ver perfil A).\n\nPrueba: `/impeccable critique` sobre una sección que ya tengas armada.\n\n## Perfil C: dev junior que construye sistemas\n\nObjetivo: planificar antes de escribir código y no perder el hilo.\n\n- superpowers: `/plugin install superpowers@claude-plugins-official`.\n- claude-hud: `/plugin marketplace add jarrodwatts/claude-hud`, `/plugin install claude-hud`, `/reload-plugins` y `/hud`. Pide Node.js 22.18 o más nuevo.\n- codex (opcional, si ya usás ChatGPT): `/plugin marketplace add openai/codex-plugin-cc`, `/plugin install codex@openai-codex` y `/codex:setup`.\n\nPrueba: pedile una función chica y fijate si primero te propone un plan.\n\n## Perfil D: investigación y contenido para redes\n\n- last30days: `/plugin marketplace add mvanhorn/last30days-skill` y `/plugin install last30days`. Usá un solo método de instalación: si además la instalás con `npx skills`, aparece dos veces.\n- social-media-research-skills (solo si vas a pagar ScrapeCreators): `npx skills add ScrapeCreators/social-media-research-skills` y la clave en la variable `SCRAPECREATORS_API_KEY`.\n\n## Después de la primera semana\n\n- [ ] ¿La usaste al menos en una tarea real? Si no, sacala (ver el registro).\n- [ ] ¿Dos skills hacen lo mismo? Quedate con una.\n- [ ] ¿Alguna trae hooks o pide claves? Revisá que sepas qué hace con ellas.\n"
+  },
+  {
+   "archivo": "registro-skills-instaladas.md",
+   "que_es": "Planilla en markdown para anotar qué instalaste, cómo y para qué, con el comando exacto para listar y sacar cada cosa según el método de instalación.",
+   "contenido": "# Registro de skills y plugins instalados\n\nAnotá cada cosa que instalás. Te sirve para saber qué tenés, por qué y cómo sacarlo.\n\n| Fecha | Nombre | Cómo la instalé | Alcance | Para qué la uso | Pide algo extra | ¿La sigo usando? |\n|---|---|---|---|---|---|---|\n| [AAAA-MM-DD] | [NOMBRE] | [/plugin, npx skills, npx propio, uv, git] | [User, Project, Local o global] | [UNA LÍNEA] | [Node, Python, clave, cuenta] | [SÍ / NO / REVISAR] |\n\n## Cómo ver lo que tenés\n\n- Plugins de Claude Code: `/plugin list` dentro de la sesión o `claude plugin list` en la terminal.\n- Skills instaladas con el instalador abierto: `npx skills list`.\n- Skills sueltas: mirá la carpeta `~/.claude/skills/` y la carpeta `.claude/skills/` de cada proyecto.\n\n## Cómo sacar cada cosa, según cómo la instalaste\n\n- Con `/plugin` o `claude plugin install`: `claude plugin uninstall NOMBRE@MARKETPLACE`. Si querés sacar todo un catálogo: `/plugin marketplace remove NOMBRE` (desinstala todos sus plugins).\n- Con `npx skills add`: `npx skills remove NOMBRE` (sumá `-g` si la instalaste global).\n- Con `git clone` en `~/.claude/skills/` (por ejemplo gstack): seguí la desinstalación del README del repo antes de borrar la carpeta, porque su setup puede haber registrado hooks.\n- Con un instalador propio (`npx impeccable install`, `graphify install`, `npx @caveman-ai/cli`): usá el comando de desinstalación que indica su README.\n\n## Regla de la casa\n\nSi algo no lo usaste en dos semanas, sacalo. Cada skill suma su descripción al contexto de todas tus sesiones.\n"
+  }
+ ],
+ "notas_revision": "Bajé el README de los 22 repos y comparé cada comando de instalación. Coinciden: superpowers (en claude-plugins-official), caveman, ponytail, codex (pide además Node 18.18+), i-have-adhd (README pide instalar siguiendo su AGENTS.md), ui-ux-pro-max, taste-skill (Node 22+ y Chrome/Edge/Chromium), impeccable (npx impeccable install y /impeccable init), hyperframes (claude plugin marketplace add/install), emilkowalski (npx skills@latest add), gsap, anthropics/skills (skill-creator está en example-skills del marketplace anthropic-agent-skills, verificado en su marketplace.json), graphify (Python 3.10+ y uv), last30days, agent-browser (npm install -g, agent-browser install, npx skills add), skills (find/add), claude-hud (Node 22.18+), remotion, marketingskills, humanizer (pide Claude Code 2.1.142+; no lo sumé como corrección porque es una versión vieja), social-media-research-skills (SCRAPECREATORS_API_KEY). Corregí gstack (ruta y Bun), hyperframes (Node 22 y FFmpeg), ui-ux-pro-max (Python 3), el requisito de Node del instalador skills y la FAQ sobre instalar todo. Las descripciones de qué hace cada skill son resumidas y no las audité una por una más allá del README. Son repos de terceros que cambian seguido: los comandos pueden cambiar después de esta fecha."
+}

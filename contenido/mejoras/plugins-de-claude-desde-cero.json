@@ -1,0 +1,96 @@
+{
+ "slug": "plugins-de-claude-desde-cero",
+ "verificada": "2026-11-08",
+ "correcciones": [
+  {
+   "antes": "App web y de escritorio (Personalizar → Plugins), Cowork y Claude Code.",
+   "despues": "App web y de escritorio (Personalizar → Plugins; con la app en inglés, Customize → Plugins), Cowork y Claude Code. En la app están en los planes pagos (Pro, Max, Team y Enterprise).",
+   "motivo": "La ayuda oficial indica que los plugins están disponibles en todos los planes pagos, y la documentación nombra la página como Customize > Plugins. Sin el dato del plan, alguien con cuenta Free busca el menú y no lo encuentra.",
+   "fuente": "https://support.claude.com/en/articles/13837440-use-plugins-in-claude"
+  },
+  {
+   "antes": "El plugin queda guardado en tu cuenta. Lo tenés también en Cowork y, la próxima vez que abras Claude Code con esa cuenta, se descarga solo (escribí /reload-plugins para cargarlo en esa sesión).",
+   "despues": "El plugin queda guardado en tu cuenta. Lo tenés también en Cowork y, la próxima vez que abras Claude Code con esa cuenta, se descarga solo (escribí /reload-plugins para cargarlo en esa sesión). Para eso Claude Code tiene que estar en la versión 2.1.273 o más nueva y con sesión iniciada con tu cuenta de Claude: si lo usás con una clave de API o a través de un proveedor como Amazon Bedrock, no se sincroniza.",
+   "motivo": "La ayuda oficial aclara que la sincronización con Claude Code requiere la versión v2.1.273 o posterior, corre una vez al iniciar y en un solo sentido, y no funciona cuando Claude Code usa una clave de API o un proveedor de nube como Amazon Bedrock.",
+   "fuente": "https://support.claude.com/en/articles/13837440-use-plugins-in-claude"
+  },
+  {
+   "antes": "Leé el resumen final. Si dice Run /reload-plugins to apply, Claude Code lo recarga por vos.",
+   "despues": "Leé el resumen final. Si dice Plugin is now active., ya está andando. Si dice Run /reload-plugins to activate., Claude Code corre la recarga por vos; si esa recarga avisa que tu próximo mensaje va a releer toda la conversación, escribí /reload-plugins --force para activarlo igual.",
+   "motivo": "La documentación muestra los dos mensajes exactos del resumen de instalación: \"Plugin is now active.\" y \"Run /reload-plugins to activate.\" (no \"to apply\"), y explica que si la recarga advierte por la caché hay que usar /reload-plugins --force.",
+   "fuente": "https://code.claude.com/docs/en/discover-plugins"
+  },
+  {
+   "antes": "En Claude Code: /plugin y pestaña Installed. Con Espacio lo activás o desactivás, con Enter ves sus opciones (desactivar, actualizar, desinstalar).",
+   "despues": "En Claude Code: /plugin y pestaña Installed. Podés escribir para filtrar la lista y, con Enter sobre un plugin, abrís su detalle para activarlo, desactivarlo o desinstalarlo. Para actualizar, usá el comando de la terminal de más abajo.",
+   "motivo": "La documentación de la pestaña Installed lista estas acciones: f para marcar favorito, escribir para filtrar y Enter para abrir el detalle y activar, desactivar o desinstalar. No menciona la tecla Espacio ni actualizar desde ese detalle; la actualización se hace con claude plugin update.",
+   "fuente": "https://code.claude.com/docs/en/discover-plugins"
+  },
+  {
+   "antes": "claude-community: plugins de terceros que pasaron por el envío a Anthropic. Se agrega con /plugin marketplace add anthropics/claude-plugins-community.",
+   "despues": "claude-community: plugins de terceros que sus autores enviaron a Anthropic y pasaron una validación automática y un control de seguridad. Cada plugin queda fijado a una versión exacta del código. Se agrega con /plugin marketplace add anthropics/claude-plugins-community y se instala con /plugin install nombre@claude-community.",
+   "motivo": "La documentación aclara que el marketplace comunitario aloja plugins de terceros que pasaron la validación automática y el control de seguridad de Anthropic, que cada uno está fijado a un commit, y que se instala con el sufijo @claude-community (no con el nombre del repo).",
+   "fuente": "https://code.claude.com/docs/en/discover-plugins"
+  }
+ ],
+ "fuentes_extra": [
+  "https://support.claude.com/en/articles/13837440-use-plugins-in-claude",
+  "https://code.claude.com/docs/en/plugins/cli-reference",
+  "https://code.claude.com/docs/en/plugins/troubleshooting",
+  "https://code.claude.com/docs/es/plugins/security"
+ ],
+ "ejemplo": {
+  "titulo": "Ejemplo resuelto: ordenar los plugins de una agencia web chica",
+  "negocio": "Ejemplo inventado: una agencia de desarrollo web en Montevideo, Uruguay, con dos socios. Uno programa con Claude Code y el otro arma propuestas y textos en la app de Claude con plan Team.",
+  "punto_de_partida": "Cada socio instalaba lo que veía en videos. Nadie sabía qué tenía cada uno ni qué corría en la compu, y en el repo de un cliente aparecían skills que el otro no tenía.",
+  "pasos": [
+   "El socio de la app entró a Personalizar → Plugins, abrió Descubrir, leyó qué traía un plugin de productividad y lo agregó. En su pestaña Conectores vio que dos conectores figuraban como Not added: le pidió al owner de la organización que los agregara y después los conectó con su cuenta.",
+   "El socio que programa actualizó Claude Code, cerró sesión e inició de nuevo con la cuenta de la organización, abrió una sesión y corrió /reload-plugins. Las skills del plugin de su socio aparecieron al escribir /.",
+   "En la terminal escribió /plugin install commit-commands@claude-plugins-official, leyó Will install y eligió User scope, porque lo quiere en todos sus proyectos. Probó /commit-commands:commit con un cambio chico.",
+   "Para el repo del cliente copió el settings-plugins-equipo.json del kit a .claude/settings.json, puso en enabledPlugins solo commit-commands@claude-plugins-official y lo subió al repo. Así cualquiera que abra ese repo tiene lo mismo.",
+   "Un video recomendaba un plugin de un marketplace de terceros. Antes de instalarlo, clonó el repo en una carpeta temporal y le pidió a Claude Code: \"Usá revisar-plugin con esta carpeta\". El informe mostró un hook que descargaba y ejecutaba un script de internet en cada inicio de sesión. Decidieron no instalarlo.",
+   "Repasaron juntos la pestaña Installed y sacaron con claude plugin uninstall dos plugins que nadie usaba. Anotaron lo que quedó con la checklist del kit."
+  ],
+  "resultado": "Cada socio sabe qué plugins tiene y por qué. El repo del cliente declara sus plugins en .claude/settings.json, y todo plugin de terceros pasa por la checklist y la skill revisar-plugin antes de entrar a una compu de la agencia."
+ },
+ "si_falla": [
+  {
+   "sintoma": "Escribís /plugin y Claude responde \"/plugin isn't available in this environment\".",
+   "solucion": "Estás en un lugar sin terminal para el panel: la pestaña Code de la app de escritorio, la extensión de VS Code, Claude Code en la web o claude -p. En la app de escritorio usá el botón + al lado del cuadro de texto, después Plugins y Add plugin. Si no, abrí una terminal, corré claude y escribí /plugin ahí, o instalá directo con claude plugin install nombre@marketplace."
+  },
+  {
+   "sintoma": "Al instalar aparece Marketplace \"claude-plugins-official\" not found.",
+   "solucion": "El catálogo oficial todavía no se registró en esa compu (pasa si solo usaste la extensión de VS Code o si una política lo bloqueó). Escribí /plugin marketplace add anthropics/claude-plugins-official y repetí la instalación. Si el error nombra otro marketplace, pedile a quien te pasó el comando de qué repo sale y agregalo primero."
+  },
+  {
+   "sintoma": "Instalaste un plugin pero sus skills no aparecen al escribir /.",
+   "solucion": "Abrí /plugin, pestaña Installed, y confirmá que esté activado. Después mirá la pestaña Errors. Si no hay errores y lo instalaste en esta sesión, corré /reload-plugins. Si sigue sin aparecer, borrá la caché con rm -rf ~/.claude/plugins/cache, reiniciá Claude Code y volvé a instalarlo."
+  },
+  {
+   "sintoma": "Agregaste un plugin en la app pero no aparece en Claude Code.",
+   "solucion": "Revisá tres cosas: que Claude Code esté en la versión 2.1.273 o más nueva (claude --version), que hayas iniciado sesión con la misma cuenta y organización (no con una clave de API ni con Bedrock) y que hayas corrido /reload-plugins o abierto una sesión nueva. Si tu organización puso syncClaudeAiPlugins en false, la sincronización está apagada a propósito: hablalo con el owner."
+  },
+  {
+   "sintoma": "En Personalizar → Plugins, Agregar → Subir plugin rechaza tu archivo, o Agregar marketplace no puede leer un repo privado.",
+   "solucion": "Para subir: el .zip o .plugin tiene que tener un solo .claude-plugin/plugin.json adentro; comprimí la carpeta del plugin o su contenido, pero no varios plugins juntos. Para un repo privado de GitHub: cuando el diálogo lo pida, conectá tu cuenta de GitHub (Connect GitHub) e instalá la Claude GitHub App con acceso a ese repo."
+  }
+ ],
+ "kit": [
+  {
+   "archivo": "revisar-plugin/SKILL.md",
+   "que_es": "Skill para Claude Code que lee un plugin (hooks, servidores, ejecutables, skills) sin ejecutarlo y te da un informe simple con un veredicto. Copiá la carpeta a ~/.claude/skills/ y pedile \"Usá revisar-plugin con [RUTA O REPO]\".",
+   "contenido": "---\nname: revisar-plugin\ndescription: Revisa un plugin de Claude Code antes de instalarlo y explica en palabras simples qué corre en tu compu, a qué servicios se conecta y qué riesgos tiene. Usala cuando pidas revisar, auditar o evaluar un plugin, un marketplace o un repo con .claude-plugin.\n---\n\n# Revisar un plugin antes de instalarlo\n\nTu trabajo es leer un plugin y explicarle a una persona que no programa qué hace y qué riesgo tiene. No instalás nada, no corrés los hooks ni los scripts del plugin y no habilitás nada.\n\n## Qué te pasan\n\nUna de estas tres cosas:\n- La ruta a una carpeta en la compu (un plugin o un marketplace clonado).\n- Un repo de GitHub con la forma dueño/repo o su URL.\n- El nombre del plugin con la forma nombre@marketplace.\n\nSi te pasan un repo, pedí permiso para clonarlo en una carpeta temporal fuera del proyecto. Si no hay permiso, trabajá solo con lo que la persona pegue.\n\n## Pasos\n\n1. Encontrá la carpeta del plugin: es la que tiene `.claude-plugin/plugin.json`. Si es un marketplace, abrí `.claude-plugin/marketplace.json`, listá los plugins y preguntá cuál revisar.\n2. Leé `plugin.json`: nombre, versión, autor, página y licencia.\n3. Leé estos archivos si existen, completos:\n   - `hooks/hooks.json`: qué comando corre cada hook y en qué evento.\n   - `.mcp.json`: qué servidor arranca o a qué URL se conecta cada uno.\n   - Todo lo que haya en `bin/` y en `scripts/`.\n   - Las carpetas `skills/`, `commands/` y `agents/`: solo un resumen de qué le piden a Claude.\n4. Si Claude Code está instalado, corré `claude --plugin-dir RUTA-DEL-PLUGIN plugin details NOMBRE-DEL-PLUGIN` para tener el inventario de componentes. Solo lee archivos, no abre una sesión.\n5. Buscá señales de alerta: comandos que descargan y ejecutan algo de internet, que borran archivos, que leen `.env`, claves, `~/.ssh` o el llavero, que mandan datos a dominios que no son del autor, o código ofuscado. Si algo no lo entendés, decilo: no lo des por bueno.\n\n## Qué entregás\n\nUn informe con estas secciones, en este orden y en lenguaje simple:\n\n1. **Qué es**: una línea.\n2. **Qué corre en tu compu y cuándo**: cada hook, servidor y ejecutable, con el evento que lo dispara.\n3. **A qué se conecta**: cada dominio o servicio, y si pide clave o cuenta.\n4. **Qué le pide a Claude**: resumen de skills, comandos y agentes.\n5. **Señales de alerta**: lista concreta con el archivo y la línea. Si no hay, escribí \"No encontré señales de alerta en los archivos que leí\".\n6. **Veredicto**: INSTALAR, INSTALAR CON CUIDADO o NO INSTALAR, con el motivo en una línea.\n7. **Si lo instalás**: el alcance que conviene (User, Project o Local) y el comando para sacarlo después (`claude plugin uninstall NOMBRE@MARKETPLACE`).\n\n## Reglas\n\n- Nunca ejecutes hooks, scripts ni binarios del plugin para \"ver qué hacen\".\n- Si el marketplace tiene la actualización automática prendida, avisá que los archivos revisados pueden cambiar con una actualización.\n- No afirmes que un plugin es seguro. Decí qué revisaste y qué no.\n"
+  },
+  {
+   "archivo": "settings-plugins-equipo.json",
+   "que_es": "Plantilla de .claude/settings.json para que todo el equipo tenga los mismos plugins en un repo. Reemplazá los nombres en mayúsculas: la clave de extraKnownMarketplaces tiene que ser el name del marketplace.json de ese repo. Si un plugin viene de una fuente externa, cada persona igual tiene que correr claude plugin install nombre@marketplace --scope project.",
+   "contenido": "{\n  \"extraKnownMarketplaces\": {\n    \"NOMBRE-DEL-MARKETPLACE\": {\n      \"source\": {\n        \"source\": \"github\",\n        \"repo\": \"TU-ORGANIZACION/TU-REPO-DE-PLUGINS\"\n      }\n    }\n  },\n  \"enabledPlugins\": {\n    \"commit-commands@claude-plugins-official\": true,\n    \"NOMBRE-DEL-PLUGIN@NOMBRE-DEL-MARKETPLACE\": true\n  }\n}\n"
+  },
+  {
+   "archivo": "checklist-antes-de-instalar-un-plugin.md",
+   "que_es": "Checklist corta para decidir si instalás un plugin, dónde y cómo sacarlo después. Sirve para la app y para Claude Code.",
+   "contenido": "# Checklist antes de instalar un plugin\n\nUsala cada vez que vayas a sumar un plugin, en la app o en Claude Code. Si una respuesta es \"no sé\", frená y averiguá.\n\n## 1. De dónde viene\n\n- [ ] Sé de qué marketplace sale: claude-plugins-official (oficial de Anthropic), claude-community (de terceros enviados a Anthropic), claude-code-plugins (demo) o uno de terceros.\n- [ ] Si es de terceros, conozco al autor o al repo, y el repo tiene actividad reciente y una página que explica qué hace.\n- [ ] Si alguien me pasó una línea `/plugin install nombre@marketplace`, le pedí también de qué repo sale ese marketplace.\n\n## 2. Qué trae\n\n- [ ] Leí la sección Will install en `/plugin` (o la ficha del plugin en Personalizar → Plugins).\n- [ ] Si trae hooks, leí `hooks/hooks.json` y entiendo qué comando corre cada uno.\n- [ ] Si trae servidores MCP, leí `.mcp.json` y sé a qué se conecta.\n- [ ] Si trae carpeta `bin/`, sé qué ejecutables agrega.\n- [ ] Si no lo puedo leer yo, usé la skill revisar-plugin o el prompt \"Revisar un plugin antes de instalarlo\" de la guía.\n\n## 3. Qué necesita\n\n- [ ] Sé qué conectores usa y que cada uno lo conecto yo desde la pestaña Conectores del plugin.\n- [ ] Sé si el servicio que conecta pide cuenta o plan pago propio.\n- [ ] En Team o Enterprise, sé si el owner tiene que agregar algún conector antes.\n\n## 4. Dónde lo instalo\n\n- [ ] Elegí el alcance: User (solo yo, todos mis proyectos), Project (todo el equipo en este repo) o Local (solo yo, este repo).\n- [ ] Si es Project, avisé al equipo: va a quedar en `.claude/settings.json`.\n\n## 5. Después de instalar\n\n- [ ] Lo probé con una tarea real.\n- [ ] Si no sirvió, lo desactivé o lo saqué (`/plugin`, pestaña Installed, Enter sobre el plugin).\n- [ ] Anoté cómo sacarlo: `claude plugin uninstall nombre@marketplace`.\n- [ ] Si el marketplace es de terceros, decidí si prendo la actualización automática (viene apagada) o actualizo a mano con `claude plugin update nombre@marketplace`.\n"
+  }
+ ],
+ "notas_revision": "Verifiqué contra la documentación oficial de Claude Code (discover-plugins, anthropic-marketplaces, cli-reference, troubleshooting, security en español, plugins/org) y de claude.com (plugins/overview) y la ayuda 13837440. Confirmado: /plugin abre en Discover; /plugin install nombre@marketplace abre la ficha y no instala; Will install; alcances User, Project y Local; textos exactos Plugin is now active. y Run /reload-plugins to activate.; pestaña Installed (f, filtrar, Enter); claude plugin enable/disable/uninstall/update; auto-update prendido en el oficial y apagado en terceros; marketplace remove desinstala sus plugins; la demo duplica plugins del oficial; menú de la app Discover, Add > Add marketplace, Add > Upload plugin (.zip o .plugin con un solo plugin.json), pestaña Connectors, Disable plugin y Remove; componentes por superficie (agentes solo Cowork y Claude Code); sincronización con Claude Code (v2.1.273, no con clave de API ni Bedrock); hooks y servidores MCP corren fuera del sandbox y de las reglas de permisos; formato de enabledPlugins y extraKnownMarketplaces. No pude confirmar los nombres en español de los menús de la app (Personalizar, Descubrir, Agregar, Subir plugin): los dejé como estaban y sumé el nombre en inglés en la ficha. La página code.claude.com/docs/en/plugins/security en inglés no abrió: usé la versión en español."
+}

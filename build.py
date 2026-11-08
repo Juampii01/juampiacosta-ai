@@ -175,10 +175,9 @@ def es_gratis(g):
     return bool(g.get("post")) or g["slug"] in GRATIS_EXTRA
 
 
-def guias_web(v):
+def guias_web(v, datos):
     """web/guias-web.js lleva solo los datos para listar (sin el contenido); cada guía lleva su contenido dentro de su página.
     Así la biblioteca puede mostrar todas las guías, y el middleware decide quién abre cada una."""
-    datos = json.loads((WEB / "guias-web.json").read_text())
     meta = [{k: g[k] for k in ("slug", "t", "d", "tema", "cat", "parte", "min", "post") if k in g} | ({"gratis": True} if es_gratis(g) else {}) for g in datos]
     (WEB / "guias-web.js").write_text(
         "// Generado por build.py: solo título, resumen, tema y minutos de cada guía. El contenido va en guias/<slug>.html.\n"
@@ -353,6 +352,8 @@ if __name__ == "__main__":
     prompts = json.loads((RAIZ / "contenido" / "base-prompts.json").read_text()) + p_lotes
     herrs = json.loads((RAIZ / "contenido" / "base-herramientas.json").read_text()) + h_lotes
     validar(guias, prompts, herrs)
+    import copy
+    originales = copy.deepcopy(guias)  # sin las mejoras: es lo que leen los revisores para comparar
     n_mejoras = mejorar(guias)
     guias, prompts, ORDEN_CATS = ordenar(guias, prompts)
     herrs = ordenar_herramientas(herrs)
@@ -360,10 +361,12 @@ if __name__ == "__main__":
     slugs = {g["slug"] for g in guias}
     faltan = [s for s in re.findall(r'"([a-z0-9-]{8,})"', rutas) if s not in slugs and s not in ("empezar", "conectar", "skills", "claude-code", "negocio", "contenido", "vender", "sistema-base", "agentes", "desarrollo")]
     assert not faltan, f"rutas.js nombra guías que no existen: {faltan}"
-    (WEB / "guias-web.json").write_text(json.dumps(guias, ensure_ascii=False, indent=1))
+    orden_slugs = [g["slug"] for g in guias]
+    por_slug = {g["slug"]: g for g in originales}
+    (WEB / "guias-web.json").write_text(json.dumps([{**por_slug[s], **{k: g[k] for k in ("tema", "cat", "parte")}} for s, g in zip(orden_slugs, guias)], ensure_ascii=False, indent=1))
     datos_js(prompts, herrs)
     v = version()
-    n = guias_web(v)
+    n = guias_web(v, guias)
     (RAIZ / "recursos.html").write_text((WEB / "recursos.html").read_text().replace("{{V}}", v)
                                         .replace("{{VITRINA}}", vitrina(guias, prompts, herrs, True)))
     inicio(v)

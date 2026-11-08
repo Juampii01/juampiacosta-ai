@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena herramientas-y-esfuerzo-justos, Herramientas y esfuerzo justos: prendé solo lo que vas a usar, Búsqueda web, Research, conectores, razonamiento, nivel de esfuerzo y artifacts: cuándo te conviene prenderlos y cuándo apagarlos para que tu plan rinda más. y e9815a09 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena herramientas-y-esfuerzo-justos, Herramientas y esfuerzo justos: prendé solo lo que vas a usar, Búsqueda web, Research, conectores, razonamiento, nivel de esfuerzo y artifacts: cuándo te conviene prenderlos y cuándo apagarlos para que tu plan rinda más. y 8757e687 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=e9815a09">
-<link rel="stylesheet" href="../web/cta.css?v=e9815a09">
-<link rel="stylesheet" href="../web/biblioteca.css?v=e9815a09">
-<link rel="stylesheet" href="../web/guia.css?v=e9815a09">
-<link rel="stylesheet" href="../web/tema.css?v=e9815a09">
-<link rel="stylesheet" href="../web/bienvenida.css?v=e9815a09">
-<script src="../web/tema.js?v=e9815a09"></script>
-<link rel="icon" href="../web/favicon.svg?v=e9815a09" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=8757e687">
+<link rel="stylesheet" href="../web/cta.css?v=8757e687">
+<link rel="stylesheet" href="../web/biblioteca.css?v=8757e687">
+<link rel="stylesheet" href="../web/guia.css?v=8757e687">
+<link rel="stylesheet" href="../web/tema.css?v=8757e687">
+<link rel="stylesheet" href="../web/bienvenida.css?v=8757e687">
+<script src="../web/tema.js?v=8757e687"></script>
+<link rel="icon" href="../web/favicon.svg?v=8757e687" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=e9815a09"></script>
-<script src="../web/guias-web.js?v=e9815a09"></script>
-<script src="../web/comun.js?v=e9815a09"></script>
+<script src="../web/redes.js?v=8757e687"></script>
+<script src="../web/guias-web.js?v=8757e687"></script>
+<script src="../web/comun.js?v=8757e687"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="herramientas-y-esfuerzo-justos"></main>
 <script>var GUIA = {"slug": "herramientas-y-esfuerzo-justos", "t": "Herramientas y esfuerzo justos: prendé solo lo que vas a usar", "d": "Búsqueda web, Research, conectores, razonamiento, nivel de esfuerzo y artifacts: cuándo te conviene prenderlos y cuándo apagarlos para que tu plan rinda más.", "tema": "Gastá menos tokens", "min": 8, "secciones": [{"h": "Por qué las herramientas pesan", "p": ["El centro de ayuda lo dice directo: las herramientas y los conectores consumen muchos tokens. Cada conector que se carga ocupa lugar en la conversación, y lo que trae una búsqueda también entra al chat.", "La regla es simple: prendé lo que esa conversación necesita y nada más."]}, {"h": "Búsqueda web", "lista": ["Prendela cuando: necesitás información actual (precios de hoy, noticias, una norma que cambió).", "Apagala cuando: vos ya le pasás el material, o la pregunta no depende de algo reciente.", "Ojo con los links largos: si le pasás un artículo para analizar, el artículo entero entra en el chat."], "pasos": ["En el chat, tocá el botón + abajo a la izquierda.", "Tocá Web search (búsqueda web). Si tiene la tilde, está prendida; si no, está apagada."], "aviso": "En la nueva experiencia de Claude (chat y Cowork unidos) no hay interruptor: Claude busca cuando le parece útil. Si no querés que busque, decilo en tu mensaje: \"no busques en la web, usá solo lo que te paso\"."}, {"h": "Research", "p": ["Research hace varias búsquedas seguidas, decide qué mirar después según lo que encuentra y revisa tus conectores. Es para investigaciones de verdad, no para una pregunta rápida. La ayuda avisa que puede gastar tu límite más rápido, porque trae muchas fuentes y arma respuestas largas.", "Está en los planes pagos y siempre corre con Opus 5.5 (o Opus 4.8 si hace falta), sin importar qué modelo tengas elegido en el chat."], "pasos": ["Verificá que la búsqueda web esté prendida: Research la necesita.", "Tocá + abajo a la izquierda y elegí Research. Aparece un indicador azul.", "Cuando termines, tocalo de nuevo para apagarlo.", "En la nueva experiencia también podés escribir /deep-research."], "prompts": [{"t": "Research bien acotado", "c": "Investigá [PREGUNTA CONCRETA].\nEnfocate solo en: [2 O 3 ASPECTOS].\nZona y período: [PAÍS O REGIÓN, AÑOS].\nNo me interesa: [LO QUE QUERÉS DEJAR AFUERA].\nEntregá: un resumen de 10 líneas y una tabla con las fuentes."}]}, {"h": "Conectores: elegí cómo se cargan", "p": ["Los conectores (Gmail, Drive, calendario y demás) ocupan lugar en cada conversación. Podés elegir cómo se cargan, chat por chat: tocá + (o escribí /), pasá por Connectors (conectores) y elegí Tool access (acceso a herramientas)."], "lista": ["Auto: Claude decide qué conectores cargar según lo que estás haciendo. Es la opción por defecto y el mejor punto de partida.", "Always available (siempre disponibles): todos se cargan al empezar. Sirve si tenés pocos y los usás todo el tiempo, pero ocupa más lugar desde el arranque.", "On demand (a pedido): se cargan solo cuando Claude busca el que necesita. Conviene si tenés muchos conectores o si tus chats llegan al límite de largo. Suma un paso de búsqueda."], "aviso": "Lo que elegís vale solo para esa conversación. En la nueva experiencia, los conectores se manejan desde Customize → Connectors."}, {"h": "Esfuerzo y razonamiento", "p": ["El nivel de esfuerzo (Effort) define qué tan a fondo trabaja Claude en cada respuesta. La ayuda es clara: más esfuerzo da respuestas más completas, pero tardan más y usan más tokens.", "Para cambiarlo, tocá el nombre del modelo al lado del botón de enviar y entrá a Effort. El menú marca como Default (por defecto) el nivel recomendado para cada modelo. Ahí mismo, en algunos modelos, está el interruptor Thinking o Extended (razonamiento extendido): si está prendido, Claude piensa antes de responder."], "lista": ["Low o Medium: tareas de rutina. Mails, resúmenes, preguntas simples.", "High: el mejor equilibrio general para trabajo que importa.", "Extra high: trabajos largos de programación y tareas de agentes.", "Max: el razonamiento más profundo. Para problemas difíciles de verdad.", "Razonamiento apagado: si el modelo lo permite y la tarea es simple, apagalo. En los modelos donde no se puede apagar, bajá el esfuerzo."]}, {"h": "Artifacts y tareas de varios pasos", "p": ["Crear artifacts (documentos, tableros o apps que se abren al costado del chat) y las tareas de varios pasos (buscar, ejecutar código, armar archivos) están entre lo que más gasta. Úsalos cuando el resultado lo vale."], "lista": ["Si solo querés leer una respuesta: pedí \"respondé en el chat, sin crear un archivo\".", "Si querés cambiar una parte de un documento: marcá el texto, tocá Edit with Claude (editar con Claude) y pedí el cambio. Claude edita donde marcaste.", "Si querés cambiar un detalle: pedí solo ese cambio (\"cambiá el título y dejá todo lo demás igual\") en vez de pedir que lo rehaga entero.", "No apagues la creación de archivos para ahorrar: esa opción también habilita otras cosas, como subir planillas Excel. Es mejor decir en cada pedido qué formato querés."], "aviso": "Para más detalles sobre qué podés armar, mirá la guía \"Artifacts: herramientas para tu negocio sin programar\"."}, {"h": "Chequeo rápido antes de cada chat", "pasos": ["¿Necesito información de hoy? Si no, búsqueda web apagada.", "¿Es una investigación grande? Recién ahí, Research.", "¿Voy a usar algún conector? Si no, Tool access en On demand o Auto.", "¿Es una tarea de rutina? Esfuerzo bajo y razonamiento apagado si se puede.", "¿Necesito un documento o me alcanza con leer la respuesta?"]}], "faq": [{"q": "¿Research usa el modelo que yo elegí?", "a": "No. Según la ayuda, Research corre con Opus 5.5 (o Opus 4.8 si hace falta), sin importar el modelo elegido en el chat."}, {"q": "No veo el interruptor de búsqueda web. ¿Por qué?", "a": "Si tenés la nueva experiencia de Claude, no existe: Claude decide cuándo buscar. Podés pedirle en el mensaje que no busque."}, {"q": "¿Bajar el esfuerzo empeora las respuestas?", "a": "La ayuda recomienda el nivel por defecto o uno más bajo para preguntas simples y escritura general. Para algo difícil, subilo solo en ese chat."}, {"q": "¿Los conectores gastan aunque no los use?", "a": "Depende de cómo se cargan. Con Always available se cargan todos al empezar y ocupan lugar desde el arranque. Con On demand se cargan solo cuando Claude busca el que necesita."}], "fuentes": ["https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work", "https://support.claude.com/en/articles/9797557-usage-limit-best-practices", "https://support.claude.com/en/articles/10684626-enable-and-use-web-search", "https://support.claude.com/en/articles/11088861-use-research-on-claude", "https://support.claude.com/en/articles/13730515-manage-claude-s-tool-access", "https://support.claude.com/en/articles/8664678", "https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them", "https://support.claude.com/en/articles/16761823-claude-cowork-and-chat-are-one-claude"], "cat": "ahorrar", "parte": "aprende"};</script>
 
-<script src="../web/rutas.js?v=e9815a09"></script>
-<script src="../web/logos.js?v=e9815a09"></script>
-<script src="../web/guia.js?v=e9815a09"></script>
-<script src="../web/bienvenida.js?v=e9815a09"></script>
+<script src="../web/rutas.js?v=8757e687"></script>
+<script src="../web/logos.js?v=8757e687"></script>
+<script src="../web/guia.js?v=8757e687"></script>
+<script src="../web/bienvenida.js?v=8757e687"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

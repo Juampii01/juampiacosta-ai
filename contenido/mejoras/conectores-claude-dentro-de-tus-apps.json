@@ -1,0 +1,84 @@
+{
+ "slug": "conectores-claude-dentro-de-tus-apps",
+ "verificada": "2026-11-08",
+ "correcciones": [
+  {
+   "antes": "Andá a Customize → Connectors y tocá Add.",
+   "despues": "Andá a Customize → Connectors, tocá + Add y elegí Add custom connector.",
+   "motivo": "La ayuda oficial indica para Free, Pro y Max: Customize > Connectors, \"+ Add\" y después \"Add custom connector\". El camino con Custom y Web es el del owner en Team y Enterprise, desde Organization settings.",
+   "fuente": "https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp"
+  },
+  {
+   "antes": "Pasá por Custom y elegí Web.",
+   "despues": "En Team y Enterprise este paso lo hace el owner, en Organization settings → Connectors: Add, pasá por Custom y elegí Web. Los miembros después buscan el conector (con la etiqueta Custom) en Customize → Connectors y tocan Connect.",
+   "motivo": "La ayuda oficial separa los dos caminos: en Team y Enterprise solo los Owners y Primary Owners agregan conectores personalizados desde Organization settings > Connectors > Add > Custom > Web, y cada miembro se conecta después desde Customize > Connectors.",
+   "fuente": "https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp"
+  },
+  {
+   "antes": "Poné un nombre y la URL del servidor MCP remoto. Tocá Continue.",
+   "despues": "Poné un nombre y la URL del servidor MCP remoto. Tocá Continue, revisá la autenticación que detectó y tocá Continue otra vez.",
+   "motivo": "Según la ayuda oficial, después de la URL hay un segundo paso: revisar la configuración de autenticación detectada y volver a tocar Continue. Ahí también aparecen OAuth client y Request headers (para servidores que usan una clave en lugar de OAuth).",
+   "fuente": "https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp"
+  },
+  {
+   "antes": "Sí. Los conectores web andan en la web, la app de escritorio y las apps de iOS y Android.",
+   "despues": "Sí. Los conectores web andan en la web, la app de escritorio y las apps de iOS y Android. Instalarlos desde el celular todavía está en beta, así que conviene conectarlos desde la web o la app de escritorio. Los conectores personalizados se usan en la web, Cowork y Claude Desktop.",
+   "motivo": "La ayuda oficial aclara que instalar conectores desde el celular está en beta y que los conectores personalizados con MCP remoto están disponibles en Claude, Cowork y Claude Desktop.",
+   "fuente": "https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities"
+  }
+ ],
+ "fuentes_extra": [
+  "https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp",
+  "https://support.claude.com/en/articles/10166901-use-google-workspace-connectors"
+ ],
+ "ejemplo": {
+  "titulo": "Ejemplo resuelto: un estudio contable que arranca el día con Gmail y Calendar",
+  "negocio": "Ejemplo inventado: un estudio contable de tres personas en el barrio Cordón, Montevideo. Atiende a pymes y profesionales, y usa Google Workspace con el dominio del estudio.",
+  "punto_de_partida": "La contadora titular empieza cada mañana revisando la bandeja y la agenda a mano. Los mails de clientes que piden un papel se mezclan con avisos automáticos y a veces quedan sin respuesta varios días.",
+  "pasos": [
+   "Como el estudio usa Google Workspace, el administrador de la cuenta entró a la consola de Google y marcó la app Claude como Trusted en Security → Access and data control → API controls → Manage third-party app access, para evitar el \"Access blocked\".",
+   "Tienen plan Team, así que la owner agregó Gmail, Google Calendar y Google Drive en Organization settings → Connectors → Browse connectors → Add to your team.",
+   "Cada persona del estudio entró a Customize → Connectors, eligió cada conector, tocó Connect e inició sesión con su cuenta del dominio.",
+   "La titular probó en un chat el prompt \"Resumen de la mañana\" de la guía. Vio que Claude le pedía aprobación antes de crear algo y que no enviaba nada.",
+   "Subió la skill resumen-del-dia del kit en Customize → Skills y la prendió. Desde ahí le alcanza con escribir \"resumen del día\".",
+   "Para las semanas de vencimientos usa el pedido \"Mails sin responder de un cliente\" del kit con el dominio de cada cliente grande, y responde ella desde los borradores.",
+   "En los chats donde no necesita Google apaga los conectores desde + → Connectors, como recomienda la guía."
+  ],
+  "resultado": "Cada mañana la titular tiene en un chat la agenda del día, los mails que esperan respuesta y tres borradores listos en Gmail para revisar. Nada sale del estudio sin que una persona lo lea y lo envíe."
+ },
+ "si_falla": [
+  {
+   "sintoma": "Al conectar Gmail o Drive aparece \"Access blocked: your institution's admin needs to review Claude for Google Drive\".",
+   "solucion": "El administrador de Google Workspace tiene que ir a la consola de Google, Security → Access and data control → API controls → Manage third-party app access, agregar la app Claude y marcarla como Trusted. Después hay que esperar unos 15 minutos y volver a conectar."
+  },
+  {
+   "sintoma": "Aparece \"Please try again. You may need to reconnect with your Google Drive account\".",
+   "solucion": "Andá a Customize → Connectors, abrí el conector de Google, tocá Disconnect y confirmá. Volvé a iniciar sesión la próxima vez que lo uses. Si sigue fallando, en myaccount.google.com/connections eliminá la conexión de Claude con Delete all connections y conectá de nuevo."
+  },
+  {
+   "sintoma": "En una cuenta Team o Enterprise no aparece el conector que querés.",
+   "solucion": "Primero lo tiene que agregar un owner en Organization settings → Connectors → Browse connectors → Add to your team. Después cada persona lo conecta con su propia cuenta en Customize → Connectors."
+  },
+  {
+   "sintoma": "Un conector personalizado no conecta o se queda esperando.",
+   "solucion": "Los conectores personalizados se conectan desde la nube de Anthropic, no desde tu computadora. Si el servidor está en una red privada, detrás de una VPN o de un firewall, quien lo administra tiene que permitir las direcciones IP de Anthropic. Revisá también que la URL sea la del servidor MCP (la que da la documentación de la herramienta) y no la de su página web."
+  },
+  {
+   "sintoma": "Claude dice que no puede ver el PDF que vino en un mail.",
+   "solucion": "Es así: con Gmail solo ve los datos del adjunto (nombre, tipo), no su contenido. Descargalo y subilo al chat, o guardalo en Drive y pedile que lo lea desde ahí con el conector de Google Drive."
+  }
+ ],
+ "kit": [
+  {
+   "archivo": "resumen-del-dia/SKILL.md",
+   "que_es": "Skill que arma el resumen del día con Google Calendar y Gmail y deja tres borradores sin enviar. Guardala en una carpeta resumen-del-dia, comprimila en ZIP y subila en Customize → Skills.",
+   "contenido": "---\nname: resumen-del-dia\ndescription: Arma el resumen del día con Google Calendar y Gmail: reuniones, mails que piden respuesta y borradores sin enviar. Usala cuando pidan el resumen del día o qué hay hoy.\n---\n\n# Resumen del día\n\nArmás un resumen corto para empezar el día. Leés, ordenás y dejás borradores. Nunca enviás, respondés, aceptás invitaciones ni movés nada.\n\n## Antes de empezar\n\n- Necesitás los conectores de Google Calendar y Gmail prendidos en este chat. Si alguno no está, decilo en una línea y seguí con el que haya.\n- La zona horaria es la del calendario de la persona.\n\n## Pasos\n\n1. Calendar: listá los eventos de hoy en orden, con hora de inicio, título y con quién. Marcá los que se superponen.\n2. Para cada reunión con gente de afuera, buscá en Gmail el último mail con esas personas y resumilo en una línea.\n3. Gmail: buscá los mails de las últimas 24 horas que esperan respuesta de la persona. Dejá afuera promociones, newsletters, notificaciones automáticas y mails donde está solo en copia.\n4. Ordenalos así: primero clientes, después proveedores, después el resto. Dentro de cada grupo, el más viejo primero.\n5. Para los tres primeros, creá un borrador de respuesta corto en Gmail. Si para responder hace falta un dato que no está en el mail, no lo inventes: dejá [COMPLETAR: qué falta] dentro del borrador.\n6. Si un mail trae adjuntos, aclará que no podés ver su contenido, solo el nombre y el tipo.\n\n## Formato\n\n**Hoy, [FECHA]**\n\nReuniones\n- [HORA] [TÍTULO] con [PERSONAS]. Contexto: [UNA LÍNEA]\n\nMails que piden respuesta\n1. [REMITENTE]: [ASUNTO]. Qué pide: [UNA LÍNEA]. Borrador: sí / no\n\nPara decidir hoy\n- [LO QUE NO PUEDE ESPERAR, SI HAY]\n\n## Reglas\n\n- No envíes nada. Los borradores quedan en Gmail para que la persona los revise.\n- Si Claude te pide aprobación para crear un borrador, explicá en una línea qué vas a crear.\n- No copies al resumen datos sensibles que no hagan falta (números de cuenta, contraseñas, documentos).\n"
+  },
+  {
+   "archivo": "pedidos-seguros-conectores-google.md",
+   "que_es": "Pack de pedidos para Gmail, Google Calendar y Google Drive que solo leen o dejan borradores, listos para copiar y completar.",
+   "contenido": "# Pedidos seguros para conectores de Google\n\nPedidos para copiar y pegar en un chat con Gmail, Google Calendar y Google Drive prendidos. Todos leen o dejan borradores. Ninguno envía ni borra.\n\nAntes de usarlos: + → Connectors en el chat, prendé solo los que pide cada pedido y apagá el resto.\n\n## Gmail\n\n### Mails sin responder de un cliente\nBuscá en mi Gmail los mails de [CLIENTE O DOMINIO] de los últimos [N] días que no respondí. Listalos con fecha, asunto y qué me piden. No respondas nada.\n\n### Borrador con lo que ya hablamos\nLeé el hilo más reciente con [PERSONA] sobre [TEMA] y armá un borrador de respuesta que [OBJETIVO: confirme la fecha / pida el dato que falta / proponga dos horarios]. Dejalo como borrador en Gmail. No lo envíes.\n\n### Ordenar la bandeja de la semana\nListá los mails de esta semana que tienen una tarea para mí. Agrupalos en \"responder\", \"pagar o cobrar\" y \"leer después\". No archives, no marques ni muevas nada.\n\n## Google Calendar\n\n### Huecos para una reunión\nBuscá en mi Google Calendar tres horarios libres de [DURACIÓN] entre [DÍA] y [DÍA], de [HORA] a [HORA]. Solo listalos. No crees el evento todavía.\n\n### Preparar la semana\nListá mis reuniones de la semana que viene. Para cada una, decime si tiene un documento o un mail relacionado y qué tendría que llevar preparado.\n\n## Google Drive\n\n### Encontrar la última versión\nBuscá en mi Google Drive los archivos sobre [TEMA] modificados en los últimos [N] días. Decime cuál parece la versión final y por qué. No muevas ni compartas nada.\n\n### Resumen de una planilla\nAbrí la planilla [NOMBRE] de mi Google Drive y resumime [QUÉ: ventas por mes / pagos pendientes / stock bajo]. Si una columna no se entiende, preguntame antes de calcular.\n\n## Combinados\n\n### De mail a reunión\nLeé el último mail de [PERSONA] donde pide reunirse. Buscá en mi calendario dos horarios libres que le sirvan según lo que dice y armá un borrador de respuesta proponiéndolos. No crees el evento ni envíes el mail.\n\n### Seguimiento de propuestas\nBuscá en Drive las propuestas que mandé este mes (archivos con \"propuesta\" en el nombre). Para cada una, buscá en Gmail si el cliente respondió. Armá una tabla: cliente, fecha de envío, respondió sí o no, próximo paso.\n\n## Regla para todos\n\nCuando Claude te pida aprobación para enviar, compartir, mover o borrar, leé exactamente qué va a hacer antes de aprobar. Si no pediste esa acción, rechazala. Tené cuidado con la opción de aprobar siempre: la ayuda oficial pide usarla con cuidado.\n"
+  }
+ ],
+ "notas_revision": "Verifiqué contra la ayuda oficial: cómo conectar desde el chat (+, Connectors, Manage connectors) y desde Customize > Connectors; pasos de Team y Enterprise (Organization settings > Connectors > Browse connectors > Add to your team); conectores web en todos los planes y superficies, instalación desde el celular en beta; conectores personalizados en Free (uno), Pro, Max, Team y Enterprise con los pasos exactos (+ Add > Add custom connector en planes individuales; Add > Custom > Web para owners), opciones de Authentication, OAuth client y Request headers, y que se conectan desde la nube de Anthropic. Google Workspace: qué hace cada conector, aprobación por defecto, adjuntos solo metadatos, no entrenamiento con datos de conectores, Access blocked y reconexión. La nota de que las herramientas consumen mucho está respaldada por la ayuda de límites (tools and connectors are token-intensive). No pude confirmar los nombres exactos de los botones de aprobación dentro del chat (solo aparece \"Allow always\" en la ayuda de conectores personalizados), así que el kit no los nombra. La guía nombra Gmail \"ver borradores\": la ayuda dice que puede redactarlos; lo dejé como está."
+}

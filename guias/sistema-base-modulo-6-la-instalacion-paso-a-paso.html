@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena sistema-base-modulo-6-la-instalacion-paso-a-paso, Módulo 6 · La instalación paso a paso, El checklist para dejar todo armado en el negocio del cliente: cuentas a su nombre, proyecto, skills, conectores, automatización y pruebas con casos reales. y e9815a09 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena sistema-base-modulo-6-la-instalacion-paso-a-paso, Módulo 6 · La instalación paso a paso, El checklist para dejar todo armado en el negocio del cliente: cuentas a su nombre, proyecto, skills, conectores, automatización y pruebas con casos reales. y 8757e687 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,30 +9,30 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=e9815a09">
-<link rel="stylesheet" href="../web/cta.css?v=e9815a09">
-<link rel="stylesheet" href="../web/biblioteca.css?v=e9815a09">
-<link rel="stylesheet" href="../web/guia.css?v=e9815a09">
-<link rel="stylesheet" href="../web/tema.css?v=e9815a09">
-<link rel="stylesheet" href="../web/bienvenida.css?v=e9815a09">
-<script src="../web/tema.js?v=e9815a09"></script>
-<link rel="icon" href="../web/favicon.svg?v=e9815a09" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=8757e687">
+<link rel="stylesheet" href="../web/cta.css?v=8757e687">
+<link rel="stylesheet" href="../web/biblioteca.css?v=8757e687">
+<link rel="stylesheet" href="../web/guia.css?v=8757e687">
+<link rel="stylesheet" href="../web/tema.css?v=8757e687">
+<link rel="stylesheet" href="../web/bienvenida.css?v=8757e687">
+<script src="../web/tema.js?v=8757e687"></script>
+<link rel="icon" href="../web/favicon.svg?v=8757e687" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=e9815a09"></script>
-<script src="../web/guias-web.js?v=e9815a09"></script>
-<script src="../web/comun.js?v=e9815a09"></script>
+<script src="../web/redes.js?v=8757e687"></script>
+<script src="../web/guias-web.js?v=8757e687"></script>
+<script src="../web/comun.js?v=8757e687"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="sistema-base-modulo-6-la-instalacion-paso-a-paso"></main>
 <script>var GUIA = {"slug": "sistema-base-modulo-6-la-instalacion-paso-a-paso", "t": "Módulo 6 · La instalación paso a paso", "d": "El checklist para dejar todo armado en el negocio del cliente: cuentas a su nombre, proyecto, skills, conectores, automatización y pruebas con casos reales.", "tema": "El sistema para vender IA", "min": 12, "fichaNombre": "Checklist de instalación", "ficha": [["Qué es", "El orden en que se instala el paquete, con lo que hay que revisar en cada paso."], ["Necesitás", "La propuesta aceptada, los documentos del cliente y una o dos sesiones con alguien del negocio."], ["Regla de oro", "El cliente es dueño de sus cuentas y de sus datos. Vos configurás, no te quedás con nada."], ["Qué no hace", "No cubre agentes que hablen solos con clientes ni desarrollos a medida."]], "secciones": [{"h": "Antes de empezar: cuentas y datos son del cliente", "p": ["La cuenta de Claude, la de Google y cualquier otra herramienta se crean con el mail del negocio y las paga el negocio. Si mañana dejás de trabajar con ellos, todo tiene que seguir funcionando sin vos.", "Elegí el plan con el cliente según cuántas personas lo van a usar. Si es una sola, puede alcanzar con un plan individual. Si el equipo tiene que compartir el proyecto y las skills, hace falta un plan Team (mínimo dos personas) o Enterprise, porque compartir proyectos es una función de esos planes.", "Revisá con el cliente cómo se usan sus datos. En los planes individuales (Free, Pro, Max) hay una opción de privacidad que define si las conversaciones se usan para mejorar los modelos; el cliente decide cómo dejarla. En los planes comerciales como Team y Enterprise, por defecto no se usan para entrenar."], "aviso": "Nunca te pasen contraseñas por chat, por mail ni por el chat de Claude. Lo ideal es que el cliente inicie sesión él mismo mientras comparten pantalla. Si necesitás acceso propio, que te sume como miembro y te saque al terminar."}, {"h": "Paso 1: preparar el material", "pasos": ["Pedí con tiempo los documentos que figuran en la propuesta: lista de precios, servicios, preguntas frecuentes, políticas (cambios, pagos, horarios), ejemplos de presupuestos y de respuestas buenas.", "Sacá de los documentos datos sensibles que no hacen falta: datos personales de clientes, números de cuenta, contraseñas.", "Juntá el manual de marca o, si no hay, publicaciones y mensajes que muestren cómo habla el negocio.", "Pasá todo por Claude en tu propia cuenta solo si el cliente está de acuerdo. Si no, ordenalo directo en la cuenta del cliente."]}, {"h": "Paso 2: proyecto y skills", "pasos": ["Creá el proyecto en la cuenta del cliente con un nombre claro (\"Asistente de [NEGOCIO]\").", "Subí los documentos a la base de conocimiento del proyecto.", "Escribí las instrucciones del proyecto: quién es el negocio, cómo habla, qué no tiene que hacer nunca (por ejemplo, inventar precios) y cuándo tiene que decir \"esto lo tiene que ver una persona\".", "Activá la ejecución de código y creación de archivos: en planes individuales está en Settings > Capabilities; en Team y Enterprise lo activa el dueño de la organización en la configuración de Plugins & skills.", "Subí las tres skills (marca, presupuestos y respuestas) como .zip desde Customize > Skills > + > Create skill > Upload a skill. Cada una se arma como explican las guías de skills de marca, presupuestos y respuestas.", "Si es plan Team, compartí el proyecto y las skills con las personas que las van a usar."]}, {"h": "Paso 3: conectores y automatización", "pasos": ["Conectá Gmail, Google Calendar y Google Drive con la cuenta de Google del negocio. Lo hace el cliente iniciando sesión: cada persona conecta su propia cuenta y Claude solo ve lo que esa cuenta ya puede ver.", "En Team o Enterprise, el dueño de la organización tiene que habilitar los conectores antes. Si usan Google Workspace y la conexión está bloqueada, su administrador de Google puede tener que marcar a Claude como aplicación de confianza.", "Explicale al cliente que, por defecto, Claude pide aprobación antes de enviar, responder o reenviar mails y antes de compartir, mover o borrar archivos de Drive. Recomendá dejarlo así.", "Armá la automatización acordada como tarea programada (en la barra lateral, Scheduled > New task), con su frecuencia: cada día, cada semana o en días hábiles. Ejemplo: \"Todos los días hábiles a las 8, revisá los mails sin responder y armá un resumen con los urgentes\".", "Corré la tarea una vez a mano y revisá el resultado con el cliente."]}, {"h": "Paso 4: probar con casos reales", "p": ["Nada se entrega sin probar con pedidos reales del negocio. Pedile al cliente cinco consultas reales de clientes y tres pedidos de presupuesto recientes."], "pasos": ["Pasá cada caso por la skill que corresponde y compará con lo que el negocio respondió de verdad.", "Anotá cada error: dato inventado, tono raro, precio mal calculado, algo que tendría que haber derivado.", "Corregí documentos, instrucciones o skills, y volvé a probar los casos que fallaron.", "Probá un caso que no tenga respuesta en los documentos: Claude tiene que decir que no sabe, no inventar.", "Cuando todo pasa, completá el checklist con Claude (prompt de abajo) y guardalo para el documento de entrega."], "prompts": [{"t": "Checklist de instalación completado", "c": "Armame el checklist de instalación de Claude para este cliente, marcando lo hecho y lo pendiente.\nNegocio: [NOMBRE]. Plan de Claude: [PLAN]. Personas que lo usan: [NOMBRES Y ROLES].\nDatos que te paso:\n- Proyecto: [NOMBRE, DOCUMENTOS SUBIDOS]\n- Skills instaladas: [LISTA]\n- Conectores conectados y con qué cuenta: [LISTA]\n- Automatización: [QUÉ HACE Y FRECUENCIA]\n- Casos probados y resultado: [LISTA]\n- Ajustes hechos: [LISTA]\n\nSecciones: Cuentas (a nombre del cliente), Privacidad, Proyecto, Skills, Conectores, Automatización, Pruebas, Accesos.\nPara cada ítem: Hecho / Pendiente / No aplica, y una nota corta.\nEn Accesos, verificá que no quede ningún acceso mío sin fecha de baja.\nNo inventes nada que no te haya pasado: si falta un dato, marcalo como Pendiente."}]}], "faq": [{"q": "¿Lo hago en persona o a distancia?", "a": "Las dos funcionan. A distancia, con pantalla compartida y el cliente iniciando sesión él mismo. En persona es más fácil la primera vez, sobre todo para los conectores."}, {"q": "¿Qué hago si el cliente no tiene sus precios escritos?", "a": "Frenás la instalación de la skill de presupuestos hasta tenerlos. Podés ayudarlo a escribirlos como extra, pero sin datos reales la skill va a inventar."}, {"q": "¿Puedo armar todo en mi cuenta y después pasárselo?", "a": "Podés preparar las skills en tu cuenta porque son archivos .zip que se suben. El proyecto, los conectores y la tarea programada armalos directo en la cuenta del cliente."}], "fuentes": ["https://support.claude.com/en/articles/9517075-what-are-projects", "https://support.claude.com/en/articles/12512180-use-skills-in-claude", "https://support.claude.com/en/articles/10166901-use-google-workspace-connectors", "https://support.claude.com/en/articles/9266767-what-is-the-team-plan", "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork", "https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training", "https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training"], "cat": "sistema-base", "parte": "construi"};</script>
 
-<script src="../web/rutas.js?v=e9815a09"></script>
-<script src="../web/logos.js?v=e9815a09"></script>
-<script src="../web/guia.js?v=e9815a09"></script>
-<script src="../web/bienvenida.js?v=e9815a09"></script>
+<script src="../web/rutas.js?v=8757e687"></script>
+<script src="../web/logos.js?v=8757e687"></script>
+<script src="../web/guia.js?v=8757e687"></script>
+<script src="../web/bienvenida.js?v=8757e687"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);
