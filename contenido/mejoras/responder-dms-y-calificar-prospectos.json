@@ -1,0 +1,72 @@
+{
+ "slug": "responder-dms-y-calificar-prospectos",
+ "verificada": "2026-11-08",
+ "correcciones": [
+  {
+   "antes": "una carpeta con un archivo skill.md que empieza con nombre y descripción, comprimida en .zip.",
+   "despues": "una carpeta con un archivo skill.md que empieza con un bloque YAML con name (hasta 64 caracteres) y description (hasta 200 caracteres), comprimida en .zip. La carpeta tiene que llamarse igual que el name de la skill.",
+   "motivo": "La ayuda oficial pide que el archivo empiece con un frontmatter YAML con name y description, fija 64 caracteres como máximo para name y 200 para description, y aclara que el nombre de la carpeta tiene que coincidir con el de la skill. Si no coincide, la subida falla.",
+   "fuente": "https://support.claude.com/en/articles/12512198-how-to-create-custom-skills"
+  },
+  {
+   "antes": "Para usar skills tenés que tener activado \"Crear y editar archivos\" (Code execution and file creation) en Configuración → Capacidades.",
+   "despues": "Para usar skills en los planes individuales tenés que tener activado Code execution and file creation (en el diseño nuevo de Settings se llama Create and edit files) en Settings → Capabilities. En Team y Enterprise lo habilita el owner en Organization settings → Plugins & skills, pestaña Policy, donde tienen que estar prendidos Cloud code execution and file creation y Skills.",
+   "motivo": "La ayuda oficial separa los dos casos: en Free, Pro y Max la opción está en Settings > Capabilities; en Team y Enterprise se maneja desde Organization settings > Plugins & skills, en la pestaña Policy. La guía no avisaba que en una cuenta de empresa no lo puede prender cualquier usuario.",
+   "fuente": "https://support.claude.com/en/articles/12512180-use-skills-in-claude"
+  }
+ ],
+ "fuentes_extra": [
+  "https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude",
+  "https://help.manychat.com/hc/en-us/articles/23358636027932"
+ ],
+ "ejemplo": {
+  "titulo": "Ejemplo resuelto: ordenar los DMs de un taller de cerámica",
+  "negocio": "Ejemplo inventado: un taller de cerámica en el barrio Cordón, Montevideo. Lo llevan dos socias. Venden clases mensuales, talleres de un día y gift cards, y casi todas las consultas llegan por Instagram y WhatsApp.",
+  "punto_de_partida": "Después de cada posteo se juntan muchos mensajes: gente que pregunta precio, gente que solo saluda, alumnas con dudas de horarios y ofertas de servicios. Las consultas de gift cards para una fecha puntual a veces quedan sin responder.",
+  "pasos": [
+   "Completaron la plantilla de conocimiento del kit: la ficha de voz con tres mensajes reales que les gustaban, qué venden (clases, talleres y gift cards, con lo que incluye cada uno) y sus preguntas frecuentes. Pusieron \"se confirma por mensaje\" en los cupos, porque cambian cada mes.",
+   "En Claude crearon el proyecto Mensajes desde Projects → + New Project, subieron los tres archivos con el botón + del conocimiento y pegaron las instrucciones de la guía en Set project instructions.",
+   "Probaron con los ocho mensajes de prueba del kit, adaptados a cerámica. Uno salió mal: \"¿hacen talleres para cumpleaños?\" quedó como Consulta y para ellas era Listo para hablar. Sumaron esa regla a las instrucciones.",
+   "Desde ese día, a la mañana una de las socias copia los DMs nuevos sin nombres completos y los pega en un chat dentro del proyecto.",
+   "Responden primero los Listo para hablar. Donde el borrador dice [CONFIRMAR: cupo del sábado], miran la planilla de cupos antes de mandar.",
+   "Para los Interesado, el borrador trae una sola pregunta. Para alguien que quería regalar una clase, la pregunta fue de urgencia: \"¿Para cuándo la necesitás?\".",
+   "Cuando vieron que también querían usarlo en chats sueltos, empaquetaron la skill asistente-de-dms del kit: carpeta con el mismo nombre que el name, SKILL.md adentro, ZIP, y la subieron en Customize → Skills."
+  ],
+  "resultado": "Quedó un proyecto que cada mañana les ordena los mensajes por intención y les deja borradores con su tono. Ningún mensaje sale sin que una de las dos lo lea, y los cupos y fechas siempre se confirman a mano antes de responder."
+ },
+ "si_falla": [
+  {
+   "sintoma": "Los borradores inventan precios, cupos o fechas.",
+   "solucion": "Revisá que los archivos de qué vendés y preguntas frecuentes estén en el conocimiento del proyecto y que el chat lo hayas abierto dentro del proyecto. Si un dato cambia seguido, escribí \"se confirma por mensaje\" en el documento: así Claude pone [CONFIRMAR] en vez de completar."
+  },
+  {
+   "sintoma": "Claude no sigue las instrucciones ni usa tu ficha de voz.",
+   "solucion": "Las instrucciones y el conocimiento solo se aplican en los chats creados dentro del proyecto. Si pegaste los mensajes en un chat suelto, abrí el proyecto y empezá un chat nuevo desde ahí. Si usás la skill fuera del proyecto, pegá la ficha de voz en el chat."
+  },
+  {
+   "sintoma": "Le explicaste en un chat que cierto mensaje era Listo para hablar y en el chat siguiente se equivoca igual.",
+   "solucion": "Lo que hablás en un chat no pasa a los otros chats del proyecto. Sumá la regla a las instrucciones del proyecto (por ejemplo: \"Si preguntan por talleres para grupos o eventos, es Listo para hablar\")."
+  },
+  {
+   "sintoma": "No aparece la sección Skills o está en gris.",
+   "solucion": "Activá Code execution and file creation (Create and edit files en el diseño nuevo) en Settings → Capabilities. En Team o Enterprise pedile al owner que habilite Cloud code execution and file creation y Skills en Organization settings → Plugins & skills, pestaña Policy."
+  },
+  {
+   "sintoma": "Al subir la skill aparece un error de formato o de archivo faltante.",
+   "solucion": "Subí un ZIP que contenga la carpeta (no el archivo suelto), con la carpeta llamada igual que el name del archivo (asistente-de-dms) y el archivo skill.md adentro. Revisá que la description no pase los 200 caracteres."
+  }
+ ],
+ "kit": [
+  {
+   "archivo": "asistente-de-dms/SKILL.md",
+   "que_es": "Skill con las categorías, las preguntas de calificación y el formato de salida, para usar el asistente fuera del proyecto. Comprimí la carpeta asistente-de-dms en ZIP y subila en Customize → Skills.",
+   "contenido": "---\nname: asistente-de-dms\ndescription: Ordena mensajes directos por intención de compra y arma borradores con el tono del negocio. Usala cuando el usuario pegue DMs, chats de WhatsApp o mails de clientes para responder.\n---\n\n# Asistente de DMs\n\nOrdenás los mensajes que te pega el usuario y preparás un borrador de respuesta para cada uno. No mandás nada: el usuario revisa y responde desde su app.\n\n## Antes de empezar\n\nBuscá en el Proyecto o en la conversación estos tres documentos: ficha de voz, qué vendo, preguntas frecuentes. Si falta alguno, decilo en una línea al principio y seguí con lo que tengas. Sin la ficha de voz, escribí neutro, corto y con voseo.\n\n## Para cada mensaje\n\n1. **Categoría**, una sola:\n   - Listo para hablar: pregunta por precio, condiciones, fechas, cómo empezar, o pide una llamada.\n   - Interesado: cuenta un problema que la oferta resuelve, pero todavía no pregunta cómo comprar.\n   - Consulta: duda puntual que se responde con las preguntas frecuentes.\n   - Cliente: ya compró y necesita ayuda.\n   - Otro: saludo suelto, spam, propuestas que no tienen que ver.\n2. **Por qué**, en una línea, citando la parte del mensaje que te hizo decidir.\n3. **Borrador**: como se escribe en un chat. Corto, sin saludo largo, sin firma. Termina con una sola pregunta o un solo paso siguiente.\n4. **Para Interesado**, incluí una sola pregunta de calificación, la que más falte saber:\n   - Situación: cómo lo resuelve hoy.\n   - Urgencia: para cuándo lo necesita.\n   - Decisión: si decide solo o con alguien.\n   - Encaje: qué lo hizo escribir ahora.\n5. **Datos que no están en los documentos** (precio, fecha, cupo, disponibilidad, plazos): no los inventes. Poné [CONFIRMAR: qué hay que confirmar].\n\n## Formato de salida\n\nPara cada mensaje:\n\n**[número]. [primeras palabras del mensaje]**\nCategoría: ...\nPor qué: ...\nBorrador:\n> ...\n\nAl final:\n\n**Resumen**: cuántos hay de cada categoría y en qué orden responder (primero Listo para hablar, después Cliente, Interesado, Consulta; Otro al final o sin respuesta).\n\n## Reglas\n\n- Nunca prometas resultados, descuentos, garantías ni plazos que no estén en los documentos.\n- Si un mensaje trae datos sensibles (documentos, datos de pago, salud), no los repitas en el borrador y avisá al usuario que los borre del chat.\n- Si un mensaje es una queja o un reclamo, clasificalo como Cliente, no lo discutas en el borrador y sugerí que lo responda el usuario personalmente.\n- Si no entendés un mensaje, clasificalo igual con tu mejor criterio y decilo en \"Por qué\".\n- Si el usuario corrige una categoría, aplicá esa corrección al resto de los mensajes de la conversación.\n"
+  },
+  {
+   "archivo": "conocimiento-proyecto-mensajes-plantilla.md",
+   "que_es": "Plantilla de los tres documentos que van al conocimiento del proyecto (ficha de voz, qué vendo, preguntas frecuentes) y ocho mensajes de prueba con la categoría esperada.",
+   "contenido": "# Conocimiento del proyecto Mensajes: plantilla\n\nCompletá las tres partes y subí cada una como un archivo aparte al conocimiento del proyecto (o pegalas como texto). Con esto el asistente deja de inventar y empieza a sonar como vos.\n\n---\n\n## Archivo 1: ficha de voz\n\nNombre del archivo: ficha-de-voz.md\n\n- Cómo saludo: [EJEMPLO: \"Hola, ¿cómo va?\"]\n- Cómo me despido (o si no me despido): [EJEMPLO: no firmo en chats]\n- Trato: [vos / usted / tú]\n- Largo de mis mensajes: [EJEMPLO: dos o tres líneas]\n- Palabras que uso: [3 a 5]\n- Palabras que nunca uso: [EJEMPLO: \"estimado\", \"no dudes en\", \"¡Genial!\"]\n- Emojis: [nunca / uno al final / los que uso: ...]\n- Signos de exclamación: [sí / no / uno por mensaje como máximo]\n- Tres mensajes reales que mandé y me gustan (sin datos del cliente):\n  1. [PEGAR]\n  2. [PEGAR]\n  3. [PEGAR]\n\n---\n\n## Archivo 2: qué vendo\n\nNombre del archivo: que-vendo.md\n\nRepetí este bloque por cada producto o servicio. Si son muchos, poné los tres que más te consultan.\n\n### [NOMBRE DEL PRODUCTO O SERVICIO]\n\n- Qué es, en una frase: [...]\n- Qué incluye: [lista corta]\n- Qué no incluye: [lista corta, esto evita malentendidos]\n- Para quién es: [...]\n- Para quién no es: [...]\n- Precio: [PRECIO o \"se confirma por mensaje\"]\n- Formas de pago: [...]\n- Cómo se empieza: [EJEMPLO: se agenda una llamada de 20 minutos / se reserva con seña]\n- Link para agendar o comprar: [LINK]\n- Plazos: [o \"se confirma según el caso\"]\n\n---\n\n## Archivo 3: preguntas frecuentes\n\nNombre del archivo: preguntas-frecuentes.md\n\nEscribí las preguntas como te llegan de verdad, con las palabras de tus clientes, y la respuesta como la mandarías vos.\n\n1. P: [PREGUNTA]\n   R: [RESPUESTA]\n2. P: [PREGUNTA]\n   R: [RESPUESTA]\n3. P: [PREGUNTA]\n   R: [RESPUESTA]\n\nSumá también:\n- Lo que nunca respondo por mensaje: [EJEMPLO: precios a medida, diagnósticos, descuentos]\n- Qué hago con un reclamo: [EJEMPLO: lo respondo yo, por llamada]\n\n---\n\n## Mensajes de prueba\n\nAntes de usarlo con mensajes reales, pegá estos ocho en un chat del proyecto y fijate si la categoría coincide con la esperada. Adaptá el rubro al tuyo.\n\n| Mensaje de prueba | Categoría esperada |\n|---|---|\n| \"Hola, ¿cuánto sale y cómo hago para arrancar?\" | Listo para hablar |\n| \"¿Podemos hacer una llamada esta semana?\" | Listo para hablar |\n| \"Tengo un local y no me da el tiempo para contestar a todos\" | Interesado |\n| \"Vi tu reel, me pasa exactamente eso\" | Interesado |\n| \"¿Trabajás con gente de otras provincias?\" | Consulta |\n| \"Ya pagué la seña, ¿cuándo empezamos?\" | Cliente |\n| \"Hola\" | Otro |\n| \"Te ofrezco seguidores reales por poco\" | Otro |\n\nSi alguno sale distinto, corregilo en el chat con el motivo (\"este es Listo para hablar porque pide una llamada\"). Si el mismo error aparece dos veces, sumá la regla a las instrucciones del proyecto.\n"
+  }
+ ],
+ "notas_revision": "Verifiqué en la ayuda oficial de Claude: creación de proyectos (Projects, + New Project, botón + del conocimiento, Set project instructions, Save instructions; las instrucciones se aplican a todos los chats del proyecto y el contexto no pasa entre chats salvo lo que está en el conocimiento), skills (ruta Customize > Skills > + > + Create skill > Upload a skill, ZIP con la carpeta, nombre de carpeta igual al de la skill, name de hasta 64 y description de hasta 200 caracteres, opción en Settings > Capabilities para planes individuales y en Organization settings > Plugins & skills > Policy para Team y Enterprise). La ayuda de skills usa skill.md en minúscula; el kit usa SKILL.md, que es como la piden la especificación de skills y el resto de la biblioteca. No pude confirmar los nombres de los menús en la interfaz en español: dejé \"(en español: Personalizar → Skills)\" como estaba porque acompaña al nombre en inglés, y en la corrección de la opción usé solo los nombres en inglés que da la ayuda. La regla de 24 horas de Meta del FAQ está confirmada en la ayuda de ManyChat."
+}

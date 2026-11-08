@@ -1,0 +1,83 @@
+{
+ "slug": "palabra-clave-en-comentarios-con-manychat",
+ "verificada": "2026-11-08",
+ "correcciones": [
+  {
+   "antes": "En ManyChat: Get started → Instagram, iniciá sesión con Google o Facebook, tocá Go to Instagram, dale los permisos y elegí tu cuenta.",
+   "despues": "En ManyChat: en la web tocá Get started (arriba a la derecha), elegí Instagram y registrate con Facebook o con Google. Después elegí cómo conectar: Connect Via Instagram (no pide cuenta de Meta Business, aunque algunas funciones avanzadas pueden quedar limitadas) o Connect Via Meta (pide que la cuenta de Instagram esté en un portfolio comercial de Meta). Revisá los permisos y confirmá.",
+   "motivo": "La ayuda de ManyChat describe hoy el alta con Get started, el canal Instagram, el registro con Facebook o Google y dos métodos de conexión: Connect Via Meta, que requiere un portfolio comercial de Meta, y Connect Via Instagram, que no lo requiere pero puede limitar funciones avanzadas. Ya no aparece el paso Go to Instagram.",
+   "fuente": "https://help.manychat.com/hc/en-us/articles/14281290924444-How-To-Connect-Instagram-to-Manychat"
+  },
+  {
+   "antes": "Si ya tenés ManyChat: My profile → Manage accounts → + Add new account → Instagram.",
+   "despues": "Si ya tenés una cuenta de ManyChat y querés sumarle Instagram: Settings en la barra lateral → Instagram → Connect, y elegí uno de los dos métodos.",
+   "motivo": "Según la ayuda de ManyChat, los usuarios existentes conectan Instagram desde Settings, Instagram y Connect, eligiendo Connect Via Meta o Connect Via Instagram.",
+   "fuente": "https://help.manychat.com/hc/en-us/articles/14281290924444-How-To-Connect-Instagram-to-Manychat"
+  },
+  {
+   "antes": "Publicaciones en colaboración: solo funciona con los comentarios de la versión publicada desde tu cuenta conectada.",
+   "despues": "Publicaciones en colaboración: la automatización funciona solo si la publicación la creaste vos desde tu cuenta conectada. Si sos colaborador invitado, no se dispara.",
+   "motivo": "ManyChat explica que el trigger funciona en publicaciones en colaboración solo si sos quien publicó el original, y que los colaboradores no reciben la automatización. La redacción anterior daba a entender que cada cuenta tiene su propia versión de la publicación.",
+   "fuente": "https://manychat.com/blog/?p=33694"
+  }
+ ],
+ "fuentes_extra": [
+  "https://help.manychat.com/hc/en-us/articles/14281290924444-How-To-Connect-Instagram-to-Manychat",
+  "https://help.manychat.com/hc/en-us/articles/14281275933724-Instagram-Live-Comments-Trigger",
+  "https://help.manychat.com/hc/en-us/articles/23358636027932",
+  "https://manychat.com/blog/?p=33694",
+  "https://developers.facebook.com/documentation/instagram-platform/private-replies",
+  "https://developers.facebook.com/docs/messenger-platform/policy/policy-overview"
+ ],
+ "ejemplo": {
+  "titulo": "Ejemplo resuelto: una guía en PDF por mensaje privado a quien comenta TORTA",
+  "negocio": "Ejemplo inventado: una pastelera de Montevideo que trabaja sola. Vende tortas por encargo y un curso online de decoración. Su cuenta de Instagram es de creadora y publica reels con técnicas.",
+  "punto_de_partida": "Cada vez que un reel funciona, le llegan comentarios pidiendo las cantidades y los contesta uno por uno, a veces días después. Muchos de esos pedidos se pierden.",
+  "pasos": [
+   "Armó una guía en PDF con las cantidades para cubrir tortas de distintos tamaños, la subió a Google Drive y la compartió para cualquiera con el enlace.",
+   "Completó la plantilla de textos del kit con la palabra TORTA. Usó el prompt de la guía para sacar las respuestas públicas y sumó una más para llegar a seis.",
+   "En Instagram activó el acceso a los mensajes para herramientas conectadas. En ManyChat tocó Get started, eligió Instagram y conectó con Connect Via Instagram.",
+   "En Automation creó una automatización desde cero con el trigger de comentarios de la pestaña Instagram, eligió \"la próxima publicación\" y puso la palabra TORTA.",
+   "Pegó las seis respuestas públicas. En el primer nodo de mensaje activó Send as Private Reply y puso el texto corto con el botón \"Quiero la guía\", que lleva a un segundo mensaje.",
+   "En el segundo mensaje puso el link a la guía y la pregunta \"¿Qué tamaño de torta vas a hacer primero?\".",
+   "Con la cuenta personal de su hermana, que nunca había comentado, hizo la prueba completa de la checklist. Recién ahí tocó Set Live y publicó el reel diciendo \"comentá TORTA y te la mando\".",
+   "Durante la semana revisó el Inbox una vez por día y respondió a mano a quienes contestaron la pregunta. A los que preguntaban por el curso les pasó el detalle ella misma."
+  ],
+  "resultado": "Quedó un flujo que entrega la guía sola a cada persona que comenta la palabra y deja como contacto a quien toca el botón. Las conversaciones que siguen las responde ella, dentro de las reglas de tiempo de Meta, y no manda recordatorios automáticos a nadie."
+ },
+ "si_falla": [
+  {
+   "sintoma": "La persona recibió el primer mensaje, tocó el botón y no le llegó nada más.",
+   "solucion": "Revisá qué tipo de botón pusiste. Un botón que abre una web no abre la ventana de 24 horas ni suma a la persona como contacto, así que los mensajes siguientes no salen. Cambialo por un botón que lleve a otro mensaje del flujo y poné el link en ese segundo mensaje."
+  },
+  {
+   "sintoma": "Al conectar con Connect Via Instagram, ManyChat dice \"Your account might not support this method yet\" y vuelve a la pantalla de conexión.",
+   "solucion": "Confirmá que la cuenta sea profesional (empresa o creador). Probá en una ventana privada del navegador, sin bloqueadores de anuncios ni extensiones de privacidad, que pueden frenar la ventana de autorización de Meta. Si sigue igual, vinculá Instagram a una página de Facebook de la que seas administrador y conectá por el método de Meta. Si nada funciona, abrí un ticket con el soporte de ManyChat."
+  },
+  {
+   "sintoma": "Al conectar aparece \"Request sent\" y la cuenta no se suma.",
+   "solucion": "Esa cuenta de Instagram ya está conectada a otra cuenta de ManyChat. Desconectala de esa otra cuenta, o pedile acceso a quien la administra, y volvé a intentar."
+  },
+  {
+   "sintoma": "Comentaste la palabra para probar y no pasó nada.",
+   "solucion": "Revisá en orden: que la automatización esté en Live, que la palabra coincida con la que escribiste en el trigger, que el primer nodo tenga Send as Private Reply y que en Instagram esté activado Allow Access to Messages. Probá con una cuenta que nunca haya comentado esa palabra en esa publicación: el trigger no se repite para la misma persona. Mirá también la carpeta de solicitudes de mensajes de la cuenta de prueba."
+  },
+  {
+   "sintoma": "La automatización anda en tus reels, pero no en un reel en colaboración con otra cuenta.",
+   "solucion": "Solo se dispara si la publicación la creaste vos desde la cuenta conectada. Si te invitaron como colaborador, la automatización tiene que armarla la cuenta que la publicó."
+  }
+ ],
+ "kit": [
+  {
+   "archivo": "textos-flujo-palabra-clave-manychat.md",
+   "que_es": "La plantilla de todos los textos del flujo (respuestas públicas, primer mensaje privado, mensaje con el link y respuesta manual) con sus reglas, y un ejemplo completo para copiar la estructura.",
+   "contenido": "# Textos del flujo: palabra clave en comentarios\n\nPlantilla para completar antes de abrir ManyChat. Al final tenés un ejemplo ya completo para que veas cómo queda.\n\n## Datos del flujo\n\n- Palabra clave: [PALABRA] (una sola palabra, fácil de escribir en el celular, sin tildes)\n- Publicación: [CUÁL REEL O POST, O \"LA PRÓXIMA QUE PUBLIQUE\"]\n- Lo que entregás: [RECURSO: guía, plantilla, lista, descuento]\n- Dónde está el recurso: [LINK]\n- Tono: [CÓMO HABLÁS]\n- Quién responde a mano si alguien pregunta algo: [NOMBRE]\n\n## 1. Respuestas públicas al comentario\n\nManyChat recomienda variar las respuestas, usar más de cinco distintas y evitar respuestas muy cortas o de puro emoji. Escribí seis o más, cada una con otra estructura:\n\n1. [RESPUESTA 1]\n2. [RESPUESTA 2]\n3. [RESPUESTA 3]\n4. [RESPUESTA 4]\n5. [RESPUESTA 5]\n6. [RESPUESTA 6]\n\nNo pongas el link en la respuesta pública: el recurso va por mensaje privado.\n\n## 2. Primer mensaje privado (Send as Private Reply)\n\nReglas de este mensaje:\n- Un solo bloque: texto (o imagen) con botones o respuestas rápidas.\n- Sin pedir datos, sin demoras de escritura, sin pasos encadenados en ese mismo nodo.\n- El botón tiene que llevar a otro mensaje del flujo. Un botón que solo abre una web no abre la ventana de 24 horas y la persona no queda como contacto.\n\nTexto (máximo 3 líneas):\n\n> [SALUDO CORTO]. Acá tenés [RECURSO].\n> Tocá el botón de abajo y te lo mando.\n\nBotón: [TEXTO DEL BOTÓN, por ejemplo \"Lo quiero\"]\n\n## 3. Mensaje después de tocar el botón\n\nAhora sí la ventana de 24 horas está abierta. Acá va el link.\n\n> [TEXTO DE ENTREGA]: [LINK]\n> [UNA PREGUNTA ABIERTA PARA SEGUIR LA CHARLA]\n\nIdeas de pregunta abierta:\n- \"¿Para qué lo vas a usar primero?\"\n- \"¿Qué es lo que más te cuesta hoy con [TEMA]?\"\n- \"¿Lo querés para vos o para tu negocio?\"\n\n## 4. Si responde la pregunta\n\nEsto ya no es automático: lo ve una persona en el Inbox de ManyChat.\n- Dentro de las 24 horas desde su último mensaje: podés responder a mano o con automatizaciones.\n- Pasadas las 24 horas y hasta 7 días: solo mensajes manuales desde el Inbox.\n- Después de eso: esperá a que la persona vuelva a escribir.\n\nRespuesta manual base:\n\n> Gracias por contarme. [RESPUESTA A LO QUE DIJO]. Si querés, [PRÓXIMO PASO: te cuento cómo trabajo, te paso la agenda, te mando el detalle].\n\n## 5. Lo que no hacés\n\n- No mandás recordatorios automáticos a los tres días a quien no tocó el botón.\n- No prometés resultados ni ponés cifras en ningún mensaje.\n- No pedís el teléfono ni el mail en el primer mensaje.\n\n---\n\n## Ejemplo completo (inventado)\n\nDatos: una pastelera de Montevideo que enseña a decorar tortas. Palabra clave TORTA en un reel. Entrega una guía en PDF con las cantidades para cubrir tortas de distintos tamaños.\n\nRespuestas públicas:\n1. Listo, te dejé la guía por mensaje privado. Fijate en tus solicitudes de mensajes si no la ves.\n2. ¡Ahí va! Revisá tus mensajes, te la mandé recién.\n3. Te escribí por privado con la guía. Contame después cómo te fue con la primera torta.\n4. Hecho. La guía ya está en tus mensajes directos.\n5. Te la mandé por DM. Si no aparece, mirá la carpeta de solicitudes.\n6. Gracias por comentar. Por privado tenés la guía con las cantidades.\n\nPrimer mensaje privado:\n> Hola, gracias por comentar. Acá tenés la guía para cubrir tortas sin que te sobre ni te falte.\n> Tocá el botón de abajo y te la mando.\n\nBotón: Quiero la guía\n\nMensaje después del botón:\n> Acá está la guía: [LINK]\n> ¿Qué tamaño de torta vas a hacer primero?\n"
+  },
+  {
+   "archivo": "checklist-lanzamiento-palabra-clave-manychat.md",
+   "que_es": "La checklist para marcar antes de publicar el reel: cuenta, automatización y una prueba completa con otra cuenta de Instagram.",
+   "contenido": "# Checklist para lanzar una palabra clave con ManyChat\n\nMarcá cada punto antes de publicar el reel. Si uno falla, no lances.\n\n## Cuenta\n\n- [ ] Instagram es profesional (empresa o creador). Las cuentas personales no se pueden conectar.\n- [ ] En Instagram está activado el acceso a los mensajes para herramientas conectadas (Allow Access to Messages, dentro de los controles de mensajes).\n- [ ] ManyChat muestra la cuenta de Instagram conectada, sin avisos de permisos pendientes.\n- [ ] La publicación es tuya: si es una colaboración, la creaste vos desde la cuenta conectada.\n- [ ] La publicación aparece en tu grilla (si existe solo como anuncio, no se puede elegir).\n\n## Automatización\n\n- [ ] El trigger es el de comentarios en publicación o reel, de la pestaña Instagram.\n- [ ] Elegiste la publicación correcta (una en particular, todas o la próxima).\n- [ ] La palabra clave está bien escrita. Anotá acá cómo la escribiste: __________\n- [ ] Hay seis o más respuestas públicas distintas, ninguna de puro emoji.\n- [ ] El primer nodo de mensaje tiene activada la opción de respuesta privada (Send as Private Reply).\n- [ ] Ese primer mensaje es un solo bloque, con un botón que lleva a otro mensaje del flujo (no a una web).\n- [ ] El link al recurso está en el segundo mensaje, el que llega después de tocar el botón.\n- [ ] El link al recurso abre sin pedir permisos (si es un archivo de Drive, que esté compartido para cualquiera con el enlace).\n\n## Prueba\n\nHacela con una cuenta de Instagram que no sea la del negocio y que nunca haya comentado esa palabra en esa publicación (el trigger se dispara una sola vez por persona).\n\n- [ ] Usaste Preview en ManyChat y el flujo se ve completo.\n- [ ] Tocaste Set Live (o Update si ya existía).\n- [ ] Comentaste la palabra desde la cuenta de prueba.\n- [ ] Llegó la respuesta pública.\n- [ ] Llegó el mensaje privado (si no aparece, mirá en solicitudes de mensajes).\n- [ ] Tocaste el botón y llegó el segundo mensaje con el link.\n- [ ] El link abre el recurso correcto en el celular.\n- [ ] En ManyChat, la cuenta de prueba aparece como contacto.\n\n## Durante la campaña\n\n- [ ] Una vez por día revisás el Inbox y respondés a mano las preguntas.\n- [ ] Si alguien comentó la palabra mal escrita, le respondés vos.\n- [ ] Antes de una campaña nueva, revisás la ayuda de ManyChat por cambios en las reglas de Meta.\n"
+  }
+ ],
+ "notas_revision": "Verifiqué en la ayuda de ManyChat el alta y la conexión de Instagram (Get started, Connect Via Meta y Connect Via Instagram, Settings → Instagram → Connect para usuarios existentes, cuentas personales no conectables), y en el artículo del trigger de comentarios en vivo y el blog oficial de ManyChat las reglas de la respuesta privada (un bloque, sin user input ni typing delay ni next steps, no abre la ventana de 24 horas hasta que la persona responde o toca un botón; el botón de Open website no cuenta), la recomendación de más de cinco respuestas públicas y la regla de publicaciones en colaboración. En Meta verifiqué la respuesta privada (un mensaje, dentro de los 7 días, seguimiento solo si responde) y la política de 24 horas y Human Agent de 7 días; ManyChat confirma que pasado el primer día solo salen mensajes manuales desde el Inbox. No pude abrir el artículo 14281316989724 de ManyChat (trigger de comentarios en posts y reels) ni la página de Meta con la ruta de Allow Access to Messages: no confirmé el nombre exacto del trigger (\"User comments on your Post or Reel\"; el blog lo muestra como \"User comments on the Post or Reel\"), si la opción dice \"Send as Private Reply\" o \"Send as a Private Reply\" (así figura en el artículo de Live), ni la regla de publicaciones promocionadas. Los dejé como estaban. La ruta de Instagram ya estaba marcada como aproximada en la guía. Los si_falla de \"Your account might not support this method yet\" y \"Request sent\" salen de respuestas de moderadores en la comunidad oficial de ManyChat."
+}
