@@ -28,7 +28,7 @@ Después de cambiar cualquier cosa: `python3 build.py` (o `npm run construir`) y
   La lista sale sola de `build.py` (`es_gratis`) y queda en `lib/gratis.js`.
 - Prompts y herramientas: el plan gratis ve títulos y descripciones; el texto y los comandos, solo el pago (`web/*-vista.js`).
 - Para crear la tabla: correr `supabase/registros.sql` en el SQL Editor de tu proyecto de Supabase (una vez).
-- Variables en Vercel: `SUPABASE_URL` (Project Settings → API → Project URL) y `SUPABASE_SERVICE_ROLE_KEY`
+- Variables en Vercel: `SUPABASE_URL` (Project Settings → API → Project URL) y `SUPABASE_SECRET_KEY` (Project Settings → API Keys → Secret keys, empieza con `sb_secret_`; la vieja `SUPABASE_SERVICE_ROLE_KEY` también funciona)
   (la clave secreta service_role: solo en Vercel, nunca en el código ni en el navegador).
 
 ## Acceso (quién entra)

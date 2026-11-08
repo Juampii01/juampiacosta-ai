@@ -1,7 +1,7 @@
 // Registro gratis con email. POST /api/registro (formulario: nombre, email, y opcionales utm_* del link).
 // Guarda a la persona en la tabla «registros» de Supabase y le da la cookie de nivel «gratis»: abre las guías de los reels
 // y el Módulo 1, y ve el resto bloqueado. Si ya tenía acceso pago, no se lo baja.
-// Variables en Vercel: ACCESS_SECRET, SUPABASE_URL y SUPABASE_SERVICE_ROLE_KEY (la clave secreta: nunca en el navegador ni en el código).
+// Variables en Vercel: ACCESS_SECRET, SUPABASE_URL y SUPABASE_SECRET_KEY (la «secret key» sb_secret_… de Supabase; también sirve la vieja SUPABASE_SERVICE_ROLE_KEY). Nunca en el navegador ni en el código.
 
 import { ACCESS_COOKIE_NAME, ACCESS_COOKIE_MAX_AGE, AVISO_COOKIE_NAME, crearCookie, leerCookie, nivelDe, valorCookie } from "../lib/acceso.js";
 import { permitido } from "./entrar.js";
@@ -30,10 +30,17 @@ async function leerCuerpo(req) {
 }
 
 // Inserta en Supabase por su API REST. Si el email ya estaba, no lo duplica (ignore-duplicates sobre la columna única email).
+// Las claves nuevas (sb_secret_…) no son JWT: van solo en «apikey». Las viejas (service_role, empiezan con eyJ) también en Authorization.
+export function cabeceras(clave) {
+  const h = { apikey: clave, "Content-Type": "application/json", Prefer: "resolution=ignore-duplicates,return=minimal" };
+  if (clave.startsWith("eyJ")) h.Authorization = `Bearer ${clave}`;
+  return h;
+}
+
 export async function guardarEnSupabase(fila, { url, clave, fetchImpl = fetch } = {}) {
   const r = await fetchImpl(`${url.replace(/\/$/, "")}/rest/v1/registros?on_conflict=email`, {
     method: "POST",
-    headers: { apikey: clave, Authorization: `Bearer ${clave}`, "Content-Type": "application/json", Prefer: "resolution=ignore-duplicates,return=minimal" },
+    headers: cabeceras(clave),
     body: JSON.stringify(fila),
     signal: AbortSignal.timeout(5000)
   });
@@ -47,8 +54,9 @@ export default async function handler(req, res) {
   const ip = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim() || "sin-ip";
   if (!permitido(ip)) return volver("espera");
 
-  const { ACCESS_SECRET: secreto, SUPABASE_URL: url, SUPABASE_SERVICE_ROLE_KEY: clave } = process.env;
-  if (!secreto || !url || !clave) { console.error("Faltan variables: ACCESS_SECRET, SUPABASE_URL o SUPABASE_SERVICE_ROLE_KEY"); return volver("config"); }
+  const { ACCESS_SECRET: secreto, SUPABASE_URL: url } = process.env;
+  const clave = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!secreto || !url || !clave) { console.error("Faltan variables: ACCESS_SECRET, SUPABASE_URL o SUPABASE_SECRET_KEY"); return volver("config"); }
 
   const fila = limpiarRegistro(await leerCuerpo(req));
   if (!fila) return volver("email");

@@ -71,9 +71,12 @@ test("registro: valida el email, lo pasa a minúsculas y guarda los utm", () => 
 test("guarda en Supabase con la clave del servidor y sin duplicar emails", async () => {
   let llamada;
   const fetchFalso = async (url, opciones) => { llamada = { url, opciones }; return { ok: true, text: async () => "" }; };
-  await guardarEnSupabase({ email: "a@b.com" }, { url: "https://x.supabase.co/", clave: "secreta", fetchImpl: fetchFalso });
+  await guardarEnSupabase({ email: "a@b.com" }, { url: "https://x.supabase.co/", clave: "sb_secret_abc", fetchImpl: fetchFalso });
   assert.equal(llamada.url, "https://x.supabase.co/rest/v1/registros?on_conflict=email");
-  assert.equal(llamada.opciones.headers.Authorization, "Bearer secreta");
+  assert.equal(llamada.opciones.headers.apikey, "sb_secret_abc");
+  assert.equal(llamada.opciones.headers.Authorization, undefined);
+  await guardarEnSupabase({ email: "a@b.com" }, { url: "https://x.supabase.co", clave: "eyJvieja", fetchImpl: fetchFalso });
+  assert.equal(llamada.opciones.headers.Authorization, "Bearer eyJvieja");
   assert.match(llamada.opciones.headers.Prefer, /ignore-duplicates/);
   const fetchMalo = async () => ({ ok: false, status: 401, text: async () => "no" });
   await assert.rejects(guardarEnSupabase({ email: "a@b.com" }, { url: "https://x", clave: "k", fetchImpl: fetchMalo }));
