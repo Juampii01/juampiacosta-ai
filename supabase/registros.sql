@@ -29,6 +29,6 @@ alter table public.registros
   add column if not exists rubro     text check (length(rubro) <= 80),
   add column if not exists nivel     text check (length(nivel) <= 60),
   add column if not exists objetivo  text check (length(objetivo) <= 60),
-  add column if not exists horas     text check (length(horas) <= 40),
+  add column if not exists inversion text check (length(inversion) <= 60),
   add column if not exists perfil_completo boolean not null default false,
   add column if not exists actualizado timestamptz;

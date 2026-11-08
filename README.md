@@ -52,6 +52,6 @@ Después de cambiar cualquier cosa: `python3 build.py` (o `npm run construir`) y
 ## Formulario de bienvenida
 
 Quien se registra gratis entra a /recursos y le aparece un formulario animado de 7 preguntas (web/bienvenida.js y .css):
-qué hace, rubro, nivel con IA, objetivo, horas por semana, país y WhatsApp. Guarda en la fila de su email por /api/perfil
+qué hace, rubro, nivel con IA, objetivo, si está para invertir, país y WhatsApp. Guarda en la fila de su email por /api/perfil
 al cerrar cada bloque y al terminar, y al final le recomienda una ruta. Las opciones válidas están en lib/perfil.js.
 Para verlo de nuevo: /recursos?bienvenida=1. Los que eligieron «Que me lo instalen en mi negocio» son clientes para instalación.

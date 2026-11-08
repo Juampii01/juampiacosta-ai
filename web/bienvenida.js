@@ -18,8 +18,8 @@
     { id: "objetivo", b: 2, tipo: "lista", q: "¿Qué querés lograr con la IA?", ops: [
       ["Ahorrar tiempo en mi negocio", "⏱️"], ["Vender servicios de IA", "💵"], ["Conseguir trabajo con IA", "🎯"],
       ["Aprender", "📚"], ["Que me lo instalen en mi negocio", "🛠️"]] },
-    { id: "horas", b: 2, tipo: "grilla", q: "¿Cuánto tiempo por semana le podés dedicar?", ops: [
-      ["Menos de 2 h", "🕐"], ["2 a 5 h", "🕔"], ["5 a 10 h", "🕗"], ["Más de 10 h", "🔥"]] },
+    { id: "inversion", b: 2, tipo: "lista", q: "Si encontrás lo que necesitás, ¿estás para invertir?", ops: [
+      ["Sí, ahora", "✅"], ["En los próximos meses", "📅"], ["Por ahora solo lo gratis", "🎁"]] },
     { id: "pais", b: 3, tipo: "paises", q: "¿Desde dónde me escribís?", ops: [
       ["Argentina", "🇦🇷", "+54 9"], ["México", "🇲🇽", "+52"], ["Colombia", "🇨🇴", "+57"], ["Chile", "🇨🇱", "+56"],
       ["Perú", "🇵🇪", "+51"], ["Uruguay", "🇺🇾", "+598"], ["Ecuador", "🇪🇨", "+593"], ["Venezuela", "🇻🇪", "+58"],

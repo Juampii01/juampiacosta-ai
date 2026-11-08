@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena cuanto-cobrar-por-automatizar-con-ia, Cuánto cobrar por automatizar con IA, Cómo calcular un precio de implementación y un mensual que se sostengan, a partir de tus horas y del valor que le genera al cliente. Con fórmulas, no con cifras mágicas. y 3e4c4cfb -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena cuanto-cobrar-por-automatizar-con-ia, Cuánto cobrar por automatizar con IA, Cómo calcular un precio de implementación y un mensual que se sostengan, a partir de tus horas y del valor que le genera al cliente. Con fórmulas, no con cifras mágicas. y a3a812a5 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,26 +9,26 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=3e4c4cfb">
-<link rel="stylesheet" href="../web/cta.css?v=3e4c4cfb">
-<link rel="stylesheet" href="../web/biblioteca.css?v=3e4c4cfb">
-<link rel="stylesheet" href="../web/guia.css?v=3e4c4cfb">
-<link rel="stylesheet" href="../web/tema.css?v=3e4c4cfb">
-<script src="../web/tema.js?v=3e4c4cfb"></script>
+<link rel="stylesheet" href="../web/base.css?v=a3a812a5">
+<link rel="stylesheet" href="../web/cta.css?v=a3a812a5">
+<link rel="stylesheet" href="../web/biblioteca.css?v=a3a812a5">
+<link rel="stylesheet" href="../web/guia.css?v=a3a812a5">
+<link rel="stylesheet" href="../web/tema.css?v=a3a812a5">
+<script src="../web/tema.js?v=a3a812a5"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=3e4c4cfb"></script>
-<script src="../web/guias-web.js?v=3e4c4cfb"></script>
-<script src="../web/comun.js?v=3e4c4cfb"></script>
+<script src="../web/redes.js?v=a3a812a5"></script>
+<script src="../web/guias-web.js?v=a3a812a5"></script>
+<script src="../web/comun.js?v=a3a812a5"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="cuanto-cobrar-por-automatizar-con-ia"></main>
 <script>var GUIA = {"slug": "cuanto-cobrar-por-automatizar-con-ia", "t": "Cuánto cobrar por automatizar con IA", "d": "Cómo calcular un precio de implementación y un mensual que se sostengan, a partir de tus horas y del valor que le genera al cliente. Con fórmulas, no con cifras mágicas.", "tema": "Negocio", "min": 10, "fichaNombre": "Calculadora de precio", "ficha": [["Qué es", "Un método para ponerle precio a una automatización: implementación más un mensual."], ["Necesitás", "Tu costo por hora, una estimación honesta de horas y datos del cliente."], ["Qué no hace", "No te dice cuánto cobra el mercado: eso depende de tu país, tu rubro y tu experiencia."]], "secciones": [{"h": "Dos partes: implementación y mensual", "p": ["Una automatización no se termina cuando la entregás. Las apps cambian, se cortan conexiones y el cliente pide ajustes. Por eso el esquema más sano tiene dos partes:", "Implementación: el trabajo de diagnosticar, armar, probar y entregar. Se cobra una vez. Mensual: mantenimiento, soporte y cambios chicos. Se cobra todos los meses mientras siga funcionando."]}, {"h": "Piso: lo que te cuesta a vos", "p": ["Primero calculá el mínimo por debajo del cual perdés plata."], "lista": ["Implementación mínima: horas estimadas × tu costo por hora × un margen por imprevistos (por ejemplo, 1,3 si sumás 30% de colchón).", "Mensual mínimo: horas de mantenimiento por mes × tu costo por hora + costos de herramientas que pagás vos.", "Tu costo por hora: lo que necesitás ganar por mes dividido por las horas que realmente podés facturar (no las que trabajás)."], "aviso": "Los costos de herramientas cambian según el uso: Zapier cuenta tareas, Make consume créditos y la API de Claude se paga por separado. En lo posible, que esas cuentas estén a nombre del cliente y las pague él."}, {"h": "Techo: lo que vale para el cliente", "p": ["El cliente no compra tus horas: compra tiempo libre, menos errores o más ventas. Estimalo con él, con sus números:"], "lista": ["Valor mensual estimado: horas que se ahorran por mes × lo que le cuesta esa hora al cliente.", "Valor extra: si la automatización evita errores o recupera ventas, sumalo solo si lo pueden medir.", "Ejemplo (los números son inventados para mostrar la cuenta): si la automatización le ahorra 20 horas por mes a una persona cuya hora le cuesta 10 unidades, el valor es 200 unidades por mes. Tu mensual tiene que quedar claramente por debajo de eso para que al cliente le convenga."]}, {"h": "Dónde ponerte entre el piso y el techo", "lista": ["Cerca del piso: tus primeros clientes, cuando todavía estás armando casos para mostrar.", "Más arriba: cuando ya tenés casos, el proceso es crítico para el cliente o el ahorro es grande y medible.", "Si el piso queda por encima del techo: no lo vendas así. Achicá el alcance o buscá otra tarea con más valor.", "Cobrar por resultado: tentador, pero solo si el resultado se mide sin discusión y no depende de cosas que no controlás."]}, {"h": "Armá la propuesta con Claude", "prompts": [{"t": "Calcular precio y armar la propuesta", "c": "Estoy por cotizar una automatización con IA para un cliente.\nCliente: [RUBRO, TAMAÑO, PAÍS].\nProblema: [QUÉ TAREA LES CUESTA Y CUÁNTO TIEMPO, SEGÚN ELLOS].\nSolución que propongo: [DESCRIPCIÓN].\nMi estimación de horas de implementación: [HORAS].\nHoras de mantenimiento por mes: [HORAS].\nMi costo por hora: [NÚMERO Y MONEDA].\nCosto por hora del cliente para esa tarea: [NÚMERO O \"no sé\"].\n\n1. Calculá el piso de implementación y de mensual, con un 30% de colchón en horas, mostrando la cuenta.\n2. Calculá el valor mensual estimado para el cliente, mostrando la cuenta. Si falta un dato, decime qué preguntarle.\n3. Proponé un rango de precio para cada parte y explicá por qué.\n4. Armá una propuesta de una página: problema, solución, qué incluye, qué no incluye, plazos, precio de implementación, mensual y qué pasa si quiere cancelar.\nNo inventes resultados ni prometas ahorros que no salgan de estos datos."}]}], "faq": [{"q": "¿Pongo precio por hora o precio cerrado?", "a": "Para la implementación, precio cerrado con un alcance bien escrito. Si cobrás por hora, el cliente siente que te paga por tardar."}, {"q": "¿Qué incluye el mensual?", "a": "Escribilo en la propuesta: por ejemplo, revisión de que todo funcione, arreglo de fallas y una cantidad de cambios chicos por mes. Lo que sale de ahí se cotiza aparte."}, {"q": "¿Y si el cliente dice que es caro?", "a": "Volvé a la cuenta del valor con sus números. Si aun así no cierra, achicá el alcance antes de bajar el precio."}], "fuentes": ["https://help.zapier.com/hc/en-us/articles/8496196837261-Tasks-in-Zapier", "https://help.make.com/credits-and-operations", "https://support.claude.com/en/articles/9876003"]};</script>
 
-<script src="../web/rutas.js?v=3e4c4cfb"></script>
-<script src="../web/logos.js?v=3e4c4cfb"></script>
-<script src="../web/guia.js?v=3e4c4cfb"></script>
+<script src="../web/rutas.js?v=a3a812a5"></script>
+<script src="../web/logos.js?v=a3a812a5"></script>
+<script src="../web/guia.js?v=a3a812a5"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);

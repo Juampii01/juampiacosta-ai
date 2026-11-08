@@ -10,7 +10,7 @@ test("perfil: guarda solo opciones válidas y de a partes", () => {
 });
 
 test("perfil: completo solo con todo lo obligatorio", () => {
-  const todo = { situacion: "Estudiante", nivel: "Nunca usé IA", objetivo: "Aprender", horas: "2 a 5 h", pais: "Argentina", whatsapp: "+54 9 236 412-3456", completo: true };
+  const todo = { situacion: "Estudiante", nivel: "Nunca usé IA", objetivo: "Aprender", inversion: "Sí, ahora", pais: "Argentina", whatsapp: "+54 9 236 412-3456", completo: true };
   assert.equal(limpiarPerfil(todo).completo, true);
   assert.equal(limpiarPerfil(todo).fila.whatsapp, "+5492364123456");
   assert.equal(limpiarPerfil({ ...todo, whatsapp: "123" }).completo, false);

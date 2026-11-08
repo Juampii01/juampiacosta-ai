@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena propuesta-comercial-con-claude, Propuesta comercial a partir de las notas de una llamada, Pegás tus notas o la transcripción de la llamada, Claude te marca lo que falta y arma una propuesta clara con las palabras del cliente. Los números los ponés vos. y 3e4c4cfb -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena propuesta-comercial-con-claude, Propuesta comercial a partir de las notas de una llamada, Pegás tus notas o la transcripción de la llamada, Claude te marca lo que falta y arma una propuesta clara con las palabras del cliente. Los números los ponés vos. y a3a812a5 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,26 +9,26 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=3e4c4cfb">
-<link rel="stylesheet" href="../web/cta.css?v=3e4c4cfb">
-<link rel="stylesheet" href="../web/biblioteca.css?v=3e4c4cfb">
-<link rel="stylesheet" href="../web/guia.css?v=3e4c4cfb">
-<link rel="stylesheet" href="../web/tema.css?v=3e4c4cfb">
-<script src="../web/tema.js?v=3e4c4cfb"></script>
+<link rel="stylesheet" href="../web/base.css?v=a3a812a5">
+<link rel="stylesheet" href="../web/cta.css?v=a3a812a5">
+<link rel="stylesheet" href="../web/biblioteca.css?v=a3a812a5">
+<link rel="stylesheet" href="../web/guia.css?v=a3a812a5">
+<link rel="stylesheet" href="../web/tema.css?v=a3a812a5">
+<script src="../web/tema.js?v=a3a812a5"></script>
 </head>
 <body>
 <div class="fondo"></div>
-<script src="../web/redes.js?v=3e4c4cfb"></script>
-<script src="../web/guias-web.js?v=3e4c4cfb"></script>
-<script src="../web/comun.js?v=3e4c4cfb"></script>
+<script src="../web/redes.js?v=a3a812a5"></script>
+<script src="../web/guias-web.js?v=a3a812a5"></script>
+<script src="../web/comun.js?v=a3a812a5"></script>
 <script>document.write(cabecera());</script>
 
 <main class="lectura" id="guia" data-slug="propuesta-comercial-con-claude"></main>
 <script>var GUIA = {"slug": "propuesta-comercial-con-claude", "t": "Propuesta comercial a partir de las notas de una llamada", "d": "Pegás tus notas o la transcripción de la llamada, Claude te marca lo que falta y arma una propuesta clara con las palabras del cliente. Los números los ponés vos.", "tema": "Ventas", "min": 9, "fichaNombre": "Propuesta desde la llamada", "ficha": [["Qué es", "Un proceso en tres prompts: revisar las notas, armar la propuesta y corregirla."], ["Necesitás", "Claude y las notas o la transcripción de la llamada con el cliente."], ["Tiempo", "20 a 30 minutos por propuesta."], ["Qué no hace", "No decide tu precio ni tus plazos. Eso lo definís vos."]], "secciones": [{"h": "Qué tiene que salir de la llamada", "p": ["Una propuesta buena repite lo que el cliente dijo, ordenado. Si en la llamada no preguntaste estas cosas, la propuesta va a quedar coja."], "lista": ["Situación actual: cómo trabaja hoy y qué no le funciona.", "Objetivo: qué quiere lograr, con sus palabras.", "Costo de no hacer nada: qué pasa si sigue igual.", "Límites: plazo, presupuesto aproximado y quién decide.", "Lo que no quiere: experiencias malas anteriores o cosas que descartó."]}, {"h": "1. Que Claude te diga qué falta", "prompts": [{"t": "Revisar las notas", "c": "Te paso las notas de una llamada de venta. Antes de escribir nada, revisalas.\n\n[PEGÁ NOTAS O TRANSCRIPCIÓN]\n\nDecime:\n1. Qué problema tiene el cliente, con sus palabras (citá frases textuales).\n2. Qué objetivo quiere lograr.\n3. Qué datos faltan para armar una propuesta: plazo, presupuesto, quién decide, alcance.\n4. Qué dijo que podría ser una objeción más adelante.\nNo completes con suposiciones. Si algo no está, marcalo como faltante."}], "p": ["Si falta algo importante, mandale un mensaje corto al cliente antes de escribir la propuesta. Es mejor preguntar que adivinar."]}, {"h": "2. Armá la propuesta", "prompts": [{"t": "Propuesta", "c": "Con las notas de la llamada y lo que revisamos, armá una propuesta para [NOMBRE DEL CLIENTE O EMPRESA].\nLo que ofrezco: [TU SERVICIO].\nPrecio y forma de pago: [LOS DEFINÍS VOS].\nPlazo: [LO DEFINÍS VOS].\n\nEstructura:\n1. Lo que entendí: su situación y su objetivo, usando sus palabras.\n2. Qué propongo: el enfoque en 3 o 4 pasos.\n3. Qué incluye y qué no incluye, en dos listas.\n4. Plazo y etapas.\n5. Inversión y forma de pago.\n6. Próximo paso: una sola acción concreta con fecha para responder.\n\nTono: claro, profesional y directo. Nada de relleno ni frases de folleto. Máximo dos páginas. No prometas resultados ni pongas cifras que yo no te di."}]}, {"h": "3. Revisala antes de mandar", "pasos": ["Leela como si fueras el cliente: ¿se reconoce en la primera parte?", "Revisá que precio, plazo y alcance sean exactamente los que definiste.", "Mirá la lista de \"no incluye\": es lo que te evita discusiones después.", "Pedile a Claude que la critique con el prompt de abajo y corregí lo que te parezca justo."], "prompts": [{"t": "Crítica desde el cliente", "c": "Leé esta propuesta como si fueras el cliente, con las dudas que mostró en la llamada. Decime: qué parte no se entiende, qué pregunta te haría antes de aceptar y qué objeción probablemente aparezca. No la reescribas todavía.\n\n[PEGÁ LA PROPUESTA]"}]}, {"h": "4. Dejala como plantilla", "p": ["Creá un proyecto en Claude llamado Propuestas. Subí al conocimiento tu descripción de servicios, una propuesta que te haya funcionado y tus condiciones. Pegá la estructura de arriba en las instrucciones. Cada propuesta nueva arranca con todo ese contexto.", "Si querés verla con formato, pedile que la arme como documento en un artifact y copiala a tu editor de siempre para mandarla."]}], "faq": [{"q": "¿Le puedo pasar la grabación de la llamada?", "a": "Pasale la transcripción en texto. Muchas herramientas de videollamadas la generan; si no, pegá tus notas."}, {"q": "¿Y si el cliente no dijo un presupuesto?", "a": "Ofrecé dos o tres opciones de alcance con precios que definas vos, y dejá claro qué cambia entre una y otra."}], "fuentes": ["https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects", "https://support.claude.com/en/articles/9487310-what-are-artifacts"]};</script>
 
-<script src="../web/rutas.js?v=3e4c4cfb"></script>
-<script src="../web/logos.js?v=3e4c4cfb"></script>
-<script src="../web/guia.js?v=3e4c4cfb"></script>
+<script src="../web/rutas.js?v=a3a812a5"></script>
+<script src="../web/logos.js?v=a3a812a5"></script>
+<script src="../web/guia.js?v=a3a812a5"></script>
 <script>
 (function () {
   pintarGuia(document.getElementById("guia"), GUIA);
