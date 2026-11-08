@@ -1,0 +1,78 @@
+{
+ "slug": "segundo-cerebro-de-tu-negocio",
+ "verificada": "2026-11-08",
+ "correcciones": [
+  {
+   "antes": "En Claude entrá a Proyectos y creá uno llamado \"Cerebro de [TU NEGOCIO]\".",
+   "despues": "En Claude entrá a Projects (en la barra lateral o en claude.ai/projects), tocá + New Project y ponele \"Cerebro de [TU NEGOCIO]\". En los planes Team y Enterprise elegí en ese momento si queda privado (Keep it private) o compartido con toda la organización (Share with your broader organization).",
+   "motivo": "La ayuda oficial indica el camino exacto (Projects, botón + New Project) y que en Team y Enterprise la visibilidad se elige al crear el proyecto. Para un cerebro del equipo es una decisión que conviene tomar a propósito.",
+   "fuente": "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects"
+  },
+  {
+   "antes": "Pegá las instrucciones de abajo en las instrucciones del proyecto.",
+   "despues": "Tocá Set project instructions, pegá las instrucciones de abajo y guardá con Save instructions.",
+   "motivo": "Nombres exactos de los botones según la ayuda oficial de Proyectos.",
+   "fuente": "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects"
+  },
+  {
+   "antes": "En los planes Team y Enterprise podés compartir un proyecto con otras personas de tu organización. Hay dos niveles:",
+   "despues": "En los planes Team y Enterprise podés compartir un proyecto con otras personas de tu organización: abrí el proyecto, tocá Share project (al lado del nombre), sumá a las personas por nombre o mail, elegí el permiso de cada una y confirmá con Share. Hay dos niveles, Can view y Can edit:",
+   "motivo": "La ayuda oficial describe el botón Share project y los dos permisos con sus nombres en la interfaz: Can view y Can edit. La guía los traducía sin decir cómo aparecen en pantalla.",
+   "fuente": "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects"
+  }
+ ],
+ "fuentes_extra": [
+  "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects"
+ ],
+ "ejemplo": {
+  "titulo": "Ejemplo resuelto: el cerebro de una bicicletería con taller",
+  "negocio": "Ejemplo inventado: una bicicletería con taller en Neuquén capital. El dueño, una encargada de local, dos mecánicos y una persona que atiende la tienda online. Venden bicis, repuestos y accesorios, y hacen services y reparaciones.",
+  "punto_de_partida": "Todo lo sabía la encargada: qué incluye cada service, cuánto tarda una reparación, qué garantía tiene una bici. Cuando ella tenía franco, los mecánicos respondían distinto y la tienda online tardaba en contestar.",
+  "pasos": [
+   "Con las plantillas del kit, la encargada escribió cinco documentos en una tarde: Procesos del taller, Precios y servicios, Preguntas frecuentes, Políticas (garantía, cambios, señas) y Tono, con tres conversaciones bien respondidas sin datos de clientes.",
+   "Puso arriba de cada uno el responsable y la fecha. Precios quedó a cargo del dueño; procesos y preguntas, a cargo de ella.",
+   "El negocio ya tenía plan Team. El dueño entró a Projects, tocó + New Project, lo llamó \"Cerebro de la bicicletería\" y lo dejó privado (Keep it private) para sumar solo al equipo del local.",
+   "Subió los cinco documentos con el + del panel de conocimiento y pegó las instrucciones del kit en Set project instructions, completando el rubro, la ciudad y que las dudas van a la encargada.",
+   "Hicieron la prueba de las diez preguntas del kit. La pregunta \"¿el service incluye cambio de cadena?\" salió mal: el documento de precios decía que no y el de preguntas frecuentes, que sí. Claude avisó la contradicción, como piden las instrucciones. Corrigieron el documento de preguntas.",
+   "Con las diez bien, el dueño tocó Share project y sumó a los mecánicos y a la de la tienda online con Can view, y a la encargada con Can edit.",
+   "Dejaron una planilla compartida con el registro de \"No está en el cerebro\". En la primera semana aparecieron preguntas sobre envíos al interior de la provincia, que no estaban escritas.",
+   "Fijaron la revisión mensual el primer lunes de cada mes, con la checklist del kit."
+  ],
+  "resultado": "Quedó un Proyecto privado del equipo con cinco documentos fechados y con dueño, instrucciones que citan la fuente y avisan contradicciones, y un registro de lo que falta escribir. Cuando la encargada no está, el equipo consulta el cerebro y responde con la misma información que ella."
+ },
+ "si_falla": [
+  {
+   "sintoma": "Claude responde con un precio viejo aunque ya actualizaste el documento.",
+   "solucion": "Revisá que hayas borrado la versión anterior del conocimiento del Proyecto. Si están las dos, puede tomar cualquiera. Dejá una sola versión por tema y la fecha de actualización arriba, así la respuesta dice de cuándo es el dato."
+  },
+  {
+   "sintoma": "No aparece el botón Share project.",
+   "solucion": "Compartir proyectos está solo en los planes Team y Enterprise. En Free, Pro o Max no hay forma de sumar a otra persona al mismo Proyecto: cada uno tendría que armar el suyo con los mismos documentos, o el negocio pasa a un plan Team."
+  },
+  {
+   "sintoma": "Un compañero dice que no ve el Proyecto.",
+   "solucion": "Si lo creaste con Keep it private, solo lo ven las personas que sumaste con Share project. Fijate que esté en la lista con Can view o Can edit y que haya entrado con la cuenta de la organización, no con una cuenta personal."
+  },
+  {
+   "sintoma": "Claude contesta con información general del rubro en vez de lo que dicen tus documentos.",
+   "solucion": "Pasa cuando el dato no está escrito o está ambiguo. Confirmá que las instrucciones del Proyecto estén guardadas (Save instructions) y que incluyan la regla de decir \"No está en el cerebro\". Después buscá el dato en tus documentos: si no está, sumalo."
+  },
+  {
+   "sintoma": "En el plan Free no podés crear un Proyecto nuevo.",
+   "solucion": "El plan Free permite hasta cinco proyectos. Borrá uno que no uses, o juntá todo en un solo cerebro: conviene un único Proyecto con documentos por tema antes que varios proyectos chicos."
+  }
+ ],
+ "kit": [
+  {
+   "archivo": "cerebro-del-negocio-plantillas-e-instrucciones.md",
+   "que_es": "Cómo nombrar y encabezar cada documento, una plantilla por tipo (procesos, precios, preguntas frecuentes, políticas y tono) y las instrucciones del Proyecto ampliadas, listas para pegar en Set project instructions.",
+   "contenido": "# Cerebro de [TU NEGOCIO]: plantillas de documentos e instrucciones\n\nEste archivo tiene tres partes: cómo nombrar y encabezar cada documento, una plantilla por tipo de documento y las instrucciones para pegar en \"Set project instructions\".\n\n## 1. Nombres y encabezado\n\nUn documento por tema. Nombre con tema y fecha:\n\n- Procesos - [ÁREA] - actualizado [MES AÑO]\n- Precios y servicios - actualizado [MES AÑO]\n- Preguntas frecuentes - actualizado [MES AÑO]\n- Políticas - actualizado [MES AÑO]\n- Tono - ejemplos de respuestas - actualizado [MES AÑO]\n\nArriba de cada documento, siempre estas tres líneas:\n\n```\nResponsable: [NOMBRE]\nÚltima actualización: [AAAA-MM-DD]\nVale para: [TODAS LAS SUCURSALES / SUCURSAL X / SOLO VENTA ONLINE]\n```\n\nCuando actualices un documento, borrá la versión vieja del Proyecto antes de subir la nueva. Si quedan las dos, Claude puede encontrar datos que se contradicen.\n\n## 2. Plantillas\n\n### Procesos\n\n```\nProceso: [NOMBRE, EJ.: ENTREGA DE UN PEDIDO]\nQuién lo hace: [PUESTO]\nCuándo: [EN QUÉ MOMENTO]\nPasos:\n1. [PASO]\n2. [PASO]\nQué hacer si algo sale mal: [EJ.: SI FALTA UN PRODUCTO, AVISAR A...]\nA quién preguntar si hay dudas: [NOMBRE O PUESTO]\n```\n\n### Precios y servicios\n\n```\nServicio o producto: [NOMBRE]\nPrecio: [PRECIO] [MONEDA] (vigente desde [FECHA])\nIncluye: [QUÉ]\nNo incluye: [QUÉ]\nCondiciones: [EJ.: SEÑA, PLAZO, MEDIOS DE PAGO]\n```\n\nUna entrada por servicio. Si un precio depende de algo (medida, cantidad, zona), escribí la regla, no un ejemplo.\n\n### Preguntas frecuentes\n\n```\nP: [LA PREGUNTA COMO LA HACE EL CLIENTE]\nR: [LA RESPUESTA QUE DAS VOS]\nOjo: [EXCEPCIONES O CUÁNDO DERIVAR A UNA PERSONA]\n```\n\n### Políticas\n\n```\nPolítica: [CAMBIOS / DEVOLUCIONES / CANCELACIONES / GARANTÍAS / HORARIOS / MEDIOS DE PAGO]\nRegla: [LA REGLA, CLARA]\nPlazo: [SI APLICA]\nExcepciones que se pueden hacer: [CUÁLES Y QUIÉN LAS AUTORIZA]\nExcepciones que nunca se hacen: [CUÁLES]\n```\n\n### Tono\n\nPegá dos o tres conversaciones reales bien respondidas, sin nombres, teléfonos ni datos del cliente. Antes de cada una, una línea de contexto: \"Cliente que pregunta por un cambio fuera de plazo\".\n\n## 3. Instrucciones del Proyecto (copiá desde acá)\n\nSos el asistente interno de [NOMBRE DEL NEGOCIO], un negocio de [RUBRO] en [CIUDAD]. Te consulta el equipo, no los clientes.\n\nTenés los documentos oficiales del negocio: procesos, precios y servicios, preguntas frecuentes, políticas y ejemplos de tono. Cada uno dice quién es responsable y cuándo se actualizó.\n\nCuando te pregunten algo:\n1. Respondé corto y directo.\n2. Decí de qué documento sale la respuesta y su fecha de actualización.\n3. Si la pregunta es para contestarle a un cliente, dame además un borrador listo para mandar, con el tono de los ejemplos.\n4. Si dos documentos se contradicen, avisá cuáles son y no elijas vos.\n5. Si un documento tiene más de [N] meses sin actualizar, avisá que el dato puede estar viejo.\n6. Si algo no está en los documentos, decí \"No está en el cerebro\" y sugerí a quién preguntarle: [NOMBRE O PUESTO].\n7. Nunca inventes precios, plazos ni excepciones a las políticas. No completes con lo que suele hacer el rubro.\n8. Si te piden algo que está en \"Excepciones que nunca se hacen\", decilo claro aunque la persona insista.\n\nNo guardes ni repitas datos personales de clientes que alguien pegue en el chat. Si los necesitás para responder, usá un alias.\n"
+  },
+  {
+   "archivo": "cerebro-del-negocio-prueba-y-mantenimiento.md",
+   "que_es": "La planilla de las diez preguntas de prueba antes de mostrárselo al equipo, el registro de \"No está en el cerebro\", la checklist de revisión mensual y la tabla de responsables.",
+   "contenido": "# Cerebro de [TU NEGOCIO]: prueba y mantenimiento\n\n## Antes de mostrárselo al equipo: las diez preguntas\n\nJuntá diez preguntas reales que te hicieron clientes o empleados en el último mes. Que haya de todo tipo:\n\n| # | Tipo | Pregunta real | Respuesta esperada (la tuya) | Qué contestó Claude | ¿Citó bien el documento? | ¿Coincide? | Qué corregir |\n|---|---|---|---|---|---|---|---|\n| 1 | Precio | | | | | | |\n| 2 | Precio con condición | | | | | | |\n| 3 | Proceso | | | | | | |\n| 4 | Política (cambio o devolución) | | | | | | |\n| 5 | Excepción que sí se hace | | | | | | |\n| 6 | Excepción que nunca se hace | | | | | | |\n| 7 | Horario o medio de pago | | | | | | |\n| 8 | Algo que NO está en los documentos | | \"No está en el cerebro\" | | | | |\n| 9 | Pregunta para responderle a un cliente | | Respuesta + borrador | | | | |\n| 10 | Pregunta ambigua o mal escrita | | | | | | |\n\nListo para el equipo cuando:\n- [ ] Las diez coinciden con lo que vos responderías.\n- [ ] La 8 dice \"No está en el cerebro\" y no inventa.\n- [ ] La 6 no cede aunque insistas en el mismo chat.\n- [ ] Los borradores para clientes suenan como vos.\n\nSi alguna falla, casi siempre el problema está en el documento (falta, es ambiguo o hay dos versiones), no en las instrucciones. Corregí el documento primero.\n\n## Registro de \"No está en el cerebro\"\n\nCada vez que Claude conteste eso, quien preguntó suma una fila acá. Es la lista de lo que falta escribir.\n\n| Fecha | Quién preguntó | Pregunta | Respuesta correcta | En qué documento va | ¿Agregado? |\n|---|---|---|---|---|---|\n| | | | | | |\n\n## Revisión mensual (una vez por mes, [DÍA FIJO])\n\n- [ ] Precios: ¿cambió alguno? Actualizá el documento y la fecha de arriba.\n- [ ] Políticas: ¿hubo alguna excepción nueva que se repitió? Decidí si pasa a la política.\n- [ ] Registro de \"No está en el cerebro\": pasá cada fila a su documento y tildá \"Agregado\".\n- [ ] Versiones: en el Proyecto no queda ningún documento viejo duplicado.\n- [ ] Responsables: cada documento tiene un dueño que sigue en el equipo.\n- [ ] Acceso: quien se fue del equipo ya no está en el Proyecto (Share project, al lado del nombre).\n- [ ] Repetí tres de las diez preguntas de prueba para ver que sigue respondiendo bien.\n\n## Quién es dueño de qué\n\n| Documento | Responsable | Próxima revisión |\n|---|---|---|\n| Procesos | [NOMBRE] | [FECHA] |\n| Precios y servicios | [NOMBRE] | [FECHA] |\n| Preguntas frecuentes | [NOMBRE] | [FECHA] |\n| Políticas | [NOMBRE] | [FECHA] |\n| Tono | [NOMBRE] | [FECHA] |\n"
+  }
+ ],
+ "notas_revision": "Verifiqué contra la ayuda oficial de Proyectos: disponibles en todos los planes, Free con máximo cinco proyectos, compartir solo en Team y Enterprise con permisos Can view y Can edit (y lo que permite cada uno), RAG automático en planes pagos que amplía la capacidad manteniendo la calidad de respuesta (la FAQ de la guía está bien), y los nombres de botones + New Project, Set project instructions, Save instructions, Share project, Keep it private y Share with your broader organization (tres correcciones de nombres y pasos). La ayuda menciona una nueva versión beta de Proyectos, por ahora para algunos usuarios Pro, Max y Ultra de Claude Code; puede cambiar la interfaz más adelante. No encontré en la ayuda si los chats de cada miembro dentro de un proyecto compartido los ven los demás, así que el kit no lo afirma. Tampoco hay en la ayuda un límite de cantidad de archivos por proyecto: depende del tamaño, como dice la guía. La recomendación de borrar la versión vieja antes de subir la nueva es práctica, no una afirmación sobre el producto."
+}
