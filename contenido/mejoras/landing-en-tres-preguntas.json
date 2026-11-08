@@ -41,7 +41,7 @@
    "Completó la hoja de las tres preguntas del kit. Respuesta 1: \"Ayudo a equipos de ventas y atención que tienen reuniones en inglés con clientes de afuera y se traban al hablar\". Usó tres frases reales de sus alumnos para la sección del problema.",
    "Eligió una sola acción, escribirle por WhatsApp, y armó el link wa.me con código de país 57, sin el signo + y con el texto \"Hola, vengo de la página y quiero info para mi equipo\" codificado.",
    "Pegó el prompt de la guía en Claude con sus respuestas, sus dos colores y el tono \"cercano, claro, sin vueltas\". Iteró en el artifact hasta que le gustó el título y sacó una sección que no hacía falta.",
-   "Compartió el artifact con Anyone with the link a una amiga que usa Claude para que le diera su opinión desde el celular. No lo puso en la bio, porque quien no tiene cuenta de Claude no lo puede abrir.",
+   "Compartió el artifact con Anyone with the link y lo abrió en una ventana de incógnito del celular para comprobar que se veía sin cuenta. Igual decidió hacer el camino B para tener el archivo y publicarlo fuera de Claude.",
    "Creó la carpeta landing-ingles, guardó adentro el archivo claude-md-landing-una-pagina.md del kit con el nombre CLAUDE.md y completó los corchetes. Abrió la terminal en esa carpeta y escribió claude.",
    "Le pegó a Claude Code la versión final del texto y le pidió el index.html. Aprobó la creación del archivo y Claude le listó los links y un [COMPLETAR] que había quedado en las preguntas frecuentes, que ella completó.",
    "Hizo la checklist de publicación: abrió index.html en el navegador y en el celular, tocó el botón de WhatsApp y vio que abría el chat con el texto precargado.",

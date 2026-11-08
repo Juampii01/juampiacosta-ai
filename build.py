@@ -104,8 +104,11 @@ def mejorar(guias):
                 nom = re.search(r"^name:\s*(.*)$", fm.group(1), re.M)
                 assert d and nom, f"{f.name}: {k['archivo']} sin name o description"
                 largo = len(d.group(1).strip().strip("\"'"))
-                if largo > 200:
-                    SKILLS_LARGAS.append(f"{f.name}: {k['archivo']} ({largo})")
+                assert largo <= 200, f"{f.name}: {k['archivo']} tiene description de {largo} caracteres (máximo 200)"
+                n_nom = nom.group(1).strip().strip("\"'")
+                assert len(n_nom) <= 64 and re.fullmatch(r"[a-z0-9-]+", n_nom), f"{f.name}: name inválido {n_nom!r}"
+                assert "/" not in k["archivo"] or k["archivo"].split("/")[0] == n_nom, f"{f.name}: la carpeta {k['archivo']} no coincide con name {n_nom}"
+
         n += 1
     return n
 
