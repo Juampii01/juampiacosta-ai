@@ -1,0 +1,81 @@
+{
+ "slug": "claude-code-de-cero-sin-miedo",
+ "verificada": "2026-11-08",
+ "correcciones": [
+  {
+   "antes": "Antes de editar un archivo o correr un comando, Claude Code te muestra qué quiere hacer y espera tu respuesta. Leelo: si está bien, elegí Yes; si no, decile qué cambiar.",
+   "despues": "En el modo Manual, antes de editar un archivo o correr un comando, Claude Code te muestra qué quiere hacer y espera tu respuesta. Leelo: si está bien, elegí Yes; si no, decile qué cambiar. En los modos Auto y Accept edits, en cambio, aplica los cambios de archivos sin esperarte y vos los revisás después.",
+   "motivo": "La guía oficial de la app explica que en Manual Claude propone cada cambio y espera tu aprobación, mientras que en Auto o Accept edits aplica sus cambios de archivos y aparece un indicador como +12 -1 para revisarlos. La pausa para pedir permiso depende del modo.",
+   "fuente": "https://code.claude.com/docs/en/desktop-quickstart"
+  },
+  {
+   "antes": "En la terminal, Shift+Tab cambia el modo de permisos (cuánto puede hacer sin preguntarte). En la app de escritorio el modo está en la fila de abajo del cuadro de mensaje. Si recién empezás, quedate en un modo que te pregunte todo.",
+   "despues": "En la terminal, Shift+Tab cambia el modo de permisos (cuánto puede hacer sin preguntarte) y la barra de abajo te muestra cuál está activo. En la app de escritorio el modo está en el selector de la fila de abajo del cuadro de mensaje. Si recién empezás, elegí Manual, que te pregunta antes de editar o correr comandos. Ojo: en las versiones recientes la terminal arranca en Auto cuando está disponible, así que la primera vez fijate y cambialo.",
+   "motivo": "La doc de modos nombra Manual al modo que revisa cada acción y explica que, desde la versión 2.1.283, las sesiones interactivas de la terminal arrancan en auto si está disponible. La barra de estado muestra el modo activo (por ejemplo, \"manual mode on\"). En la app, el modo se elige en el selector de la fila de abajo y queda recordado por carpeta.",
+   "fuente": "https://code.claude.com/docs/en/permission-modes"
+  }
+ ],
+ "fuentes_extra": [
+  "https://code.claude.com/docs/en/permission-modes",
+  "https://code.claude.com/docs/en/desktop",
+  "https://code.claude.com/docs/en/terminal-guide"
+ ],
+ "ejemplo": {
+  "titulo": "Ejemplo resuelto: la dueña de una panadería cambia su web sin llamar a nadie",
+  "negocio": "Ejemplo inventado: una panadería de barrio en Asunción, Paraguay, con la dueña y tres empleados. Tienen una página web simple que les armó un sobrino hace años y que nadie sabe editar.",
+  "punto_de_partida": "Cambiaron el horario de los domingos y la web sigue mostrando el viejo. La dueña tiene la carpeta con los archivos de la página en su compu, pero nunca abrió una terminal.",
+  "pasos": [
+   "Sacó el plan Pro de Claude, porque el plan gratis no incluye Claude Code.",
+   "Copió la carpeta de la web y le puso de nombre \"web-prueba\". Va a trabajar solo sobre esa copia.",
+   "Descargó la app de escritorio de Claude para Windows desde la guía oficial, la instaló e inició sesión con su cuenta.",
+   "Hizo clic en la pestaña Code. En el selector de entorno eligió la primera opción de Local y, con Open folder…, eligió \"web-prueba\".",
+   "En el selector de modo, en la fila de abajo, eligió Manual.",
+   "Guardó en la carpeta el CLAUDE.md del kit, con sus datos: \"No sé programar. Lo que no se puede romper es el botón de WhatsApp\".",
+   "Pegó la \"Primera pregunta\" de la guía. Claude le explicó que la página principal es un archivo llamado index.html y que el horario está ahí.",
+   "Pegó el \"Primer cambio chico\" con su pedido: \"cambiar el horario del domingo a 7 a 13\". Claude le dijo qué archivo y qué línea iba a tocar, y esperó.",
+   "Le dio el OK. Vio el pedido de permiso con el cambio marcado, eligió aprobar y abrió el archivo en el navegador para ver la página con el horario nuevo.",
+   "Cuando le gustó cómo quedó, le pidió al sobrino que suba la versión nueva. La próxima vez va a intentar subirla ella."
+  ],
+  "resultado": "La dueña tiene Claude Code en la app de escritorio, en modo Manual, con un CLAUDE.md que le pide explicar todo simple y esperar su OK. Ya hizo un cambio real en una copia de su web, entendiendo qué se tocó, y el original sigue intacto."
+ },
+ "si_falla": [
+  {
+   "sintoma": "Después de instalar, la terminal dice \"command not found: claude\" o \"'claude' is not recognized\".",
+   "solucion": "Cerrá la terminal y abrí una nueva. Si sigue, la carpeta del programa no está en el PATH: seguí la sección Fix your PATH de la guía oficial de problemas de instalación, que tiene los pasos para Mac, Linux y Windows."
+  },
+  {
+   "sintoma": "En Windows aparece \"'irm' is not recognized\" o \"The token '&&' is not a valid statement separator\".",
+   "solucion": "Pegaste el comando de otra consola. Si tu línea empieza con C:\\ sin PS, estás en CMD: abrí PowerShell desde el menú Inicio y pegá irm https://claude.ai/install.ps1 | iex. Si empieza con PS C:\\, estás en PowerShell: usá ese mismo comando, no el de CMD."
+  },
+  {
+   "sintoma": "El instalador falla con \"syntax error near unexpected token '<'\" o un error 403.",
+   "solucion": "El comando descargó una página web en vez del instalador. Si en el error aparece \"App unavailable in region\", Claude Code no está disponible en tu país. Si no, esperá unos minutos y probá de nuevo (suele ser temporal); un 403 también puede venir del proxy o firewall de una red de oficina. Si sigue, usá un método alternativo de la guía oficial: Homebrew en Mac (brew install --cask claude-code) o WinGet en Windows (winget install Anthropic.ClaudeCode). Esos no se actualizan solos."
+  },
+  {
+   "sintoma": "En Windows, al escribir claude se abre la app de escritorio en vez de Claude Code en la terminal.",
+   "solucion": "Una versión vieja de la app de escritorio registró su propio comando y le gana al de la terminal. Actualizá la app de Claude a la última versión y abrí una terminal nueva."
+  },
+  {
+   "sintoma": "En PowerShell aparece \"Claude Code does not support 32-bit Windows\" aunque tu compu es nueva.",
+   "solucion": "Abriste \"Windows PowerShell (x86)\". Cerrala, abrí \"Windows PowerShell\" sin el x86 desde el menú Inicio y volvé a correr el comando de instalación."
+  }
+ ],
+ "kit": [
+  {
+   "archivo": "CLAUDE-para-principiantes.md",
+   "que_es": "CLAUDE.md de ejemplo para quien no programa: le pide a Claude Code hablar simple, avisar qué va a tocar y esperar tu OK. Renombralo a CLAUDE.md, completá los corchetes y ponelo en la carpeta del proyecto.",
+   "contenido": "# Cómo trabajar conmigo en este proyecto\n\n(Guardá este archivo como CLAUDE.md en la carpeta de tu proyecto. Claude Code lo lee al empezar cada sesión. Completá lo que está entre corchetes.)\n\n## Quién soy\n- Soy [TU NOMBRE], [A QUÉ TE DEDICÁS]. No sé programar.\n- Este proyecto es [QUÉ ES: por ejemplo, la página web de mi negocio].\n- Lo que más me importa es que [LO QUE NO SE PUEDE ROMPER: por ejemplo, que el formulario de contacto siga andando].\n\n## Cómo hablarme\n- En español, con palabras simples. Si usás un término técnico, explicalo en una frase.\n- Respuestas cortas. Primero lo que importa, después el detalle si te lo pido.\n\n## Antes de cambiar algo\n- Decime qué archivo vas a tocar y qué vas a cambiar, en una o dos frases.\n- Esperá mi OK antes de editar, borrar o correr comandos.\n- Hacé un cambio por vez. No aproveches para \"mejorar\" otras cosas que no te pedí.\n- Si algo no está claro, preguntame antes de suponer.\n\n## Lo que no se toca\n- No leas ni modifiques archivos .env ni nada que tenga contraseñas o claves.\n- No borres archivos. Si creés que algo sobra, decímelo y yo decido.\n- No instales programas ni paquetes sin explicarme para qué y esperar mi OK.\n- No publiques nada ni hagas push sin que te lo pida.\n\n## Al terminar cada tarea\n- Contame en tres líneas qué cambiaste, en qué archivo y cómo lo pruebo yo.\n- Si quedó algo pendiente o con dudas, decilo al final.\n"
+  },
+  {
+   "archivo": "settings-arrancar-en-modo-manual.json",
+   "que_es": "Configuración para que Claude Code arranque siempre en Manual (te pregunta antes de editar o correr comandos). Guardala como settings.json dentro de la carpeta .claude de tu usuario (~/.claude/settings.json); si ya tenés ese archivo, sumá solo la parte de permissions.",
+   "contenido": "{\n  \"permissions\": {\n    \"defaultMode\": \"default\"\n  }\n}\n"
+  },
+  {
+   "archivo": "checklist-primer-dia-claude-code.md",
+   "que_es": "Checklist paso a paso para el primer día, por la app de escritorio o por la terminal, trabajando siempre sobre una copia.",
+   "contenido": "# Mi primer día con Claude Code\n\nSeguilo en orden. Cada casilla es algo que podés comprobar con tus ojos.\n\n## Antes de abrirlo\n- [ ] Tengo un plan Pro, Max, Team o Enterprise (o cuenta de Claude Console si uso la terminal).\n- [ ] Hice una COPIA de la carpeta de mi proyecto y voy a trabajar sobre la copia.\n- [ ] Elegí por dónde entrar: app de escritorio (pestaña Code) o terminal (comando claude).\n\n## Si uso la app de escritorio\n- [ ] Inicié sesión y veo la pestaña Code arriba en la barra lateral.\n- [ ] En el selector de entorno elegí la primera opción del grupo Local.\n- [ ] Con Open folder… elegí la carpeta COPIA.\n- [ ] En el selector de modo (fila de abajo del cuadro de mensaje) elegí Manual.\n\n## Si uso la terminal\n- [ ] Pegué el comando de instalación de mi sistema y esperé a que terminara (no muestra avance).\n- [ ] Abrí una terminal NUEVA y claude --version me muestra un número.\n- [ ] Entré a la carpeta COPIA con cd y escribí claude.\n- [ ] Inicié sesión en el navegador y volví a la terminal.\n- [ ] Apreté Shift+Tab hasta que abajo dice \"manual mode on\".\n\n## Primera charla\n- [ ] Guardé el CLAUDE.md del kit en la carpeta, con mis datos.\n- [ ] Le hice la \"Primera pregunta\" de la guía y entendí su explicación.\n- [ ] Le pedí el \"Primer cambio chico\" y me dijo qué archivo iba a tocar ANTES de tocarlo.\n- [ ] Leí el pedido de permiso, elegí Yes y abrí el archivo para ver el cambio.\n\n## Si algo salió mal\n- [ ] En la terminal: Esc dos veces con el cuadro vacío (o /rewind) para volver atrás.\n- [ ] Si no se arregla: borro la copia y hago otra. El original está intacto.\n"
+  }
+ ],
+ "notas_revision": "Verificado en code.claude.com (quickstart, desktop-quickstart, desktop, permission-modes, troubleshoot-install): planes (Pro, Max, Team, Enterprise o Console; la app pide plan pago), comandos de instalación de Mac/Linux/WSL y PowerShell, que el instalador no muestra avance, claude --version, login en el navegador y /login, Git para Windows recomendado (si no está usa PowerShell), pestaña Code, selector de entorno con grupo Local, Open folder…, Linux en beta. Corregido: la pausa para pedir permiso depende del modo (Manual vs Auto/Accept edits) y la terminal puede arrancar en Auto en versiones recientes. Existe además un comando de instalación para CMD que la guía no menciona; no es un error. El settings.json del kit usa permissions.defaultMode según la doc; no lo probé en una instalación real."
+}

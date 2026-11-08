@@ -1,0 +1,86 @@
+{
+ "slug": "comandos-de-claude-code-de-todos-los-dias",
+ "verificada": "2026-11-08",
+ "correcciones": [
+  {
+   "antes": "/model: cambiás el modelo de Claude que usa la sesión.",
+   "despues": "/model: cambiás el modelo de Claude. Por defecto queda guardado como tu modelo para las sesiones nuevas; si lo querés solo para esta sesión, en la lista apretá s sobre el modelo.",
+   "motivo": "La referencia de comandos dice que /model cambia el modelo \"and save it as your default for new sessions\", y que en el selector la tecla s cambia solo para la sesión actual.",
+   "fuente": "https://code.claude.com/docs/en/commands"
+  },
+  {
+   "antes": "/rewind deshace lo que Claude cambió con sus herramientas de edición, pero no todo lo que hizo un comando de terminal. Para estar tranquilo, guardá tu trabajo con git antes de cambios grandes.",
+   "despues": "/rewind deshace lo que Claude cambió con sus herramientas de edición, pero no lo que hizo un comando de terminal (como rm, mv o cp) y, en general, tampoco lo que editó un subagente. Para estar tranquilo, guardá tu trabajo con git antes de cambios grandes.",
+   "motivo": "La doc de checkpointing aclara que los archivos modificados por comandos de Bash no se pueden deshacer con rewind, y que las ediciones de subagentes no se restauran salvo el caso de una skill bifurcada que corre en primer plano; para esas recomienda git.",
+   "fuente": "https://code.claude.com/docs/en/checkpointing"
+  },
+  {
+   "antes": "Tiene que ir al principio del mensaje. Si lo mandás mientras Claude está respondiendo, queda en espera y corre cuando termina.",
+   "despues": "Tiene que ir al principio del mensaje. Si lo mandás mientras Claude está respondiendo, en general queda en espera y corre cuando termina. Algunos, como /usage o /status, se ejecutan al instante sin cortar la respuesta.",
+   "motivo": "La referencia de comandos dice que un comando enviado mientras Claude responde queda en cola hasta que termina el turno, pero que algunos, como /status, /tasks y /usage, corren inmediatamente sin interrumpir.",
+   "fuente": "https://code.claude.com/docs/en/commands"
+  }
+ ],
+ "fuentes_extra": [
+  "https://code.claude.com/docs/en/memory",
+  "https://code.claude.com/docs/en/skills",
+  "https://code.claude.com/docs/en/errors"
+ ],
+ "ejemplo": {
+  "titulo": "Ejemplo resuelto: un día de trabajo de punta a punta con los comandos",
+  "negocio": "Ejemplo inventado: un desarrollador junior freelance en Medellín, Colombia, que mantiene la landing de una clínica odontológica de dos consultorios. El proyecto usa git y está en GitHub.",
+  "punto_de_partida": "Usa Claude Code todos los días pero escribe todo como mensaje común. Las charlas se le hacen eternas, no encuentra la de ayer y una vez perdió un cambio sin saber cómo volver.",
+  "pasos": [
+   "A la mañana entró a la carpeta y abrió con claude -c para seguir la charla de ayer. Corrió /usage para ver cuánto le quedaba del plan.",
+   "Como el proyecto no tenía reglas escritas, corrió /init. Revisó el CLAUDE.md que armó, le sumó con /memory \"los precios de tratamientos no se tocan sin aviso de la clínica\" y lo guardó.",
+   "La tarea del día era agregar una sección de preguntas frecuentes. Escribió /plan agregar una sección de preguntas frecuentes debajo de los servicios, leyó el plan y le pidió un cambio antes de aprobarlo.",
+   "A mitad de camino tuvo una duda sobre una etiqueta de HTML. La preguntó con /btw para no mezclarla con la tarea.",
+   "La charla se estaba alargando. Corrió /context, vio que la llenaban archivos que ya no usaba y corrió /compact quedate con la sección de preguntas frecuentes y los archivos que tocamos.",
+   "Claude cambió un estilo que rompió el menú en el celular. Apretó Esc dos veces con el cuadro vacío, eligió el mensaje anterior al cambio y Restore code. El menú volvió a andar.",
+   "Al terminar corrió /diff para ver todo lo que cambió, después /code-review y /security-review. Esta última anduvo porque el repo tiene el remoto origin.",
+   "Con la skill cierre-de-sesion del kit dejó escrito qué hizo, qué faltaba y un mensaje de commit. Le puso nombre a la charla con /rename faq-clinica y salió con /exit.",
+   "Para la siguiente tarea, que no tenía nada que ver, al otro día arrancó con /clear en vez de seguir en la misma charla."
+  ],
+  "resultado": "Ahora tiene un CLAUDE.md con las reglas del proyecto, charlas con nombre que encuentra con /resume, sabe volver atrás con /rewind y revisa antes de subir con /diff, /code-review y /security-review. Lo que hace git (commits y push) lo sigue decidiendo él."
+ },
+ "si_falla": [
+  {
+   "sintoma": "/security-review falla con un error que dice \"ambiguous argument\".",
+   "solucion": "El comando compara tu rama con la rama principal de origin y no la encuentra. Fijate que el proyecto tenga un remoto llamado origin (git remote -v) y, si lo tiene, corré git remote set-head origin --auto para que git sepa cuál es la rama principal. Después volvé a correr /security-review."
+  },
+  {
+   "sintoma": "Usaste /rewind con Restore code y el archivo que borró Claude no volvió.",
+   "solucion": "Si lo borró o movió con un comando de terminal (rm, mv, cp), rewind no lo registra. Recuperalo con git (por ejemplo, pedile a Claude que te muestre cómo restaurarlo desde el último commit) o desde tu copia de respaldo."
+  },
+  {
+   "sintoma": "/rewind muestra \"No files were restored\" en una sesión vieja.",
+   "solucion": "Claude Code borra las copias de los archivos de una sesión unos 30 días después de la última. Para esa sesión ya no hay vuelta con rewind: usá git. Si querés que las guarde más tiempo, configurá cleanupPeriodDays en tu settings.json."
+  },
+  {
+   "sintoma": "Escribís el comando y Claude lo toma como un mensaje común.",
+   "solucion": "El comando tiene que ser lo primero del mensaje, sin espacios ni texto antes. Escribí / y elegilo de la lista para no equivocarte en el nombre."
+  },
+  {
+   "sintoma": "claude -c abre otra charla, no la que esperabas.",
+   "solucion": "claude -c sigue la charla más reciente de la carpeta donde estás parado. Entrá primero a la carpeta del proyecto con cd. Si igual no aparece, usá /resume y buscala por nombre (por eso conviene ponerle nombre con /rename)."
+  }
+ ],
+ "kit": [
+  {
+   "archivo": "chuleta-comandos-claude-code.md",
+   "que_es": "Hoja de referencia para imprimir o tener al lado: cada comando según el momento del día, con lo que querés lograr en la primera columna.",
+   "contenido": "# Chuleta de comandos de Claude Code (para tener al lado)\n\nLos comandos van al principio del mensaje. Escribí / y aparece la lista; seguí escribiendo para filtrar.\n\n## Arranco el día\n| Quiero... | Escribo |\n|---|---|\n| Seguir con la última charla de esta carpeta (desde la terminal) | claude -c |\n| Elegir una charla anterior | /resume |\n| Ver si está todo bien instalado | /doctor |\n| Ver cuánto llevo usado de mi plan | /usage |\n\n## Arranco un proyecto nuevo\n| Quiero... | Escribo |\n|---|---|\n| Que me arme el CLAUDE.md con las reglas del proyecto | /init |\n| Editar el CLAUDE.md o la memoria automática | /memory |\n| Ver y conectar servidores MCP | /mcp |\n| Decidir qué puede hacer sin preguntarme | /permissions |\n| Cambiar de modelo (queda como predeterminado; con la tecla s, solo para esta sesión) | /model |\n\n## Estoy trabajando\n| Quiero... | Escribo |\n|---|---|\n| Que primero piense un plan sin tocar archivos | /plan [la tarea] |\n| Ver qué está llenando la memoria de la charla | /context |\n| Resumir la charla para seguir con lo mismo | /compact [en qué enfocarse] |\n| Hacer una pregunta al costado, sin ensuciar la charla | /btw [pregunta] |\n| Cambiar cuánto puede hacer sin preguntarme | Shift+Tab |\n\n## Antes de dar algo por terminado\n| Quiero... | Escribo |\n|---|---|\n| Ver todo lo que cambió | /diff |\n| Que revise los cambios buscando errores | /code-review (con --fix aplica lo que encuentra) |\n| Que busque problemas de seguridad (necesita git y remoto origin) | /security-review |\n| Ponerle nombre a esta charla para encontrarla después | /rename [nombre] |\n\n## Cambio de tarea\n| Quiero... | Escribo |\n|---|---|\n| Empezar una charla nueva (el CLAUDE.md se sigue cargando) | /clear |\n| Volver a una charla anterior | /resume |\n\n## Algo salió mal\n| Quiero... | Escribo |\n|---|---|\n| Volver código y/o charla a un punto anterior | /rewind o Esc dos veces con el cuadro vacío |\n| Ver la ayuda | /help |\n| Contarle a Anthropic un problema | /feedback |\n| Salir | /exit |\n\nRecordá: /rewind no deshace lo que cambió un comando de terminal (rm, mv, cp) ni, en general, lo que editó un subagente. Para eso, git.\n"
+  },
+  {
+   "archivo": "cierre-de-sesion/SKILL.md",
+   "que_es": "Skill que cierra la sesión: resume qué cambió, qué quedó pendiente y qué revisar, y propone un mensaje de commit. Guardala en ~/.claude/skills/cierre-de-sesion/SKILL.md y llamala con /cierre-de-sesion.",
+   "contenido": "---\nname: cierre-de-sesion\ndescription: Cierra una sesión de trabajo en Claude Code. Resume qué cambió, qué quedó pendiente y qué revisar, y propone un mensaje de commit. Usala cuando el usuario escriba /cierre-de-sesion o pida cerrar o resumir la sesión antes de irse.\ndisable-model-invocation: true\n---\n\n# Cierre de sesión\n\nVas a dejar la sesión ordenada para que mañana (o otra persona) pueda seguir sin preguntar nada. No modifiques archivos ni hagas commits: solo revisá y resumí.\n\n## Pasos\n\n1. Mirá qué cambió en la carpeta. Si el proyecto usa git, revisá los cambios sin confirmar (por ejemplo con git status y git diff). Si no usa git, repasá los archivos que editaste en esta sesión.\n2. Repasá la conversación: qué te pidió el usuario, qué hiciste y qué no llegaste a hacer.\n3. Buscá cosas a medio hacer: archivos tocados pero sin terminar, pruebas que no corriste, dudas que quedaron sin respuesta.\n4. Escribí el resumen con el formato de abajo.\n\n## Formato\n\n```\nRESUMEN DE LA SESIÓN\n\nQué se hizo\n- [cambio] en [archivo]\n\nQué quedó pendiente\n- [tarea] (por qué quedó)\n\nQué conviene revisar antes de publicar\n- [riesgo o cosa a probar]\n\nMensaje de commit sugerido\n[una línea en español, en presente, por ejemplo: \"Actualiza horarios en la página de contacto\"]\n\nPara seguir mañana\n- Abrí con: claude -c   (o /resume y elegí esta sesión)\n- Nombre sugerido para la sesión: /rename [nombre-corto]\n```\n\n## Reglas\n\n- Si no hay cambios, decilo en una línea y no inventes.\n- Si ves algo que parece una clave o contraseña dentro de los cambios, avisalo arriba de todo y no la copies en el resumen.\n- Antes de terminar, recordale al usuario que corra /diff si quiere ver cada cambio, y /code-review si quiere una revisión antes de publicar.\n"
+  },
+  {
+   "archivo": "prompts-cuando-algo-sale-mal-claude-code.md",
+   "que_es": "Cinco prompts listos para cuando Claude Code rompe algo, se pone lento, pide un permiso raro o no sabés qué comando usar.",
+   "contenido": "# Prompts para cuando algo sale mal en Claude Code\n\nCopiá el que te sirva, completá los corchetes y mandalo.\n\n## Rompió algo y no sé qué\nAlgo dejó de andar: [QUÉ DEJÓ DE ANDAR]. No cambies nada todavía. Decime qué archivos modificaste en esta sesión, qué cambiaste en cada uno y cuál creés que lo rompió. Después proponeme cómo volver atrás solo esa parte.\n\n## Quiero volver atrás pero no sé si /rewind alcanza\nQuiero volver a como estaba [ANTES DE QUÉ]. Antes de que use /rewind, decime si alguno de esos cambios lo hiciste con un comando de terminal (rm, mv, cp, un script) o con un subagente, porque esos no los deshace /rewind. Si hay alguno, decime cómo revertirlo a mano o con git.\n\n## Se puso lento o se olvida de lo que hablamos\nHacé un resumen de lo que estamos haciendo: el objetivo, las decisiones que tomamos, los archivos que tocamos y lo que falta. Lo voy a usar para /compact o para empezar de nuevo con /clear.\n\n## Me pide permiso para algo que no entiendo\nMe estás pidiendo permiso para [PEGÁ LO QUE APARECE]. Explicame en palabras simples qué hace, qué puede romper y si hay una forma más segura de lograr lo mismo. No lo corras hasta que te diga.\n\n## No sé qué comando usar\nQuiero [LO QUE QUERÉS HACER]. ¿Qué comando de Claude Code me sirve y cómo lo uso paso a paso? Si no hay comando, decime qué pedirte en palabras.\n"
+  }
+ ],
+ "notas_revision": "Verificado contra la referencia de comandos, checkpointing, memory y quickstart de code.claude.com: /init (si existe CLAUDE.md sugiere mejoras), /memory, /mcp, /permissions, /plan, /context, /compact, /btw, /usage con /cost como alias, /diff, /code-review con --fix y /review como alias, /security-review con remoto origin, /clear (alias /reset y /new), /resume, claude -c, /rename, /rewind y Esc doble con el cuadro vacío, /doctor, /help, /exit. Corregido: /model guarda el modelo como predeterminado; /rewind tampoco restaura ediciones de subagentes; algunos comandos corren al instante aunque Claude esté respondiendo. El paso con git remote set-head del si_falla sale de práctica común de git; la doc oficial manda a su página de errores para ese caso y no copié su texto exacto."
+}
