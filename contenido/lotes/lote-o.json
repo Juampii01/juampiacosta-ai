@@ -7,7 +7,7 @@
    "tipo": "MCP",
    "t": "Chrome DevTools MCP",
    "d": "El servidor MCP oficial del equipo de Chrome: Claude abre tu sitio en Chrome, lee la consola, mira las peticiones de red, saca capturas y mide el rendimiento.",
-   "para": "Que Claude pruebe y arregle tu web viendo lo mismo que ves vos en el navegador.",
+   "para": "Que Claude pruebe y arregle tu web viendo lo mismo que ves tú en el navegador.",
    "cmds": [
     {
      "donde": "Terminal",
@@ -31,7 +31,7 @@
    "cat": "MCP",
    "tipo": "MCP",
    "t": "n8n-MCP (documentación de nodos)",
-   "d": "Le da a Claude la documentación de los más de mil nodos de n8n y plantillas de flujos, y si le pasás la URL de tu n8n también puede crear y editar flujos.",
+   "d": "Le da a Claude la documentación de los más de mil nodos de n8n y plantillas de flujos, y si le pasas la URL de tu n8n también puede crear y editar flujos.",
    "para": "Armar automatizaciones en n8n pidiéndolas en castellano, sin buscar nodo por nodo.",
    "cmds": [
     {
@@ -48,7 +48,7 @@
    "cat": "MCP",
    "tipo": "MCP",
    "t": "Google Workspace MCP",
-   "d": "Conecta Claude con Gmail, Drive, Calendar, Docs, Sheets y más servicios de Google. Necesitás crear antes un cliente OAuth gratis en Google Cloud Console.",
+   "d": "Conecta Claude con Gmail, Drive, Calendar, Docs, Sheets y más servicios de Google. Necesitas crear antes un cliente OAuth gratis en Google Cloud Console.",
    "para": "Que Claude lea y ordene tu correo, agenda y planillas del negocio desde un solo lugar.",
    "cmds": [
     {
@@ -112,7 +112,7 @@
    "cat": "MCP",
    "tipo": "App",
    "t": "MCP Inspector",
-   "d": "La herramienta oficial del proyecto MCP para probar un servidor MCP: abre una página web donde ves sus herramientas y las ejecutás a mano.",
+   "d": "La herramienta oficial del proyecto MCP para probar un servidor MCP: abre una página web donde ves sus herramientas y las ejecutas a mano.",
    "para": "Ver qué hace un MCP antes de conectarlo a Claude, o probar el tuyo si lo estás armando.",
    "cmds": [
     {
@@ -129,7 +129,7 @@
    "cat": "Skills",
    "tipo": "Plugin",
    "t": "Agents de wshobson (94 plugins)",
-   "d": "Un marketplace con 94 plugins que suman subagentes, skills y comandos por área: desarrollo, infraestructura, seguridad, datos y más. Instalás solo los que usás.",
+   "d": "Un marketplace con 94 plugins que suman subagentes, skills y comandos por área: desarrollo, infraestructura, seguridad, datos y más. Instalas solo los que usas.",
    "para": "Sumar especialistas a Claude Code sin cargar todo de una.",
    "cmds": [
     {
@@ -152,7 +152,7 @@
    "tipo": "Plugin",
    "t": "Awesome Claude Code Subagents (VoltAgent)",
    "d": "Colección de más de 160 subagentes listos, agrupados en plugins por tema: lenguajes, infraestructura, calidad, datos y más.",
-   "para": "Tener un revisor, un tester o un experto en tu lenguaje sin escribir el subagente vos.",
+   "para": "Tener un revisor, un tester o un experto en tu lenguaje sin escribir el subagente tú.",
    "cmds": [
     {
      "donde": "Terminal",
@@ -174,7 +174,7 @@
    "tipo": "Plugin",
    "t": "Caveman",
    "d": "Skill que hace que Claude responda corto y al grano, sin relleno, para que las sesiones largas gasten muchos menos tokens.",
-   "para": "Estirar tu plan o tu presupuesto de API cuando trabajás muchas horas seguidas.",
+   "para": "Estirar tu plan o tu presupuesto de API cuando trabajas muchas horas seguidas.",
    "cmds": [
     {
      "donde": "Claude Code",
@@ -195,7 +195,7 @@
    "cat": "Skills",
    "tipo": "Plugin",
    "t": "claude-mem",
-   "d": "Le da memoria entre sesiones a Claude Code: guarda en tu compu lo que hizo y lo vuelve a traer cuando hace falta. Ojo: trae estadísticas de uso anónimas activadas, se apagan con npx claude-mem telemetry disable.",
+   "d": "Le da memoria entre sesiones a Claude Code: guarda en tu computadora lo que hizo y lo vuelve a traer cuando hace falta. Ojo: trae estadísticas de uso anónimas activadas, se apagan con npx claude-mem telemetry disable.",
    "para": "Que Claude se acuerde de tu proyecto de un día para el otro sin repetirle todo.",
    "cmds": [
     {
@@ -221,7 +221,7 @@
    "cat": "Skills",
    "tipo": "Plugin",
    "t": "Andrej Karpathy Skills (CLAUDE.md)",
-   "d": "Un CLAUDE.md corto con reglas de trabajo inspiradas en Andrej Karpathy: pensar antes de programar, no complicar de más y verificar. Lo usás como plugin o lo copiás a tu proyecto.",
+   "d": "Un CLAUDE.md corto con reglas de trabajo inspiradas en Andrej Karpathy: pensar antes de programar, no complicar de más y verificar. Lo usas como plugin o lo copias a tu proyecto.",
    "para": "Arrancar con un CLAUDE.md probado por miles en vez de escribirlo de cero.",
    "cmds": [
     {
@@ -344,7 +344,7 @@
    "cat": "Skills",
    "tipo": "App",
    "t": "Claude Code Templates",
-   "d": "Un instalador con cientos de componentes listos: agentes, comandos, hooks, MCP, configuraciones y skills. Elegís desde un menú o instalás uno puntual.",
+   "d": "Un instalador con cientos de componentes listos: agentes, comandos, hooks, MCP, configuraciones y skills. Eliges desde un menú o instalas uno puntual.",
    "para": "Probar hooks, comandos y agentes de la comunidad con un solo comando.",
    "cmds": [
     {
@@ -366,7 +366,7 @@
    "cat": "Herramientas",
    "tipo": "App",
    "t": "Spec Kit (GitHub)",
-   "d": "El kit de GitHub para programar a partir de especificaciones: primero escribís qué querés, después el plan y las tareas, y recién ahí Claude programa.",
+   "d": "El kit de GitHub para programar a partir de especificaciones: primero escribís qué quieres, después el plan y las tareas, y recién ahí Claude programa.",
    "para": "Que Claude construya lo que pediste y no lo que se imaginó.",
    "cmds": [
     {
@@ -387,7 +387,7 @@
    "cat": "Herramientas",
    "tipo": "App",
    "t": "Claude Code Usage Monitor",
-   "d": "Un monitor en la terminal que muestra en tiempo real cuántos tokens gastás, a qué ritmo, y cuándo vas a llegar al límite de tu plan.",
+   "d": "Un monitor en la terminal que muestra en tiempo real cuántos tokens gastas, a qué ritmo, y cuándo vas a llegar al límite de tu plan.",
    "para": "Saber si te alcanza el plan antes de que te corte en medio de un trabajo.",
    "cmds": [
     {
@@ -410,7 +410,7 @@
    "tipo": "App",
    "t": "ccstatusline",
    "d": "Una barra de estado configurable para Claude Code que muestra modelo, rama de git, uso de contexto, tokens y costo de la sesión.",
-   "para": "Ver de un vistazo cuánto contexto y plata llevás gastados.",
+   "para": "Ver de un vistazo cuánto contexto y dinero llevas gastados.",
    "cmds": [
     {
      "donde": "Terminal",
@@ -496,7 +496,7 @@
    "cat": "Herramientas",
    "tipo": "App",
    "t": "CloudCLI (Claude Code UI)",
-   "d": "Una interfaz web abierta para Claude Code: ves tus sesiones, archivos y git desde el navegador, también desde el celular. Tiene una versión en la nube paga, pero la que instalás vos es gratis.",
+   "d": "Una interfaz web abierta para Claude Code: ves tus sesiones, archivos y git desde el navegador, también desde el celular. Tiene una versión en la nube paga, pero la que instalas tú es gratis.",
    "para": "Usar Claude Code con ventanas y botones en vez de solo la terminal.",
    "cmds": [
     {

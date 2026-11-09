@@ -7,7 +7,7 @@ var ICONO = {
   bajar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg>'
 };
 
-// Logo: tres nodos conectados (sistemas y agentes que trabajan juntos; el blanco es el que sumás vos)
+// Logo: tres nodos conectados (sistemas y agentes que trabajan juntos; el blanco es el que sumas tú)
 var LOGO = '<i class="logo"><svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#17110e"/><rect x=".75" y=".75" width="62.5" height="62.5" rx="15.25" fill="none" stroke="#ff5a1f" stroke-opacity=".35" stroke-width="1.5"/><path d="M32 18 18 44h28z" fill="none" stroke="#ff5a1f" stroke-width="3.5" stroke-linejoin="round" stroke-opacity=".55"/><circle cx="32" cy="18" r="7" fill="#ff5a1f"/><circle cx="18" cy="44" r="7" fill="#ff5a1f"/><circle cx="46" cy="44" r="7" fill="#fff"/></svg></i>';
 
 function cabecera() {
@@ -15,7 +15,7 @@ function cabecera() {
     '<a class="marca" href="#">' + LOGO + '<span>juampiiacosta<b>.ai</b></span></a>' +
     '<nav><div class="redes">' +
     '<a class="red" href="' + REDES.ig + '" target="_blank" rel="noopener">' + ICONO.ig + '<span class="txt">' + REDES.igUsuario + '</span></a>' +
-    '</div><a class="btn" href="' + REDES.dm + '" target="_blank" rel="noopener"><span>Escribime<span class="largo"> por Instagram</span></span>→</a></nav><i class="progreso"></i></header>';
+    '</div><a class="btn" href="' + REDES.dm + '" target="_blank" rel="noopener"><span>Escríbeme<span class="largo"> por Instagram</span></span>→</a></nav><i class="progreso"></i></header>';
 }
 
 window.addEventListener("scroll", function () {
@@ -58,7 +58,7 @@ function copiar(boton) {
     var sel = window.getSelection();
     sel.removeAllRanges();
     sel.addRange(rango);
-    aviso("Seleccionalo y copialo");
+    aviso("Selecciónalo y cópialo");
   }
   if (!navigator.clipboard) return seleccionar();
   navigator.clipboard.writeText(code.textContent).then(function () { aviso("Copiado ✓"); }, seleccionar);

@@ -3,8 +3,8 @@
  "partes": [
   {
    "id": "aprende",
-   "n": "Parte 1 · Arrancá bien",
-   "d": "Configurá Claude, aprendé a pedirle bien y hacé rendir tu plan. Es la base de todo lo demás.",
+   "n": "Parte 1 · Arranca bien",
+   "d": "Configura Claude, aprende a pedirle bien y haz rendir tu plan. Es la base de todo lo demás.",
    "muestra": [
     "configura-claude-en-10-minutos",
     "formula-para-pedirle-bien-a-claude",
@@ -12,8 +12,8 @@
    ]
   },
   {
-   "id": "usalo",
-   "n": "Parte 2 · Ponelo a trabajar",
+   "id": "úsalo",
+   "n": "Parte 2 · Ponlo a trabajar",
    "d": "Tu negocio, tu contenido y tus clientes, con skills, conectores y agentes que hacen el trabajo repetido.",
    "muestra": [
     "analizar-planillas-con-claude",
@@ -23,7 +23,7 @@
   },
   {
    "id": "construi",
-   "n": "Parte 3 · Vendé y construí",
+   "n": "Parte 3 · Vendé y construye",
    "d": "El sistema para venderle IA a empresas, los rubros listos para replicar y tus propias apps con Claude Code.",
    "muestra": [
     "sistema-base-modulo-1-la-oferta",
@@ -38,7 +38,7 @@
    "parte": "aprende",
    "e": "🌱",
    "n": "Primeros pasos",
-   "d": "Configurá Claude y aprendé a pedirle bien las cosas.",
+   "d": "Configura Claude y aprende a pedirle bien las cosas.",
    "guias": [
     "configura-claude-en-10-minutos",
     "las-formas-de-usar-claude",
@@ -48,14 +48,14 @@
    ],
    "prompts": [
     "Tu primera semana con Claude",
-    "Pedile bien las cosas"
+    "Pídele bien las cosas"
    ]
   },
   {
    "id": "mas-jugo",
    "parte": "aprende",
    "e": "🧠",
-   "n": "Sacale más jugo a Claude",
+   "n": "Sácale más jugo a Claude",
    "d": "Trucos para que rinda más, gaste menos y se equivoque menos.",
    "guias": [
     "el-bucle-de-verificacion",
@@ -74,7 +74,7 @@
    "id": "ahorrar",
    "parte": "aprende",
    "e": "💸",
-   "n": "Gastá menos tokens",
+   "n": "Gasta menos tokens",
    "destacada": true,
    "d": "Que no se te corte el plan a mitad de semana: buenas prácticas para que Claude rinda más con el mismo plan.",
    "guias": [
@@ -103,10 +103,10 @@
   },
   {
    "id": "negocio",
-   "parte": "usalo",
+   "parte": "úsalo",
    "e": "🏢",
    "n": "IA en tu negocio",
-   "d": "Ordená la operación: reuniones, planillas, métricas y decisiones.",
+   "d": "Ordena la operación: reuniones, planillas, métricas y decisiones.",
    "guias": [
     "cinco-preguntas-antes-de-meter-ia-en-tu-negocio",
     "el-plano-de-un-negocio-con-ia",
@@ -129,7 +129,7 @@
   },
   {
    "id": "contenido",
-   "parte": "usalo",
+   "parte": "úsalo",
    "e": "🎬",
    "n": "Contenido y redes",
    "d": "Ideas, guiones, carruseles y videos con tu voz.",
@@ -154,9 +154,9 @@
   },
   {
    "id": "clientes",
-   "parte": "usalo",
+   "parte": "úsalo",
    "e": "🎯",
-   "n": "Conseguí clientes",
+   "n": "Consigue clientes",
    "d": "De la palabra clave en comentarios a la propuesta y el seguimiento.",
    "guias": [
     "de-donde-vienen-tus-clientes",
@@ -173,10 +173,10 @@
   },
   {
    "id": "skills",
-   "parte": "usalo",
+   "parte": "úsalo",
    "e": "🧩",
    "n": "Skills y plugins",
-   "d": "Enseñale a Claude tu forma de trabajar y sumale habilidades.",
+   "d": "Enséñale a Claude tu forma de trabajar y súmale habilidades.",
    "guias": [
     "que-es-una-skill-y-como-crear-la-tuya",
     "convertir-una-tarea-manual-en-skill",
@@ -189,17 +189,17 @@
     "skill-de-presupuestos-para-tu-negocio"
    ],
    "prompts": [
-    "Diseñá tus skills",
-    "Revisá antes de instalar",
-    "Probá y mejorá tus skills"
+    "Diseña tus skills",
+    "Revisa antes de instalar",
+    "Prueba y mejora tus skills"
    ]
   },
   {
    "id": "conectores",
-   "parte": "usalo",
+   "parte": "úsalo",
    "e": "🔌",
    "n": "Conectores y MCP",
-   "d": "Conectá Claude con tu mail, tu agenda, tus archivos y tus apps.",
+   "d": "Conecta Claude con tu mail, tu agenda, tus archivos y tus apps.",
    "guias": [
     "conectores-claude-dentro-de-tus-apps",
     "4-conectores-que-claude-deberia-tener",
@@ -216,7 +216,7 @@
   },
   {
    "id": "agentes",
-   "parte": "usalo",
+   "parte": "úsalo",
    "e": "🤖",
    "n": "Agentes",
    "d": "Qué es un agente de verdad y cómo armar los que más se venden.",
@@ -235,10 +235,10 @@
     "seguridad-de-agentes"
    ],
    "prompts": [
-    "Diseñá tu agente",
+    "Diseña tu agente",
     "Instrucciones para agentes de atención y ventas",
     "Instrucciones para agentes de investigación y contenido",
-    "Probá tu agente antes de soltarlo"
+    "Prueba tu agente antes de soltarlo"
    ]
   },
   {
@@ -288,9 +288,9 @@
     "sistema-ia-para-profesores-y-academias"
    ],
    "prompts": [
-    "Detectá qué automatizar en un rubro",
-    "Adaptá el sistema a un rubro nuevo",
-    "Armá la demo para un rubro"
+    "Detecta qué automatizar en un rubro",
+    "Adapta el sistema a un rubro nuevo",
+    "Arma la demo para un rubro"
    ]
   },
   {
@@ -327,7 +327,7 @@
    "id": "desarrollo",
    "parte": "construi",
    "e": "🚀",
-   "n": "Creá tu app",
+   "n": "Crea tu app",
    "d": "De la idea a una app publicada, con login, base de datos y cobros.",
    "guias": [
     "escribi-la-especificacion-antes-de-programar",
@@ -420,7 +420,7 @@
     "id": "mcp-negocio",
     "e": "💼",
     "n": "Tu negocio: mail, documentos y ventas",
-    "d": "Conectá Claude con las apps que ya usás todos los días.",
+    "d": "Conecta Claude con las apps que ya usas todos los días.",
     "items": [
      "Google Workspace MCP",
      "Notion MCP",
@@ -494,7 +494,7 @@
     "id": "h-ahorro",
     "e": "💸",
     "n": "Medir y gastar menos",
-    "d": "Mirá cuánto consumís y achicá el contexto.",
+    "d": "Mira cuánto consumís y achica el contexto.",
     "items": [
      "ccusage",
      "Claude Code Usage Monitor",
@@ -535,7 +535,7 @@
    {
     "id": "h-agentes",
     "e": "🤖",
-    "n": "Construí tus propios agentes",
+    "n": "Construye tus propios agentes",
     "d": "El SDK oficial para meter Claude adentro de tus apps.",
     "items": [
      "Claude Agent SDK para Python",

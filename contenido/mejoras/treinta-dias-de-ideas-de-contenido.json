@@ -3,14 +3,14 @@
  "verificada": "2026-11-08",
  "correcciones": [
   {
-   "antes": "Si en Claude tenés activado \"Crear y editar archivos\", también podés pedirle que te genere el archivo directamente.",
-   "despues": "Si en Settings → Capabilities tenés prendida la opción Create and edit files (en el diseño anterior, Code execution and file creation), también podés pedirle que te genere el archivo .csv directamente para descargarlo.",
+   "antes": "Si en Claude tienes activado \"Crear y editar archivos\", también puedes pedirle que te genere el archivo directamente.",
+   "despues": "Si en Settings → Capabilities tienes prendida la opción Create and edit files (en el diseño anterior, Code execution and file creation), también puedes pedirle que te genere el archivo .csv directamente para descargarlo.",
    "motivo": "La ayuda oficial nombra la opción como \"Create and edit files\" en el diseño actualizado de Settings (antes \"Code execution and file creation\") y la ubica en Settings > Capabilities para planes individuales. En Team y Enterprise la maneja un admin desde Organization settings > Capabilities. Con el nombre en inglés y el lugar exacto la persona la encuentra.",
    "fuente": "https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them"
   },
   {
-   "antes": "Devolvelo primero como tabla y después el mismo contenido en formato CSV, separado por comas, en un bloque de código.",
-   "despues": "Devolvelo primero como tabla y después el mismo contenido en formato CSV, separado por comas, con cada campo de texto entre comillas dobles y la fecha como AAAA-MM-DD, en un bloque de código.",
+   "antes": "Devuélvelo primero como tabla y después el mismo contenido en formato CSV, separado por comas, en un bloque de código.",
+   "despues": "Devuélvelo primero como tabla y después el mismo contenido en formato CSV, separado por comas, con cada campo de texto entre comillas dobles y la fecha como AAAA-MM-DD, en un bloque de código.",
    "motivo": "El estándar de CSV (RFC 4180) indica que los campos que tienen comas, comillas o saltos de línea tienen que ir entre comillas dobles. Los títulos y ganchos en español suelen tener comas, y sin comillas Google Sheets los parte en columnas de más al importar con separador coma. La fecha en AAAA-MM-DD evita que se confunda día y mes según la configuración regional de la planilla.",
    "fuente": "https://www.rfc-editor.org/rfc/rfc4180"
   }
@@ -39,34 +39,34 @@
  "si_falla": [
   {
    "sintoma": "Al importar, los textos aparecen partidos en columnas de más y todo queda corrido.",
-   "solucion": "Algún título o gancho tiene comas y no estaba entre comillas. Pedile a Claude: \"Rehacé el CSV con todos los campos de texto entre comillas dobles\" y volvé a importar con separador coma."
+   "solucion": "Algún título o gancho tiene comas y no estaba entre comillas. Pídele a Claude: \"Rehaz el CSV con todos los campos de texto entre comillas dobles\" y vuelve a importar con separador coma."
   },
   {
    "sintoma": "Las fechas se ven con día y mes invertidos, o no se pueden ordenar.",
-   "solucion": "En Google Sheets andá a Archivo → Configuración y, en General, elegí la configuración regional de tu país; después tocá Guardar configuración. Si igual quedan raras, pedile a Claude el CSV con la fecha en formato AAAA-MM-DD y volvé a importarlo."
+   "solucion": "En Google Sheets ve a Archivo → Configuración y, en General, elige la configuración regional de tu país; después toca Guardar configuración. Si igual quedan raras, pídele a Claude el CSV con la fecha en formato AAAA-MM-DD y vuelve a importarlo."
   },
   {
    "sintoma": "En Mac guardaste el archivo con TextEdit y Google Sheets no lo reconoce.",
-   "solucion": "TextEdit guarda texto con formato por defecto. Antes de guardar, andá a Formato → Convertir a texto normal y guardalo con el nombre calendario.csv. Si te pregunta, elegí la codificación UTF-8 para que las tildes se vean bien."
+   "solucion": "TextEdit guarda texto con formato por defecto. Antes de guardar, ve a Formato → Convertir a texto normal y guárdalo con el nombre calendario.csv. Si te pregunta, elige la codificación UTF-8 para que las tildes se vean bien."
   },
   {
    "sintoma": "Claude corta la tabla a la mitad o el CSV queda incompleto.",
-   "solucion": "Es una respuesta larga. Pedile que siga desde la última fila, o pedí el calendario en dos partes (días 1 a 15 y 16 a 30) y pegá las dos partes en el mismo archivo, con una sola fila de encabezados."
+   "solucion": "Es una respuesta larga. Pídele que siga desde la última fila, o pide el calendario en dos partes (días 1 a 15 y 16 a 30) y pega las dos partes en el mismo archivo, con una sola fila de encabezados."
   },
   {
-   "sintoma": "Cuando pedís el guion de un día, Claude usa una versión vieja del calendario.",
-   "solucion": "El proyecto tiene el archivo que subiste, no la planilla viva. Reemplazá el calendario en el conocimiento del proyecto cada vez que lo cambies, o pegá la fila del día en el chat."
+   "sintoma": "Cuando pides el guion de un día, Claude usa una versión vieja del calendario.",
+   "solucion": "El proyecto tiene el archivo que subiste, no la planilla viva. Reemplaza el calendario en el conocimiento del proyecto cada vez que lo cambies, o pega la fila del día en el chat."
   }
  ],
  "kit": [
   {
    "archivo": "calendario-de-contenido/SKILL.md",
-   "que_es": "Skill que convierte tus pilares e ideas elegidas en un calendario de 30 días, con tabla y CSV listo para Google Sheets (comillas, fecha AAAA-MM-DD, conteo por pilar). Guardala en una carpeta calendario-de-contenido, comprimila en ZIP y subila en Customize → Skills.",
-   "contenido": "---\nname: calendario-de-contenido\ndescription: 'Arma un calendario de contenido de 30 días desde pilares y un banco de ideas, como tabla y CSV para Google Sheets. Usala al pedir un calendario, un plan del mes u ordenar ideas en fechas.'\n---\n\n# Calendario de contenido de 30 días\n\nConvertís pilares e ideas elegidas en un calendario que la persona importa en Google Sheets y usa para grabar y publicar. No publicás nada.\n\n## Qué necesitás antes de armar\n\nPedí lo que falte, todo junto y en un solo mensaje:\n\n1. Los pilares (3 o 4), con su nombre corto.\n2. Las ideas elegidas, idealmente con pilar y formato.\n3. Fecha de inicio.\n4. Cuántas publicaciones por semana y qué días.\n\nSi te pasan pilares pero no ideas, ofrecé armar primero un banco de ideas y esperá a que elijan. No armes el calendario con ideas que la persona no eligió.\n\n## Cómo armás el calendario\n\n- Una fila por publicación, solo en los días que te dijeron. Los días sin publicación no van.\n- No repitas el mismo pilar en dos publicaciones seguidas.\n- Alterná formatos (reel hablado, carrusel, historia). Si hay pocas ideas de un formato, avisá en vez de forzarlo.\n- Si las ideas no alcanzan para todas las fechas, dejá las fechas que sobran con título \"A ELEGIR DEL BANCO\" y el pilar que toca. No inventes ideas nuevas sin avisar.\n- El gancho es la primera frase que se dice o se lee. Tiene que entenderse sola. Nada de \"hola\" ni \"en este video\".\n- El pedido final es uno solo: comentar una palabra, guardar, compartir o seguir.\n- No pongas cifras, porcentajes ni resultados que no estén en lo que te pasaron. Si hace falta un dato, escribí [DATO].\n- La columna estado arranca siempre en \"pendiente\".\n\n## Qué entregás, en este orden\n\n1. La tabla, con estas columnas: fecha, dia, pilar, formato, titulo, gancho, pedido_final, estado.\n2. Un bloque de código con el mismo contenido en CSV, con estas reglas para que Google Sheets lo importe bien:\n   - La primera fila son los nombres de las columnas, igual que arriba.\n   - Separador: coma.\n   - Todos los campos de texto entre comillas dobles. Si un texto tiene comillas adentro, duplicalas (\"\").\n   - La fecha en formato AAAA-MM-DD.\n   - Sin filas vacías y sin texto antes o después del CSV dentro del bloque.\n3. Una línea con el conteo de publicaciones por pilar y por formato, para que la persona vea el equilibrio.\n\nSi la persona tiene prendida la creación de archivos, ofrecé también generar el archivo calendario.csv para descargar.\n\n## Al final\n\nCerrá con: \"Importalo en Google Sheets con Archivo → Importar, separador coma.\"\n"
+   "que_es": "Skill que convierte tus pilares e ideas elegidas en un calendario de 30 días, con tabla y CSV listo para Google Sheets (comillas, fecha AAAA-MM-DD, conteo por pilar). Guárdala en una carpeta calendario-de-contenido, comprímela en ZIP y súbela en Customize → Skills.",
+   "contenido": "---\nname: calendario-de-contenido\ndescription: 'Arma un calendario de contenido de 30 días desde pilares y un banco de ideas, como tabla y CSV para Google Sheets. Úsala al pedir un calendario, un plan del mes u ordenar ideas en fechas.'\n---\n\n# Calendario de contenido de 30 días\n\nConvertís pilares e ideas elegidas en un calendario que la persona importa en Google Sheets y usa para grabar y publicar. No publicas nada.\n\n## Qué necesitas antes de armar\n\nPide lo que falte, todo junto y en un solo mensaje:\n\n1. Los pilares (3 o 4), con su nombre corto.\n2. Las ideas elegidas, idealmente con pilar y formato.\n3. Fecha de inicio.\n4. Cuántas publicaciones por semana y qué días.\n\nSi te pasan pilares pero no ideas, ofrece armar primero un banco de ideas y espera a que elijan. No armes el calendario con ideas que la persona no eligió.\n\n## Cómo armas el calendario\n\n- Una fila por publicación, solo en los días que te dijeron. Los días sin publicación no van.\n- No repitas el mismo pilar en dos publicaciones seguidas.\n- Alterna formatos (reel hablado, carrusel, historia). Si hay pocas ideas de un formato, avisa en vez de forzarlo.\n- Si las ideas no alcanzan para todas las fechas, deja las fechas que sobran con título \"A ELEGIR DEL BANCO\" y el pilar que toca. No inventes ideas nuevas sin avisar.\n- El gancho es la primera frase que se dice o se lee. Tiene que entenderse sola. Nada de \"hola\" ni \"en este video\".\n- El pedido final es uno solo: comentar una palabra, guardar, compartir o seguir.\n- No pongas cifras, porcentajes ni resultados que no estén en lo que te pasaron. Si hace falta un dato, escribe [DATO].\n- La columna estado arranca siempre en \"pendiente\".\n\n## Qué entregas, en este orden\n\n1. La tabla, con estas columnas: fecha, dia, pilar, formato, titulo, gancho, pedido_final, estado.\n2. Un bloque de código con el mismo contenido en CSV, con estas reglas para que Google Sheets lo importe bien:\n   - La primera fila son los nombres de las columnas, igual que arriba.\n   - Separador: coma.\n   - Todos los campos de texto entre comillas dobles. Si un texto tiene comillas adentro, duplícalas (\"\").\n   - La fecha en formato AAAA-MM-DD.\n   - Sin filas vacías y sin texto antes o después del CSV dentro del bloque.\n3. Una línea con el conteo de publicaciones por pilar y por formato, para que la persona vea el equilibrio.\n\nSi la persona tiene prendida la creación de archivos, ofrece también generar el archivo calendario.csv para descargar.\n\n## Al final\n\nCierra con: \"Impórtalo en Google Sheets con Archivo → Importar, separador coma.\"\n"
   },
   {
    "archivo": "plantilla-calendario-30-dias.csv",
-   "que_es": "La planilla vacía con las columnas del calendario y tres filas de ejemplo. Importala en Google Sheets con Archivo → Importar si querés armar el mes a mano o ver el formato que tiene que devolver Claude.",
+   "que_es": "La planilla vacía con las columnas del calendario y tres filas de ejemplo. Impórtala en Google Sheets con Archivo → Importar si quieres armar el mes a mano o ver el formato que tiene que devolver Claude.",
    "contenido": "\"fecha\",\"dia\",\"pilar\",\"formato\",\"titulo\",\"gancho\",\"pedido_final\",\"estado\"\n\"AAAA-MM-DD\",\"lunes\",\"[PILAR 1]\",\"reel hablado\",\"[TÍTULO DE TRABAJO]\",\"[PRIMERA FRASE]\",\"[UN SOLO PEDIDO]\",\"pendiente\"\n\"AAAA-MM-DD\",\"miércoles\",\"[PILAR 2]\",\"carrusel\",\"[TÍTULO DE TRABAJO]\",\"[TÍTULO DE LA PORTADA]\",\"[UN SOLO PEDIDO]\",\"pendiente\"\n\"AAAA-MM-DD\",\"viernes\",\"[PILAR 3]\",\"historia\",\"[TÍTULO DE TRABAJO]\",\"[PRIMERA FRASE O PREGUNTA]\",\"[UN SOLO PEDIDO]\",\"pendiente\"\n"
   }
  ],

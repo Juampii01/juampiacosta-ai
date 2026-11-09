@@ -4,7 +4,7 @@
  "correcciones": [
   {
    "antes": "Manual (default): solo lee sin preguntar. Para todo lo demás te pide permiso. El más seguro.",
-   "despues": "Manual (default): solo lee sin preguntar. Para todo lo demás te pide permiso. El más seguro. Ojo: desde la versión 2.1.283, si no configuraste nada, las sesiones nuevas de la terminal y de VS Code arrancan en auto, no en Manual. Para arrancar siempre en Manual, poné \"defaultMode\": \"default\" dentro de \"permissions\" en ~/.claude/settings.json, o abrí con claude --permission-mode default.",
+   "despues": "Manual (default): solo lee sin preguntar. Para todo lo demás te pide permiso. El más seguro. Ojo: desde la versión 2.1.283, si no configuraste nada, las sesiones nuevas de la terminal y de VS Code arrancan en auto, no en Manual. Para arrancar siempre en Manual, pon \"defaultMode\": \"default\" dentro de \"permissions\" en ~/.claude/settings.json, o abre con claude --permission-mode default.",
    "motivo": "La doc oficial dice que con Claude Code v2.1.283 o posterior auto es el modo inicial incorporado para las sesiones interactivas de terminal y VS Code en todos los planes. Quien lee la guía cree que arranca en Manual y deja a Claude con más autonomía de la que piensa. La misma página da el ejemplo de defaultMode para arrancar en Manual.",
    "fuente": "https://code.claude.com/docs/en/permission-modes"
   },
@@ -23,24 +23,24 @@
   {
    "antes": "Las reglas deny bloquean en todos los modos, incluso en bypassPermissions. Además, hay archivos protegidos (como la carpeta .git, la carpeta .claude o la configuración de la terminal) que Claude no modifica sin permiso, salvo en bypassPermissions.",
    "despues": "Las reglas deny bloquean en todos los modos, incluso en bypassPermissions. Además, hay archivos protegidos (como la carpeta .git, la carpeta .claude, .mcp.json o la configuración de la terminal) que nunca se aprueban solos: en Manual y acceptEdits te pregunta, en auto los revisa el clasificador y en dontAsk se rechazan. Solo bypassPermissions los escribe directo. Una regla allow tampoco los libera.",
-   "motivo": "La tabla oficial de rutas protegidas muestra que en auto esas escrituras van al clasificador (no te pregunta a vos), que en dontAsk se rechazan y que permissions.allow no las preaprueba.",
+   "motivo": "La tabla oficial de rutas protegidas muestra que en auto esas escrituras van al clasificador (no te pregunta a ti), que en dontAsk se rechazan y que permissions.allow no las preaprueba.",
    "fuente": "https://code.claude.com/docs/en/permission-modes"
   },
   {
    "antes": "Si lo frena varias veces seguidas, vuelve a preguntarte.",
-   "despues": "Si lo frena 3 veces seguidas o 20 en total en la sesión, el modo auto se pausa y vuelve a preguntarte. Cuando aprobás lo que te pide, sigue en auto. Lo que frenó queda en /permissions, en Recently denied.",
+   "despues": "Si lo frena 3 veces seguidas o 20 en total en la sesión, el modo auto se pausa y vuelve a preguntarte. Cuando apruebas lo que te pide, sigue en auto. Lo que frenó queda en /permissions, en Recently denied.",
    "motivo": "La doc oficial da los umbrales exactos (3 seguidas o 20 en total, no configurables), dice que aprobar la acción retoma el modo auto y que las acciones frenadas aparecen en /permissions bajo Recently denied.",
    "fuente": "https://code.claude.com/docs/en/permission-modes"
   },
   {
-   "antes": "La guía oficial lo dice claro: reduce los avisos, pero no garantiza seguridad. Usalo para tareas donde confiás en el rumbo general, no como reemplazo de revisar lo sensible.",
-   "despues": "La guía oficial lo dice claro: reduce los avisos, pero no garantiza seguridad. Usalo para tareas donde confiás en el rumbo general, no como reemplazo de revisar lo sensible. Y lo que le pedís en el chat (\"no hagas push\") se puede perder cuando la conversación se compacta: para una prohibición que tiene que cumplirse sí o sí, usá una regla deny en /permissions.",
-   "motivo": "La doc oficial advierte que los límites que ponés en la conversación se releen del historial en cada chequeo y pueden perderse al compactar, y recomienda una regla deny para una garantía dura.",
+   "antes": "La guía oficial lo dice claro: reduce los avisos, pero no garantiza seguridad. Úsalo para tareas donde confías en el rumbo general, no como reemplazo de revisar lo sensible.",
+   "despues": "La guía oficial lo dice claro: reduce los avisos, pero no garantiza seguridad. Úsalo para tareas donde confías en el rumbo general, no como reemplazo de revisar lo sensible. Y lo que le pides en el chat (\"no hagas push\") se puede perder cuando la conversación se compacta: para una prohibición que tiene que cumplirse sí o sí, usa una regla deny en /permissions.",
+   "motivo": "La doc oficial advierte que los límites que pones en la conversación se releen del historial en cada chequeo y pueden perderse al compactar, y recomienda una regla deny para una garantía dura.",
    "fuente": "https://code.claude.com/docs/en/permission-modes"
   },
   {
    "antes": "Según la guía oficial está en todos los planes, pero depende del modelo que uses y, en Team y Enterprise, de que el administrador no lo haya apagado.",
-   "despues": "Según la guía oficial está en todos los planes, pero depende del modelo que uses y, en Team y Enterprise, de que el administrador no lo haya apagado. Con modelos viejos como Sonnet 4.5, Opus 4.5 o Haiku 4.5 no anda: si no te aparece, probá cambiar de modelo con /model.",
+   "despues": "Según la guía oficial está en todos los planes, pero depende del modelo que uses y, en Team y Enterprise, de que el administrador no lo haya apagado. Con modelos viejos como Sonnet 4.5, Opus 4.5 o Haiku 4.5 no anda: si no te aparece, prueba cambiar de modelo con /model.",
    "motivo": "La doc oficial pide Opus 4.6 o posterior, Sonnet 4.6 o posterior, Haiku 5.5 o un modelo Fable en la API de Anthropic, y aclara que Sonnet 4.5, Opus 4.5 y Haiku 4.5 no están soportados en ningún proveedor. Es la causa más común de que auto no aparezca.",
    "fuente": "https://code.claude.com/docs/en/permission-modes"
   }
@@ -58,45 +58,45 @@
    "Abrió Claude Code en la carpeta de la web y pegó el prompt \"Guardar todo antes de empezar\" de la guía. Claude vio que ya había git e hizo el commit \"punto seguro antes de rediseño del formulario\".",
    "Miró la barra de estado y vio auto mode on: su versión ya arrancaba en auto. Para el resto de sus proyectos sumó \"defaultMode\": \"default\" en ~/.claude/settings.json, así cada sesión nueva arranca en Manual y él decide cuándo soltar.",
    "Copió el archivo settings-permisos-proyecto.json del kit como .claude/settings.json del proyecto. Dejó los ask de vercel y supabase db push que trae el kit, porque publicar y tocar la base los quiere confirmar siempre, y cambió los comandos npm por los de su proyecto. Abrió /permissions para ver que las reglas aparecían con su archivo de origen.",
-   "Pasó a modo plan con Shift+Tab y pidió: \"Rediseñá el formulario de reservas con el estilo de la home. No toques la conexión con Supabase ni las variables de entorno\". Leyó el plan, vio que iba a tocar tres componentes y un archivo de estilos, y lo aprobó.",
+   "Pasó a modo plan con Shift+Tab y pidió: \"Rediseña el formulario de reservas con el estilo de la home. No toques la conexión con Supabase ni las variables de entorno\". Leyó el plan, vio que iba a tocar tres componentes y un archivo de estilos, y lo aprobó.",
    "Con el plan aprobado pasó a auto. Claude trabajó de corrido. En un momento intentó leer el .env para revisar la conexión y la regla deny lo frenó; Claude siguió sin esa lectura.",
-   "Al terminar abrió /diff, revisó los cambios archivo por archivo y corrió la web en su compu para probar una reserva de punta a punta.",
+   "Al terminar abrió /diff, revisó los cambios archivo por archivo y corrió la web en su computadora para probar una reserva de punta a punta.",
    "Un detalle del diseño no le gustó. En vez de pedir que lo deshaga a mano, usó /rewind, eligió el punto anterior a ese pedido y Restore code. Después hizo el commit final y recién ahí publicó."
   ],
   "resultado": "El formulario nuevo quedó publicado, sin tocar la base ni las claves. Las reglas del proyecto quedaron en .claude/settings.json, así la próxima sesión arranca con los mismos límites, y la checklist del kit quedó pegada al lado de la pantalla."
  },
  "si_falla": [
   {
-   "sintoma": "Apretás Shift+Tab y nunca aparece auto.",
-   "solucion": "Auto depende del modelo: con Sonnet 4.5, Opus 4.5, Haiku 4.5 o modelos más viejos no está. Cambiá de modelo con /model. En Team o Enterprise, el administrador lo puede haber apagado con permissions.disableAutoMode en la configuración administrada: preguntale."
+   "sintoma": "Aprietas Shift+Tab y nunca aparece auto.",
+   "solucion": "Auto depende del modelo: con Sonnet 4.5, Opus 4.5, Haiku 4.5 o modelos más viejos no está. Cambia de modelo con /model. En Team o Enterprise, el administrador lo puede haber apagado con permissions.disableAutoMode en la configuración administrada: pregúntale."
   },
   {
    "sintoma": "Pusiste \"defaultMode\": \"auto\" en .claude/settings.json del proyecto y igual no arranca en auto.",
-   "solucion": "La doc lo aclara: auto y bypassPermissions se ignoran si están en .claude/settings.json o .claude/settings.local.json. Ponelo en ~/.claude/settings.json o abrí con claude --permission-mode auto."
+   "solucion": "La doc lo aclara: auto y bypassPermissions se ignoran si están en .claude/settings.json o .claude/settings.local.json. Ponlo en ~/.claude/settings.json o abre con claude --permission-mode auto."
   },
   {
    "sintoma": "En pleno modo auto, Claude vuelve a pedirte permiso para todo.",
-   "solucion": "El clasificador frenó 3 acciones seguidas o 20 en la sesión y el modo se pausó. Abrí /permissions, mirá Recently denied para entender qué intentaba hacer y, si estaba bien, aprobá la acción: el modo auto se retoma. Si estaba mal, frenalo con Esc y reorientá el pedido."
+   "solucion": "El clasificador frenó 3 acciones seguidas o 20 en la sesión y el modo se pausó. Abre /permissions, mira Recently denied para entender qué intentaba hacer y, si estaba bien, aprueba la acción: el modo auto se retoma. Si estaba mal, frénalo con Esc y reorienta el pedido."
   },
   {
-   "sintoma": "Usás /rewind y aparece No files were restored, o un archivo no vuelve a como estaba.",
+   "sintoma": "Usas /rewind y aparece No files were restored, o un archivo no vuelve a como estaba.",
    "solucion": "Pasa si el archivo solo lo cambió un comando de terminal, si lo cambió un subagente o si la sesión tiene más de unos 30 días y sus copias se borraron. Para eso está el commit del principio: git status te muestra qué cambió y git restore <archivo> lo vuelve al último commit."
   },
   {
-   "sintoma": "Intentás arrancar con --dangerously-skip-permissions y Claude Code se niega.",
-   "solucion": "En Linux y macOS no arranca en bypassPermissions si lo corrés como root o con sudo. No lo fuerces: ese modo es para un contenedor o una máquina virtual aislada. En tu compu de trabajo, usá auto o acceptEdits con reglas deny."
+   "sintoma": "Intentas arrancar con --dangerously-skip-permissions y Claude Code se niega.",
+   "solucion": "En Linux y macOS no arranca en bypassPermissions si lo corres como root o con sudo. No lo fuerces: ese modo es para un contenedor o una máquina virtual aislada. En tu computadora de trabajo, usa auto o acceptEdits con reglas deny."
   }
  ],
  "kit": [
   {
    "archivo": "settings-permisos-proyecto.json",
-   "que_es": "Reglas de permisos listas para copiar como .claude/settings.json de tu proyecto: arranca en Manual, deja correr pruebas y build sin preguntar, pide confirmación para push, instalar, publicar y deploy, y prohíbe leer o editar .env, la carpeta secrets y los comandos de git que borran trabajo. Cambiá los comandos npm por los de tu proyecto; si el archivo ya existe, sumá solo el bloque permissions.",
+   "que_es": "Reglas de permisos listas para copiar como .claude/settings.json de tu proyecto: arranca en Manual, deja correr pruebas y build sin preguntar, pide confirmación para push, instalar, publicar y deploy, y prohíbe leer o editar .env, la carpeta secrets y los comandos de git que borran trabajo. Cambia los comandos npm por los de tu proyecto; si el archivo ya existe, suma solo el bloque permissions.",
    "contenido": "{\n  \"permissions\": {\n    \"defaultMode\": \"default\",\n    \"allow\": [\n      \"Bash(npm run test *)\",\n      \"Bash(npm run lint *)\",\n      \"Bash(npm run build *)\"\n    ],\n    \"ask\": [\n      \"Bash(git push *)\",\n      \"Bash(npm install *)\",\n      \"Bash(npm publish *)\",\n      \"Bash(vercel *)\",\n      \"Bash(supabase db push *)\"\n    ],\n    \"deny\": [\n      \"Read(./.env)\",\n      \"Read(./.env.*)\",\n      \"Edit(./.env)\",\n      \"Edit(./.env.*)\",\n      \"Read(./secrets/**)\",\n      \"Bash(git push --force *)\",\n      \"Bash(git push -f *)\",\n      \"Bash(git reset --hard *)\",\n      \"Bash(git clean *)\"\n    ]\n  }\n}"
   },
   {
    "archivo": "checklist-antes-de-dejar-a-claude-solo.md",
    "que_es": "Checklist para revisar antes de pasar a auto o acceptEdits y al terminar la tarea: copia de seguridad, modo, reglas fijas, plan y revisión final.",
-   "contenido": "# Antes de dejar a Claude Code trabajando solo\n\nImprimila o tenela abierta al lado. Si una casilla queda sin marcar, no pases a auto.\n\n## 1. Red de seguridad\n\n- [ ] La carpeta usa git (`git status` no da error).\n- [ ] Hice un commit con todo como está ahora. Mensaje: \"punto seguro antes de [TAREA]\".\n- [ ] Si hay base de datos o archivos que no están en git (fotos subidas, planillas), tengo una copia aparte.\n- [ ] Sé volver atrás: `/rewind` para lo que Claude editó con sus herramientas, git para todo lo demás.\n\n## 2. Qué modo voy a usar\n\n- [ ] Miré el modo actual en la barra de estado (`manual mode on`, `accept edits on`, `plan mode on`, `auto mode on`).\n- [ ] Sé que en versiones nuevas la terminal puede arrancar en auto. Si quiero Manual siempre, tengo `\"defaultMode\": \"default\"` en `~/.claude/settings.json`.\n- [ ] Si uso acceptEdits, sé que también aprueba solo `rm`, `mv`, `cp` y `sed` dentro de la carpeta del proyecto.\n- [ ] Nunca uso bypassPermissions ni `--dangerously-skip-permissions` fuera de un contenedor o una máquina virtual aislada.\n\n## 3. Reglas fijas\n\n- [ ] Tengo reglas deny para lo que no se toca nunca (claves, `.env`, carpeta de secretos, push forzado).\n- [ ] Tengo reglas ask para lo que siempre quiero confirmar (push, publicar, deploy, migraciones).\n- [ ] Las prohibiciones importantes están en `/permissions`, no solo dichas en el chat. Lo que digo en el chat se puede perder al compactar.\n\n## 4. El pedido\n\n- [ ] Primero le pedí un plan (modo plan) y lo leí entero.\n- [ ] El plan dice qué archivos va a tocar y cómo se prueba que funciona.\n- [ ] Le aclaré qué NO tiene que hacer (publicar, mandar mails, tocar producción).\n\n## 5. Al terminar\n\n- [ ] Revisé los cambios con `/diff` antes de publicar.\n- [ ] Corrí las pruebas o probé la app a mano.\n- [ ] Miré en `/permissions`, pestaña Recently denied, si el modo auto frenó algo y por qué.\n- [ ] Hice el commit final con un mensaje que explique qué cambió.\n\n## Si algo salió mal\n\n1. `Esc` para frenarlo.\n2. `/rewind` (o `Esc` dos veces con el cuadro vacío) y elegí el punto anterior al problema.\n3. Lo que no volvió con `/rewind`: `git status` para ver qué cambió y `git restore <archivo>` para descartar los cambios de ese archivo. Leé el comando antes de aprobarlo.\n"
+   "contenido": "# Antes de dejar a Claude Code trabajando solo\n\nImprímela o tenla abierta al lado. Si una casilla queda sin marcar, no pases a auto.\n\n## 1. Red de seguridad\n\n- [ ] La carpeta usa git (`git status` no da error).\n- [ ] Hice un commit con todo como está ahora. Mensaje: \"punto seguro antes de [TAREA]\".\n- [ ] Si hay base de datos o archivos que no están en git (fotos subidas, planillas), tengo una copia aparte.\n- [ ] Sé volver atrás: `/rewind` para lo que Claude editó con sus herramientas, git para todo lo demás.\n\n## 2. Qué modo voy a usar\n\n- [ ] Miré el modo actual en la barra de estado (`manual mode on`, `accept edits on`, `plan mode on`, `auto mode on`).\n- [ ] Sé que en versiones nuevas la terminal puede arrancar en auto. Si quiero Manual siempre, tengo `\"defaultMode\": \"default\"` en `~/.claude/settings.json`.\n- [ ] Si uso acceptEdits, sé que también aprueba solo `rm`, `mv`, `cp` y `sed` dentro de la carpeta del proyecto.\n- [ ] Nunca uso bypassPermissions ni `--dangerously-skip-permissions` fuera de un contenedor o una máquina virtual aislada.\n\n## 3. Reglas fijas\n\n- [ ] Tengo reglas deny para lo que no se toca nunca (claves, `.env`, carpeta de secretos, push forzado).\n- [ ] Tengo reglas ask para lo que siempre quiero confirmar (push, publicar, deploy, migraciones).\n- [ ] Las prohibiciones importantes están en `/permissions`, no solo dichas en el chat. Lo que digo en el chat se puede perder al compactar.\n\n## 4. El pedido\n\n- [ ] Primero le pedí un plan (modo plan) y lo leí entero.\n- [ ] El plan dice qué archivos va a tocar y cómo se prueba que funciona.\n- [ ] Le aclaré qué NO tiene que hacer (publicar, mandar mails, tocar producción).\n\n## 5. Al terminar\n\n- [ ] Revisé los cambios con `/diff` antes de publicar.\n- [ ] Corrí las pruebas o probé la app a mano.\n- [ ] Miré en `/permissions`, pestaña Recently denied, si el modo auto frenó algo y por qué.\n- [ ] Hice el commit final con un mensaje que explique qué cambió.\n\n## Si algo salió mal\n\n1. `Esc` para frenarlo.\n2. `/rewind` (o `Esc` dos veces con el cuadro vacío) y elige el punto anterior al problema.\n3. Lo que no volvió con `/rewind`: `git status` para ver qué cambió y `git restore <archivo>` para descartar los cambios de ese archivo. Lee el comando antes de aprobarlo.\n"
   }
  ],
  "notas_revision": "Verifiqué contra code.claude.com: permission-modes (tabla de modos, comandos que aprueba acceptEdits, ciclo de Shift+Tab, etiquetas de VS Code, escritorio y web, auto como modo inicial desde v2.1.283, requisitos de modelo y admin, umbrales 3/20 y Recently denied, rutas protegidas, deny en bypass, defaultMode ignorado para auto/bypass en settings del proyecto, negativa a arrancar bypass como root), permissions (allow/ask/deny, orden deny-ask-allow, sintaxis Bash y Read/Edit), checkpointing (/rewind, Esc Esc, opciones de restauración, límites con Bash, subagentes y retención de unos 30 días), commands (/diff, /permissions, /rewind) y desktop (etiquetas del selector). La regla Bash(git clean *) del kit bloquea también git clean -n (solo muestra); lo dejé así a propósito. No verifiqué en una instalación real que las reglas del kit se vean así en /permissions; el formato es el de la doc."

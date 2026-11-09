@@ -1,7 +1,7 @@
 // Entrada a la biblioteca con la clave que recibe cada comprador.
 // POST /api/entrar (formulario: clave) -> si la clave está en CLAVES_ACCESO, da la cookie de acceso firmada y lleva a /recursos.
 // Variables en Vercel (nunca en el código): ACCESS_SECRET (texto largo al azar) y CLAVES_ACCESO (claves separadas por comas).
-// Para cortar el acceso de una clave que se filtró: sacala de CLAVES_ACCESO (quien ya entró sigue adentro hasta que cambies ACCESS_SECRET).
+// Para cortar el acceso de una clave que se filtró: sácala de CLAVES_ACCESO (quien ya entró sigue adentro hasta que cambies ACCESS_SECRET).
 
 import { ACCESS_COOKIE_NAME, ACCESS_COOKIE_MAX_AGE, AVISO_COOKIE_NAME, crearCookie } from "../lib/acceso.js";
 

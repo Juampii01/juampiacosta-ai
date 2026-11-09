@@ -166,7 +166,7 @@ function siguienteDeRuta(g) {
       '<div class="g-ruta-barra"><em style="width:' + ((i + 1) / total * 100) + '%"></em></div>';
     if (!sig) {
       return '<a class="g-ruta glass ruta-' + ruta.color + '" href="' + RAIZ + 'recursos.html#rutas">' + cab +
-        '<h3>¡Terminaste la ruta!</h3><p>Elegí otra ruta para seguir aprendiendo.</p><span class="g-ruta-boton">Ver las rutas' + svgGuia("flecha") + '</span></a>';
+        '<h3>¡Terminaste la ruta!</h3><p>Elige otra ruta para seguir aprendiendo.</p><span class="g-ruta-boton">Ver las rutas' + svgGuia("flecha") + '</span></a>';
     }
     var destino = typeof sig === "string" ? GUIAS_WEB.filter(function (x) { return x.slug === sig; })[0] : null;
     var titulo = destino ? destino.t : sig.t;
@@ -290,7 +290,7 @@ function pintarGuia(caja, g) {
   // Sigue leyendo: mismo tema primero
   var rel = GUIAS_WEB.filter(function (x) { return x.slug !== g.slug && x.tema === g.tema; }).slice(0, 3);
   if (rel.length < 3) rel = rel.concat(GUIAS_WEB.filter(function (x) { return x.slug !== g.slug && rel.indexOf(x) < 0; }).slice(0, 3 - rel.length));
-  html += '<section class="relacionadas"><span class="g-etq">Seguí leyendo</span><div class="rel">' + rel.map(function (x) {
+  html += '<section class="relacionadas"><span class="g-etq">Sigue leyendo</span><div class="rel">' + rel.map(function (x) {
     var l = logosDe(x)[0];
     return '<a class="glass" href="' + x.slug + '.html">' + (l ? placaLogo(l, RAIZ) : '') + '<span class="tipo">' + x.tema + '</span><b>' + x.t + '</b><small>' + x.min + ' min</small></a>';
   }).join("") + '</div></section>';
@@ -298,10 +298,10 @@ function pintarGuia(caja, g) {
   // Plan gratis: después de una guía abierta, mostrar lo que hay del otro lado
   if (/(?:^|;\s*)jpa_nivel=gratis/.test(document.cookie)) {
     var abiertas = GUIAS_WEB.filter(function (x) { return x.gratis; }).length;
-    html += '<a class="g-mas-acceso glass" href="/#precio"><span class="g-etq">Plan gratis</span><b>Tenés abiertas ' + abiertas + ' de las ' + GUIAS_WEB.length + ' guías de la biblioteca.</b>' +
+    html += '<a class="g-mas-acceso glass" href="/#precio"><span class="g-etq">Plan gratis</span><b>Tienes abiertas ' + abiertas + ' de las ' + GUIAS_WEB.length + ' guías de la biblioteca.</b>' +
       '<span>Con el acceso completo abrís las ' + (GUIAS_WEB.length - abiertas) + ' que faltan, más los prompts para copiar y las herramientas con su instalación.</span><em>Ver el acceso completo →</em></a>';
   }
-  html += '<div class="cta-card"><h3>¿Querés que te lo instale en tu negocio?</h3><p>Escribime por Instagram, contame qué hacés y te digo qué le automatizaría.</p><a class="btn-blanco" href="' + REDES.dm + '" target="_blank" rel="noopener">Escribime →</a></div>';
+  html += '<div class="cta-card"><h3>¿Quieres que te lo instale en tu negocio?</h3><p>Escríbeme por Instagram, cuéntame qué haces y te digo qué le automatizaría.</p><a class="btn-blanco" href="' + REDES.dm + '" target="_blank" rel="noopener">Escríbeme →</a></div>';
   caja.innerHTML = html;
   activarPasos(caja);
   caja.querySelectorAll(".g-progreso").forEach(function (b) {
@@ -348,7 +348,7 @@ function pintarGuia(caja, g) {
         var t = document.createElement("div");
         t.className = "g-leida-toast";
         var total = Object.keys(PROGRESO.leidas()).length;
-        t.textContent = "✓ Guía leída · llevás " + total + " de " + GUIAS_WEB.length;
+        t.textContent = "✓ Guía leída · llevas " + total + " de " + GUIAS_WEB.length;
         document.body.appendChild(t);
         setTimeout(function () { t.remove(); }, 3200);
       }

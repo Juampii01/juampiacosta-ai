@@ -13,66 +13,66 @@
      "Una estructura de cuatro partes para armar cualquier pedido a Claude."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Una cuenta de Claude, gratis o paga."
     ],
     [
      "Tiempo",
-     "Un par de minutos extra por pedido. Se recuperan en correcciones que no hacés."
+     "Un par de minutos extra por pedido. Se recuperan en correcciones que no haces."
     ],
     [
      "Qué no hace",
-     "No hace magia: si no sabés qué querés, Claude tampoco lo va a adivinar."
+     "No hace magia: si no sabes qué quieres, Claude tampoco lo va a adivinar."
     ]
    ],
    "secciones": [
     {
      "h": "Por qué los pedidos cortos salen flojos",
      "p": [
-      "Anthropic, la empresa que hace Claude, lo explica con una imagen simple: tratá a Claude como a una persona muy capaz que acaba de entrar a tu negocio y no conoce cómo trabajás. Cuanto más preciso sos, mejor sale.",
-      "Una prueba que proponen en su guía oficial: mostrale tu pedido a alguien que no sabe nada del tema. Si esa persona se confundiría, Claude también."
+      "Anthropic, la empresa que hace Claude, lo explica con una imagen simple: trata a Claude como a una persona muy capaz que acaba de entrar a tu negocio y no conoce cómo trabajas. Cuanto más preciso eres, mejor sale.",
+      "Una prueba que proponen en su guía oficial: muéstrale tu pedido a alguien que no sabe nada del tema. Si esa persona se confundiría, Claude también."
      ]
     },
     {
      "h": "Las cuatro piezas",
      "lista": [
-      "Contexto: quién sos, para quién es esto y por qué lo necesitás. El porqué ayuda a que Claude entienda la intención y no solo la orden.",
-      "Tarea: qué querés exactamente, con un verbo claro. \"Escribí\", \"compará\", \"corregí\", no \"¿me ayudás con...?\".",
-      "Formato: cómo lo querés recibir. Largo, estructura, tono, si va en tabla, en lista o en párrafos.",
+      "Contexto: quién eres, para quién es esto y por qué lo necesitas. El porqué ayuda a que Claude entienda la intención y no solo la orden.",
+      "Tarea: qué quieres exactamente, con un verbo claro. \"Escribe\", \"compara\", \"corrige\", no \"¿me ayudas con...?\".",
+      "Formato: cómo lo quieres recibir. Largo, estructura, tono, si va en tabla, en lista o en párrafos.",
       "Ejemplos y criterios: uno o más ejemplos de lo que te gusta, y la lista de cosas que tiene que cumplir para que lo des por bueno."
      ]
     },
     {
      "h": "Antes y después",
      "p": [
-      "Antes: \"Escribime un mail para mis clientes sobre los nuevos horarios.\" Claude no sabe qué negocio tenés, a quién le escribís, qué tono usás ni qué cambió.",
+      "Antes: \"Escríbeme un mail para mis clientes sobre los nuevos horarios.\" Claude no sabe qué negocio tienes, a quién le escribís, qué tono usas ni qué cambió.",
       "Después: el mismo pedido con las cuatro piezas, como el prompt de abajo. La diferencia no es el largo: es que ya no tiene que adivinar."
      ],
      "prompts": [
       {
        "t": "Ejemplo armado con la fórmula",
-       "c": "CONTEXTO\nTengo [TIPO DE NEGOCIO] en [CIUDAD]. Mis clientes son [QUIÉNES SON]. Les escribo con un tono [EJ.: CERCANO Y SIN VUELTAS].\nA partir del [FECHA] cambiamos los horarios: [HORARIO VIEJO] pasa a ser [HORARIO NUEVO]. Lo hacemos porque [MOTIVO].\n\nTAREA\nEscribí el mail que les voy a mandar avisando el cambio.\n\nFORMATO\n- Asunto de menos de 8 palabras.\n- Cuerpo de 4 a 6 líneas.\n- Los horarios nuevos en una lista.\n- Cerrá con una línea para que respondan si tienen dudas.\n\nEJEMPLOS Y CRITERIOS\nAsí suelo escribir: [PEGÁ UN MAIL TUYO ANTERIOR].\nTiene que cumplir: que se entienda en 10 segundos, que no suene a disculpa y que no use palabras en inglés."
+       "c": "CONTEXTO\nTengo [TIPO DE NEGOCIO] en [CIUDAD]. Mis clientes son [QUIÉNES SON]. Les escribo con un tono [EJ.: CERCANO Y SIN VUELTAS].\nA partir del [FECHA] cambiamos los horarios: [HORARIO VIEJO] pasa a ser [HORARIO NUEVO]. Lo hacemos porque [MOTIVO].\n\nTAREA\nEscribe el mail que les voy a mandar avisando el cambio.\n\nFORMATO\n- Asunto de menos de 8 palabras.\n- Cuerpo de 4 a 6 líneas.\n- Los horarios nuevos en una lista.\n- Cierra con una línea para que respondan si tienen dudas.\n\nEJEMPLOS Y CRITERIOS\nAsí suelo escribir: [PEGA UN MAIL TUYO ANTERIOR].\nTiene que cumplir: que se entienda en 10 segundos, que no suene a disculpa y que no use palabras en inglés."
       }
      ]
     },
     {
      "h": "Plantilla para cualquier pedido",
      "p": [
-      "Guardala en tus notas y completala cada vez. Si una parte no aplica, borrala: no hace falta llenar todo siempre."
+      "Guárdala en tus notas y complétala cada vez. Si una parte no aplica, bórrala: no hace falta llenar todo siempre."
      ],
      "prompts": [
       {
        "t": "Plantilla de la fórmula",
-       "c": "CONTEXTO\n[QUIÉN SOS, PARA QUIÉN ES Y POR QUÉ LO NECESITÁS]\n\nTAREA\n[QUÉ QUERÉS, CON UN VERBO CLARO]\n\nFORMATO\n[LARGO, ESTRUCTURA, TONO, TABLA O LISTA]\n\nEJEMPLOS Y CRITERIOS\nEjemplo de lo que me gusta: [PEGÁ UN EJEMPLO]\nTiene que cumplir: [2 A 5 CONDICIONES]\n\nSi te falta algún dato importante para hacerlo bien, preguntame antes de empezar."
+       "c": "CONTEXTO\n[QUIÉN ERES, PARA QUIÉN ES Y POR QUÉ LO NECESITAS]\n\nTAREA\n[QUÉ QUIERES, CON UN VERBO CLARO]\n\nFORMATO\n[LARGO, ESTRUCTURA, TONO, TABLA O LISTA]\n\nEJEMPLOS Y CRITERIOS\nEjemplo de lo que me gusta: [PEGA UN EJEMPLO]\nTiene que cumplir: [2 A 5 CONDICIONES]\n\nSi te falta algún dato importante para hacerlo bien, pregúntame antes de empezar."
       }
      ]
     },
     {
      "h": "Tres ajustes que suman",
      "lista": [
-      "Decí qué hacer, no qué evitar: \"escribí en párrafos corridos\" funciona mejor que \"no uses viñetas\".",
-      "Separá las partes con etiquetas: cuando mezclás instrucciones, textos y ejemplos, marcarlos (por ejemplo con <ejemplo> y </ejemplo>) ayuda a que Claude no los confunda.",
-      "Pedí acción si querés acción: \"corregí este texto\" hace los cambios; \"¿qué le cambiarías?\" solo te da sugerencias."
+      "Di qué hacer, no qué evitar: \"escribe en párrafos corridos\" funciona mejor que \"no uses viñetas\".",
+      "Separa las partes con etiquetas: cuando mezclas instrucciones, textos y ejemplos, marcarlos (por ejemplo con <ejemplo> y </ejemplo>) ayuda a que Claude no los confunda.",
+      "Pide acción si quieres acción: \"corrige este texto\" hace los cambios; \"¿qué le cambiarías?\" solo te da sugerencias."
      ]
     }
    ],
@@ -83,7 +83,7 @@
     },
     {
      "q": "¿Cuántos ejemplos le paso?",
-     "a": "La guía oficial de Anthropic dice que los ejemplos son de las formas más confiables de marcar formato y tono, y sugiere varios y variados. Con uno bueno ya notás la diferencia; si querés más precisión, sumá algunos distintos entre sí."
+     "a": "La guía oficial de Anthropic dice que los ejemplos son de las formas más confiables de marcar formato y tono, y sugiere varios y variados. Con uno bueno ya notas la diferencia; si quieres más precisión, suma algunos distintos entre sí."
     },
     {
      "q": "¿Sirve también para ChatGPT o Gemini?",
@@ -106,7 +106,7 @@
      "h": "Qué es la ventana de contexto",
      "p": [
       "Claude trabaja con una cantidad limitada de información a la vez dentro de cada chat: eso se llama ventana de contexto. Todo entra ahí: tus mensajes, sus respuestas, los archivos que subiste y lo que traen los conectores o la búsqueda web.",
-      "Cuando el chat se acerca a ese límite, si tenés activada la ejecución de código, Claude resume los mensajes anteriores para poder seguir. Si ves el aviso de que está ordenando sus ideas, es eso. Según el centro de ayuda de Anthropic, esas conversaciones largas consumen más de tu límite de uso."
+      "Cuando el chat se acerca a ese límite, si tienes activada la ejecución de código, Claude resume los mensajes anteriores para poder seguir. Si ves el aviso de que está ordenando sus ideas, es eso. Según el centro de ayuda de Anthropic, esas conversaciones largas consumen más de tu límite de uso."
      ]
     },
     {
@@ -115,36 +115,36 @@
       "Mezcla cosas: usa datos de una versión vieja del trabajo que ya descartaste.",
       "Se olvida reglas: vuelve a hacer algo que le pediste que no haga.",
       "Cambiaste de tema: arrancaste con un presupuesto y ahora estás con el logo.",
-      "Se te termina el uso más rápido: el centro de ayuda recomienda abrir un chat nuevo si te acercás al límite en una conversación larga."
+      "Se te termina el uso más rápido: el centro de ayuda recomienda abrir un chat nuevo si te acercas al límite en una conversación larga."
      ]
     },
     {
      "h": "El traspaso en tres pasos",
      "pasos": [
-      "En el chat viejo, pegá el prompt de traspaso de abajo.",
-      "Leé el resumen y corregí lo que esté mal o falte. Es tu nueva fuente de verdad.",
-      "Abrí un chat nuevo, pegá el resumen corregido y escribí qué querés hacer ahora."
+      "En el chat viejo, pega el prompt de traspaso de abajo.",
+      "Lee el resumen y corrige lo que esté mal o falte. Es tu nueva fuente de verdad.",
+      "Abre un chat nuevo, pega el resumen corregido y escribe qué quieres hacer ahora."
      ],
      "prompts": [
       {
        "t": "Prompt de traspaso",
-       "c": "Vamos a seguir este trabajo en un chat nuevo. Armame un resumen de traspaso para pegar allá, con estas partes:\n1. Objetivo: qué estamos haciendo y para quién.\n2. Decisiones tomadas: lo que ya quedó definido, en viñetas cortas.\n3. Reglas que te di: tono, formato y cosas a evitar.\n4. Estado actual: la última versión del trabajo, completa.\n5. Pendientes: lo que falta, en orden.\n6. Descartado: ideas que probamos y no van, para no repetirlas.\nNo agregues nada que no hayamos hablado. Si algo quedó ambiguo, marcalo con [A CONFIRMAR]."
+       "c": "Vamos a seguir este trabajo en un chat nuevo. Ármame un resumen de traspaso para pegar allá, con estas partes:\n1. Objetivo: qué estamos haciendo y para quién.\n2. Decisiones tomadas: lo que ya quedó definido, en viñetas cortas.\n3. Reglas que te di: tono, formato y cosas a evitar.\n4. Estado actual: la última versión del trabajo, completa.\n5. Pendientes: lo que falta, en orden.\n6. Descartado: ideas que probamos y no van, para no repetirlas.\nNo agregues nada que no hayamos hablado. Si algo quedó ambiguo, márcalo con [A CONFIRMAR]."
       }
      ]
     },
     {
-     "h": "Si trabajás seguido en lo mismo, usá un proyecto",
+     "h": "Si trabajas seguido en lo mismo, usa un proyecto",
      "p": [
       "Los proyectos de Claude son espacios con su propio historial de chats, sus archivos y sus instrucciones. Subís tus documentos de referencia y escribís las reglas una sola vez, y cada chat nuevo dentro del proyecto ya arranca con eso.",
-      "Así podés abrir chats cortos y enfocados sin tener que explicar todo de nuevo. El centro de ayuda también aconseja mantener las instrucciones del proyecto breves y sacar archivos que ya no uses."
+      "Así puedes abrir chats cortos y enfocados sin tener que explicar todo de nuevo. El centro de ayuda también aconseja mantener las instrucciones del proyecto breves y sacar archivos que ya no uses."
      ],
-     "aviso": "En el plan gratis los proyectos tienen un límite de cantidad. Revisá el centro de ayuda para ver el de tu cuenta."
+     "aviso": "En el plan gratis los proyectos tienen un límite de cantidad. Revisa el centro de ayuda para ver el de tu cuenta."
     },
     {
      "h": "Otras formas de cuidar el contexto",
      "lista": [
-      "Desconectá lo que no usás: los conectores y las herramientas gastan bastante contexto.",
-      "Pedile que no busque en la web cuando no necesitás información actual.",
+      "Desconecta lo que no usas: los conectores y las herramientas gastan bastante contexto.",
+      "Pídele que no busque en la web cuando no necesitas información actual.",
       "Un chat, un tema: es más fácil de retomar y de encontrar después."
      ]
     }
@@ -152,7 +152,7 @@
    "faq": [
     {
      "q": "¿Si abro un chat nuevo pierdo lo anterior?",
-     "a": "No, el chat viejo queda guardado. Lo que pasa es que el nuevo no lo ve: por eso le pasás el resumen de traspaso."
+     "a": "No, el chat viejo queda guardado. Lo que pasa es que el nuevo no lo ve: por eso le pasas el resumen de traspaso."
     },
     {
      "q": "¿Claude no se acuerda solo de mis otros chats?",
@@ -160,7 +160,7 @@
     },
     {
      "q": "¿Cada cuánto conviene cambiar de chat?",
-     "a": "No hay un número fijo. Cambiá cuando veas las señales de arriba o cuando cambies de tema."
+     "a": "No hay un número fijo. Cambia cuando veas las señales de arriba o cuando cambies de tema."
     }
    ],
    "fuentes": [
@@ -171,7 +171,7 @@
   {
    "slug": "el-bucle-de-verificacion",
    "t": "El bucle de verificación: que Claude revise su trabajo",
-   "d": "Escribís una vez tu checklist de calidad y le pedís a Claude que revise cada entrega contra esa lista antes de dártela.",
+   "d": "Escribís una vez tu checklist de calidad y le pides a Claude que revise cada entrega contra esa lista antes de dártela.",
    "tema": "Productividad",
    "min": 8,
    "fichaNombre": "Bucle de verificación",
@@ -181,8 +181,8 @@
      "Una lista de control propia que Claude usa para revisar lo que hizo."
     ],
     [
-     "Necesitás",
-     "Una cuenta de Claude. Mejor si usás proyectos para guardar la lista."
+     "Necesitas",
+     "Una cuenta de Claude. Mejor si usas proyectos para guardar la lista."
     ],
     [
      "Tiempo",
@@ -197,62 +197,62 @@
     {
      "h": "La idea",
      "p": [
-      "La guía oficial de prompts de Anthropic sugiere cerrar los pedidos con algo como \"antes de terminar, verificá tu respuesta contra estos criterios\". El truco está en que esos criterios sean tuyos, concretos y escritos una sola vez.",
-      "Pasa lo mismo que con un empleado nuevo: si le das la lista de lo que revisás vos, deja de traerte trabajo con los mismos errores."
+      "La guía oficial de prompts de Anthropic sugiere cerrar los pedidos con algo como \"antes de terminar, verifica tu respuesta contra estos criterios\". El truco está en que esos criterios sean tuyos, concretos y escritos una sola vez.",
+      "Pasa lo mismo que con un empleado nuevo: si le das la lista de lo que revisas tú, deja de traerte trabajo con los mismos errores."
      ]
     },
     {
      "h": "Cómo escribir tu checklist",
      "pasos": [
-      "Juntá tres o cuatro trabajos que tuviste que corregir y anotá qué arreglaste en cada uno.",
-      "Convertí cada corrección en una regla que se pueda responder con sí o no. \"Que esté bien escrito\" no sirve; \"cada párrafo tiene menos de 4 líneas\" sí.",
-      "Quedate con entre 5 y 10 reglas. Más que eso se vuelve difícil de cumplir.",
-      "Probala con un trabajo viejo y ajustá las reglas que no se entiendan."
+      "Junta tres o cuatro trabajos que tuviste que corregir y anota qué arreglaste en cada uno.",
+      "Convierte cada corrección en una regla que se pueda responder con sí o no. \"Que esté bien escrito\" no sirve; \"cada párrafo tiene menos de 4 líneas\" sí.",
+      "Quédate con entre 5 y 10 reglas. Más que eso se vuelve difícil de cumplir.",
+      "Pruébala con un trabajo viejo y ajusta las reglas que no se entiendan."
      ],
      "prompts": [
       {
        "t": "Armar la checklist con Claude",
-       "c": "Quiero armar una checklist para revisar [TIPO DE TRABAJO, EJ.: PRESUPUESTOS PARA CLIENTES].\nTe paso trabajos que tuve que corregir y lo que les cambié:\n[PEGÁ EL TRABAJO 1] → Cambié: [QUÉ CORREGISTE]\n[PEGÁ EL TRABAJO 2] → Cambié: [QUÉ CORREGISTE]\nCon eso armame entre 5 y 10 reglas. Cada regla tiene que poder responderse con sí o no, sin interpretación. No agregues reglas que no salgan de mis correcciones."
+       "c": "Quiero armar una checklist para revisar [TIPO DE TRABAJO, EJ.: PRESUPUESTOS PARA CLIENTES].\nTe paso trabajos que tuve que corregir y lo que les cambié:\n[PEGA EL TRABAJO 1] → Cambié: [QUÉ CORREGISTE]\n[PEGA EL TRABAJO 2] → Cambié: [QUÉ CORREGISTE]\nCon eso ármame entre 5 y 10 reglas. Cada regla tiene que poder responderse con sí o no, sin interpretación. No agregues reglas que no salgan de mis correcciones."
       }
      ]
     },
     {
      "h": "El pedido con verificación",
      "p": [
-      "Pegá esto al final de cualquier pedido, o guardalo en las instrucciones de un proyecto para que se aplique siempre."
+      "Pega esto al final de cualquier pedido, o guárdalo en las instrucciones de un proyecto para que se aplique siempre."
      ],
      "prompts": [
       {
        "t": "Cierre de verificación",
-       "c": "Antes de darme la versión final, revisala contra esta checklist:\n[PEGÁ TU CHECKLIST]\nPara cada regla escribí: CUMPLE o NO CUMPLE, y una línea de por qué.\nSi alguna no cumple, corregí el trabajo y volvé a revisar.\nAl final dame: 1) la tabla de revisión, 2) la versión corregida. Si una regla no se puede comprobar con lo que tenés, decímelo en vez de dar por hecho que cumple."
+       "c": "Antes de darme la versión final, revísala contra esta checklist:\n[PEGA TU CHECKLIST]\nPara cada regla escribe: CUMPLE o NO CUMPLE, y una línea de por qué.\nSi alguna no cumple, corrige el trabajo y vuelve a revisar.\nAl final dame: 1) la tabla de revisión, 2) la versión corregida. Si una regla no se puede comprobar con lo que tienes, dímelo en vez de dar por hecho que cumple."
       }
      ]
     },
     {
      "h": "Dejarla fija en un proyecto",
      "p": [
-      "Los proyectos de Claude tienen instrucciones propias que se aplican a todos los chats de adentro. Si pegás ahí tu checklist y el cierre de verificación, no tenés que acordarte de pedirlo cada vez."
+      "Los proyectos de Claude tienen instrucciones propias que se aplican a todos los chats de adentro. Si pegas ahí tu checklist y el cierre de verificación, no tienes que acordarte de pedirlo cada vez."
      ],
      "pasos": [
-      "Creá un proyecto con el nombre del tipo de trabajo (por ejemplo, Presupuestos).",
-      "En las instrucciones del proyecto pegá tu checklist y el cierre de verificación.",
-      "Cada vez que encuentres un error nuevo, sumalo como regla."
+      "Crea un proyecto con el nombre del tipo de trabajo (por ejemplo, Presupuestos).",
+      "En las instrucciones del proyecto pega tu checklist y el cierre de verificación.",
+      "Cada vez que encuentres un error nuevo, súmalo como regla."
      ]
     },
     {
      "h": "Límites que conviene conocer",
      "lista": [
       "Revisa contra lo que le diste: si la checklist no menciona algo, no lo va a mirar.",
-      "No confirma datos externos solo: si hay precios, fechas o nombres, chequealos vos o pedile que use la búsqueda web y te muestre la fuente.",
-      "Puede marcar como cumplido algo dudoso: por eso le pedís el porqué de cada regla, para que vos puedas ver en qué se basó."
+      "No confirma datos externos solo: si hay precios, fechas o nombres, chequéalos tú o pídele que use la búsqueda web y te muestre la fuente.",
+      "Puede marcar como cumplido algo dudoso: por eso le pides el porqué de cada regla, para que tú puedas ver en qué se basó."
      ],
-     "aviso": "La revisión de Claude es una primera pasada. Lo que sale con tu nombre lo revisás vos."
+     "aviso": "La revisión de Claude es una primera pasada. Lo que sale con tu nombre lo revisas tú."
     }
    ],
    "faq": [
     {
      "q": "¿Y si la revisión dice que todo cumple pero yo veo un error?",
-     "a": "Agregá ese error como regla nueva. La checklist mejora con el uso."
+     "a": "Agrega ese error como regla nueva. La checklist mejora con el uso."
     },
     {
      "q": "¿Sirve para cosas que no son texto?",
@@ -260,7 +260,7 @@
     },
     {
      "q": "¿Hace falta con los modelos más nuevos?",
-     "a": "La guía de Anthropic aclara que algunos modelos recientes ya verifican bastante por su cuenta, y que agregar verificaciones genéricas de más puede sobrar. Por eso conviene que tu checklist sea concreta y tuya, no un \"revisá todo\" genérico."
+     "a": "La guía de Anthropic aclara que algunos modelos recientes ya verifican bastante por su cuenta, y que agregar verificaciones genéricas de más puede sobrar. Por eso conviene que tu checklist sea concreta y tuya, no un \"revisa todo\" genérico."
     }
    ],
    "fuentes": [
@@ -271,67 +271,67 @@
   {
    "slug": "claude-chatgpt-y-gemini-juntos",
    "t": "Claude, ChatGPT y Gemini juntos, sin fanatismo",
-   "d": "Cómo elegir con qué asistente trabajar cada tarea según lo que ya usás, y cómo pasar un trabajo de uno a otro sin empezar de cero.",
+   "d": "Cómo elegir con qué asistente trabajar cada tarea según lo que ya usas, y cómo pasar un trabajo de uno a otro sin empezar de cero.",
    "tema": "Claude",
    "min": 7,
    "secciones": [
     {
      "h": "No hace falta casarse con uno",
      "p": [
-      "Los tres asistentes te dejan conversar, subir archivos y pedir análisis. Por ejemplo, la ayuda oficial de ChatGPT explica que podés subir planillas y pedir gráficos, y la de Gemini dice que podés subir documentos y planillas para pedir resúmenes y gráficos.",
-      "Por eso la pregunta útil no es cuál es el mejor, sino con cuál trabajás más cómodo para cada tarea y dónde ya tenés tus cosas. Esta guía no compara rendimiento: eso cambia seguido y depende de tu caso."
+      "Los tres asistentes te dejan conversar, subir archivos y pedir análisis. Por ejemplo, la ayuda oficial de ChatGPT explica que puedes subir planillas y pedir gráficos, y la de Gemini dice que puedes subir documentos y planillas para pedir resúmenes y gráficos.",
+      "Por eso la pregunta útil no es cuál es el mejor, sino con cuál trabajas más cómodo para cada tarea y dónde ya tienes tus cosas. Esta guía no compara rendimiento: eso cambia seguido y depende de tu caso."
      ]
     },
     {
      "h": "Criterios para elegir en cada tarea",
      "lista": [
-      "Dónde están tus datos: si tu información ya vive en una herramienta conectada a un asistente, empezá por ahí.",
-      "Qué te devuelve mejor para vos: probá la misma tarea en dos y quedate con el que menos tengas que corregir.",
-      "Qué plan pagás: no tiene sentido pagar tres. Elegí uno principal y usá los otros para una segunda opinión.",
-      "Qué política de datos te cierra: revisá en cada uno qué hace con lo que subís antes de poner información sensible."
+      "Dónde están tus datos: si tu información ya vive en una herramienta conectada a un asistente, empieza por ahí.",
+      "Qué te devuelve mejor para ti: prueba la misma tarea en dos y quédate con el que menos tengas que corregir.",
+      "Qué plan pagas: no tiene sentido pagar tres. Elige uno principal y usa los otros para una segunda opinión.",
+      "Qué política de datos te cierra: revisa en cada uno qué hace con lo que subís antes de poner información sensible."
      ]
     },
     {
      "h": "La prueba de la misma tarea",
      "p": [
-      "La forma más honesta de decidir es probar vos. Elegí una tarea real que hacés seguido y pasala por los asistentes que tengas."
+      "La forma más honesta de decidir es probar tú. Elige una tarea real que haces seguido y pásala por los asistentes que tengas."
      ],
      "pasos": [
-      "Elegí una tarea real (un mail a un cliente, el resumen de una reunión, un análisis chico).",
-      "Usá exactamente el mismo prompt en cada asistente.",
-      "Anotá cuánto tuviste que corregir cada resultado.",
-      "Repetilo con dos o tres tareas distintas antes de sacar conclusiones."
+      "Elige una tarea real (un mail a un cliente, el resumen de una reunión, un análisis chico).",
+      "Usa exactamente el mismo prompt en cada asistente.",
+      "Anota cuánto tuviste que corregir cada resultado.",
+      "Repítelo con dos o tres tareas distintas antes de sacar conclusiones."
      ]
     },
     {
      "h": "Pasar un trabajo de uno a otro",
      "p": [
-      "Ningún asistente ve las conversaciones de otro. Para mover un trabajo, pedile al que estás usando un resumen pensado para que otro asistente lo continúe, y pegalo en el nuevo."
+      "Ningún asistente ve las conversaciones de otro. Para mover un trabajo, pídele al que estás usando un resumen pensado para que otro asistente lo continúe, y pégalo en el nuevo."
      ],
      "prompts": [
       {
        "t": "Resumen para pasar a otro asistente",
-       "c": "Voy a seguir este trabajo con otro asistente que no vio esta conversación. Escribí un texto para pegarle, que incluya:\n1. Qué estamos haciendo y para quién.\n2. Las reglas y el tono que definimos.\n3. La última versión completa del trabajo.\n4. Qué le voy a pedir a continuación: [LO QUE QUERÉS QUE HAGA EL OTRO].\nEscribilo en segunda persona, dirigido al otro asistente, sin referencias a esta conversación."
+       "c": "Voy a seguir este trabajo con otro asistente que no vio esta conversación. Escribe un texto para pegarle, que incluya:\n1. Qué estamos haciendo y para quién.\n2. Las reglas y el tono que definimos.\n3. La última versión completa del trabajo.\n4. Qué le voy a pedir a continuación: [LO QUE QUIERES QUE HAGA EL OTRO].\nEscríbelo en segunda persona, dirigido al otro asistente, sin referencias a esta conversación."
       },
       {
        "t": "Pedir segunda opinión",
-       "c": "Otro asistente hizo este trabajo:\n[PEGÁ EL RESULTADO]\nEl pedido original era:\n[PEGÁ EL PROMPT]\nRevisalo como si fueras un editor exigente: qué está bien, qué está flojo y qué cambiarías. Después dame una versión mejorada. Si algo depende de un dato que no podés comprobar, marcalo."
+       "c": "Otro asistente hizo este trabajo:\n[PEGA EL RESULTADO]\nEl pedido original era:\n[PEGA EL PROMPT]\nRevísalo como si fueras un editor exigente: qué está bien, qué está flojo y qué cambiarías. Después dame una versión mejorada. Si algo depende de un dato que no puedes comprobar, márcalo."
       }
      ]
     },
     {
      "h": "Cuidados al mezclar",
      "lista": [
-      "Un solo lugar de verdad: guardá la versión final en tu documento, no repartida en tres chats.",
-      "Datos sensibles: cada servicio tiene su política. Leela antes de subir información de clientes.",
-      "Datos del mundo real: si un asistente te da una cifra o una fecha, verificala en la fuente, venga de cuál venga."
+      "Un solo lugar de verdad: guarda la versión final en tu documento, no repartida en tres chats.",
+      "Datos sensibles: cada servicio tiene su política. Léela antes de subir información de clientes.",
+      "Datos del mundo real: si un asistente te da una cifra o una fecha, verifícala en la fuente, venga de cuál venga."
      ]
     }
    ],
    "faq": [
     {
      "q": "¿Cuál es el mejor?",
-     "a": "No hay una respuesta fija: los productos cambian seguido. Hacé la prueba de la misma tarea con tus casos reales."
+     "a": "No hay una respuesta fija: los productos cambian seguido. Haz la prueba de la misma tarea con tus casos reales."
     },
     {
      "q": "¿Puedo conectar uno con otro para que se pasen el trabajo solos?",
@@ -348,7 +348,7 @@
    "slug": "analizar-planillas-con-claude",
    "post": "EXCEL",
    "t": "Analizar planillas con Claude sin saber fórmulas",
-   "d": "Subís tu Excel o CSV, le hacés preguntas en criollo, le pedís gráficos y verificás los números antes de usarlos.",
+   "d": "Subís tu Excel o CSV, le haces preguntas en criollo, le pides gráficos y verificas los números antes de usarlos.",
    "tema": "Productividad",
    "min": 9,
    "fichaNombre": "Análisis de planillas",
@@ -358,7 +358,7 @@
      "Claude lee tu planilla, hace los cálculos con código y te devuelve respuestas, tablas y gráficos."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "La función de ejecución de código y creación de archivos activada. Está para todos los planes."
     ],
     [
@@ -372,31 +372,31 @@
    ],
    "secciones": [
     {
-     "h": "Activá la función",
+     "h": "Activa la función",
      "pasos": [
-      "En la web o en la app de escritorio, andá a Configuración → Capacidades.",
-      "Activá \"Ejecución de código y creación de archivos\" (en la configuración nueva puede figurar como \"Crear y editar archivos\").",
-      "En equipos de empresa, puede que el administrador la tenga apagada: consultale."
+      "En la web o en la app de escritorio, ve a Configuración → Capacidades.",
+      "Activa \"Ejecución de código y creación de archivos\" (en la configuración nueva puede figurar como \"Crear y editar archivos\").",
+      "En equipos de empresa, puede que el administrador la tenga apagada: consúltale."
      ],
      "aviso": "Según el centro de ayuda de Anthropic, usar esta función gasta más de tu límite de uso que un chat normal."
     },
     {
-     "h": "Prepará la planilla antes de subirla",
+     "h": "Prepara la planilla antes de subirla",
      "lista": [
       "Una tabla por hoja: con encabezados en la primera fila y sin celdas combinadas.",
       "Nombres de columna claros: \"Fecha venta\" en vez de \"F1\".",
-      "Sin datos sensibles que no hagan falta: si no necesitás el teléfono del cliente para el análisis, sacá esa columna."
+      "Sin datos sensibles que no hagan falta: si no necesitas el teléfono del cliente para el análisis, saca esa columna."
      ]
     },
     {
      "h": "Primero, que te cuente qué ve",
      "p": [
-      "Antes de preguntar nada, pedile una descripción. Así detectás rápido si leyó mal una columna o si hay datos raros."
+      "Antes de preguntar nada, pídele una descripción. Así detectas rápido si leyó mal una columna o si hay datos raros."
      ],
      "prompts": [
       {
        "t": "Reconocimiento de la planilla",
-       "c": "Te subo una planilla de [QUÉ ES, EJ.: VENTAS DEL AÑO]. Antes de analizar nada:\n1. Decime qué columnas tiene y qué tipo de dato hay en cada una.\n2. Cuántas filas tiene y qué período cubre.\n3. Qué problemas ves: celdas vacías, duplicados, formatos mezclados, valores que parecen errores.\nNo corrijas nada todavía. Solo contame lo que encontraste."
+       "c": "Te subo una planilla de [QUÉ ES, EJ.: VENTAS DEL AÑO]. Antes de analizar nada:\n1. Dime qué columnas tiene y qué tipo de dato hay en cada una.\n2. Cuántas filas tiene y qué período cubre.\n3. Qué problemas ves: celdas vacías, duplicados, formatos mezclados, valores que parecen errores.\nNo corrijas nada todavía. Solo cuéntame lo que encontraste."
       }
      ]
     },
@@ -411,31 +411,31 @@
      "prompts": [
       {
        "t": "Análisis con gráfico",
-       "c": "Con la planilla que te subí:\n1. Respondé: [TU PREGUNTA].\n2. Mostrame el resultado en una tabla chica.\n3. Hacé un gráfico que lo muestre claro, con título y ejes con nombre.\n4. Explicame en 3 líneas qué significa para mi negocio.\n5. Decime qué columnas y qué filtros usaste para calcularlo."
+       "c": "Con la planilla que te subí:\n1. Responde: [TU PREGUNTA].\n2. Muéstrame el resultado en una tabla chica.\n3. Haz un gráfico que lo muestre claro, con título y ejes con nombre.\n4. Explícame en 3 líneas qué significa para mi negocio.\n5. Dime qué columnas y qué filtros usaste para calcularlo."
       }
      ]
     },
     {
-     "h": "Verificá los números",
+     "h": "Verifica los números",
      "p": [
       "El centro de ayuda de Anthropic avisa que puede hacer falta revisar y ajustar lo que Claude genera. Con números, eso es obligatorio antes de tomar una decisión."
      ],
      "pasos": [
-      "Elegí un resultado y calculalo vos en Excel con una suma o un filtro simple.",
-      "Pedile que te muestre las filas que usó para un número puntual.",
-      "Si no coincide, preguntale qué criterio aplicó (por ejemplo, si excluyó filas vacías o devoluciones)."
+      "Elige un resultado y calcúlalo tú en Excel con una suma o un filtro simple.",
+      "Pídele que te muestre las filas que usó para un número puntual.",
+      "Si no coincide, pregúntale qué criterio aplicó (por ejemplo, si excluyó filas vacías o devoluciones)."
      ],
      "prompts": [
       {
        "t": "Control de un número",
-       "c": "Del análisis que hiciste, tomá este número: [EL NÚMERO]. Mostrame:\n1. La fórmula o el cálculo exacto que usaste.\n2. Cuántas filas entraron y cuáles quedaron afuera y por qué.\n3. Cómo lo calculo yo en Excel para comprobarlo, paso a paso."
+       "c": "Del análisis que hiciste, toma este número: [EL NÚMERO]. Muéstrame:\n1. La fórmula o el cálculo exacto que usaste.\n2. Cuántas filas entraron y cuáles quedaron afuera y por qué.\n3. Cómo lo calculo yo en Excel para comprobarlo, paso a paso."
       }
      ]
     },
     {
-     "h": "Llevate el resultado",
+     "h": "Llévate el resultado",
      "p": [
-      "Claude puede crear archivos de Excel. Cuando el análisis te sirva, pedile una planilla nueva con los resultados y los gráficos para guardarla o compartirla."
+      "Claude puede crear archivos de Excel. Cuando el análisis te sirva, pídele una planilla nueva con los resultados y los gráficos para guardarla o compartirla."
      ],
      "aviso": "Anthropic recomienda mirar lo que hace Claude mientras usa esta función y no subir archivos de origen dudoso: pueden traer instrucciones escondidas."
     }
@@ -443,11 +443,11 @@
    "faq": [
     {
      "q": "¿Puedo subir un Excel directamente?",
-     "a": "El centro de ayuda habla de subir CSV, TSV y otros archivos de datos. Si tu Excel da problemas, guardalo como CSV desde Excel (Archivo → Guardar como) y subilo así."
+     "a": "El centro de ayuda habla de subir CSV, TSV y otros archivos de datos. Si tu Excel da problemas, guárdalo como CSV desde Excel (Archivo → Guardar como) y súbelo así."
     },
     {
      "q": "¿Se modifica mi archivo original?",
-     "a": "No. Claude trabaja sobre la copia que subiste y, si le pedís, te genera un archivo nuevo para descargar."
+     "a": "No. Claude trabaja sobre la copia que subiste y, si le pides, te genera un archivo nuevo para descargar."
     },
     {
      "q": "¿Funciona en el plan gratis?",
@@ -461,14 +461,14 @@
   {
    "slug": "resumir-reuniones-y-mails",
    "t": "De la reunión a las tareas: resumir reuniones y mails con Claude",
-   "d": "Convertí una transcripción en decisiones, tareas y responsables, y usá el conector de Gmail para ponerte al día con tu bandeja.",
+   "d": "Convierte una transcripción en decisiones, tareas y responsables, y usa el conector de Gmail para ponerte al día con tu bandeja.",
    "tema": "Productividad",
    "min": 8,
    "secciones": [
     {
-     "h": "Lo que necesitás",
+     "h": "Lo que necesitas",
      "lista": [
-      "Para reuniones: la transcripción en texto. La da tu herramienta de videollamadas o de notas, o la escribís vos. Claude trabaja sobre el texto que le pasás.",
+      "Para reuniones: la transcripción en texto. La da tu herramienta de videollamadas o de notas, o la escribís tú. Claude trabaja sobre el texto que le pasas.",
       "Para mails: el conector de Gmail de Claude, disponible para todos los usuarios en la web y en la app de escritorio.",
       "Para los dos: cinco minutos para revisar el resultado antes de mandarlo."
      ]
@@ -476,12 +476,12 @@
     {
      "h": "De la transcripción a las acciones",
      "p": [
-      "Pegá la transcripción o subila como archivo y usá el prompt de abajo. Pedir que cite la frase de donde saca cada tarea te deja comprobar rápido que no inventó nada: la propia guía de Anthropic recomienda pedir citas textuales cuando trabajás con documentos largos."
+      "Pega la transcripción o súbela como archivo y usa el prompt de abajo. Pedir que cite la frase de donde saca cada tarea te deja comprobar rápido que no inventó nada: la propia guía de Anthropic recomienda pedir citas textuales cuando trabajas con documentos largos."
      ],
      "prompts": [
       {
        "t": "Resumen de reunión con responsables",
-       "c": "Te paso la transcripción de una reunión de [TEMA] con [PARTICIPANTES].\n<transcripcion>\n[PEGÁ LA TRANSCRIPCIÓN]\n</transcripcion>\nArmame:\n1. Resumen en 5 líneas.\n2. Decisiones tomadas.\n3. Tabla de tareas con: tarea, responsable, fecha límite y la frase textual de la transcripción de donde sale.\n4. Temas que quedaron abiertos.\nReglas: si una tarea no tiene responsable o fecha claros, poné \"SIN DEFINIR\". No asignes responsables por tu cuenta."
+       "c": "Te paso la transcripción de una reunión de [TEMA] con [PARTICIPANTES].\n<transcripcion>\n[PEGA LA TRANSCRIPCIÓN]\n</transcripcion>\nÁrmame:\n1. Resumen en 5 líneas.\n2. Decisiones tomadas.\n3. Tabla de tareas con: tarea, responsable, fecha límite y la frase textual de la transcripción de donde sale.\n4. Temas que quedaron abiertos.\nReglas: si una tarea no tiene responsable o fecha claros, pon \"SIN DEFINIR\". No asignes responsables por tu cuenta."
       }
      ]
     },
@@ -490,29 +490,29 @@
      "prompts": [
       {
        "t": "Mail post reunión",
-       "c": "Con el resumen y la tabla de tareas de arriba, escribí el mail de seguimiento para los participantes.\n- Asunto claro con el tema y la fecha.\n- Tres líneas de resumen.\n- Las tareas en lista, con responsable y fecha.\n- Una línea pidiendo que avisen si algo está mal.\nTono [EJ.: PROFESIONAL Y CERCANO]."
+       "c": "Con el resumen y la tabla de tareas de arriba, escribe el mail de seguimiento para los participantes.\n- Asunto claro con el tema y la fecha.\n- Tres líneas de resumen.\n- Las tareas en lista, con responsable y fecha.\n- Una línea pidiendo que avisen si algo está mal.\nTono [EJ.: PROFESIONAL Y CERCANO]."
       }
      ],
-     "aviso": "Revisá nombres, fechas y montos antes de mandarlo. Si en la transcripción alguien habló poco claro, puede haber errores."
+     "aviso": "Revisa nombres, fechas y montos antes de mandarlo. Si en la transcripción alguien habló poco claro, puede haber errores."
     },
     {
-     "h": "Activá el conector de Gmail",
+     "h": "Activa el conector de Gmail",
      "pasos": [
-      "En un chat, tocá el botón + de abajo a la izquierda y entrá a Conectores.",
-      "Activá Gmail e iniciá sesión con tu cuenta de Google.",
+      "En un chat, toca el botón + de abajo a la izquierda y entra a Conectores.",
+      "Activa Gmail e inicia sesión con tu cuenta de Google.",
       "En planes de equipo o empresa, primero lo tiene que habilitar el administrador de la organización.",
       "Si te aparece un aviso de acceso bloqueado, el administrador de Google Workspace tiene que marcar a Claude como app de confianza."
      ]
     },
     {
-     "h": "Resumí tu bandeja",
+     "h": "Resume tu bandeja",
      "p": [
-      "Con el conector, Claude puede buscar y leer tus mails con pedidos en lenguaje común, armar borradores y, si se lo pedís, responder o reenviar. Por defecto te pide aprobación antes de enviar, responder o reenviar."
+      "Con el conector, Claude puede buscar y leer tus mails con pedidos en lenguaje común, armar borradores y, si se lo pides, responder o reenviar. Por defecto te pide aprobación antes de enviar, responder o reenviar."
      ],
      "prompts": [
       {
        "t": "Puesta al día de la bandeja",
-       "c": "Buscá en mi Gmail los mails de los últimos [CANTIDAD] días que no sean promociones ni newsletters.\nArmame:\n1. Los que necesitan respuesta mía, ordenados por urgencia, con una línea de qué piden.\n2. Los que son solo para enterarme, en una línea cada uno.\n3. Para los 3 más urgentes, un borrador de respuesta. No los envíes: dejalos como borrador.\nSi un mail menciona un archivo adjunto, avisame: no podés leer el contenido de los adjuntos."
+       "c": "Busca en mi Gmail los mails de los últimos [CANTIDAD] días que no sean promociones ni newsletters.\nÁrmame:\n1. Los que necesitan respuesta mía, ordenados por urgencia, con una línea de qué piden.\n2. Los que son solo para enterarme, en una línea cada uno.\n3. Para los 3 más urgentes, un borrador de respuesta. No los envíes: déjalos como borrador.\nSi un mail menciona un archivo adjunto, avísame: no puedes leer el contenido de los adjuntos."
       }
      ],
      "aviso": "Según el centro de ayuda, el conector ve los datos de los adjuntos (nombre, tipo) pero no su contenido."
@@ -525,7 +525,7 @@
     },
     {
      "q": "¿Puedo pasarle el audio de la reunión?",
-     "a": "Esta guía trabaja con la transcripción en texto, que es lo que te asegura mejores controles. Si tu herramienta de reuniones genera transcripción, usá esa."
+     "a": "Esta guía trabaja con la transcripción en texto, que es lo que te asegura mejores controles. Si tu herramienta de reuniones genera transcripción, usa esa."
     },
     {
      "q": "¿Necesito un plan pago para el conector de Gmail?",
@@ -540,7 +540,7 @@
   {
    "slug": "investigar-un-mercado-con-claude",
    "t": "Investigar tu mercado con Claude, con fuentes a la vista",
-   "d": "Usá la búsqueda web y la función Research de Claude para mapear competidores y entender a tus clientes, revisando cada fuente.",
+   "d": "Usa la búsqueda web y la función Research de Claude para mapear competidores y entender a tus clientes, revisando cada fuente.",
    "tema": "Productividad",
    "min": 9,
    "fichaNombre": "Investigación de mercado",
@@ -550,7 +550,7 @@
      "Búsqueda web con citas y Research, que hace varias búsquedas encadenadas sobre un tema."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Búsqueda web activada. Research es solo para planes pagos (Pro, Max, Ultra, Team o Enterprise)."
     ],
     [
@@ -571,10 +571,10 @@
      ]
     },
     {
-     "h": "Activalas",
+     "h": "Actívalas",
      "pasos": [
-      "En un chat, tocá el botón + de abajo a la izquierda y elegí \"Búsqueda web\". Si en tu cuenta no aparece el interruptor, Claude busca en la web solo cuando le parece útil.",
-      "Para Research, en el mismo botón + elegí \"Research\". Aparece un indicador azul abajo del chat; tocándolo de nuevo lo apagás.",
+      "En un chat, toca el botón + de abajo a la izquierda y elige \"Búsqueda web\". Si en tu cuenta no aparece el interruptor, Claude busca en la web solo cuando le parece útil.",
+      "Para Research, en el mismo botón + elige \"Research\". Aparece un indicador azul abajo del chat; tocándolo de nuevo lo apagas.",
       "Research necesita la búsqueda web encendida para funcionar.",
       "En planes de equipo o empresa, el administrador tiene que habilitar la búsqueda web para toda la organización."
      ]
@@ -584,7 +584,7 @@
      "prompts": [
       {
        "t": "Mapa de competidores",
-       "c": "Investigá la competencia de [TU NEGOCIO, EN UNA LÍNEA] en [CIUDAD O PAÍS].\nQuiero una tabla con 5 a 10 competidores y estas columnas: nombre, qué venden, a quién le apuntan, cómo se presentan (su promesa principal), precios si están publicados y link a la fuente.\nDespués decime:\n1. Qué hacen casi todos igual.\n2. Qué huecos ves que nadie está cubriendo.\nReglas: cada dato con su fuente. Si un dato no lo encontraste publicado, poné \"NO ENCONTRADO\". No estimes precios."
+       "c": "Investiga la competencia de [TU NEGOCIO, EN UNA LÍNEA] en [CIUDAD O PAÍS].\nQuiero una tabla con 5 a 10 competidores y estas columnas: nombre, qué venden, a quién le apuntan, cómo se presentan (su promesa principal), precios si están publicados y link a la fuente.\nDespués dime:\n1. Qué hacen casi todos igual.\n2. Qué huecos ves que nadie está cubriendo.\nReglas: cada dato con su fuente. Si un dato no lo encontraste publicado, pon \"NO ENCONTRADO\". No estimes precios."
       }
      ]
     },
@@ -593,31 +593,31 @@
      "prompts": [
       {
        "t": "Qué dicen los clientes",
-       "c": "Buscá qué dicen en internet las personas que compran [TU TIPO DE PRODUCTO O SERVICIO] en [PAÍS]: reseñas públicas, foros y comentarios.\nArmame:\n1. Las 5 quejas más repetidas, con 1 o 2 citas textuales cortas y el link de cada una.\n2. Lo que más valoran.\n3. Las palabras que usan para describir su problema (me sirven para mis textos).\nSi encontrás pocos datos para mi país, decímelo en vez de completar con otros países sin aclararlo."
+       "c": "Busca qué dicen en internet las personas que compran [TU TIPO DE PRODUCTO O SERVICIO] en [PAÍS]: reseñas públicas, foros y comentarios.\nÁrmame:\n1. Las 5 quejas más repetidas, con 1 o 2 citas textuales cortas y el link de cada una.\n2. Lo que más valoran.\n3. Las palabras que usan para describir su problema (me sirven para mis textos).\nSi encuentras pocos datos para mi país, dímelo en vez de completar con otros países sin aclararlo."
       }
      ]
     },
     {
-     "h": "Revisá las fuentes, siempre",
+     "h": "Revisa las fuentes, siempre",
      "pasos": [
-      "Abrí al menos los links que sostienen las conclusiones más importantes.",
-      "Fijate la fecha de cada fuente: un precio de hace años no te sirve.",
-      "Si una afirmación no tiene link, tratala como hipótesis, no como dato.",
-      "Pedile que separe lo que encontró de lo que deduce."
+      "Abre al menos los links que sostienen las conclusiones más importantes.",
+      "Fíjate la fecha de cada fuente: un precio de hace años no te sirve.",
+      "Si una afirmación no tiene link, trátala como hipótesis, no como dato.",
+      "Pídele que separe lo que encontró de lo que deduce."
      ],
      "prompts": [
       {
        "t": "Separar datos de conclusiones",
-       "c": "De tu investigación, separá en dos listas:\nA) Datos que encontraste publicados, cada uno con su link.\nB) Conclusiones o deducciones tuyas.\nPara cada conclusión, decime en qué datos de la lista A se apoya."
+       "c": "De tu investigación, separa en dos listas:\nA) Datos que encontraste publicados, cada uno con su link.\nB) Conclusiones o deducciones tuyas.\nPara cada conclusión, dime en qué datos de la lista A se apoya."
       }
      ],
-     "aviso": "La investigación te da un punto de partida. Antes de invertir plata en una decisión, hablá con clientes reales."
+     "aviso": "La investigación te da un punto de partida. Antes de invertir dinero en una decisión, habla con clientes reales."
     }
    ],
    "faq": [
     {
      "q": "¿Puedo usar Research en el plan gratis?",
-     "a": "No. Según el centro de ayuda, Research está en los planes pagos Pro, Max, Ultra, Team y Enterprise. La búsqueda web común sí podés usarla, dentro de tus límites."
+     "a": "No. Según el centro de ayuda, Research está en los planes pagos Pro, Max, Ultra, Team y Enterprise. La búsqueda web común sí puedes usarla, dentro de tus límites."
     },
     {
      "q": "¿Puede ver las ventas de mis competidores?",
@@ -646,7 +646,7 @@
      "Una primera lectura para entender un contrato y llegar con preguntas claras a tu abogado."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "El contrato en texto o PDF y una cuenta de Claude."
     ],
     [
@@ -655,7 +655,7 @@
     ],
     [
      "Aviso",
-     "Antes de firmar algo importante, consultá con un abogado matriculado de tu país."
+     "Antes de firmar algo importante, consulta con un abogado matriculado de tu país."
     ]
    ],
    "secciones": [
@@ -668,14 +668,14 @@
       "No puede: decirte si el contrato es válido o conveniente según la ley de tu país.",
       "No puede: reemplazar el criterio de un profesional que conoce tu caso y te responde por su consejo."
      ],
-     "aviso": "Esta guía no es asesoramiento legal. Claude puede equivocarse o pasar algo por alto. Usalo para entender y preparar preguntas, no para decidir solo."
+     "aviso": "Esta guía no es asesoramiento legal. Claude puede equivocarse o pasar algo por alto. Úsalo para entender y preparar preguntas, no para decidir solo."
     },
     {
      "h": "Antes de subir el contrato",
      "pasos": [
-      "Revisá si el contrato tiene cláusula de confidencialidad que te impida compartirlo.",
-      "Si podés, tapá datos que no hacen falta para entenderlo: números de documento, cuentas bancarias, direcciones.",
-      "Tené a mano tu objetivo: qué querés lograr con este acuerdo y qué te preocupa."
+      "Revisa si el contrato tiene cláusula de confidencialidad que te impida compartirlo.",
+      "Si puedes, tapa datos que no hacen falta para entenderlo: números de documento, cuentas bancarias, direcciones.",
+      "Ten a mano tu objetivo: qué quieres lograr con este acuerdo y qué te preocupa."
      ]
     },
     {
@@ -683,16 +683,16 @@
      "prompts": [
       {
        "t": "Primera lectura de un contrato",
-       "c": "Te paso un contrato de [TIPO, EJ.: PRESTACIÓN DE SERVICIOS] entre [MI EMPRESA O YO] y [LA OTRA PARTE]. Yo soy [QUÉ PARTE SOS]. Mi objetivo es [QUÉ QUERÉS LOGRAR]. Me preocupa [TU DUDA PRINCIPAL].\n<contrato>\n[PEGÁ EL CONTRATO O SUBILO]\n</contrato>\nNo me des asesoramiento legal. Ayudame a entenderlo:\n1. Resumen en 10 líneas: qué me obligo a hacer y qué recibo.\n2. Tabla de cláusulas para mirar con atención: número de cláusula, cita textual, qué significa en palabras simples y por qué conviene revisarla.\n3. Plazos, fechas, renovaciones automáticas y penalidades, en una lista aparte.\n4. Cosas que suelen estar en este tipo de contrato y acá no encontré.\n5. Preguntas concretas para hacerle a mi abogado.\nCitá siempre el texto exacto. Si algo depende de la ley de mi país ([PAÍS]), decilo y no lo des por resuelto."
+       "c": "Te paso un contrato de [TIPO, EJ.: PRESTACIÓN DE SERVICIOS] entre [MI EMPRESA O YO] y [LA OTRA PARTE]. Yo soy [QUÉ PARTE ERES]. Mi objetivo es [QUÉ QUIERES LOGRAR]. Me preocupa [TU DUDA PRINCIPAL].\n<contrato>\n[PEGA EL CONTRATO O SÚBELO]\n</contrato>\nNo me des asesoramiento legal. Ayúdame a entenderlo:\n1. Resumen en 10 líneas: qué me obligo a hacer y qué recibo.\n2. Tabla de cláusulas para mirar con atención: número de cláusula, cita textual, qué significa en palabras simples y por qué conviene revisarla.\n3. Plazos, fechas, renovaciones automáticas y penalidades, en una lista aparte.\n4. Cosas que suelen estar en este tipo de contrato y aquí no encontré.\n5. Preguntas concretas para hacerle a mi abogado.\nCita siempre el texto exacto. Si algo depende de la ley de mi país ([PAÍS]), dilo y no lo des por resuelto."
       }
      ]
     },
     {
      "h": "Después de la revisión",
      "pasos": [
-      "Chequeá cada cita contra el contrato original: tiene que estar escrita igual.",
-      "Llevale a tu abogado el resumen y la lista de preguntas. La consulta va a ser más corta y más concreta.",
-      "Si negociás cambios, pedile a Claude que te ayude a redactar el mail con tus pedidos, y que tu abogado lo revise antes de mandarlo."
+      "Chequea cada cita contra el contrato original: tiene que estar escrita igual.",
+      "Llévale a tu abogado el resumen y la lista de preguntas. La consulta va a ser más corta y más concreta.",
+      "Si negocias cambios, pídele a Claude que te ayude a redactar el mail con tus pedidos, y que tu abogado lo revise antes de mandarlo."
      ]
     },
     {
@@ -700,7 +700,7 @@
      "p": [
       "Anthropic publicó en GitHub un plugin legal dentro de su repositorio de plugins para trabajo de oficina. Está pensado principalmente para Cowork, la app de escritorio de Claude, y también funciona en Claude Code. Está orientado a equipos legales internos de empresas.",
       "Incluye comandos como /review-contract, que revisa un contrato contra el manual de negociación de tu organización, y /triage-nda, que clasifica acuerdos de confidencialidad en verde, amarillo o rojo. Para que sirva, hay que escribir un archivo de manual (legal.local.md) con tus posiciones estándar.",
-      "Su propio repositorio aclara que no da asesoramiento legal, que las conclusiones deben verificarse con profesionales y que los ejemplos que trae responden a jurisdicciones de Estados Unidos. Si trabajás con otra legislación, hay que adaptar el manual antes de confiar en su análisis."
+      "Su propio repositorio aclara que no da asesoramiento legal, que las conclusiones deben verificarse con profesionales y que los ejemplos que trae responden a jurisdicciones de Estados Unidos. Si trabajas con otra legislación, hay que adaptar el manual antes de confiar en su análisis."
      ]
     }
    ],
@@ -711,11 +711,11 @@
     },
     {
      "q": "¿El plugin legal sirve para contratos de Argentina o España?",
-     "a": "Sus ejemplos de fábrica están basados en jurisdicciones de Estados Unidos. El repositorio indica que, si operás con otra legislación, tenés que adaptar el manual antes de usar su análisis."
+     "a": "Sus ejemplos de fábrica están basados en jurisdicciones de Estados Unidos. El repositorio indica que, si operas con otra legislación, tienes que adaptar el manual antes de usar su análisis."
     },
     {
      "q": "¿Es seguro subir un contrato?",
-     "a": "Depende de lo que diga el contrato sobre confidencialidad y de lo que te sientas cómodo compartiendo. Ante la duda, tapá los datos sensibles o consultá antes."
+     "a": "Depende de lo que diga el contrato sobre confidencialidad y de lo que te sientas cómodo compartiendo. Ante la duda, tapa los datos sensibles o consulta antes."
     }
    ],
    "fuentes": [
@@ -729,24 +729,24 @@
   {
    "tema": "Claude",
    "t": "Pedidos bien armados",
-   "d": "Prompts base para que Claude entienda lo que querés a la primera.",
+   "d": "Prompts base para que Claude entienda lo que quieres a la primera.",
    "para": "Para dejar de corregir tres veces el mismo pedido.",
    "prompts": [
     {
      "t": "Que me pregunte antes",
-     "c": "Quiero que me ayudes con [TAREA]. Antes de hacer nada, haceme las preguntas que necesitás para hacerlo bien: máximo 5, ordenadas de la más importante a la menos. Esperá mis respuestas antes de empezar."
+     "c": "Quiero que me ayudes con [TAREA]. Antes de hacer nada, hazme las preguntas que necesitas para hacerlo bien: máximo 5, ordenadas de la más importante a la menos. Espera mis respuestas antes de empezar."
     },
     {
      "t": "Mejorar mi propio prompt",
-     "c": "Este es el pedido que pensaba hacerte:\n[PEGÁ TU PROMPT]\nNo lo respondas. Reescribilo para que quede más claro, separando contexto, tarea, formato y criterios. Marcá entre corchetes los datos que me faltan agregar."
+     "c": "Este es el pedido que pensaba hacerte:\n[PEGA TU PROMPT]\nNo lo respondas. Reescríbelo para que quede más claro, separando contexto, tarea, formato y criterios. Marca entre corchetes los datos que me faltan agregar."
     },
     {
      "t": "Copiar un estilo",
-     "c": "Te paso ejemplos de cómo escribo:\n<ejemplos>\n[PEGÁ 2 O 3 TEXTOS TUYOS]\n</ejemplos>\nDescribí mi estilo en 6 reglas concretas (largo de frases, palabras que uso, cómo arranco y cómo cierro). Después escribí [LO QUE NECESITÁS] siguiendo esas reglas."
+     "c": "Te paso ejemplos de cómo escribo:\n<ejemplos>\n[PEGA 2 O 3 TEXTOS TUYOS]\n</ejemplos>\nDescribe mi estilo en 6 reglas concretas (largo de frases, palabras que uso, cómo arranco y cómo cierro). Después escribe [LO QUE NECESITAS] siguiendo esas reglas."
     },
     {
      "t": "Tres versiones distintas",
-     "c": "Escribí [LO QUE NECESITÁS] en tres versiones bien distintas entre sí: una directa, una cálida y una con humor suave. Debajo de cada una, una línea de para qué situación conviene."
+     "c": "Escribe [LO QUE NECESITAS] en tres versiones bien distintas entre sí: una directa, una cálida y una con humor suave. Debajo de cada una, una línea de para qué situación conviene."
     }
    ]
   },
@@ -758,19 +758,19 @@
    "prompts": [
     {
      "t": "Traspaso a chat nuevo",
-     "c": "Resumí esta conversación para continuarla en un chat nuevo: objetivo, decisiones, reglas que te di, última versión completa del trabajo, pendientes y lo que descartamos. No agregues nada que no hayamos hablado."
+     "c": "Resume esta conversación para continuarla en un chat nuevo: objetivo, decisiones, reglas que te di, última versión completa del trabajo, pendientes y lo que descartamos. No agregues nada que no hayamos hablado."
     },
     {
      "t": "Punto de control",
-     "c": "Hagamos un punto de control. En 5 viñetas: qué definimos hasta acá, qué falta y si hay algo que te dije antes que contradice lo último que te pedí."
+     "c": "Hagamos un punto de control. En 5 viñetas: qué definimos hasta aquí, qué falta y si hay algo que te dije antes que contradice lo último que te pedí."
     },
     {
      "t": "Instrucciones para un proyecto",
-     "c": "Con todo lo que hablamos, redactá unas instrucciones cortas para un proyecto de Claude sobre [TEMA]: quién soy, qué tono uso, qué reglas seguir siempre y qué evitar. Máximo 15 líneas."
+     "c": "Con todo lo que hablamos, redacta unas instrucciones cortas para un proyecto de Claude sobre [TEMA]: quién soy, qué tono uso, qué reglas seguir siempre y qué evitar. Máximo 15 líneas."
     },
     {
      "t": "Cierre de sesión",
-     "c": "Terminamos por hoy. Dame: 1) qué quedó listo, 2) qué queda pendiente con el próximo paso concreto, 3) el texto exacto para pegar mañana y seguir desde acá."
+     "c": "Terminamos por hoy. Dame: 1) qué quedó listo, 2) qué queda pendiente con el próximo paso concreto, 3) el texto exacto para pegar mañana y seguir desde aquí."
     }
    ]
   },
@@ -778,23 +778,23 @@
    "tema": "Productividad",
    "t": "Revisión antes de entregar",
    "d": "Prompts para que Claude revise su trabajo, o el tuyo, contra reglas claras.",
-   "para": "Para que lo que mandás a un cliente salga revisado.",
+   "para": "Para que lo que mandas a un cliente salga revisado.",
    "prompts": [
     {
      "t": "Revisar contra mi checklist",
-     "c": "Revisá este trabajo contra mi checklist.\n<trabajo>\n[PEGÁ EL TRABAJO]\n</trabajo>\n<checklist>\n[PEGÁ TUS REGLAS]\n</checklist>\nPara cada regla: CUMPLE o NO CUMPLE y por qué. Después dame la versión corregida."
+     "c": "Revisa este trabajo contra mi checklist.\n<trabajo>\n[PEGA EL TRABAJO]\n</trabajo>\n<checklist>\n[PEGA TUS REGLAS]\n</checklist>\nPara cada regla: CUMPLE o NO CUMPLE y por qué. Después dame la versión corregida."
     },
     {
      "t": "Editor exigente",
-     "c": "Leé esto como un editor exigente que quiere que quede excelente:\n[PEGÁ EL TEXTO]\nDecime las 5 cosas más flojas, en orden de importancia, con una propuesta concreta para cada una. No reescribas todo."
+     "c": "Lee esto como un editor exigente que quiere que quede excelente:\n[PEGA EL TEXTO]\nDime las 5 cosas más flojas, en orden de importancia, con una propuesta concreta para cada una. No reescribas todo."
     },
     {
      "t": "Lectura del cliente",
-     "c": "Leé esto como si fueras [TU CLIENTE IDEAL] que no sabe nada del tema:\n[PEGÁ EL TEXTO]\nDecime qué no se entiende, qué te genera dudas y qué te haría no responder."
+     "c": "Lee esto como si fueras [TU CLIENTE IDEAL] que no sabe nada del tema:\n[PEGA EL TEXTO]\nDime qué no se entiende, qué te genera dudas y qué te haría no responder."
     },
     {
      "t": "Datos a comprobar",
-     "c": "Marcá en este texto todo lo que sea un dato verificable: cifras, fechas, nombres, precios, citas.\n[PEGÁ EL TEXTO]\nDevolvé una lista con cada dato y dónde debería comprobarlo. No digas si es correcto o no."
+     "c": "Marca en este texto todo lo que sea un dato verificable: cifras, fechas, nombres, precios, citas.\n[PEGA EL TEXTO]\nDevuelve una lista con cada dato y dónde debería comprobarlo. No digas si es correcto o no."
     }
    ]
   },
@@ -806,23 +806,23 @@
    "prompts": [
     {
      "t": "Tareas de una reunión",
-     "c": "De esta transcripción sacá una tabla con tarea, responsable, fecha y la frase textual de donde sale. Si falta responsable o fecha, poné SIN DEFINIR.\n<transcripcion>\n[PEGÁ LA TRANSCRIPCIÓN]\n</transcripcion>"
+     "c": "De esta transcripción saca una tabla con tarea, responsable, fecha y la frase textual de donde sale. Si falta responsable o fecha, pon SIN DEFINIR.\n<transcripcion>\n[PEGA LA TRANSCRIPCIÓN]\n</transcripcion>"
     },
     {
      "t": "Responder un mail difícil",
-     "c": "Recibí este mail:\n[PEGÁ EL MAIL]\nQuiero responder [QUÉ QUERÉS LOGRAR]. Escribí dos respuestas: una firme y una más conciliadora. Máximo 8 líneas cada una."
+     "c": "Recibe este mail:\n[PEGA EL MAIL]\nQuiero responder [QUÉ QUIERES LOGRAR]. Escribe dos respuestas: una firme y una más conciliadora. Máximo 8 líneas cada una."
     },
     {
      "t": "Describir una planilla",
-     "c": "Te subo una planilla. Antes de analizar, decime qué columnas tiene, cuántas filas, qué período cubre y qué problemas ves en los datos. No corrijas nada todavía."
+     "c": "Te subo una planilla. Antes de analizar, dime qué columnas tiene, cuántas filas, qué período cubre y qué problemas ves en los datos. No corrijas nada todavía."
     },
     {
      "t": "Pregunta a la planilla",
-     "c": "Con la planilla que te subí, respondé: [TU PREGUNTA]. Mostralo en una tabla y un gráfico, explicá en 3 líneas qué significa y decime qué columnas y filtros usaste para que yo lo pueda comprobar."
+     "c": "Con la planilla que te subí, responde: [TU PREGUNTA]. Muéstralo en una tabla y un gráfico, explica en 3 líneas qué significa y dime qué columnas y filtros usaste para que yo lo pueda comprobar."
     },
     {
      "t": "Semana en una página",
-     "c": "Te paso mis notas sueltas de la semana:\n[PEGÁ TUS NOTAS]\nOrdenalas en: logros, problemas, decisiones pendientes y las 3 prioridades para la semana que viene."
+     "c": "Te paso mis notas sueltas de la semana:\n[PEGA TUS NOTAS]\nOrdénalas en: logros, problemas, decisiones pendientes y las 3 prioridades para la semana que viene."
     }
    ]
   }

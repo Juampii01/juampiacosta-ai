@@ -13,8 +13,8 @@
      "Un método para ordenar tus tareas y elegir la primera que vale la pena automatizar."
     ],
     [
-     "Necesitás",
-     "Una semana anotando lo que hacés y 30 minutos para puntuar."
+     "Necesitas",
+     "Una semana anotando lo que haces y 30 minutos para puntuar."
     ],
     [
      "Resultado",
@@ -30,51 +30,51 @@
      "h": "El error de siempre: empezar por la herramienta",
      "p": [
       "La mayoría arranca al revés: ve una demo, se entusiasma y busca dónde meterla. Termina con un chatbot que nadie usa o una automatización que se rompe a la semana.",
-      "El orden que funciona es otro: primero mirás tu negocio, después elegís la tarea y recién al final la herramienta. Estas cinco preguntas son el filtro del medio."
+      "El orden que funciona es otro: primero miras tu negocio, después eliges la tarea y recién al final la herramienta. Estas cinco preguntas son el filtro del medio."
      ]
     },
     {
-     "h": "Paso cero: anotá lo que hacés durante una semana",
+     "h": "Paso cero: anota lo que haces durante una semana",
      "p": [
-      "Sin datos, vas a elegir por intuición. Durante una semana anotá cada tarea que te saca tiempo, aunque sea chica: responder consultas, pasar datos de un lado a otro, armar presupuestos, perseguir pagos."
+      "Sin datos, vas a elegir por intuición. Durante una semana anota cada tarea que te saca tiempo, aunque sea chica: responder consultas, pasar datos de un lado a otro, armar presupuestos, perseguir pagos."
      ],
      "pasos": [
-      "Abrí una planilla con cuatro columnas: Tarea, Veces por semana, Minutos cada vez, Quién la hace.",
-      "Cada vez que hagas algo repetitivo, sumá una fila o actualizá la que ya existe.",
-      "Pedile lo mismo a tu equipo, si tenés.",
-      "Al final de la semana, multiplicá veces por minutos: ese es el tiempo real que te come cada tarea."
+      "Abre una planilla con cuatro columnas: Tarea, Veces por semana, Minutos cada vez, Quién la hace.",
+      "Cada vez que hagas algo repetitivo, suma una fila o actualiza la que ya existe.",
+      "Pídele lo mismo a tu equipo, si tienes.",
+      "Al final de la semana, multiplica veces por minutos: ese es el tiempo real que te come cada tarea."
      ]
     },
     {
      "h": "Las 5 preguntas",
      "p": [
-      "Pasá cada tarea de la lista por estas preguntas y puntuala del 1 al 5 en cada una."
+      "Pasa cada tarea de la lista por estas preguntas y puntuala del 1 al 5 en cada una."
      ],
      "lista": [
       "1. ¿Se repite igual?: si cada vez es distinta y depende de tu criterio, es mala candidata. Si siempre sigue los mismos pasos, es buena.",
-      "2. ¿Cuánto tiempo te come?: usá el número de tu semana anotada, no lo que creés.",
-      "3. ¿Qué pasa si sale mal?: si un error se nota y se corrige rápido, vas bien. Si un error te hace perder un cliente o plata, empezá por otra cosa o dejá a una persona revisando.",
+      "2. ¿Cuánto tiempo te come?: usa el número de tu semana anotada, no lo que crees.",
+      "3. ¿Qué pasa si sale mal?: si un error se nota y se corrige rápido, vas bien. Si un error te hace perder un cliente o dinero, empieza por otra cosa o deja a una persona revisando.",
       "4. ¿La información está a mano?: si los datos están en mails, planillas o un sistema, se puede conectar. Si están en la cabeza de alguien o en papel, primero hay que ordenarlos.",
-      "5. ¿Está escrito cómo se hace?: si podés explicarle el proceso a alguien nuevo en una hoja, se lo podés explicar a una IA. Si no, el primer trabajo es escribirlo."
+      "5. ¿Está escrito cómo se hace?: si puedes explicarle el proceso a alguien nuevo en una hoja, se lo puedes explicar a una IA. Si no, el primer trabajo es escribirlo."
      ]
     },
     {
      "h": "Cómo leer el puntaje",
      "p": [
-      "Sumá los cinco puntos de cada tarea. Las que más suman van primero. En la pregunta 3, dale más puntos a lo que tiene menos riesgo.",
+      "Suma los cinco puntos de cada tarea. Las que más suman van primero. En la pregunta 3, dale más puntos a lo que tiene menos riesgo.",
       "Ejemplo (inventado para mostrar el método): responder consultas de horarios saca 5, 4, 5, 5 y 4, o sea 23. Armar propuestas a medida saca 2, 4, 2, 3 y 2, o sea 13. La primera va antes, aunque la segunda parezca más importante."
      ],
-     "aviso": "Si una tarea tiene puntaje alto pero nadie la quiere soltar, hablalo antes. Automatizar algo que el equipo no acepta es tiempo perdido."
+     "aviso": "Si una tarea tiene puntaje alto pero nadie la quiere soltar, háblalo antes. Automatizar algo que el equipo no acepta es tiempo perdido."
     },
     {
-     "h": "Dejá que Claude te ayude a puntuar",
+     "h": "Deja que Claude te ayude a puntuar",
      "p": [
-      "Pegá tu lista de tareas y pedile un primer borrador del puntaje. Después lo corregís vos: vos conocés tu negocio, Claude no."
+      "Pega tu lista de tareas y pídele un primer borrador del puntaje. Después lo corregís tú: tú conoces tu negocio, Claude no."
      ],
      "prompts": [
       {
        "t": "Diagnóstico de tareas",
-       "c": "Tengo un negocio de [RUBRO] con [CANTIDAD] personas. Esta es la lista de tareas que anoté durante una semana, con veces por semana, minutos cada vez y quién la hace:\n\n[PEGÁ TU LISTA]\n\nPara cada tarea:\n1. Calculá las horas por semana.\n2. Puntuala del 1 al 5 en: se repite igual, tiempo que consume, bajo riesgo si sale mal, información disponible y proceso escrito.\n3. Explicá cada puntaje en una línea.\n4. Ordená de mayor a menor puntaje total.\n5. Para las 3 primeras, decime qué parte podría hacer una IA y qué parte tiene que seguir revisando una persona.\nSi te falta información para puntuar algo, preguntame antes de inventar."
+       "c": "Tengo un negocio de [RUBRO] con [CANTIDAD] personas. Esta es la lista de tareas que anoté durante una semana, con veces por semana, minutos cada vez y quién la hace:\n\n[PEGA TU LISTA]\n\nPara cada tarea:\n1. Calcula las horas por semana.\n2. Puntuala del 1 al 5 en: se repite igual, tiempo que consume, bajo riesgo si sale mal, información disponible y proceso escrito.\n3. Explica cada puntaje en una línea.\n4. Ordena de mayor a menor puntaje total.\n5. Para las 3 primeras, dime qué parte podría hacer una IA y qué parte tiene que seguir revisando una persona.\nSi te falta información para puntuar algo, pregúntame antes de inventar."
       }
      ]
     }
@@ -86,11 +86,11 @@
     },
     {
      "q": "¿Conviene empezar por lo que más tiempo me come?",
-     "a": "No siempre. Si es algo riesgoso o muy variable, empezá por una tarea más chica y segura. Te sirve para aprender y ganar confianza."
+     "a": "No siempre. Si es algo riesgoso o muy variable, empieza por una tarea más chica y segura. Te sirve para aprender y ganar confianza."
     },
     {
      "q": "¿Cuántas tareas automatizo a la vez?",
-     "a": "Una. Cuando funciona sola durante unas semanas, pasás a la siguiente."
+     "a": "Una. Cuando funciona sola durante unas semanas, pasas a la siguiente."
     }
    ],
    "fuentes": []
@@ -108,7 +108,7 @@
      "Un mapa de tareas que hoy se pueden apoyar con IA, ordenado por área del negocio."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Claude y, para conectar sistemas, una herramienta de automatización (Make, Zapier o n8n)."
     ],
     [
@@ -120,7 +120,7 @@
     {
      "h": "Cómo leer este plano",
      "p": [
-      "En cada área vas a ver tres niveles. Nivel 1: lo hacés vos en el chat de Claude, copiando y pegando. Nivel 2: Claude trabaja con tus archivos o tus apps conectadas. Nivel 3: una automatización corre sola, con Claude como una pieza más.",
+      "En cada área vas a ver tres niveles. Nivel 1: lo haces tú en el chat de Claude, copiando y pegando. Nivel 2: Claude trabaja con tus archivos o tus apps conectadas. Nivel 3: una automatización corre sola, con Claude como una pieza más.",
       "No hace falta llegar al nivel 3 en todo. Muchas tareas rinden perfecto en el nivel 1."
      ]
     },
@@ -130,7 +130,7 @@
       "Respuestas a preguntas frecuentes: con un Proyecto de Claude que tenga tus políticas y precios, tu equipo saca borradores en segundos.",
       "Clasificar consultas: separar reclamos, pedidos de presupuesto y dudas simples, para que cada una vaya a quien corresponde.",
       "Resumir conversaciones largas: antes de responder un reclamo, tener en tres líneas qué pasó.",
-      "Queda en manos humanas: reclamos con plata de por medio, excepciones a las políticas y clientes enojados."
+      "Queda en manos humanas: reclamos con dinero de por medio, excepciones a las políticas y clientes enojados."
      ]
     },
     {
@@ -157,21 +157,21 @@
       "Ordenar comprobantes: pasar datos de facturas o recibos a una planilla para revisar.",
       "Reportes: subir la planilla de ventas del mes y pedir un resumen con lo que cambió.",
       "Recordatorios de cobro: borradores amables para pagos atrasados.",
-      "Queda en manos humanas: pagar, cobrar, temas impositivos y cualquier número que vaya a un contador. La IA se puede equivocar con números: siempre revisá."
+      "Queda en manos humanas: pagar, cobrar, temas impositivos y cualquier número que vaya a un contador. La IA se puede equivocar con números: siempre revisa."
      ]
     },
     {
      "h": "Operaciones",
      "lista": [
-      "Escribir procedimientos: le contás cómo hacés algo y te lo devuelve como paso a paso para tu equipo.",
+      "Escribir procedimientos: le cuentas cómo haces algo y te lo devuelve como paso a paso para tu equipo.",
       "Checklists: de apertura, de entrega, de control de calidad.",
-      "Avisos automáticos: por ejemplo, que una automatización te avise cuando algo en una planilla cruza un límite que vos definiste.",
+      "Avisos automáticos: por ejemplo, que una automatización te avise cuando algo en una planilla cruza un límite que tú definiste.",
       "Queda en manos humanas: decisiones sobre proveedores, personal y todo lo que no tiene vuelta atrás."
      ],
      "prompts": [
       {
        "t": "Tu plano personalizado",
-       "c": "Tengo un negocio de [RUBRO]. Las áreas que tengo son: [ÁREAS]. Usamos estas herramientas: [EJ.: GMAIL, WHATSAPP, GOOGLE SHEETS, SISTEMA DE TURNOS].\nArmame una tabla con:\n1. Área.\n2. Tres tareas de esa área que se podrían apoyar con IA.\n3. Nivel: 1 (copiar y pegar en el chat), 2 (Claude con archivos o apps conectadas) o 3 (automatización que corre sola).\n4. Qué parte tiene que seguir revisando una persona.\nNo propongas nada que dependa de herramientas que no uso sin aclararlo. Si no sabés si algo se puede conectar, decilo."
+       "c": "Tengo un negocio de [RUBRO]. Las áreas que tengo son: [ÁREAS]. Usamos estas herramientas: [EJ.: GMAIL, WHATSAPP, GOOGLE SHEETS, SISTEMA DE TURNOS].\nÁrmame una tabla con:\n1. Área.\n2. Tres tareas de esa área que se podrían apoyar con IA.\n3. Nivel: 1 (copiar y pegar en el chat), 2 (Claude con archivos o apps conectadas) o 3 (automatización que corre sola).\n4. Qué parte tiene que seguir revisando una persona.\nNo propongas nada que dependa de herramientas que no uso sin aclararlo. Si no sabes si algo se puede conectar, dilo."
       }
      ]
     }
@@ -194,7 +194,7 @@
   {
    "slug": "agente-de-whatsapp-que-atiende-y-agenda",
    "t": "Agente de WhatsApp que atiende y agenda turnos",
-   "d": "Cómo se arma un agente con la plataforma oficial de WhatsApp y Claude por API: qué piezas lleva, qué necesitás y qué reglas de Meta no podés saltear.",
+   "d": "Cómo se arma un agente con la plataforma oficial de WhatsApp y Claude por API: qué piezas lleva, qué necesitas y qué reglas de Meta no puedes saltear.",
    "tema": "Automatizar",
    "min": 12,
    "fichaNombre": "Agente de WhatsApp",
@@ -204,12 +204,12 @@
      "Un asistente que responde consultas de tu negocio por WhatsApp y reserva turnos en tu agenda."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Cuenta de Meta, WhatsApp Business Platform (Cloud API), una clave de la API de Claude y un servidor o una herramienta de automatización."
     ],
     [
      "Cuánto cuesta",
-     "Meta cobra según su tabla de precios y la API de Claude se paga aparte de cualquier plan de Claude. Revisá las páginas oficiales antes de presupuestar."
+     "Meta cobra según su tabla de precios y la API de Claude se paga aparte de cualquier plan de Claude. Revisa las páginas oficiales antes de presupuestar."
     ],
     [
      "Qué no hace",
@@ -229,10 +229,10 @@
       "Si Claude decide usar una herramienta, te lo pide; tu código la ejecuta y le devuelve el resultado. Claude no toca tu agenda directamente.",
       "Tu servidor envía la respuesta final al cliente por la Cloud API."
      ],
-     "aviso": "Meta reintenta el webhook si tu servidor no responde con un código 200, y eso puede generar avisos duplicados. Guardá el identificador de cada mensaje y no respondas dos veces el mismo."
+     "aviso": "Meta reintenta el webhook si tu servidor no responde con un código 200, y eso puede generar avisos duplicados. Guarda el identificador de cada mensaje y no respondas dos veces el mismo."
     },
     {
-     "h": "Qué necesitás para arrancar",
+     "h": "Qué necesitas para arrancar",
      "lista": [
       "Cuenta de desarrollador de Meta: con tu cuenta de Facebook o una cuenta de Meta administrada.",
       "Una app en el panel de Meta: con el caso de uso de WhatsApp, asociada a un portafolio comercial (business portfolio).",
@@ -245,20 +245,20 @@
     {
      "h": "Tres formas de armarlo",
      "lista": [
-      "Código propio: máximo control. Programás el webhook, la llamada a Claude y las herramientas. Ideal si sos desarrollador.",
-      "Make o n8n: el disparador de WhatsApp recibe el mensaje, un paso llama a Claude y otro responde. Menos código, pero tenés que entender bien los límites de cada módulo.",
-      "Un socio de Meta: los Solution Partners y Tech Providers ofrecen servicios sobre la plataforma de WhatsApp. Te simplifican el alta y la facturación; revisá qué te cobran y si te dejan conectar tu propia IA."
+      "Código propio: máximo control. Programas el webhook, la llamada a Claude y las herramientas. Ideal si eres desarrollador.",
+      "Make o n8n: el disparador de WhatsApp recibe el mensaje, un paso llama a Claude y otro responde. Menos código, pero tienes que entender bien los límites de cada módulo.",
+      "Un socio de Meta: los Solution Partners y Tech Providers ofrecen servicios sobre la plataforma de WhatsApp. Te simplifican el alta y la facturación; revisa qué te cobran y si te dejan conectar tu propia IA."
      ],
-     "aviso": "En n8n, WhatsApp permite un solo webhook por app: si alternás entre la URL de prueba y la de producción, una pisa a la otra."
+     "aviso": "En n8n, WhatsApp permite un solo webhook por app: si alternas entre la URL de prueba y la de producción, una pisa a la otra."
     },
     {
-     "h": "Las reglas de Meta que no podés saltear",
+     "h": "Las reglas de Meta que no puedes saltear",
      "lista": [
-      "Ventana de 24 horas: cuando el cliente te escribe, se abre una ventana de atención de 24 horas que se renueva con cada mensaje suyo. Adentro podés mandar cualquier tipo de mensaje.",
-      "Fuera de la ventana, solo plantillas: si pasaron las 24 horas, solo podés escribir con mensajes de plantilla aprobados.",
-      "Consentimiento: para escribirle primero a alguien, esa persona tiene que haber aceptado recibir mensajes tuyos, con el nombre de tu negocio a la vista. Y tenés que explicar cómo darse de baja y respetarlo.",
-      "Calidad: si la calidad de tus conversaciones es baja durante un tiempo sostenido, Meta limita tus envíos. Mandá solo lo que el cliente espera recibir.",
-      "Nada de asistentes de IA de uso general: los términos de WhatsApp Business prohíben ofrecer IA como función principal (un chat para preguntar cualquier cosa). Un agente que atiende tu negocio, donde la IA es una ayuda para tu servicio, es otro caso. Igual, la decisión final es de Meta: leé los términos vigentes."
+      "Ventana de 24 horas: cuando el cliente te escribe, se abre una ventana de atención de 24 horas que se renueva con cada mensaje suyo. Adentro puedes mandar cualquier tipo de mensaje.",
+      "Fuera de la ventana, solo plantillas: si pasaron las 24 horas, solo puedes escribir con mensajes de plantilla aprobados.",
+      "Consentimiento: para escribirle primero a alguien, esa persona tiene que haber aceptado recibir mensajes tuyos, con el nombre de tu negocio a la vista. Y tienes que explicar cómo darse de baja y respetarlo.",
+      "Calidad: si la calidad de tus conversaciones es baja durante un tiempo sostenido, Meta limita tus envíos. Manda solo lo que el cliente espera recibir.",
+      "Nada de asistentes de IA de uso general: los términos de WhatsApp Business prohíben ofrecer IA como función principal (un chat para preguntar cualquier cosa). Un agente que atiende tu negocio, donde la IA es una ayuda para tu servicio, es otro caso. Igual, la decisión final es de Meta: lee los términos vigentes."
      ]
     },
     {
@@ -269,28 +269,28 @@
      "prompts": [
       {
        "t": "Instrucciones del agente de WhatsApp",
-       "c": "Sos el asistente de WhatsApp de [NOMBRE DEL NEGOCIO], un [RUBRO] en [CIUDAD].\nTu trabajo es solo este: responder dudas sobre el negocio y reservar, cambiar o cancelar turnos.\n\nInformación del negocio:\n- Horarios: [HORARIOS]\n- Servicios y duración: [LISTA]\n- Precios: [LISTA O \"no informar precios, derivar\"]\n- Dirección y cómo llegar: [DATOS]\n- Políticas (cancelación, demoras, señas): [POLÍTICAS]\n\nReglas:\n1. Respondé corto, claro y amable, como un mensaje de WhatsApp. Nada de textos largos.\n2. Para reservar, usá siempre la herramienta de horarios libres. Nunca inventes un horario.\n3. Antes de confirmar un turno, repetí día, hora y servicio y pedí un \"sí\".\n4. Si te preguntan algo que no está en esta información, decí que lo consultás con el equipo y avisá con la herramienta de derivar a una persona.\n5. Si el cliente está enojado, reclama un cobro o pide hablar con alguien, derivá a una persona.\n6. No hables de temas que no tengan que ver con el negocio.\n7. No pidas datos sensibles: ni tarjetas, ni contraseñas, ni documentos."
+       "c": "Eres el asistente de WhatsApp de [NOMBRE DEL NEGOCIO], un [RUBRO] en [CIUDAD].\nTu trabajo es solo este: responder dudas sobre el negocio y reservar, cambiar o cancelar turnos.\n\nInformación del negocio:\n- Horarios: [HORARIOS]\n- Servicios y duración: [LISTA]\n- Precios: [LISTA O \"no informar precios, derivar\"]\n- Dirección y cómo llegar: [DATOS]\n- Políticas (cancelación, demoras, señas): [POLÍTICAS]\n\nReglas:\n1. Responde corto, claro y amable, como un mensaje de WhatsApp. Nada de textos largos.\n2. Para reservar, usa siempre la herramienta de horarios libres. Nunca inventes un horario.\n3. Antes de confirmar un turno, repite día, hora y servicio y pide un \"sí\".\n4. Si te preguntan algo que no está en esta información, di que lo consultas con el equipo y avisa con la herramienta de derivar a una persona.\n5. Si el cliente está enojado, reclama un cobro o pide hablar con alguien, deriva a una persona.\n6. No hables de temas que no tengan que ver con el negocio.\n7. No pidas datos sensibles: ni tarjetas, ni contraseñas, ni documentos."
       }
      ]
     },
     {
      "h": "Riesgos y cómo cubrirte",
      "lista": [
-      "Respuestas inventadas: limitá al agente a la información que le das y probalo con preguntas raras antes de abrirlo al público.",
+      "Respuestas inventadas: limita al agente a la información que le das y pruébalo con preguntas raras antes de abrirlo al público.",
       "Turnos dobles: que la herramienta de reserva vuelva a chequear el horario justo antes de crearlo.",
-      "Datos personales: guardá solo lo necesario y avisá en tu política de privacidad que usás un asistente automático.",
-      "Costos que crecen: poné un límite de largo a cada conversación y revisá el consumo de la API cada semana."
+      "Datos personales: guarda solo lo necesario y avisa en tu política de privacidad que usas un asistente automático.",
+      "Costos que crecen: pon un límite de largo a cada conversación y revisa el consumo de la API cada semana."
      ]
     }
    ],
    "faq": [
     {
      "q": "¿Puedo usar la app WhatsApp Business del celular?",
-     "a": "Para conectar Claude de esta forma necesitás la WhatsApp Business Platform (Cloud API), que es la versión para integraciones."
+     "a": "Para conectar Claude de esta forma necesitas la WhatsApp Business Platform (Cloud API), que es la versión para integraciones."
     },
     {
      "q": "¿Puedo escribirle primero a un cliente para recordarle el turno?",
-     "a": "Sí, si aceptó recibir mensajes tuyos y si usás una plantilla aprobada cuando la ventana de 24 horas está cerrada."
+     "a": "Sí, si aceptó recibir mensajes tuyos y si usas una plantilla aprobada cuando la ventana de 24 horas está cerrada."
     },
     {
      "q": "¿Me alcanza con mi plan de Claude?",
@@ -329,7 +329,7 @@
     ],
     [
      "Precios",
-     "No los ponemos porque cambian seguido. Mirá la página oficial de cada una el día que decidas."
+     "No los ponemos porque cambian seguido. Mira la página oficial de cada una el día que decidas."
     ]
    ],
    "secciones": [
@@ -337,17 +337,17 @@
      "h": "Lo que tienen en común",
      "p": [
       "Las tres funcionan igual en lo básico: algo dispara la automatización (llega un mail, se completa un formulario, entra un mensaje) y después corren pasos uno detrás del otro.",
-      "Las tres tienen un servidor MCP oficial, así que Claude puede usar tus automatizaciones como herramientas: le pedís algo en el chat y Claude dispara el flujo. Lo vas a ver en la sección de herramientas de esta biblioteca."
+      "Las tres tienen un servidor MCP oficial, así que Claude puede usar tus automatizaciones como herramientas: le pides algo en el chat y Claude dispara el flujo. Lo vas a ver en la sección de herramientas de esta biblioteca."
      ]
     },
     {
      "h": "Zapier",
      "p": [
-      "Cada automatización se llama Zap. Es la más directa para empezar: elegís un disparador, sumás acciones y listo."
+      "Cada automatización se llama Zap. Es la más directa para empezar: eliges un disparador, sumas acciones y listo."
      ],
      "lista": [
       "Cómo cobra: por tareas. Cada acción que se ejecuta bien cuenta como una tarea. Los disparadores no consumen tareas, y tampoco los pasos de filtro ni de formato.",
-      "Para quién: si querés algo andando hoy y tus flujos son más bien lineales.",
+      "Para quién: si quieres algo andando hoy y tus flujos son más bien lineales.",
       "Ojo con: flujos con muchos pasos que corren muy seguido, porque las tareas se suman rápido."
      ]
     },
@@ -357,9 +357,9 @@
       "Cada automatización se llama escenario y se arma en un lienzo visual, conectando módulos como si fueran piezas."
      ],
      "lista": [
-      "Cómo cobra: Make mide la actividad en operaciones y lo que pagás son créditos.",
+      "Cómo cobra: Make mide la actividad en operaciones y lo que pagas son créditos.",
       "Para quién: si tus flujos tienen ramas, condiciones o muchos datos que transformar, y te gusta ver todo el mapa.",
-      "Ojo con: si nunca automatizaste nada, el lienzo puede abrumar al principio. Arrancá con un escenario de dos o tres módulos."
+      "Ojo con: si nunca automatizaste nada, el lienzo puede abrumar al principio. Arranca con un escenario de dos o tres módulos."
      ]
     },
     {
@@ -368,24 +368,24 @@
       "Se puede usar en n8n Cloud (lo administran ellos) o instalado en tu propio servidor."
      ],
      "lista": [
-      "Instalado por vos: tenés control total sobre dónde viven los datos, pero la instalación y el mantenimiento requieren conocimientos técnicos.",
+      "Instalado por ti: tienes control total sobre dónde viven los datos, pero la instalación y el mantenimiento requieren conocimientos técnicos.",
       "En la nube: n8n lo recomienda para quien no tiene ese conocimiento, porque no hay nada que instalar ni mantener.",
       "Para quién: desarrolladores o equipos con alguien técnico, y flujos complejos.",
-      "Ojo con: si lo instalás vos, los backups, las actualizaciones y la seguridad son tu responsabilidad. Si lo vas a usar para clientes, leé la licencia de n8n antes."
+      "Ojo con: si lo instalas tú, los backups, las actualizaciones y la seguridad son tu responsabilidad. Si lo vas a usar para clientes, lee la licencia de n8n antes."
      ]
     },
     {
      "h": "Cómo elegir en 30 segundos",
      "lista": [
-      "No sos técnico y querés algo ya: Zapier.",
+      "No eres técnico y quieres algo ya: Zapier.",
       "Flujos con ramas y te gusta lo visual: Make.",
-      "Sos técnico o querés que los datos queden en tu servidor: n8n.",
-      "Vendés automatizaciones a clientes: usá la que el cliente pueda mantener cuando vos no estés, y en lo posible que la cuenta esté a nombre del cliente."
+      "Eres técnico o quieres que los datos queden en tu servidor: n8n.",
+      "Vendes automatizaciones a clientes: usa la que el cliente pueda mantener cuando tú no estés, y en lo posible que la cuenta esté a nombre del cliente."
      ],
      "prompts": [
       {
        "t": "Que Claude te ayude a elegir",
-       "c": "Quiero automatizar esto en mi negocio: [DESCRIBÍ EL FLUJO PASO A PASO].\nUso estas apps: [LISTA].\nMás o menos, el flujo correría [CANTIDAD] veces por [DÍA/SEMANA/MES].\nEn mi equipo [HAY / NO HAY] alguien técnico.\nCompará Make, Zapier y n8n para este caso:\n1. Si las tres tienen integración con mis apps (si no estás seguro, decímelo y decime cómo verificarlo).\n2. Cuántos pasos tendría el flujo en cada una.\n3. Qué tan difícil sería de mantener para mi equipo.\n4. Tu recomendación y por qué.\nNo me des precios: los voy a revisar yo en las páginas oficiales."
+       "c": "Quiero automatizar esto en mi negocio: [DESCRIBE EL FLUJO PASO A PASO].\nUso estas apps: [LISTA].\nMás o menos, el flujo correría [CANTIDAD] veces por [DÍA/SEMANA/MES].\nEn mi equipo [HAY / NO HAY] alguien técnico.\nCompara Make, Zapier y n8n para este caso:\n1. Si las tres tienen integración con mis apps (si no estás seguro, dímelo y dime cómo verificarlo).\n2. Cuántos pasos tendría el flujo en cada una.\n3. Qué tan difícil sería de mantener para mi equipo.\n4. Tu recomendación y por qué.\nNo me des precios: los voy a revisar yo en las páginas oficiales."
       }
      ]
     }
@@ -397,7 +397,7 @@
     },
     {
      "q": "¿Cuál tiene más integraciones?",
-     "a": "Las tres tienen muchas. Lo que importa es que estén las tuyas: buscá cada app en el directorio de integraciones de cada herramienta antes de decidir."
+     "a": "Las tres tienen muchas. Lo que importa es que estén las tuyas: busca cada app en el directorio de integraciones de cada herramienta antes de decidir."
     },
     {
      "q": "¿Necesito Claude para usarlas?",
@@ -426,7 +426,7 @@
      "Un panel con tus números clave, armado por Claude a partir de una exportación de tus datos."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Claude con \"Crear y editar archivos\" activado y un CSV o Excel con tus ventas."
     ],
     [
@@ -435,32 +435,32 @@
     ],
     [
      "Qué no hace",
-     "No se actualiza solo a partir de un archivo: si los datos cambian, volvés a subirlos."
+     "No se actualiza solo a partir de un archivo: si los datos cambian, vuelves a subirlos."
     ]
    ],
    "secciones": [
     {
-     "h": "Elegí tus 5 números",
+     "h": "Elige tus 5 números",
      "p": [
-      "Un panel con 30 gráficos no lo mira nadie. Antes de abrir Claude, decidí qué cinco números querés ver cada semana. Algunos que suelen servir:"
+      "Un panel con 30 gráficos no lo mira nadie. Antes de abrir Claude, decide qué cinco números quieres ver cada semana. Algunos que suelen servir:"
      ],
      "lista": [
       "Ventas del período: total y comparado con el período anterior.",
-      "Cantidad de ventas y ticket promedio: para saber si vendés más veces o más caro.",
+      "Cantidad de ventas y ticket promedio: para saber si vendes más veces o más caro.",
       "Clientes nuevos y clientes que vuelven.",
       "Producto o servicio que más vende.",
-      "De dónde vienen los clientes: si ya lo registrás (hay una guía sobre esto en la biblioteca)."
+      "De dónde vienen los clientes: si ya lo registras (hay una guía sobre esto en la biblioteca)."
      ]
     },
     {
-     "h": "Prepará los datos",
+     "h": "Prepara los datos",
      "pasos": [
-      "Exportá tus ventas desde tu sistema, tienda o planilla en CSV o Excel.",
-      "Revisá que tenga una fila por venta y columnas claras: fecha, cliente, producto, cantidad, importe.",
-      "Borrá columnas con datos sensibles que no hacen falta: documentos, teléfonos, direcciones.",
-      "En Claude andá a Configuración → Capacidades y activá \"Crear y editar archivos\", para que pueda leer y procesar el archivo."
+      "Exporta tus ventas desde tu sistema, tienda o planilla en CSV o Excel.",
+      "Revisa que tenga una fila por venta y columnas claras: fecha, cliente, producto, cantidad, importe.",
+      "Borra columnas con datos sensibles que no hacen falta: documentos, teléfonos, direcciones.",
+      "En Claude ve a Configuración → Capacidades y activa \"Crear y editar archivos\", para que pueda leer y procesar el archivo."
      ],
-     "aviso": "Subí solo lo que te sientas cómodo compartiendo. Si los nombres de clientes no hacen falta para el panel, reemplazalos por un código."
+     "aviso": "Sube solo lo que te sientas cómodo compartiendo. Si los nombres de clientes no hacen falta para el panel, reemplázalos por un código."
     },
     {
      "h": "Camino 1: un panel visual (artifact)",
@@ -470,29 +470,29 @@
      "prompts": [
       {
        "t": "Panel visual de ventas",
-       "c": "Te adjunto la exportación de ventas de mi negocio de [RUBRO], del [FECHA INICIO] al [FECHA FIN].\nAntes de armar nada:\n1. Decime qué columnas encontraste y si ves datos raros (fechas mal cargadas, importes vacíos, filas duplicadas).\n2. Esperá a que te confirme cómo tratarlos.\nDespués armá un panel en un artifact con:\n- Arriba: ventas totales, cantidad de ventas, ticket promedio y clientes nuevos, cada uno comparado con el período anterior.\n- Un gráfico de ventas por semana.\n- Los 5 productos que más venden.\n- [OTRO NÚMERO QUE QUIERAS]\nQue se lea bien en el celular. Debajo de cada número, en letra chica, poné cómo lo calculaste."
+       "c": "Te adjunto la exportación de ventas de mi negocio de [RUBRO], del [FECHA INICIO] al [FECHA FIN].\nAntes de armar nada:\n1. Dime qué columnas encontraste y si ves datos raros (fechas mal cargadas, importes vacíos, filas duplicadas).\n2. Espera a que te confirme cómo tratarlos.\nDespués arma un panel en un artifact con:\n- Arriba: ventas totales, cantidad de ventas, ticket promedio y clientes nuevos, cada uno comparado con el período anterior.\n- Un gráfico de ventas por semana.\n- Los 5 productos que más venden.\n- [OTRO NÚMERO QUE QUIERAS]\nQue se lea bien en el celular. Debajo de cada número, en letra chica, pon cómo lo calculaste."
       }
      ]
     },
     {
-     "h": "Camino 2: una planilla que podés seguir usando",
+     "h": "Camino 2: una planilla que puedes seguir usando",
      "p": [
-      "Si preferís algo que viva en tu compu y puedas actualizar pegando datos nuevos, pedile un Excel con fórmulas en lugar de números fijos."
+      "Si preferís algo que viva en tu computadora y puedas actualizar pegando datos nuevos, pídele un Excel con fórmulas en lugar de números fijos."
      ],
      "prompts": [
       {
        "t": "Planilla de métricas con fórmulas",
-       "c": "Con este archivo de ventas, armame un Excel descargable con:\n1. Una hoja \"Datos\" con las ventas tal cual, en formato tabla.\n2. Una hoja \"Panel\" con ventas del mes, cantidad, ticket promedio y clientes nuevos, calculados con fórmulas que lean la hoja Datos (no números escritos a mano).\n3. Un gráfico de ventas por mes.\n4. Una hoja \"Cómo usar\" que explique cómo pegar datos nuevos para que el panel se actualice.\nUsá nombres de columnas en español y no cambies los datos originales."
+       "c": "Con este archivo de ventas, ármame un Excel descargable con:\n1. Una hoja \"Datos\" con las ventas tal cual, en formato tabla.\n2. Una hoja \"Panel\" con ventas del mes, cantidad, ticket promedio y clientes nuevos, calculados con fórmulas que lean la hoja Datos (no números escritos a mano).\n3. Un gráfico de ventas por mes.\n4. Una hoja \"Cómo usar\" que explique cómo pegar datos nuevos para que el panel se actualice.\nUsa nombres de columnas en español y no cambies los datos originales."
       }
      ]
     },
     {
      "h": "Cómo no comerte un error",
      "lista": [
-      "Pedí los cálculos: que te diga con qué fórmula sacó cada número.",
-      "Chequeá uno a mano: elegí un número del panel y calculalo vos con la planilla original.",
-      "Ojo con las fechas: los formatos día/mes y mes/día se confunden fácil. Decile cuál usás.",
-      "Guardá el prompt: el mes que viene subís el archivo nuevo y pegás el mismo prompt, así comparás peras con peras."
+      "Pide los cálculos: que te diga con qué fórmula sacó cada número.",
+      "Chequea uno a mano: elige un número del panel y calcúlalo tú con la planilla original.",
+      "Ojo con las fechas: los formatos día/mes y mes/día se confunden fácil. Decile cuál usas.",
+      "Guarda el prompt: el mes que viene subís el archivo nuevo y pegas el mismo prompt, así comparas peras con peras."
      ]
     }
    ],
@@ -507,7 +507,7 @@
     },
     {
      "q": "¿Puedo compartir el panel con mi socio?",
-     "a": "Sí: los artifacts arrancan privados y después podés compartirlos o exportarlos. La planilla de Excel la mandás como cualquier archivo."
+     "a": "Sí: los artifacts arrancan privados y después puedes compartirlos o exportarlos. La planilla de Excel la mandas como cualquier archivo."
     }
    ],
    "fuentes": [
@@ -519,7 +519,7 @@
    "slug": "segundo-cerebro-de-tu-negocio",
    "post": "CEREBRO",
    "t": "El segundo cerebro de tu negocio en un Proyecto de Claude",
-   "d": "Procesos, precios, preguntas frecuentes y políticas en un solo lugar, para que cualquiera del equipo consulte y responda igual que vos.",
+   "d": "Procesos, precios, preguntas frecuentes y políticas en un solo lugar, para que cualquiera del equipo consulte y responda igual que tú.",
    "tema": "Negocio",
    "min": 9,
    "fichaNombre": "Segundo cerebro del negocio",
@@ -529,7 +529,7 @@
      "Un Proyecto de Claude con los documentos clave de tu negocio y reglas para responder."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Cualquier cuenta de Claude. Para compartirlo con el equipo, un plan Team o Enterprise."
     ],
     [
@@ -538,7 +538,7 @@
     ],
     [
      "Qué no hace",
-     "No se actualiza solo: si cambia un precio, cambiás el documento."
+     "No se actualiza solo: si cambia un precio, cambias el documento."
     ]
    ],
    "secciones": [
@@ -546,7 +546,7 @@
      "h": "Por qué te conviene",
      "p": [
       "En casi todo negocio chico hay una persona que sabe todo y a la que todos le preguntan. Cuando no está, se frena todo o cada uno responde distinto.",
-      "Un Proyecto de Claude es un espacio con su propio historial de chats, sus propios documentos y sus propias instrucciones. Si ponés ahí lo que sabe esa persona, el equipo tiene a quién preguntar."
+      "Un Proyecto de Claude es un espacio con su propio historial de chats, sus propios documentos y sus propias instrucciones. Si pones ahí lo que sabe esa persona, el equipo tiene a quién preguntar."
      ]
     },
     {
@@ -554,33 +554,33 @@
      "lista": [
       "Procesos: cómo se hace cada cosa, paso a paso (abrir, cerrar, entregar, devolver).",
       "Precios y servicios: lista actualizada, con qué incluye cada cosa y qué no.",
-      "Preguntas frecuentes: las que te hacen los clientes, con la respuesta que das vos.",
+      "Preguntas frecuentes: las que te hacen los clientes, con la respuesta que das tú.",
       "Políticas: cambios, devoluciones, cancelaciones, garantías, horarios, medios de pago.",
       "Tono: dos o tres ejemplos de mensajes bien respondidos, para que copie el estilo."
      ],
      "aviso": "Nada de contraseñas, datos bancarios ni datos personales de clientes. Esto lo va a consultar todo el equipo."
     },
     {
-     "h": "Armalo paso a paso",
+     "h": "Ármalo paso a paso",
      "pasos": [
-      "Escribí o juntá cada documento. Uno por tema, con nombre claro: \"Precios - actualizado [MES AÑO].pdf\".",
-      "Arriba de cada documento poné quién es responsable y la fecha de la última actualización.",
-      "En Claude entrá a Proyectos y creá uno llamado \"Cerebro de [TU NEGOCIO]\".",
-      "Subí los documentos al conocimiento del proyecto.",
-      "Pegá las instrucciones de abajo en las instrucciones del proyecto.",
-      "Probalo con diez preguntas reales de clientes antes de mostrárselo al equipo."
+      "Escribe o junta cada documento. Uno por tema, con nombre claro: \"Precios - actualizado [MES AÑO].pdf\".",
+      "Arriba de cada documento pon quién es responsable y la fecha de la última actualización.",
+      "En Claude entra a Proyectos y crea uno llamado \"Cerebro de [TU NEGOCIO]\".",
+      "Sube los documentos al conocimiento del proyecto.",
+      "Pega las instrucciones de abajo en las instrucciones del proyecto.",
+      "Pruébalo con diez preguntas reales de clientes antes de mostrárselo al equipo."
      ],
      "prompts": [
       {
        "t": "Instrucciones del proyecto",
-       "c": "Sos el asistente interno de [NOMBRE DEL NEGOCIO]. Te consulta el equipo, no los clientes.\nTenés los documentos oficiales: procesos, precios, preguntas frecuentes y políticas.\n\nCuando te pregunten algo:\n1. Respondé corto y directo.\n2. Decí de qué documento sale la respuesta.\n3. Si la pregunta es para contestarle a un cliente, dame además un borrador listo para mandar, con el tono de los ejemplos.\n4. Si dos documentos se contradicen, avisá y no elijas vos.\n5. Si algo no está en los documentos, decí \"No está en el cerebro\" y sugerí a quién preguntarle: [NOMBRE O PUESTO].\n6. Nunca inventes precios, plazos ni excepciones a las políticas."
+       "c": "Eres el asistente interno de [NOMBRE DEL NEGOCIO]. Te consulta el equipo, no los clientes.\nTienes los documentos oficiales: procesos, precios, preguntas frecuentes y políticas.\n\nCuando te pregunten algo:\n1. Responde corto y directo.\n2. Di de qué documento sale la respuesta.\n3. Si la pregunta es para contestarle a un cliente, dame además un borrador listo para mandar, con el tono de los ejemplos.\n4. Si dos documentos se contradicen, avisa y no elijas tú.\n5. Si algo no está en los documentos, di \"No está en el cerebro\" y sugiere a quién preguntarle: [NOMBRE O PUESTO].\n6. Nunca inventes precios, plazos ni excepciones a las políticas."
       }
      ]
     },
     {
-     "h": "Compartilo con el equipo",
+     "h": "Compártelo con el equipo",
      "p": [
-      "En los planes Team y Enterprise podés compartir un proyecto con otras personas de tu organización. Hay dos niveles:"
+      "En los planes Team y Enterprise puedes compartir un proyecto con otras personas de tu organización. Hay dos niveles:"
      ],
      "lista": [
       "Puede ver: la persona ve los documentos y las instrucciones y chatea dentro del proyecto, pero no cambia nada.",
@@ -588,11 +588,11 @@
      ]
     },
     {
-     "h": "Mantenelo vivo",
+     "h": "Mantenlo vivo",
      "lista": [
       "Un responsable por documento: si nadie es dueño, nadie lo actualiza.",
-      "Revisión fija: una vez por mes, mirá precios y políticas.",
-      "Las preguntas que no sabe son oro: cada vez que responde \"No está en el cerebro\", agregá esa respuesta al documento que corresponde."
+      "Revisión fija: una vez por mes, mira precios y políticas.",
+      "Las preguntas que no sabe son oro: cada vez que responde \"No está en el cerebro\", agrega esa respuesta al documento que corresponde."
      ]
     }
    ],
@@ -603,7 +603,7 @@
     },
     {
      "q": "¿Puedo usarlo con el plan gratis?",
-     "a": "Sí, los proyectos están en todos los planes (el gratis tiene un límite de proyectos). Lo que no podés en el gratis es compartirlo con el equipo."
+     "a": "Sí, los proyectos están en todos los planes (el gratis tiene un límite de proyectos). Lo que no puedes en el gratis es compartirlo con el equipo."
     },
     {
      "q": "¿Se lo puedo dar a los clientes?",
@@ -627,7 +627,7 @@
      "Un método para ponerle precio a una automatización: implementación más un mensual."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Tu costo por hora, una estimación honesta de horas y datos del cliente."
     ],
     [
@@ -639,30 +639,30 @@
     {
      "h": "Dos partes: implementación y mensual",
      "p": [
-      "Una automatización no se termina cuando la entregás. Las apps cambian, se cortan conexiones y el cliente pide ajustes. Por eso el esquema más sano tiene dos partes:",
+      "Una automatización no se termina cuando la entregas. Las apps cambian, se cortan conexiones y el cliente pide ajustes. Por eso el esquema más sano tiene dos partes:",
       "Implementación: el trabajo de diagnosticar, armar, probar y entregar. Se cobra una vez. Mensual: mantenimiento, soporte y cambios chicos. Se cobra todos los meses mientras siga funcionando."
      ]
     },
     {
-     "h": "Piso: lo que te cuesta a vos",
+     "h": "Piso: lo que te cuesta a ti",
      "p": [
-      "Primero calculá el mínimo por debajo del cual perdés plata."
+      "Primero calcula el mínimo por debajo del cual pierdes dinero."
      ],
      "lista": [
-      "Implementación mínima: horas estimadas × tu costo por hora × un margen por imprevistos (por ejemplo, 1,3 si sumás 30% de colchón).",
-      "Mensual mínimo: horas de mantenimiento por mes × tu costo por hora + costos de herramientas que pagás vos.",
-      "Tu costo por hora: lo que necesitás ganar por mes dividido por las horas que realmente podés facturar (no las que trabajás)."
+      "Implementación mínima: horas estimadas × tu costo por hora × un margen por imprevistos (por ejemplo, 1,3 si sumas 30% de colchón).",
+      "Mensual mínimo: horas de mantenimiento por mes × tu costo por hora + costos de herramientas que pagas tú.",
+      "Tu costo por hora: lo que necesitas ganar por mes dividido por las horas que realmente puedes facturar (no las que trabajas)."
      ],
      "aviso": "Los costos de herramientas cambian según el uso: Zapier cuenta tareas, Make consume créditos y la API de Claude se paga por separado. En lo posible, que esas cuentas estén a nombre del cliente y las pague él."
     },
     {
      "h": "Techo: lo que vale para el cliente",
      "p": [
-      "El cliente no compra tus horas: compra tiempo libre, menos errores o más ventas. Estimalo con él, con sus números:"
+      "El cliente no compra tus horas: compra tiempo libre, menos errores o más ventas. Estímalo con él, con sus números:"
      ],
      "lista": [
       "Valor mensual estimado: horas que se ahorran por mes × lo que le cuesta esa hora al cliente.",
-      "Valor extra: si la automatización evita errores o recupera ventas, sumalo solo si lo pueden medir.",
+      "Valor extra: si la automatización evita errores o recupera ventas, súmalo solo si lo pueden medir.",
       "Ejemplo (los números son inventados para mostrar la cuenta): si la automatización le ahorra 20 horas por mes a una persona cuya hora le cuesta 10 unidades, el valor es 200 unidades por mes. Tu mensual tiene que quedar claramente por debajo de eso para que al cliente le convenga."
      ]
     },
@@ -670,17 +670,17 @@
      "h": "Dónde ponerte entre el piso y el techo",
      "lista": [
       "Cerca del piso: tus primeros clientes, cuando todavía estás armando casos para mostrar.",
-      "Más arriba: cuando ya tenés casos, el proceso es crítico para el cliente o el ahorro es grande y medible.",
-      "Si el piso queda por encima del techo: no lo vendas así. Achicá el alcance o buscá otra tarea con más valor.",
-      "Cobrar por resultado: tentador, pero solo si el resultado se mide sin discusión y no depende de cosas que no controlás."
+      "Más arriba: cuando ya tienes casos, el proceso es crítico para el cliente o el ahorro es grande y medible.",
+      "Si el piso queda por encima del techo: no lo vendas así. Achica el alcance o busca otra tarea con más valor.",
+      "Cobrar por resultado: tentador, pero solo si el resultado se mide sin discusión y no depende de cosas que no controlas."
      ]
     },
     {
-     "h": "Armá la propuesta con Claude",
+     "h": "Arma la propuesta con Claude",
      "prompts": [
       {
        "t": "Calcular precio y armar la propuesta",
-       "c": "Estoy por cotizar una automatización con IA para un cliente.\nCliente: [RUBRO, TAMAÑO, PAÍS].\nProblema: [QUÉ TAREA LES CUESTA Y CUÁNTO TIEMPO, SEGÚN ELLOS].\nSolución que propongo: [DESCRIPCIÓN].\nMi estimación de horas de implementación: [HORAS].\nHoras de mantenimiento por mes: [HORAS].\nMi costo por hora: [NÚMERO Y MONEDA].\nCosto por hora del cliente para esa tarea: [NÚMERO O \"no sé\"].\n\n1. Calculá el piso de implementación y de mensual, con un 30% de colchón en horas, mostrando la cuenta.\n2. Calculá el valor mensual estimado para el cliente, mostrando la cuenta. Si falta un dato, decime qué preguntarle.\n3. Proponé un rango de precio para cada parte y explicá por qué.\n4. Armá una propuesta de una página: problema, solución, qué incluye, qué no incluye, plazos, precio de implementación, mensual y qué pasa si quiere cancelar.\nNo inventes resultados ni prometas ahorros que no salgan de estos datos."
+       "c": "Estoy por cotizar una automatización con IA para un cliente.\nCliente: [RUBRO, TAMAÑO, PAÍS].\nProblema: [QUÉ TAREA LES CUESTA Y CUÁNTO TIEMPO, SEGÚN ELLOS].\nSolución que propongo: [DESCRIPCIÓN].\nMi estimación de horas de implementación: [HORAS].\nHoras de mantenimiento por mes: [HORAS].\nMi costo por hora: [NÚMERO Y MONEDA].\nCosto por hora del cliente para esa tarea: [NÚMERO O \"no sé\"].\n\n1. Calcula el piso de implementación y de mensual, con un 30% de colchón en horas, mostrando la cuenta.\n2. Calcula el valor mensual estimado para el cliente, mostrando la cuenta. Si falta un dato, dime qué preguntarle.\n3. Propón un rango de precio para cada parte y explica por qué.\n4. Arma una propuesta de una página: problema, solución, qué incluye, qué no incluye, plazos, precio de implementación, mensual y qué pasa si quiere cancelar.\nNo inventes resultados ni prometas ahorros que no salgan de estos datos."
       }
      ]
     }
@@ -688,15 +688,15 @@
    "faq": [
     {
      "q": "¿Pongo precio por hora o precio cerrado?",
-     "a": "Para la implementación, precio cerrado con un alcance bien escrito. Si cobrás por hora, el cliente siente que te paga por tardar."
+     "a": "Para la implementación, precio cerrado con un alcance bien escrito. Si cobras por hora, el cliente siente que te paga por tardar."
     },
     {
      "q": "¿Qué incluye el mensual?",
-     "a": "Escribilo en la propuesta: por ejemplo, revisión de que todo funcione, arreglo de fallas y una cantidad de cambios chicos por mes. Lo que sale de ahí se cotiza aparte."
+     "a": "Escríbelo en la propuesta: por ejemplo, revisión de que todo funcione, arreglo de fallas y una cantidad de cambios chicos por mes. Lo que sale de ahí se cotiza aparte."
     },
     {
      "q": "¿Y si el cliente dice que es caro?",
-     "a": "Volvé a la cuenta del valor con sus números. Si aun así no cierra, achicá el alcance antes de bajar el precio."
+     "a": "Vuelve a la cuenta del valor con sus números. Si aun así no cierra, achica el alcance antes de bajar el precio."
     }
    ],
    "fuentes": [
@@ -708,7 +708,7 @@
   {
    "slug": "de-donde-vienen-tus-clientes",
    "t": "De dónde vienen tus clientes (y cómo saberlo)",
-   "d": "Registrá el origen de cada cliente con enlaces etiquetados, una pregunta en el formulario y una planilla simple. Después Claude te dice qué canal rinde.",
+   "d": "Registra el origen de cada cliente con enlaces etiquetados, una pregunta en el formulario y una planilla simple. Después Claude te dice qué canal rinde.",
    "tema": "Negocio",
    "min": 9,
    "fichaNombre": "Registro de origen",
@@ -718,7 +718,7 @@
      "Un sistema simple para saber qué canal te trae clientes de verdad."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Tus enlaces, una pregunta en tu formulario o tu chat y una planilla."
     ],
     [
@@ -730,13 +730,13 @@
     {
      "h": "Por qué importa",
      "p": [
-      "Sin este dato, decidís dónde poner tiempo y plata por sensación. Con el dato, ves qué canal trae consultas, cuál trae ventas y cuál solo te da trabajo."
+      "Sin este dato, decidís dónde poner tiempo y dinero por sensación. Con el dato, ves qué canal trae consultas, cuál trae ventas y cuál solo te da trabajo."
      ]
     },
     {
-     "h": "1. Etiquetá tus enlaces (UTM)",
+     "h": "1. Etiqueta tus enlaces (UTM)",
      "p": [
-      "Los parámetros UTM son etiquetas que agregás al final de un enlace para que Google Analytics sepa de dónde vino la visita. Google recomienda usar siempre estos tres:"
+      "Los parámetros UTM son etiquetas que agregas al final de un enlace para que Google Analytics sepa de dónde vino la visita. Google recomienda usar siempre estos tres:"
      ],
      "lista": [
       "utm_source: quién te mandó la visita (instagram, newsletter, google).",
@@ -749,37 +749,37 @@
        "c": "https://[TU-WEB].com/?utm_source=instagram&utm_medium=social&utm_campaign=[NOMBRE-CAMPAÑA]"
       }
      ],
-     "aviso": "Elegí una forma de escribir y no la cambies: \"instagram\" e \"Instagram\" quedan como dos fuentes distintas. Usá minúsculas y guiones."
+     "aviso": "Elige una forma de escribir y no la cambies: \"instagram\" e \"Instagram\" quedan como dos fuentes distintas. Usa minúsculas y guiones."
     },
     {
-     "h": "2. Preguntalo directamente",
+     "h": "2. Pregúntalo directamente",
      "p": [
-      "Muchos clientes no llegan por un enlace: te recomendaron, te vieron en un video o te buscaron por el nombre. Por eso sumá una pregunta en tu formulario, tu chat o al cerrar la venta."
+      "Muchos clientes no llegan por un enlace: te recomendaron, te vieron en un video o te buscaron por el nombre. Por eso suma una pregunta en tu formulario, tu chat o al cerrar la venta."
      ],
      "lista": [
       "Pregunta: \"¿Cómo nos conociste?\".",
       "Opciones cerradas: Instagram, Google, recomendación, YouTube, otro (con espacio para escribir).",
-      "Si es recomendación: preguntá de quién. Te sirve para agradecer y para ver quién te manda clientes."
+      "Si es recomendación: pregunta de quién. Te sirve para agradecer y para ver quién te manda clientes."
      ]
     },
     {
-     "h": "3. Llevá una planilla",
+     "h": "3. Lleva una planilla",
      "pasos": [
-      "Creá una planilla con estas columnas: Fecha, Cliente (o código), Origen según UTM, Origen según el cliente, Compró (sí/no), Importe.",
-      "Cargá cada consulta nueva, compre o no.",
-      "Cuando compra, actualizá Compró e Importe.",
-      "Si tenés una automatización, que el formulario cargue la fila solo."
+      "Crea una planilla con estas columnas: Fecha, Cliente (o código), Origen según UTM, Origen según el cliente, Compró (sí/no), Importe.",
+      "Carga cada consulta nueva, compre o no.",
+      "Cuando compra, actualiza Compró e Importe.",
+      "Si tienes una automatización, que el formulario cargue la fila solo."
      ]
     },
     {
-     "h": "4. Analizalo con Claude",
+     "h": "4. Analízalo con Claude",
      "p": [
-      "Una vez por mes, exportá la planilla en CSV o Excel y subila a Claude."
+      "Una vez por mes, exporta la planilla en CSV o Excel y súbela a Claude."
      ],
      "prompts": [
       {
        "t": "Análisis de origen de clientes",
-       "c": "Te adjunto mi registro de consultas y clientes de [PERÍODO]. Columnas: fecha, cliente, origen según UTM, origen según el cliente, compró y importe.\n1. Unificá los nombres de origen que sean lo mismo escrito distinto y mostrame qué unificaste.\n2. Por cada origen: cantidad de consultas, cantidad de ventas, porcentaje de conversión e importe total.\n3. Mostrá dónde no coinciden el origen del enlace y el que dijo el cliente.\n4. Decime los 2 canales que más rinden y el que más consultas trae sin convertir.\n5. Sugerí una sola acción concreta para el mes que viene.\nSi hay pocos datos para sacar conclusiones, decímelo en vez de forzarlas."
+       "c": "Te adjunto mi registro de consultas y clientes de [PERÍODO]. Columnas: fecha, cliente, origen según UTM, origen según el cliente, compró y importe.\n1. Unifica los nombres de origen que sean lo mismo escrito distinto y muéstrame qué unificaste.\n2. Por cada origen: cantidad de consultas, cantidad de ventas, porcentaje de conversión e importe total.\n3. Muestra dónde no coinciden el origen del enlace y el que dijo el cliente.\n4. Dime los 2 canales que más rinden y el que más consultas trae sin convertir.\n5. Sugiere una sola acción concreta para el mes que viene.\nSi hay pocos datos para sacar conclusiones, dímelo en vez de forzarlas."
       }
      ]
     }
@@ -791,7 +791,7 @@
     },
     {
      "q": "¿Cuántos datos necesito para sacar conclusiones?",
-     "a": "Con muy pocos casos cualquier conclusión es ruido. Juntá varias semanas antes de cambiar algo importante, y pedile a Claude que te avise si los datos no alcanzan."
+     "a": "Con muy pocos casos cualquier conclusión es ruido. Junta varias semanas antes de cambiar algo importante, y pídele a Claude que te avise si los datos no alcanzan."
     }
    ],
    "fuentes": [
@@ -809,47 +809,47 @@
    "prompts": [
     {
      "t": "Entrevista de diagnóstico",
-     "c": "Quiero entender dónde se me va el tiempo en mi negocio de [RUBRO]. Haceme una entrevista de a una pregunta por vez, hasta 10 preguntas, sobre mis tareas diarias y semanales. Cuando termines, armá una tabla con cada tarea, frecuencia, tiempo estimado y quién la hace."
+     "c": "Quiero entender dónde se me va el tiempo en mi negocio de [RUBRO]. Hazme una entrevista de a una pregunta por vez, hasta 10 preguntas, sobre mis tareas diarias y semanales. Cuando termines, arma una tabla con cada tarea, frecuencia, tiempo estimado y quién la hace."
     },
     {
      "t": "Escribir un proceso",
-     "c": "Te voy a contar cómo hago [TAREA], tal cual me sale: [CONTALO]. Convertilo en un procedimiento paso a paso que entienda alguien nuevo. Marcá con [DECISIÓN] los pasos donde hace falta criterio y con [DATO] los pasos donde se usa información de otro lado. Al final, listá las dudas que te quedaron."
+     "c": "Te voy a contar cómo hago [TAREA], tal cual me sale: [CUÉNTALO]. Conviértelo en un procedimiento paso a paso que entienda alguien nuevo. Marca con [DECISIÓN] los pasos donde hace falta criterio y con [DATO] los pasos donde se usa información de otro lado. Al final, lista las dudas que te quedaron."
     },
     {
      "t": "Encontrar cuellos de botella",
-     "c": "Este es el proceso de [PROCESO] en mi negocio: [PEGÁ EL PASO A PASO]. Decime: 1) en qué pasos se suele frenar o esperar, 2) qué pasos se hacen dos veces, 3) qué pasos dependen de una sola persona. Para cada problema, proponé una mejora que no requiera tecnología y otra que sí."
+     "c": "Este es el proceso de [PROCESO] en mi negocio: [PEGA EL PASO A PASO]. Dime: 1) en qué pasos se suele frenar o esperar, 2) qué pasos se hacen dos veces, 3) qué pasos dependen de una sola persona. Para cada problema, propón una mejora que no requiera tecnología y otra que sí."
     },
     {
      "t": "Priorizar tareas para automatizar",
-     "c": "Esta es mi lista de tareas con horas por semana: [LISTA]. Puntuá cada una del 1 al 5 en: se repite igual, tiempo que consume, bajo riesgo si sale mal, información disponible y proceso escrito. Ordenalas por puntaje total y explicá en una línea cada puntaje. Si te falta información, preguntame."
+     "c": "Esta es mi lista de tareas con horas por semana: [LISTA]. Puntúa cada una del 1 al 5 en: se repite igual, tiempo que consume, bajo riesgo si sale mal, información disponible y proceso escrito. Ordénalas por puntaje total y explica en una línea cada puntaje. Si te falta información, pregúntame."
     }
    ]
   },
   {
    "tema": "Negocio",
    "t": "Propuesta de automatización para un cliente",
-   "d": "Del primer llamado a la propuesta firmada, sin prometer lo que no podés cumplir.",
+   "d": "Del primer llamado a la propuesta firmada, sin prometer lo que no puedes cumplir.",
    "para": "Preparar reuniones, escribir propuestas claras y responder objeciones con datos del cliente.",
    "prompts": [
     {
      "t": "Preparar la reunión de diagnóstico",
-     "c": "Tengo una primera reunión con [TIPO DE NEGOCIO] que quiere automatizar [ÁREA O PROBLEMA]. Armame 12 preguntas para entender: cómo hacen hoy la tarea, cuánto tiempo les lleva, qué herramientas usan, quién decide y qué pasa si no lo resuelven. Ordenalas de lo general a lo específico."
+     "c": "Tengo una primera reunión con [TIPO DE NEGOCIO] que quiere automatizar [ÁREA O PROBLEMA]. Ármame 12 preguntas para entender: cómo hacen hoy la tarea, cuánto tiempo les lleva, qué herramientas usan, quién decide y qué pasa si no lo resuelven. Ordénalas de lo general a lo específico."
     },
     {
      "t": "Resumen de la reunión",
-     "c": "Estas son mis notas de la reunión con el cliente: [PEGÁ NOTAS]. Resumí en: problema principal, cómo lo hacen hoy, números que dieron (marcá cuáles son estimaciones de ellos), herramientas que usan, quién decide y dudas abiertas. No completes nada que no esté en las notas."
+     "c": "Estas son mis notas de la reunión con el cliente: [PEGA NOTAS]. Resume en: problema principal, cómo lo hacen hoy, números que dieron (marca cuáles son estimaciones de ellos), herramientas que usan, quién decide y dudas abiertas. No completes nada que no esté en las notas."
     },
     {
      "t": "Propuesta de una página",
-     "c": "Con este resumen de diagnóstico: [PEGÁ RESUMEN], escribí una propuesta de una página para el cliente con: el problema en sus palabras, la solución en lenguaje simple, qué incluye, qué no incluye, plazos, precio de implementación [PRECIO], mensual [PRECIO] y próximos pasos. Tono directo y profesional. No prometas ahorros ni resultados que no salgan de los números del resumen."
+     "c": "Con este resumen de diagnóstico: [PEGA RESUMEN], escribe una propuesta de una página para el cliente con: el problema en sus palabras, la solución en lenguaje simple, qué incluye, qué no incluye, plazos, precio de implementación [PRECIO], mensual [PRECIO] y próximos pasos. Tono directo y profesional. No prometas ahorros ni resultados que no salgan de los números del resumen."
     },
     {
      "t": "Responder objeciones",
-     "c": "El cliente me respondió esto a la propuesta: [PEGÁ RESPUESTA]. Dame tres formas de contestar: una que defienda el precio con la cuenta del valor, una que achique el alcance y una que proponga una prueba chica. Que cada una sea un mensaje corto, listo para mandar."
+     "c": "El cliente me respondió esto a la propuesta: [PEGA RESPUESTA]. Dame tres formas de contestar: una que defienda el precio con la cuenta del valor, una que achique el alcance y una que proponga una prueba chica. Que cada una sea un mensaje corto, listo para mandar."
     },
     {
      "t": "Documento de entrega",
-     "c": "Terminé esta automatización para el cliente: [DESCRIPCIÓN TÉCNICA]. Escribí un documento de entrega para alguien no técnico: qué hace, cuándo corre, qué hacer si deja de funcionar, a quién avisar y qué cosas no tiene que tocar. Máximo una página."
+     "c": "Terminé esta automatización para el cliente: [DESCRIPCIÓN TÉCNICA]. Escribe un documento de entrega para alguien no técnico: qué hace, cuándo corre, qué hacer si deja de funcionar, a quién avisar y qué cosas no tiene que tocar. Máximo una página."
     }
    ]
   },
@@ -861,19 +861,19 @@
    "prompts": [
     {
      "t": "Revisión de datos",
-     "c": "Te adjunto mi archivo de ventas. Antes de analizar: decime qué columnas hay, qué período cubre, cuántas filas tiene y si ves problemas (fechas raras, importes vacíos, duplicados, nombres de producto escritos distinto). No corrijas nada hasta que te confirme."
+     "c": "Te adjunto mi archivo de ventas. Antes de analizar: dime qué columnas hay, qué período cubre, cuántas filas tiene y si ves problemas (fechas raras, importes vacíos, duplicados, nombres de producto escritos distinto). No corrijas nada hasta que te confirme."
     },
     {
      "t": "Resumen del mes",
-     "c": "Con este archivo de ventas de [MES], dame: ventas totales, cantidad de ventas, ticket promedio, los 5 productos que más venden y la comparación con [MES ANTERIOR] si está en los datos. Mostrá cómo calculaste cada número. Cerrá con tres observaciones en una línea cada una."
+     "c": "Con este archivo de ventas de [MES], dame: ventas totales, cantidad de ventas, ticket promedio, los 5 productos que más venden y la comparación con [MES ANTERIOR] si está en los datos. Muestra cómo calculaste cada número. Cierra con tres observaciones en una línea cada una."
     },
     {
      "t": "Clientes que vuelven",
-     "c": "Con este archivo de ventas, separá clientes nuevos de clientes que ya habían comprado antes. Decime qué parte de las ventas viene de cada grupo y cada cuánto vuelve a comprar, en promedio, un cliente recurrente. Si los datos no alcanzan para afirmarlo, decilo."
+     "c": "Con este archivo de ventas, separa clientes nuevos de clientes que ya habían comprado antes. Dime qué parte de las ventas viene de cada grupo y cada cuánto vuelve a comprar, en promedio, un cliente recurrente. Si los datos no alcanzan para afirmarlo, dilo."
     },
     {
      "t": "Patrones por día y horario",
-     "c": "Con este archivo de ventas, mostrame en qué días de la semana y en qué franjas horarias se vende más. Armá una tabla simple y decime una cosa concreta que podría cambiar en mi negocio a partir de eso. Aclará si hay pocas ventas como para sacar conclusiones."
+     "c": "Con este archivo de ventas, muéstrame en qué días de la semana y en qué franjas horarias se vende más. Arma una tabla simple y dime una cosa concreta que podría cambiar en mi negocio a partir de eso. Aclara si hay pocas ventas como para sacar conclusiones."
     }
    ]
   },
@@ -885,23 +885,23 @@
    "prompts": [
     {
      "t": "Borrador de políticas",
-     "c": "Tengo un negocio de [RUBRO]. Así manejo hoy estos temas, aunque no esté escrito: cambios y devoluciones: [CÓMO]; cancelaciones: [CÓMO]; demoras: [CÓMO]; medios de pago: [CÓMO]. Escribí cada política en lenguaje claro, con lo que sí se puede, lo que no y quién puede autorizar una excepción. Marcá con [REVISAR] lo que te parezca ambiguo."
+     "c": "Tengo un negocio de [RUBRO]. Así manejo hoy estos temas, aunque no esté escrito: cambios y devoluciones: [CÓMO]; cancelaciones: [CÓMO]; demoras: [CÓMO]; medios de pago: [CÓMO]. Escribe cada política en lenguaje claro, con lo que sí se puede, lo que no y quién puede autorizar una excepción. Marca con [REVISAR] lo que te parezca ambiguo."
     },
     {
      "t": "Preguntas frecuentes desde mensajes reales",
-     "c": "Te pego mensajes reales de clientes, sin datos personales: [PEGÁ MENSAJES]. Agrupalos por tema, decime cuáles son las 10 preguntas más repetidas y escribí una respuesta corta para cada una basada en estas políticas: [PEGÁ POLÍTICAS]. Si una pregunta no se puede responder con las políticas, marcala aparte."
+     "c": "Te pego mensajes reales de clientes, sin datos personales: [PEGA MENSAJES]. Agrúpalos por tema, dime cuáles son las 10 preguntas más repetidas y escribe una respuesta corta para cada una basada en estas políticas: [PEGA POLÍTICAS]. Si una pregunta no se puede responder con las políticas, márcala aparte."
     },
     {
      "t": "Guía de tono",
-     "c": "Estos son tres mensajes que mandé a clientes y me gustaron: [PEGÁ EJEMPLOS]. Armá una guía de tono de 6 reglas, con un ejemplo de frase que sí y otra que no para cada regla. Que la pueda usar alguien nuevo en el equipo o un asistente de IA."
+     "c": "Estos son tres mensajes que mandé a clientes y me gustaron: [PEGA EJEMPLOS]. Arma una guía de tono de 6 reglas, con un ejemplo de frase que sí y otra que no para cada regla. Que la pueda usar alguien nuevo en el equipo o un asistente de IA."
     },
     {
      "t": "Cuándo derivar a una persona",
-     "c": "Estas son mis políticas de atención: [PEGÁ POLÍTICAS]. Hacé una lista de situaciones en las que un asistente automático o un empleado nuevo tiene que derivar a [NOMBRE O PUESTO] en vez de responder solo. Incluí reclamos de dinero, excepciones, clientes enojados y cualquier otra que se desprenda de las políticas."
+     "c": "Estas son mis políticas de atención: [PEGA POLÍTICAS]. Haz una lista de situaciones en las que un asistente automático o un empleado nuevo tiene que derivar a [NOMBRE O PUESTO] en vez de responder solo. Incluye reclamos de dinero, excepciones, clientes enojados y cualquier otra que se desprenda de las políticas."
     },
     {
      "t": "Prueba de estrés",
-     "c": "Actuá como un cliente difícil de mi negocio de [RUBRO]. Con estas políticas: [PEGÁ POLÍTICAS], haceme 8 preguntas o reclamos que pongan a prueba los huecos de las reglas, de a uno por vez. Después de cada respuesta mía, decime si fue coherente con las políticas y qué agregarías."
+     "c": "Actúa como un cliente difícil de mi negocio de [RUBRO]. Con estas políticas: [PEGA POLÍTICAS], hazme 8 preguntas o reclamos que pongan a prueba los huecos de las reglas, de a uno por vez. Después de cada respuesta mía, dime si fue coherente con las políticas y qué agregarías."
     }
    ]
   }
@@ -920,7 +920,7 @@
     },
     {
      "donde": "App de Claude",
-     "c": "Pedile a Claude que conecte Zapier, tocá Connect en la tarjeta de Zapier y autorizá el acceso."
+     "c": "Pídele a Claude que conecte Zapier, toca Connect en la tarjeta de Zapier y autoriza el acceso."
     }
    ],
    "url": "https://docs.zapier.com/mcp/get-started/connect/claude-code",
@@ -932,7 +932,7 @@
    "tipo": "MCP",
    "t": "Make MCP",
    "d": "El servidor MCP oficial de Make: Claude puede ver y ejecutar tus escenarios activos con programación \"bajo demanda\" y, en planes pagos, administrar tu cuenta.",
-   "para": "Usar tus escenarios de Make como herramientas que Claude dispara cuando se lo pedís.",
+   "para": "Usar tus escenarios de Make como herramientas que Claude dispara cuando se lo pides.",
    "cmds": [
     {
      "donde": "Terminal",
@@ -940,7 +940,7 @@
     },
     {
      "donde": "App de Claude",
-     "c": "Personalizar → Conectores → Descubrir → buscá Make → + → elegí la organización y los permisos → Permitir."
+     "c": "Personalizar → Conectores → Descubrir → busca Make → + → elige la organización y los permisos → Permitir."
     }
    ],
    "url": "https://help.make.com/make-mcp-server",
@@ -951,7 +951,7 @@
    "cat": "MCP",
    "tipo": "MCP",
    "t": "n8n MCP (a nivel instancia)",
-   "d": "El servidor MCP que trae n8n: le da a Claude acceso a los workflows que habilites para MCP en tu instancia, en la nube o instalada por vos.",
+   "d": "El servidor MCP que trae n8n: le da a Claude acceso a los workflows que habilites para MCP en tu instancia, en la nube o instalada por ti.",
    "para": "Que Claude busque y ejecute tus workflows de n8n desde el chat o desde Claude Code.",
    "cmds": [
     {
@@ -964,7 +964,7 @@
     },
     {
      "donde": "App de Claude",
-     "c": "Configuración → Conectores → Agregar conector personalizado → pegá la Server URL que te da n8n en Settings → Instance-level MCP → Connect a client."
+     "c": "Configuración → Conectores → Agregar conector personalizado → pega la Server URL que te da n8n en Settings → Instance-level MCP → Connect a client."
     }
    ],
    "url": "https://docs.n8n.io/connect/connect-to-n8n-mcp-server",

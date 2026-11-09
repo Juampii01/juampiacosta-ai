@@ -6,21 +6,21 @@
 (function () {
   "use strict";
 
-  var BLOQUES = { 1: "Sobre vos", 2: "Tu meta", 3: "Para contactarte" };
+  var BLOQUES = { 1: "Sobre ti", 2: "Tu meta", 3: "Para contactarte" };
   var PREGUNTAS = [
-    { id: "situacion", b: 1, tipo: "lista", q: "¿En qué andás hoy?", ops: [
+    { id: "situacion", b: 1, tipo: "lista", q: "¿En qué andas hoy?", ops: [
       ["Tengo un negocio", "🏢"], ["Trabajo en una empresa", "💼"], ["Freelancer o agencia", "🧾"],
       ["Quiero vender IA a empresas", "🚀"], ["Estudiante", "🎓"], ["Otro", "✨"]] },
     { id: "rubro", b: 1, tipo: "texto", q: "¿De qué rubro?", sub: "Así te muestro ejemplos que te sirvan.",
       ph: "Inmobiliaria, estética, contable, gastronomía…", opcional: true },
-    { id: "nivel", b: 1, tipo: "lista", q: "¿Cómo usás la IA hoy?", ops: [
+    { id: "nivel", b: 1, tipo: "lista", q: "¿Cómo usas la IA hoy?", ops: [
       ["Nunca usé IA", "🌱"], ["Uso ChatGPT o Claude a veces", "💬"], ["La uso todos los días", "⚡"], ["Ya armo automatizaciones o agentes", "⚙️"]] },
-    { id: "objetivo", b: 2, tipo: "lista", q: "¿Qué querés lograr con la IA?", ops: [
+    { id: "objetivo", b: 2, tipo: "lista", q: "¿Qué quieres lograr con la IA?", ops: [
       ["Ahorrar tiempo en mi negocio", "⏱️"], ["Vender servicios de IA", "💵"], ["Conseguir trabajo con IA", "🎯"],
       ["Aprender", "📚"], ["Que me lo instalen en mi negocio", "🛠️"]] },
     { id: "foco", b: 2, tipo: "lista", q: "¿Qué te gustaría resolver primero con IA?", sub: "Con esto te armo tu sección de recomendados.", ops: [
       ["Atención y WhatsApp", "💬"], ["Contenido y redes", "🎬"], ["Ventas y seguimiento", "🤝"], ["Administración y planillas", "📊"], ["Crear apps o webs", "💻"]] },
-    { id: "inversion", b: 2, tipo: "lista", q: "Si encontrás lo que necesitás, ¿estás para invertir?", ops: [
+    { id: "inversion", b: 2, tipo: "lista", q: "Si encuentras lo que necesitas, ¿estás para invertir?", ops: [
       ["Sí, ahora", "✅"], ["En los próximos meses", "📅"], ["Por ahora solo lo gratis", "🎁"]] },
     { id: "pais", b: 3, tipo: "paises", q: "¿Desde dónde me escribís?", ops: [
       ["Argentina", "🇦🇷", "+54 9"], ["México", "🇲🇽", "+52"], ["Colombia", "🇨🇴", "+57"], ["Chile", "🇨🇱", "+56"],
@@ -255,7 +255,7 @@
     if (!w) {
       Sfx.error();
       $("#bv-tel").classList.remove("mal"); void $("#bv-tel").offsetWidth; $("#bv-tel").classList.add("mal");
-      $("#bv-err").textContent = "Revisá el número: tiene que quedar como +54 9 11 2345 6789 (código de país + área + número).";
+      $("#bv-err").textContent = "Revisa el número: tiene que quedar como +54 9 11 2345 6789 (código de país + área + número).";
       $("#bv-tel").focus();
       return;
     }
@@ -284,8 +284,8 @@
     el.cuerpo.innerHTML = '<div class="bv-espera"><span class="bv-icono" aria-hidden="true">🎉</span><p class="bv-ceja">Perfil completo</p>' +
       '<h2 class="bv-tit" tabindex="-1">¡Listo' + (nombre ? ", " + esc(nombre) : "") + '! Ya sé qué te sirve</h2>' +
       (ruta ? '<div class="bv-ruta"><small>Tu ruta recomendada · ' + ruta.pasos.length + ' pasos</small><b>' + esc(ruta.t) + '</b><span>' + esc(ruta.d) + '</span></div>' : '') +
-      (instalar ? '<a class="bv-extra" href="' + dm + '" target="_blank" rel="noopener"><span class="e">🛠️</span><span><b>¿Querés que te lo instale yo?</b><br>Escribime «INSTALAR» por Instagram y vemos tu caso.</span></a>' : '') +
-      (enGuia ? '<p class="bv-texto">Con esto te armé tu sección <b>Recomendados para vos</b> en la biblioteca.</p>' : '<p class="bv-texto">Y te armé arriba de todo tu sección <b>Recomendados para vos</b>' + (window.recomendar ? ', con ' + recomendar(st.resp).length + ' guías elegidas para lo tuyo' : '') + '.</p>') +
+      (instalar ? '<a class="bv-extra" href="' + dm + '" target="_blank" rel="noopener"><span class="e">🛠️</span><span><b>¿Quieres que te lo instale yo?</b><br>Escríbeme «INSTALAR» por Instagram y vemos tu caso.</span></a>' : '') +
+      (enGuia ? '<p class="bv-texto">Con esto te armé tu sección <b>Recomendados para ti</b> en la biblioteca.</p>' : '<p class="bv-texto">Y te armé arriba de todo tu sección <b>Recomendados para ti</b>' + (window.recomendar ? ', con ' + recomendar(st.resp).length + ' guías elegidas para lo tuyo' : '') + '.</p>') +
       (enGuia ? '<button class="bv-ok" type="button" id="bv-ir">Seguir con la guía →</button><a class="bv-saltar" href="/recursos#inicio">Ver mis recomendados</a></div>'
         : '<button class="bv-ok" type="button" id="bv-ir">Ver mis recomendados →</button></div>');
     enfocar(".bv-tit");
@@ -326,7 +326,7 @@
   function abrir() {
     el.raiz = document.createElement("div");
     el.raiz.className = "bv";
-    el.raiz.setAttribute("role", "dialog"); el.raiz.setAttribute("aria-modal", "true"); el.raiz.setAttribute("aria-label", "Contame de vos");
+    el.raiz.setAttribute("role", "dialog"); el.raiz.setAttribute("aria-modal", "true"); el.raiz.setAttribute("aria-label", "Cuéntame de ti");
     el.raiz.innerHTML = '<div class="bv-card"><div class="bv-top"><button class="bv-btn-ic" type="button" id="bv-atras" aria-label="Pregunta anterior">' + ICONO.atras + '</button>' +
       '<div class="bv-segs" aria-hidden="true"><span class="bv-seg"><i></i></span><span class="bv-seg"><i></i></span><span class="bv-seg"><i></i></span></div>' +
       '<button class="bv-btn-ic" type="button" id="bv-sonido"></button></div><div id="bv-cuerpo" aria-live="polite"></div></div>';
@@ -350,7 +350,7 @@
       navigator.sendBeacon("/api/perfil", new Blob([JSON.stringify(datosHasta(PREGUNTAS.length))], { type: "application/json" }));
     });
 
-    pantallaEspera({ emoji: "🎁", ceja: "Biblioteca abierta", tit: "¡Entraste" + (nombre ? ", " + nombre : "") + "! Ahora contame de vos",
+    pantallaEspera({ emoji: "🎁", ceja: "Biblioteca abierta", tit: "¡Entraste" + (nombre ? ", " + nombre : "") + "! Ahora cuéntame de ti",
       texto: "Son 8 preguntas rápidas y te armo tu sección de recomendados.", ms: 1600 });
     st.timer = setTimeout(function () { st.timer = 0; st.etapa = "preg"; Sfx.avanzar(); pintar(); }, 1600);
   }

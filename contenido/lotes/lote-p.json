@@ -16,12 +16,12 @@
      "Cualquiera que use Claude Code, programe o no."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Claude Code instalado y tu proyecto guardado con git."
     ],
     [
      "Qué no hace",
-     "No reemplaza tu revisión: vos decidís qué se guarda."
+     "No reemplaza tu revisión: tú decidís qué se guarda."
     ]
    ],
    "fichaNombre": "El flujo",
@@ -29,12 +29,12 @@
     {
      "h": "Por qué un orden fijo",
      "p": [
-      "Si dejás que Claude salte directo al código, puede construir algo prolijo que resuelve otra cosa. La documentación oficial lo dice así: separá investigar y planificar de construir.",
+      "Si dejas que Claude salte directo al código, puede construir algo prolijo que resuelve otra cosa. La documentación oficial lo dice así: separa investigar y planificar de construir.",
       "En Reddit y Hacker News pasa lo mismo. El hilo con los consejos de Boris, del equipo de Claude Code, y el de un dev senior con seis meses de uso diario arrancan igual: plan primero, después código, y una forma de comprobar que funciona."
      ],
      "lista": [
       "Explorar: Claude lee y te explica, sin tocar nada.",
-      "Planificar: escribe un plan que vos corregís.",
+      "Planificar: escribe un plan que tú corregís.",
       "Construir: de a un paso, con una prueba que Claude pueda correr.",
       "Revisar: con ojos frescos, no los mismos que escribieron el código.",
       "Guardar: un commit con un mensaje claro y la sesión cerrada."
@@ -43,53 +43,53 @@
     {
      "h": "1. Explorar sin tocar nada",
      "p": [
-      "Entrá en modo plan: ahí Claude lee archivos y responde, pero no cambia nada."
+      "Entra en modo plan: ahí Claude lee archivos y responde, pero no cambia nada."
      ],
      "pasos": [
-      "Apretá Shift+Tab hasta que la barra de estado diga plan mode on. También podés arrancar con claude --permission-mode plan o escribir /plan seguido de la tarea.",
-      "Pedile que lea la parte del proyecto que vas a tocar y que te la explique.",
-      "Si la investigación es grande, pedile que use subagentes: leen aparte y te traen un resumen, así tu conversación no se llena."
+      "Aprieta Shift+Tab hasta que la barra de estado diga plan mode on. También puedes arrancar con claude --permission-mode plan o escribir /plan seguido de la tarea.",
+      "Pídele que lea la parte del proyecto que vas a tocar y que te la explique.",
+      "Si la investigación es grande, pídele que use subagentes: leen aparte y te traen un resumen, así tu conversación no se llena."
      ],
      "prompts": [
       {
        "t": "Explorar antes de tocar",
-       "c": "Leé [CARPETA O ARCHIVOS] y explicame cómo funciona [LA PARTE QUE QUIERO CAMBIAR].\nDecime qué archivos intervienen y qué podría romperse si lo cambio.\nNo modifiques nada todavía. Si necesitás leer mucho, usá subagentes y traeme solo el resumen."
+       "c": "Lee [CARPETA O ARCHIVOS] y explícame cómo funciona [LA PARTE QUE QUIERO CAMBIAR].\nDime qué archivos intervienen y qué podría romperse si lo cambio.\nNo modifiques nada todavía. Si necesitas leer mucho, usa subagentes y tráeme solo el resumen."
       }
      ]
     },
     {
      "h": "2. Planificar y corregir el plan",
      "p": [
-      "Con lo que leyó, pedile un plan. Apretá Ctrl+G para abrirlo en tu editor y corregirlo vos antes de que Claude avance.",
-      "Si a mitad de camino algo se tuerce, no empujes: volvé a modo plan y replanificá. Es de los consejos más repetidos en los hilos."
+      "Con lo que leyó, pídele un plan. Aprieta Ctrl+G para abrirlo en tu editor y corregirlo tú antes de que Claude avance.",
+      "Si a mitad de camino algo se tuerce, no empujes: vuelve a modo plan y replanifica. Es de los consejos más repetidos en los hilos."
      ],
      "prompts": [
       {
        "t": "Pedir el plan",
-       "c": "Quiero [LO QUE QUERÉS LOGRAR].\nArmame un plan por pasos chicos: qué archivos cambian, en qué orden y cómo vamos a comprobar cada paso.\nAl final, listá lo que queda afuera de esta tarea y las dudas que tengas."
+       "c": "Quiero [LO QUE QUIERES LOGRAR].\nÁrmame un plan por pasos chicos: qué archivos cambian, en qué orden y cómo vamos a comprobar cada paso.\nAl final, lista lo que queda afuera de esta tarea y las dudas que tengas."
       },
       {
        "t": "Para algo grande: que te entreviste",
-       "c": "Quiero construir [DESCRIPCIÓN CORTA]. Entrevistame en detalle con la herramienta AskUserQuestion.\nPreguntame por cómo funciona, cómo se ve, casos raros y lo que me preocupa. No me hagas preguntas obvias: andá a lo difícil.\nCuando tengamos todo, escribí el spec completo en SPEC.md."
+       "c": "Quiero construir [DESCRIPCIÓN CORTA]. Entrevístame en detalle con la herramienta AskUserQuestion.\nPregúntame por cómo funciona, cómo se ve, casos raros y lo que me preocupa. No me hagas preguntas obvias: ve a lo difícil.\nCuando tengamos todo, escribe el spec completo en SPEC.md."
       }
      ],
-     "aviso": "El plan también cuesta. Si podés describir el cambio en una frase (un typo, un texto, renombrar algo), pedilo directo y salteá este paso."
+     "aviso": "El plan también cuesta. Si puedes describir el cambio en una frase (un typo, un texto, renombrar algo), pídelo directo y saltea este paso."
     },
     {
      "h": "3. Construir de a un paso, con una prueba",
      "p": [
-      "Pedí solo el primer paso del plan, miralo y recién ahí el siguiente. En los hilos se repite: pedir toda la función de una vez tiende a desviarse.",
-      "Lo que más recomienda la documentación es darle a Claude algo que diga si anduvo o no: tests, un build, una captura para comparar. Sin eso, el control sos vos."
+      "Pide solo el primer paso del plan, míralo y recién ahí el siguiente. En los hilos se repite: pedir toda la función de una vez tiende a desviarse.",
+      "Lo que más recomienda la documentación es darle a Claude algo que diga si anduvo o no: tests, un build, una captura para comparar. Sin eso, el control eres tú."
      ],
      "prompts": [
       {
        "t": "Un paso, con prueba",
-       "c": "Implementá solo el paso [NÚMERO] del plan.\nDespués corré [COMANDO DE PRUEBA, EJ.: npm test] y mostrame la salida tal cual.\nSi falla, buscá la causa de fondo. No apagues el error ni cambies la prueba para que pase."
+       "c": "Implementa solo el paso [NÚMERO] del plan.\nDespués corre [COMANDO DE PRUEBA, EJ.: npm test] y muéstrame la salida tal cual.\nSi falla, busca la causa de fondo. No apagues el error ni cambies la prueba para que pase."
       }
      ],
      "lista": [
       "Esc: frena a Claude en el momento y conserva lo hablado, para que lo redirijas.",
-      "Esc dos veces o /rewind: volvés a un punto anterior de la conversación, del código o de los dos.",
+      "Esc dos veces o /rewind: vuelves a un punto anterior de la conversación, del código o de los dos.",
       "Después de dos correcciones fallidas sobre lo mismo: /clear y un pedido nuevo con lo que aprendiste."
      ]
     },
@@ -102,27 +102,27 @@
      "prompts": [
       {
        "t": "Revisión contra el plan",
-       "c": "Usá un subagente para revisar el cambio contra [PLAN.md O SPEC.md].\nQue chequee que cada punto del plan esté hecho, que los casos raros tengan prueba y que no se haya tocado nada fuera de la tarea.\nReportá solo lo que afecta que funcione bien o lo que pedí. Los gustos de estilo, aparte y como opcionales."
+       "c": "Usa un subagente para revisar el cambio contra [PLAN.md O SPEC.md].\nQue chequee que cada punto del plan esté hecho, que los casos raros tengan prueba y que no se haya tocado nada fuera de la tarea.\nReporta solo lo que afecta que funcione bien o lo que pedí. Los gustos de estilo, aparte y como opcionales."
       },
       {
-       "t": "Tomame examen",
-       "c": "Antes de guardar esto, haceme 5 preguntas sobre el cambio que hiciste: qué hace, por qué así y qué pasa en los casos raros. Corregime si respondo mal."
+       "t": "Tómame examen",
+       "c": "Antes de guardar esto, hazme 5 preguntas sobre el cambio que hiciste: qué hace, por qué así y qué pasa en los casos raros. Corrígeme si respondo mal."
       }
      ],
-     "aviso": "Un revisor al que le pedís problemas siempre encuentra alguno. Si corregís todo, terminás con código más complicado. Quedate con lo que afecta que funcione."
+     "aviso": "Un revisor al que le pides problemas siempre encuentra alguno. Si corregís todo, terminas con código más complicado. Quédate con lo que afecta que funcione."
     },
     {
      "h": "5. Guardar y cerrar",
      "pasos": [
-      "Pedile que haga el commit con un mensaje que explique el cambio y, si usás GitHub, que abra el pull request.",
-      "Hacé una mini retro: preguntale qué aprendió del proyecto en esta sesión y pasá a tu CLAUDE.md solo lo que evita un error repetido.",
-      "Usá /clear antes de empezar otra tarea que no tenga nada que ver.",
-      "Si la tarea sigue mañana, ponele nombre a la sesión con /rename y retomala con claude --continue o claude --resume."
+      "Pídele que haga el commit con un mensaje que explique el cambio y, si usas GitHub, que abra el pull request.",
+      "Haz una mini retro: pregúntale qué aprendió del proyecto en esta sesión y pasa a tu CLAUDE.md solo lo que evita un error repetido.",
+      "Usa /clear antes de empezar otra tarea que no tenga nada que ver.",
+      "Si la tarea sigue mañana, ponle nombre a la sesión con /rename y retómala con claude --continue o claude --resume."
      ],
      "prompts": [
       {
        "t": "Cierre de sesión",
-       "c": "Hacé el commit de estos cambios con un mensaje claro en español.\nDespués decime en 3 líneas qué aprendiste de este proyecto hoy que te habría ahorrado un error. Proponé cuál de esas cosas sumar al CLAUDE.md, sin escribirlo todavía."
+       "c": "Haz el commit de estos cambios con un mensaje claro en español.\nDespués dime en 3 líneas qué aprendiste de este proyecto hoy que te habría ahorrado un error. Propón cuál de esas cosas sumar al CLAUDE.md, sin escribirlo todavía."
       }
      ]
     }
@@ -130,15 +130,15 @@
    "faq": [
     {
      "q": "¿Tengo que usar modo plan siempre?",
-     "a": "No. La documentación lo recomienda cuando no tenés claro el enfoque, cuando el cambio toca varios archivos o cuando no conocés el código. Para un cambio que se explica en una frase, pedilo directo."
+     "a": "No. La documentación lo recomienda cuando no tienes claro el enfoque, cuando el cambio toca varios archivos o cuando no conoces el código. Para un cambio que se explica en una frase, pídelo directo."
     },
     {
      "q": "No sé programar. ¿Cómo reviso lo que hizo?",
-     "a": "Pedile evidencia: la salida de las pruebas, el comando que corrió o una captura. Pedile también que te explique el cambio con palabras simples y que te tome examen. Si no lo entendés, todavía no está listo para guardar."
+     "a": "Pídele evidencia: la salida de las pruebas, el comando que corrió o una captura. Pídele también que te explique el cambio con palabras simples y que te tome examen. Si no lo entiendes, todavía no está listo para guardar."
     },
     {
      "q": "Claude se va por las ramas. ¿Qué hago?",
-     "a": "Frenalo con Esc apenas lo notes. Si ya lo corregiste dos veces y sigue igual, usá /clear y empezá con un pedido más preciso: una sesión limpia rinde más que una larga llena de correcciones."
+     "a": "Frénalo con Esc apenas lo notes. Si ya lo corregiste dos veces y sigue igual, usa /clear y empieza con un pedido más preciso: una sesión limpia rinde más que una larga llena de correcciones."
     }
    ],
    "fuentes": [
@@ -168,12 +168,12 @@
      "Quien ya tiene un CLAUDE.md y siente que Claude lo ignora, o quiere arrancar con uno bueno."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Claude Code y una carpeta de proyecto."
     ],
     [
      "Qué no hace",
-     "No obliga a Claude: es contexto. Para bloquear algo, usá un hook."
+     "No obliga a Claude: es contexto. Para bloquear algo, usa un hook."
     ]
    ],
    "fichaNombre": "CLAUDE.md",
@@ -182,35 +182,35 @@
      "h": "La regla que repiten todos: corto",
      "p": [
       "Es el consejo más repetido en Reddit y en Hacker News. Un CLAUDE.md largo hace que las reglas importantes se pierdan entre las demás. Un usuario contó que recortarlo a las decisiones clave mejoró cuánto le hacía caso Claude.",
-      "La documentación pone el número: menos de 200 líneas por archivo. Y propone una prueba para cada línea: si la sacás, ¿Claude se equivocaría? Si la respuesta es no, sacala."
+      "La documentación pone el número: menos de 200 líneas por archivo. Y propone una prueba para cada línea: si la sacas, ¿Claude se equivocaría? Si la respuesta es no, sácala."
      ],
      "lista": [
       "Sí va: comandos que Claude no puede adivinar, reglas de estilo que no son las de siempre, cómo correr las pruebas, convenciones de ramas, decisiones propias del proyecto, cosas raras del entorno.",
-      "No va: lo que Claude descubre leyendo el código, reglas que ya sabe, documentación larga (mejor un link), lo que cambia seguido, descripciones archivo por archivo, frases como \"escribí código limpio\"."
+      "No va: lo que Claude descubre leyendo el código, reglas que ya sabe, documentación larga (mejor un link), lo que cambia seguido, descripciones archivo por archivo, frases como \"escribe código limpio\"."
      ]
     },
     {
      "h": "Plantilla para un proyecto con código",
      "p": [
-      "Arrancá con /init para que Claude arme un primer borrador mirando tu proyecto. Después ajustalo con esta estructura y borrá lo que no aplique."
+      "Arranca con /init para que Claude arme un primer borrador mirando tu proyecto. Después ajústalo con esta estructura y borra lo que no aplique."
      ],
      "prompts": [
       {
        "t": "CLAUDE.md para una app o web",
-       "c": "# Proyecto\n[QUÉ ES, EN UNA LÍNEA. EJ.: TIENDA ONLINE DE ROPA HECHA CON NEXT.JS Y SUPABASE]\n\n# Comandos\n- Instalar: [EJ.: npm install]\n- Levantar en local: [EJ.: npm run dev]\n- Probar: [EJ.: npm test] (preferí correr una sola prueba, no todas)\n- Revisar tipos: [EJ.: npm run typecheck] al terminar una serie de cambios\n\n# Reglas de código\n- [SOLO LAS QUE NO SON LAS DE SIEMPRE. EJ.: componentes en src/components, uno por archivo]\n- [EJ.: textos de la interfaz en español rioplatense, con voseo]\n\n# Flujo de trabajo\n- Ramas: [EJ.: feature/nombre-corto]\n- Antes de hacer commit: correr las pruebas\n- IMPORTANTE: nunca tocar [EJ.: la carpeta supabase/migrations] sin preguntarme\n\n# Cosas raras de este proyecto\n- [EJ.: el .env.local tiene que existir para que levante; pedime los valores]\n- [EJ.: la API de pagos tarda en responder en modo prueba, no es un error]"
+       "c": "# Proyecto\n[QUÉ ES, EN UNA LÍNEA. EJ.: TIENDA ONLINE DE ROPA HECHA CON NEXT.JS Y SUPABASE]\n\n# Comandos\n- Instalar: [EJ.: npm install]\n- Levantar en local: [EJ.: npm run dev]\n- Probar: [EJ.: npm test] (prefiere correr una sola prueba, no todas)\n- Revisar tipos: [EJ.: npm run typecheck] al terminar una serie de cambios\n\n# Reglas de código\n- [SOLO LAS QUE NO SON LAS DE SIEMPRE. EJ.: componentes en src/components, uno por archivo]\n- [EJ.: textos de la interfaz en español rioplatense, con voseo]\n\n# Flujo de trabajo\n- Ramas: [EJ.: feature/nombre-corto]\n- Antes de hacer commit: correr las pruebas\n- IMPORTANTE: nunca tocar [EJ.: la carpeta supabase/migrations] sin preguntarme\n\n# Cosas raras de este proyecto\n- [EJ.: el .env.local tiene que existir para que levante; pídeme los valores]\n- [EJ.: la API de pagos tarda en responder en modo prueba, no es un error]"
       }
      ],
-     "aviso": "Usá IMPORTANTE en una sola línea, la que más te importa. Si marcás muchas, ninguna se destaca."
+     "aviso": "Usa IMPORTANTE en una sola línea, la que más te importa. Si marcas muchas, ninguna se destaca."
     },
     {
      "h": "Plantilla para un negocio sin código",
      "p": [
-      "Claude Code también sirve para carpetas de documentos: propuestas, contenido, presupuestos. El CLAUDE.md le dice quién sos y dónde está cada cosa. La arroba con una ruta importa ese archivo."
+      "Claude Code también sirve para carpetas de documentos: propuestas, contenido, presupuestos. El CLAUDE.md le dice quién eres y dónde está cada cosa. La arroba con una ruta importa ese archivo."
      ],
      "prompts": [
       {
        "t": "CLAUDE.md para una carpeta de negocio",
-       "c": "# De qué se trata esta carpeta\n[EJ.: CONTENIDO Y PROPUESTAS DE MI ESTUDIO DE DISEÑO]\n\n# Quién soy y a quién le hablo\n- [TU NEGOCIO EN UNA LÍNEA]\n- Cliente ideal: [A QUIÉN LE VENDÉS]\n\n# Cómo escribo\n- Español rioplatense, con voseo. Frases cortas.\n- Sin promesas exageradas ni números que no estén en mis archivos.\n- Ejemplos de mi voz: @voz/ejemplos.md\n\n# Dónde está cada cosa\n- Precios vigentes: @precios.md\n- Propuestas viejas para usar de modelo: carpeta propuestas/\n\n# Reglas\n- IMPORTANTE: no borres ni sobrescribas archivos de la carpeta clientes/. Creá una copia nueva.\n- Antes de entregar un texto, revisalo contra voz/ejemplos.md."
+       "c": "# De qué se trata esta carpeta\n[EJ.: CONTENIDO Y PROPUESTAS DE MI ESTUDIO DE DISEÑO]\n\n# Quién soy y a quién le hablo\n- [TU NEGOCIO EN UNA LÍNEA]\n- Cliente ideal: [A QUIÉN LE VENDES]\n\n# Cómo escribo\n- Español rioplatense, con voseo. Frases cortas.\n- Sin promesas exageradas ni números que no estén en mis archivos.\n- Ejemplos de mi voz: @voz/ejemplos.md\n\n# Dónde está cada cosa\n- Precios vigentes: @precios.md\n- Propuestas viejas para usar de modelo: carpeta propuestas/\n\n# Reglas\n- IMPORTANTE: no borres ni sobrescribas archivos de la carpeta clientes/. Crea una copia nueva.\n- Antes de entregar un texto, revísalo contra voz/ejemplos.md."
       }
      ]
     },
@@ -222,11 +222,11 @@
      "prompts": [
       {
        "t": "Después de un error",
-       "c": "Te equivocaste en [QUÉ PASÓ]. Proponé una regla de una línea para el CLAUDE.md que evite que vuelva a pasar. Que sea concreta y verificable, por ejemplo \"Corré npm test antes de hacer commit\" y no \"probá tus cambios\". Mostrámela antes de agregarla."
+       "c": "Te equivocaste en [QUÉ PASÓ]. Propón una regla de una línea para el CLAUDE.md que evite que vuelva a pasar. Que sea concreta y verificable, por ejemplo \"Corre npm test antes de hacer commit\" y no \"prueba tus cambios\". Muéstramela antes de agregarla."
       },
       {
        "t": "Poda mensual",
-       "c": "Leé el CLAUDE.md de este proyecto. Marcá las líneas que podés deducir leyendo el código, las que se contradicen y las que ya no aplican. Proponé una versión más corta. No cambies nada hasta que te diga."
+       "c": "Lee el CLAUDE.md de este proyecto. Marca las líneas que puedes deducir leyendo el código, las que se contradicen y las que ya no aplican. Propón una versión más corta. No cambies nada hasta que te diga."
       }
      ],
      "lista": [
@@ -236,9 +236,9 @@
      ]
     },
     {
-     "h": "Partilo cuando crece",
+     "h": "Pártelo cuando crece",
      "lista": [
-      "Imports: escribí @ruta/al/archivo.md y ese archivo se carga junto al CLAUDE.md. Ordena, pero no ahorra: lo importado también ocupa lugar.",
+      "Imports: escribe @ruta/al/archivo.md y ese archivo se carga junto al CLAUDE.md. Ordena, pero no ahorra: lo importado también ocupa lugar.",
       "Reglas por tema: archivos .md en .claude/rules/. Con paths en el encabezado, la regla carga solo cuando Claude toca esos archivos.",
       "Lo personal: CLAUDE.local.md en la raíz, sumado al .gitignore. Para todos tus proyectos: ~/.claude/CLAUDE.md.",
       "Notas para humanos: los comentarios HTML (<!-- así -->) se borran antes de llegar a Claude, así que no gastan contexto.",
@@ -247,16 +247,16 @@
      "prompts": [
       {
        "t": "Ejemplo de regla por carpeta (.claude/rules/api.md)",
-       "c": "---\npaths:\n  - \"src/api/**/*.ts\"\n---\n\n# Reglas para la API\n- Todo endpoint valida lo que recibe\n- Usá el formato de error estándar del proyecto"
+       "c": "---\npaths:\n  - \"src/api/**/*.ts\"\n---\n\n# Reglas para la API\n- Todo endpoint valida lo que recibe\n- Usa el formato de error estándar del proyecto"
       }
      ]
     },
     {
      "h": "Errores comunes",
      "lista": [
-      "Copiar el de otro sin leerlo: en los hilos avisan que puede haber archivos con instrucciones maliciosas. Usalo de modelo y escribí el tuyo.",
+      "Copiar el de otro sin leerlo: en los hilos avisan que puede haber archivos con instrucciones maliciosas. Úsalo de modelo y escribe el tuyo.",
       "Usarlo para prohibir: el CLAUDE.md es contexto, no una cerradura. Si algo no puede pasar nunca, va en un hook.",
-      "Meter procedimientos largos: si es una receta de muchos pasos o solo sirve a veces, convertila en skill. Carga solo cuando hace falta.",
+      "Meter procedimientos largos: si es una receta de muchos pasos o solo sirve a veces, conviértela en skill. Carga solo cuando hace falta.",
       "Reglas que se contradicen: si dos dicen cosas opuestas, Claude puede elegir cualquiera."
      ]
     }
@@ -264,7 +264,7 @@
    "faq": [
     {
      "q": "Claude ignora mi CLAUDE.md. ¿Por qué?",
-     "a": "Primero corré /context y fijate si aparece en Memory files. Si cargó y lo ignora, la doc dice que probablemente es muy largo y la regla se pierde, o que está escrita de forma ambigua. Acortalo y escribí reglas concretas."
+     "a": "Primero corre /context y fíjate si aparece en Memory files. Si cargó y lo ignora, la doc dice que probablemente es muy largo y la regla se pierde, o que está escrita de forma ambigua. Acórtalo y escribe reglas concretas."
     },
     {
      "q": "¿Lo subo a git?",
@@ -272,7 +272,7 @@
     },
     {
      "q": "¿CLAUDE.md o AGENTS.md?",
-     "a": "Si usás varios agentes de código, muchos en la comunidad dejan las reglas en AGENTS.md y un CLAUDE.md que lo importa. Claude Code lee las dos formas."
+     "a": "Si usas varios agentes de código, muchos en la comunidad dejan las reglas en AGENTS.md y un CLAUDE.md que lo importa. Claude Code lee las dos formas."
     }
    ],
    "fuentes": [
@@ -302,12 +302,12 @@
      "Quien ya usa Claude Code y quiere reglas que no dependan de que Claude se acuerde."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Claude Code, un editor de texto y jq instalado para los ejemplos."
     ],
     [
      "Ojo",
-     "Un hook corre comandos en tu compu. No pegues uno que no entiendas."
+     "Un hook corre comandos en tu computadora. No pegues uno que no entiendas."
     ]
    ],
    "fichaNombre": "Hooks",
@@ -316,7 +316,7 @@
      "h": "Instrucción o hook",
      "p": [
       "Lo que escribís en el CLAUDE.md es un consejo: Claude lo tiene en cuenta, pero puede olvidarlo. Un hook es un comando que Claude Code ejecuta siempre en un momento fijo, decida lo que decida Claude.",
-      "En los hilos de Reddit lo resumen así: las skills son para \"cómo hacer X\" y los hooks para \"nunca hagas Y\". La documentación dice lo mismo: usá hooks para lo que tiene que pasar siempre, sin excepciones."
+      "En los hilos de Reddit lo resumen así: las skills son para \"cómo hacer X\" y los hooks para \"nunca hagas Y\". La documentación dice lo mismo: usa hooks para lo que tiene que pasar siempre, sin excepciones."
      ],
      "lista": [
       "PreToolUse: antes de que Claude use una herramienta. Puede bloquearla.",
@@ -329,13 +329,13 @@
     {
      "h": "Dónde se guardan y cómo se ven",
      "lista": [
-      "~/.claude/settings.json: para todos tus proyectos, solo en tu compu.",
+      "~/.claude/settings.json: para todos tus proyectos, solo en tu computadora.",
       ".claude/settings.json: para este proyecto. Se puede subir a git y lo usa todo el equipo.",
-      ".claude/settings.local.json: para este proyecto, solo vos.",
-      "/hooks: muestra los hooks configurados, agrupados por evento. Es solo para mirar: para cambiarlos, editá el archivo o pedíselo a Claude."
+      ".claude/settings.local.json: para este proyecto, solo tú.",
+      "/hooks: muestra los hooks configurados, agrupados por evento. Es solo para mirar: para cambiarlos, edita el archivo o pídeselo a Claude."
      ],
      "p": [
-      "Si el archivo ya tiene una sección hooks, sumá el evento nuevo adentro de esa sección. No la reemplaces entera."
+      "Si el archivo ya tiene una sección hooks, suma el evento nuevo adentro de esa sección. No la reemplaces entera."
      ]
     },
     {
@@ -353,7 +353,7 @@
        "c": "{\n  \"hooks\": {\n    \"Notification\": [\n      {\n        \"matcher\": \"\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"notify-send 'Claude Code' 'Claude Code needs your attention'\"\n          }\n        ]\n      }\n    ]\n  }\n}"
       }
      ],
-     "aviso": "En Mac, si no aparece nada, corré una vez osascript -e 'display notification \"test\"' en la terminal y activá las notificaciones de Script Editor en Configuración del sistema."
+     "aviso": "En Mac, si no aparece nada, corre una vez osascript -e 'display notification \"test\"' en la terminal y activa las notificaciones de Script Editor en Configuración del sistema."
     },
     {
      "h": "Hook 2: archivos que Claude no puede tocar",
@@ -361,10 +361,10 @@
       "Bloquea cualquier edición a .env, package-lock.json o la carpeta .git. Cuando el script termina con código 2, Claude Code frena la edición y le pasa a Claude el motivo, para que busque otro camino."
      ],
      "pasos": [
-      "Guardá este script en .claude/hooks/protect-files.sh.",
-      "Hacelo ejecutable: chmod +x .claude/hooks/protect-files.sh",
-      "Registralo en .claude/settings.json con el bloque de abajo.",
-      "Probalo: pedile a Claude que agregue un comentario a tu .env. Tiene que frenarse y decirte por qué."
+      "Guarda este script en .claude/hooks/protect-files.sh.",
+      "Hazlo ejecutable: chmod +x .claude/hooks/protect-files.sh",
+      "Regístralo en .claude/settings.json con el bloque de abajo.",
+      "Pruébalo: pídele a Claude que agregue un comentario a tu .env. Tiene que frenarse y decirte por qué."
      ],
      "prompts": [
       {
@@ -380,7 +380,7 @@
     {
      "h": "Hook 3: formato automático después de cada edición",
      "p": [
-      "Corre Prettier sobre cada archivo que Claude edita o crea. Va en .claude/settings.json del proyecto. Si todo sale bien, no vas a ver ningún mensaje: fijate que el archivo quedó formateado."
+      "Corre Prettier sobre cada archivo que Claude edita o crea. Va en .claude/settings.json del proyecto. Si todo sale bien, no vas a ver ningún mensaje: fíjate que el archivo quedó formateado."
      ],
      "prompts": [
       {
@@ -393,7 +393,7 @@
     {
      "h": "Hook 4: que no termine sin pasar las pruebas",
      "p": [
-      "Un hook Stop de tipo agent lanza un ayudante que corre las pruebas antes de dejar que Claude dé el trabajo por terminado. La doc aclara que este tipo todavía es experimental: para algo serio, usá un hook de tipo command.",
+      "Un hook Stop de tipo agent lanza un ayudante que corre las pruebas antes de dejar que Claude dé el trabajo por terminado. La doc aclara que este tipo todavía es experimental: para algo serio, usa un hook de tipo command.",
       "Otro clásico de los hilos: recordarle lo importante después de compactar, porque el resumen puede perder detalles. Eso se hace con SessionStart y el matcher compact."
      ],
      "prompts": [
@@ -403,24 +403,24 @@
       },
       {
        "t": "Recordatorio después de compactar",
-       "c": "{\n  \"hooks\": {\n    \"SessionStart\": [\n      {\n        \"matcher\": \"compact\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"echo 'Recordatorio: usá Bun, no npm. Corré bun test antes de cada commit.'\"\n          }\n        ]\n      }\n    ]\n  }\n}"
+       "c": "{\n  \"hooks\": {\n    \"SessionStart\": [\n      {\n        \"matcher\": \"compact\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"echo 'Recordatorio: usa Bun, no npm. Corre bun test antes de cada commit.'\"\n          }\n        ]\n      }\n    ]\n  }\n}"
       }
      ],
-     "aviso": "Si un hook Stop bloquea muchas veces seguidas sin avances, Claude Code lo deja pasar. En tu script, leé el campo stop_hook_active y salí temprano si vale true."
+     "aviso": "Si un hook Stop bloquea muchas veces seguidas sin avances, Claude Code lo deja pasar. En tu script, lee el campo stop_hook_active y sal temprano si vale true."
     },
     {
-     "h": "Pedíselo a Claude y probalo",
+     "h": "Pídeselo a Claude y pruébalo",
      "p": [
-      "No tenés que escribir el JSON a mano. Describí lo que querés y pedile que te muestre el cambio antes de guardarlo."
+      "No tienes que escribir el JSON a mano. Describe lo que quieres y pídele que te muestre el cambio antes de guardarlo."
      ],
      "prompts": [
       {
        "t": "Crear un hook",
-       "c": "Escribí un hook que [LO QUE QUERÉS, EJ.: BLOQUEE CUALQUIER CAMBIO EN LA CARPETA migrations].\nGuardalo en .claude/settings.json del proyecto, sin borrar los hooks que ya existen.\nExplicame en 3 líneas qué hace y cómo lo pruebo. Mostrame el cambio antes de guardarlo."
+       "c": "Escribe un hook que [LO QUE QUIERES, EJ.: BLOQUEE CUALQUIER CAMBIO EN LA CARPETA migrations].\nGuárdalo en .claude/settings.json del proyecto, sin borrar los hooks que ya existen.\nExplícame en 3 líneas qué hace y cómo lo pruebo. Muéstrame el cambio antes de guardarlo."
       }
      ],
      "lista": [
-      "Si un hook no anda: arrancá con claude --debug-file /tmp/claude.log y mirá el registro en otra terminal, o corré /debug en medio de la sesión.",
+      "Si un hook no anda: arranca con claude --debug-file /tmp/claude.log y mira el registro en otra terminal, o corre /debug en medio de la sesión.",
       "Para apagarlos todos: \"disableAllHooks\": true en tu archivo de settings."
      ]
     }
@@ -465,7 +465,7 @@
      "Quien repite los mismos pedidos todos los días en Claude Code."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Claude Code y, para el de issues, la herramienta gh de GitHub."
     ],
     [
@@ -478,11 +478,11 @@
     {
      "h": "Comando, skill o subagente",
      "p": [
-      "El consejo de Boris que más se cita: si hacés algo más de una vez por día, convertilo en comando y subilo a git para que lo use todo el equipo.",
+      "El consejo de Boris que más se cita: si haces algo más de una vez por día, conviértelo en comando y súbelo a git para que lo use todo el equipo.",
       "Hoy los comandos personalizados son skills. Un archivo en .claude/commands/deploy.md y otro en .claude/skills/deploy/SKILL.md crean el mismo /deploy. Los viejos siguen andando."
      ],
      "lista": [
-      "Comando o skill: una receta que corre en tu conversación. La llamás con /nombre o Claude la usa sola si encaja.",
+      "Comando o skill: una receta que corre en tu conversación. La llamas con /nombre o Claude la usa sola si encaja.",
       "Subagente: un ayudante que trabaja en una conversación aparte, con sus propias herramientas, y te devuelve solo el resumen.",
       "Regla práctica: si el resultado es largo y no lo vas a releer (buscar, revisar, probar), subagente. Si es un paso de tu flujo, comando."
      ]
@@ -491,39 +491,39 @@
      "h": "Dónde se guardan",
      "lista": [
       "Comandos para todos tus proyectos: ~/.claude/skills/<nombre>/SKILL.md",
-      "Comandos de este proyecto: .claude/skills/<nombre>/SKILL.md (subilo a git para compartirlo).",
+      "Comandos de este proyecto: .claude/skills/<nombre>/SKILL.md (súbelo a git para compartirlo).",
       "Subagentes para todos tus proyectos: ~/.claude/agents/",
       "Subagentes de este proyecto: .claude/agents/",
-      "Si creás la carpeta agents por primera vez con la sesión abierta, reiniciá Claude Code para que la vea."
+      "Si creas la carpeta agents por primera vez con la sesión abierta, reinicia Claude Code para que la vea."
      ]
     },
     {
      "h": "Comando 1: /commit que mira tus cambios de verdad",
      "p": [
       "Es el comando que más se repite en los hilos. La línea que empieza con signo de exclamación y comillas invertidas corre ese comando antes de que Claude lea la skill, así arranca con el estado real.",
-      "disable-model-invocation: true hace que solo corra cuando vos lo pedís, porque hace cambios. allowed-tools deja usar esos comandos de git sin preguntarte, solo durante ese turno."
+      "disable-model-invocation: true hace que solo corra cuando tú lo pides, porque hace cambios. allowed-tools deja usar esos comandos de git sin preguntarte, solo durante ese turno."
      ],
      "prompts": [
       {
        "t": ".claude/skills/commit/SKILL.md",
-       "c": "---\nname: commit\ndescription: Prepara y hace el commit de los cambios actuales\ndisable-model-invocation: true\nallowed-tools: Bash(git add *) Bash(git commit *) Bash(git status *)\n---\n\n## Estado actual\n\n!`git status --short`\n\n## Cambios\n\n!`git diff HEAD`\n\n## Instrucciones\n\nCon los cambios de arriba, escribí un mensaje de commit claro en español: una línea de resumen y, si hace falta, dos o tres viñetas.\nAntes de hacer el commit, avisame si ves algo riesgoso: claves o contraseñas, archivos que no tienen que ver con la tarea o pruebas que faltan."
+       "c": "---\nname: commit\ndescription: Prepara y hace el commit de los cambios actuales\ndisable-model-invocation: true\nallowed-tools: Bash(git add *) Bash(git commit *) Bash(git status *)\n---\n\n## Estado actual\n\n!`git status --short`\n\n## Cambios\n\n!`git diff HEAD`\n\n## Instrucciones\n\nCon los cambios de arriba, escribe un mensaje de commit claro en español: una línea de resumen y, si hace falta, dos o tres viñetas.\nAntes de hacer el commit, avísame si ves algo riesgoso: claves o contraseñas, archivos que no tienen que ver con la tarea o pruebas que faltan."
       }
      ]
     },
     {
      "h": "Comando 2 y 3: arreglar un issue y dejar un traspaso",
      "p": [
-      "El de issues viene de la documentación oficial: $ARGUMENTS se reemplaza por lo que escribas después del comando. Lo usás así: /arreglar-issue 1234.",
+      "El de issues viene de la documentación oficial: $ARGUMENTS se reemplaza por lo que escribas después del comando. Lo usas así: /arreglar-issue 1234.",
       "El traspaso es de la comunidad: antes de cerrar o de un /clear, deja por escrito dónde quedaste para que la sesión nueva arranque sin explicarle todo de nuevo."
      ],
      "prompts": [
       {
        "t": ".claude/skills/arreglar-issue/SKILL.md",
-       "c": "---\nname: arreglar-issue\ndescription: Arregla un issue de GitHub de punta a punta\ndisable-model-invocation: true\n---\n\nAnalizá y arreglá el issue de GitHub: $ARGUMENTS.\n\n1. Usá `gh issue view` para leer el issue\n2. Entendé el problema que describe\n3. Buscá los archivos relacionados en el proyecto\n4. Hacé los cambios necesarios\n5. Escribí y corré pruebas que demuestren el arreglo\n6. Revisá que pase el linter y la revisión de tipos\n7. Escribí un mensaje de commit descriptivo"
+       "c": "---\nname: arreglar-issue\ndescription: Arregla un issue de GitHub de punta a punta\ndisable-model-invocation: true\n---\n\nAnaliza y arregla el issue de GitHub: $ARGUMENTS.\n\n1. Usa `gh issue view` para leer el issue\n2. Entiende el problema que describe\n3. Busca los archivos relacionados en el proyecto\n4. Haz los cambios necesarios\n5. Escribe y corre pruebas que demuestren el arreglo\n6. Revisa que pase el linter y la revisión de tipos\n7. Escribe un mensaje de commit descriptivo"
       },
       {
        "t": ".claude/skills/traspaso/SKILL.md",
-       "c": "---\nname: traspaso\ndescription: Deja un documento de traspaso para seguir en una sesión nueva\ndisable-model-invocation: true\n---\n\nEscribí o actualizá HANDOFF.md en la raíz del proyecto con:\n\n- Qué estábamos haciendo y por qué\n- Qué quedó terminado y cómo se comprobó\n- Decisiones tomadas y opciones que descartamos, con el motivo\n- Qué falta, en orden\n- Archivos clave para la próxima sesión\n\nMáximo una página. Nada de lo que ya está en el CLAUDE.md."
+       "c": "---\nname: traspaso\ndescription: Deja un documento de traspaso para seguir en una sesión nueva\ndisable-model-invocation: true\n---\n\nEscribe o actualiza HANDOFF.md en la raíz del proyecto con:\n\n- Qué estábamos haciendo y por qué\n- Qué quedó terminado y cómo se comprobó\n- Decisiones tomadas y opciones que descartamos, con el motivo\n- Qué falta, en orden\n- Archivos clave para la próxima sesión\n\nMáximo una página. Nada de lo que ya está en el CLAUDE.md."
       }
      ]
     },
@@ -535,7 +535,7 @@
      "prompts": [
       {
        "t": ".claude/agents/revisor-de-cambios.md",
-       "c": "---\nname: revisor-de-cambios\ndescription: Revisa los cambios recientes contra el plan. Usalo de forma proactiva después de terminar una tarea con código.\ntools: Read, Grep, Glob, Bash\nmodel: sonnet\n---\n\nSos un revisor de código con experiencia. Mirá solo el diff y el plan que te pasen.\nBuscá: errores que hagan fallar la función, casos raros sin prueba, claves o datos sensibles en el código y cambios fuera de la tarea.\nPara cada hallazgo: archivo y línea, qué pasa y una corrección propuesta.\nNo reportes gustos de estilo como problemas."
+       "c": "---\nname: revisor-de-cambios\ndescription: Revisa los cambios recientes contra el plan. Úsalo de forma proactiva después de terminar una tarea con código.\ntools: Read, Grep, Glob, Bash\nmodel: sonnet\n---\n\nEres un revisor de código con experiencia. Mira solo el diff y el plan que te pasen.\nBusca: errores que hagan fallar la función, casos raros sin prueba, claves o datos sensibles en el código y cambios fuera de la tarea.\nPara cada hallazgo: archivo y línea, qué pasa y una corrección propuesta.\nNo reportes gustos de estilo como problemas."
       }
      ]
     },
@@ -548,15 +548,15 @@
      "prompts": [
       {
        "t": ".claude/agents/verificador.md",
-       "c": "---\nname: verificador\ndescription: Comprueba que la app funcione de verdad después de un cambio. Usalo antes de dar una tarea por terminada.\ntools: Read, Grep, Glob, Bash\n---\n\nTu trabajo es demostrar si el cambio funciona, no arreglarlo.\n1. Leé cómo se instala y se prueba el proyecto en el CLAUDE.md.\n2. Corré las pruebas y, si se puede, levantá la app.\n3. Devolvé la evidencia: los comandos que corriste y su salida resumida.\n4. Terminá con FUNCIONA o NO FUNCIONA y el motivo en una línea."
+       "c": "---\nname: verificador\ndescription: Comprueba que la app funcione de verdad después de un cambio. Úsalo antes de dar una tarea por terminada.\ntools: Read, Grep, Glob, Bash\n---\n\nTu trabajo es demostrar si el cambio funciona, no arreglarlo.\n1. Lee cómo se instala y se prueba el proyecto en el CLAUDE.md.\n2. Corre las pruebas y, si se puede, levanta la app.\n3. Devuelve la evidencia: los comandos que corriste y su salida resumida.\n4. Termina con FUNCIONA o NO FUNCIONA y el motivo en una línea."
       }
      ]
     },
     {
      "h": "Usarlos bien",
      "lista": [
-      "Por nombre: \"Usá el subagente verificador para comprobar el cambio\".",
-      "Con @: escribí @ y elegilo de la lista. Así te asegurás de que corra.",
+      "Por nombre: \"Usa el subagente verificador para comprobar el cambio\".",
+      "Con @: escribe @ y elígelo de la lista. Así te aseguras de que corra.",
       "Toda la sesión como ese agente: claude --agent revisor-de-cambios",
       "Para ver lo que corre aparte, incluidos los subagentes: /tasks"
      ],
@@ -570,11 +570,11 @@
     },
     {
      "q": "Tengo comandos viejos en .claude/commands. ¿Los paso a skills?",
-     "a": "No hace falta, siguen andando. Pasalos a skills si querés sumarles archivos de apoyo o controlar quién los puede llamar."
+     "a": "No hace falta, siguen andando. Pásalos a skills si quieres sumarles archivos de apoyo o controlar quién los puede llamar."
     },
     {
      "q": "¿Un subagente puede llamar a otro?",
-     "a": "Sí. Por defecto pueden anidarse hasta tres niveles. Si querés que uno no lance otros, sacale la herramienta Agent de su lista de tools."
+     "a": "Sí. Por defecto pueden anidarse hasta tres niveles. Si quieres que uno no lance otros, sácale la herramienta Agent de su lista de tools."
     }
    ],
    "fuentes": [
@@ -604,12 +604,12 @@
      "Quien ya maneja una sesión con soltura y quiere avanzar en dos tareas a la vez."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Un proyecto con git y Claude Code."
     ],
     [
      "Ojo",
-     "Cada sesión usa tu plan. Y vos tenés que revisar todo lo que salga."
+     "Cada sesión usa tu plan. Y tú tienes que revisar todo lo que salga."
     ]
    ],
    "fichaNombre": "Worktrees",
@@ -618,27 +618,27 @@
      "h": "Por qué no alcanza con abrir dos terminales",
      "p": [
       "Si dos sesiones trabajan en la misma carpeta, los cambios de una pisan los de la otra. Un worktree es otra carpeta con sus archivos y su rama, que comparte el mismo historial y el mismo remoto. Así una sesión hace una función nueva mientras otra arregla un error.",
-      "Es el primer consejo de la lista de Boris. Pero en los mismos hilos y en Hacker News aparece el matiz: el límite pasa a ser tu tiempo para revisar, no la máquina. Arrancá con dos."
+      "Es el primer consejo de la lista de Boris. Pero en los mismos hilos y en Hacker News aparece el matiz: el límite pasa a ser tu tiempo para revisar, no la máquina. Arranca con dos."
      ]
     },
     {
-     "h": "Arrancá con --worktree",
+     "h": "Arranca con --worktree",
      "pasos": [
-      "Si nunca usaste Claude Code en esa carpeta, corré claude una vez ahí y aceptá el aviso de confianza.",
+      "Si nunca usaste Claude Code en esa carpeta, corre claude una vez ahí y acepta el aviso de confianza.",
       "En una terminal: claude --worktree feature-auth",
       "En otra terminal: claude --worktree arreglo-login",
       "Cada una queda en .claude/worktrees/<nombre>/ y en una rama nueva llamada worktree-<nombre>.",
-      "Sumá .claude/worktrees/ a tu .gitignore para que no aparezca como archivos sueltos.",
-      "Pedile a cada sesión que instale las dependencias: un worktree es una copia limpia."
+      "Suma .claude/worktrees/ a tu .gitignore para que no aparezca como archivos sueltos.",
+      "Pídele a cada sesión que instale las dependencias: un worktree es una copia limpia."
      ],
      "p": [
-      "Si no le das nombre, Claude Code inventa uno. Si ya estás en una sesión, también podés pedirle \"trabajá en un worktree\"."
+      "Si no le das nombre, Claude Code inventa uno. Si ya estás en una sesión, también puedes pedirle \"trabaja en un worktree\"."
      ]
     },
     {
-     "h": "Llevá tus archivos secretos con .worktreeinclude",
+     "h": "Lleva tus archivos secretos con .worktreeinclude",
      "p": [
-      "Los archivos que están en el .gitignore, como .env, no viajan a la copia nueva. Creá un archivo .worktreeinclude en la raíz del proyecto con la misma sintaxis del .gitignore. Solo se copian los que coinciden y además están ignorados por git."
+      "Los archivos que están en el .gitignore, como .env, no viajan a la copia nueva. Crea un archivo .worktreeinclude en la raíz del proyecto con la misma sintaxis del .gitignore. Solo se copian los que coinciden y además están ignorados por git."
      ],
      "prompts": [
       {
@@ -655,20 +655,20 @@
      "pasos": [
       "Sesión A construye la tarea.",
       "Sesión B, con contexto limpio, revisa lo que hizo A.",
-      "Le pegás a A lo que encontró B y A lo corrige."
+      "Le pegas a A lo que encontró B y A lo corrige."
      ],
      "prompts": [
       {
        "t": "Sesión A (escribe)",
-       "c": "Implementá [LA TAREA] siguiendo [PLAN.md]. Corré las pruebas y mostrame la salida."
+       "c": "Implementa [LA TAREA] siguiendo [PLAN.md]. Corre las pruebas y muéstrame la salida."
       },
       {
        "t": "Sesión B (revisa)",
-       "c": "Revisá la implementación de [LA TAREA] en @[RUTA DEL ARCHIVO]. Buscá casos raros, errores de lógica y diferencias con cómo está hecho el resto del proyecto. Reportá solo lo que afecta que funcione."
+       "c": "Revisa la implementación de [LA TAREA] en @[RUTA DEL ARCHIVO]. Busca casos raros, errores de lógica y diferencias con cómo está hecho el resto del proyecto. Reporta solo lo que afecta que funcione."
       },
       {
        "t": "De vuelta en A",
-       "c": "Esta es la revisión que hizo otra sesión: [PEGÁ LA REVISIÓN]. Corregí lo que corresponda y explicame lo que decidas no cambiar."
+       "c": "Esta es la revisión que hizo otra sesión: [PEGA LA REVISIÓN]. Corrige lo que corresponda y explícame lo que decidas no cambiar."
       }
      ]
     },
@@ -676,36 +676,36 @@
      "h": "Al salir: qué pasa con tu trabajo",
      "lista": [
       "Sin cambios: si la sesión no tenía nombre, Claude Code borra el worktree y su rama solo. Si tenía nombre, te pregunta.",
-      "Con cambios: te pregunta si lo guardás o lo borrás. Si lo borrás, se va todo lo que había adentro.",
+      "Con cambios: te pregunta si lo guardas o lo borras. Si lo borras, se va todo lo que había adentro.",
       "Para volver a uno que guardaste: el comando claude --worktree <nombre> --resume que Claude Code te muestra al salir.",
-      "Desde qué rama arranca: por defecto, la rama principal del remoto. Si querés que arranque desde lo que tenés ahora, en settings poné worktree.baseRef en \"head\"."
+      "Desde qué rama arranca: por defecto, la rama principal del remoto. Si quieres que arranque desde lo que tienes ahora, en settings pon worktree.baseRef en \"head\"."
      ],
-     "aviso": "Antes de borrar un worktree, hacé commit y push de lo que quieras conservar. Borrar elimina la carpeta y la rama."
+     "aviso": "Antes de borrar un worktree, haz commit y push de lo que quieras conservar. Borrar elimina la carpeta y la rama."
     },
     {
      "h": "A mano con git, en la app o con subagentes",
      "lista": [
       "Con git, en una rama nueva: git worktree add ../proyecto-feature-a -b feature-a",
       "Con git, desde una rama que ya existe: git worktree add ../proyecto-bugfix nombre-de-la-rama",
-      "Ver los que tenés: git worktree list",
+      "Ver los que tienes: git worktree list",
       "Borrar uno: git worktree remove ../proyecto-feature-a",
-      "En la app de escritorio: tildá la opción worktree al empezar una sesión.",
-      "Subagentes que editan en paralelo: agregá isolation: worktree en el encabezado del subagente, o pedile a Claude que use worktrees para sus agentes."
+      "En la app de escritorio: tilda la opción worktree al empezar una sesión.",
+      "Subagentes que editan en paralelo: agrega isolation: worktree en el encabezado del subagente, o pídele a Claude que use worktrees para sus agentes."
      ]
     }
    ],
    "faq": [
     {
      "q": "¿Necesito saber mucho de git?",
-     "a": "Lo básico: qué es una rama, un commit y un push. Claude Code crea y limpia los worktrees por vos. Si arrancás de cero, mirá primero la guía de git de esta biblioteca."
+     "a": "Lo básico: qué es una rama, un commit y un push. Claude Code crea y limpia los worktrees por ti. Si arrancas de cero, mira primero la guía de git de esta biblioteca."
     },
     {
      "q": "¿Las sesiones se enteran de lo que hace la otra?",
-     "a": "No por defecto: cada una tiene su conversación. Vos pasás la información, como en el patrón escritor y revisor. La documentación también describe formas de que se manden mensajes, si más adelante lo necesitás."
+     "a": "No por defecto: cada una tiene su conversación. Tú pasas la información, como en el patrón escritor y revisor. La documentación también describe formas de que se manden mensajes, si más adelante lo necesitas."
     },
     {
      "q": "¿Cuántas sesiones conviene tener?",
-     "a": "Las que puedas revisar. En los hilos, la queja más común no es la compu sino quedarse con un montón de cambios sin mirar. Empezá con dos y sumá cuando las dos te sobren."
+     "a": "Las que puedas revisar. En los hilos, la queja más común no es la computadora sino quedarse con un montón de cambios sin mirar. Empieza con dos y suma cuando las dos te sobren."
     }
    ],
    "fuentes": [
@@ -733,7 +733,7 @@
      "Dueños de negocio y freelancers que usan la app, sin programar."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Una cuenta de Claude. Los Proyectos están en todos los planes."
     ],
     [
@@ -747,31 +747,31 @@
      "h": "Un Proyecto por trabajo real",
      "p": [
       "En un hilo de r/ClaudeAI sobre Proyectos con cientos de votos, el autor cuenta que tenía un Proyecto para todo y que separarlo por cliente le dio respuestas más enfocadas.",
-      "La ayuda oficial explica por qué importa: lo que subís al conocimiento del Proyecto se usa en todos sus chats, pero lo que hablás en un chat no pasa a los otros si no está en el conocimiento."
+      "La ayuda oficial explica por qué importa: lo que subís al conocimiento del Proyecto se usa en todos sus chats, pero lo que hablas en un chat no pasa a los otros si no está en el conocimiento."
      ],
      "pasos": [
-      "Entrá a Projects en la barra de la izquierda y tocá + New Project.",
-      "Ponele un nombre claro, por ejemplo el del cliente.",
-      "Tocá + para subir los archivos que Claude tiene que tener siempre: brief, precios, ejemplos de tu trabajo.",
-      "Tocá Set project instructions y escribí cómo querés que responda en ese Proyecto."
+      "Entra a Projects en la barra de la izquierda y toca + New Project.",
+      "Ponle un nombre claro, por ejemplo el del cliente.",
+      "Toca + para subir los archivos que Claude tiene que tener siempre: brief, precios, ejemplos de tu trabajo.",
+      "Toca Set project instructions y escribe cómo quieres que responda en ese Proyecto."
      ],
-     "aviso": "En el plan gratis podés tener hasta cinco Proyectos. Compartirlos con otros es de los planes Team y Enterprise."
+     "aviso": "En el plan gratis puedes tener hasta cinco Proyectos. Compartirlos con otros es de los planes Team y Enterprise."
     },
     {
      "h": "Instrucciones para el cómo, archivos para el qué",
      "p": [
       "Es la idea que más se repite en los comentarios: las instrucciones del Proyecto dicen cómo trabajar (tono, formato, qué preguntar) y los archivos guardan los datos (precios, servicios, casos). Mezclarlo todo en las instrucciones las vuelve largas y confusas.",
-      "Y mantené los archivos al día. Un brief viejo hace que las respuestas se desvíen sin que te des cuenta."
+      "Y mantén los archivos al día. Un brief viejo hace que las respuestas se desvíen sin que te des cuenta."
      ],
      "lista": [
       "Instrucciones para Claude (en Settings, sección Your Claude): valen para todas tus conversaciones.",
       "Instrucciones del Proyecto: valen solo para los chats de ese Proyecto.",
-      "Estilos: la ayuda oficial avisa que se están pasando a skills. Si en un foro te recomiendan crear un estilo, usá instrucciones o una skill."
+      "Estilos: la ayuda oficial avisa que se están pasando a skills. Si en un foro te recomiendan crear un estilo, usa instrucciones o una skill."
      ],
      "prompts": [
       {
        "t": "Ordenar un Proyecto desordenado",
-       "c": "Estas son las instrucciones de mi Proyecto: [PEGALAS].\nSeparalas en dos: 1) instrucciones de comportamiento (tono, formato, qué preguntar), cortas y en viñetas; 2) datos que tendrían que ir en un archivo de conocimiento.\nMarcá lo que se contradice o parece viejo."
+       "c": "Estas son las instrucciones de mi Proyecto: [PÉGALAS].\nSepáralas en dos: 1) instrucciones de comportamiento (tono, formato, qué preguntar), cortas y en viñetas; 2) datos que tendrían que ir en un archivo de conocimiento.\nMarca lo que se contradice o parece viejo."
       }
      ]
     },
@@ -779,25 +779,25 @@
      "h": "Chats cortos y un traspaso",
      "p": [
       "Varios comentarios coinciden: un chat nuevo dentro del mismo Proyecto responde mejor que uno larguísimo, porque conserva las instrucciones y los archivos pero deja afuera el ruido.",
-      "El truco que suman es el traspaso: antes de cambiar de chat, pedí un resumen que incluya también lo que descartaron y por qué. Así el chat nuevo no vuelve a abrir temas cerrados."
+      "El truco que suman es el traspaso: antes de cambiar de chat, pide un resumen que incluya también lo que descartaron y por qué. Así el chat nuevo no vuelve a abrir temas cerrados."
      ],
      "prompts": [
       {
        "t": "Traspaso con decisiones",
-       "c": "Voy a seguir en un chat nuevo. Escribime un traspaso con: objetivo, lo que decidimos, lo que descartamos y por qué, preguntas abiertas y el próximo paso. Máximo media página, listo para pegar."
+       "c": "Voy a seguir en un chat nuevo. Escríbeme un traspaso con: objetivo, lo que decidimos, lo que descartamos y por qué, preguntas abiertas y el próximo paso. Máximo media página, listo para pegar."
       }
      ]
     },
     {
      "h": "Que te entreviste antes de escribir",
      "p": [
-      "Uno de los trucos más compartidos: pegás tu idea a medio armar y le pedís que te haga preguntas antes de escribir nada. La clave que agregan en los foros: de a una pregunta, porque a una lista de diez la contestás a medias.",
-      "Un comentario suma un buen cierre: cuando terminan las preguntas, pedile que resuma la tarea con sus palabras antes de arrancar. Así ves si entendió."
+      "Uno de los trucos más compartidos: pegas tu idea a medio armar y le pides que te haga preguntas antes de escribir nada. La clave que agregan en los foros: de a una pregunta, porque a una lista de diez la contestas a medias.",
+      "Un comentario suma un buen cierre: cuando terminan las preguntas, pídele que resuma la tarea con sus palabras antes de arrancar. Así ves si entendió."
      ],
      "prompts": [
       {
        "t": "Entrevista de a una",
-       "c": "Quiero [LO QUE NECESITÁS, EJ.: UNA PROPUESTA PARA UN CLIENTE NUEVO]. Todavía no escribas nada.\nHaceme preguntas de a una, esperando mi respuesta antes de la siguiente: qué quiero lograr, para quién es, qué no tengo claro y cómo me doy cuenta de que quedó bien.\nCuando tengas lo necesario, resumí la tarea en 5 líneas y esperá mi OK."
+       "c": "Quiero [LO QUE NECESITAS, EJ.: UNA PROPUESTA PARA UN CLIENTE NUEVO]. Todavía no escribas nada.\nHazme preguntas de a una, esperando mi respuesta antes de la siguiente: qué quiero lograr, para quién es, qué no tengo claro y cómo me doy cuenta de que quedó bien.\nCuando tengas lo necesario, resume la tarea en 5 líneas y espera mi OK."
       }
      ]
     },
@@ -805,31 +805,31 @@
      "h": "Pedidos claros: lo que dice la doc",
      "lista": [
       "La prueba del colega: si alguien sin contexto no entendería tu pedido, Claude tampoco.",
-      "Explicá el porqué: una regla con motivo se aplica mejor que una orden suelta.",
+      "Explica el porqué: una regla con motivo se aplica mejor que una orden suelta.",
       "Ejemplos: la doc los llama de las formas más confiables de guiar el formato y el tono. Recomienda de 3 a 5, variados y separados con etiquetas como <ejemplo>.",
-      "Documentos largos: el documento arriba y la pregunta al final. Pedile primero las citas textuales que usa y después el análisis.",
-      "Decí lo que querés, no solo lo que no: \"escribí en párrafos corridos\" funciona mejor que \"no uses viñetas\".",
+      "Documentos largos: el documento arriba y la pregunta al final. Pídele primero las citas textuales que usa y después el análisis.",
+      "Di lo que quieres, no solo lo que no: \"escribe en párrafos corridos\" funciona mejor que \"no uses viñetas\".",
       "Permiso para no saber (práctica de la comunidad): en el hilo de Proyectos cuentan que pedirle que diga \"no sé\" en vez de adivinar bajó las respuestas seguras pero equivocadas."
      ]
     },
     {
      "h": "Tu voz: muestras en vez de adjetivos",
      "p": [
-      "\"Escribí como yo\" no alcanza. Lo que funciona, según los foros, es pegar textos reales tuyos en el conocimiento del Proyecto. Un comentario suma un paso más: pedile a Claude que arme una guía de tu estilo a partir de esas muestras, y guardala como archivo."
+      "\"Escribe como yo\" no alcanza. Lo que funciona, según los foros, es pegar textos reales tuyos en el conocimiento del Proyecto. Un comentario suma un paso más: pídele a Claude que arme una guía de tu estilo a partir de esas muestras, y guárdala como archivo."
      ],
      "prompts": [
       {
        "t": "Guía de voz desde tus textos",
-       "c": "Te paso <muestras> con textos que escribí yo. Analizalos y armame una guía de mi voz para guardar como archivo: tono, largo de las frases, palabras que uso y que no uso, cómo arranco y cómo cierro.\nIncluí 3 frases de ejemplo que suenen a mí y 3 que no.\n<muestras>\n[PEGÁ 3 A 5 TEXTOS TUYOS]\n</muestras>"
+       "c": "Te paso <muestras> con textos que escribí yo. Analízalos y ármame una guía de mi voz para guardar como archivo: tono, largo de las frases, palabras que uso y que no uso, cómo arranco y cómo cierro.\nIncluye 3 frases de ejemplo que suenen a mí y 3 que no.\n<muestras>\n[PEGA 3 A 5 TEXTOS TUYOS]\n</muestras>"
       }
      ]
     },
     {
      "h": "Artifacts y memoria, sin sorpresas",
      "lista": [
-      "Artifacts: Claude los crea cuando el contenido es grande y se sostiene solo, y se abren al lado del chat. Para cambiarlos, pedíselo. Si editás un mensaje anterior, el chat se bifurca y conservás la versión previa.",
-      "Arrancan privados: los artifacts nuevos son solo tuyos hasta que los compartís. Antes de cargar datos sensibles, fijate si usan almacenamiento compartido, porque otros lo pueden ver.",
-      "Memoria por Proyecto: cada Proyecto tiene la suya. Si querés que uno quede aislado del todo, apagá Use account memory en ese Proyecto.",
+      "Artifacts: Claude los crea cuando el contenido es grande y se sostiene solo, y se abren al lado del chat. Para cambiarlos, pídeselo. Si editas un mensaje anterior, el chat se bifurca y conservas la versión previa.",
+      "Arrancan privados: los artifacts nuevos son solo tuyos hasta que los compartís. Antes de cargar datos sensibles, fíjate si usan almacenamiento compartido, porque otros lo pueden ver.",
+      "Memoria por Proyecto: cada Proyecto tiene la suya. Si quieres que uno quede aislado del todo, apaga Use account memory en ese Proyecto.",
       "Chat sin memoria: un chat de incógnito no se guarda en el historial ni en la memoria.",
       "Buscar chats anteriores: es de planes pagos y se apaga en Settings, sección Your Claude."
      ]
@@ -842,11 +842,11 @@
     },
     {
      "q": "¿Claude se acuerda de lo que hablé en otro chat del mismo Proyecto?",
-     "a": "No cuentes con eso. La ayuda oficial dice que el contexto no pasa entre chats si no está en el conocimiento del Proyecto. Lo que tiene que estar siempre, subilo como archivo."
+     "a": "No cuentes con eso. La ayuda oficial dice que el contexto no pasa entre chats si no está en el conocimiento del Proyecto. Lo que tiene que estar siempre, súbelo como archivo."
     },
     {
      "q": "Me recomendaron crear un estilo personalizado. ¿Lo hago?",
-     "a": "La ayuda oficial avisa que los estilos se están pasando a skills y que el menú de estilos se va a quitar. Para tono y formato, usá las instrucciones o una skill."
+     "a": "La ayuda oficial avisa que los estilos se están pasando a skills y que el menú de estilos se va a quitar. Para tono y formato, usa las instrucciones o una skill."
     }
    ],
    "fuentes": [
@@ -871,27 +871,27 @@
    "prompts": [
     {
      "t": "Entrevista y spec",
-     "c": "Quiero construir [DESCRIPCIÓN CORTA]. Antes de escribir código, entrevistame con la herramienta AskUserQuestion.\nAndá a lo difícil: casos raros, qué pasa si algo falla, qué queda afuera.\nCuando terminemos, escribí todo en SPEC.md, con un paso final que diga cómo comprobamos que funciona de punta a punta."
+     "c": "Quiero construir [DESCRIPCIÓN CORTA]. Antes de escribir código, entrevístame con la herramienta AskUserQuestion.\nVe a lo difícil: casos raros, qué pasa si algo falla, qué queda afuera.\nCuando terminemos, escribe todo en SPEC.md, con un paso final que diga cómo comprobamos que funciona de punta a punta."
     },
     {
      "t": "Plan en pasos chicos",
-     "c": "Leé SPEC.md y el código relacionado. No cambies nada.\nArmame un plan en pasos chicos, cada uno con: qué archivos toca, qué hace y cómo lo comprobamos.\nDespués esperá: vamos a hacer solo el paso 1."
+     "c": "Lee SPEC.md y el código relacionado. No cambies nada.\nÁrmame un plan en pasos chicos, cada uno con: qué archivos toca, qué hace y cómo lo comprobamos.\nDespués espera: vamos a hacer solo el paso 1."
     },
     {
      "t": "Investigar sin llenar la sesión",
-     "c": "Usá subagentes para investigar [TEMA, EJ.: CÓMO MANEJAMOS EL LOGIN] y si ya tenemos funciones que pueda reutilizar.\nTraeme solo el resumen: archivos clave, cómo funciona hoy y riesgos de cambiarlo."
+     "c": "Usa subagentes para investigar [TEMA, EJ.: CÓMO MANEJAMOS EL LOGIN] y si ya tenemos funciones que pueda reutilizar.\nTráeme solo el resumen: archivos clave, cómo funciona hoy y riesgos de cambiarlo."
     },
     {
      "t": "Un paso, con prueba y evidencia",
-     "c": "Hacé solo el paso [NÚMERO] del plan.\nDespués corré [COMANDO DE PRUEBA] y pegame la salida.\nSi algo falla, arreglá la causa, no el síntoma, y no cambies las pruebas para que pasen."
+     "c": "Haz solo el paso [NÚMERO] del plan.\nDespués corre [COMANDO DE PRUEBA] y pégame la salida.\nSi algo falla, arregla la causa, no el síntoma, y no cambies las pruebas para que pasen."
     },
     {
      "t": "Revisión con ojos frescos",
-     "c": "Usá un subagente para revisar el cambio contra el plan.\nQue reporte solo lo que hace fallar la función o no cumple lo pedido, con archivo, línea y corrección propuesta.\nLos gustos de estilo, aparte y como opcionales."
+     "c": "Usa un subagente para revisar el cambio contra el plan.\nQue reporte solo lo que hace fallar la función o no cumple lo pedido, con archivo, línea y corrección propuesta.\nLos gustos de estilo, aparte y como opcionales."
     },
     {
      "t": "Retro de cierre",
-     "c": "Antes de cerrar: ¿qué te costó entender de este proyecto hoy? ¿qué error cometiste que una regla habría evitado?\nProponé como máximo dos líneas para el CLAUDE.md, concretas y verificables. No las agregues hasta que te diga."
+     "c": "Antes de cerrar: ¿qué te costó entender de este proyecto hoy? ¿qué error cometiste que una regla habría evitado?\nPropón como máximo dos líneas para el CLAUDE.md, concretas y verificables. No las agregues hasta que te diga."
     }
    ]
   },
@@ -903,23 +903,23 @@
    "prompts": [
     {
      "t": "Auditar el conocimiento",
-     "c": "Revisá los archivos de conocimiento de este Proyecto.\nArmame una tabla con: archivo, de qué trata, si parece viejo o se contradice con otro, y qué harías (dejar, actualizar, borrar).\nNo inventes fechas: si no sabés si algo está viejo, decilo."
+     "c": "Revisa los archivos de conocimiento de este Proyecto.\nÁrmame una tabla con: archivo, de qué trata, si parece viejo o se contradice con otro, y qué harías (dejar, actualizar, borrar).\nNo inventes fechas: si no sabes si algo está viejo, dilo."
     },
     {
      "t": "Responder solo con mis documentos",
-     "c": "Respondé usando solo los documentos de este Proyecto.\nPrimero copiá las frases textuales en las que te basás, entre <citas>. Después respondé.\nSi la respuesta no está en los documentos, decí \"no está en tus archivos\" y no completes con suposiciones.\nPregunta: [TU PREGUNTA]"
+     "c": "Responde usando solo los documentos de este Proyecto.\nPrimero copia las frases textuales en las que te basas, entre <citas>. Después responde.\nSi la respuesta no está en los documentos, di \"no está en tus archivos\" y no completes con suposiciones.\nPregunta: [TU PREGUNTA]"
     },
     {
      "t": "Abogado del diablo",
-     "c": "Hacé de cliente exigente y escéptico. Leé [TU PROPUESTA O TEXTO] y decime las 5 objeciones más fuertes que te harían no comprar, de la más grave a la menos grave.\nNo me felicites ni suavices: quiero saber dónde se cae."
+     "c": "Haz de cliente exigente y escéptico. Lee [TU PROPUESTA O TEXTO] y dime las 5 objeciones más fuertes que te harían no comprar, de la más grave a la menos grave.\nNo me felicites ni suavices: quiero saber dónde se cae."
     },
     {
      "t": "Registro de decisiones",
-     "c": "Antes de terminar este chat, armá un registro de decisiones para guardar en el conocimiento del Proyecto: fecha de hoy, qué decidimos, qué descartamos y por qué, y qué queda pendiente.\nFormato: viñetas cortas, listo para copiar a un archivo decisiones.md."
+     "c": "Antes de terminar este chat, arma un registro de decisiones para guardar en el conocimiento del Proyecto: fecha de hoy, qué decidimos, qué descartamos y por qué, y qué queda pendiente.\nFormato: viñetas cortas, listo para copiar a un archivo decisiones.md."
     },
     {
      "t": "Prueba del colega",
-     "c": "Este es el pedido que pensaba hacerte: [PEGÁ TU PEDIDO].\nLeelo como si fueras alguien sin ningún contexto. Decime qué no se entiende o qué te falta saber, y reescribilo para que cualquiera lo pueda seguir. Todavía no lo ejecutes."
+     "c": "Este es el pedido que pensaba hacerte: [PEGA TU PEDIDO].\nLéelo como si fueras alguien sin ningún contexto. Dime qué no se entiende o qué te falta saber, y reescríbelo para que cualquiera lo pueda seguir. Todavía no lo ejecutes."
     }
    ]
   }

@@ -3,8 +3,8 @@
   {
    "slug": "configura-claude-en-10-minutos",
    "post": "CONFIG",
-   "t": "Configurá Claude en 10 minutos para que sepa quién sos",
-   "d": "Instrucciones personales, memoria y búsqueda de chats: lo que tenés que dejar listo una sola vez para no explicarle todo de nuevo en cada chat.",
+   "t": "Configura Claude en 10 minutos para que sepa quién eres",
+   "d": "Instrucciones personales, memoria y búsqueda de chats: lo que tienes que dejar listo una sola vez para no explicarle todo de nuevo en cada chat.",
    "tema": "Empezar",
    "min": 8,
    "fichaNombre": "Configuración inicial",
@@ -14,7 +14,7 @@
      "Tres ajustes de tu cuenta que hacen que Claude te conozca desde el primer mensaje."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Una cuenta de Claude. Las instrucciones y la memoria están en todos los planes; la búsqueda de chats, en los pagos."
     ],
     [
@@ -23,55 +23,55 @@
     ],
     [
      "Qué no hace",
-     "No cambia lo que Claude sabe del mundo: cambia lo que sabe de vos y cómo te responde."
+     "No cambia lo que Claude sabe del mundo: cambia lo que sabe de ti y cómo te responde."
     ]
    ],
    "secciones": [
     {
      "h": "Qué vas a dejar configurado",
      "lista": [
-      "Instrucciones: un texto tuyo que Claude lee en todas tus conversaciones. Quién sos, a qué te dedicás y cómo querés que te conteste.",
-      "Memoria: Claude va guardando lo importante de tus chats para usarlo después. La podés ver, corregir y borrar.",
-      "Búsqueda de chats: Claude puede buscar en tus conversaciones anteriores cuando le pedís algo que ya hablaron.",
+      "Instrucciones: un texto tuyo que Claude lee en todas tus conversaciones. Quién eres, a qué te dedicas y cómo quieres que te conteste.",
+      "Memoria: Claude va guardando lo importante de tus chats para usarlo después. La puedes ver, corregir y borrar.",
+      "Búsqueda de chats: Claude puede buscar en tus conversaciones anteriores cuando le pides algo que ya hablaron.",
       "Skills: paquetes de instrucciones para tareas puntuales. Reemplazan a los viejos estilos de respuesta."
      ],
      "p": [
-      "Los nombres de los menús están como aparecen en la ayuda oficial de Claude (en inglés). Si tenés Claude en español, vas a ver la traducción en el mismo lugar."
+      "Los nombres de los menús están como aparecen en la ayuda oficial de Claude (en inglés). Si tienes Claude en español, vas a ver la traducción en el mismo lugar."
      ]
     },
     {
-     "h": "1. Escribí tus instrucciones",
+     "h": "1. Escribe tus instrucciones",
      "pasos": [
-      "Hacé clic en tus iniciales, abajo a la izquierda, y entrá a Settings.",
-      "Abrí la sección Your Claude (en la versión anterior se llama Account).",
-      "Buscá el campo Instructions y pegá tu texto. Usá el prompt de abajo si no sabés qué poner.",
-      "Guardá. Desde ese momento se aplica a todos tus chats."
+      "Haz clic en tus iniciales, abajo a la izquierda, y entra a Settings.",
+      "Abre la sección Your Claude (en la versión anterior se llama Account).",
+      "Busca el campo Instructions y pega tu texto. Usa el prompt de abajo si no sabes qué poner.",
+      "Guarda. Desde ese momento se aplica a todos tus chats."
      ],
      "prompts": [
       {
        "t": "Que Claude te entreviste",
-       "c": "Quiero escribir mis instrucciones personales para vos. Haceme 8 preguntas, de a una, para conocerme: a qué me dedico, quiénes son mis clientes, qué tareas hago todas las semanas, cómo me gusta que me respondan y qué cosas no quiero que hagas.\nCuando termines, escribí mis instrucciones en primera persona, en menos de 200 palabras, listas para pegar."
+       "c": "Quiero escribir mis instrucciones personales para ti. Hazme 8 preguntas, de a una, para conocerme: a qué me dedico, quiénes son mis clientes, qué tareas hago todas las semanas, cómo me gusta que me respondan y qué cosas no quiero que hagas.\nCuando termines, escribe mis instrucciones en primera persona, en menos de 200 palabras, listas para pegar."
       },
       {
        "t": "Plantilla para completar",
-       "c": "Me llamo [TU NOMBRE] y tengo [TU NEGOCIO], que se dedica a [QUÉ HACÉS] para [TU CLIENTE IDEAL].\nTrabajo en [PAÍS] y escribo en español rioplatense.\nTareas en las que más te voy a usar: [3 TAREAS].\nCómo quiero que me respondas:\n- Directo y al grano, sin vueltas.\n- Si no sabés algo o te falta un dato, preguntame antes de inventar.\n- Cuando haya pasos, numeralos.\n- Si mi idea tiene un problema, decímelo."
+       "c": "Me llamo [TU NOMBRE] y tengo [TU NEGOCIO], que se dedica a [QUÉ HACES] para [TU CLIENTE IDEAL].\nTrabajo en [PAÍS] y escribo en español rioplatense.\nTareas en las que más te voy a usar: [3 TAREAS].\nCómo quiero que me respondas:\n- Directo y al grano, sin vueltas.\n- Si no sabes algo o te falta un dato, pregúntame antes de inventar.\n- Cuando haya pasos, numéralos.\n- Si mi idea tiene un problema, dímelo."
       }
      ]
     },
     {
-     "h": "2. Revisá la memoria",
+     "h": "2. Revisa la memoria",
      "p": [
       "La memoria viene activada en los planes individuales. En Team y Enterprise depende de lo que decida quien administra la cuenta."
      ],
      "pasos": [
-      "En Settings → Your Claude buscá el interruptor Generate memory from chats. Ahí podés pausarla o resetearla.",
-      "Tocá Manage al lado de Your memory para ver qué guardó sobre vos. Podés editar o borrar cada tema.",
-      "Si querés que recuerde algo, decíselo en el chat: \"acordate de que mis clientes son pymes de Córdoba\"."
+      "En Settings → Your Claude busca el interruptor Generate memory from chats. Ahí puedes pausarla o resetearla.",
+      "Toca Manage al lado de Your memory para ver qué guardó sobre ti. Puedes editar o borrar cada tema.",
+      "Si quieres que recuerde algo, díselo en el chat: \"acuérdate de que mis clientes son pymes de Córdoba\"."
      ],
-     "aviso": "Resetear la memoria borra todo lo guardado y no se puede deshacer. Si solo querés frenarla un tiempo, usá pausar."
+     "aviso": "Resetear la memoria borra todo lo guardado y no se puede deshacer. Si solo quieres frenarla un tiempo, usa pausar."
     },
     {
-     "h": "3. Activá la búsqueda de chats (planes pagos)",
+     "h": "3. Activa la búsqueda de chats (planes pagos)",
      "p": [
       "Con Search and reference chats, Claude puede ir a buscar algo que ya hablaron en otra conversación. Busca en los chats que están fuera de proyectos y, dentro de cada proyecto, solo en los chats de ese proyecto. Nunca mezcla proyectos entre sí.",
       "Se activa o desactiva en Settings → Your Claude."
@@ -80,20 +80,20 @@
     {
      "h": "4. Los estilos ahora son skills",
      "p": [
-      "El menú de estilos de respuesta se está retirando. Los estilos personalizados que tenías se pasan solos a skills, que vienen apagadas: las prendés en Customize → Skills.",
-      "Si no querés usar skills, poné en tus instrucciones cómo querés que te escriba (largo, tono, formato). Tiene el mismo efecto para todas tus conversaciones."
+      "El menú de estilos de respuesta se está retirando. Los estilos personalizados que tenías se pasan solos a skills, que vienen apagadas: las prendes en Customize → Skills.",
+      "Si no quieres usar skills, pon en tus instrucciones cómo quieres que te escriba (largo, tono, formato). Tiene el mismo efecto para todas tus conversaciones."
      ]
     },
     {
      "h": "Chats que no quedan guardados",
      "p": [
-      "Para algo que no querés que quede en la memoria ni en el historial, abrí un chat nuevo fuera de un proyecto y tocá el ícono del fantasma arriba a la derecha. Ese chat incógnito no se guarda y Claude no lo va a buscar después.",
-      "En la web o en la app de escritorio también podés apagar la memoria para un solo chat: tocá + en la caja de mensaje y desactivá Memory antes de mandar el primer mensaje."
+      "Para algo que no quieres que quede en la memoria ni en el historial, abre un chat nuevo fuera de un proyecto y toca el ícono del fantasma arriba a la derecha. Ese chat incógnito no se guarda y Claude no lo va a buscar después.",
+      "En la web o en la app de escritorio también puedes apagar la memoria para un solo chat: toca + en la caja de mensaje y desactiva Memory antes de mandar el primer mensaje."
      ],
      "prompts": [
       {
-       "t": "Probá que funcione",
-       "c": "Sin buscar en internet: ¿qué sabés de mí y de mi negocio? Decime también qué te falta saber para ayudarme mejor."
+       "t": "Prueba que funcione",
+       "c": "Sin buscar en internet: ¿qué sabes de mí y de mi negocio? Dime también qué te falta saber para ayudarme mejor."
       }
      ]
     }
@@ -101,7 +101,7 @@
    "faq": [
     {
      "q": "¿Las instrucciones y la memoria son lo mismo?",
-     "a": "No. Las instrucciones las escribís vos y se aplican siempre. La memoria la arma Claude con lo que van hablando, y vos la podés corregir."
+     "a": "No. Las instrucciones las escribís tú y se aplican siempre. La memoria la arma Claude con lo que van hablando, y tú la puedes corregir."
     },
     {
      "q": "¿Funciona en el plan gratis?",
@@ -109,7 +109,7 @@
     },
     {
      "q": "Claude no tiene en cuenta mis instrucciones",
-     "a": "Hacelas más cortas y concretas. Si un proyecto tiene sus propias instrucciones, esas mandan dentro del proyecto."
+     "a": "Hazlas más cortas y concretas. Si un proyecto tiene sus propias instrucciones, esas mandan dentro del proyecto."
     }
    ],
    "fuentes": [
@@ -121,7 +121,7 @@
   {
    "slug": "las-formas-de-usar-claude",
    "t": "Las formas de usar Claude: cuál te sirve para cada cosa",
-   "d": "Chat, Proyectos, app de escritorio, Cowork, Claude Code, conectores y Claude en Chrome. Qué es cada uno, qué plan necesitás y cuándo conviene.",
+   "d": "Chat, Proyectos, app de escritorio, Cowork, Claude Code, conectores y Claude en Chrome. Qué es cada uno, qué plan necesitas y cuándo conviene.",
    "tema": "Empezar",
    "min": 9,
    "secciones": [
@@ -135,39 +135,39 @@
     {
      "h": "Proyectos: un espacio por tema",
      "p": [
-      "Un Proyecto junta chats, documentos e instrucciones de un mismo tema. Todo lo que subís al conocimiento del proyecto lo usa en cada chat de adentro, así no lo volvés a explicar.",
-      "Están en todos los planes. En el gratis podés tener hasta cinco."
+      "Un Proyecto junta chats, documentos e instrucciones de un mismo tema. Todo lo que subís al conocimiento del proyecto lo usa en cada chat de adentro, así no lo vuelves a explicar.",
+      "Están en todos los planes. En el gratis puedes tener hasta cinco."
      ]
     },
     {
      "h": "La app de escritorio y Cowork",
      "p": [
       "La app se baja de claude.ai/download y funciona en macOS 13 o más nuevo, Windows 10 o más nuevo y, en beta, en algunas versiones de Linux.",
-      "Además del chat, en los planes pagos trae Cowork: le describís una tarea de varios pasos y Claude la hace trabajando directo con los archivos de las carpetas que le habilitás. También trae Claude Code."
+      "Además del chat, en los planes pagos trae Cowork: le describís una tarea de varios pasos y Claude la hace trabajando directo con los archivos de las carpetas que le habilitas. También trae Claude Code."
      ],
-     "aviso": "En Cowork, Claude puede hacer acciones reales sobre tus archivos. Dale acceso solo a las carpetas que necesita y dejá la app abierta mientras trabaja."
+     "aviso": "En Cowork, Claude puede hacer acciones reales sobre tus archivos. Dale acceso solo a las carpetas que necesita y deja la app abierta mientras trabaja."
     },
     {
      "h": "Claude Code: para construir",
      "p": [
-      "Es la versión de Claude que lee y edita archivos y corre comandos. Pensado para programar, pero también para armar herramientas sin escribir el código vos.",
-      "Lo usás desde la terminal, desde editores como VS Code, desde la pestaña Code de la app de escritorio o desde el navegador en claude.ai/code. La mayoría de estas opciones piden una suscripción paga."
+      "Es la versión de Claude que lee y edita archivos y corre comandos. Pensado para programar, pero también para armar herramientas sin escribir el código tú.",
+      "Lo usas desde la terminal, desde editores como VS Code, desde la pestaña Code de la app de escritorio o desde el navegador en claude.ai/code. La mayoría de estas opciones piden una suscripción paga."
      ]
     },
     {
      "h": "Conectores y Claude en Chrome",
      "lista": [
       "Conectores: conectan Claude con tus apps (Gmail, Google Calendar, Google Drive y muchas más) para que lea y trabaje con tus datos. Los conectores web están en todos los planes.",
-      "Claude en Chrome: una extensión para el Chrome de computadora que deja a Claude trabajar en páginas web con vos, desde el panel lateral. Es para planes pagos."
+      "Claude en Chrome: una extensión para el Chrome de computadora que deja a Claude trabajar en páginas web contigo, desde el panel lateral. Es para planes pagos."
      ],
-     "aviso": "Claude en Chrome actúa en páginas web en tu nombre. Anthropic avisa que, aun con protecciones, tiene riesgos: leé su guía de uso seguro antes de usarlo."
+     "aviso": "Claude en Chrome actúa en páginas web en tu nombre. Anthropic avisa que, aun con protecciones, tiene riesgos: lee su guía de uso seguro antes de usarlo."
     },
     {
      "h": "Cuál uso",
      "lista": [
       "Una pregunta o un texto suelto: el chat.",
       "Algo que vas a repetir con el mismo material (clientes, cursos, contenido): un Proyecto.",
-      "Una tarea larga con archivos de tu compu (ordenar carpetas, armar un informe con varios documentos): Cowork.",
+      "Una tarea larga con archivos de tu computadora (ordenar carpetas, armar un informe con varios documentos): Cowork.",
       "Construir una web, un script o una herramienta: Claude Code.",
       "Trabajar con tu mail, tu agenda o tus documentos: conectores.",
       "Hacer algo adentro de una página web (completar, comparar, navegar): Claude en Chrome."
@@ -175,7 +175,7 @@
      "prompts": [
       {
        "t": "Que Claude te recomiende",
-       "c": "Quiero hacer esto: [DESCRIBÍ LA TAREA].\nTengo el plan [GRATIS / PAGO] y uso [COMPU CON WINDOWS / MAC / SOLO CELULAR].\n¿Me conviene hacerlo en un chat, en un Proyecto, en Cowork, en Claude Code, con un conector o con Claude en Chrome? Explicame por qué en 3 líneas y dame los primeros pasos."
+       "c": "Quiero hacer esto: [DESCRIBE LA TAREA].\nTengo el plan [GRATIS / PAGO] y uso [COMPUTADORA CON WINDOWS / MAC / SOLO CELULAR].\n¿Me conviene hacerlo en un chat, en un Proyecto, en Cowork, en Claude Code, con un conector o con Claude en Chrome? Explícame por qué en 3 líneas y dame los primeros pasos."
       }
      ]
     }
@@ -183,7 +183,7 @@
    "faq": [
     {
      "q": "¿Necesito saber programar para Claude Code?",
-     "a": "No para empezar: le hablás en español. Pero conviene arrancar por el chat y los Proyectos, y pasar a Claude Code cuando quieras construir algo."
+     "a": "No para empezar: le hablas en español. Pero conviene arrancar por el chat y los Proyectos, y pasar a Claude Code cuando quieras construir algo."
     },
     {
      "q": "¿Cowork funciona en el celular?",
@@ -222,7 +222,7 @@
     ],
     [
      "Regla simple",
-     "Si no sabés cuál elegir, empezá con Sonnet y subí cuando la tarea lo pida."
+     "Si no sabes cuál elegir, empieza con Sonnet y sube cuando la tarea lo pida."
     ]
    ],
    "secciones": [
@@ -230,7 +230,7 @@
      "h": "Los cuatro modelos",
      "lista": [
       "Haiku: el más rápido. Para respuestas cortas, resúmenes y sacar datos de un texto. Es el que menos gasta de tu límite.",
-      "Sonnet: el de todos los días. Escribir, analizar, programar y tareas de varios pasos. Anthropic lo recomienda como punto de partida si dudás.",
+      "Sonnet: el de todos los días. Escribir, analizar, programar y tareas de varios pasos. Anthropic lo recomienda como punto de partida si dudas.",
       "Opus: para razonar en serio. Investigaciones profundas y problemas complejos que necesitan pensar mucho. Gasta más de tu límite.",
       "Fable: el más capaz que está disponible para el público. Para los proyectos más grandes y largos, donde Claude avanza con menos supervisión. Es el que más gasta y requiere un plan pago."
      ]
@@ -238,25 +238,25 @@
     {
      "h": "Cómo elegir sin pensarlo tanto",
      "pasos": [
-      "Arrancá con Sonnet.",
-      "Si es algo simple y lo hacés muchas veces (clasificar, resumir, extraer), pasá a Haiku y cuidás tu límite.",
-      "Si la respuesta se queda corta en algo difícil (una estrategia, un análisis con muchos datos), probá con Opus.",
-      "Guardá Fable para trabajos grandes e importantes, no para preguntas sueltas."
+      "Arranca con Sonnet.",
+      "Si es algo simple y lo haces muchas veces (clasificar, resumir, extraer), pasa a Haiku y cuidas tu límite.",
+      "Si la respuesta se queda corta en algo difícil (una estrategia, un análisis con muchos datos), prueba con Opus.",
+      "Guarda Fable para trabajos grandes e importantes, no para preguntas sueltas."
      ]
     },
     {
      "h": "Cambiar de modelo en la app",
      "p": [
-      "En la caja de mensaje está el selector de modelo. Ahí elegís el modelo y también el nivel de esfuerzo (Effort): cuánto razona Claude antes de responder.",
-      "Más esfuerzo suele dar mejores respuestas en tareas difíciles, pero gasta más. Para cosas de rutina, bajalo."
+      "En la caja de mensaje está el selector de modelo. Ahí eliges el modelo y también el nivel de esfuerzo (Effort): cuánto razona Claude antes de responder.",
+      "Más esfuerzo suele dar mejores respuestas en tareas difíciles, pero gasta más. Para cosas de rutina, bájalo."
      ],
-     "aviso": "No todos los modelos están en todos los planes. Fijate qué te aparece en el selector."
+     "aviso": "No todos los modelos están en todos los planes. Fíjate qué te aparece en el selector."
     },
     {
      "h": "Cambiar de modelo en Claude Code",
      "p": [
       "En Claude Code escribís /model sin nada más para abrir el selector, o /model con el nombre corto: haiku, sonnet, opus o fable.",
-      "El esfuerzo se cambia con /effort: solo abre un control deslizante, o le pasás el nivel directo (por ejemplo /effort high)."
+      "El esfuerzo se cambia con /effort: solo abre un control deslizante, o le pasas el nivel directo (por ejemplo /effort high)."
      ],
      "prompts": [
       {
@@ -266,11 +266,11 @@
      ]
     },
     {
-     "h": "Dejá que Claude te ayude a elegir",
+     "h": "Deja que Claude te ayude a elegir",
      "prompts": [
       {
        "t": "Qué modelo conviene",
-       "c": "Voy a hacer esta tarea: [DESCRIBILA].\nLa voy a repetir [UNA VEZ / TODOS LOS DÍAS] y lo que más me importa es [RAPIDEZ / CALIDAD / CUIDAR MI LÍMITE].\n¿Qué modelo de Claude me conviene (Haiku, Sonnet, Opus o Fable) y con qué nivel de esfuerzo? Respondé en 3 líneas."
+       "c": "Voy a hacer esta tarea: [DESCRÍBELA].\nLa voy a repetir [UNA VEZ / TODOS LOS DÍAS] y lo que más me importa es [RAPIDEZ / CALIDAD / CUIDAR MI LÍMITE].\n¿Qué modelo de Claude me conviene (Haiku, Sonnet, Opus o Fable) y con qué nivel de esfuerzo? Responde en 3 líneas."
       }
      ]
     }
@@ -278,7 +278,7 @@
    "faq": [
     {
      "q": "¿Opus siempre responde mejor?",
-     "a": "No siempre vale la pena. En tareas simples la diferencia es chica y gastás más de tu límite. Usalo cuando la tarea lo pida."
+     "a": "No siempre vale la pena. En tareas simples la diferencia es chica y gastas más de tu límite. Úsalo cuando la tarea lo pida."
     },
     {
      "q": "¿Qué es Mythos?",
@@ -300,7 +300,7 @@
   {
    "slug": "proyectos-de-claude-para-tu-negocio",
    "t": "Proyectos de Claude: un asistente por área de tu negocio",
-   "d": "Armá un Proyecto con tus documentos y tus reglas para que cada chat arranque sabiendo cómo trabaja tu negocio.",
+   "d": "Arma un Proyecto con tus documentos y tus reglas para que cada chat arranque sabiendo cómo trabaja tu negocio.",
    "tema": "Negocio",
    "min": 9,
    "fichaNombre": "Proyectos",
@@ -310,7 +310,7 @@
      "Un espacio con chats, conocimiento (archivos) e instrucciones propias."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Cualquier plan. En el gratis, hasta cinco proyectos."
     ],
     [
@@ -333,23 +333,23 @@
      ]
     },
     {
-     "h": "Crealo",
+     "h": "Créalo",
      "pasos": [
-      "Entrá a Projects en la barra de la izquierda o andá a claude.ai/projects.",
-      "Tocá + New Project, arriba a la derecha.",
-      "Ponele nombre y descripción. Ojo: Claude no lee esos datos, son para vos.",
-      "En Team o Enterprise elegí si queda privado o compartido con tu organización."
+      "Entra a Projects en la barra de la izquierda o ve a claude.ai/projects.",
+      "Toca + New Project, arriba a la derecha.",
+      "Ponle nombre y descripción. Ojo: Claude no lee esos datos, son para ti.",
+      "En Team o Enterprise elige si queda privado o compartido con tu organización."
      ],
      "p": [
-      "Los nombres de los menús están como aparecen en la ayuda oficial de Claude (en inglés). Si tenés Claude en español, vas a ver la traducción en el mismo lugar."
+      "Los nombres de los menús están como aparecen en la ayuda oficial de Claude (en inglés). Si tienes Claude en español, vas a ver la traducción en el mismo lugar."
      ]
     },
     {
-     "h": "Cargale el conocimiento",
+     "h": "Cárgale el conocimiento",
      "pasos": [
-      "Adentro del proyecto, a la derecha, está el conocimiento. Tocá +.",
-      "Subí documentos, textos o fragmentos de código. Poneles nombres claros (\"Preguntas frecuentes 2026.pdf\").",
-      "Subí lo que vas a usar seguido, no todo lo que tenés. Si un archivo ya no sirve, borralo."
+      "Adentro del proyecto, a la derecha, está el conocimiento. Toca +.",
+      "Sube documentos, textos o fragmentos de código. Ponles nombres claros (\"Preguntas frecuentes 2026.pdf\").",
+      "Sube lo que vas a usar seguido, no todo lo que tienes. Si un archivo ya no sirve, bórralo."
      ],
      "p": [
       "En los planes pagos, cuando el conocimiento se acerca al límite, Claude activa solo un modo de búsqueda (RAG) para que entre más material."
@@ -357,38 +357,38 @@
      "aviso": "No subas contraseñas, datos de tarjetas ni datos sensibles de tus clientes."
     },
     {
-     "h": "Escribí las instrucciones",
+     "h": "Escribe las instrucciones",
      "p": [
-      "Tocá Set project instructions, escribí cómo querés que trabaje en ese proyecto y guardá con Save instructions. Se aplican a todos los chats del proyecto.",
-      "Que sean cortas y generales. Lo específico de cada tarea lo pedís en el chat."
+      "Toca Set project instructions, escribe cómo quieres que trabaje en ese proyecto y guarda con Save instructions. Se aplican a todos los chats del proyecto.",
+      "Que sean cortas y generales. Lo específico de cada tarea lo pides en el chat."
      ],
      "prompts": [
       {
        "t": "Instrucciones de un proyecto de atención al cliente",
-       "c": "Sos el asistente de atención al cliente de [TU NEGOCIO].\nUsá solo la información de los documentos del proyecto.\nCuando te pegue el mensaje de un cliente:\n1. Escribí una respuesta corta, amable y en voseo.\n2. Si la respuesta depende de una política (envíos, cambios, garantías), citá cuál.\n3. Si no está en los documentos, decime qué dato falta. No inventes precios ni plazos.\n4. Al final, sugerí si conviene ofrecerle algo más."
+       "c": "Eres el asistente de atención al cliente de [TU NEGOCIO].\nUsa solo la información de los documentos del proyecto.\nCuando te pegue el mensaje de un cliente:\n1. Escribe una respuesta corta, amable y en voseo.\n2. Si la respuesta depende de una política (envíos, cambios, garantías), cita cuál.\n3. Si no está en los documentos, dime qué dato falta. No inventes precios ni plazos.\n4. Al final, sugiere si conviene ofrecerle algo más."
       },
       {
        "t": "Que Claude escriba las instrucciones",
-       "c": "Voy a armar un Proyecto de Claude para [ÁREA DE MI NEGOCIO]. Lo voy a usar para [TAREAS].\nHaceme 5 preguntas para entender cómo trabajo y después escribime las instrucciones del proyecto: menos de 150 palabras, en segunda persona, con reglas claras de qué hacer y qué no."
+       "c": "Voy a armar un Proyecto de Claude para [ÁREA DE MI NEGOCIO]. Lo voy a usar para [TAREAS].\nHazme 5 preguntas para entender cómo trabajo y después escríbeme las instrucciones del proyecto: menos de 150 palabras, en segunda persona, con reglas claras de qué hacer y qué no."
       }
      ]
     },
     {
      "h": "Memoria y equipo",
      "p": [
-      "Cada proyecto tiene su propia memoria. Si querés que un proyecto no use lo que Claude sabe de vos en general, apagá Use account memory en la sección Memory de la página del proyecto.",
-      "En el plan Team podés compartirlo: botón Share project, al lado del nombre. Agregás personas y elegís Can view (solo ver) o Can edit (editar)."
+      "Cada proyecto tiene su propia memoria. Si quieres que un proyecto no use lo que Claude sabe de ti en general, apaga Use account memory en la sección Memory de la página del proyecto.",
+      "En el plan Team puedes compartirlo: botón Share project, al lado del nombre. Agregas personas y eliges Can view (solo ver) o Can edit (editar)."
      ]
     }
    ],
    "faq": [
     {
      "q": "¿Cuántos archivos puedo subir?",
-     "a": "Depende del tamaño. En los planes pagos, si te acercás al límite, Claude cambia solo a un modo de búsqueda para que entre más."
+     "a": "Depende del tamaño. En los planes pagos, si te acercas al límite, Claude cambia solo a un modo de búsqueda para que entre más."
     },
     {
-     "q": "Abrí un chat nuevo y no se acuerda del anterior",
-     "a": "Es normal: los chats de un proyecto no comparten lo que hablaron. Lo que tiene que saber siempre, subilo al conocimiento."
+     "q": "Abre un chat nuevo y no se acuerda del anterior",
+     "a": "Es normal: los chats de un proyecto no comparten lo que hablaron. Lo que tiene que saber siempre, súbelo al conocimiento."
     },
     {
      "q": "¿Las instrucciones del proyecto reemplazan a las mías?",
@@ -404,7 +404,7 @@
   {
    "slug": "artifacts-apps-sin-programar",
    "t": "Artifacts: herramientas para tu negocio sin programar",
-   "d": "Pedile a Claude una calculadora, un cotizador o un tablero y te lo arma al lado del chat. Después lo publicás o lo compartís con tu equipo.",
+   "d": "Pídele a Claude una calculadora, un cotizador o un tablero y te lo arma al lado del chat. Después lo publicas o lo compartís con tu equipo.",
    "tema": "Claude",
    "min": 9,
    "fichaNombre": "Artifacts",
@@ -414,7 +414,7 @@
      "Lo que Claude te arma para mostrar o usar: documentos, páginas, tableros, diagramas o herramientas chicas."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Tener activado \"Cloud code execution and file creation\". Crear artifacts está en todos los planes."
     ],
     [
@@ -424,38 +424,38 @@
    ],
    "secciones": [
     {
-     "h": "Activalos",
+     "h": "Actívalos",
      "pasos": [
       "En planes Free, Pro y Max: Settings → Capabilities.",
       "En Team y Enterprise: Organization settings → Capabilities (lo hace quien administra).",
-      "Activá Cloud code execution and file creation."
+      "Activa Cloud code execution and file creation."
      ],
      "p": [
-      "Los nombres de los menús están como aparecen en la ayuda oficial de Claude (en inglés). Si tenés Claude en español, vas a ver la traducción en el mismo lugar."
+      "Los nombres de los menús están como aparecen en la ayuda oficial de Claude (en inglés). Si tienes Claude en español, vas a ver la traducción en el mismo lugar."
      ]
     },
     {
      "h": "Ideas para un negocio",
      "lista": [
       "Cotizador: el cliente elige opciones y ve el precio estimado.",
-      "Calculadora de márgenes: cargás costo y precio y te muestra la ganancia.",
+      "Calculadora de márgenes: cargas costo y precio y te muestra la ganancia.",
       "Checklist de onboarding: los pasos para un cliente o empleado nuevo, con casillas para tildar.",
-      "Tablero de ventas: pegás tus números y lo ves en gráficos.",
+      "Tablero de ventas: pegas tus números y lo ves en gráficos.",
       "Página de un servicio: una landing simple para mostrar una oferta."
      ],
      "prompts": [
       {
        "t": "Cotizador para tu negocio",
-       "c": "Armame un cotizador interactivo para [TU NEGOCIO].\nMis servicios y precios base son: [LISTA DE SERVICIOS CON PRECIO].\nOpciones que suman al precio: [EJ.: URGENCIA, CANTIDAD, EXTRAS].\nQuiero que el cliente elija las opciones y vea el total al instante, con un botón que diga \"Pedir este presupuesto\".\nQue se vea limpio, se lea bien en el celular y esté todo en español."
+       "c": "Ármame un cotizador interactivo para [TU NEGOCIO].\nMis servicios y precios base son: [LISTA DE SERVICIOS CON PRECIO].\nOpciones que suman al precio: [EJ.: URGENCIA, CANTIDAD, EXTRAS].\nQuiero que el cliente elija las opciones y vea el total al instante, con un botón que diga \"Pedir este presupuesto\".\nQue se vea limpio, se lea bien en el celular y esté todo en español."
       }
      ]
     },
     {
-     "h": "Mejoralo y descargalo",
+     "h": "Mejóralo y descárgalo",
      "lista": [
-      "Pedí cambios en el chat: \"poné el total más grande\", \"agregá un campo para el nombre\".",
-      "En documentos, marcá un texto y tocá Edit with Claude para cambiar solo esa parte.",
-      "Si aparece un error, tocá Try fixing with Claude.",
+      "Pide cambios en el chat: \"pon el total más grande\", \"agrega un campo para el nombre\".",
+      "En documentos, marca un texto y toca Edit with Claude para cambiar solo esa parte.",
+      "Si aparece un error, toca Try fixing with Claude.",
       "Todo lo que creaste queda en la pestaña Artifacts de la barra lateral.",
       "Los artifacts hechos con plantillas se exportan con Export: documentos a Word, PDF o Google Docs; presentaciones a PowerPoint o PDF."
      ]
@@ -463,18 +463,18 @@
     {
      "h": "Artifacts que usan Claude y guardan datos",
      "p": [
-      "Un artifact puede llamar a Claude por dentro: por ejemplo, un generador de respuestas para clientes. Cada persona que lo usa gasta de su propio plan, no del tuyo, y no necesitás claves de API.",
+      "Un artifact puede llamar a Claude por dentro: por ejemplo, un generador de respuestas para clientes. Cada persona que lo usa gasta de su propio plan, no del tuyo, y no necesitas claves de API.",
       "En los planes pagos un artifact también puede guardar datos entre sesiones: privados para cada persona o compartidos para todos. El límite es de 20 MB por artifact y solo texto."
      ]
     },
     {
-     "h": "Compartilo",
+     "h": "Compártelo",
      "pasos": [
-      "Free, Pro y Max: abrí el artifact, revisá que sea la versión correcta y tocá Publish. Copiá el link.",
-      "Para meterlo en tu web: Get embed code, y en Allowed domains poné las direcciones de tu sitio.",
-      "Team y Enterprise: tocá Share y después Share & copy link. Solo lo ven personas de tu organización."
+      "Free, Pro y Max: abre el artifact, revisa que sea la versión correcta y toca Publish. Copia el link.",
+      "Para meterlo en tu web: Get embed code, y en Allowed domains pon las direcciones de tu sitio.",
+      "Team y Enterprise: toca Share y después Share & copy link. Solo lo ven personas de tu organización."
      ],
-     "aviso": "Un artifact publicado lo puede ver cualquiera que tenga el link. Si lo despublicás con Unpublish, no lo podés volver a publicar y se borran sus datos guardados. En Team, quien lo ve también accede a los archivos del chat de origen: revisá que no haya nada sensible."
+     "aviso": "Un artifact publicado lo puede ver cualquiera que tenga el link. Si lo despublicas con Unpublish, no lo puedes volver a publicar y se borran sus datos guardados. En Team, quien lo ve también accede a los archivos del chat de origen: revisa que no haya nada sensible."
     }
    ],
    "faq": [
@@ -488,7 +488,7 @@
     },
     {
      "q": "No me aparece la opción de crear artifacts",
-     "a": "Revisá que esté activado Cloud code execution and file creation en Settings → Capabilities."
+     "a": "Revisa que esté activado Cloud code execution and file creation en Settings → Capabilities."
     }
    ],
    "fuentes": [
@@ -498,8 +498,8 @@
   },
   {
    "slug": "pasate-de-chatgpt-a-claude",
-   "t": "Pasate de ChatGPT a Claude sin empezar de cero",
-   "d": "Llevate tu memoria, tus instrucciones y tus GPTs armados a Claude en una tarde, para que te conozca desde el primer día.",
+   "t": "Pásate de ChatGPT a Claude sin empezar de cero",
+   "d": "Llévate tu memoria, tus instrucciones y tus GPTs armados a Claude en una tarde, para que te conozca desde el primer día.",
    "tema": "Empezar",
    "min": 8,
    "fichaNombre": "Mudanza a Claude",
@@ -509,7 +509,7 @@
      "Una mudanza en tres partes: memoria, instrucciones y asistentes armados."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Tu cuenta de ChatGPT y una de Claude. La importación de memoria está en todos los planes, en la web y en la app de escritorio."
     ],
     [
@@ -519,73 +519,73 @@
    ],
    "secciones": [
     {
-     "h": "Qué te llevás y adónde va",
+     "h": "Qué te llevas y adónde va",
      "lista": [
-      "Lo que ChatGPT recuerda de vos: a la memoria de Claude, con la función de importar.",
+      "Lo que ChatGPT recuerda de ti: a la memoria de Claude, con la función de importar.",
       "Tus instrucciones personales: al campo Instructions de Claude.",
       "Tus GPTs personalizados: a Proyectos de Claude (instrucciones + archivos).",
       "Conversaciones viejas importantes: resumidas, al conocimiento de un Proyecto."
      ]
     },
     {
-     "h": "1. Sacá tu memoria de ChatGPT",
+     "h": "1. Saca tu memoria de ChatGPT",
      "p": [
-      "Abrí un chat en ChatGPT y pegale el prompt de abajo. Antes de copiar el resultado, leelo y sacá lo que no quieras llevar."
+      "Abre un chat en ChatGPT y pégale el prompt de abajo. Antes de copiar el resultado, léelo y saca lo que no quieras llevar."
      ],
      "prompts": [
       {
-       "t": "Pedile a ChatGPT tu memoria",
-       "c": "Necesito una copia completa de todo lo que tenés guardado sobre mí en tu memoria. Listá cada dato que recordás, tal cual lo tenés guardado, sin resumir ni agregar nada: quién soy, mi trabajo, mis proyectos, mis preferencias y cómo me gusta que me respondas.\nPonelo todo junto en un solo bloque de código para que lo pueda copiar."
+       "t": "Pídele a ChatGPT tu memoria",
+       "c": "Necesito una copia completa de todo lo que tienes guardado sobre mí en tu memoria. Lista cada dato que recuerdas, tal cual lo tienes guardado, sin resumir ni agregar nada: quién soy, mi trabajo, mis proyectos, mis preferencias y cómo me gusta que me respondas.\nPonlo todo junto en un solo bloque de código para que lo pueda copiar."
       }
      ],
-     "aviso": "Revisá el texto antes de pegarlo en Claude y borrá datos sensibles (salud, dinero, datos de terceros)."
+     "aviso": "Revisa el texto antes de pegarlo en Claude y borra datos sensibles (salud, dinero, datos de terceros)."
     },
     {
-     "h": "2. Importala en Claude",
+     "h": "2. Impórtala en Claude",
      "pasos": [
-      "En Claude andá a Settings → Your Claude (en la versión anterior: Settings → Memory o Settings → Capabilities).",
-      "Tocá Start import. También puede aparecerte la tarjeta Import memory to Claude en la pantalla de inicio.",
-      "Pegá el texto y tocá Add to memory.",
-      "Revisá lo que guardó y tocá See what Claude learned about you para ver qué entendió."
+      "En Claude ve a Settings → Your Claude (en la versión anterior: Settings → Memory o Settings → Capabilities).",
+      "Toca Start import. También puede aparecerte la tarjeta Import memory to Claude en la pantalla de inicio.",
+      "Pega el texto y toca Add to memory.",
+      "Revisa lo que guardó y toca See what Claude learned about you para ver qué entendió."
      ],
      "p": [
-      "Los nombres de los menús están como aparecen en la ayuda oficial de Claude (en inglés). Si tenés Claude en español, vas a ver la traducción en el mismo lugar."
+      "Los nombres de los menús están como aparecen en la ayuda oficial de Claude (en inglés). Si tienes Claude en español, vas a ver la traducción en el mismo lugar."
      ]
     },
     {
-     "h": "3. Pasá tus instrucciones y tus GPTs",
+     "h": "3. Pasa tus instrucciones y tus GPTs",
      "pasos": [
-      "Copiá lo que tenías como instrucciones o personalización en ChatGPT y pegalo en Settings → Your Claude → Instructions.",
-      "Por cada GPT que usabas, creá un Proyecto en Claude: sus instrucciones van en Set project instructions y sus archivos al conocimiento.",
-      "Para chats viejos que te importan, pedile a ChatGPT un resumen de cada uno y subí esos resúmenes a un Proyecto."
+      "Copia lo que tenías como instrucciones o personalización en ChatGPT y pégalo en Settings → Your Claude → Instructions.",
+      "Por cada GPT que usabas, crea un Proyecto en Claude: sus instrucciones van en Set project instructions y sus archivos al conocimiento.",
+      "Para chats viejos que te importan, pídele a ChatGPT un resumen de cada uno y sube esos resúmenes a un Proyecto."
      ],
      "prompts": [
       {
        "t": "Adaptar instrucciones para Claude",
-       "c": "Estas son las instrucciones que usaba en otro asistente:\n[PEGÁ TUS INSTRUCCIONES]\nReescribilas para vos, Claude: sacá lo repetido, ordenalas por prioridad y dejalas en menos de 200 palabras. Si alguna es confusa, preguntame antes de cambiarla."
+       "c": "Estas son las instrucciones que usaba en otro asistente:\n[PEGA TUS INSTRUCCIONES]\nReescríbelas para ti, Claude: saca lo repetido, ordénalas por prioridad y déjalas en menos de 200 palabras. Si alguna es confusa, pregúntame antes de cambiarla."
       }
      ]
     },
     {
-     "h": "4. Corregí lo que no quedó bien",
+     "h": "4. Corrige lo que no quedó bien",
      "p": [
-      "En Settings → Your Claude, tocá Manage al lado de Your memory. Ahí podés escribir qué cambiar o borrar, o pedírselo directo en un chat.",
-      "La importación todavía es experimental: puede que Claude no use todo lo que pegaste. Y se enfoca en lo laboral, así que datos personales que no tienen que ver con tu trabajo pueden quedar afuera. Si tenés la memoria anterior, los cambios pueden tardar hasta 24 horas en verse."
+      "En Settings → Your Claude, toca Manage al lado de Your memory. Ahí puedes escribir qué cambiar o borrar, o pedírselo directo en un chat.",
+      "La importación todavía es experimental: puede que Claude no use todo lo que pegaste. Y se enfoca en lo laboral, así que datos personales que no tienen que ver con tu trabajo pueden quedar afuera. Si tienes la memoria anterior, los cambios pueden tardar hasta 24 horas en verse."
      ]
     }
    ],
    "faq": [
     {
      "q": "¿Puedo hacer lo mismo al revés, de Claude a otro asistente?",
-     "a": "Sí. En Settings → Your Claude → Manage ves tu memoria, o le pedís a Claude que te la escriba tal cual. Guardala en un archivo como respaldo."
+     "a": "Sí. En Settings → Your Claude → Manage ves tu memoria, o le pides a Claude que te la escriba tal cual. Guárdala en un archivo como respaldo."
     },
     {
      "q": "¿Se pasan mis conversaciones viejas?",
-     "a": "La importación pasa la memoria, no los chats. Para conversaciones clave, usá resúmenes en un Proyecto."
+     "a": "La importación pasa la memoria, no los chats. Para conversaciones clave, usa resúmenes en un Proyecto."
     },
     {
      "q": "Claude no tiene en cuenta algo que importé",
-     "a": "Decíselo en el chat (\"acordate de que...\") o corregilo en Manage. La función todavía está en desarrollo."
+     "a": "Díselo en el chat (\"acuérdate de que...\") o corrígelo en Manage. La función todavía está en desarrollo."
     }
    ],
    "fuentes": [
@@ -598,71 +598,71 @@
   {
    "slug": "errores-que-agotan-tu-plan-de-claude",
    "t": "7 errores que te agotan el plan de Claude",
-   "d": "Chats eternos, archivos que ya no usás, el modelo más potente para todo y conectores prendidos de más. Cómo hacer que tu uso rinda.",
+   "d": "Chats eternos, archivos que ya no usas, el modelo más potente para todo y conectores prendidos de más. Cómo hacer que tu uso rinda.",
    "tema": "Productividad",
    "min": 7,
    "secciones": [
     {
-     "h": "Primero, entendé los dos límites",
+     "h": "Primero, entiende los dos límites",
      "lista": [
-      "Límite de uso: cuánto podés usar Claude en un período. En los planes pagos hay un límite por sesión que se renueva cada cinco horas y otro semanal. Cuenta todo junto: claude.ai, Claude Code y la app de escritorio.",
+      "Límite de uso: cuánto puedes usar Claude en un período. En los planes pagos hay un límite por sesión que se renueva cada cinco horas y otro semanal. Cuenta todo junto: claude.ai, Claude Code y la app de escritorio.",
       "Límite de largo: cuánto puede crecer una sola conversación. Depende del modelo."
      ],
      "p": [
-      "Mirá cuánto te queda en Settings → Usage: ahí ves la sesión actual, el tiempo que falta y cuándo se renueva lo semanal."
+      "Mira cuánto te queda en Settings → Usage: ahí ves la sesión actual, el tiempo que falta y cuándo se renueva lo semanal."
      ]
     },
     {
-     "h": "Errores 1 a 3: cómo pedís",
+     "h": "Errores 1 a 3: cómo pides",
      "lista": [
-      "Mandar de a una pregunta: si tenés tres cosas relacionadas, mandalas en un solo mensaje.",
-      "Pedir sin contexto: un pedido vago termina en ida y vuelta. Decí para quién es, qué formato querés y qué datos tenés.",
-      "Repetir lo que ya dijiste: en un chat largo, referite a lo anterior (\"lo que te pasé arriba\") en vez de volver a pegarlo."
+      "Mandar de a una pregunta: si tienes tres cosas relacionadas, mandalas en un solo mensaje.",
+      "Pedir sin contexto: un pedido vago termina en ida y vuelta. Di para quién es, qué formato quieres y qué datos tienes.",
+      "Repetir lo que ya dijiste: en un chat largo, refiérete a lo anterior (\"lo que te pasé arriba\") en vez de volver a pegarlo."
      ],
      "prompts": [
       {
        "t": "Pedido completo en un solo mensaje",
-       "c": "Contexto: [QUIÉN SOS Y PARA QUÉ ES].\nTarea: [QUÉ NECESITÁS].\nMaterial: [PEGÁ TEXTO O DATOS].\nFormato: [EJ.: TABLA, 5 VIÑETAS, MAIL DE 100 PALABRAS].\nSi te falta algo, preguntame todo junto antes de empezar."
+       "c": "Contexto: [QUIÉN ERES Y PARA QUÉ ES].\nTarea: [QUÉ NECESITAS].\nMaterial: [PEGA TEXTO O DATOS].\nFormato: [EJ.: TABLA, 5 VIÑETAS, MAIL DE 100 PALABRAS].\nSi te falta algo, pregúntame todo junto antes de empezar."
       }
      ]
     },
     {
      "h": "Error 4: chats que no terminan nunca",
      "p": [
-      "Cuanto más largo el chat, más pesa cada mensaje. Si tenés activada la ejecución de código, Claude resume los mensajes viejos para seguir, pero ese resumen también gasta.",
-      "Cuando cambiás de tema o el chat ya está muy largo, abrí uno nuevo. Pedile antes un resumen para arrancar limpio."
+      "Cuanto más largo el chat, más pesa cada mensaje. Si tienes activada la ejecución de código, Claude resume los mensajes viejos para seguir, pero ese resumen también gasta.",
+      "Cuando cambias de tema o el chat ya está muy largo, abre uno nuevo. Pídele antes un resumen para arrancar limpio."
      ],
      "prompts": [
       {
        "t": "Resumen para pasar a un chat nuevo",
-       "c": "Vamos a seguir en un chat nuevo. Escribime un resumen de esta conversación para pegar ahí: objetivo, decisiones que tomamos, datos importantes y qué falta hacer. Máximo 150 palabras."
+       "c": "Vamos a seguir en un chat nuevo. Escríbeme un resumen de esta conversación para pegar ahí: objetivo, decisiones que tomamos, datos importantes y qué falta hacer. Máximo 150 palabras."
       }
      ]
     },
     {
      "h": "Error 5: no usar Proyectos (o usarlos mal)",
      "p": [
-      "Si vas a usar el mismo material muchas veces, subilo a un Proyecto en lugar de pegarlo en cada chat: el contenido que se reutiliza mientras está en caché cuenta menos. Si volvés después de mucho rato sin usarlo, se cuenta completo otra vez.",
-      "Dos cosas para cuidar: instrucciones del proyecto cortas y generales, y sacar los archivos que ya no usás."
+      "Si vas a usar el mismo material muchas veces, súbelo a un Proyecto en lugar de pegarlo en cada chat: el contenido que se reutiliza mientras está en caché cuenta menos. Si vuelves después de mucho rato sin usarlo, se cuenta completo otra vez.",
+      "Dos cosas para cuidar: instrucciones del proyecto cortas y generales, y sacar los archivos que ya no usas."
      ]
     },
     {
      "h": "Errores 6 y 7: modelo y herramientas de más",
      "lista": [
       "El modelo más potente para todo: Haiku es el que menos gasta y alcanza para resúmenes y tareas simples. Opus y Fable, para lo que de verdad los necesita.",
-      "Esfuerzo alto en tareas de rutina: bajá el nivel de esfuerzo o apagá el razonamiento extendido cuando no hace falta.",
-      "Conectores y herramientas siempre prendidos: consumen mucho. Revisá qué tenés activado (en la versión nueva de la app, los conectores están en Customize → Connectors) y dejá solo lo que vas a usar en ese chat."
+      "Esfuerzo alto en tareas de rutina: bajá el nivel de esfuerzo o apaga el razonamiento extendido cuando no hace falta.",
+      "Conectores y herramientas siempre prendidos: consumen mucho. Revisa qué tienes activado (en la versión nueva de la app, los conectores están en Customize → Connectors) y deja solo lo que vas a usar en ese chat."
      ]
     }
    ],
    "faq": [
     {
      "q": "¿Cuántos mensajes tengo por día?",
-     "a": "No hay un número fijo: depende del largo de los mensajes, los archivos, el modelo, el esfuerzo y las herramientas que uses. Mirá Settings → Usage."
+     "a": "No hay un número fijo: depende del largo de los mensajes, los archivos, el modelo, el esfuerzo y las herramientas que uses. Mira Settings → Usage."
     },
     {
      "q": "Me quedé sin uso en el medio de algo urgente",
-     "a": "En los planes pagos podés usar créditos de uso extra para seguir. Si no, esperá a que se renueve la sesión."
+     "a": "En los planes pagos puedes usar créditos de uso extra para seguir. Si no, espera a que se renueve la sesión."
     },
     {
      "q": "¿Claude Code gasta del mismo límite?",
@@ -678,7 +678,7 @@
   {
    "slug": "conectores-claude-dentro-de-tus-apps",
    "t": "Conectores: Claude adentro de tu mail, tu agenda y tu Drive",
-   "d": "Conectá Gmail, Google Calendar, Google Drive y otras apps para que Claude trabaje con tus datos reales. Y si tu herramienta no está, agregala como conector personalizado.",
+   "d": "Conecta Gmail, Google Calendar, Google Drive y otras apps para que Claude trabaje con tus datos reales. Y si tu herramienta no está, agrégala como conector personalizado.",
    "tema": "Automatizar",
    "min": 9,
    "fichaNombre": "Conectores",
@@ -688,8 +688,8 @@
      "Permisos para que Claude lea y use datos de tus apps desde el chat."
     ],
     [
-     "Necesitás",
-     "Una cuenta en la app que querés conectar. Los conectores web están en todos los planes."
+     "Necesitas",
+     "Una cuenta en la app que quieres conectar. Los conectores web están en todos los planes."
     ],
     [
      "Qué no hace",
@@ -698,15 +698,15 @@
    ],
    "secciones": [
     {
-     "h": "Conectá tu primera app",
+     "h": "Conecta tu primera app",
      "pasos": [
-      "Desde un chat: tocá + abajo a la izquierda (o escribí /), pasá por Connectors y elegí Manage connectors.",
+      "Desde un chat: toca + abajo a la izquierda (o escribe /), pasa por Connectors y elige Manage connectors.",
       "O desde la configuración: Customize → Connectors.",
-      "Tocá el + al lado de Connectors, elegí la app y tocá Connect o Install.",
-      "Iniciá sesión en la app y aceptá los permisos."
+      "Toca el + al lado de Connectors, elige la app y toca Connect o Install.",
+      "Inicia sesión en la app y acepta los permisos."
      ],
      "p": [
-      "Los nombres de los menús están como aparecen en la ayuda oficial de Claude (en inglés). Si tenés Claude en español, vas a ver la traducción en el mismo lugar.",
+      "Los nombres de los menús están como aparecen en la ayuda oficial de Claude (en inglés). Si tienes Claude en español, vas a ver la traducción en el mismo lugar.",
       "En Team y Enterprise, primero el dueño de la cuenta lo habilita en Organization settings → Connectors. Después cada persona conecta su propia cuenta."
      ]
     },
@@ -719,48 +719,48 @@
      ]
     },
     {
-     "h": "Prendelos solo cuando los usás",
+     "h": "Préndelos solo cuando los usas",
      "p": [
-      "En cada chat podés elegir qué conectores están activos: + → Connectors y prendés o apagás cada uno. Las herramientas consumen bastante de tu límite, así que dejá prendido solo lo que necesitás."
+      "En cada chat puedes elegir qué conectores están activos: + → Connectors y prendes o apagas cada uno. Las herramientas consumen bastante de tu límite, así que deja prendido solo lo que necesitas."
      ],
      "prompts": [
       {
        "t": "Resumen de la mañana",
-       "c": "Con Gmail y Google Calendar:\n1. Decime qué reuniones tengo hoy, a qué hora y con quién.\n2. Listá los mails de las últimas 24 horas que necesitan respuesta mía (no promociones ni newsletters).\n3. Para los 3 más importantes, preparame un borrador de respuesta corto. No envíes nada."
+       "c": "Con Gmail y Google Calendar:\n1. Dime qué reuniones tengo hoy, a qué hora y con quién.\n2. Lista los mails de las últimas 24 horas que necesitan respuesta mía (no promociones ni newsletters).\n3. Para los 3 más importantes, prepárame un borrador de respuesta corto. No envíes nada."
       },
       {
        "t": "Buscar en Drive",
-       "c": "Buscá en mi Google Drive el documento más reciente sobre [TEMA] y haceme un resumen en 5 puntos, con lo que haya que decidir o hacer."
+       "c": "Busca en mi Google Drive el documento más reciente sobre [TEMA] y hazme un resumen en 5 puntos, con lo que haya que decidir o hacer."
       }
      ]
     },
     {
      "h": "Conectores personalizados",
      "p": [
-      "Si tu herramienta no está en el directorio pero tiene un servidor MCP remoto (una dirección web que le da acceso a Claude), la podés agregar. En el plan gratis podés tener uno."
+      "Si tu herramienta no está en el directorio pero tiene un servidor MCP remoto (una dirección web que le da acceso a Claude), la puedes agregar. En el plan gratis puedes tener uno."
      ],
      "pasos": [
-      "Andá a Customize → Connectors y tocá Add.",
-      "Pasá por Custom y elegí Web.",
-      "Poné un nombre y la URL del servidor MCP remoto. Tocá Continue.",
-      "En Authentication elegí cómo inicia sesión: Sign in now, Sign in when needed o No sign in.",
-      "Tocá Add y terminá la conexión."
+      "Ve a Customize → Connectors y toca Add.",
+      "Pasa por Custom y elige Web.",
+      "Pon un nombre y la URL del servidor MCP remoto. Toca Continue.",
+      "En Authentication elige cómo inicia sesión: Sign in now, Sign in when needed o No sign in.",
+      "Toca Add y termina la conexión."
      ],
-     "aviso": "Los conectores personalizados no están verificados por Anthropic. Agregá solo servidores de empresas o personas en las que confiás."
+     "aviso": "Los conectores personalizados no están verificados por Anthropic. Agrega solo servidores de empresas o personas en las que confías."
     },
     {
      "h": "Si algo falla",
      "lista": [
-      "Error con Google: Customize → Connectors, elegí el conector, Disconnect, y volvé a conectarlo.",
+      "Error con Google: Customize → Connectors, elige el conector, Disconnect, y vuelve a conectarlo.",
       "\"Access blocked\" en una cuenta de empresa de Google: el administrador de Google Workspace tiene que marcar la app de Claude como confiable.",
-      "Claude no usa el conector: revisá que esté prendido en ese chat y nombralo en el pedido (\"buscá en mi Gmail...\")."
+      "Claude no usa el conector: revisa que esté prendido en ese chat y nómbralo en el pedido (\"busca en mi Gmail...\")."
      ]
     }
    ],
    "faq": [
     {
      "q": "¿Claude puede borrar o mandar cosas sin preguntarme?",
-     "a": "Puede modificar datos según los permisos de tu cuenta. En Gmail y Drive, por defecto te pide aprobación antes de enviar, compartir, mover o borrar. Leé siempre lo que te propone antes de aprobar."
+     "a": "Puede modificar datos según los permisos de tu cuenta. En Gmail y Drive, por defecto te pide aprobación antes de enviar, compartir, mover o borrar. Lee siempre lo que te propone antes de aprobar."
     },
     {
      "q": "¿Usan mis mails para entrenar a Claude?",
@@ -787,19 +787,19 @@
    "prompts": [
     {
      "t": "Entrevista inicial",
-     "c": "Quiero que me conozcas para ayudarme mejor. Haceme 10 preguntas, de a una, sobre mi trabajo, mis clientes, mis tareas de cada semana y lo que más me cuesta. Al final, resumí lo que aprendiste en 10 líneas."
+     "c": "Quiero que me conozcas para ayudarme mejor. Hazme 10 preguntas, de a una, sobre mi trabajo, mis clientes, mis tareas de cada semana y lo que más me cuesta. Al final, resume lo que aprendiste en 10 líneas."
     },
     {
-     "t": "Dónde me podés ayudar",
-     "c": "Esta es mi semana típica: [DESCRIBÍ TUS TAREAS Y CUÁNTO TIEMPO TE LLEVAN].\nDecime las 5 tareas donde más tiempo me podés ahorrar, ordenadas de mayor a menor impacto, y cómo te las pediría yo en un mensaje."
+     "t": "Dónde me puedes ayudar",
+     "c": "Esta es mi semana típica: [DESCRIBE TUS TAREAS Y CUÁNTO TIEMPO TE LLEVAN].\nDime las 5 tareas donde más tiempo me puedes ahorrar, ordenadas de mayor a menor impacto, y cómo te las pediría yo en un mensaje."
     },
     {
      "t": "Mi primer Proyecto",
-     "c": "Hay una tarea que hago todo el tiempo: [TAREA]. Ayudame a armar un Proyecto de Claude para eso: qué documentos subir, qué instrucciones poner y 3 pedidos de ejemplo para usarlo."
+     "c": "Hay una tarea que hago todo el tiempo: [TAREA]. Ayúdame a armar un Proyecto de Claude para eso: qué documentos subir, qué instrucciones poner y 3 pedidos de ejemplo para usarlo."
     },
     {
-     "t": "Revisá cómo te pido las cosas",
-     "c": "Este es un pedido que te hice y la respuesta no me sirvió: [PEGÁ TU PEDIDO].\nDecime qué le faltaba y reescribilo para que la próxima vez salga bien a la primera."
+     "t": "Revisa cómo te pido las cosas",
+     "c": "Este es un pedido que te hice y la respuesta no me sirvió: [PEGA TU PEDIDO].\nDime qué le faltaba y reescríbelo para que la próxima vez salga bien a la primera."
     },
     {
      "t": "Cierre de la semana",
@@ -809,25 +809,25 @@
   },
   {
    "tema": "Empezar",
-   "t": "Pedile bien las cosas",
-   "d": "Plantillas para que Claude entienda qué querés sin ida y vuelta.",
+   "t": "Pídele bien las cosas",
+   "d": "Plantillas para que Claude entienda qué quieres sin ida y vuelta.",
    "para": "Recibir respuestas útiles a la primera y gastar menos de tu plan.",
    "prompts": [
     {
      "t": "Pedido con todo el contexto",
-     "c": "Soy [QUIÉN SOS]. Esto es para [QUIÉN LO VA A LEER].\nNecesito: [TAREA].\nTené en cuenta: [DATOS, LÍMITES, TONO].\nEntregámelo como: [FORMATO].\nSi te falta algo, preguntame todo junto antes de empezar."
+     "c": "Soy [QUIÉN ERES]. Esto es para [QUIÉN LO VA A LEER].\nNecesito: [TAREA].\nTen en cuenta: [DATOS, LÍMITES, TONO].\nEntrégamelo como: [FORMATO].\nSi te falta algo, pregúntame todo junto antes de empezar."
     },
     {
      "t": "Que pregunte antes de hacer",
-     "c": "Antes de responder, haceme las preguntas que necesites para hacerlo bien. Máximo 5, todas en un mensaje. Después esperá mis respuestas."
+     "c": "Antes de responder, hazme las preguntas que necesites para hacerlo bien. Máximo 5, todas en un mensaje. Después espera mis respuestas."
     },
     {
      "t": "Tres versiones para elegir",
-     "c": "Escribime 3 versiones distintas de [TEXTO QUE NECESITÁS]: una formal, una cercana y una muy corta. Al final decime cuál usarías vos y por qué."
+     "c": "Escríbeme 3 versiones distintas de [TEXTO QUE NECESITAS]: una formal, una cercana y una muy corta. Al final dime cuál usarías tú y por qué."
     },
     {
      "t": "Crítica honesta",
-     "c": "Revisá esto como lo haría un cliente exigente: [PEGÁ TU TEXTO O IDEA].\nDecime los 3 problemas más grandes, sin suavizar, y cómo arreglaría cada uno."
+     "c": "Revisa esto como lo haría un cliente exigente: [PEGA TU TEXTO O IDEA].\nDime los 3 problemas más grandes, sin suavizar, y cómo arreglaría cada uno."
     }
    ]
   },
@@ -839,23 +839,23 @@
    "prompts": [
     {
      "t": "Mail largo en 3 líneas",
-     "c": "Resumime este mail en 3 líneas y decime qué me están pidiendo y para cuándo: [PEGÁ EL MAIL]."
+     "c": "Resúmeme este mail en 3 líneas y dime qué me están pidiendo y para cuándo: [PEGA EL MAIL]."
     },
     {
      "t": "Respuesta en mi tono",
-     "c": "Respondé este mensaje de un cliente. Tono cordial y directo, en voseo, máximo 80 palabras. Lo que quiero decirle: [TU IDEA].\nMensaje: [PEGÁ EL MENSAJE]."
+     "c": "Responde este mensaje de un cliente. Tono cordial y directo, en voseo, máximo 80 palabras. Lo que quiero decirle: [TU IDEA].\nMensaje: [PEGA EL MENSAJE]."
     },
     {
      "t": "Ordenar pendientes",
-     "c": "Estos son mis pendientes: [LISTA].\nOrdenalos en: urgente hoy, esta semana, puede esperar y delegar. Al lado de cada uno poné cuánto tiempo calculás que lleva."
+     "c": "Estos son mis pendientes: [LISTA].\nOrdénalos en: urgente hoy, esta semana, puede esperar y delegar. Al lado de cada uno pon cuánto tiempo calculas que lleva."
     },
     {
      "t": "Preparar una reunión",
-     "c": "Tengo una reunión con [QUIÉN] sobre [TEMA]. Mi objetivo es [OBJETIVO].\nArmame: 3 puntos para llevar, 3 preguntas para hacer y las 2 objeciones más probables con cómo responderlas."
+     "c": "Tengo una reunión con [QUIÉN] sobre [TEMA]. Mi objetivo es [OBJETIVO].\nÁrmame: 3 puntos para llevar, 3 preguntas para hacer y las 2 objeciones más probables con cómo responderlas."
     },
     {
      "t": "Notas a mensaje",
-     "c": "Estas son mis notas desordenadas de una reunión: [PEGÁ LAS NOTAS].\nConvertilas en un mensaje para el equipo con: qué se decidió, quién hace qué y para cuándo."
+     "c": "Estas son mis notas desordenadas de una reunión: [PEGA LAS NOTAS].\nConviértelas en un mensaje para el equipo con: qué se decidió, quién hace qué y para cuándo."
     }
    ]
   }
@@ -890,7 +890,7 @@
    "tipo": "App",
    "t": "Claude Desktop",
    "d": "La app de escritorio de Claude para macOS, Windows y Linux (beta). Trae el chat y, en los planes pagos, Cowork y Claude Code.",
-   "para": "Trabajar con archivos de tu compu y tener Claude a mano fuera del navegador.",
+   "para": "Trabajar con archivos de tu computadora y tener Claude a mano fuera del navegador.",
    "cmds": [],
    "url": "https://claude.ai/download",
    "repo": "claude.ai",
@@ -900,8 +900,8 @@
    "cat": "Herramientas",
    "tipo": "App",
    "t": "Claude en Chrome",
-   "d": "Extensión oficial para el Chrome de computadora que deja a Claude trabajar en páginas web con vos, desde el panel lateral. Para planes pagos.",
-   "para": "Delegar tareas que hacés en el navegador, con atajos y tareas programadas.",
+   "d": "Extensión oficial para el Chrome de computadora que deja a Claude trabajar en páginas web contigo, desde el panel lateral. Para planes pagos.",
+   "para": "Delegar tareas que haces en el navegador, con atajos y tareas programadas.",
    "cmds": [],
    "url": "https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn",
    "repo": "chromewebstore.google.com",

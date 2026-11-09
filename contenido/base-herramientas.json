@@ -4,7 +4,7 @@
   "tipo": "Pack de skills",
   "t": "LinkedIn Agent: 11 skills",
   "d": "Posts con 21 fórmulas de ganchos, comentarios, respuestas ordenadas, nota a tu perfil, plan semanal, humanizador y detector de IA.",
-  "para": "Llevar tu LinkedIn con Claude sin que publique nada por vos.",
+  "para": "Llevar tu LinkedIn con Claude sin que publique nada por ti.",
   "cmds": [
    {
     "donde": "Descarga",
@@ -114,12 +114,12 @@
   "cat": "Herramientas",
   "tipo": "App",
   "t": "Jarvis por voz",
-  "d": "Le hablás a Claude Code y te contesta con voz, con tu mail y tu calendario conectados.",
+  "d": "Le hablas a Claude Code y te contesta con voz, con tu mail y tu calendario conectados.",
   "para": "Tener un asistente que te dice qué es importante sin abrir diez apps.",
   "cmds": [
    {
     "donde": "Claude Code",
-    "c": "Descargá https://github.com/Juampii01/jarvi-os y dejá listo el Jarvis por voz de la carpeta \"voz\"."
+    "c": "Descarga https://github.com/Juampii01/jarvi-os y deja listo el Jarvis por voz de la carpeta \"voz\"."
    }
   ],
   "url": "https://github.com/Juampii01/jarvi-os/tree/main/voz",

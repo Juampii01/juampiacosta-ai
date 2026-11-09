@@ -3,20 +3,20 @@
  "verificada": "2026-11-08",
  "correcciones": [
   {
-   "antes": "Shift+Tab: en la terminal, cambiás de modo hasta que diga plan.",
-   "despues": "Shift+Tab: en la terminal, cambiás de modo hasta que la barra de estado diga plan mode on. En Windows, si Shift+Tab no responde, probá Alt+M.",
+   "antes": "Shift+Tab: en la terminal, cambias de modo hasta que diga plan.",
+   "despues": "Shift+Tab: en la terminal, cambias de modo hasta que la barra de estado diga plan mode on. En Windows, si Shift+Tab no responde, prueba Alt+M.",
    "motivo": "La doc oficial muestra el texto de la barra de estado (plan mode on) y la tabla de atajos aclara que en Windows, cuando el runtime no activa el modo de entrada VT, el atajo para cambiar de modo es Alt+M.",
    "fuente": "https://code.claude.com/docs/en/interactive-mode"
   },
   {
-   "antes": "Igual puede correr comandos para explorar, así que leé lo que te pide si aparece un aviso de permiso.",
-   "despues": "Igual puede correr comandos para explorar. Si tenés auto mode disponible, un clasificador revisa esos comandos y los aprueba o bloquea sin preguntarte; si no, te pide permiso para los que no son de solo lectura. Leé cada aviso antes de aceptar.",
+   "antes": "Igual puede correr comandos para explorar, así que lee lo que te pide si aparece un aviso de permiso.",
+   "despues": "Igual puede correr comandos para explorar. Si tienes auto mode disponible, un clasificador revisa esos comandos y los aprueba o bloquea sin preguntarte; si no, te pide permiso para los que no son de solo lectura. Lee cada aviso antes de aceptar.",
    "motivo": "Según la doc oficial, en modo plan los comandos de terminal los revisa el clasificador de auto mode cuando está disponible y la opción useAutoModeDuringPlan está prendida (lo está por defecto). Si no, los comandos fuera del set de solo lectura piden aprobación. La guía daba a entender que siempre aparece un aviso.",
    "fuente": "https://code.claude.com/docs/en/permission-modes"
   },
   {
-   "antes": "Sí: pedile que lo escriba en un archivo, por ejemplo plan.md, para retomarlo en otra sesión.",
-   "despues": "Claude Code ya guarda los planes como archivos en ~/.claude/plans/ (o en la carpeta que definas con plansDirectory). Si lo querés a mano dentro del proyecto, pedile que lo copie a un archivo, por ejemplo plan.md, para retomarlo en otra sesión.",
+   "antes": "Sí: pídele que lo escriba en un archivo, por ejemplo plan.md, para retomarlo en otra sesión.",
+   "despues": "Claude Code ya guarda los planes como archivos en ~/.claude/plans/ (o en la carpeta que definas con plansDirectory). Si lo quieres a mano dentro del proyecto, pídele que lo copie a un archivo, por ejemplo plan.md, para retomarlo en otra sesión.",
    "motivo": "La doc de modos de permisos menciona que los archivos de plan de la sesión viven en ~/.claude/plans/ o en el plansDirectory que configures.",
    "fuente": "https://code.claude.com/docs/en/permission-modes"
   },
@@ -48,41 +48,41 @@
  },
  "si_falla": [
   {
-   "sintoma": "Apretás Shift+Tab y no cambia el modo (pasa sobre todo en Windows).",
-   "solucion": "Probá Alt+M, que es el atajo alternativo en Windows. También podés escribir /plan seguido de la tarea, o abrir Claude Code con claude --permission-mode plan."
+   "sintoma": "Aprietas Shift+Tab y no cambia el modo (pasa sobre todo en Windows).",
+   "solucion": "Prueba Alt+M, que es el atajo alternativo en Windows. También puedes escribir /plan seguido de la tarea, o abrir Claude Code con claude --permission-mode plan."
   },
   {
    "sintoma": "En modo plan te pide permiso a cada rato para correr comandos.",
-   "solucion": "Pasa cuando auto mode no está disponible: los comandos que no son de solo lectura piden aprobación. Si son comandos que usás siempre y confiás en ellos, preaprobalos con /permissions. Si no entendés un comando, preguntale a Claude qué hace antes de aceptarlo."
+   "solucion": "Pasa cuando auto mode no está disponible: los comandos que no son de solo lectura piden aprobación. Si son comandos que usas siempre y confías en ellos, preaprobalos con /permissions. Si no entiendes un comando, pregúntale a Claude qué hace antes de aceptarlo."
   },
   {
    "sintoma": "Aprobaste el plan y Claude empezó a editar todo sin preguntarte.",
-   "solucion": "Elegiste Yes, and use auto mode (o Yes, auto-accept edits). Apretá Esc para frenarlo y usá Shift+Tab hasta volver a Manual o a plan. La próxima vez elegí Yes, manually approve edits."
+   "solucion": "Elegiste Yes, and use auto mode (o Yes, auto-accept edits). Aprieta Esc para frenarlo y usa Shift+Tab hasta volver a Manual o a plan. La próxima vez elige Yes, manually approve edits."
   },
   {
-   "sintoma": "Ctrl+G abre un editor que no sabés usar o no abre nada.",
-   "solucion": "Ctrl+G abre tu editor de texto por defecto de la terminal. Si no te sirve, elegí No, keep planning y escribí las correcciones en el chat: el resultado es el mismo."
+   "sintoma": "Ctrl+G abre un editor que no sabes usar o no abre nada.",
+   "solucion": "Ctrl+G abre tu editor de texto por defecto de la terminal. Si no te sirve, elige No, keep planning y escribe las correcciones en el chat: el resultado es el mismo."
   },
   {
-   "sintoma": "Querés que un proyecto arranque siempre en modo plan.",
-   "solucion": "Poné defaultMode en plan dentro de .claude/settings.json del proyecto (el archivo del kit). Vale para las sesiones que abrís en la terminal; en la extensión de VS Code se configura con claudeCode.initialPermissionMode en tus ajustes de usuario."
+   "sintoma": "Quieres que un proyecto arranque siempre en modo plan.",
+   "solucion": "Pon defaultMode en plan dentro de .claude/settings.json del proyecto (el archivo del kit). Vale para las sesiones que abrís en la terminal; en la extensión de VS Code se configura con claudeCode.initialPermissionMode en tus ajustes de usuario."
   }
  ],
  "kit": [
   {
    "archivo": "pedir-plan/SKILL.md",
-   "que_es": "Skill que hace preguntas y entrega un plan con pasos, archivos, riesgos y prueba, sin editar nada. Ponela en .claude/skills/pedir-plan/ y usala con /pedir-plan seguido de lo que querés hacer.",
-   "contenido": "---\nname: pedir-plan\ndescription: Arma un plan de trabajo antes de tocar código: revisa el proyecto, hace preguntas y entrega pasos, archivos, riesgos y cómo probar. Usala con /pedir-plan seguido de lo que querés construir o cambiar.\ndisable-model-invocation: true\n---\n\n# Pedir un plan antes de construir\n\nLo que quiere el usuario: $ARGUMENTS\n\n## Antes del plan\n\n1. No edites ningún archivo en esta etapa. Si no estás en modo plan, recordale al usuario que puede entrar con Shift+Tab o con /plan.\n2. Revisá cómo está hecho hoy lo que hay que tocar: qué archivos intervienen y de qué dependen.\n3. Hacé hasta 5 preguntas sobre lo que no esté claro. Priorizá las que cambian el plan (para quién es, qué no se puede romper, qué pasa en los casos raros). Esperá las respuestas.\n\n## El plan\n\nEntregalo con estas secciones, en lenguaje simple:\n\n- Objetivo: una línea con lo que va a quedar funcionando.\n- Pasos: numerados y chicos, cada uno con qué archivo crea o modifica.\n- Fuera de alcance: lo que este plan no toca.\n- Riesgos: qué podría salir mal y cómo lo evitás.\n- Cómo se prueba: qué comando corrés o qué tiene que ver el usuario para saber que anda.\n- Dudas abiertas: lo que no pudiste resolver.\n\n## Reglas\n\n- Si el plan tiene más de 8 pasos, dividilo en etapas y proponé aprobar una por vez.\n- Si el cambio se explica en una frase, decilo y sugerí hacerlo directo, sin plan.\n- No propongas tocar archivos de configuración, claves o datos de clientes salvo que el usuario lo haya pedido.\n"
+   "que_es": "Skill que hace preguntas y entrega un plan con pasos, archivos, riesgos y prueba, sin editar nada. Ponla en .claude/skills/pedir-plan/ y úsala con /pedir-plan seguido de lo que quieres hacer.",
+   "contenido": "---\nname: pedir-plan\ndescription: Arma un plan de trabajo antes de tocar código: revisa el proyecto, hace preguntas y entrega pasos, archivos, riesgos y cómo probar. Úsala con /pedir-plan seguido de lo que quieres construir o cambiar.\ndisable-model-invocation: true\n---\n\n# Pedir un plan antes de construir\n\nLo que quiere el usuario: $ARGUMENTS\n\n## Antes del plan\n\n1. No edites ningún archivo en esta etapa. Si no estás en modo plan, recuérdale al usuario que puede entrar con Shift+Tab o con /plan.\n2. Revisa cómo está hecho hoy lo que hay que tocar: qué archivos intervienen y de qué dependen.\n3. Haz hasta 5 preguntas sobre lo que no esté claro. Prioriza las que cambian el plan (para quién es, qué no se puede romper, qué pasa en los casos raros). Espera las respuestas.\n\n## El plan\n\nEntrégalo con estas secciones, en lenguaje simple:\n\n- Objetivo: una línea con lo que va a quedar funcionando.\n- Pasos: numerados y chicos, cada uno con qué archivo crea o modifica.\n- Fuera de alcance: lo que este plan no toca.\n- Riesgos: qué podría salir mal y cómo lo evitas.\n- Cómo se prueba: qué comando corres o qué tiene que ver el usuario para saber que anda.\n- Dudas abiertas: lo que no pudiste resolver.\n\n## Reglas\n\n- Si el plan tiene más de 8 pasos, divídelo en etapas y propón aprobar una por vez.\n- Si el cambio se explica en una frase, dilo y sugiere hacerlo directo, sin plan.\n- No propongas tocar archivos de configuración, claves o datos de clientes salvo que el usuario lo haya pedido.\n"
   },
   {
    "archivo": "settings-proyecto-arranca-en-plan.json",
-   "que_es": "Configuración para que las sesiones de terminal de un proyecto arranquen en modo plan. Guardala como .claude/settings.json en la carpeta del proyecto (si ya tenés ese archivo, sumá solo defaultMode dentro de permissions).",
+   "que_es": "Configuración para que las sesiones de terminal de un proyecto arranquen en modo plan. Guárdala como .claude/settings.json en la carpeta del proyecto (si ya tienes ese archivo, suma solo defaultMode dentro de permissions).",
    "contenido": "{\n  \"permissions\": {\n    \"defaultMode\": \"plan\"\n  }\n}\n"
   },
   {
    "archivo": "checklist-revisar-plan-antes-de-aprobar.md",
    "que_es": "Checklist para leer el plan antes de elegir una opción, con un mensaje listo para pedir correcciones.",
-   "contenido": "# Checklist: revisar un plan antes de aprobarlo\n\nUsala cuando Claude te muestra el plan y te pregunta cómo seguir.\n\n## 1. ¿Entendió lo que quiero?\n- [ ] El objetivo del plan dice lo mismo que yo pedí, con mis palabras.\n- [ ] No agregó cosas que no pedí (pantallas nuevas, librerías nuevas, cambios de diseño).\n- [ ] Respondió o dejó anotadas las dudas que le contesté.\n\n## 2. ¿Sé qué va a tocar?\n- [ ] Cada paso dice qué archivo crea o modifica.\n- [ ] No toca carpetas sensibles: configuración, claves, datos de clientes, base de datos.\n- [ ] Si borra o renombra algo, lo dice explícitamente.\n\n## 3. ¿Puedo comprobarlo?\n- [ ] Hay una forma concreta de probar cada paso o, como mínimo, el final (un comando, una pantalla, un mail de prueba).\n- [ ] Sé qué tengo que ver yo para decir que anda.\n\n## 4. ¿Es del tamaño justo?\n- [ ] Si tiene muchos pasos, está dividido en etapas.\n- [ ] Si se explica en una frase, no hacía falta plan: pedilo directo la próxima.\n\n## 5. Antes de apretar\n- [ ] Tengo git al día (o una copia de la carpeta), porque /rewind no deshace lo que cambió por comandos de terminal.\n- [ ] Si estoy empezando, elijo Yes, manually approve edits.\n- [ ] Si algo no me cierra, elijo No, keep planning y escribo qué cambiar, o aprieto Ctrl+G y lo corrijo a mano.\n\n## Para pedir correcciones (copiá y completá)\nCambiá el plan así:\n- Sacá el paso [NÚMERO]: [POR QUÉ].\n- En el paso [NÚMERO], no toques [ARCHIVO O CARPETA].\n- Agregá cómo vamos a probar [PARTE].\nMostrame el plan corregido antes de seguir.\n"
+   "contenido": "# Checklist: revisar un plan antes de aprobarlo\n\nÚsala cuando Claude te muestra el plan y te pregunta cómo seguir.\n\n## 1. ¿Entendió lo que quiero?\n- [ ] El objetivo del plan dice lo mismo que yo pedí, con mis palabras.\n- [ ] No agregó cosas que no pedí (pantallas nuevas, librerías nuevas, cambios de diseño).\n- [ ] Respondió o dejó anotadas las dudas que le contesté.\n\n## 2. ¿Sé qué va a tocar?\n- [ ] Cada paso dice qué archivo crea o modifica.\n- [ ] No toca carpetas sensibles: configuración, claves, datos de clientes, base de datos.\n- [ ] Si borra o renombra algo, lo dice explícitamente.\n\n## 3. ¿Puedo comprobarlo?\n- [ ] Hay una forma concreta de probar cada paso o, como mínimo, el final (un comando, una pantalla, un mail de prueba).\n- [ ] Sé qué tengo que ver yo para decir que anda.\n\n## 4. ¿Es del tamaño justo?\n- [ ] Si tiene muchos pasos, está dividido en etapas.\n- [ ] Si se explica en una frase, no hacía falta plan: pídelo directo la próxima.\n\n## 5. Antes de apretar\n- [ ] Tengo git al día (o una copia de la carpeta), porque /rewind no deshace lo que cambió por comandos de terminal.\n- [ ] Si estoy empezando, elijo Yes, manually approve edits.\n- [ ] Si algo no me cierra, elijo No, keep planning y escribo qué cambiar, o aprieto Ctrl+G y lo corrijo a mano.\n\n## Para pedir correcciones (copia y completa)\nCambia el plan así:\n- Saca el paso [NÚMERO]: [POR QUÉ].\n- En el paso [NÚMERO], no toques [ARCHIVO O CARPETA].\n- Agrega cómo vamos a probar [PARTE].\nMuéstrame el plan corregido antes de seguir.\n"
   }
  ],
  "notas_revision": "Verifiqué en code.claude.com/docs/en/permission-modes (versión .md): qué hace el modo plan (lee, corre comandos para explorar, no edita hasta aprobar), cómo los comandos pasan por el clasificador si auto mode está disponible y useAutoModeDuringPlan está prendido, Shift+Tab, /plan con descripción, claude --permission-mode plan, las tres opciones exactas (Yes, and use auto mode / Yes, auto-accept edits; Yes, manually approve edits; No, keep planning), Ctrl+G, ~/.claude/plans/ y plansDirectory, defaultMode en .claude/settings.json y claudeCode.initialPermissionMode en VS Code, selector Plan en escritorio y web. En interactive-mode: Alt+M en Windows. En best-practices: checkpoints no registran cambios por Bash. En commands: /plan [description]. No pude verificar el nombre del botón de stop en la app de escritorio; la guía lo menciona de forma genérica y lo dejé. Con showClearContextOnPlanAccept aparece una cuarta opción; no la sumé para no complicar la guía."

@@ -11,21 +11,21 @@
         {
           "h": "Dónde ver cuánto te queda",
           "p": [
-            "En los planes pagos tenés un panel que te muestra, con barras, cuánto usaste de tu sesión actual y de tu límite semanal. Es lo primero que conviene mirar antes de arrancar un trabajo pesado."
+            "En los planes pagos tienes un panel que te muestra, con barras, cuánto usaste de tu sesión actual y de tu límite semanal. Es lo primero que conviene mirar antes de arrancar un trabajo pesado."
           ],
           "pasos": [
-            "Entrá a claude.ai y abrí Settings → Usage (Configuración → Uso). También podés ir directo a claude.ai/settings/usage.",
-            "Mirá la barra de la sesión actual y cuánto falta para que se renueve.",
-            "Mirá la barra del límite semanal y cuándo se reinicia.",
-            "Si tenés activados los usage credits (créditos de uso pagos aparte), en la misma pantalla ves lo que llevás gastado en el mes."
+            "Entra a claude.ai y abre Settings → Usage (Configuración → Uso). También puedes ir directo a claude.ai/settings/usage.",
+            "Mira la barra de la sesión actual y cuánto falta para que se renueve.",
+            "Mira la barra del límite semanal y cuándo se reinicia.",
+            "Si tienes activados los usage credits (créditos de uso pagos aparte), en la misma pantalla ves lo que llevas gastado en el mes."
           ],
           "aviso": "En los planes Enterprise que se cobran por consumo no hay estos límites: se paga lo que se usa."
         },
         {
           "h": "La sesión de cinco horas",
           "p": [
-            "La sesión arranca con tu primer mensaje y se renueva cinco horas después. No es una franja fija del día: empieza cuando vos empezás.",
-            "Todo cuenta junto: lo que hacés en claude.ai, en Claude Code y en la app de escritorio sale del mismo límite. Si usás Claude Code a la mañana, eso ya pesa en el chat de la tarde.",
+            "La sesión arranca con tu primer mensaje y se renueva cinco horas después. No es una franja fija del día: empieza cuando tú empiezas.",
+            "Todo cuenta junto: lo que haces en claude.ai, en Claude Code y en la app de escritorio sale del mismo límite. Si usas Claude Code a la mañana, eso ya pesa en el chat de la tarde.",
             "En el plan gratis el uso también se renueva cada cinco horas."
           ]
         },
@@ -45,51 +45,51 @@
           ],
           "lista": [
             "Largo del mensaje: un mensaje con mucho texto pegado pesa más que uno corto.",
-            "Archivos: el tamaño y el largo de lo que adjuntás. Lo vemos a fondo en la guía de archivos de esta categoría.",
+            "Archivos: el tamaño y el largo de lo que adjuntas. Lo vemos a fondo en la guía de archivos de esta categoría.",
             "Largo del chat: cuanto más larga la conversación, más pesa seguir en ella. Está explicado en \"Por qué Claude se pone torpe en chats largos\".",
             "Herramientas: Research, búsqueda web y conectores consumen bastante.",
-            "Modelo: los modelos más potentes gastan más. Para elegir, mirá \"Qué modelo de Claude usar para cada tarea\".",
+            "Modelo: los modelos más potentes gastan más. Para elegir, mira \"Qué modelo de Claude usar para cada tarea\".",
             "Nivel de esfuerzo: más esfuerzo da respuestas más pensadas, pero usa más.",
             "Artifacts: crear documentos, apps o tableros al costado del chat también cuenta.",
             "Tareas de varios pasos: cuando Claude busca, ejecuta código o arma archivos en una misma tarea, gasta más que en una respuesta simple."
           ]
         },
         {
-          "h": "Planificá tu semana",
+          "h": "Planifica tu semana",
           "pasos": [
-            "Anotá el día y la hora en que se reinicia tu semanal (lo ves en Settings → Usage).",
-            "Separá tus tareas en pesadas (Research, archivos largos, esfuerzo alto, Opus o Fable, tareas de varios pasos) y livianas (mails, resúmenes cortos, preguntas puntuales).",
-            "Repartí las pesadas en distintos días para no quemar todo el semanal de golpe.",
-            "Juntá el trabajo pesado en una misma sesión de cinco horas en vez de desparramarlo en mensajes sueltos todo el día.",
-            "A mitad de semana, mirá la barra semanal. Si vas muy adelantado, pasá las tareas livianas a un modelo más liviano y bajá el esfuerzo.",
-            "Dejá un margen para urgencias: no programes trabajo importante justo antes del reinicio."
+            "Anota el día y la hora en que se reinicia tu semanal (lo ves en Settings → Usage).",
+            "Separa tus tareas en pesadas (Research, archivos largos, esfuerzo alto, Opus o Fable, tareas de varios pasos) y livianas (mails, resúmenes cortos, preguntas puntuales).",
+            "Reparte las pesadas en distintos días para no quemar todo el semanal de golpe.",
+            "Junta el trabajo pesado en una misma sesión de cinco horas en vez de desparramarlo en mensajes sueltos todo el día.",
+            "A mitad de semana, mira la barra semanal. Si vas muy adelantado, pasa las tareas livianas a un modelo más liviano y bajá el esfuerzo.",
+            "Deja un margen para urgencias: no programes trabajo importante justo antes del reinicio."
           ],
           "prompts": [
             {
-              "t": "Armá mi semana con Claude",
-              "c": "Esta semana tengo que hacer estas tareas con Claude:\n[LISTA DE TAREAS]\nMi límite semanal se reinicia el [DÍA Y HORA].\nOrdenalas en dos grupos: pesadas (necesitan Research, archivos largos, esfuerzo alto o varios pasos) y livianas. Después repartilas en los días que quedan, sin poner más de una tarea pesada por día. Respondé en una tabla corta: día, tarea, tipo."
+              "t": "Arma mi semana con Claude",
+              "c": "Esta semana tengo que hacer estas tareas con Claude:\n[LISTA DE TAREAS]\nMi límite semanal se reinicia el [DÍA Y HORA].\nOrdénalas en dos grupos: pesadas (necesitan Research, archivos largos, esfuerzo alto o varios pasos) y livianas. Después repártelas en los días que quedan, sin poner más de una tarea pesada por día. Responde en una tabla corta: día, tarea, tipo."
             }
           ]
         },
         {
-          "h": "Si igual te quedás sin plan",
+          "h": "Si igual te quedas sin plan",
           "p": [
-            "Tenés dos caminos: esperar a que se renueve la sesión o el semanal, o activar los usage credits. Con los créditos, cuando llegás al límite seguís trabajando y pagás por consumo, a las tarifas de la API, aparte de tu suscripción. Están para los planes Pro, Max y Ultra."
+            "Tienes dos caminos: esperar a que se renueve la sesión o el semanal, o activar los usage credits. Con los créditos, cuando llegas al límite sigues trabajando y pagas por consumo, a las tarifas de la API, aparte de tu suscripción. Están para los planes Pro, Max y Ultra."
           ],
           "pasos": [
-            "Entrá a Settings → Usage.",
-            "Buscá la sección Usage credits y prendé el interruptor.",
-            "Cargá un medio de pago.",
-            "Con Adjust limit (ajustar límite) poné un tope de gasto mensual.",
-            "Comprá créditos con Buy usage credits."
+            "Entra a Settings → Usage.",
+            "Busca la sección Usage credits y prendé el interruptor.",
+            "Carga un medio de pago.",
+            "Con Adjust limit (ajustar límite) pon un tope de gasto mensual.",
+            "Compra créditos con Buy usage credits."
           ],
-          "aviso": "Poné siempre un tope mensual. La sesión y el semanal se siguen renovando como siempre: los créditos solo cubren lo que pasa del límite."
+          "aviso": "Pon siempre un tope mensual. La sesión y el semanal se siguen renovando como siempre: los créditos solo cubren lo que pasa del límite."
         }
       ],
       "faq": [
         {
           "q": "¿Claude Code y la app de escritorio tienen un límite aparte?",
-          "a": "No. Lo que usás en claude.ai, en Claude Code y en la app de escritorio sale del mismo límite."
+          "a": "No. Lo que usas en claude.ai, en Claude Code y en la app de escritorio sale del mismo límite."
         },
         {
           "q": "¿La sesión de cinco horas arranca a una hora fija?",
@@ -97,7 +97,7 @@
         },
         {
           "q": "¿Qué pasa si llego al límite en medio de un trabajo?",
-          "a": "Podés esperar a que se renueve o, si tenés un plan Pro, Max o Ultra, activar los usage credits para seguir pagando por consumo."
+          "a": "Puedes esperar a que se renueve o, si tienes un plan Pro, Max o Ultra, activar los usage credits para seguir pagando por consumo."
         },
         {
           "q": "¿Por qué mi barra baja más rápido algunos días?",
@@ -114,17 +114,17 @@
     {
       "slug": "proyectos-y-cache-para-gastar-menos",
       "post": "PROYECTO",
-      "t": "Proyectos y caché: subí tu material una vez y gastá menos",
-      "d": "Por qué el material que dejás en un Proyecto cuenta menos cuando lo reutilizás, cuándo deja de contar menos, qué es el modo RAG y qué conviene subir y qué no.",
+      "t": "Proyectos y caché: sube tu material una vez y gasta menos",
+      "d": "Por qué el material que dejas en un Proyecto cuenta menos cuando lo reutilizas, cuándo deja de contar menos, qué es el modo RAG y qué conviene subir y qué no.",
       "tema": "Claude",
       "min": 7,
       "secciones": [
         {
           "h": "La idea en una línea",
           "p": [
-            "Si vas a usar el mismo material muchas veces (tu lista de precios, tus políticas, tu guía de marca), no lo pegues en cada chat: subilo una vez a un Proyecto.",
+            "Si vas a usar el mismo material muchas veces (tu lista de precios, tus políticas, tu guía de marca), no lo pegues en cada chat: súbelo una vez a un Proyecto.",
             "Un Proyecto es un espacio con su propio historial de chats, sus archivos (la base de conocimiento, que en la app se llama project knowledge) y sus instrucciones. Cada chat nuevo adentro ya arranca con eso.",
-            "Para armar proyectos por área de tu negocio está la guía \"Proyectos de Claude: un asistente por área de tu negocio\". Acá nos enfocamos en cómo usarlos para gastar menos."
+            "Para armar proyectos por área de tu negocio está la guía \"Proyectos de Claude: un asistente por área de tu negocio\". Aquí nos enfocamos en cómo usarlos para gastar menos."
           ]
         },
         {
@@ -137,12 +137,12 @@
         {
           "h": "Cuándo vence la caché",
           "p": [
-            "La caché vence después de un rato sin uso. Si volvés a un proyecto después de una pausa larga, tu primer mensaje cuenta todo ese material completo otra vez.",
+            "La caché vence después de un rato sin uso. Si vuelves a un proyecto después de una pausa larga, tu primer mensaje cuenta todo ese material completo otra vez.",
             "La ayuda de la app no dice cuánto dura exactamente, así que no planifiques con un número. Lo práctico es esto:"
           ],
           "lista": [
-            "Trabajá por bloques: si tenés cinco consultas sobre el mismo proyecto, hacelas seguidas en vez de una a la mañana, otra al mediodía y otra a la noche.",
-            "Juntá preguntas: si podés, mandá varias consultas relacionadas en un mismo mensaje.",
+            "Trabaja por bloques: si tienes cinco consultas sobre el mismo proyecto, hazlas seguidas en vez de una a la mañana, otra al mediodía y otra a la noche.",
+            "Junta preguntas: si puedes, manda varias consultas relacionadas en un mismo mensaje.",
             "No te asustes por el primer mensaje: que el primero después de una pausa gaste más es normal."
           ]
         },
@@ -150,39 +150,39 @@
           "h": "El modo RAG: proyectos más grandes",
           "p": [
             "En los planes pagos (Pro, Max, Ultra, Team y Enterprise), cuando el material del proyecto se acerca al límite de lo que Claude puede tener en la cabeza a la vez (la ventana de contexto), se activa solo el modo RAG. Según Anthropic, eso amplía la capacidad del proyecto hasta 10 veces.",
-            "En modo RAG, Claude no carga todo el material de una: usa una herramienta de búsqueda dentro de tu proyecto (project knowledge search) y trae solo las partes que necesita para responder. No tenés que configurar nada, y si después el material baja, puede volver a trabajar como antes."
+            "En modo RAG, Claude no carga todo el material de una: usa una herramienta de búsqueda dentro de tu proyecto (project knowledge search) y trae solo las partes que necesita para responder. No tienes que configurar nada, y si después el material baja, puede volver a trabajar como antes."
           ],
           "lista": [
-            "Nombres claros: ponele a cada archivo un nombre que diga qué es (por ejemplo, precios-2026.pdf y no doc-final-v3.pdf).",
-            "Nombrá el documento: cuando preguntes, decí en qué archivo buscar (\"según politicas-de-cambio.pdf...\").",
-            "Un tema por proyecto: agrupá en un mismo proyecto lo que va junto."
+            "Nombres claros: ponle a cada archivo un nombre que diga qué es (por ejemplo, precios-2026.pdf y no doc-final-v3.pdf).",
+            "Nombra el documento: cuando preguntes, di en qué archivo buscar (\"según politicas-de-cambio.pdf...\").",
+            "Un tema por proyecto: agrupa en un mismo proyecto lo que va junto."
           ]
         },
         {
           "h": "Qué conviene subir y qué no",
           "lista": [
-            "Sí: lo que consultás seguido y cambia poco (precios, políticas, procesos, guía de marca, preguntas frecuentes).",
+            "Sí: lo que consultas seguido y cambia poco (precios, políticas, procesos, guía de marca, preguntas frecuentes).",
             "Sí: versiones finales y en texto. En los archivos de proyecto Claude extrae solo el texto, salvo en los PDF, donde también puede mirar lo visual.",
             "Sí: resúmenes que ya armaste de documentos largos (lo explicamos en la guía de archivos de esta categoría).",
             "No: borradores y versiones viejas. Si hay dos versiones de lo mismo, Claude puede mezclarlas.",
             "No: archivos que vas a usar una sola vez. Esos van en el chat.",
-            "No: lo que ya no usás. La ayuda recomienda sacar los archivos que no usás y mantener las instrucciones del proyecto cortas."
+            "No: lo que ya no usas. La ayuda recomienda sacar los archivos que no usas y mantener las instrucciones del proyecto cortas."
           ],
           "aviso": "Cada archivo de proyecto puede pesar hasta 30 MB."
         },
         {
-          "h": "Armalo y mantenelo en orden",
+          "h": "Ármalo y mantenlo en orden",
           "pasos": [
-            "Entrá a Projects (Proyectos) en la barra lateral, o a claude.ai/projects, y tocá + New Project (nuevo proyecto).",
-            "Ponele nombre y descripción. Claude no ve esos datos: son para vos.",
-            "En el área de conocimiento del proyecto, a la derecha, tocá + y subí tus archivos.",
-            "Tocá Set project instructions (instrucciones del proyecto), escribí reglas cortas y guardá con Save instructions.",
-            "Una vez por mes, revisá qué archivos sobran o están viejos y sacalos."
+            "Entra a Projects (Proyectos) en la barra lateral, o a claude.ai/projects, y toca + New Project (nuevo proyecto).",
+            "Ponle nombre y descripción. Claude no ve esos datos: son para ti.",
+            "En el área de conocimiento del proyecto, a la derecha, toca + y sube tus archivos.",
+            "Toca Set project instructions (instrucciones del proyecto), escribe reglas cortas y guarda con Save instructions.",
+            "Una vez por mes, revisa qué archivos sobran o están viejos y sácalos."
           ],
           "prompts": [
             {
               "t": "Revisión del proyecto",
-              "c": "Mirá los archivos de este proyecto y decime:\n1. Cuáles parecen repetidos o versiones viejas de otro.\n2. Cuáles no se relacionan con [PARA QUÉ USO ESTE PROYECTO].\n3. Si las instrucciones del proyecto tienen algo que sobra o se contradice.\nRespondé en una lista corta. No cambies nada, solo recomendá."
+              "c": "Mira los archivos de este proyecto y dime:\n1. Cuáles parecen repetidos o versiones viejas de otro.\n2. Cuáles no se relacionan con [PARA QUÉ USO ESTE PROYECTO].\n3. Si las instrucciones del proyecto tienen algo que sobra o se contradice.\nResponde en una lista corta. No cambies nada, solo recomienda."
             }
           ]
         }
@@ -194,7 +194,7 @@
         },
         {
           "q": "¿Lo que hablo en un chat del proyecto lo sabe el otro chat?",
-          "a": "No por sí solo. Lo que querés que todos los chats sepan tiene que estar en la base de conocimiento del proyecto. Cada proyecto también tiene su propia memoria, si la usás."
+          "a": "No por sí solo. Lo que quieres que todos los chats sepan tiene que estar en la base de conocimiento del proyecto. Cada proyecto también tiene su propia memoria, si la usas."
         },
         {
           "q": "¿Cuánto dura la caché?",
@@ -202,7 +202,7 @@
         },
         {
           "q": "¿Usar proyectos me da más uso gratis?",
-          "a": "No. Los proyectos usan tu plan como cualquier otra cosa. Lo que ganás es que el material reutilizado cuenta menos mientras está en caché."
+          "a": "No. Los proyectos usan tu plan como cualquier otra cosa. Lo que ganas es que el material reutilizado cuenta menos mientras está en caché."
         }
       ],
       "fuentes": [
@@ -232,60 +232,60 @@
           ]
         },
         {
-          "h": "1. Planificá antes de abrir el chat",
+          "h": "1. Planifica antes de abrir el chat",
           "pasos": [
-            "Escribí en una línea qué necesitás al final (\"un mail para el cliente\", \"una tabla con los gastos del mes\").",
-            "Anotá todas las preguntas que tenés sobre ese tema.",
-            "Fijate cuáles van juntas: casi siempre son varias partes de lo mismo.",
-            "Juntá el material: textos, datos, ejemplos. Así no lo mandás de a pedazos."
+            "Escribe en una línea qué necesitas al final (\"un mail para el cliente\", \"una tabla con los gastos del mes\").",
+            "Anota todas las preguntas que tienes sobre ese tema.",
+            "Fíjate cuáles van juntas: casi siempre son varias partes de lo mismo.",
+            "Junta el material: textos, datos, ejemplos. Así no lo mandas de a pedazos."
           ]
         },
         {
-          "h": "2. Juntá todo en un solo mensaje",
+          "h": "2. Junta todo en un solo mensaje",
           "p": [
-            "La ayuda oficial recomienda agrupar en un mensaje las tareas parecidas, mandar el texto completo cuando querés que lo edite (no por partes) y, en análisis, poner todos los datos en un mensaje bien ordenado."
+            "La ayuda oficial recomienda agrupar en un mensaje las tareas parecidas, mandar el texto completo cuando quieres que lo edite (no por partes) y, en análisis, poner todos los datos en un mensaje bien ordenado."
           ],
           "prompts": [
             {
               "t": "Tres pedidos en uno",
-              "c": "Te paso tres cosas sobre [TEMA]. Resolvé cada una por separado, con un título para cada parte:\n1. [PRIMER PEDIDO]\n2. [SEGUNDO PEDIDO]\n3. [TERCER PEDIDO]\nMaterial para las tres:\n[PEGÁ EL TEXTO O LOS DATOS]\nSi te falta algo, preguntame todo junto antes de empezar."
+              "c": "Te paso tres cosas sobre [TEMA]. Resuelve cada una por separado, con un título para cada parte:\n1. [PRIMER PEDIDO]\n2. [SEGUNDO PEDIDO]\n3. [TERCER PEDIDO]\nMaterial para las tres:\n[PEGA EL TEXTO O LOS DATOS]\nSi te falta algo, pregúntame todo junto antes de empezar."
             }
           ]
         },
         {
           "h": "3. Sé específico (y no repitas)",
           "lista": [
-            "Decí para quién es: no es lo mismo un mail para un cliente enojado que para un proveedor.",
-            "Decí el formato: tabla, viñetas, un párrafo, cuántas palabras.",
-            "Decí qué es \"bien hecho\": qué tiene que tener sí o sí y qué no querés.",
+            "Di para quién es: no es lo mismo un mail para un cliente enojado que para un proveedor.",
+            "Di el formato: tabla, viñetas, un párrafo, cuántas palabras.",
+            "Di qué es \"bien hecho\": qué tiene que tener sí o sí y qué no quieres.",
             "No pegues dos veces lo mismo: en un chat donde ya está el material, la ayuda recomienda referirte a lo anterior (\"el texto que te pasé arriba\") en vez de repetirlo."
           ]
         },
         {
-          "h": "4. Releé antes de mandar",
+          "h": "4. Relee antes de mandar",
           "p": [
-            "La ayuda oficial lo pone como un paso más: revisá tu pedido antes de mandarlo. Treinta segundos de lectura te ahorran una vuelta entera."
+            "La ayuda oficial lo pone como un paso más: revisa tu pedido antes de mandarlo. Treinta segundos de lectura te ahorran una vuelta entera."
           ],
           "pasos": [
-            "¿Se entiende qué querés al final?",
+            "¿Se entiende qué quieres al final?",
             "¿Está todo el material o falta algo que después vas a tener que mandar?",
             "¿Dijiste el formato y el largo?",
             "¿Hay algo ambiguo? Si alguien que no conoce tu negocio no lo entendería, Claude tampoco."
           ]
         },
         {
-          "h": "5. Editá el mensaje original en vez de corregir",
+          "h": "5. Edita el mensaje original en vez de corregir",
           "p": [
-            "Cuando la respuesta no sirvió porque tu pedido estaba flojo, lo natural es mandar \"no, así no, hacelo de nuevo con...\". Eso suma dos mensajes más al chat: tu corrección y la respuesta nueva, encima del intento que no sirvió.",
-            "La otra opción es editar tu mensaje original. Según el centro de ayuda, editar un mensaje anterior crea otra versión del chat, con sus propios artifacts, y la versión anterior queda guardada. Así seguís trabajando sobre el pedido bien armado y no sobre el intento fallido."
+            "Cuando la respuesta no sirvió porque tu pedido estaba flojo, lo natural es mandar \"no, así no, hazlo de nuevo con...\". Eso suma dos mensajes más al chat: tu corrección y la respuesta nueva, encima del intento que no sirvió.",
+            "La otra opción es editar tu mensaje original. Según el centro de ayuda, editar un mensaje anterior crea otra versión del chat, con sus propios artifacts, y la versión anterior queda guardada. Así sigues trabajando sobre el pedido bien armado y no sobre el intento fallido."
           ],
           "pasos": [
-            "Buscá tu mensaje original en el chat y usá la opción para editarlo.",
-            "Corregí lo que faltaba: el contexto, el formato o el dato que no estaba.",
-            "Mandalo. Claude responde de nuevo desde ese punto, en una versión nueva del chat.",
-            "Si querés comparar, la versión anterior sigue guardada."
+            "Busca tu mensaje original en el chat y usa la opción para editarlo.",
+            "Corrige lo que faltaba: el contexto, el formato o el dato que no estaba.",
+            "Mándalo. Claude responde de nuevo desde ese punto, en una versión nueva del chat.",
+            "Si quieres comparar, la versión anterior sigue guardada."
           ],
-          "aviso": "En la nueva experiencia de Claude, donde chat y Cowork están unidos, la ayuda indica que no está disponible ramificar una conversación desde un punto anterior. Si no ves la opción de editar, corregí en un solo mensaje completo, no en varios chiquitos."
+          "aviso": "En la nueva experiencia de Claude, donde chat y Cowork están unidos, la ayuda indica que no está disponible ramificar una conversación desde un punto anterior. Si no ves la opción de editar, corrige en un solo mensaje completo, no en varios chiquitos."
         }
       ],
       "faq": [
@@ -295,11 +295,11 @@
         },
         {
           "q": "¿Conviene que Claude me haga preguntas antes de empezar?",
-          "a": "Sí, si se las pedís todas juntas en un mismo mensaje. Así es una sola vuelta de aclaraciones y no cinco."
+          "a": "Sí, si se las pides todas juntas en un mismo mensaje. Así es una sola vuelta de aclaraciones y no cinco."
         },
         {
           "q": "¿Mandar todo junto no confunde a Claude?",
-          "a": "No, si lo ordenás: numerá los pedidos, separá el material y decí qué querés para cada parte."
+          "a": "No, si lo ordenas: numera los pedidos, separa el material y di qué quieres para cada parte."
         }
       ],
       "fuentes": [
@@ -312,30 +312,30 @@
     {
       "slug": "archivos-sin-desperdiciar-tokens",
       "post": "ARCHIVOS",
-      "t": "Archivos sin desperdiciar tokens: mandá solo lo que importa",
-      "d": "Cómo pesan los archivos que adjuntás, cómo mandar solo las partes que sirven, qué cambia entre texto, PDF e imágenes, y cómo resumir un documento largo una sola vez para reutilizarlo.",
+      "t": "Archivos sin desperdiciar tokens: manda solo lo que importa",
+      "d": "Cómo pesan los archivos que adjuntas, cómo mandar solo las partes que sirven, qué cambia entre texto, PDF e imágenes, y cómo resumir un documento largo una sola vez para reutilizarlo.",
       "tema": "Claude",
       "min": 7,
       "secciones": [
         {
           "h": "Cómo pesan los archivos",
           "p": [
-            "Todo lo que adjuntás entra en la memoria de trabajo del chat (la ventana de contexto) y suma a tu consumo. El centro de ayuda cuenta el largo de los archivos entre las cosas que más afectan tu límite.",
+            "Todo lo que adjuntas entra en la memoria de trabajo del chat (la ventana de contexto) y suma a tu consumo. El centro de ayuda cuenta el largo de los archivos entre las cosas que más afectan tu límite.",
             "Lo que cuenta es el contenido: cuanto más largo el archivo, más pesa. Y el archivo pasa a ser parte del chat, que se vuelve más largo, y el largo del chat también suma."
           ]
         },
         {
-          "h": "Mandá solo lo que importa",
+          "h": "Manda solo lo que importa",
           "pasos": [
-            "Antes de adjuntar, preguntate qué parte del documento necesitás de verdad.",
-            "Si es un capítulo, unas páginas o una tabla, sacá solo eso (copiá el texto o guardá esas páginas como un PDF aparte).",
-            "Si tiene que ser el documento entero, decile a Claude en qué páginas mirar. Usá los números de página que muestra tu visor de PDF, no los que están impresos en el documento.",
-            "Si el archivo es muy grande, partilo en tramos y trabajá cada uno en su chat."
+            "Antes de adjuntar, pregúntate qué parte del documento necesitas de verdad.",
+            "Si es un capítulo, unas páginas o una tabla, saca solo eso (copia el texto o guarda esas páginas como un PDF aparte).",
+            "Si tiene que ser el documento entero, decile a Claude en qué páginas mirar. Usa los números de página que muestra tu visor de PDF, no los que están impresos en el documento.",
+            "Si el archivo es muy grande, pártelo en tramos y trabaja cada uno en su chat."
           ],
           "prompts": [
             {
               "t": "Ir directo a lo que sirve",
-              "c": "Te adjunto [NOMBRE DEL ARCHIVO]. Solo me interesan las páginas [NÚMEROS] (según mi visor de PDF).\nNecesito: [QUÉ QUERÉS SACAR].\nNo resumas el resto del documento."
+              "c": "Te adjunto [NOMBRE DEL ARCHIVO]. Solo me interesan las páginas [NÚMEROS] (según mi visor de PDF).\nNecesito: [QUÉ QUIERES SACAR].\nNo resumas el resto del documento."
             }
           ]
         },
@@ -345,27 +345,27 @@
             "Word, TXT, CSV y similares: Claude extrae solo el texto. Si tienen imágenes adentro, no las ve.",
             "PDF de hasta 100 páginas: Claude lee el texto y también mira lo visual (gráficos, imágenes, tablas como dibujo).",
             "PDF de 101 a 1000 páginas: solo procesa el texto, no lo visual. Más de 1000 páginas no se puede subir.",
-            "PDF escaneado (fotos de páginas): si es largo, partilo en tramos de hasta 100 páginas o pasalo a texto antes, porque pasadas las 100 Claude no mira lo visual.",
+            "PDF escaneado (fotos de páginas): si es largo, pártelo en tramos de hasta 100 páginas o pásalo a texto antes, porque pasadas las 100 Claude no mira lo visual.",
             "Imágenes: JPEG, PNG, GIF o WebP. La ayuda recomienda que tengan al menos 1000 x 1000 píxeles para que salgan bien.",
-            "Planillas Excel (XLSX): para subirlas tenés que tener activada la ejecución de código y creación de archivos."
+            "Planillas Excel (XLSX): para subirlas tienes que tener activada la ejecución de código y creación de archivos."
           ],
-          "aviso": "Si lo que importa son los números de una tabla, mandá la planilla o el CSV, no una captura: así Claude trabaja con los datos exactos."
+          "aviso": "Si lo que importa son los números de una tabla, manda la planilla o el CSV, no una captura: así Claude trabaja con los datos exactos."
         },
         {
-          "h": "Resumí una vez, reutilizá muchas",
+          "h": "Resume una vez, reutiliza muchas",
           "p": [
-            "Si vas a consultar el mismo documento largo en varios chats (un contrato, un manual, un informe), no lo subas cada vez. Pedí un resumen de trabajo una sola vez y usá ese resumen después."
+            "Si vas a consultar el mismo documento largo en varios chats (un contrato, un manual, un informe), no lo subas cada vez. Pide un resumen de trabajo una sola vez y usa ese resumen después."
           ],
           "pasos": [
-            "En un chat nuevo, subí el documento y pedí el resumen con el prompt de abajo.",
-            "Revisá el resumen contra el original en lo importante: números, fechas, nombres.",
-            "Guardalo como archivo de texto.",
-            "Subí ese resumen a tu Proyecto o pegalo en los chats donde lo necesites. Volvé al original solo cuando haga falta un detalle que el resumen no tiene."
+            "En un chat nuevo, sube el documento y pide el resumen con el prompt de abajo.",
+            "Revisa el resumen contra el original en lo importante: números, fechas, nombres.",
+            "Guárdalo como archivo de texto.",
+            "Sube ese resumen a tu Proyecto o pégalo en los chats donde lo necesites. Vuelve al original solo cuando haga falta un detalle que el resumen no tiene."
           ],
           "prompts": [
             {
               "t": "Resumen de trabajo de un documento",
-              "c": "Te adjunto [DOCUMENTO]. Lo voy a consultar muchas veces para [PARA QUÉ LO USO].\nArmame un resumen de trabajo con:\n1. De qué trata, en 3 líneas.\n2. Todos los datos concretos: números, fechas, plazos, nombres y montos, tal cual aparecen.\n3. Las reglas, condiciones u obligaciones, en viñetas.\n4. Un índice: qué hay en cada sección y en qué página.\nNo interpretes ni agregues nada que no diga el documento. Si algo no está claro, marcalo con [VER ORIGINAL]."
+              "c": "Te adjunto [DOCUMENTO]. Lo voy a consultar muchas veces para [PARA QUÉ LO USO].\nÁrmame un resumen de trabajo con:\n1. De qué trata, en 3 líneas.\n2. Todos los datos concretos: números, fechas, plazos, nombres y montos, tal cual aparecen.\n3. Las reglas, condiciones u obligaciones, en viñetas.\n4. Un índice: qué hay en cada sección y en qué página.\nNo interpretes ni agregues nada que no diga el documento. Si algo no está claro, márcalo con [VER ORIGINAL]."
             }
           ]
         },
@@ -388,7 +388,7 @@
       "faq": [
         {
           "q": "¿Es mejor pegar el texto o adjuntar el archivo?",
-          "a": "Si necesitás solo una parte, pegá esa parte. Si necesitás el documento con sus gráficos, adjuntá el PDF. Lo importante es no mandar más de lo que hace falta."
+          "a": "Si necesitas solo una parte, pega esa parte. Si necesitas el documento con sus gráficos, adjunta el PDF. Lo importante es no mandar más de lo que hace falta."
         },
         {
           "q": "¿Claude ve las imágenes que hay dentro de un Word?",
@@ -423,15 +423,15 @@
         {
           "h": "Búsqueda web",
           "lista": [
-            "Prendela cuando: necesitás información actual (precios de hoy, noticias, una norma que cambió).",
-            "Apagala cuando: vos ya le pasás el material, o la pregunta no depende de algo reciente.",
-            "Ojo con los links largos: si le pasás un artículo para analizar, el artículo entero entra en el chat."
+            "Préndela cuando: necesitas información actual (precios de hoy, noticias, una norma que cambió).",
+            "Apágala cuando: tú ya le pasas el material, o la pregunta no depende de algo reciente.",
+            "Ojo con los links largos: si le pasas un artículo para analizar, el artículo entero entra en el chat."
           ],
           "pasos": [
-            "En el chat, tocá el botón + abajo a la izquierda.",
-            "Tocá Web search (búsqueda web). Si tiene la tilde, está prendida; si no, está apagada."
+            "En el chat, toca el botón + abajo a la izquierda.",
+            "Toca Web search (búsqueda web). Si tiene la tilde, está prendida; si no, está apagada."
           ],
-          "aviso": "En la nueva experiencia de Claude (chat y Cowork unidos) no hay interruptor: Claude busca cuando le parece útil. Si no querés que busque, decilo en tu mensaje: \"no busques en la web, usá solo lo que te paso\"."
+          "aviso": "En la nueva experiencia de Claude (chat y Cowork unidos) no hay interruptor: Claude busca cuando le parece útil. Si no quieres que busque, dilo en tu mensaje: \"no busques en la web, usa solo lo que te paso\"."
         },
         {
           "h": "Research",
@@ -440,42 +440,42 @@
             "Está en los planes pagos y siempre corre con Opus 5.5 (o Opus 4.8 si hace falta), sin importar qué modelo tengas elegido en el chat."
           ],
           "pasos": [
-            "Verificá que la búsqueda web esté prendida: Research la necesita.",
-            "Tocá + abajo a la izquierda y elegí Research. Aparece un indicador azul.",
-            "Cuando termines, tocalo de nuevo para apagarlo.",
-            "En la nueva experiencia también podés escribir /deep-research."
+            "Verifica que la búsqueda web esté prendida: Research la necesita.",
+            "Toca + abajo a la izquierda y elige Research. Aparece un indicador azul.",
+            "Cuando termines, tócalo de nuevo para apagarlo.",
+            "En la nueva experiencia también puedes escribir /deep-research."
           ],
           "prompts": [
             {
               "t": "Research bien acotado",
-              "c": "Investigá [PREGUNTA CONCRETA].\nEnfocate solo en: [2 O 3 ASPECTOS].\nZona y período: [PAÍS O REGIÓN, AÑOS].\nNo me interesa: [LO QUE QUERÉS DEJAR AFUERA].\nEntregá: un resumen de 10 líneas y una tabla con las fuentes."
+              "c": "Investiga [PREGUNTA CONCRETA].\nEnfócate solo en: [2 O 3 ASPECTOS].\nZona y período: [PAÍS O REGIÓN, AÑOS].\nNo me interesa: [LO QUE QUIERES DEJAR AFUERA].\nEntrega: un resumen de 10 líneas y una tabla con las fuentes."
             }
           ]
         },
         {
-          "h": "Conectores: elegí cómo se cargan",
+          "h": "Conectores: elige cómo se cargan",
           "p": [
-            "Los conectores (Gmail, Drive, calendario y demás) ocupan lugar en cada conversación. Podés elegir cómo se cargan, chat por chat: tocá + (o escribí /), pasá por Connectors (conectores) y elegí Tool access (acceso a herramientas)."
+            "Los conectores (Gmail, Drive, calendario y demás) ocupan lugar en cada conversación. Puedes elegir cómo se cargan, chat por chat: toca + (o escribe /), pasa por Connectors (conectores) y elige Tool access (acceso a herramientas)."
           ],
           "lista": [
             "Auto: Claude decide qué conectores cargar según lo que estás haciendo. Es la opción por defecto y el mejor punto de partida.",
-            "Always available (siempre disponibles): todos se cargan al empezar. Sirve si tenés pocos y los usás todo el tiempo, pero ocupa más lugar desde el arranque.",
-            "On demand (a pedido): se cargan solo cuando Claude busca el que necesita. Conviene si tenés muchos conectores o si tus chats llegan al límite de largo. Suma un paso de búsqueda."
+            "Always available (siempre disponibles): todos se cargan al empezar. Sirve si tienes pocos y los usas todo el tiempo, pero ocupa más lugar desde el arranque.",
+            "On demand (a pedido): se cargan solo cuando Claude busca el que necesita. Conviene si tienes muchos conectores o si tus chats llegan al límite de largo. Suma un paso de búsqueda."
           ],
-          "aviso": "Lo que elegís vale solo para esa conversación. En la nueva experiencia, los conectores se manejan desde Customize → Connectors."
+          "aviso": "Lo que eliges vale solo para esa conversación. En la nueva experiencia, los conectores se manejan desde Customize → Connectors."
         },
         {
           "h": "Esfuerzo y razonamiento",
           "p": [
             "El nivel de esfuerzo (Effort) define qué tan a fondo trabaja Claude en cada respuesta. La ayuda es clara: más esfuerzo da respuestas más completas, pero tardan más y usan más tokens.",
-            "Para cambiarlo, tocá el nombre del modelo al lado del botón de enviar y entrá a Effort. El menú marca como Default (por defecto) el nivel recomendado para cada modelo. Ahí mismo, en algunos modelos, está el interruptor Thinking o Extended (razonamiento extendido): si está prendido, Claude piensa antes de responder."
+            "Para cambiarlo, toca el nombre del modelo al lado del botón de enviar y entra a Effort. El menú marca como Default (por defecto) el nivel recomendado para cada modelo. Ahí mismo, en algunos modelos, está el interruptor Thinking o Extended (razonamiento extendido): si está prendido, Claude piensa antes de responder."
           ],
           "lista": [
             "Low o Medium: tareas de rutina. Mails, resúmenes, preguntas simples.",
             "High: el mejor equilibrio general para trabajo que importa.",
             "Extra high: trabajos largos de programación y tareas de agentes.",
             "Max: el razonamiento más profundo. Para problemas difíciles de verdad.",
-            "Razonamiento apagado: si el modelo lo permite y la tarea es simple, apagalo. En los modelos donde no se puede apagar, bajá el esfuerzo."
+            "Razonamiento apagado: si el modelo lo permite y la tarea es simple, apágalo. En los modelos donde no se puede apagar, bajá el esfuerzo."
           ]
         },
         {
@@ -484,12 +484,12 @@
             "Crear artifacts (documentos, tableros o apps que se abren al costado del chat) y las tareas de varios pasos (buscar, ejecutar código, armar archivos) están entre lo que más gasta. Úsalos cuando el resultado lo vale."
           ],
           "lista": [
-            "Si solo querés leer una respuesta: pedí \"respondé en el chat, sin crear un archivo\".",
-            "Si querés cambiar una parte de un documento: marcá el texto, tocá Edit with Claude (editar con Claude) y pedí el cambio. Claude edita donde marcaste.",
-            "Si querés cambiar un detalle: pedí solo ese cambio (\"cambiá el título y dejá todo lo demás igual\") en vez de pedir que lo rehaga entero.",
-            "No apagues la creación de archivos para ahorrar: esa opción también habilita otras cosas, como subir planillas Excel. Es mejor decir en cada pedido qué formato querés."
+            "Si solo quieres leer una respuesta: pide \"responde en el chat, sin crear un archivo\".",
+            "Si quieres cambiar una parte de un documento: marca el texto, toca Edit with Claude (editar con Claude) y pide el cambio. Claude edita donde marcaste.",
+            "Si quieres cambiar un detalle: pide solo ese cambio (\"cambia el título y deja todo lo demás igual\") en vez de pedir que lo rehaga entero.",
+            "No apagues la creación de archivos para ahorrar: esa opción también habilita otras cosas, como subir planillas Excel. Es mejor decir en cada pedido qué formato quieres."
           ],
-          "aviso": "Para más detalles sobre qué podés armar, mirá la guía \"Artifacts: herramientas para tu negocio sin programar\"."
+          "aviso": "Para más detalles sobre qué puedes armar, mira la guía \"Artifacts: herramientas para tu negocio sin programar\"."
         },
         {
           "h": "Chequeo rápido antes de cada chat",
@@ -509,11 +509,11 @@
         },
         {
           "q": "No veo el interruptor de búsqueda web. ¿Por qué?",
-          "a": "Si tenés la nueva experiencia de Claude, no existe: Claude decide cuándo buscar. Podés pedirle en el mensaje que no busque."
+          "a": "Si tienes la nueva experiencia de Claude, no existe: Claude decide cuándo buscar. Puedes pedirle en el mensaje que no busque."
         },
         {
           "q": "¿Bajar el esfuerzo empeora las respuestas?",
-          "a": "La ayuda recomienda el nivel por defecto o uno más bajo para preguntas simples y escritura general. Para algo difícil, subilo solo en ese chat."
+          "a": "La ayuda recomienda el nivel por defecto o uno más bajo para preguntas simples y escritura general. Para algo difícil, súbelo solo en ese chat."
         },
         {
           "q": "¿Los conectores gastan aunque no los use?",
@@ -541,27 +541,27 @@
       "prompts": [
         {
           "t": "Resumen de traspaso corto",
-          "c": "Vamos a seguir en un chat nuevo. Armame un resumen de traspaso de máximo 200 palabras con solo lo que sigue vigente:\n- Objetivo y para quién es.\n- Decisiones tomadas.\n- Reglas de tono y formato que te di.\n- Qué falta hacer, en orden.\nDejá afuera las ideas descartadas y las versiones viejas. Si algo quedó sin definir, marcalo con [A CONFIRMAR]."
+          "c": "Vamos a seguir en un chat nuevo. Ármame un resumen de traspaso de máximo 200 palabras con solo lo que sigue vigente:\n- Objetivo y para quién es.\n- Decisiones tomadas.\n- Reglas de tono y formato que te di.\n- Qué falta hacer, en orden.\nDeja afuera las ideas descartadas y las versiones viejas. Si algo quedó sin definir, márcalo con [A CONFIRMAR]."
         },
         {
           "t": "Arrancar el chat nuevo",
-          "c": "Vengo de otro chat. Este es el resumen de lo que hicimos:\n[PEGÁ EL RESUMEN]\nAntes de seguir, decime en 3 líneas qué entendiste y si te falta algún dato. Después vamos con esto: [LO QUE QUERÉS HACER AHORA]."
+          "c": "Vengo de otro chat. Este es el resumen de lo que hicimos:\n[PEGA EL RESUMEN]\nAntes de seguir, dime en 3 líneas qué entendiste y si te falta algún dato. Después vamos con esto: [LO QUE QUIERES HACER AHORA]."
         },
         {
           "t": "Condensar las decisiones",
-          "c": "Hacé una tabla con todas las decisiones que tomamos en esta conversación. Columnas: tema, qué decidimos, por qué. Si una decisión reemplazó a otra anterior, poné solo la última. Nada más que la tabla."
+          "c": "Haz una tabla con todas las decisiones que tomamos en esta conversación. Columnas: tema, qué decidimos, por qué. Si una decisión reemplazó a otra anterior, pon solo la última. Nada más que la tabla."
         },
         {
           "t": "Rescatar la última versión",
-          "c": "Pasame la última versión completa de [EL TRABAJO: TEXTO, PROPUESTA, LISTA], con todos los cambios que acordamos hasta ahora. Sin comentarios ni explicaciones, solo el contenido final, listo para pegar en otro chat."
+          "c": "Pásame la última versión completa de [EL TRABAJO: TEXTO, PROPUESTA, LISTA], con todos los cambios que acordamos hasta ahora. Sin comentarios ni explicaciones, solo el contenido final, listo para pegar en otro chat."
         },
         {
           "t": "Retomar un chat viejo sin pegar nada",
-          "c": "Buscá en mis chats anteriores la conversación sobre [TEMA]. Decime qué habíamos definido y qué quedó pendiente, en 5 viñetas, y seguimos desde ahí con [LO QUE QUERÉS HACER]."
+          "c": "Busca en mis chats anteriores la conversación sobre [TEMA]. Dime qué habíamos definido y qué quedó pendiente, en 5 viñetas, y seguimos desde ahí con [LO QUE QUIERES HACER]."
         },
         {
           "t": "Del chat al Proyecto",
-          "c": "Con todo lo que definimos acá, armá un documento de referencia para subir a mi Proyecto de [TEMA]: datos fijos, reglas y decisiones. Solo lo que va a seguir sirviendo en chats futuros, sin la historia de cómo llegamos. Formato: títulos cortos y viñetas."
+          "c": "Con todo lo que definimos aquí, arma un documento de referencia para subir a mi Proyecto de [TEMA]: datos fijos, reglas y decisiones. Solo lo que va a seguir sirviendo en chats futuros, sin la historia de cómo llegamos. Formato: títulos cortos y viñetas."
         }
       ]
     },
@@ -573,27 +573,27 @@
       "prompts": [
         {
           "t": "Mail",
-          "c": "Contexto: soy [QUIÉN SOS] y le escribo a [A QUIÉN] porque [SITUACIÓN].\nTarea: escribí un mail para [OBJETIVO: PEDIR, RESPONDER, RECLAMAR, PROPONER].\nDatos que tiene que incluir: [FECHAS, MONTOS, NOMBRES].\nFormato: asunto + cuerpo de máximo [CANTIDAD] palabras, tono [CORDIAL / FORMAL / DIRECTO].\nCriterios: que se entienda qué quiero en la primera línea y que cierre con un paso concreto.\nNo inventes datos que no te di."
+          "c": "Contexto: soy [QUIÉN ERES] y le escribo a [A QUIÉN] porque [SITUACIÓN].\nTarea: escribe un mail para [OBJETIVO: PEDIR, RESPONDER, RECLAMAR, PROPONER].\nDatos que tiene que incluir: [FECHAS, MONTOS, NOMBRES].\nFormato: asunto + cuerpo de máximo [CANTIDAD] palabras, tono [CORDIAL / FORMAL / DIRECTO].\nCriterios: que se entienda qué quiero en la primera línea y que cierre con un paso concreto.\nNo inventes datos que no te di."
         },
         {
           "t": "Documento",
-          "c": "Contexto: es para [QUIÉN LO VA A LEER] y lo van a usar para [PARA QUÉ].\nTarea: escribí [TIPO DE DOCUMENTO: PROPUESTA, PROCEDIMIENTO, POLÍTICA, INFORME] sobre [TEMA].\nMaterial: [PEGÁ NOTAS, DATOS O UN EJEMPLO ANTERIOR].\nFormato: estas secciones [LISTA DE SECCIONES], largo aproximado [EXTENSIÓN].\nCriterios: lenguaje simple, sin relleno, y marcá con [COMPLETAR] lo que falte.\nSi te falta algo importante, preguntame todo junto antes de empezar."
+          "c": "Contexto: es para [QUIÉN LO VA A LEER] y lo van a usar para [PARA QUÉ].\nTarea: escribe [TIPO DE DOCUMENTO: PROPUESTA, PROCEDIMIENTO, POLÍTICA, INFORME] sobre [TEMA].\nMaterial: [PEGA NOTAS, DATOS O UN EJEMPLO ANTERIOR].\nFormato: estas secciones [LISTA DE SECCIONES], largo aproximado [EXTENSIÓN].\nCriterios: lenguaje simple, sin relleno, y marca con [COMPLETAR] lo que falte.\nSi te falta algo importante, pregúntame todo junto antes de empezar."
         },
         {
           "t": "Análisis de datos",
-          "c": "Contexto: tengo [NEGOCIO] y estos son los datos de [QUÉ: VENTAS, GASTOS, CLIENTES] de [PERÍODO].\nDatos: [ADJUNTÁ LA PLANILLA O PEGÁ LA TABLA].\nPreguntas, todas juntas:\n1. [PREGUNTA 1]\n2. [PREGUNTA 2]\n3. [PREGUNTA 3]\nFormato: una tabla resumen y debajo 5 conclusiones en viñetas, cada una con el número que la respalda.\nCriterios: si un dato parece mal cargado, avisame en vez de usarlo."
+          "c": "Contexto: tengo [NEGOCIO] y estos son los datos de [QUÉ: VENTAS, GASTOS, CLIENTES] de [PERÍODO].\nDatos: [ADJUNTA LA PLANILLA O PEGA LA TABLA].\nPreguntas, todas juntas:\n1. [PREGUNTA 1]\n2. [PREGUNTA 2]\n3. [PREGUNTA 3]\nFormato: una tabla resumen y debajo 5 conclusiones en viñetas, cada una con el número que la respalda.\nCriterios: si un dato parece mal cargado, avísame en vez de usarlo."
         },
         {
           "t": "Investigación",
-          "c": "Pregunta: [QUÉ QUERÉS SABER].\nPara qué: [DECISIÓN QUE VAS A TOMAR].\nEnfoque: [PAÍS O REGIÓN], [PERÍODO], solo sobre [2 O 3 ASPECTOS].\nNo me interesa: [LO QUE QUEDA AFUERA].\nFormato: resumen de 10 líneas, una tabla comparativa y la lista de fuentes.\nCriterios: separá lo que está confirmado de lo que es opinión o estimación."
+          "c": "Pregunta: [QUÉ QUIERES SABER].\nPara qué: [DECISIÓN QUE VAS A TOMAR].\nEnfoque: [PAÍS O REGIÓN], [PERÍODO], solo sobre [2 O 3 ASPECTOS].\nNo me interesa: [LO QUE QUEDA AFUERA].\nFormato: resumen de 10 líneas, una tabla comparativa y la lista de fuentes.\nCriterios: separa lo que está confirmado de lo que es opinión o estimación."
         },
         {
           "t": "Corregir un texto entero",
-          "c": "Te paso el texto completo de [QUÉ ES: POST, PÁGINA, PRESENTACIÓN]:\n[PEGÁ TODO EL TEXTO]\nEs para [PÚBLICO].\nCorregí: ortografía, frases largas y partes que no se entienden. Mantené mi tono y no cambies los datos.\nFormato: primero el texto corregido completo y después una lista de los 5 cambios más importantes."
+          "c": "Te paso el texto completo de [QUÉ ES: POST, PÁGINA, PRESENTACIÓN]:\n[PEGA TODO EL TEXTO]\nEs para [PÚBLICO].\nCorrige: ortografía, frases largas y partes que no se entienden. Mantén mi tono y no cambies los datos.\nFormato: primero el texto corregido completo y después una lista de los 5 cambios más importantes."
         },
         {
           "t": "Varias tareas del mismo tema",
-          "c": "Necesito tres cosas sobre [TEMA]. Usá el mismo material para todas:\n[PEGÁ EL MATERIAL]\n1. [TAREA 1, CON FORMATO]\n2. [TAREA 2, CON FORMATO]\n3. [TAREA 3, CON FORMATO]\nHacelas en orden, con un título para cada una. Si te falta algo, preguntame todo junto antes de empezar."
+          "c": "Necesito tres cosas sobre [TEMA]. Usa el mismo material para todas:\n[PEGA EL MATERIAL]\n1. [TAREA 1, CON FORMATO]\n2. [TAREA 2, CON FORMATO]\n3. [TAREA 3, CON FORMATO]\nHazlas en orden, con un título para cada una. Si te falta algo, pregúntame todo junto antes de empezar."
         }
       ]
     }

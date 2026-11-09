@@ -44,7 +44,7 @@
       <div>
         <span class="mono" style="color:var(--glow)" id="hero-nivel">Acceso fundador</span>
         <h1 class="saludo" id="saludo">Bienvenido a la biblioteca: todo lo que uso para <em>armar sistemas con Claude</em>.</h1>
-        <p>No tenés que leer todo: seguí tu próximo paso y avanzá por partes. Cada semana se suman recursos nuevos.</p>
+        <p>No tienes que leer todo: sigue tu próximo paso y avanza por partes. Cada semana se suman recursos nuevos.</p>
       </div>
     </div>
     <a class="b b-red glass" id="b-ig" target="_blank" rel="noopener"></a>
@@ -52,19 +52,19 @@
     <a class="b b-paso glass" id="b-paso"></a>
   </div>
   <div id="para-vos"></div>
-  <div class="tit" style="margin-top:44px"><div><span class="mono">El camino</span><h2>De cero a venderlo, en 3 partes</h2><p class="tit-sub">Arrancá por la Parte 1 y avanzá cuando la necesites. Todo lo demás está en el menú.</p></div></div>
+  <div class="tit" style="margin-top:44px"><div><span class="mono">El camino</span><h2>De cero a venderlo, en 3 partes</h2><p class="tit-sub">Arranca por la Parte 1 y avanza cuando la necesites. Todo lo demás está en el menú.</p></div></div>
   {{PUERTAS}}
   </section>
 
   <section id="rutas">
-    <div class="tit"><div><span class="mono">Rutas por objetivo</span><h2>¿Ya sabés qué querés lograr? Seguí una ruta</h2><p class="tit-sub">Pasos cortos y en orden, de lo más simple a lo más avanzado. Abrí una y arrancá por el paso 1.</p></div></div>
+    <div class="tit"><div><span class="mono">Rutas por objetivo</span><h2>¿Ya sabes qué quieres lograr? Sigue una ruta</h2><p class="tit-sub">Pasos cortos y en orden, de lo más simple a lo más avanzado. Abre una y arranca por el paso 1.</p></div></div>
     <div class="rutas" id="lista-rutas"></div>
   </section>
 
   <section id="ultimos-posts"></section>
 
   <section id="guias-web">
-    <div class="tit"><div><span class="mono">Guías</span><h2>Guías paso a paso</h2><p class="tit-sub">Ordenadas en 3 partes: arrancá bien, ponelo a trabajar y después vendé y construí.</p></div></div>
+    <div class="tit"><div><span class="mono">Guías</span><h2>Guías paso a paso</h2><p class="tit-sub">Ordenadas en 3 partes: arranca bien, ponlo a trabajar y después vendé y construye.</p></div></div>
     <div id="lista-guias-web"></div>
   </section>
 
@@ -79,7 +79,7 @@
   </section>
 
   <section id="mcp">
-    <div class="tit"><div><span class="mono">MCP</span><h2>Conectá Claude con tus apps</h2></div></div>
+    <div class="tit"><div><span class="mono">MCP</span><h2>Conecta Claude con tus apps</h2></div></div>
     <div id="lista-mcp"></div>
   </section>
 
@@ -93,7 +93,7 @@
     <div class="herrs" id="lista-posts"></div>
   </section>
   <section id="opinion">
-    <div class="tit"><div><span class="mono">Tu opinión</span><h2>Ayudame a mejorar la biblioteca</h2><p class="tit-sub">Lo leo yo, una por una. Contame qué te sirve, qué cambiarías y qué te falta: lo que más se repite es lo primero que sumo.</p></div></div>
+    <div class="tit"><div><span class="mono">Tu opinión</span><h2>Ayúdame a mejorar la biblioteca</h2><p class="tit-sub">Lo leo yo, una por una. Cuéntame qué te sirve, qué cambiarías y qué te falta: lo que más se repite es lo primero que sumo.</p></div></div>
     <form class="op glass" id="form-opinion" novalidate>
       <fieldset class="op-nota">
         <legend>¿Qué tan útil te resulta la biblioteca?</legend>
@@ -107,13 +107,13 @@
       </fieldset>
       <label class="op-campo"><span>¿Qué es lo que más te sirve?</span><textarea name="gusta" rows="3" maxlength="2000" placeholder="Una guía, un prompt, cómo está ordenado…"></textarea></label>
       <label class="op-campo"><span>¿Qué cambiarías o mejorarías?</span><textarea name="mejorar" rows="3" maxlength="2000" placeholder="Algo que no se entiende, que cuesta encontrar o que no te funcionó."></textarea></label>
-      <label class="op-campo"><span>¿Qué sentís que está de más?</span><textarea name="sobra" rows="3" maxlength="2000" placeholder="Secciones, guías o cosas que no usás o te confunden."></textarea></label>
+      <label class="op-campo"><span>¿Qué sentís que está de más?</span><textarea name="sobra" rows="3" maxlength="2000" placeholder="Secciones, guías o cosas que no usas o te confunden."></textarea></label>
       <label class="op-campo"><span>¿Qué te gustaría que sume?</span><textarea name="falta" rows="3" maxlength="2000" placeholder="Un tema, una herramienta, un rubro, un video…"></textarea></label>
       <div class="op-pie"><button class="btn" type="submit">Enviar mi opinión →</button><p class="op-estado" role="status"></p></div>
     </form>
     <div class="op-gracias glass" id="op-gracias" hidden>
       <b>¡Gracias!</b>
-      <p>Ya me llegó. Si querés contarme algo más en detalle, escribime por Instagram.</p>
+      <p>Ya me llegó. Si quieres contarme algo más en detalle, escríbeme por Instagram.</p>
       <button type="button" class="chip" id="op-otra">Mandar otra opinión</button>
     </div>
   </section>
@@ -129,7 +129,7 @@ if (GRATIS) {
   var aviso = document.createElement("a");
   aviso.className = "aviso-gratis glass";
   aviso.href = "/#precio";
-  aviso.innerHTML = '<span class="mono">Plan gratis</span><b>Tenés abiertas ' + GUIAS_WEB.filter(function (g) { return g.gratis; }).length + ' guías: las de mis reels, las de gastar menos tokens y el Módulo 1.</b><span>Desbloqueá las ' + GUIAS_WEB.length + ' guías, los prompts y las herramientas →</span>';
+  aviso.innerHTML = '<span class="mono">Plan gratis</span><b>Tienes abiertas ' + GUIAS_WEB.filter(function (g) { return g.gratis; }).length + ' guías: las de mis reels, las de gastar menos tokens y el Módulo 1.</b><span>Desbloquea las ' + GUIAS_WEB.length + ' guías, los prompts y las herramientas →</span>';
   document.querySelector("main").insertBefore(aviso, document.querySelector("main").firstChild);
 }
 if (GRATIS) document.getElementById("hero-nivel").textContent = "Plan gratis";
@@ -139,12 +139,12 @@ if (GRATIS) document.getElementById("hero-nivel").textContent = "Plan gratis";
   try { n = n && decodeURIComponent(n).replace(/[<>&"]/g, ""); } catch (e) { n = ""; }
   if (n) document.getElementById("saludo").innerHTML = "Hola, " + n + ". Esta es tu biblioteca para <em>armar sistemas con Claude</em>.";
 })();
-// Tu próximo paso: seguí donde dejaste o la primera guía sin leer del camino (en el orden de las partes)
+// Tu próximo paso: sigue donde dejaste o la primera guía sin leer del camino (en el orden de las partes)
 (function () {
   var leidas = PROGRESO.leidas(), ult = PROGRESO.ultima(), n = GUIAS_WEB.filter(function (g) { return leidas[g.slug]; }).length;
   function abierta(g) { return !GRATIS || g.gratis; }
-  var g = ult && GUIAS_WEB.filter(function (x) { return x.slug === ult.slug && !leidas[x.slug] && abierta(x); })[0], etiqueta = "Seguí donde dejaste";
-  if (!g) { g = GUIAS_WEB.filter(function (x) { return !leidas[x.slug] && abierta(x); })[0]; etiqueta = n ? "Tu próximo paso" : "Empezá por acá"; }
+  var g = ult && GUIAS_WEB.filter(function (x) { return x.slug === ult.slug && !leidas[x.slug] && abierta(x); })[0], etiqueta = "Sigue donde dejaste";
+  if (!g) { g = GUIAS_WEB.filter(function (x) { return !leidas[x.slug] && abierta(x); })[0]; etiqueta = n ? "Tu próximo paso" : "Empieza por aquí"; }
   var caja = document.getElementById("b-paso");
   var barra = '<i class="b-paso-barra"><em style="width:' + Math.round(n / GUIAS_WEB.length * 100) + '%"></em></i><span class="b-paso-prog">' + n + ' de ' + GUIAS_WEB.length + ' guías leídas</span>';
   if (g) {
@@ -153,7 +153,7 @@ if (GRATIS) document.getElementById("hero-nivel").textContent = "Plan gratis";
     caja.innerHTML = '<small>' + etiqueta + '</small><b>' + g.t + '</b><span class="b-paso-meta">Parte ' + parte + ' · ' + g.tema + ' · ' + g.min + ' min</span>' + barra + '<em class="b-paso-ir">Leer →</em>';
   } else {
     caja.href = "/#precio";
-    caja.innerHTML = '<small>Leíste todo lo abierto</small><b>Desbloqueá las ' + GUIAS_WEB.length + ' guías y seguí el camino</b>' + barra + '<em class="b-paso-ir">Ver el acceso →</em>';
+    caja.innerHTML = '<small>Leíste todo lo abierto</small><b>Desbloquea las ' + GUIAS_WEB.length + ' guías y sigue el camino</b>' + barra + '<em class="b-paso-ir">Ver el acceso →</em>';
   }
   // Progreso de cada parte, y «Ver la parte» lleva a esa parte dentro de Guías
   document.querySelectorAll(".pt-prog").forEach(function (el) {
@@ -177,7 +177,7 @@ if (GRATIS) document.getElementById("hero-nivel").textContent = "Plan gratis";
     var nota = f.querySelector('input[name="nota"]:checked');
     if (nota) datos.nota = Number(nota.value);
     ["gusta", "mejorar", "sobra", "falta"].forEach(function (k) { var v = f.elements[k].value.trim(); if (v) datos[k] = v; });
-    if (Object.keys(datos).length < 2) { estado.textContent = "Elegí una nota o escribí algo antes de enviar."; return; }
+    if (Object.keys(datos).length < 2) { estado.textContent = "Elige una nota o escribe algo antes de enviar."; return; }
     var boton = f.querySelector("button[type=submit]");
     boton.disabled = true; estado.textContent = "Enviando…";
     fetch("/api/opinion", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datos), credentials: "same-origin" })
@@ -186,7 +186,7 @@ if (GRATIS) document.getElementById("hero-nivel").textContent = "Plan gratis";
         if (!r.ok) throw new Error(r.status);
         f.reset(); estado.textContent = ""; f.hidden = true; ok.hidden = false;
       })
-      .catch(function () { boton.disabled = false; estado.textContent = "No se pudo enviar. Probá de nuevo en un rato o escribime por Instagram."; });
+      .catch(function () { boton.disabled = false; estado.textContent = "No se pudo enviar. Prueba de nuevo en un rato o escríbeme por Instagram."; });
   });
   document.getElementById("op-otra").addEventListener("click", function () { ok.hidden = true; f.hidden = false; });
 })();
@@ -205,7 +205,7 @@ function tarjetaHerramienta(h) {
   var id = { Skills: "lista-skills", MCP: "lista-mcp", Herramientas: "lista-herramientas" }[cat];
   var palabra = { Skills: "skills", MCP: "conectores", Herramientas: "herramientas" }[cat];
   organizar(document.getElementById(id), HERRAMIENTAS.filter(function (h) { return h.cat === cat; }), tarjetaHerramienta,
-    { prefijo: "h-", visibles: 4, palabra: palabra, buscar: "Buscá en " + palabra + "…", clave: "grupo",
+    { prefijo: "h-", visibles: 4, palabra: palabra, buscar: "Busca en " + palabra + "…", clave: "grupo",
       grupos: GRUPOS_HERR.filter(function (g) { return g.seccion === cat; }) });
 });
 
@@ -218,7 +218,7 @@ function tarjetaPack(p) {
     (p.prompts.length > 1 ? '<button class="mas-prompts" onclick="plegarPack(this)" data-n="' + p.prompts.length + '">Ver los ' + p.prompts.length + ' prompts ↓</button>' : '') +
     '</article>';
 }
-organizar(document.getElementById("lista-prompts"), PROMPTS, tarjetaPack, { prefijo: "p-", visibles: 2, palabra: "packs", buscar: "Buscá un prompt…" });
+organizar(document.getElementById("lista-prompts"), PROMPTS, tarjetaPack, { prefijo: "p-", visibles: 2, palabra: "packs", buscar: "Busca un prompt…" });
 function plegarPack(boton) {
   var pack = boton.closest(".herr");
   var plegado = pack.classList.toggle("plegado");
@@ -233,7 +233,7 @@ function tarjetaGuia(g, etiqueta) {
     '<h3>' + g.t + '</h3><p>' + g.d + '</p><span class="bajar">' + (cerrada ? '🔒 Desbloquear' : 'Leer la guía →') + '</span></a>';
 }
 organizar(document.getElementById("lista-guias-web"), GUIAS_WEB, function (g) { return tarjetaGuia(g, "Guía"); },
-  { prefijo: "g-", visibles: 4, palabra: "guías", buscar: "Buscá en las guías…", leidas: true });
+  { prefijo: "g-", visibles: 4, palabra: "guías", buscar: "Busca en las guías…", leidas: true });
 document.getElementById("lista-posts").innerHTML = GUIAS_WEB.filter(function (g) { return g.post; }).map(function (g) { return tarjetaGuia(g, "Palabra · " + g.post); }).join("");
 
 var ig = document.getElementById("b-ig");
@@ -241,7 +241,7 @@ ig.href = REDES.ig;
 ig.innerHTML = ICONO.ig + '<div><strong>Instagram</strong><small>' + REDES.igUsuario + '</small></div>';
 var dm = document.getElementById("b-dm");
 dm.href = REDES.dm;
-dm.innerHTML = ICONO.ig + '<div><strong>¿Una duda?</strong><small>Escribime por DM</small></div>';
+dm.innerHTML = ICONO.ig + '<div><strong>¿Una duda?</strong><small>Escríbeme por DM</small></div>';
 ultimosPosts(document.getElementById("ultimos-posts"));
 pintarRutas(document.getElementById("lista-rutas"));
 menuLateral();

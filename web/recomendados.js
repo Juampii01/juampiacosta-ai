@@ -1,4 +1,4 @@
-/* «Recomendados para vos»: con las respuestas del formulario de bienvenida arma una selección de guías,
+/* «Recomendados para ti»: con las respuestas del formulario de bienvenida arma una selección de guías,
    una ruta y packs de prompts para esa persona, y la muestra arriba de todo en /recursos.
    Las respuestas las guarda web/bienvenida.js en el navegador (localStorage «jpa_respuestas»). */
 (function () {
@@ -45,7 +45,7 @@
       "Ya armo automatizaciones o agentes": ["que-es-un-agente-de-ia-de-verdad", "claude-code-de-cero-sin-miedo"]
     }
   };
-  var MOTIVO = { rubro: "Por tu rubro", foco: "Lo que querés resolver", objetivo: "Por tu objetivo", situacion: "Por lo que hacés", nivel: "Para tu nivel", ahorro: "Que no se te corte el plan" };
+  var MOTIVO = { rubro: "Por tu rubro", foco: "Lo que quieres resolver", objetivo: "Por tu objetivo", situacion: "Por lo que haces", nivel: "Para tu nivel", ahorro: "Que no se te corte el plan" };
   var PACKS = {
     "Atención y WhatsApp": ["agentes", "negocio"], "Contenido y redes": ["contenido"], "Ventas y seguimiento": ["clientes"],
     "Administración y planillas": ["negocio"], "Crear apps o webs": ["desarrollo", "claude-code"]
@@ -83,12 +83,12 @@
   }
 
   function resumen(r) {
-    var quien = { "Tengo un negocio": "tenés un negocio", "Trabajo en una empresa": "trabajás en una empresa", "Freelancer o agencia": "sos freelancer o tenés una agencia",
-      "Quiero vender IA a empresas": "querés vender IA a empresas", "Estudiante": "estás estudiando", "Otro": "querés sacarle jugo a la IA" }[r.situacion] || "";
+    var quien = { "Tengo un negocio": "tienes un negocio", "Trabajo en una empresa": "trabajas en una empresa", "Freelancer o agencia": "eres freelancer o tienes una agencia",
+      "Quiero vender IA a empresas": "quieres vender IA a empresas", "Estudiante": "estás estudiando", "Otro": "quieres sacarle jugo a la IA" }[r.situacion] || "";
     var rubro = r.rubro ? " (" + r.rubro.toLowerCase() + ")" : "";
     var meta = { "Ahorrar tiempo en mi negocio": "ahorrar tiempo", "Vender servicios de IA": "vender servicios de IA", "Conseguir trabajo con IA": "conseguir trabajo con IA",
       "Aprender": "aprender", "Que me lo instalen en mi negocio": "que la IA trabaje en tu negocio" }[r.objetivo] || "";
-    return "Como " + quien + rubro + " y querés " + meta + (r.foco ? ", empezando por " + r.foco.charAt(0).toLowerCase() + r.foco.slice(1) : "") + ", esto es lo que más te va a servir.";
+    return "Como " + quien + rubro + " y quieres " + meta + (r.foco ? ", empezando por " + r.foco.charAt(0).toLowerCase() + r.foco.slice(1) : "") + ", esto es lo que más te va a servir.";
   }
 
   function leer() { try { return JSON.parse(localStorage.getItem("jpa_respuestas") || "null"); } catch (e) { return null; } }
@@ -113,14 +113,14 @@
     }).join("");
 
     caja.innerHTML = '<div class="pv glass">' +
-      '<div class="pv-cab"><div><span class="mono">Recomendados para vos</span><h2>' + (nombre ? nombre + ", esto" : "Esto") + ' es lo tuyo</h2><p>' + resumen(r) + '</p></div>' +
+      '<div class="pv-cab"><div><span class="mono">Recomendados para ti</span><h2>' + (nombre ? nombre + ", esto" : "Esto") + ' es lo tuyo</h2><p>' + resumen(r) + '</p></div>' +
       '<a class="pv-cambiar" href="?bienvenida=1">Cambiar mis respuestas</a></div>' +
       (ruta ? '<a class="pv-ruta" href="#ruta-' + ruta.id + '" data-ruta="' + ruta.id + '"><span>🧭</span><div><small>Tu ruta</small><b>' + ruta.t + '</b></div><em>' + ruta.pasos.length + ' pasos →</em></a>' : '') +
       '<div class="pv-grid">' + tarjetas + '</div>' +
       (packs.length ? '<div class="pv-packs"><small>Prompts para lo tuyo</small>' + packs.map(function (p) {
         return '<a href="#p-' + p.cat + '" data-ir="prompts">' + p.t + ' <b>' + p.prompts.length + '</b></a>'; }).join("") + '</div>' : '') +
-      (gratis && abiertas < lista.length ? '<a class="pv-cta" href="/#precio"><b>' + (lista.length - abiertas) + ' de tus ' + lista.length + ' recomendados</b> son del acceso completo. Desbloquealos →</a>' : '') +
-      (r.objetivo === "Que me lo instalen en mi negocio" ? '<a class="pv-cta pv-cta--dm" href="' + ((window.REDES && REDES.dm) || "#") + '" target="_blank" rel="noopener">🛠️ <b>¿Querés que te lo instale yo?</b> Escribime «INSTALAR» por Instagram →</a>' : '') +
+      (gratis && abiertas < lista.length ? '<a class="pv-cta" href="/#precio"><b>' + (lista.length - abiertas) + ' de tus ' + lista.length + ' recomendados</b> son del acceso completo. Desbloquéalos →</a>' : '') +
+      (r.objetivo === "Que me lo instalen en mi negocio" ? '<a class="pv-cta pv-cta--dm" href="' + ((window.REDES && REDES.dm) || "#") + '" target="_blank" rel="noopener">🛠️ <b>¿Quieres que te lo instale yo?</b> Escríbeme «INSTALAR» por Instagram →</a>' : '') +
       '</div>';
 
     caja.addEventListener("click", function (e) {

@@ -3,17 +3,17 @@
   {
    "slug": "claude-code-de-cero-sin-miedo",
    "t": "Claude Code de cero y sin miedo",
-   "d": "Lo instalás (en la app de escritorio o en la terminal), iniciás sesión y le das tu primera tarea. Sin saber programar.",
+   "d": "Lo instalas (en la app de escritorio o en la terminal), inicias sesión y le das tu primera tarea. Sin saber programar.",
    "tema": "Claude Code",
    "min": 9,
    "fichaNombre": "Claude Code",
    "ficha": [
     [
      "Qué es",
-     "La versión de Claude que trabaja adentro de una carpeta de tu compu: lee tus archivos, los modifica y corre comandos con tu permiso."
+     "La versión de Claude que trabaja adentro de una carpeta de tu computadora: lee tus archivos, los modifica y corre comandos con tu permiso."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Un plan Pro, Max, Team o Enterprise, o una cuenta de Claude Console. El plan gratis no lo incluye."
     ],
     [
@@ -22,37 +22,37 @@
     ],
     [
      "Qué no hace",
-     "No adivina lo que querés: cuanto más claro se lo pidas, mejor sale."
+     "No adivina lo que quieres: cuanto más claro se lo pidas, mejor sale."
     ]
    ],
    "secciones": [
     {
-     "h": "Elegí por dónde entrar",
+     "h": "Elige por dónde entrar",
      "p": [
-      "Hay dos puertas al mismo Claude Code. Si nunca abriste una terminal, empezá por la app de escritorio: es todo con botones. Si ya te animás a pegar un comando, la terminal te da todas las opciones.",
-      "Las dos usan tu misma cuenta de Claude, así que podés arrancar en una y después probar la otra."
+      "Hay dos puertas al mismo Claude Code. Si nunca abriste una terminal, empieza por la app de escritorio: es todo con botones. Si ya te animas a pegar un comando, la terminal te da todas las opciones.",
+      "Las dos usan tu misma cuenta de Claude, así que puedes arrancar en una y después probar la otra."
      ],
      "lista": [
-      "App de escritorio: viene con Claude Code adentro, no tenés que instalar nada más. Ideal para empezar.",
-      "Terminal: instalás el programa con un comando y lo abrís escribiendo claude. Es la versión más completa."
+      "App de escritorio: viene con Claude Code adentro, no tienes que instalar nada más. Ideal para empezar.",
+      "Terminal: instalas el programa con un comando y lo abrís escribiendo claude. Es la versión más completa."
      ]
     },
     {
      "h": "Opción A: la app de escritorio",
      "pasos": [
-      "Descargá la app de Claude para Mac o Windows desde la guía oficial (en Linux está en beta) e instalala.",
-      "Abrila e iniciá sesión con tu cuenta de Claude.",
-      "Hacé clic en la pestaña Code, arriba de todo en la barra lateral. Si te pide mejorar el plan, es porque tu cuenta es gratis.",
-      "Debajo del cuadro de mensaje, en el selector de entorno, elegí la primera opción del grupo Local.",
-      "Al lado, tocá el control de carpeta → Open folder… y elegí la carpeta de tu proyecto.",
-      "Escribí tu primera tarea (tenés una abajo) y mandala."
+      "Descarga la app de Claude para Mac o Windows desde la guía oficial (en Linux está en beta) e instálala.",
+      "Ábrela e inicia sesión con tu cuenta de Claude.",
+      "Haz clic en la pestaña Code, arriba de todo en la barra lateral. Si te pide mejorar el plan, es porque tu cuenta es gratis.",
+      "Debajo del cuadro de mensaje, en el selector de entorno, elige la primera opción del grupo Local.",
+      "Al lado, toca el control de carpeta → Open folder… y elige la carpeta de tu proyecto.",
+      "Escribe tu primera tarea (tienes una abajo) y mandala."
      ],
-     "aviso": "Para la primera vez usá una carpeta de prueba o una copia de tu proyecto, no la versión que ya usás con clientes."
+     "aviso": "Para la primera vez usa una carpeta de prueba o una copia de tu proyecto, no la versión que ya usas con clientes."
     },
     {
      "h": "Opción B: la terminal",
      "p": [
-      "Abrí la terminal (en Mac: Terminal; en Windows: PowerShell), pegá el comando que te corresponde y apretá Enter. Mientras descarga no muestra nada: esperá a que termine."
+      "Abre la terminal (en Mac: Terminal; en Windows: PowerShell), pega el comando que te corresponde y aprieta Enter. Mientras descarga no muestra nada: espera a que termine."
      ],
      "prompts": [
       {
@@ -69,46 +69,46 @@
       }
      ],
      "pasos": [
-      "Cerrá la terminal y abrí una nueva. Corré claude --version: si aparece un número de versión, está listo.",
-      "Entrá a la carpeta de tu proyecto con cd y la ruta, por ejemplo: cd Documentos/mi-proyecto.",
-      "Escribí claude y apretá Enter.",
-      "La primera vez te pide iniciar sesión: se abre el navegador, entrás con tu cuenta y volvés a la terminal.",
-      "Si más adelante querés cambiar de cuenta, adentro de Claude Code escribí /login."
+      "Cierra la terminal y abre una nueva. Corre claude --version: si aparece un número de versión, está listo.",
+      "Entra a la carpeta de tu proyecto con cd y la ruta, por ejemplo: cd Documentos/mi-proyecto.",
+      "Escribe claude y aprieta Enter.",
+      "La primera vez te pide iniciar sesión: se abre el navegador, entras con tu cuenta y vuelves a la terminal.",
+      "Si más adelante quieres cambiar de cuenta, adentro de Claude Code escribe /login."
      ],
      "aviso": "En Windows conviene instalar también Git para Windows: Claude Code lo usa para correr comandos. Si no está, usa PowerShell."
     },
     {
      "h": "Tu primera tarea",
      "p": [
-      "Arrancá preguntando, no pidiendo cambios. Así ves cómo entiende tu proyecto antes de tocar nada. Después pedile algo chico y revisá lo que propone."
+      "Arranca preguntando, no pidiendo cambios. Así ves cómo entiende tu proyecto antes de tocar nada. Después pídele algo chico y revisa lo que propone."
      ],
      "prompts": [
       {
        "t": "Primera pregunta",
-       "c": "Explicame qué hay en esta carpeta como si yo no supiera programar: qué es cada archivo importante, para qué sirve el proyecto y qué te haría falta saber para trabajar en él. No cambies nada todavía."
+       "c": "Explícame qué hay en esta carpeta como si yo no supiera programar: qué es cada archivo importante, para qué sirve el proyecto y qué te haría falta saber para trabajar en él. No cambies nada todavía."
       },
       {
        "t": "Primer cambio chico",
-       "c": "Quiero hacer un cambio chico para probar: [DESCRIBÍ EL CAMBIO, POR EJEMPLO: CAMBIAR EL TÍTULO DE LA PÁGINA PRINCIPAL POR \"BIENVENIDOS\"]. Antes de hacerlo, decime qué archivo vas a tocar y qué vas a cambiar. Esperá mi OK."
+       "c": "Quiero hacer un cambio chico para probar: [DESCRIBE EL CAMBIO, POR EJEMPLO: CAMBIAR EL TÍTULO DE LA PÁGINA PRINCIPAL POR \"BIENVENIDOS\"]. Antes de hacerlo, dime qué archivo vas a tocar y qué vas a cambiar. Espera mi OK."
       }
      ]
     },
     {
      "h": "Cuando te pide permiso",
      "p": [
-      "Antes de editar un archivo o correr un comando, Claude Code te muestra qué quiere hacer y espera tu respuesta. Leelo: si está bien, elegí Yes; si no, decile qué cambiar.",
-      "En la terminal, Shift+Tab cambia el modo de permisos (cuánto puede hacer sin preguntarte). En la app de escritorio el modo está en la fila de abajo del cuadro de mensaje. Si recién empezás, quedate en un modo que te pregunte todo."
+      "Antes de editar un archivo o correr un comando, Claude Code te muestra qué quiere hacer y espera tu respuesta. Léelo: si está bien, elige Yes; si no, decile qué cambiar.",
+      "En la terminal, Shift+Tab cambia el modo de permisos (cuánto puede hacer sin preguntarte). En la app de escritorio el modo está en la fila de abajo del cuadro de mensaje. Si recién empiezas, quédate en un modo que te pregunte todo."
      ]
     }
    ],
    "faq": [
     {
      "q": "Dice que \"claude\" no se reconoce",
-     "a": "Cerrá la terminal y abrí una nueva. Si sigue, la carpeta del programa no quedó en el PATH: la guía oficial de problemas de instalación te dice cómo arreglarlo según tu sistema."
+     "a": "Cierra la terminal y abre una nueva. Si sigue, la carpeta del programa no quedó en el PATH: la guía oficial de problemas de instalación te dice cómo arreglarlo según tu sistema."
     },
     {
      "q": "¿Necesito saber programar?",
-     "a": "No. Le hablás en español, como a un compañero. Lo que sí conviene es pedir cosas concretas y leer lo que te propone antes de aprobarlo."
+     "a": "No. Le hablas en español, como a un compañero. Lo que sí conviene es pedir cosas concretas y leer lo que te propone antes de aprobarlo."
     },
     {
      "q": "En la app no me deja entrar a Code",
@@ -124,14 +124,14 @@
   {
    "slug": "comandos-de-claude-code-de-todos-los-dias",
    "t": "Los comandos de Claude Code que vas a usar todos los días",
-   "d": "Los comandos con barra (/) más útiles, ordenados por el momento en que los necesitás: al arrancar, mientras trabajás, antes de terminar y cuando algo sale mal.",
+   "d": "Los comandos con barra (/) más útiles, ordenados por el momento en que los necesitas: al arrancar, mientras trabajas, antes de terminar y cuando algo sale mal.",
    "tema": "Claude Code",
    "min": 8,
    "secciones": [
     {
      "h": "Cómo funcionan",
      "p": [
-      "Un comando es una palabra que empieza con barra y va al principio del mensaje. Escribí / y aparece la lista de todo lo que tenés disponible; si seguís escribiendo, se filtra.",
+      "Un comando es una palabra que empieza con barra y va al principio del mensaje. Escribe / y aparece la lista de todo lo que tienes disponible; si sigues escribiendo, se filtra.",
       "No hace falta memorizarlos. Con estos de abajo cubrís casi todo el día a día."
      ]
     },
@@ -141,16 +141,16 @@
       "/init: revisa tu proyecto y te arma un CLAUDE.md inicial, el archivo con las reglas que Claude lee en cada sesión. Si ya existe, te sugiere mejoras.",
       "/memory: abre tus archivos CLAUDE.md para editarlos y te deja prender o apagar la memoria automática.",
       "/mcp: muestra los servidores MCP (conectores) y te deja iniciar sesión en los que lo piden.",
-      "/permissions: armás reglas de qué puede hacer sin preguntarte, qué tiene que preguntarte y qué tiene prohibido.",
-      "/model: cambiás el modelo de Claude que usa la sesión."
+      "/permissions: armas reglas de qué puede hacer sin preguntarte, qué tiene que preguntarte y qué tiene prohibido.",
+      "/model: cambias el modelo de Claude que usa la sesión."
      ]
     },
     {
-     "h": "Mientras trabajás",
+     "h": "Mientras trabajas",
      "lista": [
       "/plan [tarea]: entra en modo plan, donde Claude investiga y te propone cómo hacerlo sin tocar tus archivos.",
       "/context: te muestra qué está ocupando la memoria de la conversación.",
-      "/compact [instrucciones]: resume la charla para liberar espacio sin empezar de cero. Podés decirle en qué enfocarse.",
+      "/compact [instrucciones]: resume la charla para liberar espacio sin empezar de cero. Puedes decirle en qué enfocarse.",
       "/btw [pregunta]: una pregunta al costado que no se suma a la conversación principal.",
       "/usage: tu consumo y los límites de tu plan. /cost hace lo mismo."
      ]
@@ -166,24 +166,24 @@
     {
      "h": "Entre una tarea y otra",
      "lista": [
-      "/clear: conversación nueva y vacía. Tu CLAUDE.md se sigue cargando. Usalo al cambiar de tema.",
-      "/resume: volvés a una conversación anterior. Desde la terminal también podés abrir con claude -c para seguir la última.",
-      "/rename [nombre]: le ponés nombre a la sesión para encontrarla después."
+      "/clear: conversación nueva y vacía. Tu CLAUDE.md se sigue cargando. Úsalo al cambiar de tema.",
+      "/resume: vuelves a una conversación anterior. Desde la terminal también puedes abrir con claude -c para seguir la última.",
+      "/rename [nombre]: le pones nombre a la sesión para encontrarla después."
      ]
     },
     {
      "h": "Cuando algo sale mal",
      "lista": [
-      "/rewind: volvés el código y/o la conversación a un punto anterior. También se abre apretando Esc dos veces con el cuadro de mensaje vacío.",
+      "/rewind: vuelves el código y/o la conversación a un punto anterior. También se abre apretando Esc dos veces con el cuadro de mensaje vacío.",
       "/doctor: chequea tu instalación y configuración y te propone arreglos.",
       "/help: la ayuda y los comandos disponibles.",
       "/exit: salís de Claude Code."
      ],
-     "aviso": "/rewind deshace lo que Claude cambió con sus herramientas de edición, pero no todo lo que hizo un comando de terminal. Para estar tranquilo, guardá tu trabajo con git antes de cambios grandes.",
+     "aviso": "/rewind deshace lo que Claude cambió con sus herramientas de edición, pero no todo lo que hizo un comando de terminal. Para estar tranquilo, guarda tu trabajo con git antes de cambios grandes.",
      "prompts": [
       {
-       "t": "Si no sabés qué comando usar",
-       "c": "Quiero [LO QUE QUERÉS HACER, POR EJEMPLO: VOLVER A COMO ESTABA ANTES DEL ÚLTIMO CAMBIO]. ¿Qué comando de Claude Code me sirve y cómo lo uso paso a paso?"
+       "t": "Si no sabes qué comando usar",
+       "c": "Quiero [LO QUE QUIERES HACER, POR EJEMPLO: VOLVER A COMO ESTABA ANTES DEL ÚLTIMO CAMBIO]. ¿Qué comando de Claude Code me sirve y cómo lo uso paso a paso?"
       }
      ]
     }
@@ -191,15 +191,15 @@
    "faq": [
     {
      "q": "Escribo un comando y no pasa nada",
-     "a": "Tiene que ir al principio del mensaje. Si lo mandás mientras Claude está respondiendo, queda en espera y corre cuando termina."
+     "a": "Tiene que ir al principio del mensaje. Si lo mandas mientras Claude está respondiendo, queda en espera y corre cuando termina."
     },
     {
      "q": "¿/clear me borra el proyecto?",
-     "a": "No. Solo empieza una conversación nueva. Tus archivos quedan igual y podés volver a la charla anterior con /resume."
+     "a": "No. Solo empieza una conversación nueva. Tus archivos quedan igual y puedes volver a la charla anterior con /resume."
     },
     {
      "q": "¿/clear o /compact?",
-     "a": "/clear si cambiás de tarea. /compact si seguís con lo mismo pero la conversación se hizo muy larga."
+     "a": "/clear si cambias de tarea. /compact si sigues con lo mismo pero la conversación se hizo muy larga."
     }
    ],
    "fuentes": [
@@ -212,7 +212,7 @@
    "slug": "modo-plan-de-claude-code",
    "post": "PLAN",
    "t": "Modo plan: que Claude piense antes de construir",
-   "d": "Claude investiga tu proyecto y te escribe un plan sin tocar tu código. Lo corregís, lo aprobás y recién ahí construye.",
+   "d": "Claude investiga tu proyecto y te escribe un plan sin tocar tu código. Lo corregís, lo apruebas y recién ahí construye.",
    "tema": "Claude Code",
    "min": 7,
    "secciones": [
@@ -220,27 +220,27 @@
      "h": "Qué es y por qué te ahorra problemas",
      "p": [
       "En modo plan, Claude lee tus archivos y puede correr comandos para explorar, pero no edita tu código. Al final te presenta un plan y espera que lo apruebes.",
-      "Es como pedirle un presupuesto al albañil antes de que rompa la pared: ves qué va a hacer, en qué orden y qué archivos toca. Si algo no te cierra, lo cambiás en el papel y no en la obra."
+      "Es como pedirle un presupuesto al albañil antes de que rompa la pared: ves qué va a hacer, en qué orden y qué archivos toca. Si algo no te cierra, lo cambias en el papel y no en la obra."
      ]
     },
     {
      "h": "Cómo entrar",
      "lista": [
-      "Shift+Tab: en la terminal, cambiás de modo hasta que diga plan.",
+      "Shift+Tab: en la terminal, cambias de modo hasta que diga plan.",
       "/plan [tarea]: entra en modo plan y arranca directo con esa tarea. Ejemplo: /plan agregar un formulario de contacto.",
       "claude --permission-mode plan: abre Claude Code ya en modo plan.",
-      "App de escritorio o web: elegí Plan en el selector de modo, debajo del cuadro de mensaje."
+      "App de escritorio o web: elige Plan en el selector de modo, debajo del cuadro de mensaje."
      ]
     },
     {
-     "h": "Pedí un buen plan",
+     "h": "Pide un buen plan",
      "p": [
-      "Contale el objetivo, no solo la tarea. Y pedile que te pregunte lo que no sabe: un plan con dudas resueltas sale mucho mejor."
+      "Cuéntale el objetivo, no solo la tarea. Y pídele que te pregunte lo que no sabe: un plan con dudas resueltas sale mucho mejor."
      ],
      "prompts": [
       {
        "t": "Plan antes de construir",
-       "c": "/plan Quiero [LO QUE QUERÉS CONSTRUIR O CAMBIAR].\nPara qué es: [EL OBJETIVO, EN UNA LÍNEA].\nQuién lo va a usar: [TU CLIENTE O VOS].\nAntes de armar el plan:\n1. Revisá cómo está hecho el proyecto hoy.\n2. Haceme hasta 5 preguntas sobre lo que no te quede claro.\nDespués armá el plan con:\n- Los pasos en orden, explicados simple.\n- Qué archivos vas a crear o modificar.\n- Qué podría salir mal y cómo lo evitás.\n- Cómo voy a comprobar yo que funciona."
+       "c": "/plan Quiero [LO QUE QUIERES CONSTRUIR O CAMBIAR].\nPara qué es: [EL OBJETIVO, EN UNA LÍNEA].\nQuién lo va a usar: [TU CLIENTE O TÚ].\nAntes de armar el plan:\n1. Revisa cómo está hecho el proyecto hoy.\n2. Hazme hasta 5 preguntas sobre lo que no te quede claro.\nDespués arma el plan con:\n- Los pasos en orden, explicados simple.\n- Qué archivos vas a crear o modificar.\n- Qué podría salir mal y cómo lo evitas.\n- Cómo voy a comprobar yo que funciona."
       }
      ]
     },
@@ -250,33 +250,33 @@
       "Claude te muestra el plan y te da tres opciones (los nombres aparecen en inglés):"
      ],
      "lista": [
-      "Yes, and use auto mode: lo aprobás y construye en modo automático, con controles de seguridad en segundo plano. Si ese modo no está disponible, dice Yes, auto-accept edits.",
-      "Yes, manually approve edits: lo aprobás, pero te pregunta antes de cada cambio. La más segura si estás empezando.",
-      "No, keep planning: seguís en modo plan y le decís qué corregir."
+      "Yes, and use auto mode: lo apruebas y construye en modo automático, con controles de seguridad en segundo plano. Si ese modo no está disponible, dice Yes, auto-accept edits.",
+      "Yes, manually approve edits: lo apruebas, pero te pregunta antes de cada cambio. La más segura si estás empezando.",
+      "No, keep planning: sigues en modo plan y le dices qué corregir."
      ],
-     "aviso": "Con Ctrl+G abrís el plan en tu editor y lo cambiás vos a mano antes de que siga."
+     "aviso": "Con Ctrl+G abrís el plan en tu editor y lo cambias tú a mano antes de que siga."
     },
     {
      "h": "Cuándo usarlo y cuándo no",
      "lista": [
-      "Sí: cambios que tocan varios archivos, cosas nuevas que no sabés bien cómo encarar, o cuando trabajás sobre algo que ya usan tus clientes.",
+      "Sí: cambios que tocan varios archivos, cosas nuevas que no sabes bien cómo encarar, o cuando trabajas sobre algo que ya usan tus clientes.",
       "No hace falta: cambios chiquitos y claros, como corregir un texto o un color.",
-      "Truco: si el plan es largo, pedile que lo divida en etapas y aprobá una por vez."
+      "Truco: si el plan es largo, pídele que lo divida en etapas y aprueba una por vez."
      ]
     }
    ],
    "faq": [
     {
      "q": "¿En modo plan puede romper algo?",
-     "a": "No edita tu código hasta que apruebes. Igual puede correr comandos para explorar, así que leé lo que te pide si aparece un aviso de permiso."
+     "a": "No edita tu código hasta que apruebes. Igual puede correr comandos para explorar, así que lee lo que te pide si aparece un aviso de permiso."
     },
     {
      "q": "Aprobé el plan y no me gusta cómo va",
-     "a": "Frenalo con Esc (en la app, con el botón de stop) y decile qué cambiar. Si ya hizo cambios, /rewind te deja volver a un punto anterior."
+     "a": "Frénalo con Esc (en la app, con el botón de stop) y decile qué cambiar. Si ya hizo cambios, /rewind te deja volver a un punto anterior."
     },
     {
      "q": "¿Puedo guardar el plan?",
-     "a": "Sí: pedile que lo escriba en un archivo, por ejemplo plan.md, para retomarlo en otra sesión."
+     "a": "Sí: pídele que lo escriba en un archivo, por ejemplo plan.md, para retomarlo en otra sesión."
     }
    ],
    "fuentes": [
@@ -315,65 +315,65 @@
      "h": "Para qué sirve",
      "p": [
       "Cada sesión de Claude Code arranca sin recordar la anterior. CLAUDE.md es donde escribís lo que, si no, tendrías que volver a explicar cada vez.",
-      "Una buena señal para sumar algo: Claude comete el mismo error por segunda vez, o vos tipeás la misma aclaración que la semana pasada."
+      "Una buena señal para sumar algo: Claude comete el mismo error por segunda vez, o tú tipeas la misma aclaración que la semana pasada."
      ]
     },
     {
      "h": "Dónde se guarda",
      "lista": [
-      "CLAUDE.md o .claude/CLAUDE.md en la carpeta del proyecto: reglas del proyecto. Si usás git, se comparte con tu equipo.",
+      "CLAUDE.md o .claude/CLAUDE.md en la carpeta del proyecto: reglas del proyecto. Si usas git, se comparte con tu equipo.",
       "~/.claude/CLAUDE.md: tus preferencias personales, para todos tus proyectos.",
-      "CLAUDE.local.md en la carpeta del proyecto: tus notas personales de ese proyecto. Sumalo al .gitignore para que no se suba.",
+      "CLAUDE.local.md en la carpeta del proyecto: tus notas personales de ese proyecto. Súmalo al .gitignore para que no se suba.",
       "Si tu proyecto ya tiene un AGENTS.md (de otras herramientas) y no tiene CLAUDE.md, Claude Code lo lee igual."
      ]
     },
     {
-     "h": "Crealo en un minuto",
+     "h": "Créalo en un minuto",
      "pasos": [
-      "Abrí Claude Code en la carpeta del proyecto.",
-      "Escribí /init. Claude revisa el proyecto y arma un CLAUDE.md inicial con lo que descubre.",
-      "Leelo y sumá lo que Claude no puede adivinar: para quién es, el tono de tu marca, qué no tiene que tocar nunca.",
-      "Para editarlo más adelante, escribí /memory o abrí el archivo con cualquier editor de texto."
+      "Abre Claude Code en la carpeta del proyecto.",
+      "Escribe /init. Claude revisa el proyecto y arma un CLAUDE.md inicial con lo que descubre.",
+      "Léelo y suma lo que Claude no puede adivinar: para quién es, el tono de tu marca, qué no tiene que tocar nunca.",
+      "Para editarlo más adelante, escribe /memory o abre el archivo con cualquier editor de texto."
      ]
     },
     {
      "h": "Qué poner (y cómo escribirlo)",
      "p": [
-      "Instrucciones concretas que se puedan comprobar. \"Los textos van en español rioplatense con voseo\" funciona; \"escribí bien\" no.",
-      "Dejá afuera los procedimientos largos y las cosas que solo importan en una parte del proyecto: eso va mejor en una skill o en una regla aparte dentro de .claude/rules/, que se carga solo cuando hace falta."
+      "Instrucciones concretas que se puedan comprobar. \"Los textos van en español rioplatense con voseo\" funciona; \"escribe bien\" no.",
+      "Deja afuera los procedimientos largos y las cosas que solo importan en una parte del proyecto: eso va mejor en una skill o en una regla aparte dentro de .claude/rules/, que se carga solo cuando hace falta."
      ],
      "prompts": [
       {
        "t": "Plantilla para un proyecto de negocio",
-       "c": "# [NOMBRE DEL PROYECTO]\n\n## Qué es\n- [QUÉ ES, EN UNA LÍNEA]. Lo usan [QUIÉN LO USA].\n\n## Reglas de contenido\n- Todos los textos en español rioplatense, con voseo.\n- Tono: [EJ.: DIRECTO Y CERCANO]. Nada de promesas de resultados.\n- Colores de marca: [COLOR 1], [COLOR 2].\n\n## Reglas de trabajo\n- Antes de cambios grandes, proponé un plan y esperá mi OK.\n- No borres archivos sin preguntarme.\n- No toques la carpeta [CARPETA QUE NO SE TOCA].\n\n## Cómo se prueba\n- [CÓMO VES QUE FUNCIONA, EJ.: ABRIR INDEX.HTML EN EL NAVEGADOR]."
+       "c": "# [NOMBRE DEL PROYECTO]\n\n## Qué es\n- [QUÉ ES, EN UNA LÍNEA]. Lo usan [QUIÉN LO USA].\n\n## Reglas de contenido\n- Todos los textos en español rioplatense, con voseo.\n- Tono: [EJ.: DIRECTO Y CERCANO]. Nada de promesas de resultados.\n- Colores de marca: [COLOR 1], [COLOR 2].\n\n## Reglas de trabajo\n- Antes de cambios grandes, propón un plan y espera mi OK.\n- No borres archivos sin preguntarme.\n- No toques la carpeta [CARPETA QUE NO SE TOCA].\n\n## Cómo se prueba\n- [CÓMO VES QUE FUNCIONA, EJ.: ABRIR INDEX.HTML EN EL NAVEGADOR]."
       }
      ]
     },
     {
-     "h": "Mantenelo corto",
+     "h": "Mantenlo corto",
      "p": [
       "La guía oficial recomienda apuntar a menos de 200 líneas por archivo: uno más largo ocupa más memoria y Claude lo sigue peor. Si dos reglas se contradicen, puede elegir cualquiera de las dos.",
-      "Cada tanto, pedile a Claude que lo ordene. También existe /doctor prompt-audit, que revisa tus archivos de instrucciones y busca problemas."
+      "Cada tanto, pídele a Claude que lo ordene. También existe /doctor prompt-audit, que revisa tus archivos de instrucciones y busca problemas."
      ],
      "prompts": [
       {
        "t": "Ordenar mi CLAUDE.md",
-       "c": "Leé mi CLAUDE.md y ayudame a dejarlo corto y claro:\n1. Marcá reglas repetidas, viejas o que se contradicen.\n2. Marcá lo que es un procedimiento largo y conviene pasar a una skill o a .claude/rules/.\n3. Reescribí las reglas vagas para que sean concretas.\n4. Mostrame la versión nueva y lo que sacaste. No guardes nada hasta que te diga OK."
+       "c": "Lee mi CLAUDE.md y ayúdame a dejarlo corto y claro:\n1. Marca reglas repetidas, viejas o que se contradicen.\n2. Marca lo que es un procedimiento largo y conviene pasar a una skill o a .claude/rules/.\n3. Reescribe las reglas vagas para que sean concretas.\n4. Muéstrame la versión nueva y lo que sacaste. No guardes nada hasta que te diga OK."
       }
      ]
     },
     {
      "h": "La memoria automática",
      "p": [
-      "Además de tu CLAUDE.md, Claude Code puede tomar sus propias notas mientras trabaja: tus correcciones, tus preferencias y decisiones del proyecto. Las guarda en tu compu, separadas por proyecto.",
-      "Desde /memory ves esas notas y prendés o apagás la función. Cuando aparece \"Saved memories\" o algo parecido, está anotando."
+      "Además de tu CLAUDE.md, Claude Code puede tomar sus propias notas mientras trabaja: tus correcciones, tus preferencias y decisiones del proyecto. Las guarda en tu computadora, separadas por proyecto.",
+      "Desde /memory ves esas notas y prendes o apagas la función. Cuando aparece \"Saved memories\" o algo parecido, está anotando."
      ]
     }
    ],
    "faq": [
     {
      "q": "Claude no respeta una regla de mi CLAUDE.md",
-     "a": "Hacela más concreta y revisá que no choque con otra. Si es algo que nunca puede pasar, no alcanza con CLAUDE.md: hay que bloquearlo con permisos o hooks."
+     "a": "Hazla más concreta y revisa que no choque con otra. Si es algo que nunca puede pasar, no alcanza con CLAUDE.md: hay que bloquearlo con permisos o hooks."
     },
     {
      "q": "¿/init me pisa lo que ya escribí?",
@@ -381,7 +381,7 @@
     },
     {
      "q": "¿Pongo contraseñas o claves ahí?",
-     "a": "No. CLAUDE.md es texto común y, si usás git, se comparte. Las claves van en otro lado."
+     "a": "No. CLAUDE.md es texto común y, si usas git, se comparte. Las claves van en otro lado."
     }
    ],
    "fuentes": [
@@ -400,7 +400,7 @@
     {
      "h": "Qué es un subagente",
      "p": [
-      "Un ayudante especializado que trabaja en una conversación aparte, con sus propias instrucciones y las herramientas que vos le habilites. Cuando termina, le devuelve a Claude un resumen.",
+      "Un ayudante especializado que trabaja en una conversación aparte, con sus propias instrucciones y las herramientas que tú le habilites. Cuando termina, le devuelve a Claude un resumen.",
       "La gran ventaja: la búsqueda larga, los registros y los archivos que tuvo que leer se quedan en su espacio y no llenan tu conversación principal."
      ]
     },
@@ -412,35 +412,35 @@
       "General-purpose: para tareas de varios pasos que necesitan investigar y también hacer cambios."
      ],
      "p": [
-      "Claude los usa solo cuando le parece. No tenés que hacer nada para activarlos."
+      "Claude los usa solo cuando le parece. No tienes que hacer nada para activarlos."
      ]
     },
     {
      "h": "Cuándo conviene uno propio",
      "lista": [
       "Tareas que generan mucho texto que después no vas a mirar: revisar muchas páginas, leer registros, buscar en todo el proyecto.",
-      "Tareas que repetís y querés hacer siempre igual: revisar textos, chequear enlaces rotos, revisar código antes de publicar.",
-      "Cuando querés limitar qué puede hacer: por ejemplo, un revisor que solo lee y nunca edita."
+      "Tareas que repetís y quieres hacer siempre igual: revisar textos, chequear enlaces rotos, revisar código antes de publicar.",
+      "Cuando quieres limitar qué puede hacer: por ejemplo, un revisor que solo lee y nunca edita."
      ],
      "p": [
-      "Para idas y vueltas rápidas o cambios chicos, mejor quedate en la conversación principal."
+      "Para idas y vueltas rápidas o cambios chicos, mejor quédate en la conversación principal."
      ]
     },
     {
-     "h": "Crealo pidiéndoselo a Claude",
+     "h": "Créalo pidiéndoselo a Claude",
      "p": [
       "La forma más simple es describirlo con tus palabras y decirle dónde guardarlo. En ~/.claude/agents/ queda para todos tus proyectos; en .claude/agents/ dentro de la carpeta, solo para ese proyecto."
      ],
      "prompts": [
       {
        "t": "Crear un subagente revisor",
-       "c": "Creá un subagente personal en ~/.claude/agents/ llamado revisor-textos.\nQué hace: revisa los textos de páginas web y documentos antes de publicar.\nQué busca: errores de ortografía, frases confusas, promesas exageradas y textos que no usan voseo rioplatense.\nCómo responde: una lista con cada problema, el texto actual y la versión corregida.\nQue sea de solo lectura: no puede editar archivos."
+       "c": "Crea un subagente personal en ~/.claude/agents/ llamado revisor-textos.\nQué hace: revisa los textos de páginas web y documentos antes de publicar.\nQué busca: errores de ortografía, frases confusas, promesas exageradas y textos que no usan voseo rioplatense.\nCómo responde: una lista con cada problema, el texto actual y la versión corregida.\nQue sea de solo lectura: no puede editar archivos."
       }
      ],
      "pasos": [
-      "Pegá el prompt en Claude Code y aprobá cuando quiera crear el archivo.",
-      "Abrí el archivo que creó y revisá que diga lo que pediste.",
-      "Si Claude no lo encuentra, cerrá y abrí Claude Code: pasa cuando la carpeta agents no existía al empezar la sesión."
+      "Pega el prompt en Claude Code y aprueba cuando quiera crear el archivo.",
+      "Abre el archivo que creó y revisa que diga lo que pediste.",
+      "Si Claude no lo encuentra, cierra y abre Claude Code: pasa cuando la carpeta agents no existía al empezar la sesión."
      ]
     },
     {
@@ -451,18 +451,18 @@
      "prompts": [
       {
        "t": "Ejemplo de archivo (~/.claude/agents/revisor-textos.md)",
-       "c": "---\nname: revisor-textos\ndescription: Revisa textos de páginas y documentos antes de publicar. Usalo cuando haya textos nuevos o modificados.\ntools: Read, Grep, Glob\n---\n\nSos un revisor de textos en español rioplatense. Para cada problema que encuentres, mostrá el texto actual, explicá el problema en una línea y proponé la versión corregida."
+       "c": "---\nname: revisor-textos\ndescription: Revisa textos de páginas y documentos antes de publicar. Úsalo cuando haya textos nuevos o modificados.\ntools: Read, Grep, Glob\n---\n\nEres un revisor de textos en español rioplatense. Para cada problema que encuentres, muestra el texto actual, explica el problema en una línea y propón la versión corregida."
       }
      ]
     },
     {
      "h": "Usarlo",
      "lista": [
-      "Por nombre: \"Usá el subagente revisor-textos para revisar la carpeta de la landing\".",
-      "Con @: escribí @ y elegilo de la lista. Así te asegurás de que lo use.",
-      "Para ver lo que corre en segundo plano, incluidos los subagentes, escribí /tasks."
+      "Por nombre: \"Usa el subagente revisor-textos para revisar la carpeta de la landing\".",
+      "Con @: escribe @ y elígelo de la lista. Así te aseguras de que lo use.",
+      "Para ver lo que corre en segundo plano, incluidos los subagentes, escribe /tasks."
      ],
-     "aviso": "El subagente no ve tu conversación: arranca solo con lo que Claude le pasa. Y si edita archivos, /rewind puede no deshacer esos cambios. Guardá tu trabajo con git antes."
+     "aviso": "El subagente no ve tu conversación: arranca solo con lo que Claude le pasa. Y si edita archivos, /rewind puede no deshacer esos cambios. Guarda tu trabajo con git antes."
     }
    ],
    "faq": [
@@ -485,25 +485,25 @@
    "slug": "tareas-programadas-en-claude-code",
    "post": "SOLO",
    "t": "Tareas programadas: Claude Code trabajando solo",
-   "d": "Tres formas oficiales de dejar a Claude Code haciendo algo a una hora o cada cierto tiempo: en la nube, en tu compu o mientras tenés la sesión abierta.",
+   "d": "Tres formas oficiales de dejar a Claude Code haciendo algo a una hora o cada cierto tiempo: en la nube, en tu computadora o mientras tienes la sesión abierta.",
    "tema": "Claude Code",
    "min": 10,
    "fichaNombre": "Tareas programadas",
    "ficha": [
     [
      "En la nube",
-     "Corre aunque tu compu esté apagada. Se crea en claude.ai/code/routines, desde la app de escritorio o con /schedule."
+     "Corre aunque tu computadora esté apagada. Se crea en claude.ai/code/routines, desde la app de escritorio o con /schedule."
     ],
     [
-     "En tu compu",
-     "Desde la app de escritorio. Tiene acceso a tus archivos, pero solo corre con la app abierta y la compu despierta."
+     "En tu computadora",
+     "Desde la app de escritorio. Tiene acceso a tus archivos, pero solo corre con la app abierta y la computadora despierta."
     ],
     [
-     "Mientras trabajás",
+     "Mientras trabajas",
      "/loop repite un pedido mientras la sesión sigue abierta."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Plan Pro, Max, Team o Enterprise. Para que una tarea en la nube trabaje sobre tu proyecto, un repositorio en GitHub."
     ]
    ],
@@ -511,9 +511,9 @@
     {
      "h": "Cuál te conviene",
      "lista": [
-      "Tarea en la nube: para algo que tiene que correr sí o sí, aunque cierres la compu. Trabaja sobre una copia nueva de tu repositorio de GitHub, no sobre tus archivos locales. Como mínimo, una vez por hora.",
-      "Tarea local de la app de escritorio: cuando necesita tus archivos o programas. Corre solo con la app abierta y la compu despierta.",
-      "/loop: para vigilar algo durante un rato mientras trabajás, por ejemplo si terminó una publicación. Se corta al cerrar la sesión."
+      "Tarea en la nube: para algo que tiene que correr sí o sí, aunque cierres la computadora. Trabaja sobre una copia nueva de tu repositorio de GitHub, no sobre tus archivos locales. Como mínimo, una vez por hora.",
+      "Tarea local de la app de escritorio: cuando necesita tus archivos o programas. Corre solo con la app abierta y la computadora despierta.",
+      "/loop: para vigilar algo durante un rato mientras trabajas, por ejemplo si terminó una publicación. Se corta al cerrar la sesión."
      ],
      "p": [
       "Las tareas en la nube están en vista previa (research preview): pueden cambiar cómo funcionan y sus límites."
@@ -522,54 +522,54 @@
     {
      "h": "Tarea en la nube",
      "pasos": [
-      "Entrá a claude.ai/code/routines y tocá New task (en algunas cuentas todavía dice New routine). Si te ofrece Create with Claude o Set up manually, elegí la que prefieras: la primera lo arma charlando.",
-      "Ponele nombre y escribí el pedido. Tiene que entenderse solo, porque nadie va a estar ahí para aclararle nada.",
-      "En Trigger elegí Schedule y una frecuencia, por ejemplo por hora, diaria o semanal.",
-      "En Advanced settings elegí el repositorio de GitHub y el entorno (Default sirve para empezar).",
-      "En la pestaña Connectors sacá los conectores que la tarea no necesita.",
-      "Tocá Create. Para probarla ya, tocá Run now en su página."
+      "Entra a claude.ai/code/routines y toca New task (en algunas cuentas todavía dice New routine). Si te ofrece Create with Claude o Set up manually, elige la que prefieras: la primera lo arma charlando.",
+      "Ponle nombre y escribe el pedido. Tiene que entenderse solo, porque nadie va a estar ahí para aclararle nada.",
+      "En Trigger elige Schedule y una frecuencia, por ejemplo por hora, diaria o semanal.",
+      "En Advanced settings elige el repositorio de GitHub y el entorno (Default sirve para empezar).",
+      "En la pestaña Connectors saca los conectores que la tarea no necesita.",
+      "Toca Create. Para probarla ya, toca Run now en su página."
      ],
      "prompts": [
       {
        "t": "Crearla desde la terminal",
-       "c": "/schedule todos los lunes a las 9, revisá los cambios de la semana en este repositorio y armá un resumen simple de qué se hizo y qué quedó pendiente"
+       "c": "/schedule todos los lunes a las 9, revisa los cambios de la semana en este repositorio y arma un resumen simple de qué se hizo y qué quedó pendiente"
       }
      ],
-     "aviso": "Los conectores que dejes incluidos los puede usar para escribir (mandar mensajes, crear tareas) y todo sale a tu nombre. Dejá solo los necesarios."
+     "aviso": "Los conectores que dejes incluidos los puede usar para escribir (mandar mensajes, crear tareas) y todo sale a tu nombre. Deja solo los necesarios."
     },
     {
      "h": "Tarea local en la app de escritorio",
      "pasos": [
-      "En la pestaña Code, tocá Scheduled en la barra lateral (o en el menú More) y después New task.",
-      "Ponele nombre y escribí las instrucciones.",
-      "En Advanced settings, pestaña General, prendé Only on this computer y elegí la carpeta en Local folder.",
-      "En Trigger elegí Hourly, Daily, Weekdays o Weekly.",
-      "Elegí el modo de permisos y el modelo en la barra del cuadro de instrucciones, y tocá Create.",
-      "Tocá Run now una vez y aprobá los permisos que pida con \"always allow\": así las próximas no se traban esperándote."
+      "En la pestaña Code, toca Scheduled en la barra lateral (o en el menú More) y después New task.",
+      "Ponle nombre y escribe las instrucciones.",
+      "En Advanced settings, pestaña General, prendé Only on this computer y elige la carpeta en Local folder.",
+      "En Trigger elige Hourly, Daily, Weekdays o Weekly.",
+      "Elige el modo de permisos y el modelo en la barra del cuadro de instrucciones, y toca Create.",
+      "Toca Run now una vez y aprueba los permisos que pida con \"always allow\": así las próximas no se traban esperándote."
      ],
      "p": [
-      "Si la compu estuvo dormida a la hora de la tarea, se saltea. Al despertar hace una sola corrida de recuperación por la última que perdió. Para que no se duerma sola, en Settings → This computer → System está Keep computer awake (cerrar la tapa la duerme igual)."
+      "Si la computadora estuvo dormida a la hora de la tarea, se saltea. Al despertar hace una sola corrida de recuperación por la última que perdió. Para que no se duerma sola, en Settings → This computer → System está Keep computer awake (cerrar la tapa la duerme igual)."
      ]
     },
     {
-     "h": "/loop: repetir mientras trabajás",
+     "h": "/loop: repetir mientras trabajas",
      "lista": [
       "/loop 10m [pedido]: lo repite cada 10 minutos. Unidades: s, m, h y d.",
       "/loop [pedido]: Claude decide cada cuánto, entre un minuto y una hora.",
-      "Recordatorio de una vez: escribile \"recordame a las 15 que revise el formulario\".",
-      "Para ver o cancelar: \"¿qué tareas programadas tengo?\" o \"cancelá la tarea de revisar el formulario\"."
+      "Recordatorio de una vez: escríbele \"recuérdame a las 15 que revise el formulario\".",
+      "Para ver o cancelar: \"¿qué tareas programadas tengo?\" o \"cancela la tarea de revisar el formulario\"."
      ],
      "aviso": "Solo corre mientras Claude Code está abierto. Las tareas que se repiten se borran solas a los 7 días."
     },
     {
-     "h": "Escribí bien el pedido",
+     "h": "Escribe bien el pedido",
      "p": [
-      "Una tarea programada trabaja sin vos. Decile qué revisar, qué hacer si no hay nada nuevo y qué no tiene que tocar."
+      "Una tarea programada trabaja sin ti. Decile qué revisar, qué hacer si no hay nada nuevo y qué no tiene que tocar."
      ],
      "prompts": [
       {
        "t": "Plantilla de tarea programada",
-       "c": "Tarea: [QUÉ TIENE QUE HACER].\nDónde mirar: [CARPETA, REPOSITORIO O CONECTOR].\nQué me tenés que dejar: [EJ.: UN RESUMEN DE 5 LÍNEAS EN RESUMEN.MD].\nSi no hay nada nuevo: escribí \"sin novedades\" y terminá.\nNo hagas: borrar archivos, publicar nada ni mandar mensajes a nadie.\nSi algo falla, anotá qué pasó y no intentes arreglarlo solo."
+       "c": "Tarea: [QUÉ TIENE QUE HACER].\nDónde mirar: [CARPETA, REPOSITORIO O CONECTOR].\nQué me tienes que dejar: [EJ.: UN RESUMEN DE 5 LÍNEAS EN RESUMEN.MD].\nSi no hay nada nuevo: escribe \"sin novedades\" y termina.\nNo hagas: borrar archivos, publicar nada ni mandar mensajes a nadie.\nSi algo falla, anota qué pasó y no intentes arreglarlo solo."
       }
      ]
     }
@@ -577,7 +577,7 @@
    "faq": [
     {
      "q": "/schedule dice \"Unknown command\"",
-     "a": "Necesitás haber iniciado sesión con una cuenta de claude.ai (no con una clave de API). Probá /login. Si no, creala desde claude.ai/code/routines."
+     "a": "Necesitas haber iniciado sesión con una cuenta de claude.ai (no con una clave de API). Prueba /login. Si no, créala desde claude.ai/code/routines."
     },
     {
      "q": "¿Gasta de mi plan?",
@@ -585,7 +585,7 @@
     },
     {
      "q": "Mi tarea local no corrió",
-     "a": "Revisá que la app estuviera abierta y la compu despierta. En el historial de la tarea, pasando el mouse por la corrida salteada, te dice por qué."
+     "a": "Revisa que la app estuviera abierta y la computadora despierta. En el historial de la tarea, pasando el mouse por la corrida salteada, te dice por qué."
     }
    ],
    "fuentes": [
@@ -598,7 +598,7 @@
   {
    "slug": "claude-code-desde-el-celular-y-la-web",
    "t": "Claude Code desde el celular y el navegador",
-   "d": "Lanzá tareas desde claude.ai/code o la app de Claude, y seguí desde el teléfono una sesión que corre en tu compu.",
+   "d": "Lanza tareas desde claude.ai/code o la app de Claude, y sigue desde el teléfono una sesión que corre en tu computadora.",
    "tema": "Claude Code",
    "min": 9,
    "fichaNombre": "Claude Code en la web y el celular",
@@ -613,10 +613,10 @@
     ],
     [
      "Remote Control",
-     "Manejás desde el teléfono una sesión que corre en tu compu, con tus archivos."
+     "Manejas desde el teléfono una sesión que corre en tu computadora, con tus archivos."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Cuenta de claude.ai con plan pago. Con una clave de API no funciona."
     ]
    ],
@@ -624,8 +624,8 @@
     {
      "h": "Dos maneras, una diferencia clave",
      "lista": [
-      "Sesión en la nube: el trabajo corre en una máquina de Anthropic. Sigue aunque cierres la compu o el navegador. Necesita un repositorio en GitHub.",
-      "Remote Control: el trabajo corre en tu compu, con tus archivos y tus herramientas. El teléfono o el navegador son solo la ventana. Tu compu tiene que quedar prendida y Claude Code abierto."
+      "Sesión en la nube: el trabajo corre en una máquina de Anthropic. Sigue aunque cierres la computadora o el navegador. Necesita un repositorio en GitHub.",
+      "Remote Control: el trabajo corre en tu computadora, con tus archivos y tus herramientas. El teléfono o el navegador son solo la ventana. Tu computadora tiene que quedar prendida y Claude Code abierto."
      ],
      "p": [
       "Las sesiones en la nube están en los planes Pro, Max y Team, y en Enterprise según el tipo de licencia. Remote Control está en Pro, Max, Team y Enterprise (en Team y Enterprise lo tiene que habilitar el administrador)."
@@ -634,46 +634,46 @@
     {
      "h": "Primera vez en claude.ai/code",
      "pasos": [
-      "Entrá a claude.ai/code e iniciá sesión con tu cuenta de Claude.",
-      "Conectá tu cuenta de GitHub cuando te lo pida y aprobá el permiso.",
-      "Para trabajar en repositorios privados, instalá la app de Claude en GitHub sobre esa cuenta u organización.",
-      "En Pro y Max se crea solo un entorno llamado Default. Para empezar, dejalo como está.",
-      "Elegí el repositorio debajo del cuadro de mensaje, elegí el modo (Auto, Accept edits o Plan) y escribí la tarea.",
-      "Cuando termina, tocá el indicador de cambios (por ejemplo +42 -18) para ver qué hizo y, si te gusta, tocá Create PR."
+      "Entra a claude.ai/code e inicia sesión con tu cuenta de Claude.",
+      "Conecta tu cuenta de GitHub cuando te lo pida y aprueba el permiso.",
+      "Para trabajar en repositorios privados, instala la app de Claude en GitHub sobre esa cuenta u organización.",
+      "En Pro y Max se crea solo un entorno llamado Default. Para empezar, déjalo como está.",
+      "Elige el repositorio debajo del cuadro de mensaje, elige el modo (Auto, Accept edits o Plan) y escribe la tarea.",
+      "Cuando termina, toca el indicador de cambios (por ejemplo +42 -18) para ver qué hizo y, si te gusta, toca Create PR."
      ],
-     "aviso": "Si todavía no tenés el proyecto en GitHub, creá un repositorio con un README primero. Si no querés usar GitHub, usá Remote Control."
+     "aviso": "Si todavía no tienes el proyecto en GitHub, crea un repositorio con un README primero. Si no quieres usar GitHub, usa Remote Control."
     },
     {
      "h": "Desde el celular",
      "pasos": [
-      "Instalá la app de Claude para iOS o Android. Desde Claude Code en la compu, /mobile te muestra un código QR que lleva a la tienda correcta.",
-      "Iniciá sesión con la misma cuenta que usás en Claude Code.",
-      "Tocá Code en la navegación de la app: ahí están tus sesiones en la nube y las de Remote Control.",
-      "Para una tarea nueva en la nube, elegí repositorio y rama, describí la tarea y mandala. Después podés cerrar la app."
+      "Instala la app de Claude para iOS o Android. Desde Claude Code en la computadora, /mobile te muestra un código QR que lleva a la tienda correcta.",
+      "Inicia sesión con la misma cuenta que usas en Claude Code.",
+      "Toca Code en la navegación de la app: ahí están tus sesiones en la nube y las de Remote Control.",
+      "Para una tarea nueva en la nube, elige repositorio y rama, describe la tarea y mandala. Después puedes cerrar la app."
      ],
      "prompts": [
       {
        "t": "Tarea para mandar desde el teléfono",
-       "c": "En este repositorio, [LO QUE QUERÉS, POR EJEMPLO: CAMBIÁ EL TELÉFONO DE CONTACTO DEL PIE DE PÁGINA POR [NÚMERO NUEVO]].\nHacé solo ese cambio, revisá que no se rompa nada más y dejame un resumen de 3 líneas de lo que tocaste para revisarlo desde el celular."
+       "c": "En este repositorio, [LO QUE QUIERES, POR EJEMPLO: CAMBIA EL TELÉFONO DE CONTACTO DEL PIE DE PÁGINA POR [NÚMERO NUEVO]].\nHaz solo ese cambio, revisa que no se rompa nada más y déjame un resumen de 3 líneas de lo que tocaste para revisarlo desde el celular."
       }
      ]
     },
     {
-     "h": "Remote Control: tu compu en el bolsillo",
+     "h": "Remote Control: tu computadora en el bolsillo",
      "pasos": [
-      "En la compu, en la carpeta del proyecto, corré claude remote-control. La primera vez te pregunta si querés habilitarlo: respondé y.",
-      "Apretá la barra espaciadora para ver un código QR y escanealo con el teléfono.",
-      "O abrí la app de Claude, tocá Code y elegí la sesión de la lista.",
-      "Si ya tenés una sesión abierta, escribí /remote-control (o /rc) y queda disponible desde el teléfono."
+      "En la computadora, en la carpeta del proyecto, corre claude remote-control. La primera vez te pregunta si quieres habilitarlo: responde y.",
+      "Aprieta la barra espaciadora para ver un código QR y escanéalo con el teléfono.",
+      "O abre la app de Claude, toca Code y elige la sesión de la lista.",
+      "Si ya tienes una sesión abierta, escribe /remote-control (o /rc) y queda disponible desde el teléfono."
      ],
      "p": [
-      "Si tu compu se duerme o se corta internet, se vuelve a conectar sola cuando vuelve. Con Remote Control activo, Claude te puede mandar notificaciones al teléfono, por ejemplo cuando termina algo largo."
+      "Si tu computadora se duerme o se corta internet, se vuelve a conectar sola cuando vuelve. Con Remote Control activo, Claude te puede mandar notificaciones al teléfono, por ejemplo cuando termina algo largo."
      ]
     },
     {
      "h": "Pasar de un lado al otro",
      "lista": [
-      "/teleport: en la terminal, trae una sesión de la nube a tu compu.",
+      "/teleport: en la terminal, trae una sesión de la nube a tu computadora.",
       "claude --cloud: desde la terminal, arranca una sesión en la nube.",
       "/desktop: pasa la sesión de la terminal a la app de escritorio (Mac o Windows x64)."
      ]
@@ -682,11 +682,11 @@
    "faq": [
     {
      "q": "No veo la pestaña Code en la app del celular",
-     "a": "Tu plan u organización puede no incluirla. Revisá que entraste con la misma cuenta y organización que usás en Claude Code."
+     "a": "Tu plan u organización puede no incluirla. Revisa que entraste con la misma cuenta y organización que usas en Claude Code."
     },
     {
      "q": "Cerré la pestaña y la tarea siguió",
-     "a": "Es a propósito: las sesiones en la nube siguen hasta terminar. Podés archivarlas o borrarlas desde la barra lateral."
+     "a": "Es a propósito: las sesiones en la nube siguen hasta terminar. Puedes archivarlas o borrarlas desde la barra lateral."
     },
     {
      "q": "Desde el celular, ¿puedo usar todos los comandos?",
@@ -703,7 +703,7 @@
   {
    "slug": "permisos-y-modo-automatico-con-cuidado",
    "t": "Permisos y modo automático, sin romper nada",
-   "d": "Qué hace cada modo de permisos, qué aprobar sin miedo, qué leer dos veces y por qué tenés que guardar una copia antes de dejarlo solo.",
+   "d": "Qué hace cada modo de permisos, qué aprobar sin miedo, qué leer dos veces y por qué tienes que guardar una copia antes de dejarlo solo.",
    "tema": "Claude Code",
    "min": 10,
    "secciones": [
@@ -711,12 +711,12 @@
      "h": "Primero, la copia de seguridad",
      "p": [
       "Darle permisos amplios a Claude sin guardar antes tu trabajo es como correr scripts en producción sin backup: casi siempre sale bien, y el día que no, no hay vuelta atrás.",
-      "Claude Code guarda puntos de control y con /rewind podés volver atrás. Pero no reemplazan a git: lo que cambia un comando de terminal no siempre se puede deshacer, ni los cambios que hicieron subagentes. Antes de cualquier tarea grande, hacé un commit (o una copia de la carpeta)."
+      "Claude Code guarda puntos de control y con /rewind puedes volver atrás. Pero no reemplazan a git: lo que cambia un comando de terminal no siempre se puede deshacer, ni los cambios que hicieron subagentes. Antes de cualquier tarea grande, haz un commit (o una copia de la carpeta)."
      ],
      "prompts": [
       {
        "t": "Guardar todo antes de empezar",
-       "c": "Antes de hacer cualquier cambio:\n1. Fijate si esta carpeta ya usa git. Si no, inicializalo.\n2. Hacé un commit con todo como está ahora, con el mensaje \"punto seguro antes de [TAREA]\".\n3. Decime cómo vuelvo a este punto si algo sale mal, explicado simple.\nRecién después esperá mi próximo pedido."
+       "c": "Antes de hacer cualquier cambio:\n1. Fíjate si esta carpeta ya usa git. Si no, inicialízalo.\n2. Haz un commit con todo como está ahora, con el mensaje \"punto seguro antes de [TAREA]\".\n3. Dime cómo vuelvo a este punto si algo sale mal, explicado simple.\nRecién después espera mi próximo pedido."
       }
      ]
     },
@@ -728,7 +728,7 @@
       "plan: lee y explora, pero no edita tu código hasta que apruebes el plan.",
       "auto: un modelo revisa cada acción en segundo plano y frena las riesgosas en vez de preguntarte. Menos interrupciones, pero no es garantía.",
       "dontAsk: para scripts automáticos. Lo que necesitaría permiso, lo rechaza.",
-      "bypassPermissions: hace todo sin preguntar. Solo para entornos aislados, nunca en tu compu de trabajo."
+      "bypassPermissions: hace todo sin preguntar. Solo para entornos aislados, nunca en tu computadora de trabajo."
      ],
      "p": [
       "En la terminal, Shift+Tab pasa de un modo al otro. En la app de escritorio y en la web, el modo está debajo del cuadro de mensaje (Manual, Accept edits, Plan, Auto)."
@@ -737,22 +737,22 @@
     {
      "h": "Qué aprobar y qué leer dos veces",
      "lista": [
-      "Aprobá tranquilo: que lea archivos, que busque en el proyecto, que edite un archivo que vos le pediste cambiar.",
-      "Leé antes de aprobar: comandos que instalan programas, que borran (rm, del), que mueven muchas cosas o que tocan archivos fuera de tu proyecto.",
-      "Frená y preguntá: publicar o subir a producción, mandar mensajes o mails, forzar cambios en git, cualquier cosa con contraseñas o claves.",
-      "Si no entendés un comando, no lo aprobés: pedile que te lo explique en una línea."
+      "Aprueba tranquilo: que lea archivos, que busque en el proyecto, que edite un archivo que tú le pediste cambiar.",
+      "Lee antes de aprobar: comandos que instalan programas, que borran (rm, del), que mueven muchas cosas o que tocan archivos fuera de tu proyecto.",
+      "Frena y pregunta: publicar o subir a producción, mandar mensajes o mails, forzar cambios en git, cualquier cosa con contraseñas o claves.",
+      "Si no entiendes un comando, no lo apruebes: pídele que te lo explique en una línea."
      ],
      "prompts": [
       {
        "t": "Que te explique antes de pedirte permiso",
-       "c": "Desde ahora, cada vez que me pidas permiso para correr un comando, explicame antes en una línea qué hace, si se puede deshacer y qué archivos toca. Si borra algo, avisame en mayúsculas."
+       "c": "Desde ahora, cada vez que me pidas permiso para correr un comando, explícame antes en una línea qué hace, si se puede deshacer y qué archivos toca. Si borra algo, avísame en mayúsculas."
       }
      ]
     },
     {
      "h": "Reglas fijas con /permissions",
      "p": [
-      "Con /permissions armás reglas de tres tipos: lo que puede hacer sin preguntar (allow), lo que siempre te tiene que consultar (ask) y lo que tiene prohibido (deny).",
+      "Con /permissions armas reglas de tres tipos: lo que puede hacer sin preguntar (allow), lo que siempre te tiene que consultar (ask) y lo que tiene prohibido (deny).",
       "Las reglas deny bloquean en todos los modos, incluso en bypassPermissions. Además, hay archivos protegidos (como la carpeta .git, la carpeta .claude o la configuración de la terminal) que Claude no modifica sin permiso, salvo en bypassPermissions."
      ]
     },
@@ -760,29 +760,29 @@
      "h": "El modo automático, bien usado",
      "p": [
       "En auto, Claude trabaja de corrido y un clasificador frena por defecto cosas como forzar cambios en git, borrar cambios sin guardar o publicar en producción. Si lo frena varias veces seguidas, vuelve a preguntarte.",
-      "La guía oficial lo dice claro: reduce los avisos, pero no garantiza seguridad. Usalo para tareas donde confiás en el rumbo general, no como reemplazo de revisar lo sensible."
+      "La guía oficial lo dice claro: reduce los avisos, pero no garantiza seguridad. Úsalo para tareas donde confías en el rumbo general, no como reemplazo de revisar lo sensible."
      ],
      "pasos": [
-      "Hacé un commit antes de empezar.",
-      "Pedile primero un plan y aprobalo.",
-      "Recién ahí pasá a auto.",
-      "Al terminar, revisá todo con /diff antes de publicar."
+      "Haz un commit antes de empezar.",
+      "Pídele primero un plan y apruébalo.",
+      "Recién ahí pasa a auto.",
+      "Al terminar, revisa todo con /diff antes de publicar."
      ]
     },
     {
      "h": "Si algo salió mal",
      "pasos": [
-      "Frenalo con Esc.",
-      "Escribí /rewind (o Esc dos veces con el cuadro vacío) y elegí el punto anterior al problema. Podés restaurar código, conversación o los dos.",
-      "Si algo no volvió, pedile a Claude que te ayude a volver al último commit con git, explicándote cada paso antes de hacerlo."
+      "Frénalo con Esc.",
+      "Escribe /rewind (o Esc dos veces con el cuadro vacío) y elige el punto anterior al problema. Puedes restaurar código, conversación o los dos.",
+      "Si algo no volvió, pídele a Claude que te ayude a volver al último commit con git, explicándote cada paso antes de hacerlo."
      ],
-     "aviso": "Nunca abras Claude Code con --dangerously-skip-permissions en tu compu de trabajo. Ese modo es solo para contenedores o máquinas virtuales aisladas."
+     "aviso": "Nunca abras Claude Code con --dangerously-skip-permissions en tu computadora de trabajo. Ese modo es solo para contenedores o máquinas virtuales aisladas."
     }
    ],
    "faq": [
     {
      "q": "Me cansa aprobar todo, ¿qué hago?",
-     "a": "Usá acceptEdits para que edite sin preguntar y seguí aprobando los comandos. O sumá reglas allow en /permissions para lo que siempre aprobás."
+     "a": "Usa acceptEdits para que edite sin preguntar y sigue aprobando los comandos. O suma reglas allow en /permissions para lo que siempre apruebas."
     },
     {
      "q": "¿El modo auto está en mi plan?",
@@ -790,7 +790,7 @@
     },
     {
      "q": "¿/rewind deshace todo?",
-     "a": "No. Deshace lo que Claude cambió con sus herramientas de edición. Un archivo que solo cambió un comando de terminal, o cambios que hiciste vos afuera, no se recuperan así. Por eso, git."
+     "a": "No. Deshace lo que Claude cambió con sus herramientas de edición. Un archivo que solo cambió un comando de terminal, o cambios que hiciste tú afuera, no se recuperan así. Por eso, git."
     }
    ],
    "fuentes": [
@@ -809,52 +809,52 @@
    "para": "Tener algo funcionando sin escribir código, empezando por un plan.",
    "prompts": [
     {
-     "t": "Armame una landing",
-     "c": "/plan Armame una landing de una sola página para [TU NEGOCIO].\nQué vendo: [PRODUCTO O SERVICIO].\nA quién le hablo: [TU CLIENTE IDEAL].\nQué quiero que haga la gente: [EJ.: ESCRIBIRME POR WHATSAPP AL [NÚMERO]].\nSecciones: título fuerte, problema que resuelvo, cómo funciona en 3 pasos, preguntas frecuentes y botón de contacto.\nColores: [COLORES]. Textos en español rioplatense con voseo, sin promesas exageradas.\nQue se vea bien en el celular. Usá HTML y CSS simples, sin instalar nada.\nAntes de construir, haceme las preguntas que necesites."
+     "t": "Ármame una landing",
+     "c": "/plan Ármame una landing de una sola página para [TU NEGOCIO].\nQué vendo: [PRODUCTO O SERVICIO].\nA quién le hablo: [TU CLIENTE IDEAL].\nQué quiero que haga la gente: [EJ.: ESCRIBIRME POR WHATSAPP AL [NÚMERO]].\nSecciones: título fuerte, problema que resuelvo, cómo funciona en 3 pasos, preguntas frecuentes y botón de contacto.\nColores: [COLORES]. Textos en español rioplatense con voseo, sin promesas exageradas.\nQue se vea bien en el celular. Usa HTML y CSS simples, sin instalar nada.\nAntes de construir, hazme las preguntas que necesites."
     },
     {
      "t": "Formulario que guarde respuestas",
-     "c": "Creame un formulario simple para [PARA QUÉ, EJ.: QUE LOS CLIENTES PIDAN PRESUPUESTO].\nCampos: [LISTA DE CAMPOS].\nQuiero que las respuestas queden guardadas en [DÓNDE, EJ.: UN ARCHIVO CSV EN ESTA CARPETA].\nExplicame cómo lo pruebo en mi compu y qué me haría falta para ponerlo en internet. No instales nada sin preguntarme."
+     "c": "Créame un formulario simple para [PARA QUÉ, EJ.: QUE LOS CLIENTES PIDAN PRESUPUESTO].\nCampos: [LISTA DE CAMPOS].\nQuiero que las respuestas queden guardadas en [DÓNDE, EJ.: UN ARCHIVO CSV EN ESTA CARPETA].\nExplícame cómo lo pruebo en mi computadora y qué me haría falta para ponerlo en internet. No instales nada sin preguntarme."
     },
     {
      "t": "Calculadora de presupuestos",
-     "c": "Armame una página con una calculadora de presupuestos para [TU SERVICIO].\nCómo calculo hoy: [EXPLICÁ TU FÓRMULA CON TUS PALABRAS, EJ.: PRECIO BASE MÁS UN EXTRA POR CADA HORA].\nQue el cliente elija las opciones y vea el total al instante.\nAl final, un botón para mandarme el presupuesto por [WHATSAPP O MAIL].\nProbá vos los cálculos con 3 ejemplos y mostrame los resultados."
+     "c": "Ármame una página con una calculadora de presupuestos para [TU SERVICIO].\nCómo calculo hoy: [EXPLICA TU FÓRMULA CON TUS PALABRAS, EJ.: PRECIO BASE MÁS UN EXTRA POR CADA HORA].\nQue el cliente elija las opciones y vea el total al instante.\nAl final, un botón para mandarme el presupuesto por [WHATSAPP O MAIL].\nPrueba tú los cálculos con 3 ejemplos y muéstrame los resultados."
     },
     {
      "t": "Página de enlaces propia",
-     "c": "Creame una página de enlaces para mi Instagram, tipo tarjeta, con mi nombre [NOMBRE], una línea sobre lo que hago [DESCRIPCIÓN] y estos botones: [LISTA DE BOTONES Y LINKS].\nColores [COLORES] y tipografía de Google Fonts. Un solo archivo HTML, liviano y que se vea perfecto en el celular."
+     "c": "Créame una página de enlaces para mi Instagram, tipo tarjeta, con mi nombre [NOMBRE], una línea sobre lo que hago [DESCRIPCIÓN] y estos botones: [LISTA DE BOTONES Y LINKS].\nColores [COLORES] y tipografía de Google Fonts. Un solo archivo HTML, liviano y que se vea perfecto en el celular."
     },
     {
      "t": "Panel simple con mis números",
-     "c": "Tengo este archivo con datos: [NOMBRE DEL ARCHIVO, EJ.: VENTAS.CSV].\nArmame un panel en una sola página que muestre: [LO QUE QUERÉS VER, EJ.: VENTAS POR MES Y LOS 5 PRODUCTOS QUE MÁS SE VENDEN].\nAntes de armarlo, leé el archivo y decime qué columnas encontraste y si ves datos raros o vacíos. No modifiques el archivo original."
+     "c": "Tengo este archivo con datos: [NOMBRE DEL ARCHIVO, EJ.: VENTAS.CSV].\nÁrmame un panel en una sola página que muestre: [LO QUE QUIERES VER, EJ.: VENTAS POR MES Y LOS 5 PRODUCTOS QUE MÁS SE VENDEN].\nAntes de armarlo, lee el archivo y dime qué columnas encontraste y si ves datos raros o vacíos. No modifiques el archivo original."
     }
    ]
   },
   {
    "tema": "Claude Code",
    "t": "Revisar y entender un proyecto",
-   "d": "Para cuando heredás un proyecto, volvés a uno viejo o querés revisar antes de publicar.",
-   "para": "Entender qué tenés y encontrar problemas antes de que los encuentre un cliente.",
+   "d": "Para cuando heredas un proyecto, vuelves a uno viejo o quieres revisar antes de publicar.",
+   "para": "Entender qué tienes y encontrar problemas antes de que los encuentre un cliente.",
    "prompts": [
     {
-     "t": "Revisá este proyecto",
-     "c": "Revisá este proyecto completo sin cambiar nada y armame un informe simple:\n1. Qué es y cómo está organizado, en 5 líneas.\n2. Qué partes parecen terminadas y cuáles a medias.\n3. Los 5 problemas más importantes que veas, ordenados de más grave a menos grave.\n4. Qué harías primero y por qué.\nEscribilo para alguien que no sabe programar."
+     "t": "Revisa este proyecto",
+     "c": "Revisa este proyecto completo sin cambiar nada y ármame un informe simple:\n1. Qué es y cómo está organizado, en 5 líneas.\n2. Qué partes parecen terminadas y cuáles a medias.\n3. Los 5 problemas más importantes que veas, ordenados de más grave a menos grave.\n4. Qué harías primero y por qué.\nEscríbelo para alguien que no sabe programar."
     },
     {
      "t": "Revisión antes de publicar",
-     "c": "Voy a publicar este proyecto. Antes, revisá:\n- Textos: errores de ortografía, frases confusas y que todo use voseo rioplatense.\n- Enlaces y botones que no lleven a ningún lado.\n- Cómo se ve en el celular.\n- Datos que no deberían estar a la vista (claves, mails personales, notas internas).\nDame una lista de lo que encontraste. No arregles nada hasta que te diga cuál."
+     "c": "Voy a publicar este proyecto. Antes, revisa:\n- Textos: errores de ortografía, frases confusas y que todo use voseo rioplatense.\n- Enlaces y botones que no lleven a ningún lado.\n- Cómo se ve en el celular.\n- Datos que no deberían estar a la vista (claves, mails personales, notas internas).\nDame una lista de lo que encontraste. No arregles nada hasta que te diga cuál."
     },
     {
      "t": "Revisión de seguridad básica",
-     "c": "Revisá este proyecto buscando problemas de seguridad comunes: claves o contraseñas escritas en el código, formularios que aceptan cualquier cosa, archivos sensibles que se podrían subir sin querer. Explicame cada problema en una línea, qué riesgo tiene y cómo se arregla. No cambies nada todavía."
+     "c": "Revisa este proyecto buscando problemas de seguridad comunes: claves o contraseñas escritas en el código, formularios que aceptan cualquier cosa, archivos sensibles que se podrían subir sin querer. Explícame cada problema en una línea, qué riesgo tiene y cómo se arregla. No cambies nada todavía."
     },
     {
-     "t": "Armame el CLAUDE.md",
-     "c": "Revisá este proyecto y proponeme un CLAUDE.md de menos de 100 líneas con: qué es el proyecto, cómo se prueba, reglas de estilo que veas que ya se usan y qué carpetas no conviene tocar. Mostrámelo antes de guardarlo y marcá con [COMPLETAR] lo que solo yo puedo saber."
+     "t": "Ármame el CLAUDE.md",
+     "c": "Revisa este proyecto y proponme un CLAUDE.md de menos de 100 líneas con: qué es el proyecto, cómo se prueba, reglas de estilo que veas que ya se usan y qué carpetas no conviene tocar. Muéstramelo antes de guardarlo y marca con [COMPLETAR] lo que solo yo puedo saber."
     },
     {
      "t": "Ordenar la carpeta",
-     "c": "Esta carpeta está desordenada. Proponeme una organización más clara: qué carpetas crear, qué archivos mover y cuáles parecen viejos o repetidos.\nNo borres nada. Mostrame el plan primero y, cuando te diga OK, mové los archivos y dejá los que sobran en una carpeta llamada _revisar."
+     "c": "Esta carpeta está desordenada. Proponme una organización más clara: qué carpetas crear, qué archivos mover y cuáles parecen viejos o repetidos.\nNo borres nada. Muéstrame el plan primero y, cuando te diga OK, mueve los archivos y deja los que sobran en una carpeta llamada _revisar."
     }
    ]
   },
@@ -865,24 +865,24 @@
    "para": "Salir de un error rápido, entendiendo qué pasó.",
    "prompts": [
     {
-     "t": "Arreglá este error",
-     "c": "Me aparece este error: [PEGÁ EL ERROR COMPLETO].\nPasa cuando: [QUÉ ESTABAS HACIENDO].\nAntes de tocar nada:\n1. Explicame en 2 líneas qué significa.\n2. Buscá la causa en el proyecto.\n3. Proponeme el arreglo más chico posible.\nCuando te diga OK, arreglalo y comprobá que el error ya no aparece."
+     "t": "Arregla este error",
+     "c": "Me aparece este error: [PEGA EL ERROR COMPLETO].\nPasa cuando: [QUÉ ESTABAS HACIENDO].\nAntes de tocar nada:\n1. Explícame en 2 líneas qué significa.\n2. Busca la causa en el proyecto.\n3. Proponme el arreglo más chico posible.\nCuando te diga OK, arréglalo y comprueba que el error ya no aparece."
     },
     {
      "t": "Se rompió después del último cambio",
-     "c": "Hasta [CUÁNDO] funcionaba bien y ahora [QUÉ DEJÓ DE FUNCIONAR].\nMirá qué cambió desde entonces (si hay git, usá el historial) y decime cuál de los cambios lo rompió. Proponeme cómo arreglarlo sin perder lo bueno de esos cambios."
+     "c": "Hasta [CUÁNDO] funcionaba bien y ahora [QUÉ DEJÓ DE FUNCIONAR].\nMira qué cambió desde entonces (si hay git, usa el historial) y dime cuál de los cambios lo rompió. Proponme cómo arreglarlo sin perder lo bueno de esos cambios."
     },
     {
      "t": "Se ve mal en el celular",
-     "c": "En el celular, [QUÉ SE VE MAL, EJ.: EL MENÚ TAPA EL TÍTULO Y LOS BOTONES QUEDAN CORTADOS].\nRevisá los estilos, encontrá la causa y arreglalo sin cambiar cómo se ve en la compu. Decime qué archivos tocaste."
+     "c": "En el celular, [QUÉ SE VE MAL, EJ.: EL MENÚ TAPA EL TÍTULO Y LOS BOTONES QUEDAN CORTADOS].\nRevisa los estilos, encuentra la causa y arréglalo sin cambiar cómo se ve en la computadora. Dime qué archivos tocaste."
     },
     {
      "t": "Un comando no funciona",
-     "c": "Corrí este comando: [COMANDO] y me salió esto: [PEGÁ LO QUE SALIÓ].\nEstoy en [MAC O WINDOWS]. Explicame qué pasa, qué me falta y cómo lo soluciono. Si hay que instalar algo, decime qué es y para qué sirve antes de instalarlo."
+     "c": "Corrí este comando: [COMANDO] y me salió esto: [PEGA LO QUE SALIÓ].\nEstoy en [MAC O WINDOWS]. Explícame qué pasa, qué me falta y cómo lo soluciono. Si hay que instalar algo, dime qué es y para qué sirve antes de instalarlo."
     },
     {
-     "t": "Explicame el error como a un principiante",
-     "c": "No soy programador. Explicame este mensaje de error con palabras simples, decime si es grave y qué opciones tengo: [PEGÁ EL ERROR]."
+     "t": "Explícame el error como a un principiante",
+     "c": "No soy programador. Explícame este mensaje de error con palabras simples, dime si es grave y qué opciones tengo: [PEGA EL ERROR]."
     }
    ]
   }
@@ -928,7 +928,7 @@
    "cat": "MCP",
    "tipo": "MCP",
    "t": "Notion MCP",
-   "d": "Conecta Claude Code con tu espacio de Notion para leer y escribir páginas. Después de agregarlo, corré /mcp para iniciar sesión si te lo pide.",
+   "d": "Conecta Claude Code con tu espacio de Notion para leer y escribir páginas. Después de agregarlo, corre /mcp para iniciar sesión si te lo pide.",
    "para": "Que Claude Code use tus notas, procesos y bases de Notion mientras trabaja.",
    "cmds": [
     {
@@ -948,8 +948,8 @@
    "cat": "Herramientas",
    "tipo": "App",
    "t": "Claude Code GitHub Actions",
-   "d": "La integración oficial para que Claude responda cuando lo mencionás con @claude en un issue o pull request de GitHub: analiza, hace cambios y sube commits. Necesitás ser admin del repositorio y tener GitHub CLI instalado y con sesión iniciada (gh auth login). Cada ejecución usa minutos de GitHub Actions.",
-   "para": "Pedirle cambios a Claude directo desde GitHub, sin abrir tu compu.",
+   "d": "La integración oficial para que Claude responda cuando lo mencionas con @claude en un issue o pull request de GitHub: analiza, hace cambios y sube commits. Necesitas ser admin del repositorio y tener GitHub CLI instalado y con sesión iniciada (gh auth login). Cada ejecución usa minutos de GitHub Actions.",
+   "para": "Pedirle cambios a Claude directo desde GitHub, sin abrir tu computadora.",
    "cmds": [
     {
      "donde": "Claude Code",

@@ -3,17 +3,17 @@
   {
    "slug": "sistema-base-modulo-1-la-oferta",
    "t": "Módulo 1 · La oferta: Claude instalado en tu negocio",
-   "d": "Qué vendés, qué entra en el paquete y qué queda afuera. Al final tenés una frase para presentarlo sin vueltas.",
+   "d": "Qué vendes, qué entra en el paquete y qué queda afuera. Al final tienes una frase para presentarlo sin vueltas.",
    "tema": "Vender IA",
    "min": 9,
    "fichaNombre": "El paquete base",
    "ficha": [
     [
      "Qué es",
-     "Un servicio cerrado: dejás Claude armado con el conocimiento, el tono y las herramientas de un negocio, y le enseñás a usarlo."
+     "Un servicio cerrado: dejas Claude armado con el conocimiento, el tono y las herramientas de un negocio, y le enseñas a usarlo."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Saber usar proyectos, skills y conectores de Claude. No hace falta programar."
     ],
     [
@@ -29,9 +29,9 @@
     {
      "h": "Por qué un paquete y no \"hago lo que necesites\"",
      "p": [
-      "Cuando ofrecés \"te ayudo con IA\", el dueño del negocio no sabe qué te está comprando, vos no sabés cuánto cobrar y cada cliente termina siendo un proyecto distinto. Así es muy difícil sostenerlo.",
-      "Un paquete con piezas fijas resuelve las tres cosas: el cliente entiende qué recibe, vos sabés cuántas horas te lleva y cada instalación nueva sale mejor que la anterior porque repetís el mismo camino.",
-      "Este sistema base tiene nueve módulos. Este primero define qué vendés. Los demás te llevan desde elegir a quién venderle hasta el contrato."
+      "Cuando ofreces \"te ayudo con IA\", el dueño del negocio no sabe qué te está comprando, tú no sabes cuánto cobrar y cada cliente termina siendo un proyecto distinto. Así es muy difícil sostenerlo.",
+      "Un paquete con piezas fijas resuelve las tres cosas: el cliente entiende qué recibe, tú sabes cuántas horas te lleva y cada instalación nueva sale mejor que la anterior porque repetís el mismo camino.",
+      "Este sistema base tiene nueve módulos. Este primero define qué vendes. Los demás te llevan desde elegir a quién venderle hasta el contrato."
      ]
     },
     {
@@ -49,16 +49,16 @@
     {
      "h": "Qué no incluye (y conviene escribirlo)",
      "p": [
-      "Lo que no escribís, el cliente lo da por incluido. Poné esta lista en la propuesta y en el acuerdo."
+      "Lo que no escribís, el cliente lo da por incluido. Pon esta lista en la propuesta y en el acuerdo."
      ],
      "lista": [
       "Agentes que hablan solos con los clientes: un agente de WhatsApp que atiende y agenda es otro proyecto, con otras reglas y otros costos. Está explicado en \"Agente de WhatsApp que atiende y agenda turnos\".",
       "Desarrollo a medida: páginas web, apps o integraciones con sistemas propios del negocio.",
       "Las suscripciones: el plan de Claude y cualquier otra herramienta las paga el cliente, a su nombre.",
       "Cargar datos que no existen: si el negocio no tiene escritos sus precios o sus procesos, ordenarlos es trabajo extra o es tarea del cliente antes de empezar.",
-      "Resultados garantizados: vendés una herramienta instalada y enseñada. Cuánto la use el equipo depende del equipo."
+      "Resultados garantizados: vendes una herramienta instalada y enseñada. Cuánto la use el equipo depende del equipo."
      ],
-     "aviso": "No prometas ahorros de horas ni ventas extra antes de instalar. Podés mostrar qué tareas va a cubrir y medir después, con sus datos."
+     "aviso": "No prometas ahorros de horas ni ventas extra antes de instalar. Puedes mostrar qué tareas va a cubrir y medir después, con sus datos."
     },
     {
      "h": "Cómo funciona cada pieza, en corto",
@@ -66,20 +66,20 @@
       "Proyectos: son espacios con su propio historial, una base de conocimiento con documentos y sus propias instrucciones. Están en todos los planes. Para compartir un proyecto con otras personas de la empresa hace falta un plan Team o Enterprise.",
       "Skills: necesitan que esté activada la ejecución de código y creación de archivos. Las personalizadas se suben como un archivo .zip desde Customize > Skills. En planes Team se pueden compartir con personas del equipo.",
       "Conectores de Google: cada persona conecta su propia cuenta de Google y Claude solo ve lo que esa cuenta ya puede ver. Por defecto, Claude pide permiso antes de enviar un mail o de compartir, mover o borrar archivos de Drive.",
-      "Tareas programadas: en los planes pagos se puede programar una tarea en Cowork para que corra cada hora, cada día, cada semana o en días hábiles, y corre aunque la compu esté apagada si no necesita archivos locales."
+      "Tareas programadas: en los planes pagos se puede programar una tarea en Cowork para que corra cada hora, cada día, cada semana o en días hábiles, y corre aunque la computadora esté apagada si no necesita archivos locales."
      ],
-     "aviso": "Estas funciones cambian seguido. Antes de cada venta, revisá en la ayuda oficial de Claude que todo siga igual en el plan que va a contratar el cliente."
+     "aviso": "Estas funciones cambian seguido. Antes de cada venta, revisa en la ayuda oficial de Claude que todo siga igual en el plan que va a contratar el cliente."
     },
     {
-     "h": "Ponele nombre y armá tu frase",
+     "h": "Ponle nombre y arma tu frase",
      "p": [
-      "El nombre tiene que decir qué recibe el cliente, no qué tecnología usás. \"Claude instalado en tu negocio\", \"Asistente de IA para tu equipo\" o \"Tu negocio en Claude\" funcionan mejor que nombres raros.",
-      "La frase de presentación sigue esta forma: \"Dejo [QUÉ] en tu [TIPO DE NEGOCIO] para que [QUÉ TAREA] te lleve menos tiempo, y te enseño a usarlo.\" Si un dueño no la entiende en una lectura, achicala."
+      "El nombre tiene que decir qué recibe el cliente, no qué tecnología usas. \"Claude instalado en tu negocio\", \"Asistente de IA para tu equipo\" o \"Tu negocio en Claude\" funcionan mejor que nombres raros.",
+      "La frase de presentación sigue esta forma: \"Dejo [QUÉ] en tu [TIPO DE NEGOCIO] para que [QUÉ TAREA] te lleve menos tiempo, y te enseño a usarlo.\" Si un dueño no la entiende en una lectura, achícala."
      ],
      "prompts": [
       {
        "t": "Nombre y frase de la oferta",
-       "c": "Vendo un servicio que deja Claude instalado en negocios de [RUBRO] de [CIUDAD O PAÍS]. Incluye: un proyecto con el conocimiento del negocio, 3 skills (marca, presupuestos y respuestas a clientes), conectores de Gmail, Google Calendar y Google Drive, una automatización y una capacitación.\nNo incluye: agentes que hablen solos con clientes, desarrollo a medida ni las suscripciones.\n\n1. Proponé 8 nombres para el servicio. Que digan qué recibe el cliente, sin palabras técnicas.\n2. Escribí 5 frases de presentación de una línea con esta forma: \"Dejo [qué] en tu [negocio] para que [tarea] te lleve menos tiempo, y te enseño a usarlo.\"\n3. Para cada frase, decime qué tarea concreta del rubro conviene nombrar.\nNo prometas cifras de ahorro ni de ventas."
+       "c": "Vendo un servicio que deja Claude instalado en negocios de [RUBRO] de [CIUDAD O PAÍS]. Incluye: un proyecto con el conocimiento del negocio, 3 skills (marca, presupuestos y respuestas a clientes), conectores de Gmail, Google Calendar y Google Drive, una automatización y una capacitación.\nNo incluye: agentes que hablen solos con clientes, desarrollo a medida ni las suscripciones.\n\n1. Propón 8 nombres para el servicio. Que digan qué recibe el cliente, sin palabras técnicas.\n2. Escribe 5 frases de presentación de una línea con esta forma: \"Dejo [qué] en tu [negocio] para que [tarea] te lleve menos tiempo, y te enseño a usarlo.\"\n3. Para cada frase, dime qué tarea concreta del rubro conviene nombrar.\nNo prometas cifras de ahorro ni de ventas."
       }
      ]
     }
@@ -87,15 +87,15 @@
    "faq": [
     {
      "q": "¿Tengo que saber programar?",
-     "a": "No. Todo el paquete se arma desde la app de Claude: proyectos, skills subidas como .zip, conectores y tareas programadas. Lo que sí necesitás es haberlo armado primero para vos."
+     "a": "No. Todo el paquete se arma desde la app de Claude: proyectos, skills subidas como .zip, conectores y tareas programadas. Lo que sí necesitas es haberlo armado primero para ti."
     },
     {
      "q": "¿Puedo sacar o sumar piezas?",
-     "a": "Sí, pero mantené un paquete base fijo y cotizá aparte los extras. Si cada cliente arma su combinación, perdés lo que hace replicable al sistema."
+     "a": "Sí, pero mantén un paquete base fijo y cotiza aparte los extras. Si cada cliente arma su combinación, pierdes lo que hace replicable al sistema."
     },
     {
      "q": "¿Y si el cliente ya usa otra IA?",
-     "a": "Contale qué incluye tu paquete y qué no. Lo que vendés no es la herramienta sola: es el conocimiento del negocio cargado, las skills armadas y el equipo enseñado."
+     "a": "Cuéntale qué incluye tu paquete y qué no. Lo que vendes no es la herramienta sola: es el conocimiento del negocio cargado, las skills armadas y el equipo enseñado."
     }
    ],
    "fuentes": [
@@ -119,7 +119,7 @@
      "Un método para elegir un rubro y juntar 50 negocios concretos para contactar."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Una planilla, un par de horas y conocer tu ciudad o tu red."
     ],
     [
@@ -135,9 +135,9 @@
     {
      "h": "Por qué un solo rubro",
      "p": [
-      "Si le vendés a una inmobiliaria, una odontología y una ferretería en la misma semana, tenés que entender tres negocios distintos. Si le vendés a diez inmobiliarias, a la tercera ya sabés qué preguntar, qué les duele y cómo armar sus skills.",
+      "Si le vendes a una inmobiliaria, una odontología y una ferretería en la misma semana, tienes que entender tres negocios distintos. Si le vendes a diez inmobiliarias, a la tercera ya sabes qué preguntar, qué les duele y cómo armar sus skills.",
       "Además, en un mismo rubro los dueños se conocen y se recomiendan. Un caso que funcionó vale más cuando el próximo cliente se parece al anterior.",
-      "No es para siempre: elegís uno para tus primeros clientes y lo revisás después de diez contactos reales."
+      "No es para siempre: eliges uno para tus primeros clientes y lo revisas después de diez contactos reales."
      ]
     },
     {
@@ -146,41 +146,41 @@
       "Hay muchos negocios del rubro: en tu ciudad o en tu alcance tiene que haber al menos 50. Si hay 12, se te termina la lista antes de aprender.",
       "Tienen procesos que se repiten: presupuestos, turnos, consultas parecidas, documentos con el mismo formato. Ahí es donde un proyecto con skills ayuda de verdad.",
       "Hablan mucho con sus clientes: mails, mensajes, propuestas. Cuanta más comunicación escrita, más uso le van a dar a la skill de respuestas y a la de marca.",
-      "Un extra que suma: que el dueño o alguien del equipo use la compu todos los días. Si todo pasa por el teléfono y en papel, la instalación cuesta más."
+      "Un extra que suma: que el dueño o alguien del equipo use la computadora todos los días. Si todo pasa por el teléfono y en papel, la instalación cuesta más."
      ],
      "prompts": [
       {
        "t": "Comparar rubros",
-       "c": "Estoy eligiendo un rubro para vender un servicio que instala Claude en negocios (proyecto con el conocimiento del negocio, skills de marca, presupuestos y respuestas, conectores de mail, calendario y archivos).\nVivo en [CIUDAD, PAÍS] y puedo vender [SOLO LOCAL / TAMBIÉN A DISTANCIA].\nEstos son los rubros que estoy pensando: [LISTA DE 3 A 6 RUBROS].\n\nPara cada rubro:\n1. Qué tareas repetitivas suele tener que el paquete podría cubrir.\n2. Cuánta comunicación escrita con clientes suele tener.\n3. Qué dudas o resistencias es probable que tenga el dueño.\n4. Qué datos tendría que averiguar yo para saber si hay suficientes negocios en mi zona.\nNo inventes cantidades de negocios ni datos del mercado: si no lo sabés, decime cómo averiguarlo."
+       "c": "Estoy eligiendo un rubro para vender un servicio que instala Claude en negocios (proyecto con el conocimiento del negocio, skills de marca, presupuestos y respuestas, conectores de mail, calendario y archivos).\nVivo en [CIUDAD, PAÍS] y puedo vender [SOLO LOCAL / TAMBIÉN A DISTANCIA].\nEstos son los rubros que estoy pensando: [LISTA DE 3 A 6 RUBROS].\n\nPara cada rubro:\n1. Qué tareas repetitivas suele tener que el paquete podría cubrir.\n2. Cuánta comunicación escrita con clientes suele tener.\n3. Qué dudas o resistencias es probable que tenga el dueño.\n4. Qué datos tendría que averiguar yo para saber si hay suficientes negocios en mi zona.\nNo inventes cantidades de negocios ni datos del mercado: si no lo sabes, dime cómo averiguarlo."
       }
      ]
     },
     {
      "h": "Dónde encontrar los negocios",
      "lista": [
-      "Tu red: pensá primero en negocios donde ya sos cliente o donde conocés a alguien. Un contacto que te conoce escucha distinto.",
-      "Mapas y buscadores: buscá el rubro en tu ciudad y anotá a mano los que tienen datos de contacto públicos.",
-      "Instagram: muchos negocios chicos tienen ahí su canal principal. Mirá si publican, si responden comentarios y qué tipo de consultas reciben.",
-      "Cámaras, asociaciones y ferias del rubro: suelen tener listados de socios y eventos donde podés ir en persona.",
-      "A distancia (LATAM o España): mismo método, pero elegí un país y una ciudad por vez para que tus mensajes no suenen genéricos."
+      "Tu red: piensa primero en negocios donde ya eres cliente o donde conoces a alguien. Un contacto que te conoce escucha distinto.",
+      "Mapas y buscadores: busca el rubro en tu ciudad y anota a mano los que tienen datos de contacto públicos.",
+      "Instagram: muchos negocios chicos tienen ahí su canal principal. Mira si publican, si responden comentarios y qué tipo de consultas reciben.",
+      "Cámaras, asociaciones y ferias del rubro: suelen tener listados de socios y eventos donde puedes ir en persona.",
+      "A distancia (LATAM o España): mismo método, pero elige un país y una ciudad por vez para que tus mensajes no suenen genéricos."
      ],
-     "aviso": "Usá solo datos que el negocio publicó para que lo contacten. No compres bases de datos ni uses programas que copian datos en masa: además de ser una mala práctica, puede ir contra las reglas de las plataformas y contra las leyes de datos personales de tu país."
+     "aviso": "Usa solo datos que el negocio publicó para que lo contacten. No compres bases de datos ni uses programas que copian datos en masa: además de ser una mala práctica, puede ir contra las reglas de las plataformas y contra las leyes de datos personales de tu país."
     },
     {
-     "h": "Armá la planilla",
+     "h": "Arma la planilla",
      "p": [
       "Una planilla simple alcanza. Estas columnas te sirven para todo el resto del sistema:"
      ],
      "pasos": [
-      "Creá la planilla con las columnas: Negocio, Rubro, Ciudad, Canal de contacto (Instagram, WhatsApp, mail, en persona), Dato de contacto público, Qué viste (algo concreto de su negocio), Prioridad (1 a 3), Estado, Fecha del último contacto, Notas.",
-      "Cargá los negocios a medida que los encontrás. En \"Qué viste\" poné algo real: \"responden consultas de precios en comentarios\", \"publican presupuestos en historias\".",
-      "Cuando tengas 50, pasá la planilla por Claude con el prompt de abajo para ordenarla y detectar huecos.",
-      "Marcá con prioridad 1 a los 10 que más se ajustan a los criterios. Esos son tus primeros contactos del Módulo 3."
+      "Crea la planilla con las columnas: Negocio, Rubro, Ciudad, Canal de contacto (Instagram, WhatsApp, mail, en persona), Dato de contacto público, Qué viste (algo concreto de su negocio), Prioridad (1 a 3), Estado, Fecha del último contacto, Notas.",
+      "Carga los negocios a medida que los encuentras. En \"Qué viste\" pon algo real: \"responden consultas de precios en comentarios\", \"publican presupuestos en historias\".",
+      "Cuando tengas 50, pasa la planilla por Claude con el prompt de abajo para ordenarla y detectar huecos.",
+      "Marca con prioridad 1 a los 10 que más se ajustan a los criterios. Esos son tus primeros contactos del Módulo 3."
      ],
      "prompts": [
       {
        "t": "Ordenar la lista de 50",
-       "c": "Te paso mi lista de negocios para contactar. Vendo un servicio que instala Claude en negocios de [RUBRO].\n\n[PEGÁ LA PLANILLA O SUBÍ EL ARCHIVO]\n\n1. Revisá que cada fila tenga canal y dato de contacto. Marcame las que les falta algo.\n2. Marcame duplicados.\n3. Proponé una prioridad del 1 al 3 para cada negocio según: cuánta comunicación con clientes muestra, si tiene procesos que se repiten y qué tan claro es el dato en \"Qué viste\". Explicá cada prioridad en una línea.\n4. Devolvé la planilla completa con una columna nueva \"Motivo de prioridad\", lista para copiar en Google Sheets.\nNo agregues negocios ni datos que no estén en la lista."
+       "c": "Te paso mi lista de negocios para contactar. Vendo un servicio que instala Claude en negocios de [RUBRO].\n\n[PEGA LA PLANILLA O SUBE EL ARCHIVO]\n\n1. Revisa que cada fila tenga canal y dato de contacto. Márcame las que les falta algo.\n2. Márcame duplicados.\n3. Propón una prioridad del 1 al 3 para cada negocio según: cuánta comunicación con clientes muestra, si tiene procesos que se repiten y qué tan claro es el dato en \"Qué viste\". Explica cada prioridad en una línea.\n4. Devuelve la planilla completa con una columna nueva \"Motivo de prioridad\", lista para copiar en Google Sheets.\nNo agregues negocios ni datos que no estén en la lista."
       }
      ]
     }
@@ -188,15 +188,15 @@
    "faq": [
     {
      "q": "¿Y si en mi ciudad no hay 50 negocios del rubro?",
-     "a": "Sumá ciudades cercanas o un rubro parecido (por ejemplo, odontologías y kinesiologías). O vendé a distancia, eligiendo una ciudad por vez."
+     "a": "Suma ciudades cercanas o un rubro parecido (por ejemplo, odontologías y kinesiologías). O vendé a distancia, eligiendo una ciudad por vez."
     },
     {
      "q": "¿Puedo pedirle a Claude que me busque los negocios?",
-     "a": "Te puede ayudar a pensar dónde buscar y a ordenar lo que juntaste. Igual revisá cada dato vos: un contacto equivocado o desactualizado es un mensaje perdido."
+     "a": "Te puede ayudar a pensar dónde buscar y a ordenar lo que juntaste. Igual revisa cada dato tú: un contacto equivocado o desactualizado es un mensaje perdido."
     },
     {
      "q": "¿Cada cuánto cambio de rubro?",
-     "a": "Revisalo después de hablar con unos diez negocios. Si nadie tiene el problema que resolvés, cambiá. Si lo tienen pero no compran, el problema suele estar en el mensaje o en la oferta, no en el rubro."
+     "a": "Revísalo después de hablar con unos diez negocios. Si nadie tiene el problema que resuelves, cambia. Si lo tienen pero no compran, el problema suele estar en el mensaje o en la oferta, no en el rubro."
     }
    ],
    "fuentes": []
@@ -209,67 +209,67 @@
    "min": 9,
    "secciones": [
     {
-     "h": "Qué ofrecés en el primer mensaje",
+     "h": "Qué ofreces en el primer mensaje",
      "p": [
-      "En el primer mensaje no vendés el paquete. Ofrecés algo chico, concreto y sin riesgo: un diagnóstico de 15 minutos donde mirás cómo trabajan y les decís qué tareas podría cubrir Claude. Si no hay nada para hacer, se lo decís.",
-      "El mensaje tiene cuatro partes: quién sos en una línea, qué viste de su negocio (el dato de la columna \"Qué viste\" del Módulo 2), qué ofrecés y una pregunta fácil de responder."
+      "En el primer mensaje no vendes el paquete. Ofreces algo chico, concreto y sin riesgo: un diagnóstico de 15 minutos donde miras cómo trabajan y les dices qué tareas podría cubrir Claude. Si no hay nada para hacer, se lo dices.",
+      "El mensaje tiene cuatro partes: quién eres en una línea, qué viste de su negocio (el dato de la columna \"Qué viste\" del Módulo 2), qué ofreces y una pregunta fácil de responder."
      ]
     },
     {
      "h": "Las reglas antes de mandar nada",
      "lista": [
-      "Uno por uno: cada mensaje lo escribís o lo revisás para ese negocio. Nada de copiar y pegar el mismo texto a cincuenta personas.",
+      "Uno por uno: cada mensaje lo escribís o lo revisas para ese negocio. Nada de copiar y pegar el mismo texto a cincuenta personas.",
       "A mano: no uses programas que manden mensajes solos desde tu cuenta personal o de negocio.",
       "Pocos por día: es mejor mandar diez buenos que cien iguales. También te deja tiempo para responder.",
-      "Un seguimiento y listo: si no responde, mandás un solo recordatorio que aporte algo. Si sigue sin responder, lo dejás. Si te dice que no, no insistís.",
-      "Honestidad: decí que vas a usar IA y qué hace. No te presentes como cliente ni inventes que alguien te recomendó.",
-      "Leé las reglas de cada plataforma: Instagram, WhatsApp y los servicios de mail tienen normas de uso y pueden limitar cuentas. Revisalas antes de empezar."
+      "Un seguimiento y listo: si no responde, mandas un solo recordatorio que aporte algo. Si sigue sin responder, lo dejas. Si te dice que no, no insistís.",
+      "Honestidad: di que vas a usar IA y qué hace. No te presentes como cliente ni inventes que alguien te recomendó.",
+      "Lee las reglas de cada plataforma: Instagram, WhatsApp y los servicios de mail tienen normas de uso y pueden limitar cuentas. Revísalas antes de empezar."
      ],
-     "aviso": "Si en algún momento querés mandar mensajes automáticos por WhatsApp desde la plataforma oficial para empresas, Meta pide que la persona haya aceptado antes recibir mensajes de tu negocio (opt-in), con el nombre de tu negocio claro. Para contactar a alguien que no te conoce, usá mensajes escritos a mano."
+     "aviso": "Si en algún momento quieres mandar mensajes automáticos por WhatsApp desde la plataforma oficial para empresas, Meta pide que la persona haya aceptado antes recibir mensajes de tu negocio (opt-in), con el nombre de tu negocio claro. Para contactar a alguien que no te conoce, usa mensajes escritos a mano."
     },
     {
      "h": "Los mensajes, por canal",
      "lista": [
       "Instagram: \"Hola [NOMBRE], soy [TU NOMBRE], de [CIUDAD]. Vi que en [NEGOCIO] responden muchas consultas de [TEMA] en los comentarios. Estoy ayudando a negocios de [RUBRO] a armar un asistente con Claude para esas tareas. ¿Te sirve una charla de 15 minutos donde te digo qué partes se podrían cubrir y cuáles no? Es gratis y sin compromiso.\"",
       "WhatsApp (solo si el número está publicado para consultas): \"Hola, ¿hablo con [NEGOCIO]? Soy [TU NOMBRE]. Les escribo porque trabajo con negocios de [RUBRO] armando asistentes de IA para presupuestos y respuestas a clientes. ¿Con quién puedo hablar para ofrecerles un diagnóstico gratis de 15 minutos?\"",
-      "Mail: asunto \"15 minutos sobre [TAREA] en [NEGOCIO]\". Cuerpo: una línea de quién sos, una de qué viste, una de qué ofrecés, la pregunta y tu nombre con un dato de contacto. Nada de imágenes ni archivos adjuntos.",
-      "En persona: andá en un horario tranquilo, pedí hablar con quien decide y decí lo mismo en voz alta. Llevá un papel con tu nombre, tu contacto y la frase del Módulo 1. Si están ocupados, pedí un día y una hora para volver."
+      "Mail: asunto \"15 minutos sobre [TAREA] en [NEGOCIO]\". Cuerpo: una línea de quién eres, una de qué viste, una de qué ofreces, la pregunta y tu nombre con un dato de contacto. Nada de imágenes ni archivos adjuntos.",
+      "En persona: ve en un horario tranquilo, pide hablar con quien decide y di lo mismo en voz alta. Lleva un papel con tu nombre, tu contacto y la frase del Módulo 1. Si están ocupados, pide un día y una hora para volver."
      ]
     },
     {
-     "h": "Escribí cada mensaje con Claude",
+     "h": "Escribe cada mensaje con Claude",
      "p": [
-      "Usá Claude para ajustar el mensaje a cada negocio, no para producir cien iguales. Pegá los datos de una fila de tu planilla y revisá lo que sale antes de mandarlo."
+      "Usa Claude para ajustar el mensaje a cada negocio, no para producir cien iguales. Pega los datos de una fila de tu planilla y revisa lo que sale antes de mandarlo."
      ],
      "prompts": [
       {
        "t": "Primer mensaje para un negocio",
-       "c": "Ayudame a escribir el primer mensaje para un negocio.\nYo: [TU NOMBRE], [CIUDAD]. Ofrezco instalar Claude en negocios de [RUBRO] (conocimiento del negocio, skills de presupuestos y respuestas, conectores de mail y calendario).\nNegocio: [NOMBRE DEL NEGOCIO].\nCanal: [INSTAGRAM / WHATSAPP / MAIL].\nLo que vi de su negocio: [DATO CONCRETO].\n\nReglas:\n- Máximo 5 líneas (en mail, asunto + 5 líneas).\n- Ofrecé un diagnóstico gratis de 15 minutos y terminá con una pregunta fácil de responder.\n- Nada de promesas de ahorro, de ventas ni de \"resultados\".\n- Tono cercano y respetuoso, en voseo, sin exagerar.\n- No inventes datos del negocio que no te di.\nDame dos versiones: una más directa y una más cálida."
+       "c": "Ayúdame a escribir el primer mensaje para un negocio.\nYo: [TU NOMBRE], [CIUDAD]. Ofrezco instalar Claude en negocios de [RUBRO] (conocimiento del negocio, skills de presupuestos y respuestas, conectores de mail y calendario).\nNegocio: [NOMBRE DEL NEGOCIO].\nCanal: [INSTAGRAM / WHATSAPP / MAIL].\nLo que vi de su negocio: [DATO CONCRETO].\n\nReglas:\n- Máximo 5 líneas (en mail, asunto + 5 líneas).\n- Ofrece un diagnóstico gratis de 15 minutos y termina con una pregunta fácil de responder.\n- Nada de promesas de ahorro, de ventas ni de \"resultados\".\n- Tono cercano y respetuoso, en voseo, sin exagerar.\n- No inventes datos del negocio que no te di.\nDame dos versiones: una más directa y una más cálida."
       },
       {
        "t": "Un solo seguimiento",
-       "c": "Le escribí a [NEGOCIO] por [CANAL] hace [DÍAS] días ofreciendo un diagnóstico gratis de 15 minutos y no respondió. Mi mensaje fue: [PEGÁ TU MENSAJE].\nEscribime un único seguimiento de máximo 3 líneas que aporte algo nuevo (por ejemplo, un ejemplo concreto de una tarea de su rubro que Claude podría ayudar a hacer) y que deje claro que si no le interesa, no le vuelvo a escribir."
+       "c": "Le escribí a [NEGOCIO] por [CANAL] hace [DÍAS] días ofreciendo un diagnóstico gratis de 15 minutos y no respondió. Mi mensaje fue: [PEGA TU MENSAJE].\nEscríbeme un único seguimiento de máximo 3 líneas que aporte algo nuevo (por ejemplo, un ejemplo concreto de una tarea de su rubro que Claude podría ayudar a hacer) y que deje claro que si no le interesa, no le vuelvo a escribir."
       }
      ]
     },
     {
-     "h": "Llevá la cuenta en la planilla",
+     "h": "Lleva la cuenta en la planilla",
      "pasos": [
-      "Cada vez que mandás un mensaje, actualizá Estado (\"contactado\") y Fecha del último contacto.",
-      "Si responde, cambiá a \"respondió\" y anotá qué dijo en Notas.",
-      "Si acepta, agendá la llamada y cambiá a \"diagnóstico agendado\".",
-      "Si dice que no o no responde al seguimiento, marcá \"cerrado\" y no le vuelvas a escribir por ese tema.",
-      "Una vez por semana, mirá cuántos contactaste, cuántos respondieron y cuántos aceptaron. Si casi nadie responde, cambiá el mensaje antes de mandar más."
+      "Cada vez que mandas un mensaje, actualiza Estado (\"contactado\") y Fecha del último contacto.",
+      "Si responde, cambia a \"respondió\" y anota qué dijo en Notas.",
+      "Si acepta, agenda la llamada y cambia a \"diagnóstico agendado\".",
+      "Si dice que no o no responde al seguimiento, marca \"cerrado\" y no le vuelvas a escribir por ese tema.",
+      "Una vez por semana, mira cuántos contactaste, cuántos respondieron y cuántos aceptaron. Si casi nadie responde, cambia el mensaje antes de mandar más."
      ],
      "p": [
-      "Para la secuencia completa de seguimientos y cuándo parar, mirá \"Seguimiento de prospectos sin ser pesado\". Si te escriben a vos por Instagram, \"Responder DMs y calificar prospectos con Claude\" te ayuda a ordenarlos."
+      "Para la secuencia completa de seguimientos y cuándo parar, mira \"Seguimiento de prospectos sin ser pesado\". Si te escriben a ti por Instagram, \"Responder DMs y calificar prospectos con Claude\" te ayuda a ordenarlos."
      ]
     }
    ],
    "faq": [
     {
      "q": "¿Por qué gratis?",
-     "a": "Porque 15 minutos es poco para vos y baja mucho la barrera para el dueño. Lo que no es gratis es la instalación: dejalo claro desde el principio."
+     "a": "Porque 15 minutos es poco para ti y baja mucho la barrera para el dueño. Lo que no es gratis es la instalación: déjalo claro desde el principio."
     },
     {
      "q": "¿Puedo usar un programa para mandar los mensajes?",
@@ -277,7 +277,7 @@
     },
     {
      "q": "¿Qué canal funciona mejor?",
-     "a": "El que el negocio usa para hablar con sus clientes. Si responden rápido en Instagram, escribiles ahí. Si son más formales, mail. Si están a la vuelta, andá en persona."
+     "a": "El que el negocio usa para hablar con sus clientes. Si responden rápido en Instagram, escríbeles ahí. Si son más formales, mail. Si están a la vuelta, ve en persona."
     }
    ],
    "fuentes": [
@@ -295,17 +295,17 @@
      "h": "Para qué sirve la llamada",
      "p": [
       "No es una presentación tuya. Es una charla donde el que más habla es el dueño. Tu trabajo es entender cómo trabaja, encontrar dos o tres tareas donde el paquete ayuda y decirle con honestidad si le sirve o no.",
-      "Respetá los 15 minutos. Si la charla da para más, preguntá si tiene tiempo o proponé seguir otro día. Cumplir lo que dijiste es la primera prueba de que se puede confiar en vos."
+      "Respeta los 15 minutos. Si la charla da para más, pregunta si tiene tiempo o propón seguir otro día. Cumplir lo que dijiste es la primera prueba de que se puede confiar en ti."
      ]
     },
     {
      "h": "El guion, minuto a minuto",
      "pasos": [
-      "Minuto 0 a 2: agradecé, recordá para qué es la charla (\"ver qué tareas de tu negocio podría cubrir Claude y cuáles no\") y pedí permiso para tomar notas.",
-      "Minuto 2 a 5: pedí que te cuente un día normal. \"¿Qué hacés desde que abrís hasta que cerrás? ¿Qué parte la hacés en la compu o el celular?\"",
-      "Minuto 5 a 9: buscá la tarea que más tiempo come (preguntas abajo). Cuando aparezca una, pedí un ejemplo real: \"¿Cómo fue el último presupuesto que mandaste?\"",
-      "Minuto 9 a 12: devolvé lo que entendiste en una frase y decí qué parte podría hacer Claude y qué parte seguiría haciendo una persona.",
-      "Minuto 12 a 15: proponé el próximo paso y acordá una fecha."
+      "Minuto 0 a 2: agradece, recuerda para qué es la charla (\"ver qué tareas de tu negocio podría cubrir Claude y cuáles no\") y pide permiso para tomar notas.",
+      "Minuto 2 a 5: pide que te cuente un día normal. \"¿Qué haces desde que abrís hasta que cierras? ¿Qué parte la haces en la computadora o el celular?\"",
+      "Minuto 5 a 9: busca la tarea que más tiempo come (preguntas abajo). Cuando aparezca una, pide un ejemplo real: \"¿Cómo fue el último presupuesto que mandaste?\"",
+      "Minuto 9 a 12: devuelve lo que entendiste en una frase y di qué parte podría hacer Claude y qué parte seguiría haciendo una persona.",
+      "Minuto 12 a 15: propón el próximo paso y acuerda una fecha."
      ]
     },
     {
@@ -313,10 +313,10 @@
      "lista": [
       "¿Qué tarea te gustaría no hacer nunca más?: suele aparecer la más pesada, aunque no siempre la más frecuente.",
       "¿Qué te preguntan siempre tus clientes?: si responde rápido y con una lista, la skill de respuestas tiene mucho para hacer.",
-      "¿Cuánto tardás en armar un presupuesto?: pedí minutos y cantidad por semana, no \"un montón\".",
+      "¿Cuánto tardas en armar un presupuesto?: pide minutos y cantidad por semana, no \"un montón\".",
       "¿Dónde está la información?: precios en una planilla, procesos en la cabeza del dueño, mails en Gmail. Te dice cuánto trabajo de carga vas a tener.",
       "¿Quién más del equipo haría esto?: te dice a quién capacitar y si hace falta un plan para compartir.",
-      "¿Ya probaste alguna IA? ¿Qué pasó?: si tuvo una mala experiencia, entendé por qué antes de prometer algo distinto."
+      "¿Ya probaste alguna IA? ¿Qué pasó?: si tuvo una mala experiencia, entiende por qué antes de prometer algo distinto."
      ],
      "aviso": "Si te cuenta datos sensibles de clientes o de salud, no los anotes con nombre. Para el diagnóstico alcanza con saber qué tipo de dato es."
     },
@@ -325,14 +325,14 @@
      "p": [
       "Hay tres finales posibles, y los tres están bien:",
       "Sí le sirve: \"Con lo que me contaste, el paquete cubre [TAREA 1] y [TAREA 2]. Te mando una propuesta de una página con precio y plazos para [DÍA]. ¿Te parece que la revisemos juntos el [DÍA]?\"",
-      "Le sirve, pero falta algo antes: \"Para que esto funcione necesitás tener tus precios escritos en algún lado. Si los ordenás, te mando la propuesta.\"",
-      "No le sirve: \"Por cómo trabajás hoy, no creo que te cambie mucho. Si en algún momento [CONDICIÓN], hablemos.\" Decir que no también construye confianza y recomendaciones."
+      "Le sirve, pero falta algo antes: \"Para que esto funcione necesitas tener tus precios escritos en algún lado. Si los ordenas, te mando la propuesta.\"",
+      "No le sirve: \"Por cómo trabajas hoy, no creo que te cambie mucho. Si en algún momento [CONDICIÓN], hablemos.\" Decir que no también construye confianza y recomendaciones."
      ]
     },
     {
      "h": "Plantilla de notas y resumen con Claude",
      "p": [
-      "Copiá esta plantilla antes de cada llamada y completala mientras hablás. Después pasala por Claude para ordenarla y prepararte para la propuesta del Módulo 5."
+      "Copia esta plantilla antes de cada llamada y complétala mientras hablas. Después pásala por Claude para ordenarla y prepararte para la propuesta del Módulo 5."
      ],
      "prompts": [
       {
@@ -341,7 +341,7 @@
       },
       {
        "t": "Resumen del diagnóstico",
-       "c": "Te paso mis notas de una llamada de diagnóstico con un negocio. Ofrezco un paquete que instala Claude: proyecto con el conocimiento del negocio, skills de marca, presupuestos y respuestas, conectores de Gmail, Google Calendar y Google Drive, una automatización y capacitación.\n\n[PEGÁ TUS NOTAS]\n\n1. Resumí el negocio en 3 líneas.\n2. Listá las tareas que el paquete podría cubrir, y para cada una qué haría Claude y qué seguiría haciendo una persona.\n3. Proponé cuál sería la automatización más útil, con su frecuencia.\n4. Listá lo que falta saber antes de mandar la propuesta, como preguntas cortas para el cliente.\n5. Listá las dudas o miedos que dijo, con sus palabras.\n6. Decime si ves algo que el paquete NO resuelve y conviene aclarar.\nNo inventes datos que no estén en las notas."
+       "c": "Te paso mis notas de una llamada de diagnóstico con un negocio. Ofrezco un paquete que instala Claude: proyecto con el conocimiento del negocio, skills de marca, presupuestos y respuestas, conectores de Gmail, Google Calendar y Google Drive, una automatización y capacitación.\n\n[PEGA TUS NOTAS]\n\n1. Resume el negocio en 3 líneas.\n2. Lista las tareas que el paquete podría cubrir, y para cada una qué haría Claude y qué seguiría haciendo una persona.\n3. Propón cuál sería la automatización más útil, con su frecuencia.\n4. Lista lo que falta saber antes de mandar la propuesta, como preguntas cortas para el cliente.\n5. Lista las dudas o miedos que dijo, con sus palabras.\n6. Dime si ves algo que el paquete NO resuelve y conviene aclarar.\nNo inventes datos que no estén en las notas."
       }
      ]
     }
@@ -353,11 +353,11 @@
     },
     {
      "q": "¿Puedo grabarla o transcribirla?",
-     "a": "Solo si el dueño está de acuerdo y se lo pediste al principio. Si no, tomá notas con la plantilla."
+     "a": "Solo si el dueño está de acuerdo y se lo pediste al principio. Si no, toma notas con la plantilla."
     },
     {
      "q": "¿Y si quiere el precio en la llamada?",
-     "a": "Dale un rango honesto si ya lo tenés armado (Módulo 5) y aclarale que el precio final sale de la propuesta, cuando sepas el alcance."
+     "a": "Dale un rango honesto si ya lo tienes armado (Módulo 5) y aclárale que el precio final sale de la propuesta, cuando sepas el alcance."
     }
    ],
    "fuentes": []
@@ -365,7 +365,7 @@
   {
    "slug": "sistema-base-modulo-5-propuesta-y-precio",
    "t": "Módulo 5 · Propuesta de una página y cómo ponerle precio",
-   "d": "Cómo armar una propuesta que se lee en dos minutos y cómo calcular la instalación y el mensual con una fórmula simple que podés defender.",
+   "d": "Cómo armar una propuesta que se lee en dos minutos y cómo calcular la instalación y el mensual con una fórmula simple que puedes defender.",
    "tema": "Vender IA",
    "min": 10,
    "fichaNombre": "Fórmula de precio",
@@ -375,12 +375,12 @@
      "Una propuesta de una página y una fórmula para el precio de instalación y de mantenimiento mensual."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "Las notas del diagnóstico (Módulo 4), tu valor hora y tus horas reales de una instalación."
     ],
     [
      "Qué no hace",
-     "No te dice cuánto cobra el mercado en tu país: eso lo averiguás vos."
+     "No te dice cuánto cobra el mercado en tu país: eso lo averiguas tú."
     ]
    ],
    "secciones": [
@@ -393,7 +393,7 @@
       "Lo que nos contaste: dos o tres líneas con sus palabras, sacadas de las notas del diagnóstico.",
       "Lo que vamos a dejar instalado: las piezas del paquete, cada una con la tarea concreta de su negocio que cubre.",
       "Lo que no incluye: la lista del Módulo 1, ajustada a este cliente.",
-      "Lo que necesitamos de vos: accesos, documentos (precios, preguntas frecuentes, ejemplos) y una persona disponible para la prueba.",
+      "Lo que necesitamos de ti: accesos, documentos (precios, preguntas frecuentes, ejemplos) y una persona disponible para la prueba.",
       "Plazos: cuándo empieza, cuándo es la capacitación y cuándo queda entregado.",
       "Precio: instalación (un pago o en partes), mensual de mantenimiento y suscripciones que paga el cliente aparte.",
       "Próximo paso: qué tiene que hacer para arrancar y hasta cuándo vale la propuesta."
@@ -404,41 +404,41 @@
      "p": [
       "El precio tiene dos partes. La instalación se cobra una vez. El mensual se cobra mientras el cliente quiera mantenimiento.",
       "Instalación = horas de instalación × tu valor hora × 1,3. El 1,3 es un colchón del 30% para imprevistos: siempre aparece un documento que falta o un acceso que no funciona.",
-      "Mensual = horas de mantenimiento por mes × tu valor hora. Las suscripciones (plan de Claude y otras herramientas) no entran acá porque las paga el cliente, a su nombre.",
-      "Tu valor hora sale de lo que necesitás ganar por mes dividido por las horas que de verdad podés cobrar, no por las que trabajás. Para el detalle de piso, techo y dónde ubicarte, mirá \"Cuánto cobrar por automatizar con IA\"."
+      "Mensual = horas de mantenimiento por mes × tu valor hora. Las suscripciones (plan de Claude y otras herramientas) no entran aquí porque las paga el cliente, a su nombre.",
+      "Tu valor hora sale de lo que necesitas ganar por mes dividido por las horas que de verdad puedes cobrar, no por las que trabajas. Para el detalle de piso, techo y dónde ubicarte, mira \"Cuánto cobrar por automatizar con IA\"."
      ]
     },
     {
      "h": "Un ejemplo para ver la cuenta",
      "p": [
       "Ejemplo (números inventados, en \"unidades\" para que lo pases a tu moneda): tu valor hora es 20 unidades. Una instalación del paquete base te lleva 15 horas entre preparar, instalar, probar y capacitar. Instalación = 15 × 20 × 1,3 = 390 unidades.",
-      "Ejemplo de mensual con los mismos números: calculás 3 horas por mes de revisión, ajustes y reporte. Mensual = 3 × 20 = 60 unidades.",
-      "Estas cifras no son una recomendación de precio ni un dato de mercado. Usá tus horas reales: medí cuánto te llevan tus primeras dos instalaciones y corregí la fórmula con eso."
+      "Ejemplo de mensual con los mismos números: calculas 3 horas por mes de revisión, ajustes y reporte. Mensual = 3 × 20 = 60 unidades.",
+      "Estas cifras no son una recomendación de precio ni un dato de mercado. Usa tus horas reales: mide cuánto te llevan tus primeras dos instalaciones y corrige la fórmula con eso."
      ],
-     "aviso": "Si la cuenta te da un precio que el cliente no puede pagar, no lo bajes sin más: achicá el alcance (por ejemplo, dos skills en lugar de tres) y escribilo en la propuesta."
+     "aviso": "Si la cuenta te da un precio que el cliente no puede pagar, no lo bajes sin más: achica el alcance (por ejemplo, dos skills en lugar de tres) y escríbelo en la propuesta."
     },
     {
      "h": "Un precio cerrado para el paquete base",
      "lista": [
-      "Fijá el precio del paquete base: cuando ya hiciste dos o tres instalaciones, sabés cuántas horas lleva y podés tener un precio fijo. Eso hace que vender sea mucho más simple.",
+      "Fija el precio del paquete base: cuando ya hiciste dos o tres instalaciones, sabes cuántas horas lleva y puedes tener un precio fijo. Eso hace que vender sea mucho más simple.",
       "Los extras se cotizan aparte: una skill más, otra automatización, cargar documentos que el cliente no tiene ordenados. Con la misma fórmula, por hora estimada.",
-      "Precio cerrado, no por hora: si cobrás por hora, el cliente siente que te paga por tardar. Cobrá por el paquete y cuidá el alcance.",
-      "Pago en partes: una opción común es una parte al arrancar y el resto al entregar. Lo que acuerdes, ponelo por escrito (Módulo 9)."
+      "Precio cerrado, no por hora: si cobras por hora, el cliente siente que te paga por tardar. Cobra por el paquete y cuida el alcance.",
+      "Pago en partes: una opción común es una parte al arrancar y el resto al entregar. Lo que acuerdes, ponlo por escrito (Módulo 9)."
      ]
     },
     {
-     "h": "Armá la propuesta con Claude",
+     "h": "Arma la propuesta con Claude",
      "p": [
-      "Con las notas y el resumen del Módulo 4, pedile a Claude el borrador. Los números los ponés vos. Para revisar la propuesta antes de mandarla, seguí los pasos de \"Propuesta comercial a partir de las notas de una llamada\"."
+      "Con las notas y el resumen del Módulo 4, pídele a Claude el borrador. Los números los pones tú. Para revisar la propuesta antes de mandarla, sigue los pasos de \"Propuesta comercial a partir de las notas de una llamada\"."
      ],
      "prompts": [
       {
        "t": "Propuesta de una página",
-       "c": "Armá una propuesta de una página para un negocio al que le voy a instalar Claude.\n\nResumen del diagnóstico: [PEGÁ EL RESUMEN DEL MÓDULO 4]\nPaquete: proyecto con el conocimiento del negocio, skill de marca, skill de presupuestos, skill de respuestas a clientes, conectores de Gmail, Google Calendar y Google Drive, una automatización ([CUÁL]) y una capacitación de 30 minutos con video grabado.\nNo incluye: [LISTA].\nNecesito del cliente: [LISTA].\nPlazos: [FECHAS].\nPrecio de instalación: [MONTO Y MONEDA], en [FORMA DE PAGO].\nMensual de mantenimiento: [MONTO Y MONEDA], que incluye [QUÉ INCLUYE].\nSuscripciones que paga el cliente: [PLAN DE CLAUDE Y OTRAS].\nVálida hasta: [FECHA].\n\nSecciones, en este orden: Lo que nos contaste, Lo que vamos a dejar instalado, Lo que no incluye, Lo que necesitamos de vos, Plazos, Precio, Próximo paso.\nUsá las palabras del cliente cuando puedas. Nada de promesas de ahorro o ventas. Que entre en una página."
+       "c": "Arma una propuesta de una página para un negocio al que le voy a instalar Claude.\n\nResumen del diagnóstico: [PEGA EL RESUMEN DEL MÓDULO 4]\nPaquete: proyecto con el conocimiento del negocio, skill de marca, skill de presupuestos, skill de respuestas a clientes, conectores de Gmail, Google Calendar y Google Drive, una automatización ([CUÁL]) y una capacitación de 30 minutos con video grabado.\nNo incluye: [LISTA].\nNecesito del cliente: [LISTA].\nPlazos: [FECHAS].\nPrecio de instalación: [MONTO Y MONEDA], en [FORMA DE PAGO].\nMensual de mantenimiento: [MONTO Y MONEDA], que incluye [QUÉ INCLUYE].\nSuscripciones que paga el cliente: [PLAN DE CLAUDE Y OTRAS].\nVálida hasta: [FECHA].\n\nSecciones, en este orden: Lo que nos contaste, Lo que vamos a dejar instalado, Lo que no incluye, Lo que necesitamos de ti, Plazos, Precio, Próximo paso.\nUsa las palabras del cliente cuando puedas. Nada de promesas de ahorro o ventas. Que entre en una página."
       },
       {
        "t": "Revisar mi cuenta de precio",
-       "c": "Revisá mi cálculo de precio.\nMi valor hora: [NÚMERO Y MONEDA].\nHoras estimadas de instalación, por tarea: [LISTA DE TAREAS CON HORAS].\nHoras de mantenimiento por mes, por tarea: [LISTA].\n\n1. Calculá instalación = horas × valor hora × 1,3 y mensual = horas × valor hora, mostrando la cuenta.\n2. Decime si me olvidé de alguna tarea típica de una instalación (preparar documentos, pruebas, capacitación, documento de entrega, viajes).\n3. Si el resultado te parece alto para el alcance, proponé qué sacar del alcance en lugar de bajar el valor hora.\nNo me digas precios de mercado."
+       "c": "Revisa mi cálculo de precio.\nMi valor hora: [NÚMERO Y MONEDA].\nHoras estimadas de instalación, por tarea: [LISTA DE TAREAS CON HORAS].\nHoras de mantenimiento por mes, por tarea: [LISTA].\n\n1. Calcula instalación = horas × valor hora × 1,3 y mensual = horas × valor hora, mostrando la cuenta.\n2. Dime si me olvidé de alguna tarea típica de una instalación (preparar documentos, pruebas, capacitación, documento de entrega, viajes).\n3. Si el resultado te parece alto para el alcance, propón qué sacar del alcance en lugar de bajar el valor hora.\nNo me digas precios de mercado."
       }
      ]
     }
@@ -446,7 +446,7 @@
    "faq": [
     {
      "q": "¿Muestro el precio en la llamada o solo en la propuesta?",
-     "a": "Podés dar un rango en la llamada si te lo piden. El número final va en la propuesta, cuando el alcance está claro."
+     "a": "Puedes dar un rango en la llamada si te lo piden. El número final va en la propuesta, cuando el alcance está claro."
     },
     {
      "q": "¿Le cobro igual a un negocio chico que a uno grande?",
@@ -454,7 +454,7 @@
     },
     {
      "q": "¿Y si me piden descuento?",
-     "a": "Ofrecé sacar algo del alcance en lugar de bajar el precio del mismo trabajo. Si bajás sin cambiar nada, le enseñás que tu primer precio no era en serio."
+     "a": "Ofrece sacar algo del alcance en lugar de bajar el precio del mismo trabajo. Si bajas sin cambiar nada, le enseñas que tu primer precio no era en serio."
     }
    ],
    "fuentes": []
@@ -472,12 +472,12 @@
      "El orden en que se instala el paquete, con lo que hay que revisar en cada paso."
     ],
     [
-     "Necesitás",
+     "Necesitas",
      "La propuesta aceptada, los documentos del cliente y una o dos sesiones con alguien del negocio."
     ],
     [
      "Regla de oro",
-     "El cliente es dueño de sus cuentas y de sus datos. Vos configurás, no te quedás con nada."
+     "El cliente es dueño de sus cuentas y de sus datos. Tú configuras, no te quedas con nada."
     ],
     [
      "Qué no hace",
@@ -488,58 +488,58 @@
     {
      "h": "Antes de empezar: cuentas y datos son del cliente",
      "p": [
-      "La cuenta de Claude, la de Google y cualquier otra herramienta se crean con el mail del negocio y las paga el negocio. Si mañana dejás de trabajar con ellos, todo tiene que seguir funcionando sin vos.",
-      "Elegí el plan con el cliente según cuántas personas lo van a usar. Si es una sola, puede alcanzar con un plan individual. Si el equipo tiene que compartir el proyecto y las skills, hace falta un plan Team (mínimo dos personas) o Enterprise, porque compartir proyectos es una función de esos planes.",
-      "Revisá con el cliente cómo se usan sus datos. En los planes individuales (Free, Pro, Max) hay una opción de privacidad que define si las conversaciones se usan para mejorar los modelos; el cliente decide cómo dejarla. En los planes comerciales como Team y Enterprise, por defecto no se usan para entrenar."
+      "La cuenta de Claude, la de Google y cualquier otra herramienta se crean con el mail del negocio y las paga el negocio. Si mañana dejas de trabajar con ellos, todo tiene que seguir funcionando sin ti.",
+      "Elige el plan con el cliente según cuántas personas lo van a usar. Si es una sola, puede alcanzar con un plan individual. Si el equipo tiene que compartir el proyecto y las skills, hace falta un plan Team (mínimo dos personas) o Enterprise, porque compartir proyectos es una función de esos planes.",
+      "Revisa con el cliente cómo se usan sus datos. En los planes individuales (Free, Pro, Max) hay una opción de privacidad que define si las conversaciones se usan para mejorar los modelos; el cliente decide cómo dejarla. En los planes comerciales como Team y Enterprise, por defecto no se usan para entrenar."
      ],
-     "aviso": "Nunca te pasen contraseñas por chat, por mail ni por el chat de Claude. Lo ideal es que el cliente inicie sesión él mismo mientras comparten pantalla. Si necesitás acceso propio, que te sume como miembro y te saque al terminar."
+     "aviso": "Nunca te pasen contraseñas por chat, por mail ni por el chat de Claude. Lo ideal es que el cliente inicie sesión él mismo mientras comparten pantalla. Si necesitas acceso propio, que te sume como miembro y te saque al terminar."
     },
     {
      "h": "Paso 1: preparar el material",
      "pasos": [
-      "Pedí con tiempo los documentos que figuran en la propuesta: lista de precios, servicios, preguntas frecuentes, políticas (cambios, pagos, horarios), ejemplos de presupuestos y de respuestas buenas.",
-      "Sacá de los documentos datos sensibles que no hacen falta: datos personales de clientes, números de cuenta, contraseñas.",
-      "Juntá el manual de marca o, si no hay, publicaciones y mensajes que muestren cómo habla el negocio.",
-      "Pasá todo por Claude en tu propia cuenta solo si el cliente está de acuerdo. Si no, ordenalo directo en la cuenta del cliente."
+      "Pide con tiempo los documentos que figuran en la propuesta: lista de precios, servicios, preguntas frecuentes, políticas (cambios, pagos, horarios), ejemplos de presupuestos y de respuestas buenas.",
+      "Saca de los documentos datos sensibles que no hacen falta: datos personales de clientes, números de cuenta, contraseñas.",
+      "Junta el manual de marca o, si no hay, publicaciones y mensajes que muestren cómo habla el negocio.",
+      "Pasa todo por Claude en tu propia cuenta solo si el cliente está de acuerdo. Si no, ordénalo directo en la cuenta del cliente."
      ]
     },
     {
      "h": "Paso 2: proyecto y skills",
      "pasos": [
-      "Creá el proyecto en la cuenta del cliente con un nombre claro (\"Asistente de [NEGOCIO]\").",
-      "Subí los documentos a la base de conocimiento del proyecto.",
-      "Escribí las instrucciones del proyecto: quién es el negocio, cómo habla, qué no tiene que hacer nunca (por ejemplo, inventar precios) y cuándo tiene que decir \"esto lo tiene que ver una persona\".",
-      "Activá la ejecución de código y creación de archivos: en planes individuales está en Settings > Capabilities; en Team y Enterprise lo activa el dueño de la organización en la configuración de Plugins & skills.",
-      "Subí las tres skills (marca, presupuestos y respuestas) como .zip desde Customize > Skills > + > Create skill > Upload a skill. Cada una se arma como explican las guías de skills de marca, presupuestos y respuestas.",
-      "Si es plan Team, compartí el proyecto y las skills con las personas que las van a usar."
+      "Crea el proyecto en la cuenta del cliente con un nombre claro (\"Asistente de [NEGOCIO]\").",
+      "Sube los documentos a la base de conocimiento del proyecto.",
+      "Escribe las instrucciones del proyecto: quién es el negocio, cómo habla, qué no tiene que hacer nunca (por ejemplo, inventar precios) y cuándo tiene que decir \"esto lo tiene que ver una persona\".",
+      "Activa la ejecución de código y creación de archivos: en planes individuales está en Settings > Capabilities; en Team y Enterprise lo activa el dueño de la organización en la configuración de Plugins & skills.",
+      "Sube las tres skills (marca, presupuestos y respuestas) como .zip desde Customize > Skills > + > Create skill > Upload a skill. Cada una se arma como explican las guías de skills de marca, presupuestos y respuestas.",
+      "Si es plan Team, comparte el proyecto y las skills con las personas que las van a usar."
      ]
     },
     {
      "h": "Paso 3: conectores y automatización",
      "pasos": [
-      "Conectá Gmail, Google Calendar y Google Drive con la cuenta de Google del negocio. Lo hace el cliente iniciando sesión: cada persona conecta su propia cuenta y Claude solo ve lo que esa cuenta ya puede ver.",
+      "Conecta Gmail, Google Calendar y Google Drive con la cuenta de Google del negocio. Lo hace el cliente iniciando sesión: cada persona conecta su propia cuenta y Claude solo ve lo que esa cuenta ya puede ver.",
       "En Team o Enterprise, el dueño de la organización tiene que habilitar los conectores antes. Si usan Google Workspace y la conexión está bloqueada, su administrador de Google puede tener que marcar a Claude como aplicación de confianza.",
-      "Explicale al cliente que, por defecto, Claude pide aprobación antes de enviar, responder o reenviar mails y antes de compartir, mover o borrar archivos de Drive. Recomendá dejarlo así.",
-      "Armá la automatización acordada como tarea programada (en la barra lateral, Scheduled > New task), con su frecuencia: cada día, cada semana o en días hábiles. Ejemplo: \"Todos los días hábiles a las 8, revisá los mails sin responder y armá un resumen con los urgentes\".",
-      "Corré la tarea una vez a mano y revisá el resultado con el cliente."
+      "Explícale al cliente que, por defecto, Claude pide aprobación antes de enviar, responder o reenviar mails y antes de compartir, mover o borrar archivos de Drive. Recomienda dejarlo así.",
+      "Arma la automatización acordada como tarea programada (en la barra lateral, Scheduled > New task), con su frecuencia: cada día, cada semana o en días hábiles. Ejemplo: \"Todos los días hábiles a las 8, revisa los mails sin responder y arma un resumen con los urgentes\".",
+      "Corre la tarea una vez a mano y revisa el resultado con el cliente."
      ]
     },
     {
      "h": "Paso 4: probar con casos reales",
      "p": [
-      "Nada se entrega sin probar con pedidos reales del negocio. Pedile al cliente cinco consultas reales de clientes y tres pedidos de presupuesto recientes."
+      "Nada se entrega sin probar con pedidos reales del negocio. Pídele al cliente cinco consultas reales de clientes y tres pedidos de presupuesto recientes."
      ],
      "pasos": [
-      "Pasá cada caso por la skill que corresponde y compará con lo que el negocio respondió de verdad.",
-      "Anotá cada error: dato inventado, tono raro, precio mal calculado, algo que tendría que haber derivado.",
-      "Corregí documentos, instrucciones o skills, y volvé a probar los casos que fallaron.",
-      "Probá un caso que no tenga respuesta en los documentos: Claude tiene que decir que no sabe, no inventar.",
-      "Cuando todo pasa, completá el checklist con Claude (prompt de abajo) y guardalo para el documento de entrega."
+      "Pasa cada caso por la skill que corresponde y compara con lo que el negocio respondió de verdad.",
+      "Anota cada error: dato inventado, tono raro, precio mal calculado, algo que tendría que haber derivado.",
+      "Corrige documentos, instrucciones o skills, y vuelve a probar los casos que fallaron.",
+      "Prueba un caso que no tenga respuesta en los documentos: Claude tiene que decir que no sabe, no inventar.",
+      "Cuando todo pasa, completa el checklist con Claude (prompt de abajo) y guárdalo para el documento de entrega."
      ],
      "prompts": [
       {
        "t": "Checklist de instalación completado",
-       "c": "Armame el checklist de instalación de Claude para este cliente, marcando lo hecho y lo pendiente.\nNegocio: [NOMBRE]. Plan de Claude: [PLAN]. Personas que lo usan: [NOMBRES Y ROLES].\nDatos que te paso:\n- Proyecto: [NOMBRE, DOCUMENTOS SUBIDOS]\n- Skills instaladas: [LISTA]\n- Conectores conectados y con qué cuenta: [LISTA]\n- Automatización: [QUÉ HACE Y FRECUENCIA]\n- Casos probados y resultado: [LISTA]\n- Ajustes hechos: [LISTA]\n\nSecciones: Cuentas (a nombre del cliente), Privacidad, Proyecto, Skills, Conectores, Automatización, Pruebas, Accesos.\nPara cada ítem: Hecho / Pendiente / No aplica, y una nota corta.\nEn Accesos, verificá que no quede ningún acceso mío sin fecha de baja.\nNo inventes nada que no te haya pasado: si falta un dato, marcalo como Pendiente."
+       "c": "Ármame el checklist de instalación de Claude para este cliente, marcando lo hecho y lo pendiente.\nNegocio: [NOMBRE]. Plan de Claude: [PLAN]. Personas que lo usan: [NOMBRES Y ROLES].\nDatos que te paso:\n- Proyecto: [NOMBRE, DOCUMENTOS SUBIDOS]\n- Skills instaladas: [LISTA]\n- Conectores conectados y con qué cuenta: [LISTA]\n- Automatización: [QUÉ HACE Y FRECUENCIA]\n- Casos probados y resultado: [LISTA]\n- Ajustes hechos: [LISTA]\n\nSecciones: Cuentas (a nombre del cliente), Privacidad, Proyecto, Skills, Conectores, Automatización, Pruebas, Accesos.\nPara cada ítem: Hecho / Pendiente / No aplica, y una nota corta.\nEn Accesos, verifica que no quede ningún acceso mío sin fecha de baja.\nNo inventes nada que no te haya pasado: si falta un dato, márcalo como Pendiente."
       }
      ]
     }
@@ -551,11 +551,11 @@
     },
     {
      "q": "¿Qué hago si el cliente no tiene sus precios escritos?",
-     "a": "Frenás la instalación de la skill de presupuestos hasta tenerlos. Podés ayudarlo a escribirlos como extra, pero sin datos reales la skill va a inventar."
+     "a": "Frenas la instalación de la skill de presupuestos hasta tenerlos. Puedes ayudarlo a escribirlos como extra, pero sin datos reales la skill va a inventar."
     },
     {
      "q": "¿Puedo armar todo en mi cuenta y después pasárselo?",
-     "a": "Podés preparar las skills en tu cuenta porque son archivos .zip que se suben. El proyecto, los conectores y la tarea programada armalos directo en la cuenta del cliente."
+     "a": "Puedes preparar las skills en tu cuenta porque son archivos .zip que se suben. El proyecto, los conectores y la tarea programada ármalos directo en la cuenta del cliente."
     }
    ],
    "fuentes": [
@@ -591,7 +591,7 @@
      ],
      "pasos": [
       "Qué quedó instalado: el proyecto, las tres skills, los conectores, la automatización y en qué plan y cuenta está todo.",
-      "Cómo pedir cada cosa: un ejemplo de pedido real por skill (\"Armame un presupuesto para...\").",
+      "Cómo pedir cada cosa: un ejemplo de pedido real por skill (\"Ármame un presupuesto para...\").",
       "Qué revisar siempre antes de mandar: precios, fechas, nombres, y todo lo que Claude marque como dudoso.",
       "Qué no hace: atender solo a clientes, mandar mails sin aprobación, saber cosas que no están en los documentos.",
       "Cómo actualizar el conocimiento: qué documento cambiar cuando cambian los precios o las políticas.",
@@ -600,20 +600,20 @@
      "prompts": [
       {
        "t": "Documento de entrega",
-       "c": "Con este checklist de instalación terminado: [PEGÁ EL CHECKLIST DEL MÓDULO 6]\nescribí el documento de entrega para el equipo de [NEGOCIO].\nLectores: personas que no usan Claude todos los días.\nSecciones: Qué quedó instalado, Cómo pedir cada cosa (con un ejemplo real por skill), Qué revisar antes de mandar, Qué no hace, Cómo actualizar los documentos, Qué hacer si algo falla, Mantenimiento y contacto ([MIS DATOS Y QUÉ INCLUYE EL MENSUAL]).\nFrases cortas, en voseo, sin palabras técnicas. Que entre en dos páginas."
+       "c": "Con este checklist de instalación terminado: [PEGA EL CHECKLIST DEL MÓDULO 6]\nescribe el documento de entrega para el equipo de [NEGOCIO].\nLectores: personas que no usan Claude todos los días.\nSecciones: Qué quedó instalado, Cómo pedir cada cosa (con un ejemplo real por skill), Qué revisar antes de mandar, Qué no hace, Cómo actualizar los documentos, Qué hacer si algo falla, Mantenimiento y contacto ([MIS DATOS Y QUÉ INCLUYE EL MENSUAL]).\nFrases cortas, en voseo, sin palabras técnicas. Que entre en dos páginas."
       }
      ]
     },
     {
      "h": "La capacitación de 30 minutos",
      "pasos": [
-      "Minuto 0 a 5: para qué sirve y para qué no. Repetí lo que no hace: es lo que evita los malos usos.",
-      "Minuto 5 a 20: cada persona hace un pedido real de su trabajo con su propia cuenta, mientras vos mirás. Un presupuesto, una respuesta, una búsqueda en el mail.",
+      "Minuto 0 a 5: para qué sirve y para qué no. Repite lo que no hace: es lo que evita los malos usos.",
+      "Minuto 5 a 20: cada persona hace un pedido real de su trabajo con su propia cuenta, mientras tú miras. Un presupuesto, una respuesta, una búsqueda en el mail.",
       "Minuto 20 a 25: muestren juntos qué pasa cuando Claude no sabe algo y cómo se corrige un resultado malo.",
       "Minuto 25 a 30: dónde está el documento de entrega, dónde está el video y cómo te piden ayuda.",
-      "Grabá la sesión solo si todos están de acuerdo. Si no, grabá después una versión corta vos solo, con la pantalla de la cuenta del cliente y sin datos sensibles a la vista."
+      "Graba la sesión solo si todos están de acuerdo. Si no, graba después una versión corta tú solo, con la pantalla de la cuenta del cliente y sin datos sensibles a la vista."
      ],
-     "aviso": "Que practiquen ellos. Si vos manejás el mouse los 30 minutos, al otro día nadie se acuerda de cómo se hacía."
+     "aviso": "Que practiquen ellos. Si tú manejas el mouse los 30 minutos, al otro día nadie se acuerda de cómo se hacía."
     },
     {
      "h": "Qué hacer si algo falla",
@@ -630,7 +630,7 @@
    "faq": [
     {
      "q": "¿Y si alguien del equipo no quiere usarlo?",
-     "a": "No lo fuerces en la capacitación. Mostrale una tarea que odie hacer y cómo le ayuda. Si igual no lo usa, contáselo al dueño en el primer reporte."
+     "a": "No lo fuerces en la capacitación. Muéstrale una tarea que odie hacer y cómo le ayuda. Si igual no lo usa, cuéntaselo al dueño en el primer reporte."
     },
     {
      "q": "¿Dónde guardo el video y el documento?",
@@ -650,7 +650,7 @@
   {
    "slug": "sistema-base-modulo-8-mantenimiento-mensual",
    "t": "Módulo 8 · El mantenimiento mensual y cómo mostrar su valor",
-   "d": "Qué incluye el mensual, una rutina de revisión que podés repetir con cada cliente, un reporte que muestra lo que se hizo y cuándo tiene sentido subir el precio.",
+   "d": "Qué incluye el mensual, una rutina de revisión que puedes repetir con cada cliente, un reporte que muestra lo que se hizo y cuándo tiene sentido subir el precio.",
    "tema": "Vender IA",
    "min": 9,
    "secciones": [
@@ -662,7 +662,7 @@
      ]
     },
     {
-     "h": "Qué incluye (escribilo así)",
+     "h": "Qué incluye (escríbelo así)",
      "lista": [
       "Revisión mensual: probar las skills y la automatización con casos nuevos y revisar que los documentos estén al día.",
       "Ajustes: corregir instrucciones, documentos y skills cuando algo responde mal o cambió en el negocio.",
@@ -675,50 +675,50 @@
     {
      "h": "La rutina de cada mes",
      "pasos": [
-      "Pedile al cliente, una semana antes, qué cambió: precios, servicios, políticas, personas del equipo.",
-      "Pedile tres casos reales del mes que salieron bien y tres que salieron mal o le costaron.",
-      "Actualizá los documentos del proyecto y volvé a probar las skills con esos casos.",
-      "Revisá que los conectores sigan conectados y que la tarea programada haya corrido.",
-      "Revisá accesos: que no haya personas que ya no están en el equipo con acceso al proyecto.",
-      "Armá el reporte con el prompt de abajo y mandalo."
+      "Pídele al cliente, una semana antes, qué cambió: precios, servicios, políticas, personas del equipo.",
+      "Pídele tres casos reales del mes que salieron bien y tres que salieron mal o le costaron.",
+      "Actualiza los documentos del proyecto y vuelve a probar las skills con esos casos.",
+      "Revisa que los conectores sigan conectados y que la tarea programada haya corrido.",
+      "Revisa accesos: que no haya personas que ya no están en el equipo con acceso al proyecto.",
+      "Arma el reporte con el prompt de abajo y mándalo."
      ]
     },
     {
      "h": "Cómo reportar el valor sin inventarlo",
      "p": [
-      "El reporte muestra lo que hiciste y lo que se puede medir. No inventes horas ahorradas. Si querés mostrar ahorro, medilo con el cliente: cuántos presupuestos armaron con la skill este mes y cuánto tardaban antes, según lo que anotaron en el diagnóstico.",
+      "El reporte muestra lo que hiciste y lo que se puede medir. No inventes horas ahorradas. Si quieres mostrar ahorro, mídelo con el cliente: cuántos presupuestos armaron con la skill este mes y cuánto tardaban antes, según lo que anotaron en el diagnóstico.",
       "Un buen reporte tiene cinco partes: qué se usó, qué se ajustó, qué problemas aparecieron, qué se propone para el mes que viene y una pregunta para el cliente."
      ],
      "prompts": [
       {
        "t": "Reporte mensual",
-       "c": "Armá el reporte mensual de mantenimiento para [NEGOCIO], mes de [MES].\nDatos:\n- Uso que me contó el cliente: [EJ: CANTIDAD DE PRESUPUESTOS O RESPUESTAS HECHOS CON CLAUDE, SI LO SABE]\n- Cómo era antes, según el diagnóstico: [DATO DEL MÓDULO 4]\n- Ajustes que hice: [LISTA]\n- Problemas que aparecieron y cómo se resolvieron: [LISTA]\n- Lo que veo que falta o se podría sumar: [LISTA]\n\nFormato: máximo una página, en voseo, con secciones Qué se usó, Qué ajustamos, Qué problemas hubo, Qué propongo para el mes que viene, Una pregunta para vos.\nSi comparás con el antes, mostrá la cuenta y aclarala como estimación. No inventes números que no te pasé."
+       "c": "Arma el reporte mensual de mantenimiento para [NEGOCIO], mes de [MES].\nDatos:\n- Uso que me contó el cliente: [EJ: CANTIDAD DE PRESUPUESTOS O RESPUESTAS HECHOS CON CLAUDE, SI LO SABE]\n- Cómo era antes, según el diagnóstico: [DATO DEL MÓDULO 4]\n- Ajustes que hice: [LISTA]\n- Problemas que aparecieron y cómo se resolvieron: [LISTA]\n- Lo que veo que falta o se podría sumar: [LISTA]\n\nFormato: máximo una página, en voseo, con secciones Qué se usó, Qué ajustamos, Qué problemas hubo, Qué propongo para el mes que viene, Una pregunta para ti.\nSi comparas con el antes, muestra la cuenta y aclárala como estimación. No inventes números que no te pasé."
       }
      ]
     },
     {
      "h": "Cuándo subir el precio",
      "lista": [
-      "Cuando el alcance creció: si cada mes hacés más de lo acordado, o ofrecés más mejoras de las que entran, o lo cobrás aparte o subís el mensual.",
-      "Cuando tu paquete mejoró: para clientes nuevos, si sumaste piezas o ya tenés casos que mostrar.",
-      "Cuando cambian tus costos: si tu valor hora cambió, revisá la fórmula del Módulo 5.",
-      "Cómo hacerlo: avisá por escrito con anticipación (por ejemplo, 30 días), explicá qué cambia y respetá lo que firmaste. Nunca en medio de un período ya pagado.",
-      "Cuándo no: si el cliente casi no lo usa. Ahí primero resolvé por qué, o proponé bajar el alcance."
+      "Cuando el alcance creció: si cada mes haces más de lo acordado, o ofreces más mejoras de las que entran, o lo cobras aparte o subís el mensual.",
+      "Cuando tu paquete mejoró: para clientes nuevos, si sumaste piezas o ya tienes casos que mostrar.",
+      "Cuando cambian tus costos: si tu valor hora cambió, revisa la fórmula del Módulo 5.",
+      "Cómo hacerlo: avisa por escrito con anticipación (por ejemplo, 30 días), explica qué cambia y respeta lo que firmaste. Nunca en medio de un período ya pagado.",
+      "Cuándo no: si el cliente casi no lo usa. Ahí primero resuelve por qué, o propón bajar el alcance."
      ]
     }
    ],
    "faq": [
     {
      "q": "¿Y si el cliente quiere cortar el mensual?",
-     "a": "Que pueda hacerlo con un aviso simple. Todo queda en sus cuentas y sigue funcionando; solo deja de tener quién lo mantenga. Sacá tus accesos ese mismo día."
+     "a": "Que pueda hacerlo con un aviso simple. Todo queda en sus cuentas y sigue funcionando; solo deja de tener quién lo mantenga. Saca tus accesos ese mismo día."
     },
     {
      "q": "¿Puedo ofrecer el mantenimiento sin la instalación?",
-     "a": "Sí, a negocios que ya usan Claude. Arrancá con una revisión como la del Módulo 6 para saber qué hay antes de comprometerte."
+     "a": "Sí, a negocios que ya usan Claude. Arranca con una revisión como la del Módulo 6 para saber qué hay antes de comprometerte."
     },
     {
      "q": "¿Qué hago si el cliente no me manda los casos del mes?",
-     "a": "Revisá igual con casos que inventes vos a partir de sus documentos y decilo en el reporte. Si pasa varios meses, hablalo: puede que no lo estén usando."
+     "a": "Revisa igual con casos que inventes tú a partir de sus documentos y dilo en el reporte. Si pasa varios meses, háblalo: puede que no lo estén usando."
     }
    ],
    "fuentes": []
@@ -733,21 +733,21 @@
     {
      "h": "Antes que nada",
      "p": [
-      "Esto no es asesoramiento legal. Es una lista de temas que conviene dejar por escrito para que nadie se lleve sorpresas. Las reglas sobre contratos, facturación y datos personales cambian según el país. Antes de usar un acuerdo con clientes, revisalo con un abogado o contador de tu país y, si vendés a otro país, también con alguien que conozca las reglas de allá.",
+      "Esto no es asesoramiento legal. Es una lista de temas que conviene dejar por escrito para que nadie se lleve sorpresas. Las reglas sobre contratos, facturación y datos personales cambian según el país. Antes de usar un acuerdo con clientes, revísalo con un abogado o contador de tu país y, si vendes a otro país, también con alguien que conozca las reglas de allá.",
       "Un acuerdo simple es mejor que ninguno. Puede ser la propuesta del Módulo 5 con estas cláusulas sumadas y firmada por las dos partes, o un mail donde el cliente confirma que acepta."
      ],
-     "aviso": "No uses este texto como contrato final. Usalo para llegar con las preguntas claras a un profesional."
+     "aviso": "No uses este texto como contrato final. Úsalo para llegar con las preguntas claras a un profesional."
     },
     {
      "h": "Lo que tiene que decir",
      "lista": [
-      "Partes: quién sos vos y quién es el cliente, con sus datos.",
-      "Alcance: qué incluye la instalación, pieza por pieza, y qué no incluye. Copiá las listas de la propuesta.",
+      "Partes: quién eres tú y quién es el cliente, con sus datos.",
+      "Alcance: qué incluye la instalación, pieza por pieza, y qué no incluye. Copia las listas de la propuesta.",
       "Plazos: cuándo arranca, cuándo se entrega y qué pasa si el cliente demora en mandar documentos o accesos.",
       "Pagos: monto, moneda, forma y fechas de la instalación y del mensual. Qué pasa si un pago se atrasa.",
       "Mantenimiento: qué cubre el mensual, cuántos cambios entran, tiempo de respuesta, cómo se da de baja y con cuánto aviso.",
-      "Suscripciones: el plan de Claude y otras herramientas los contrata y paga el cliente, a su nombre. Si sus precios o funciones cambian, no depende de vos.",
-      "Cuentas y datos: todas las cuentas y los datos son del cliente. Vos accedés solo para trabajar y te sacás al terminar.",
+      "Suscripciones: el plan de Claude y otras herramientas los contrata y paga el cliente, a su nombre. Si sus precios o funciones cambian, no depende de ti.",
+      "Cuentas y datos: todas las cuentas y los datos son del cliente. Tú accedes solo para trabajar y te sacas al terminar.",
       "Cambios de alcance: cualquier cosa nueva se cotiza y se acepta por escrito antes de hacerla."
      ]
     },
@@ -757,19 +757,19 @@
       "El negocio va a cargar en Claude información de sus clientes: mails, nombres, pedidos. Eso lo hace responsable de cuidarlos según las leyes de su país. Tu parte es configurarlo con cuidado y avisarle lo que corresponde."
      ],
      "lista": [
-      "Configuración de privacidad: en planes individuales, el cliente elige si sus conversaciones pueden usarse para mejorar los modelos. En planes comerciales como Team y Enterprise, por defecto no se usan para entrenar. Dejá escrito qué plan eligió y cómo quedó la opción.",
-      "Datos mínimos: subí al proyecto solo lo que hace falta. Nada de contraseñas, números de tarjeta ni datos que no aportan.",
+      "Configuración de privacidad: en planes individuales, el cliente elige si sus conversaciones pueden usarse para mejorar los modelos. En planes comerciales como Team y Enterprise, por defecto no se usan para entrenar. Deja escrito qué plan eligió y cómo quedó la opción.",
+      "Datos mínimos: sube al proyecto solo lo que hace falta. Nada de contraseñas, números de tarjeta ni datos que no aportan.",
       "Revisión humana: el acuerdo dice que Claude arma borradores y que una persona del negocio revisa antes de mandar algo a un cliente.",
       "Transparencia: el cliente sabe qué hace la IA y qué no, y decide si le cuenta a sus clientes que la usa.",
-      "Confidencialidad: vos no usás ni compartís sus datos, ni para mostrar casos, sin permiso por escrito."
+      "Confidencialidad: tú no usas ni compartís sus datos, ni para mostrar casos, sin permiso por escrito."
      ]
     },
     {
-     "h": "Armá el borrador con Claude",
+     "h": "Arma el borrador con Claude",
      "prompts": [
       {
        "t": "Borrador de acuerdo para revisar",
-       "c": "Ayudame a armar un borrador de acuerdo simple con un cliente. Lo voy a revisar con un profesional de [PAÍS] antes de usarlo, así que no lo presentes como contrato final.\nYo: [NOMBRE O EMPRESA, PAÍS].\nCliente: [NEGOCIO, PAÍS].\nServicio: instalación de Claude en su negocio. Incluye: [LISTA]. No incluye: [LISTA].\nPlazos: [FECHAS].\nPagos: instalación [MONTO, MONEDA, FORMA]; mensual [MONTO, MONEDA, QUÉ INCLUYE].\nSuscripciones: las contrata y paga el cliente a su nombre: [LISTA].\n\nCláusulas: Partes, Alcance, Plazos, Pagos, Mantenimiento y baja, Suscripciones, Cuentas y datos (todo es del cliente y yo saco mis accesos al terminar), Datos personales y privacidad, Revisión humana de lo que arma la IA, Confidencialidad, Cambios de alcance.\nLenguaje simple. Al final, listá las preguntas que tendría que hacerle al profesional, por ejemplo sobre facturación, leyes de datos personales y qué ley aplica si estamos en países distintos."
+       "c": "Ayúdame a armar un borrador de acuerdo simple con un cliente. Lo voy a revisar con un profesional de [PAÍS] antes de usarlo, así que no lo presentes como contrato final.\nYo: [NOMBRE O EMPRESA, PAÍS].\nCliente: [NEGOCIO, PAÍS].\nServicio: instalación de Claude en su negocio. Incluye: [LISTA]. No incluye: [LISTA].\nPlazos: [FECHAS].\nPagos: instalación [MONTO, MONEDA, FORMA]; mensual [MONTO, MONEDA, QUÉ INCLUYE].\nSuscripciones: las contrata y paga el cliente a su nombre: [LISTA].\n\nCláusulas: Partes, Alcance, Plazos, Pagos, Mantenimiento y baja, Suscripciones, Cuentas y datos (todo es del cliente y yo saco mis accesos al terminar), Datos personales y privacidad, Revisión humana de lo que arma la IA, Confidencialidad, Cambios de alcance.\nLenguaje simple. Al final, lista las preguntas que tendría que hacerle al profesional, por ejemplo sobre facturación, leyes de datos personales y qué ley aplica si estamos en países distintos."
       }
      ]
     }
@@ -781,11 +781,11 @@
     },
     {
      "q": "¿Alcanza con un mail?",
-     "a": "Un mail donde el cliente acepta la propuesta con todo escrito es mucho mejor que un acuerdo de palabra. Si sirve como contrato en tu país, preguntalo a un profesional."
+     "a": "Un mail donde el cliente acepta la propuesta con todo escrito es mucho mejor que un acuerdo de palabra. Si sirve como contrato en tu país, pregúntalo a un profesional."
     },
     {
      "q": "¿Qué hago si el cliente quiere que yo pague las suscripciones?",
-     "a": "Evitalo. Si las pagás vos, las cuentas quedan atadas a vos y el cliente no es dueño de su sistema. Si no hay otra opción, ponelo por escrito y sumalo al precio."
+     "a": "Evítalo. Si las pagas tú, las cuentas quedan atadas a ti y el cliente no es dueño de su sistema. Si no hay otra opción, ponlo por escrito y súmalo al precio."
     }
    ],
    "fuentes": [
@@ -804,11 +804,11 @@
    "prompts": [
     {
      "t": "Elegir rubro",
-     "c": "Vivo en [CIUDAD, PAÍS] y quiero vender un servicio que instala Claude en negocios (proyecto con el conocimiento del negocio, skills de marca, presupuestos y respuestas, conectores de mail, calendario y archivos, una automatización y capacitación).\nRubros que estoy pensando: [LISTA].\nPuntuá cada rubro del 1 al 5 en: cantidad probable de negocios en mi zona, tareas repetitivas, comunicación escrita con clientes y uso de compu en el día a día. Explicá cada puntaje y decime qué tendría que verificar yo. No inventes cifras de mercado."
+     "c": "Vivo en [CIUDAD, PAÍS] y quiero vender un servicio que instala Claude en negocios (proyecto con el conocimiento del negocio, skills de marca, presupuestos y respuestas, conectores de mail, calendario y archivos, una automatización y capacitación).\nRubros que estoy pensando: [LISTA].\nPuntúa cada rubro del 1 al 5 en: cantidad probable de negocios en mi zona, tareas repetitivas, comunicación escrita con clientes y uso de computadora en el día a día. Explica cada puntaje y dime qué tendría que verificar yo. No inventes cifras de mercado."
     },
     {
      "t": "Columnas de la planilla",
-     "c": "Armame una planilla vacía para prospectar negocios de [RUBRO] con estas columnas: Negocio, Rubro, Ciudad, Canal de contacto, Dato de contacto público, Qué viste, Prioridad (1 a 3), Estado, Fecha del último contacto, Notas.\nAgregá una segunda pestaña con los valores posibles de Estado (pendiente, contactado, respondió, diagnóstico agendado, propuesta enviada, cliente, cerrado) y explicá en una línea cuándo usar cada uno. Devolvela como archivo para abrir en Google Sheets."
+     "c": "Ármame una planilla vacía para prospectar negocios de [RUBRO] con estas columnas: Negocio, Rubro, Ciudad, Canal de contacto, Dato de contacto público, Qué viste, Prioridad (1 a 3), Estado, Fecha del último contacto, Notas.\nAgrega una segunda pestaña con los valores posibles de Estado (pendiente, contactado, respondió, diagnóstico agendado, propuesta enviada, cliente, cerrado) y explica en una línea cuándo usar cada uno. Devuélvela como archivo para abrir en Google Sheets."
     },
     {
      "t": "Qué mirar de cada negocio",
@@ -816,11 +816,11 @@
     },
     {
      "t": "Primer mensaje personalizado",
-     "c": "Escribí un primer mensaje para [NEGOCIO] por [CANAL].\nYo: [NOMBRE], [CIUDAD]. Ofrezco instalar Claude en negocios de [RUBRO].\nLo que vi: [DATO CONCRETO].\nOfrecé un diagnóstico gratis de 15 minutos. Máximo 5 líneas, voseo, sin promesas de resultados, terminando con una pregunta fácil. No inventes datos del negocio. Dame dos versiones."
+     "c": "Escribe un primer mensaje para [NEGOCIO] por [CANAL].\nYo: [NOMBRE], [CIUDAD]. Ofrezco instalar Claude en negocios de [RUBRO].\nLo que vi: [DATO CONCRETO].\nOfrece un diagnóstico gratis de 15 minutos. Máximo 5 líneas, voseo, sin promesas de resultados, terminando con una pregunta fácil. No inventes datos del negocio. Dame dos versiones."
     },
     {
      "t": "Revisar mis mensajes",
-     "c": "Estos son los mensajes que mandé esta semana y si respondieron o no: [PEGÁ MENSAJES Y RESULTADO].\nDecime qué tienen en común los que tuvieron respuesta y los que no, y proponé dos cambios concretos para la semana que viene. No me sugieras mandar más cantidad ni automatizar el envío."
+     "c": "Estos son los mensajes que mandé esta semana y si respondieron o no: [PEGA MENSAJES Y RESULTADO].\nDime qué tienen en común los que tuvieron respuesta y los que no, y propón dos cambios concretos para la semana que viene. No me sugieras mandar más cantidad ni automatizar el envío."
     }
    ]
   },
@@ -832,7 +832,7 @@
    "prompts": [
     {
      "t": "Preparar la llamada",
-     "c": "Mañana tengo una llamada de diagnóstico de 15 minutos con [NEGOCIO], un negocio de [RUBRO]. Lo que sé: [DATOS DE LA PLANILLA].\nArmame 8 preguntas para encontrar la tarea que más tiempo le come, ordenadas de la más abierta a la más concreta. Para cada una, qué respuesta me indicaría que el paquete (proyecto, skills de marca, presupuestos y respuestas, conectores de Gmail, Calendar y Drive) le sirve."
+     "c": "Mañana tengo una llamada de diagnóstico de 15 minutos con [NEGOCIO], un negocio de [RUBRO]. Lo que sé: [DATOS DE LA PLANILLA].\nÁrmame 8 preguntas para encontrar la tarea que más tiempo le come, ordenadas de la más abierta a la más concreta. Para cada una, qué respuesta me indicaría que el paquete (proyecto, skills de marca, presupuestos y respuestas, conectores de Gmail, Calendar y Drive) le sirve."
     },
     {
      "t": "Plantilla de notas",
@@ -840,15 +840,15 @@
     },
     {
      "t": "Resumen después de la llamada",
-     "c": "Estas son mis notas de la llamada con [NEGOCIO]: [PEGÁ NOTAS].\n1. Resumen del negocio en 3 líneas.\n2. Tareas que el paquete cubre: qué hace Claude y qué sigue haciendo una persona.\n3. Automatización recomendada y frecuencia.\n4. Preguntas que me faltan hacerle.\n5. Dudas o miedos con sus palabras.\n6. Lo que el paquete no resuelve.\nNo inventes datos."
+     "c": "Estas son mis notas de la llamada con [NEGOCIO]: [PEGA NOTAS].\n1. Resumen del negocio en 3 líneas.\n2. Tareas que el paquete cubre: qué hace Claude y qué sigue haciendo una persona.\n3. Automatización recomendada y frecuencia.\n4. Preguntas que me faltan hacerle.\n5. Dudas o miedos con sus palabras.\n6. Lo que el paquete no resuelve.\nNo inventes datos."
     },
     {
      "t": "Mensaje de próximo paso",
-     "c": "Terminé la llamada con [NEGOCIO]. Acordamos: [PRÓXIMO PASO]. Escribime un mensaje corto para mandarle hoy por [CANAL] que agradezca, repita en una línea lo que entendí de su problema y confirme el próximo paso con fecha. Máximo 4 líneas."
+     "c": "Terminé la llamada con [NEGOCIO]. Acordamos: [PRÓXIMO PASO]. Escríbeme un mensaje corto para mandarle hoy por [CANAL] que agradezca, repita en una línea lo que entendí de su problema y confirme el próximo paso con fecha. Máximo 4 líneas."
     },
     {
      "t": "Decir que no le sirve",
-     "c": "En la llamada con [NEGOCIO] vi que el paquete no le sirve por ahora porque [MOTIVO]. Escribime un mensaje honesto y amable que se lo diga, le deje una recomendación útil y deje la puerta abierta para más adelante si [CONDICIÓN]. Sin venderle nada."
+     "c": "En la llamada con [NEGOCIO] vi que el paquete no le sirve por ahora porque [MOTIVO]. Escríbeme un mensaje honesto y amable que se lo diga, le deje una recomendación útil y deje la puerta abierta para más adelante si [CONDICIÓN]. Sin venderle nada."
     }
    ]
   },
@@ -860,19 +860,19 @@
    "prompts": [
     {
      "t": "Calcular instalación y mensual",
-     "c": "Mi valor hora es [NÚMERO Y MONEDA].\nHoras de instalación por tarea: [LISTA].\nHoras de mantenimiento por mes: [LISTA].\nCalculá instalación = horas × valor hora × 1,3 y mensual = horas × valor hora, mostrando la cuenta. Decime si falta alguna tarea típica (preparar documentos, pruebas, capacitación, video, documento de entrega). No me des precios de mercado."
+     "c": "Mi valor hora es [NÚMERO Y MONEDA].\nHoras de instalación por tarea: [LISTA].\nHoras de mantenimiento por mes: [LISTA].\nCalcula instalación = horas × valor hora × 1,3 y mensual = horas × valor hora, mostrando la cuenta. Dime si falta alguna tarea típica (preparar documentos, pruebas, capacitación, video, documento de entrega). No me des precios de mercado."
     },
     {
      "t": "Propuesta de una página",
-     "c": "Con este resumen de diagnóstico: [PEGÁ RESUMEN]\narmá una propuesta de una página para [NEGOCIO] con estas secciones: Lo que nos contaste, Lo que vamos a dejar instalado (cada pieza con la tarea que cubre), Lo que no incluye, Lo que necesitamos de vos, Plazos ([FECHAS]), Precio (instalación [MONTO], mensual [MONTO] que incluye [QUÉ], suscripciones a cargo del cliente: [LISTA]), Próximo paso y validez ([FECHA]).\nUsá sus palabras. Sin promesas de ahorro ni de ventas."
+     "c": "Con este resumen de diagnóstico: [PEGA RESUMEN]\narma una propuesta de una página para [NEGOCIO] con estas secciones: Lo que nos contaste, Lo que vamos a dejar instalado (cada pieza con la tarea que cubre), Lo que no incluye, Lo que necesitamos de ti, Plazos ([FECHAS]), Precio (instalación [MONTO], mensual [MONTO] que incluye [QUÉ], suscripciones a cargo del cliente: [LISTA]), Próximo paso y validez ([FECHA]).\nUsa sus palabras. Sin promesas de ahorro ni de ventas."
     },
     {
      "t": "Achicar el alcance",
-     "c": "El cliente [NEGOCIO] dice que la propuesta se le va de presupuesto. Alcance actual: [LISTA]. Precio: [MONTO].\nProponé dos versiones más chicas del alcance con su precio recalculado con mi fórmula (valor hora [NÚMERO], horas por pieza [LISTA], colchón 1,3). Para cada versión, qué tarea deja de cubrir. No bajes mi valor hora."
+     "c": "El cliente [NEGOCIO] dice que la propuesta se le va de presupuesto. Alcance actual: [LISTA]. Precio: [MONTO].\nPropón dos versiones más chicas del alcance con su precio recalculado con mi fórmula (valor hora [NÚMERO], horas por pieza [LISTA], colchón 1,3). Para cada versión, qué tarea deja de cubrir. No bajes mi valor hora."
     },
     {
      "t": "Revisión final antes de mandar",
-     "c": "Revisá esta propuesta antes de que la mande: [PEGÁ PROPUESTA].\nMarcame: promesas que no puedo cumplir, cosas que el cliente puede entender como incluidas y no lo están, números sin explicar, frases técnicas que un dueño de negocio no entiende y cualquier parte que la haga pasar de una página."
+     "c": "Revisa esta propuesta antes de que la mande: [PEGA PROPUESTA].\nMárcame: promesas que no puedo cumplir, cosas que el cliente puede entender como incluidas y no lo están, números sin explicar, frases técnicas que un dueño de negocio no entiende y cualquier parte que la haga pasar de una página."
     }
    ]
   },
@@ -884,23 +884,23 @@
    "prompts": [
     {
      "t": "Lista de pedidos al cliente",
-     "c": "Voy a instalar Claude en [NEGOCIO] ([RUBRO]). El paquete incluye proyecto con el conocimiento del negocio, skills de marca, presupuestos y respuestas, conectores de Gmail, Google Calendar y Google Drive, la automatización [CUÁL] y capacitación.\nEscribime un mensaje para el cliente con la lista de documentos y datos que necesito, explicado en simple, con un ejemplo de cada uno. Aclará que no me mande contraseñas por ningún medio y que no incluya datos personales de sus clientes que no hagan falta."
+     "c": "Voy a instalar Claude en [NEGOCIO] ([RUBRO]). El paquete incluye proyecto con el conocimiento del negocio, skills de marca, presupuestos y respuestas, conectores de Gmail, Google Calendar y Google Drive, la automatización [CUÁL] y capacitación.\nEscríbeme un mensaje para el cliente con la lista de documentos y datos que necesito, explicado en simple, con un ejemplo de cada uno. Aclara que no me mande contraseñas por ningún medio y que no incluya datos personales de sus clientes que no hagan falta."
     },
     {
      "t": "Instrucciones del proyecto",
-     "c": "Escribí las instrucciones del proyecto de Claude para [NEGOCIO].\nQuién es el negocio: [DESCRIPCIÓN].\nCómo habla: [TONO, EJEMPLOS].\nQuiénes lo usan y para qué: [ROLES Y TAREAS].\nReglas: nunca inventar precios, plazos ni políticas; si algo no está en los documentos, decirlo y sugerir consultarlo con [PERSONA]; todo lo que vaya a un cliente es un borrador que revisa una persona.\nMáximo 300 palabras, en segunda persona."
+     "c": "Escribe las instrucciones del proyecto de Claude para [NEGOCIO].\nQuién es el negocio: [DESCRIPCIÓN].\nCómo habla: [TONO, EJEMPLOS].\nQuiénes lo usan y para qué: [ROLES Y TAREAS].\nReglas: nunca inventar precios, plazos ni políticas; si algo no está en los documentos, decirlo y sugerir consultarlo con [PERSONA]; todo lo que vaya a un cliente es un borrador que revisa una persona.\nMáximo 300 palabras, en segunda persona."
     },
     {
      "t": "Casos de prueba",
-     "c": "Con estos documentos del negocio [NOMBRES O CONTENIDO] y estas consultas reales de clientes [PEGÁ CONSULTAS], armame 10 casos de prueba para las skills de respuestas y de presupuestos: 6 que tienen respuesta en los documentos, 2 en el límite y 2 que no tienen respuesta y Claude tiene que derivar. Para cada caso, qué resultado espero."
+     "c": "Con estos documentos del negocio [NOMBRES O CONTENIDO] y estas consultas reales de clientes [PEGA CONSULTAS], ármame 10 casos de prueba para las skills de respuestas y de presupuestos: 6 que tienen respuesta en los documentos, 2 en el límite y 2 que no tienen respuesta y Claude tiene que derivar. Para cada caso, qué resultado espero."
     },
     {
      "t": "Checklist completado",
-     "c": "Armame el checklist de instalación para [NEGOCIO] marcando Hecho / Pendiente / No aplica en cada ítem, con una nota corta.\nSecciones: Cuentas a nombre del cliente, Plan elegido, Privacidad, Proyecto y documentos, Instrucciones, Ejecución de código activada, Skills (marca, presupuestos, respuestas), Conectores (Gmail, Calendar, Drive y con qué cuenta), Aprobaciones de envío, Tarea programada, Pruebas con casos reales, Accesos míos y fecha de baja.\nDatos: [PEGÁ LO QUE HICISTE].\nSi falta un dato, marcalo como Pendiente. No inventes."
+     "c": "Ármame el checklist de instalación para [NEGOCIO] marcando Hecho / Pendiente / No aplica en cada ítem, con una nota corta.\nSecciones: Cuentas a nombre del cliente, Plan elegido, Privacidad, Proyecto y documentos, Instrucciones, Ejecución de código activada, Skills (marca, presupuestos, respuestas), Conectores (Gmail, Calendar, Drive y con qué cuenta), Aprobaciones de envío, Tarea programada, Pruebas con casos reales, Accesos míos y fecha de baja.\nDatos: [PEGA LO QUE HICISTE].\nSi falta un dato, márcalo como Pendiente. No inventes."
     },
     {
      "t": "Registro de errores de prueba",
-     "c": "Te paso los resultados de las pruebas: [CASO, LO QUE RESPONDIÓ CLAUDE, LO QUE DEBERÍA HABER RESPONDIDO].\nPara cada error, decime si se arregla en un documento, en las instrucciones del proyecto o en una skill, y escribí el cambio exacto que haría."
+     "c": "Te paso los resultados de las pruebas: [CASO, LO QUE RESPONDIÓ CLAUDE, LO QUE DEBERÍA HABER RESPONDIDO].\nPara cada error, dime si se arregla en un documento, en las instrucciones del proyecto o en una skill, y escribe el cambio exacto que haría."
     }
    ]
   },
@@ -912,47 +912,47 @@
    "prompts": [
     {
      "t": "Pedido de novedades",
-     "c": "Escribí un mensaje corto para [NEGOCIO] pidiendo, antes del [FECHA], qué cambió este mes (precios, servicios, políticas, personas del equipo) y tres casos que salieron bien y tres que costaron con Claude. Máximo 5 líneas, cordial."
+     "c": "Escribe un mensaje corto para [NEGOCIO] pidiendo, antes del [FECHA], qué cambió este mes (precios, servicios, políticas, personas del equipo) y tres casos que salieron bien y tres que costaron con Claude. Máximo 5 líneas, cordial."
     },
     {
      "t": "Reporte del mes",
-     "c": "Armá el reporte de mantenimiento de [NEGOCIO] para [MES].\nUso informado por el cliente: [DATOS].\nComo era antes según el diagnóstico: [DATO].\nAjustes hechos: [LISTA].\nProblemas y solución: [LISTA].\nPropuestas para el mes que viene: [LISTA].\nUna página, en voseo, con las secciones Qué se usó, Qué ajustamos, Qué problemas hubo, Qué propongo y Una pregunta para vos. Si comparás con el antes, mostrá la cuenta y marcala como estimación. No inventes números."
+     "c": "Arma el reporte de mantenimiento de [NEGOCIO] para [MES].\nUso informado por el cliente: [DATOS].\nComo era antes según el diagnóstico: [DATO].\nAjustes hechos: [LISTA].\nProblemas y solución: [LISTA].\nPropuestas para el mes que viene: [LISTA].\nUna página, en voseo, con las secciones Qué se usó, Qué ajustamos, Qué problemas hubo, Qué propongo y Una pregunta para ti. Si comparas con el antes, muestra la cuenta y márcala como estimación. No inventes números."
     },
     {
      "t": "Detectar poco uso",
-     "c": "Estos son los datos de uso de los últimos [N] meses de [NEGOCIO]: [DATOS].\nDecime si ves señales de que lo están usando poco, qué causas probables hay y tres acciones concretas para el mes que viene (por ejemplo, una mini capacitación o ajustar una skill). Sin culpar al equipo."
+     "c": "Estos son los datos de uso de los últimos [N] meses de [NEGOCIO]: [DATOS].\nDime si ves señales de que lo están usando poco, qué causas probables hay y tres acciones concretas para el mes que viene (por ejemplo, una mini capacitación o ajustar una skill). Sin culpar al equipo."
     },
     {
      "t": "Aviso de cambio de precio",
-     "c": "Tengo que avisarle a [NEGOCIO] que el mensual pasa de [MONTO ACTUAL] a [MONTO NUEVO] desde [FECHA], con [DÍAS] días de aviso. Motivo: [MOTIVO REAL, POR EJEMPLO MÁS ALCANCE].\nEscribí un mensaje claro y respetuoso que explique qué cambia, por qué, qué incluye desde ahora y que si prefiere puede bajar el alcance en lugar de pagar más."
+     "c": "Tengo que avisarle a [NEGOCIO] que el mensual pasa de [MONTO ACTUAL] a [MONTO NUEVO] desde [FECHA], con [DÍAS] días de aviso. Motivo: [MOTIVO REAL, POR EJEMPLO MÁS ALCANCE].\nEscribe un mensaje claro y respetuoso que explique qué cambia, por qué, qué incluye desde ahora y que si prefiere puede bajar el alcance en lugar de pagar más."
     }
    ]
   },
   {
    "tema": "Vender IA",
    "t": "Sistema base · Objeciones",
-   "d": "Respuestas honestas a las dudas que más aparecen cuando vendés Claude instalado en un negocio.",
+   "d": "Respuestas honestas a las dudas que más aparecen cuando vendes Claude instalado en un negocio.",
    "para": "Para responder dudas sobre IA, datos y precio sin presionar ni prometer de más.",
    "prompts": [
     {
      "t": "Mapa de objeciones del rubro",
-     "c": "Vendo la instalación de Claude en negocios de [RUBRO]: proyecto con el conocimiento del negocio, skills, conectores, una automatización y capacitación.\nListá las 10 objeciones más probables de un dueño de este rubro, incluyendo: \"lo puedo hacer yo gratis\", \"la IA se equivoca\", \"mis datos\", \"mi equipo no lo va a usar\", \"es caro\" y \"no tengo tiempo\". Para cada una, qué miedo hay detrás y una pregunta para entenderla antes de responder."
+     "c": "Vendo la instalación de Claude en negocios de [RUBRO]: proyecto con el conocimiento del negocio, skills, conectores, una automatización y capacitación.\nLista las 10 objeciones más probables de un dueño de este rubro, incluyendo: \"lo puedo hacer yo gratis\", \"la IA se equivoca\", \"mis datos\", \"mi equipo no lo va a usar\", \"es caro\" y \"no tengo tiempo\". Para cada una, qué miedo hay detrás y una pregunta para entenderla antes de responder."
     },
     {
      "t": "Lo puedo hacer yo",
-     "c": "Un dueño me dijo: \"[LO QUE DIJO, TEXTUAL]\" (que lo puede armar él solo con Claude).\nEscribime una respuesta de máximo 5 líneas que le dé la razón en lo que la tiene, explique qué incluye mi servicio que no es la herramienta (conocimiento cargado, skills armadas y probadas, capacitación, mantenimiento) y le ofrezca una guía si prefiere hacerlo solo. Sin desmerecer."
+     "c": "Un dueño me dijo: \"[LO QUE DIJO, TEXTUAL]\" (que lo puede armar él solo con Claude).\nEscríbeme una respuesta de máximo 5 líneas que le dé la razón en lo que la tiene, explique qué incluye mi servicio que no es la herramienta (conocimiento cargado, skills armadas y probadas, capacitación, mantenimiento) y le ofrezca una guía si prefiere hacerlo solo. Sin desmerecer."
     },
     {
      "t": "Miedo a los datos",
-     "c": "Un cliente pregunta qué pasa con sus datos y los de sus clientes si usa Claude.\nCon esta información verificada que te paso: [PEGÁ LO QUE DICE LA AYUDA OFICIAL DE CLAUDE SOBRE PRIVACIDAD PARA SU PLAN]\nescribí una respuesta simple que explique: que las cuentas son a su nombre, qué opción de privacidad tiene su plan, que subimos solo los datos necesarios y que una persona revisa antes de mandar algo. No agregues nada que no esté en la información que te pasé."
+     "c": "Un cliente pregunta qué pasa con sus datos y los de sus clientes si usa Claude.\nCon esta información verificada que te paso: [PEGA LO QUE DICE LA AYUDA OFICIAL DE CLAUDE SOBRE PRIVACIDAD PARA SU PLAN]\nescribe una respuesta simple que explique: que las cuentas son a su nombre, qué opción de privacidad tiene su plan, que subimos solo los datos necesarios y que una persona revisa antes de mandar algo. No agregues nada que no esté en la información que te pasé."
     },
     {
      "t": "La IA se equivoca",
-     "c": "Un dueño me dice que la IA inventa cosas y no confía. Escribime una respuesta corta que reconozca que puede pasar, explique cómo lo cubrimos (documentos del negocio, reglas de no inventar, pruebas con casos reales, revisión humana antes de mandar) y le ofrezca ver una prueba con un caso suyo en el diagnóstico. Sin prometer que nunca se va a equivocar."
+     "c": "Un dueño me dice que la IA inventa cosas y no confía. Escríbeme una respuesta corta que reconozca que puede pasar, explique cómo lo cubrimos (documentos del negocio, reglas de no inventar, pruebas con casos reales, revisión humana antes de mandar) y le ofrezca ver una prueba con un caso suyo en el diagnóstico. Sin prometer que nunca se va a equivocar."
     },
     {
      "t": "Práctica de la llamada",
-     "c": "Hacé de dueño de un negocio de [RUBRO] que está interesado en instalar Claude pero tiene la duda de [OBJECIÓN]. Respondé como lo haría alguien real, con frases cortas. Yo intento responder. Después de 6 intercambios, cortá y decime qué hice bien, dónde presioné de más y qué pregunta me faltó hacer."
+     "c": "Haz de dueño de un negocio de [RUBRO] que está interesado en instalar Claude pero tiene la duda de [OBJECIÓN]. Responde como lo haría alguien real, con frases cortas. Yo intento responder. Después de 6 intercambios, corta y dime qué hice bien, dónde presioné de más y qué pregunta me faltó hacer."
     }
    ]
   }
