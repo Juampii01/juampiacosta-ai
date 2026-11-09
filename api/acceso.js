@@ -1,6 +1,6 @@
 // Canjea el link mágico del chat (api/manychat.js) por la sesión. GET /api/acceso?t=<token>
 // Deja la cookie de nivel «gratis» (o «pago», si ese email ya compró) y lleva a la guía que pidió.
-// Con &a=<slug> va a otra guía gratis. Si el link no sirve o venció, manda al registro normal.
+// Con &a=<slug> va a otra guía gratis; con &a=reels, a la lista de guías de los reels. Si el link no sirve o venció, manda al registro normal.
 
 import { ACCESS_COOKIE_NAME, ACCESS_COOKIE_MAX_AGE, AVISO_COOKIE_NAME, crearCookie, leerCookie, leerEnlace, nivelDe, valorCookie } from "../lib/acceso.js";
 import { yaCompro } from "./registro.js";
@@ -14,8 +14,10 @@ export default async function handler(req, res) {
   const p = await leerEnlace(q.get("t"), secreto);
   if (!p) { const g = guiaGratis(q.get("a")); return ir(g ? `/?volver=/guias/${g}#gratis` : "/#gratis"); }
   // «a» elige otra guía gratis (un mismo link sirve para varios botones en ManyChat: {{link}}&a=<slug>)
-  const g = guiaGratis(q.get("a")) || p.g;
-  const destino = g ? `/guias/${g}` : "/recursos";
+  // &a=reels lleva a «De mis reels» de la biblioteca: todas las guías de los reels con su palabra
+  const reels = q.get("a") === "reels";
+  const g = reels ? null : guiaGratis(q.get("a")) || p.g;
+  const destino = reels ? "/recursos#posts" : g ? `/guias/${g}` : "/recursos";
 
   const actual = nivelDe(await leerCookie(valorCookie(req.headers.cookie, ACCESS_COOKIE_NAME), secreto));
   if (actual === "pago") return ir(destino);
