@@ -49,6 +49,14 @@ export async function marcarCompra({ email, nombre, compro }, { url, clave, fetc
   const n = await fetchImpl(`${base}/rest/v1/registros`, {
     method: "POST", headers: h, body: JSON.stringify({ email, nombre: nombre || null, origen: "hotmart", compro: true }), signal: AbortSignal.timeout(5000)
   });
+  if (n.status === 409) {
+    // Dos avisos a la vez (aprobada y completa): el otro ya creó la fila, así que solo se marca
+    const p = await fetchImpl(`${base}/rest/v1/registros?email=eq.${encodeURIComponent(email)}`, {
+      method: "PATCH", headers: h, body: JSON.stringify({ compro: true }), signal: AbortSignal.timeout(5000)
+    });
+    if (!p.ok) throw new Error(`Supabase respondió ${p.status}: ${(await p.text()).slice(0, 200)}`);
+    return;
+  }
   if (!n.ok) throw new Error(`Supabase respondió ${n.status}: ${(await n.text()).slice(0, 200)}`);
 }
 

@@ -34,3 +34,16 @@ test("registro: ya compró", async () => {
   assert.equal(await yaCompro("a@b.co", { url: "https://x", clave: "k", fetchImpl: f([{ compro: false }]) }), false);
   assert.equal(await yaCompro("a@b.co", { url: "https://x", clave: "k", fetchImpl: f([]) }), false);
 });
+
+test("hotmart: dos avisos a la vez no fallan (el POST choca y se marca con PATCH)", async () => {
+  const llamadas = [];
+  const fetchImpl = async (url, o) => {
+    llamadas.push({ url, o });
+    if (llamadas.length === 1) return { ok: true, json: async () => [] };
+    if (llamadas.length === 2) return { ok: false, status: 409, text: async () => "duplicate key" };
+    return { ok: true, status: 204, text: async () => "" };
+  };
+  await marcarCompra({ email: "a@b.co", nombre: "A", compro: true }, { url: "https://x.supabase.co", clave: "sb_secret_x", fetchImpl });
+  assert.deepEqual(llamadas.map((l) => l.o.method), ["PATCH", "POST", "PATCH"]);
+  assert.deepEqual(JSON.parse(llamadas[2].o.body), { compro: true });
+});
