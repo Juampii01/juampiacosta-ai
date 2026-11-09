@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   const clave = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
   const q = new URL(req.url, "http://x").searchParams;
   const p = await leerEnlace(q.get("t"), secreto);
-  if (!p) return ir("/#gratis");
+  if (!p) { const g = guiaGratis(q.get("a")); return ir(g ? `/?volver=/guias/${g}#gratis` : "/#gratis"); }
   // «a» elige otra guía gratis (un mismo link sirve para varios botones en ManyChat: {{link}}&a=<slug>)
   const g = guiaGratis(q.get("a")) || p.g;
   const destino = g ? `/guias/${g}` : "/recursos";
