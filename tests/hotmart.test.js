@@ -47,3 +47,10 @@ test("hotmart: dos avisos a la vez no fallan (el POST choca y se marca con PATCH
   assert.deepEqual(llamadas.map((l) => l.o.method), ["PATCH", "POST", "PATCH"]);
   assert.deepEqual(JSON.parse(llamadas[2].o.body), { compro: true });
 });
+
+test("hotmart: solo la biblioteca abre el acceso, no el PDF del order bump", () => {
+  const aviso = (id) => leerAviso({ event: "PURCHASE_APPROVED", data: { product: { id }, buyer: { email: "a@b.co" } } });
+  assert.equal(aviso(8923495), null);
+  assert.deepEqual(aviso(8923277), { email: "a@b.co", nombre: "", compro: true });
+  assert.equal(leerAviso({ event: "PURCHASE_REFUNDED", data: { product: { id: 8923495 }, buyer: { email: "a@b.co" } } }), null);
+});

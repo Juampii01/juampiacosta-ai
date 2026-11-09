@@ -23,9 +23,14 @@ export function hottokValido(recibido, esperado) {
 }
 
 // Devuelve { email, nombre, compro } o null si el aviso no cambia nada
+// Solo la compra de la biblioteca abre el acceso (el PDF de prompts del order bump también es producto de Hotmart)
+export const PRODUCTOS_CON_ACCESO = new Set(String(process.env.HOTMART_PRODUCTOS || "8923277").split(",").map((x) => x.trim()));
+
 export function leerAviso(cuerpo) {
   if (!cuerpo || typeof cuerpo !== "object") return null;
   const evento = String(cuerpo.event || "");
+  const producto = cuerpo.data && cuerpo.data.product && cuerpo.data.product.id;
+  if (producto != null && !PRODUCTOS_CON_ACCESO.has(String(producto))) return null;
   const comprador = (cuerpo.data && cuerpo.data.buyer) || {};
   const email = String(comprador.email || "").trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return null;
