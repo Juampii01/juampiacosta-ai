@@ -822,6 +822,7 @@
     },
     {
       "slug": "ahorra-tokens-graphify-obsidian",
+      "post": "MAPA",
       "t": "Ahorrá tokens en Claude Code con Graphify y Obsidian",
       "d": "Graphify convierte tu proyecto en un mapa que Claude consulta en lugar de releer archivos, y Obsidian le da una memoria de notas en texto plano. Cómo instalar las dos y conectarlas.",
       "tema": "Claude Code",

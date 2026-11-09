@@ -210,6 +210,7 @@
   },
   {
    "slug": "modo-plan-de-claude-code",
+   "post": "PLAN",
    "t": "Modo plan: que Claude piense antes de construir",
    "d": "Claude investiga tu proyecto y te escribe un plan sin tocar tu código. Lo corregís, lo aprobás y recién ahí construye.",
    "tema": "Claude Code",
@@ -390,6 +391,7 @@
   },
   {
    "slug": "subagentes-en-claude-code",
+   "post": "SUBAGENTE",
    "t": "Subagentes: ayudantes que trabajan aparte",
    "d": "Claude le pasa una parte del trabajo a un ayudante con su propia memoria y te devuelve solo el resultado. Cuándo conviene y cómo crear el tuyo.",
    "tema": "Claude Code",

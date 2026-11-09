@@ -2,6 +2,7 @@
   "guias": [
     {
       "slug": "claude-code-liviano",
+      "post": "LIVIANO",
       "t": "Claude Code liviano: que no se te llene el contexto",
       "d": "Los hábitos y comandos oficiales para que cada mensaje cargue menos: limpiar entre tareas, compactar bien, CLAUDE.md corto, menos MCP, subagentes, modo plan y el modelo justo.",
       "tema": "Claude Code",

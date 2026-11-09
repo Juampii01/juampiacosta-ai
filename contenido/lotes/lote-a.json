@@ -2,6 +2,7 @@
  "guias": [
   {
    "slug": "configura-claude-en-10-minutos",
+   "post": "CONFIG",
    "t": "Configurá Claude en 10 minutos para que sepa quién sos",
    "d": "Instrucciones personales, memoria y búsqueda de chats: lo que tenés que dejar listo una sola vez para no explicarle todo de nuevo en cada chat.",
    "tema": "Empezar",
@@ -204,6 +205,7 @@
   },
   {
    "slug": "que-modelo-de-claude-uso",
+   "post": "MODELO",
    "t": "Qué modelo de Claude usar para cada tarea",
    "d": "Haiku, Sonnet, Opus y Fable: para qué sirve cada uno, cuánto de tu límite gasta y cómo cambiarlo en la app y en Claude Code.",
    "tema": "Claude",

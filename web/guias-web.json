@@ -1,6 +1,7 @@
 [
  {
   "slug": "configura-claude-en-10-minutos",
+  "post": "CONFIG",
   "t": "Configurá Claude en 10 minutos para que sepa quién sos",
   "d": "Instrucciones personales, memoria y búsqueda de chats: lo que tenés que dejar listo una sola vez para no explicarle todo de nuevo en cada chat.",
   "tema": "Primeros pasos",
@@ -1067,6 +1068,7 @@
  },
  {
   "slug": "medidor-de-uso-y-limites-de-claude",
+  "post": "MEDIDOR",
   "t": "Cómo leer tu uso de Claude y planificar la semana",
   "d": "Dónde ver cuánto te queda, cómo funcionan la sesión de cinco horas y el límite semanal, qué gasta más y cómo repartir el trabajo para no quedarte sin plan a mitad de semana.",
   "tema": "Gastá menos tokens",
@@ -1261,6 +1263,7 @@
  },
  {
   "slug": "pedidos-que-salen-a-la-primera",
+  "post": "PEDIDO",
   "t": "Pedidos que salen a la primera: menos ida y vuelta, más plan",
   "d": "Cinco hábitos para que cada pedido a Claude salga bien de entrada: planificar, juntar, ser específico, releer y editar el mensaje original en vez de mandar correcciones.",
   "tema": "Gastá menos tokens",
@@ -1355,6 +1358,7 @@
  },
  {
   "slug": "por-que-claude-se-vuelve-torpe-en-chats-largos",
+  "post": "CHAT",
   "t": "Por qué Claude se pone torpe en chats largos (y cómo seguir en limpio)",
   "d": "Qué pasa cuando una conversación se estira demasiado, cuándo te conviene abrir un chat nuevo y un prompt de traspaso para no perder nada.",
   "tema": "Gastá menos tokens",
@@ -1430,6 +1434,7 @@
  },
  {
   "slug": "proyectos-y-cache-para-gastar-menos",
+  "post": "PROYECTO",
   "t": "Proyectos y caché: subí tu material una vez y gastá menos",
   "d": "Por qué el material que dejás en un Proyecto cuenta menos cuando lo reutilizás, cuándo deja de contar menos, qué es el modo RAG y qué conviene subir y qué no.",
   "tema": "Gastá menos tokens",
@@ -1536,6 +1541,7 @@
  },
  {
   "slug": "archivos-sin-desperdiciar-tokens",
+  "post": "ARCHIVOS",
   "t": "Archivos sin desperdiciar tokens: mandá solo lo que importa",
   "d": "Cómo pesan los archivos que adjuntás, cómo mandar solo las partes que sirven, qué cambia entre texto, PDF e imágenes, y cómo resumir un documento largo una sola vez para reutilizarlo.",
   "tema": "Gastá menos tokens",
@@ -1869,6 +1875,7 @@
  },
  {
   "slug": "que-modelo-de-claude-uso",
+  "post": "MODELO",
   "t": "Qué modelo de Claude usar para cada tarea",
   "d": "Haiku, Sonnet, Opus y Fable: para qué sirve cada uno, cuánto de tu límite gasta y cómo cambiarlo en la app y en Claude Code.",
   "tema": "Gastá menos tokens",
@@ -2075,6 +2082,7 @@
  },
  {
   "slug": "claude-code-liviano",
+  "post": "LIVIANO",
   "t": "Claude Code liviano: que no se te llene el contexto",
   "d": "Los hábitos y comandos oficiales para que cada mensaje cargue menos: limpiar entre tareas, compactar bien, CLAUDE.md corto, menos MCP, subagentes, modo plan y el modelo justo.",
   "tema": "Gastá menos tokens",
@@ -2417,6 +2425,7 @@
  },
  {
   "slug": "ahorra-tokens-graphify-obsidian",
+  "post": "MAPA",
   "t": "Ahorrá tokens en Claude Code con Graphify y Obsidian",
   "d": "Graphify convierte tu proyecto en un mapa que Claude consulta en lugar de releer archivos, y Obsidian le da una memoria de notas en texto plano. Cómo instalar las dos y conectarlas.",
   "tema": "Gastá menos tokens",
@@ -11295,6 +11304,7 @@
  },
  {
   "slug": "modo-plan-de-claude-code",
+  "post": "PLAN",
   "t": "Modo plan: que Claude piense antes de construir",
   "d": "Claude investiga tu proyecto y te escribe un plan sin tocar tu código. Lo corregís, lo aprobás y recién ahí construye.",
   "tema": "Claude Code",
@@ -11906,6 +11916,7 @@
  },
  {
   "slug": "subagentes-en-claude-code",
+  "post": "SUBAGENTE",
   "t": "Subagentes: ayudantes que trabajan aparte",
   "d": "Claude le pasa una parte del trabajo a un ayudante con su propia memoria y te devuelve solo el resultado. Cuándo conviene y cómo crear el tuyo.",
   "tema": "Claude Code",
