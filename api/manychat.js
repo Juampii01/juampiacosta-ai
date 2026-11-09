@@ -1,6 +1,6 @@
 // Registro gratis desde el chat de Instagram. ManyChat (paso «External Request») llama:
 //   POST /api/manychat   cabecera  x-clave: <MANYCHAT_SECRET>
-//   cuerpo JSON  { "email": "...", "nombre": "...", "guia": "<slug o link de la guía>" }
+//   cuerpo JSON  { "email": "...", "nombre": "...", "guia": "<slug o link de la guía>" }  (o el «Full Contact Data» de ManyChat)
 // Guarda a la persona en «registros» (origen «manychat») y responde { ok, link }: un link mágico que, al tocarlo,
 // le deja la sesión iniciada y la lleva directo a la guía. Si el email no sirve responde { ok: false, error: "email" }
 // con estado 200, para que ManyChat pueda volver a preguntarlo.
@@ -41,6 +41,8 @@ export default async function handler(req, res) {
   if (!claveIgual(req.headers["x-clave"], MANYCHAT_SECRET)) return responder(401, { ok: false });
 
   const cuerpo = await leerJson(req);
+  // ManyChat puede mandar «Full Contact Data»: el nombre viene en first_name / name
+  if (!cuerpo.nombre) cuerpo.nombre = cuerpo.first_name || cuerpo.name || "";
   const fila = limpiarRegistro(cuerpo);
   if (!fila) return responder(200, { ok: false, error: "email", link: "" });
   fila.origen = "manychat";
