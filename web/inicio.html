@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="web/camino.css?v={{V}}">
 <link rel="stylesheet" href="web/tema.css?v={{V}}">
 <script src="web/tema.js?v={{V}}"></script>
+<script>if (/(?:^|;\s*)jpa_nivel=(pago|gratis)/.test(document.cookie) || location.hash === "#entrar" || /[?&]error=clave/.test(location.search)) document.documentElement.classList.add("con-acceso");</script>
 <style>
   .l-wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
   .l-cab { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
@@ -106,11 +107,41 @@
   @media (max-width: 480px) {
     .l-cab .l-marca span { display: none; }
   }
+
+  /* Puerta: quien llega sin registrarse ve solo el formulario (no se puede cerrar) */
+  html:not(.con-acceso), html:not(.con-acceso) body { overflow: hidden; }
+  .con-acceso #puerta { display: none; }
+  #puerta { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 16px; overflow-y: auto;
+    background: color-mix(in srgb, var(--navy) 82%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+  .p-caja { width: 100%; max-width: 440px; padding: 30px 28px; border-radius: 26px; }
+  .p-caja .l-marca { margin-bottom: 18px; }
+  .p-caja h2 { font-size: clamp(24px, 6vw, 30px); line-height: 1.15; letter-spacing: -.02em; margin-top: 8px; }
+  .p-caja .p-sub { color: var(--muted); line-height: 1.5; margin-top: 10px; font-size: 15px; }
+  .p-caja .l-form-gratis { margin-top: 8px; }
+  @media (max-width: 480px) { .p-caja { padding: 24px 18px; } }
 </style>
 <link rel="icon" href="web/favicon.svg?v={{V}}" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
+<div id="puerta" role="dialog" aria-modal="true" aria-labelledby="puerta-tit">
+  <div class="p-caja glass">
+    <span class="l-marca"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#17110e"/><rect x=".75" y=".75" width="62.5" height="62.5" rx="15.25" fill="none" stroke="#ff5a1f" stroke-opacity=".35" stroke-width="1.5"/><path d="M32 18 18 44h28z" fill="none" stroke="#ff5a1f" stroke-width="3.5" stroke-linejoin="round" stroke-opacity=".55"/><circle cx="32" cy="18" r="7" fill="#ff5a1f"/><circle cx="18" cy="44" r="7" fill="#ff5a1f"/><circle cx="46" cy="44" r="7" fill="#fff"/></svg><span>juampiiacosta<b>.ai</b></span></span>
+    <span class="mono" style="color:var(--glow)">Empieza gratis</span>
+    <h2 id="puerta-tit">Regístrate gratis y tienes los recursos ya</h2>
+    <p class="p-sub">Tu nombre y tu mail. Se te abren al instante las guías de mis reels y te armo tus recomendados.</p>
+    <form method="post" action="/api/registro" class="l-form-gratis">
+      <label for="p-nombre">Tu nombre</label>
+      <input id="p-nombre" name="nombre" type="text" autocomplete="given-name" maxlength="80" placeholder="Juan">
+      <label for="p-email">Tu email</label>
+      <input id="p-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" required maxlength="254" placeholder="tu@mail.com">
+      <input type="hidden" name="volver"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content">
+      <p class="l-error" id="error-puerta"></p>
+      <button class="l-boton" type="submit">Entrar gratis →</button>
+      <p class="l-chico"><b>¿Ya compraste?</b> Pon el mismo email que usaste en el pago y se te abre todo.</p>
+    </form>
+  </div>
+</div>
 <div class="fondo"></div>
 
 <header class="l-cab">
@@ -260,21 +291,23 @@
   var q = new URLSearchParams(location.search);
   // Los utm_* del link (por ejemplo, desde la bio o un anuncio) viajan con el registro
   ["utm_source", "utm_medium", "utm_campaign", "utm_content"].forEach(function (k) {
-    var v = q.get(k), campo = document.querySelector('input[name="' + k + '"]');
-    if (v && campo) campo.value = v.slice(0, 120);
+    var v = q.get(k);
+    if (v) document.querySelectorAll('input[name="' + k + '"]').forEach(function (c) { c.value = v.slice(0, 120); });
   });
   // Vino desde una guía gratis: después del registro vuelve a esa guía
   var volver = q.get("volver");
   if (volver && /^\/guias\/[a-z0-9-]{3,120}(\.html)?$/.test(volver)) {
-    document.querySelector('input[name="volver"]').value = volver;
+    document.querySelectorAll('input[name="volver"]').forEach(function (c) { c.value = volver; });
     var tit = document.querySelector("#gratis h2");
     if (tit) tit.textContent = "Regístrate gratis y te abro la guía que pediste";
+    document.getElementById("puerta-tit").textContent = "Regístrate gratis y te abro la guía que pediste";
   }
   var errores = { clave: "Esa clave no es válida. Revisa que esté bien escrita.", espera: "Demasiados intentos. Espera un minuto y prueba de nuevo.",
     config: "No pudimos completar esto ahora. Escríbeme por Instagram.", email: "Revisa tu email: parece que tiene un error." };
   var e = q.get("error");
   if (e && errores[e]) {
-    var p = document.getElementById(location.hash === "#gratis" ? "error-gratis" : "error");
+    var conAcceso = document.documentElement.classList.contains("con-acceso");
+    var p = document.getElementById(!conAcceso && e !== "clave" ? "error-puerta" : (location.hash === "#gratis" ? "error-gratis" : "error"));
     p.textContent = errores[e];
     p.style.display = "block";
   }
