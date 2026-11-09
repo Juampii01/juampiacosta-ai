@@ -57,7 +57,7 @@
   },
   {
    "sintoma": "Claude corre /commit por su cuenta cuando tú no lo pediste.",
-   "solucion": "Falta disable-model-invocation: true en el encabezado de la skill. Con ese campo, solo corre cuando escribís /commit. Ponlo en toda skill que haga cambios: commit, deploy, publicar."
+   "solucion": "Falta disable-model-invocation: true en el encabezado de la skill. Con ese campo, solo corre cuando escribes /commit. Ponlo en toda skill que haga cambios: commit, deploy, publicar."
   },
   {
    "sintoma": "Editaste .claude/commands/deploy.md y /deploy sigue haciendo lo de antes.",

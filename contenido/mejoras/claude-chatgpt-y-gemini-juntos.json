@@ -53,7 +53,7 @@
    "solucion": "La ayuda aclara que la importación es experimental y que Claude se queda sobre todo con temas de trabajo, así que lo personal puede no aparecer. Revisa qué guardó en Settings → Your Claude, en Manage al lado de Your memory, y corrige o agrega desde ahí."
   },
   {
-   "sintoma": "La prueba de la misma tarea da resultados que cambian cada vez que la repetís.",
+   "sintoma": "La prueba de la misma tarea da resultados que cambian cada vez que la repites.",
    "solucion": "Es normal: las respuestas no salen iguales dos veces. Por eso la guía pide dos o tres tareas distintas. Si un resultado te sorprende, repite esa misma tarea una vez más en ese asistente antes de anotar la conclusión."
   }
  ],

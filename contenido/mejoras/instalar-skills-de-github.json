@@ -4,12 +4,12 @@
  "correcciones": [
   {
    "antes": "Catálogo de plugins (marketplace): el repo tiene un archivo .claude-plugin/marketplace.json. En Claude Code lo agregas con /plugin marketplace add dueño/repo, y en la app desde Personalizar → Plugins → Agregar → Agregar marketplace.",
-   "despues": "Catálogo de plugins (marketplace): el repo tiene un archivo .claude-plugin/marketplace.json. En Claude Code lo agregas con /plugin marketplace add dueño/repo. En la app (planes pagos) entras a Customize → Plugins, tocas Add, después Add marketplace y Add from a repository, y escribís el repo como dueño/repo o con la URL completa.",
+   "despues": "Catálogo de plugins (marketplace): el repo tiene un archivo .claude-plugin/marketplace.json. En Claude Code lo agregas con /plugin marketplace add dueño/repo. En la app (planes pagos) entras a Customize → Plugins, tocas Add, después Add marketplace y Add from a repository, y escribes el repo como dueño/repo o con la URL completa.",
    "motivo": "La ayuda oficial de plugins da la ruta exacta: Customize > Plugins, Add, Add marketplace, Add from a repository, con el repo como URL o owner/repo. También aclara que los plugins están en los planes pagos (Pro, Max, Ultra, Team y Enterprise) y que en Team y Enterprise la organización puede limitar qué marketplaces se agregan.",
    "fuente": "https://support.claude.com/en/articles/13837440-use-plugins-in-claude"
   },
   {
-   "antes": "Las que subís tú no pasan por revisión de Anthropic.",
+   "antes": "Las que subes tú no pasan por revisión de Anthropic.",
    "despues": "La ayuda oficial pide instalar skills solo de fuentes confiables y revisarlas antes de activarlas: esa revisión la haces tú. En Enterprise, la organización puede sumar un escaneo que revisa las skills de terceros antes de que corran.",
    "motivo": "La ayuda oficial no habla de una revisión de Anthropic. Dice que hay que instalar skills solo de fuentes confiables, que los riesgos principales son prompt injection y exfiltración de datos, y que en Enterprise con escaneo activado cada skill de terceros se revisa antes de poder correr. Se ajusta para no afirmar más de lo que dice la fuente.",
    "fuente": "https://support.claude.com/en/articles/12512180-use-skills-in-claude"

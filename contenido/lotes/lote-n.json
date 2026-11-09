@@ -50,7 +50,7 @@
           "pasos": [
             "Terminaste una tarea y vas a otra que no tiene nada que ver: corre /rename con un nombre claro para encontrarla después.",
             "Corre /clear. Empiezas una conversación vacía; tu CLAUDE.md se sigue cargando. Si quieres volver a la anterior, usa /resume.",
-            "Si sigues con la misma tarea pero la charla se hizo larga, usa /compact con instrucciones, por ejemplo: /compact Focus on code samples and API usage. Así decidís tú qué conserva el resumen.",
+            "Si sigues con la misma tarea pero la charla se hizo larga, usa /compact con instrucciones, por ejemplo: /compact Focus on code samples and API usage. Así decides tú qué conserva el resumen.",
             "Si quieres que la compactación siempre cuide algo, agrega en tu CLAUDE.md una sección \"# Compact instructions\" con lo que tiene que mantener."
           ],
           "aviso": "/compact también gasta: tiene que leer toda la conversación para resumirla. Si no necesitas continuidad, /clear no cuesta nada.",
@@ -105,7 +105,7 @@
             "/model: cambias de modelo en la sesión. Según la documentación oficial, Sonnet resuelve bien la mayoría de las tareas de código y cuesta menos que Opus; deja Opus para decisiones de arquitectura o razonamiento de varios pasos.",
             "opusplan: con /model opusplan usa Opus en el modo plan y pasa a Sonnet para ejecutar.",
             "Subagentes simples: en la configuración del subagente puedes poner model: haiku.",
-            "/effort: bajá el nivel de esfuerzo (por ejemplo /effort low) para tareas simples. El razonamiento extendido se cobra como tokens de salida."
+            "/effort: baja el nivel de esfuerzo (por ejemplo /effort low) para tareas simples. El razonamiento extendido se cobra como tokens de salida."
           ]
         }
       ],
@@ -482,11 +482,11 @@
           ]
         },
         {
-          "h": "Decile exactamente dónde mirar",
+          "h": "Dile exactamente dónde mirar",
           "lista": [
             "Nombra el archivo y la función: en vez de \"arregla el login\", di \"agrega validación de datos a la función de login en auth.ts\".",
             "Usa @ para mencionar archivos: escribe @ y la ruta (por ejemplo @src/auth.ts) para pasarle ese archivo directo, sin que tenga que buscarlo.",
-            "Decile qué no tocar: \"no leas ni cambies nada fuera de src/pagos/\"."
+            "Dile qué no tocar: \"no leas ni cambies nada fuera de src/pagos/\"."
           ],
           "prompts": [
             {

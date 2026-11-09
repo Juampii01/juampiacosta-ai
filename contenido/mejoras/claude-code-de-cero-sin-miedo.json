@@ -3,8 +3,8 @@
  "verificada": "2026-11-08",
  "correcciones": [
   {
-   "antes": "Antes de editar un archivo o correr un comando, Claude Code te muestra qué quiere hacer y espera tu respuesta. Léelo: si está bien, elige Yes; si no, decile qué cambiar.",
-   "despues": "En el modo Manual, antes de editar un archivo o correr un comando, Claude Code te muestra qué quiere hacer y espera tu respuesta. Léelo: si está bien, elige Yes; si no, decile qué cambiar. En los modos Auto y Accept edits, en cambio, aplica los cambios de archivos sin esperarte y tú los revisas después.",
+   "antes": "Antes de editar un archivo o correr un comando, Claude Code te muestra qué quiere hacer y espera tu respuesta. Léelo: si está bien, elige Yes; si no, dile qué cambiar.",
+   "despues": "En el modo Manual, antes de editar un archivo o correr un comando, Claude Code te muestra qué quiere hacer y espera tu respuesta. Léelo: si está bien, elige Yes; si no, dile qué cambiar. En los modos Auto y Accept edits, en cambio, aplica los cambios de archivos sin esperarte y tú los revisas después.",
    "motivo": "La guía oficial de la app explica que en Manual Claude propone cada cambio y espera tu aprobación, mientras que en Auto o Accept edits aplica sus cambios de archivos y aparece un indicador como +12 -1 para revisarlos. La pausa para pedir permiso depende del modo.",
    "fuente": "https://code.claude.com/docs/en/desktop-quickstart"
   },

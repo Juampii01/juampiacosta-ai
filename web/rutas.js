@@ -56,7 +56,7 @@ var RUTAS = [
             "publicar-tu-app-y-conectar-tu-dominio", "de-demo-a-producto", "mantener-una-app-hecha-con-ia"]
   },
   {
-    id: "vender", color: "azul", t: "Vendé servicios de IA",
+    id: "vender", color: "azul", t: "Vende servicios de IA",
     d: "Qué armar para otros negocios, con qué herramientas y cómo presentarlo y cobrarlo.",
     pasos: ["el-plano-de-un-negocio-con-ia", "7-repos-para-vender-a-empresas", "4-agentes-whatsapp-para-vender", "oficina-de-agentes-ia",
             "cuanto-cobrar-por-automatizar-con-ia", "propuesta-comercial-con-claude", "seguimiento-de-prospectos-sin-ser-pesado"]

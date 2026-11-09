@@ -9,8 +9,8 @@
    "fuente": "https://github.com/garrytan/gstack"
   },
   {
-   "antes": "hyperframes: escribís HTML y sale un video MP4. Instalación:",
-   "despues": "hyperframes: escribís HTML y sale un video MP4. Necesita Node.js 22 o más nuevo y FFmpeg instalado. Instalación:",
+   "antes": "hyperframes: escribes HTML y sale un video MP4. Instalación:",
+   "despues": "hyperframes: escribes HTML y sale un video MP4. Necesita Node.js 22 o más nuevo y FFmpeg instalado. Instalación:",
    "motivo": "El README lista como requisitos Node.js 22+ y FFmpeg. Sin FFmpeg, el render a MP4 no funciona.",
    "fuente": "https://github.com/heygen-com/hyperframes"
   },

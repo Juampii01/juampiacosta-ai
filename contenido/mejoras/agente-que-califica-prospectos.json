@@ -52,7 +52,7 @@
   },
   {
    "sintoma": "La tarea programada no corrió el lunes.",
-   "solucion": "Las tareas locales corren solo con la app de escritorio abierta y la computadora despierta; si la computadora estaba dormida, esa corrida se saltea. Al despertar, Desktop hace una sola corrida de recuperación de la última que se perdió. Para evitarlo, prendé Keep computer awake en Settings (Desktop app o This computer, según tu versión)."
+   "solucion": "Las tareas locales corren solo con la app de escritorio abierta y la computadora despierta; si la computadora estaba dormida, esa corrida se saltea. Al despertar, Desktop hace una sola corrida de recuperación de la última que se perdió. Para evitarlo, prende Keep computer awake en Settings (Desktop app o This computer, según tu versión)."
   },
   {
    "sintoma": "La tarea programada arrancó pero quedó frenada sin terminar.",

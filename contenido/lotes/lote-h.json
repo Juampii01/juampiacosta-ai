@@ -23,7 +23,7 @@
         ],
         [
           "Qué no hace",
-          "No publica nada: el video lo subís tú."
+          "No publica nada: el video lo subes tú."
         ],
         [
           "Repo",
@@ -35,7 +35,7 @@
           "h": "Qué es",
           "p": [
             "youtube-agent-skill junta 11 skills para Claude pensadas para manejar un canal de YouTube. Es gratis, tiene licencia MIT y no te pide registrarte, conseguir una clave de API ni conectar tu cuenta.",
-            "Algo importante: no publica nada. Las skills escriben y analizan; el video lo subís tú."
+            "Algo importante: no publica nada. Las skills escriben y analizan; el video lo subes tú."
           ]
         },
         {
@@ -180,7 +180,7 @@
         ],
         [
           "Qué no hace",
-          "No publica ni se conecta a tu cuenta: tú decidís y publicas."
+          "No publica ni se conecta a tu cuenta: tú decides y publicas."
         ],
         [
           "Repo",
@@ -192,7 +192,7 @@
           "h": "Qué es",
           "p": [
             "instagram-agent-skill es un paquete de 13 skills para Claude que hace el trabajo pesado de tu perfil y tu contenido. Es gratis, con licencia MIT, y no te pide registrarte, una clave de API ni conectar tu cuenta.",
-            "Importante: no publica nada. Las skills escriben; tú decidís y publicas."
+            "Importante: no publica nada. Las skills escriben; tú decides y publicas."
           ]
         },
         {
@@ -717,7 +717,7 @@
             "ui-ux-pro-max: criterio de diseño, paletas y tipografías. Instalación: /plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill y /plugin install ui-ux-pro-max@ui-ux-pro-max-skill <a href=\"https://github.com/nextlevelbuilder/ui-ux-pro-max-skill\" target=\"_blank\" rel=\"noopener\">github.com/nextlevelbuilder/ui-ux-pro-max-skill ↗</a>",
             "taste-skill: webs de empresa que se ven profesionales en lugar de una landing genérica. Necesita Node 22 o más nuevo y Chrome, Edge o Chromium. Instalación: /plugin marketplace add Leonxlnx/taste-skill y /plugin install taste-skill@taste-skill <a href=\"https://github.com/Leonxlnx/taste-skill\" target=\"_blank\" rel=\"noopener\">github.com/Leonxlnx/taste-skill ↗</a>",
             "impeccable: el vocabulario de diseño para pulir y revisar el front end (polish, critique, audit y más). Instalación: en la carpeta del proyecto, npx impeccable install; después /impeccable init <a href=\"https://github.com/pbakaus/impeccable\" target=\"_blank\" rel=\"noopener\">github.com/pbakaus/impeccable ↗</a>",
-            "hyperframes: escribís HTML y sale un video MP4. Instalación: en la terminal, claude plugin marketplace add heygen-com/hyperframes y claude plugin install hyperframes@hyperframes <a href=\"https://github.com/heygen-com/hyperframes\" target=\"_blank\" rel=\"noopener\">github.com/heygen-com/hyperframes ↗</a>",
+            "hyperframes: escribes HTML y sale un video MP4. Instalación: en la terminal, claude plugin marketplace add heygen-com/hyperframes y claude plugin install hyperframes@hyperframes <a href=\"https://github.com/heygen-com/hyperframes\" target=\"_blank\" rel=\"noopener\">github.com/heygen-com/hyperframes ↗</a>",
             "skills de Emil Kowalski: animaciones de interfaz fluidas. Instalación: npx skills@latest add emilkowalski/skills <a href=\"https://github.com/emilkowalski/skills\" target=\"_blank\" rel=\"noopener\">github.com/emilkowalski/skills ↗</a>",
             "gsap: animación web profesional (skills oficiales de GSAP). Instalación: npx skills add https://github.com/greensock/gsap-skills <a href=\"https://github.com/greensock/gsap-skills\" target=\"_blank\" rel=\"noopener\">github.com/greensock/gsap-skills ↗</a>"
           ]
@@ -1045,7 +1045,7 @@
         },
         {
           "q": "¿Necesito saber diseñar?",
-          "a": "No hace falta, pero sí tener criterio para elegir: las skills te proponen y tú decidís qué queda."
+          "a": "No hace falta, pero sí tener criterio para elegir: las skills te proponen y tú decides qué queda."
         }
       ],
       "usos": [
@@ -1248,7 +1248,7 @@
       ],
       "secciones": [
         {
-          "h": "Qué conseguís",
+          "h": "Qué consigues",
           "lista": [
             "Un post adaptado al formato de cada red (vertical, cuadrado u horizontal).",
             "Un calendario lleno: pones la hora y te olvidas.",
@@ -1521,7 +1521,7 @@
         {
           "h": "1. Motion design abierto: Open Design",
           "p": [
-            "Open Design es un estudio de diseño con agentes de IA. Con su editor HyperFrames describís un video de motion, el agente lo arma y lo exportas a MP4. Funciona con Claude Code, Claude Desktop, Codex, Cursor y muchos agentes más."
+            "Open Design es un estudio de diseño con agentes de IA. Con su editor HyperFrames describes un video de motion, el agente lo arma y lo exportas a MP4. Funciona con Claude Code, Claude Desktop, Codex, Cursor y muchos agentes más."
           ],
           "lista": [
             "Repositorio: <a href=\"https://github.com/nexu-io/open-design\" target=\"_blank\" rel=\"noopener\">github.com/nexu-io/open-design ↗</a>",
@@ -1829,7 +1829,7 @@
         {
           "h": "3. Piezas 3D: text-to-cad",
           "p": [
-            "Describís una pieza con palabras (o con una imagen) y tu agente genera archivos 3D reales en STEP, STL, 3MF o GLB para imprimir o mecanizar. También revisa si la pieza se puede fabricar."
+            "Describes una pieza con palabras (o con una imagen) y tu agente genera archivos 3D reales en STEP, STL, 3MF o GLB para imprimir o mecanizar. También revisa si la pieza se puede fabricar."
           ],
           "lista": [
             "Repositorio: <a href=\"https://github.com/earthtojake/text-to-cad\" target=\"_blank\" rel=\"noopener\">github.com/earthtojake/text-to-cad ↗</a>",
@@ -1936,7 +1936,7 @@
           "h": "Las piezas",
           "lista": [
             "Hypit: le da a tu agente un sistema para hacer video. Le pasas un video y lo clona como un flujo completo (gancho, ritmo, escenas, subtítulos y efectos). Es gratis, con licencia propia basada en Apache 2.0 con condiciones. <a href=\"https://github.com/hypit-ai/hypit\" target=\"_blank\" rel=\"noopener\">github.com/hypit-ai/hypit ↗</a>",
-            "HyperFrames: escribís el video en HTML y lo convierte en MP4 (Apache 2.0). <a href=\"https://github.com/heygen-com/hyperframes\" target=\"_blank\" rel=\"noopener\">github.com/heygen-com/hyperframes ↗</a>",
+            "HyperFrames: escribes el video en HTML y lo convierte en MP4 (Apache 2.0). <a href=\"https://github.com/heygen-com/hyperframes\" target=\"_blank\" rel=\"noopener\">github.com/heygen-com/hyperframes ↗</a>",
             "Rhubarb Lip Sync: analiza tu audio y genera qué forma de boca va en cada momento, para animar a un personaje 2D (MIT). <a href=\"https://github.com/DanielSWolf/rhubarb-lip-sync\" target=\"_blank\" rel=\"noopener\">github.com/DanielSWolf/rhubarb-lip-sync ↗</a>",
             "Claude Code: el agente que junta todo."
           ]
@@ -2005,7 +2005,7 @@
       "faq": [
         {
           "q": "¿Necesito saber editar?",
-          "a": "No. Describís lo que quieres y el agente arma el borrador; tú revisas."
+          "a": "No. Describes lo que quieres y el agente arma el borrador; tú revisas."
         },
         {
           "q": "¿Es todo gratis?",

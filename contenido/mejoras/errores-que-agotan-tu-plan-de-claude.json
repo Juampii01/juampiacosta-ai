@@ -9,8 +9,8 @@
    "fuente": "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work"
   },
   {
-   "antes": "Esfuerzo alto en tareas de rutina: bajá el nivel de esfuerzo o apaga el razonamiento extendido cuando no hace falta.",
-   "despues": "Esfuerzo alto en tareas de rutina: bajá el nivel de esfuerzo cuando no hace falta. En Claude Opus 5.5 y Sonnet 5.5 el razonamiento está siempre prendido, así que ahí la única perilla es el esfuerzo.",
+   "antes": "Esfuerzo alto en tareas de rutina: baja el nivel de esfuerzo o apaga el razonamiento extendido cuando no hace falta.",
+   "despues": "Esfuerzo alto en tareas de rutina: baja el nivel de esfuerzo cuando no hace falta. En Claude Opus 5.5 y Sonnet 5.5 el razonamiento está siempre prendido, así que ahí la única perilla es el esfuerzo.",
    "motivo": "La ayuda oficial aclara que Claude Opus 5.5 y Sonnet 5.5 tienen el razonamiento siempre activo y que la forma de cuidar el uso en esos modelos es bajar el esfuerzo. El tutorial oficial de modelos dice que el esfuerzo por defecto alcanza para la mayoría del trabajo y que bajarlo usa menos de tu límite.",
    "fuente": "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work"
   },
@@ -68,7 +68,7 @@
   },
   {
    "sintoma": "Quieres apagar el razonamiento extendido y no encuentras cómo.",
-   "solucion": "En Claude Opus 5.5 y Sonnet 5.5 el razonamiento está siempre prendido. Bajá el esfuerzo para las tareas de rutina o pasa esas tareas a un modelo más liviano."
+   "solucion": "En Claude Opus 5.5 y Sonnet 5.5 el razonamiento está siempre prendido. Baja el esfuerzo para las tareas de rutina o pasa esas tareas a un modelo más liviano."
   }
  ],
  "kit": [

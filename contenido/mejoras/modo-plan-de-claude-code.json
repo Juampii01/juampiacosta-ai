@@ -65,7 +65,7 @@
   },
   {
    "sintoma": "Quieres que un proyecto arranque siempre en modo plan.",
-   "solucion": "Pon defaultMode en plan dentro de .claude/settings.json del proyecto (el archivo del kit). Vale para las sesiones que abrís en la terminal; en la extensión de VS Code se configura con claudeCode.initialPermissionMode en tus ajustes de usuario."
+   "solucion": "Pon defaultMode en plan dentro de .claude/settings.json del proyecto (el archivo del kit). Vale para las sesiones que abres en la terminal; en la extensión de VS Code se configura con claudeCode.initialPermissionMode en tus ajustes de usuario."
   }
  ],
  "kit": [

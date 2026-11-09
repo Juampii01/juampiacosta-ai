@@ -65,7 +65,7 @@
  "si_falla": [
   {
    "sintoma": "No aparece la sección Skills o las skills se ven en gris.",
-   "solucion": "Falta la ejecución de código. En planes individuales, prendé \"Code execution and file creation\" (o \"Create and edit files\") en Settings → Capabilities. En Team o Enterprise, el owner la prende en Organization settings → Plugins & skills, en la pestaña Policy."
+   "solucion": "Falta la ejecución de código. En planes individuales, prende \"Code execution and file creation\" (o \"Create and edit files\") en Settings → Capabilities. En Team o Enterprise, el owner la prende en Organization settings → Plugins & skills, en la pestaña Policy."
   },
   {
    "sintoma": "Al subir una skill aparece un error de formato o de archivo faltante.",

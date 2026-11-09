@@ -4,7 +4,7 @@
  "correcciones": [
   {
    "antes": "En la app de escritorio: tilda la opción worktree al empezar una sesión.",
-   "despues": "En la app de escritorio, en un proyecto con git: antes de empezar la sesión prendé el botón Worktree en la fila debajo del cuadro de mensaje. En el diseño anterior de la app es una casilla worktree al lado del nombre de la rama.",
+   "despues": "En la app de escritorio, en un proyecto con git: antes de empezar la sesión prende el botón Worktree en la fila debajo del cuadro de mensaje. En el diseño anterior de la app es una casilla worktree al lado del nombre de la rama.",
    "motivo": "La documentación de la app de escritorio dice que en el diseño actual Worktree es un botón en la fila debajo del cuadro de mensaje, que viene apagado, y que solo en el diseño anterior es una casilla junto al nombre de la rama. También aclara que hace falta que el proyecto sea un repositorio git.",
    "fuente": "https://code.claude.com/docs/en/desktop"
   }

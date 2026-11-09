@@ -46,7 +46,7 @@
   },
   {
    "sintoma": "No llegan las notificaciones al celular con Remote Control.",
-   "solucion": "En la terminal corre /config y prendé Push when Claude decides o Push when actions required. Si dice No mobile registered, abre la app de Claude en el teléfono para que se registre. En iPhone revisa los modos de concentración y el resumen de notificaciones en Ajustes, Notificaciones, Claude."
+   "solucion": "En la terminal corre /config y prende Push when Claude decides o Push when actions required. Si dice No mobile registered, abre la app de Claude en el teléfono para que se registre. En iPhone revisa los modos de concentración y el resumen de notificaciones en Ajustes, Notificaciones, Claude."
   }
  ],
  "kit": [

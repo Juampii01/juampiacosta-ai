@@ -283,7 +283,7 @@
    "tipo": "Librería",
    "t": "SuperClaude Framework",
    "d": "Suma unos 30 comandos /sc: a Claude Code para investigar, hacer lluvia de ideas, implementar, testear y gestionar proyectos.",
-   "para": "Tener atajos listos para las tareas que repetís todos los días.",
+   "para": "Tener atajos listos para las tareas que repites todos los días.",
    "cmds": [
     {
      "donde": "Terminal",
@@ -366,7 +366,7 @@
    "cat": "Herramientas",
    "tipo": "App",
    "t": "Spec Kit (GitHub)",
-   "d": "El kit de GitHub para programar a partir de especificaciones: primero escribís qué quieres, después el plan y las tareas, y recién ahí Claude programa.",
+   "d": "El kit de GitHub para programar a partir de especificaciones: primero escribes qué quieres, después el plan y las tareas, y recién ahí Claude programa.",
    "para": "Que Claude construya lo que pediste y no lo que se imaginó.",
    "cmds": [
     {

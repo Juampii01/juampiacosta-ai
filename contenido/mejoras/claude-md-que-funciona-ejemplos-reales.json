@@ -72,7 +72,7 @@
    "solucion": "Esas reglas se cargan cuando Claude lee un archivo que coincide con el patrón, no antes. Revisa el patrón (entre comillas, con la ruta desde la raíz del proyecto, por ejemplo src/api/**/*.ts) y pídele a Claude que lea primero un archivo de esa carpeta."
   },
   {
-   "sintoma": "Escribís /doctor prompt-audit y no pasa nada o no existe.",
+   "sintoma": "Escribes /doctor prompt-audit y no pasa nada o no existe.",
    "solucion": "Necesita Claude Code v2.1.283 o más nuevo. Fíjate tu versión con claude --version y actualiza. Mientras tanto, usa el prompt Poda mensual de la guía."
   },
   {

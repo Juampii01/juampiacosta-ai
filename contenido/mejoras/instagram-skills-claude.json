@@ -49,7 +49,7 @@
  },
  "si_falla": [
   {
-   "sintoma": "Escribís /ig-reel y Claude Code no lo reconoce.",
+   "sintoma": "Escribes /ig-reel y Claude Code no lo reconoce.",
    "solucion": "Si instalaste como plugin, el comando es /instagram-agent:ig-reel. Escribe / y busca instagram-agent en la lista. Si copiaste a mano, confirma que existan las carpetas en ~/.claude/skills/ (por ejemplo ~/.claude/skills/ig-reel/SKILL.md)."
   },
   {

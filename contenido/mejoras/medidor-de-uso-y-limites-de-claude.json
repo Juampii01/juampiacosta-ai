@@ -49,7 +49,7 @@
   },
   {
    "sintoma": "Aparece \"5-hour limit reached - resets [hora]\" o \"You've reached your weekly limit\".",
-   "solucion": "Espera al reinicio que marca el mensaje o, en Pro, Max o Ultra, prendé los usage credits en Settings → Usage. Antes de volver, mira la lista de qué gasta más: si el día fue de Research, archivos largos o esfuerzo alto, eso explica la barra."
+   "solucion": "Espera al reinicio que marca el mensaje o, en Pro, Max o Ultra, prende los usage credits en Settings → Usage. Antes de volver, mira la lista de qué gasta más: si el día fue de Research, archivos largos o esfuerzo alto, eso explica la barra."
   },
   {
    "sintoma": "Prendiste los usage credits y sigues frenado.",
@@ -57,7 +57,7 @@
   },
   {
    "sintoma": "La barra baja rápido aunque solo estuviste en el chat.",
-   "solucion": "Fíjate si usaste Claude Code o la app de escritorio en el mismo período: todo sale del mismo límite. También revisa si el chat ya es muy largo, si tienes muchos conectores o si el modelo y el esfuerzo están altos. Abre un chat nuevo con un resumen y bajá el esfuerzo en lo que es rutina."
+   "solucion": "Fíjate si usaste Claude Code o la app de escritorio en el mismo período: todo sale del mismo límite. También revisa si el chat ya es muy largo, si tienes muchos conectores o si el modelo y el esfuerzo están altos. Abre un chat nuevo con un resumen y baja el esfuerzo en lo que es rutina."
   },
   {
    "sintoma": "Aparece \"Your message will exceed the length limit for this chat\".",

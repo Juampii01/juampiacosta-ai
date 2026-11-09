@@ -10,7 +10,7 @@
   },
   {
    "antes": "Cuentas y datos: todas las cuentas y los datos son del cliente. Tú accedes solo para trabajar y te sacas al terminar.",
-   "despues": "Cuentas y datos: todas las cuentas y los datos son del cliente. Tú accedes solo para trabajar y te sacas al terminar. Antes de salir, compartís con el cliente todo lo que creaste (proyectos con permiso de edición y skills subidas desde una cuenta del negocio), porque si te sacan de la organización tus proyectos privados dejan de estar accesibles para ellos.",
+   "despues": "Cuentas y datos: todas las cuentas y los datos son del cliente. Tú accedes solo para trabajar y te sacas al terminar. Antes de salir, compartes con el cliente todo lo que creaste (proyectos con permiso de edición y skills subidas desde una cuenta del negocio), porque si te sacan de la organización tus proyectos privados dejan de estar accesibles para ellos.",
    "motivo": "La ayuda oficial indica que, cuando se remueve a un usuario de una organización Team o Enterprise, sus proyectos privados quedan inaccesibles para el resto y sus skills no compartidas quedan en su cuenta. Recomienda pasar los proyectos a Can edit antes de la baja. Si el acuerdo solo dice \"te sacas al terminar\", el cliente puede perder parte de lo que pagó.",
    "fuente": "https://support.claude.com/en/articles/12053672-what-happens-to-a-user-s-data-when-they-are-removed-from-a-team-or-enterprise-organization"
   }

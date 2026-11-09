@@ -68,7 +68,7 @@
  "si_falla": [
   {
    "sintoma": "Pides el artifact y Claude te devuelve el código en el chat, sin panel al costado.",
-   "solucion": "Prendé Create and edit files en Settings → Capabilities (en Team o Enterprise, pídeselo al admin) y vuelve a pedirlo en un chat nuevo, diciendo explícitamente \"ármame un artifact HTML\"."
+   "solucion": "Prende Create and edit files en Settings → Capabilities (en Team o Enterprise, pídeselo al admin) y vuelve a pedirlo en un chat nuevo, diciendo explícitamente \"ármame un artifact HTML\"."
   },
   {
    "sintoma": "En el artifact el texto se sale de la tarjeta o queda con letra chiquita.",
@@ -84,7 +84,7 @@
   },
   {
    "sintoma": "Canva arma un diseño que no respeta tu tabla de slides.",
-   "solucion": "Pídele de a una slide por vez, pegando el título y el texto exactos, y decile que no cambie el texto. Para que se vea como tu marca, arranca desde un diseño tuyo en Canva y termina los detalles a mano."
+   "solucion": "Pídele de a una slide por vez, pegando el título y el texto exactos, y dile que no cambie el texto. Para que se vea como tu marca, arranca desde un diseño tuyo en Canva y termina los detalles a mano."
   }
  ],
  "kit": [

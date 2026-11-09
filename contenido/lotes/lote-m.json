@@ -61,7 +61,7 @@
             "Separa tus tareas en pesadas (Research, archivos largos, esfuerzo alto, Opus o Fable, tareas de varios pasos) y livianas (mails, resúmenes cortos, preguntas puntuales).",
             "Reparte las pesadas en distintos días para no quemar todo el semanal de golpe.",
             "Junta el trabajo pesado en una misma sesión de cinco horas en vez de desparramarlo en mensajes sueltos todo el día.",
-            "A mitad de semana, mira la barra semanal. Si vas muy adelantado, pasa las tareas livianas a un modelo más liviano y bajá el esfuerzo.",
+            "A mitad de semana, mira la barra semanal. Si vas muy adelantado, pasa las tareas livianas a un modelo más liviano y baja el esfuerzo.",
             "Deja un margen para urgencias: no programes trabajo importante justo antes del reinicio."
           ],
           "prompts": [
@@ -78,7 +78,7 @@
           ],
           "pasos": [
             "Entra a Settings → Usage.",
-            "Busca la sección Usage credits y prendé el interruptor.",
+            "Busca la sección Usage credits y prende el interruptor.",
             "Carga un medio de pago.",
             "Con Adjust limit (ajustar límite) pon un tope de gasto mensual.",
             "Compra créditos con Buy usage credits."
@@ -329,7 +329,7 @@
           "pasos": [
             "Antes de adjuntar, pregúntate qué parte del documento necesitas de verdad.",
             "Si es un capítulo, unas páginas o una tabla, saca solo eso (copia el texto o guarda esas páginas como un PDF aparte).",
-            "Si tiene que ser el documento entero, decile a Claude en qué páginas mirar. Usa los números de página que muestra tu visor de PDF, no los que están impresos en el documento.",
+            "Si tiene que ser el documento entero, dile a Claude en qué páginas mirar. Usa los números de página que muestra tu visor de PDF, no los que están impresos en el documento.",
             "Si el archivo es muy grande, pártelo en tramos y trabaja cada uno en su chat."
           ],
           "prompts": [
@@ -408,7 +408,7 @@
     },
     {
       "slug": "herramientas-y-esfuerzo-justos",
-      "t": "Herramientas y esfuerzo justos: prendé solo lo que vas a usar",
+      "t": "Herramientas y esfuerzo justos: prende solo lo que vas a usar",
       "d": "Búsqueda web, Research, conectores, razonamiento, nivel de esfuerzo y artifacts: cuándo te conviene prenderlos y cuándo apagarlos para que tu plan rinda más.",
       "tema": "Claude",
       "min": 8,
@@ -417,7 +417,7 @@
           "h": "Por qué las herramientas pesan",
           "p": [
             "El centro de ayuda lo dice directo: las herramientas y los conectores consumen muchos tokens. Cada conector que se carga ocupa lugar en la conversación, y lo que trae una búsqueda también entra al chat.",
-            "La regla es simple: prendé lo que esa conversación necesita y nada más."
+            "La regla es simple: prende lo que esa conversación necesita y nada más."
           ]
         },
         {
@@ -475,7 +475,7 @@
             "High: el mejor equilibrio general para trabajo que importa.",
             "Extra high: trabajos largos de programación y tareas de agentes.",
             "Max: el razonamiento más profundo. Para problemas difíciles de verdad.",
-            "Razonamiento apagado: si el modelo lo permite y la tarea es simple, apágalo. En los modelos donde no se puede apagar, bajá el esfuerzo."
+            "Razonamiento apagado: si el modelo lo permite y la tarea es simple, apágalo. En los modelos donde no se puede apagar, baja el esfuerzo."
           ]
         },
         {

@@ -3,8 +3,8 @@
  "verificada": "2026-11-08",
  "correcciones": [
   {
-   "antes": "Además del chat, en los planes pagos trae Cowork: le describís una tarea de varios pasos y Claude la hace trabajando directo con los archivos de las carpetas que le habilitas. También trae Claude Code.",
-   "despues": "Además del chat, en los planes pagos trae Cowork: le describís una tarea de varios pasos y Claude la hace. Desde la app de escritorio puede trabajar directo con los archivos de las carpetas que le conectas. Cowork también está en la web y en el celular (en Team, en beta; en Enterprise, si el owner lo habilita). La app también trae Claude Code.",
+   "antes": "Además del chat, en los planes pagos trae Cowork: le describes una tarea de varios pasos y Claude la hace trabajando directo con los archivos de las carpetas que le habilitas. También trae Claude Code.",
+   "despues": "Además del chat, en los planes pagos trae Cowork: le describes una tarea de varios pasos y Claude la hace. Desde la app de escritorio puede trabajar directo con los archivos de las carpetas que le conectas. Cowork también está en la web y en el celular (en Team, en beta; en Enterprise, si el owner lo habilita). La app también trae Claude Code.",
    "motivo": "La ayuda oficial de Cowork dice que está en los planes pagos (Pro, Max, Ultra, Team y Enterprise), en la app de escritorio para macOS, Windows y Linux (beta), y también en la web y en el celular, en beta para Team y en Enterprise cuando un owner lo habilita. El acceso a carpetas locales pasa por la app de escritorio.",
    "fuente": "https://support.claude.com/en/articles/13345190-get-started-with-cowork"
   },
@@ -16,7 +16,7 @@
   },
   {
    "antes": "No. Cowork corre en la app de escritorio de macOS o Windows.",
-   "despues": "Sí, en los planes pagos. Abre la app de Claude para iOS o Android actualizada y elige Cowork en la caja de mensaje (si tienes la experiencia nueva de Claude no hay opción para elegir: le describís la tarea en cualquier chat). Para trabajar con archivos de tu computadora, la app de escritorio tiene que estar abierta en esa computadora.",
+   "despues": "Sí, en los planes pagos. Abre la app de Claude para iOS o Android actualizada y elige Cowork en la caja de mensaje (si tienes la experiencia nueva de Claude no hay opción para elegir: le describes la tarea en cualquier chat). Para trabajar con archivos de tu computadora, la app de escritorio tiene que estar abierta en esa computadora.",
    "motivo": "Desactualizado. La ayuda oficial dice que Cowork está en escritorio, web, celular y en el panel lateral de Claude en Chrome; en Pro y Max corre en la nube. La app de escritorio también está en Linux (beta). El acceso a archivos locales desde el celular pasa por la app de escritorio abierta.",
    "fuente": "https://support.claude.com/en/articles/15520349-use-claude-cowork-on-web-desktop-and-mobile"
   }
@@ -43,7 +43,7 @@
  "si_falla": [
   {
    "sintoma": "No veo la opción Cowork en la caja de mensaje.",
-   "solucion": "Revisa tu plan: Cowork no está en Free. Si tienes plan pago, actualiza la app. Si tienes la experiencia nueva de Claude, no hay opción para elegir: le describís la tarea en cualquier conversación. En Enterprise, la web y el celular dependen de que el owner lo habilite."
+   "solucion": "Revisa tu plan: Cowork no está en Free. Si tienes plan pago, actualiza la app. Si tienes la experiencia nueva de Claude, no hay opción para elegir: le describes la tarea en cualquier conversación. En Enterprise, la web y el celular dependen de que el owner lo habilite."
   },
   {
    "sintoma": "Cowork dice que no puede acceder a mis archivos.",

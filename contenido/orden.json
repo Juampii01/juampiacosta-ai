@@ -23,7 +23,7 @@
   },
   {
    "id": "construi",
-   "n": "Parte 3 · Vendé y construye",
+   "n": "Parte 3 · Vende y construye",
    "d": "El sistema para venderle IA a empresas, los rubros listos para replicar y tus propias apps con Claude Code.",
    "muestra": [
     "sistema-base-modulo-1-la-oferta",
@@ -494,7 +494,7 @@
     "id": "h-ahorro",
     "e": "💸",
     "n": "Medir y gastar menos",
-    "d": "Mira cuánto consumís y achica el contexto.",
+    "d": "Mira cuánto consumes y achica el contexto.",
     "items": [
      "ccusage",
      "Claude Code Usage Monitor",

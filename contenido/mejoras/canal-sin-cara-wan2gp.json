@@ -27,7 +27,7 @@
  "si_falla": [
   {
    "sintoma": "WanGP corta con \"CUDA out of memory\" al cargar el modelo o en medio de la generación.",
-   "solucion": "Bajá la resolución y la cantidad de cuadros (videos más cortos). Si sigue, usa un perfil de memoria más ahorrativo: la guía de problemas de WanGP propone arrancar con python wgp.py --profile 4, o elegir un modelo más chico. Cierra todo lo que use la placa mientras genera."
+   "solucion": "Baja la resolución y la cantidad de cuadros (videos más cortos). Si sigue, usa un perfil de memoria más ahorrativo: la guía de problemas de WanGP propone arrancar con python wgp.py --profile 4, o elegir un modelo más chico. Cierra todo lo que use la placa mientras genera."
   },
   {
    "sintoma": "La computadora se queda sin memoria RAM (se pone muy lenta o se cierra WanGP).",

@@ -82,7 +82,7 @@
      "pasos": [
       "Lee el guion en voz alta, de corrido, como si estuvieras grabando.",
       "Marca cada lugar donde te trabas o donde dices \"esto no lo diría así\".",
-      "Pégale a Claude solo esas partes y decile cómo lo dirías tú. Pídele que ajuste el resto para que combine.",
+      "Pégale a Claude solo esas partes y dile cómo lo dirías tú. Pídele que ajuste el resto para que combine.",
       "Si una corrección se repite (por ejemplo, siempre te cambia una palabra), súmala a tu ficha de voz."
      ],
      "prompts": [
@@ -104,7 +104,7 @@
     },
     {
      "q": "Me sigue saliendo genérico",
-     "a": "Pásale más transcripciones reales y decile exactamente qué frase sonó a máquina. Las correcciones concretas le sirven más que \"hazlo más natural\"."
+     "a": "Pásale más transcripciones reales y dile exactamente qué frase sonó a máquina. Las correcciones concretas le sirven más que \"hazlo más natural\"."
     }
    ],
    "fuentes": [
@@ -142,7 +142,7 @@
      "h": "Primero el texto, después el diseño",
      "p": [
       "El error más común es pedir el carrusel terminado de una. Sale lindo pero flojo, o con buen contenido metido en un diseño que no se lee.",
-      "Hazlo en dos vueltas: primero cierras qué dice cada slide y después lo pasas a diseño. Así corregís cada cosa por separado."
+      "Hazlo en dos vueltas: primero cierras qué dice cada slide y después lo pasas a diseño. Así corriges cada cosa por separado."
      ]
     },
     {
@@ -482,7 +482,7 @@
      "lista": [
       "Situación: \"¿Cómo lo estás resolviendo hoy?\"",
       "Urgencia: \"¿Para cuándo te gustaría tenerlo resuelto?\"",
-      "Decisión: \"¿Lo decidís tú o lo hablas con alguien más?\"",
+      "Decisión: \"¿Lo decides tú o lo hablas con alguien más?\"",
       "Encaje: \"¿Qué te hizo escribirme justo ahora?\""
      ]
     },
@@ -536,7 +536,7 @@
     ],
     [
      "Qué no hace",
-     "No decide tu precio ni tus plazos. Eso lo definís tú."
+     "No decide tu precio ni tus plazos. Eso lo defines tú."
     ]
    ],
    "secciones": [
@@ -570,7 +570,7 @@
      "prompts": [
       {
        "t": "Propuesta",
-       "c": "Con las notas de la llamada y lo que revisamos, arma una propuesta para [NOMBRE DEL CLIENTE O EMPRESA].\nLo que ofrezco: [TU SERVICIO].\nPrecio y forma de pago: [LOS DEFINÍS TÚ].\nPlazo: [LO DEFINÍS TÚ].\n\nEstructura:\n1. Lo que entendí: su situación y su objetivo, usando sus palabras.\n2. Qué propongo: el enfoque en 3 o 4 pasos.\n3. Qué incluye y qué no incluye, en dos listas.\n4. Plazo y etapas.\n5. Inversión y forma de pago.\n6. Próximo paso: una sola acción concreta con fecha para responder.\n\nTono: claro, profesional y directo. Nada de relleno ni frases de folleto. Máximo dos páginas. No prometas resultados ni pongas cifras que yo no te di."
+       "c": "Con las notas de la llamada y lo que revisamos, arma una propuesta para [NOMBRE DEL CLIENTE O EMPRESA].\nLo que ofrezco: [TU SERVICIO].\nPrecio y forma de pago: [LOS DEFINES TÚ].\nPlazo: [LO DEFINES TÚ].\n\nEstructura:\n1. Lo que entendí: su situación y su objetivo, usando sus palabras.\n2. Qué propongo: el enfoque en 3 o 4 pasos.\n3. Qué incluye y qué no incluye, en dos listas.\n4. Plazo y etapas.\n5. Inversión y forma de pago.\n6. Próximo paso: una sola acción concreta con fecha para responder.\n\nTono: claro, profesional y directo. Nada de relleno ni frases de folleto. Máximo dos páginas. No prometas resultados ni pongas cifras que yo no te di."
       }
      ]
     },

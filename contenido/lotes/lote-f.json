@@ -45,7 +45,7 @@
     {
      "h": "Antes y después",
      "p": [
-      "Antes: \"Escríbeme un mail para mis clientes sobre los nuevos horarios.\" Claude no sabe qué negocio tienes, a quién le escribís, qué tono usas ni qué cambió.",
+      "Antes: \"Escríbeme un mail para mis clientes sobre los nuevos horarios.\" Claude no sabe qué negocio tienes, a quién le escribes, qué tono usas ni qué cambió.",
       "Después: el mismo pedido con las cuatro piezas, como el prompt de abajo. La diferencia no es el largo: es que ya no tiene que adivinar."
      ],
      "prompts": [
@@ -135,7 +135,7 @@
     {
      "h": "Si trabajas seguido en lo mismo, usa un proyecto",
      "p": [
-      "Los proyectos de Claude son espacios con su propio historial de chats, sus archivos y sus instrucciones. Subís tus documentos de referencia y escribís las reglas una sola vez, y cada chat nuevo dentro del proyecto ya arranca con eso.",
+      "Los proyectos de Claude son espacios con su propio historial de chats, sus archivos y sus instrucciones. Subes tus documentos de referencia y escribes las reglas una sola vez, y cada chat nuevo dentro del proyecto ya arranca con eso.",
       "Así puedes abrir chats cortos y enfocados sin tener que explicar todo de nuevo. El centro de ayuda también aconseja mantener las instrucciones del proyecto breves y sacar archivos que ya no uses."
      ],
      "aviso": "En el plan gratis los proyectos tienen un límite de cantidad. Revisa el centro de ayuda para ver el de tu cuenta."
@@ -171,7 +171,7 @@
   {
    "slug": "el-bucle-de-verificacion",
    "t": "El bucle de verificación: que Claude revise su trabajo",
-   "d": "Escribís una vez tu checklist de calidad y le pides a Claude que revise cada entrega contra esa lista antes de dártela.",
+   "d": "Escribes una vez tu checklist de calidad y le pides a Claude que revise cada entrega contra esa lista antes de dártela.",
    "tema": "Productividad",
    "min": 8,
    "fichaNombre": "Bucle de verificación",
@@ -288,7 +288,7 @@
       "Dónde están tus datos: si tu información ya vive en una herramienta conectada a un asistente, empieza por ahí.",
       "Qué te devuelve mejor para ti: prueba la misma tarea en dos y quédate con el que menos tengas que corregir.",
       "Qué plan pagas: no tiene sentido pagar tres. Elige uno principal y usa los otros para una segunda opinión.",
-      "Qué política de datos te cierra: revisa en cada uno qué hace con lo que subís antes de poner información sensible."
+      "Qué política de datos te cierra: revisa en cada uno qué hace con lo que subes antes de poner información sensible."
      ]
     },
     {
@@ -348,7 +348,7 @@
    "slug": "analizar-planillas-con-claude",
    "post": "EXCEL",
    "t": "Analizar planillas con Claude sin saber fórmulas",
-   "d": "Subís tu Excel o CSV, le haces preguntas en criollo, le pides gráficos y verificas los números antes de usarlos.",
+   "d": "Subes tu Excel o CSV, le haces preguntas en criollo, le pides gráficos y verificas los números antes de usarlos.",
    "tema": "Productividad",
    "min": 9,
    "fichaNombre": "Análisis de planillas",
@@ -468,7 +468,7 @@
     {
      "h": "Lo que necesitas",
      "lista": [
-      "Para reuniones: la transcripción en texto. La da tu herramienta de videollamadas o de notas, o la escribís tú. Claude trabaja sobre el texto que le pasas.",
+      "Para reuniones: la transcripción en texto. La da tu herramienta de videollamadas o de notas, o la escribes tú. Claude trabaja sobre el texto que le pasas.",
       "Para mails: el conector de Gmail de Claude, disponible para todos los usuarios en la web y en la app de escritorio.",
       "Para los dos: cinco minutos para revisar el resultado antes de mandarlo."
      ]

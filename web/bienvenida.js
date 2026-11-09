@@ -22,7 +22,7 @@
       ["Atención y WhatsApp", "💬"], ["Contenido y redes", "🎬"], ["Ventas y seguimiento", "🤝"], ["Administración y planillas", "📊"], ["Crear apps o webs", "💻"]] },
     { id: "inversion", b: 2, tipo: "lista", q: "Si encuentras lo que necesitas, ¿estás para invertir?", ops: [
       ["Sí, ahora", "✅"], ["En los próximos meses", "📅"], ["Por ahora solo lo gratis", "🎁"]] },
-    { id: "pais", b: 3, tipo: "paises", q: "¿Desde dónde me escribís?", ops: [
+    { id: "pais", b: 3, tipo: "paises", q: "¿Desde dónde me escribes?", ops: [
       ["Argentina", "🇦🇷", "+54 9"], ["México", "🇲🇽", "+52"], ["Colombia", "🇨🇴", "+57"], ["Chile", "🇨🇱", "+56"],
       ["Perú", "🇵🇪", "+51"], ["Uruguay", "🇺🇾", "+598"], ["Ecuador", "🇪🇨", "+593"], ["Venezuela", "🇻🇪", "+58"],
       ["España", "🇪🇸", "+34"], ["Estados Unidos", "🇺🇸", "+1"], ["Otro", "🌎", "+"]] },

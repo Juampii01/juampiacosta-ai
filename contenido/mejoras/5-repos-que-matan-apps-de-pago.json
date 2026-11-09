@@ -21,8 +21,8 @@
    "fuente": "https://github.com/CopilotKit/OpenDots"
   },
   {
-   "antes": "Describís una pieza con palabras (o con una imagen) y tu agente genera archivos 3D reales en STEP, STL, 3MF o GLB para imprimir o mecanizar.",
-   "despues": "Describís una pieza con palabras y tu agente escribe el modelo como un script de Python, lo corre y genera archivos 3D reales en STEP, STL, 3MF o GLB para imprimir o mecanizar.",
+   "antes": "Describes una pieza con palabras (o con una imagen) y tu agente genera archivos 3D reales en STEP, STL, 3MF o GLB para imprimir o mecanizar.",
+   "despues": "Describes una pieza con palabras y tu agente escribe el modelo como un script de Python, lo corre y genera archivos 3D reales en STEP, STL, 3MF o GLB para imprimir o mecanizar.",
    "motivo": "El README de text-to-cad describe que el agente escribe el modelo como script de Python (build123d), lo ejecuta y lo muestra en su visor. No menciona partir de una imagen, así que se saca para no afirmar de más.",
    "fuente": "https://github.com/earthtojake/text-to-cad"
   }
@@ -60,12 +60,12 @@
    "solucion": "El README indica correrlo así: powershell -ExecutionPolicy Bypass -File .\\start.ps1 -Demo. Eso solo afecta a ese comando, no cambia la configuración de tu computadora."
   },
   {
-   "sintoma": "OpenDots abre en el navegador pero no responde cuando le escribís a un agente.",
+   "sintoma": "OpenDots abre en el navegador pero no responde cuando le escribes a un agente.",
    "solucion": "La plantilla abre sin servicios conectados: puedes crear Spaces y páginas, pero para chatear necesita un proyecto de CopilotKit Intelligence (alojado o la evaluación local con Docker) y OPENAI_API_KEY y OPENAI_MODEL en el .env. Después reinicia npm run dev. La guía Setup del repo tiene los pasos."
   },
   {
    "sintoma": "Una pieza de text-to-cad no se ve bien o algo del modelo falla y no sabes por qué.",
-   "solucion": "Corre cad doctor --check y pídele a Claude que lea la salida. Si abrís un issue en el repo, el README pide adjuntar el script del modelo y esa salida, que es lo que más rápido se arregla."
+   "solucion": "Corre cad doctor --check y pídele a Claude que lea la salida. Si abres un issue en el repo, el README pide adjuntar el script del modelo y esa salida, que es lo que más rápido se arregla."
   }
  ],
  "kit": [

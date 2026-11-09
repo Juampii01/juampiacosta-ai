@@ -52,7 +52,7 @@
    "solucion": "/rewind no restaura archivos que solo cambió un comando de terminal, ni cambios hechos fuera de Claude Code o por subagentes en segundo plano. Para esos casos está Git: pídele a Claude que te muestre los cambios de ese archivo desde el último commit y que lo vuelva a esa versión."
   },
   {
-   "sintoma": "Después de un Instant Rollback en Vercel, subís arreglos a main y la web publicada no cambia.",
+   "sintoma": "Después de un Instant Rollback en Vercel, subes arreglos a main y la web publicada no cambia.",
    "solucion": "Es lo esperado: el rollback apaga la publicación automática en producción. En el panel del proyecto toca Manage en la tarjeta de producción, elige el deploy nuevo y confirma, o corre vercel promote con su link. Desde ahí los push vuelven a publicarse solos."
   }
  ],

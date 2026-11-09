@@ -30,7 +30,7 @@
      "h": "Por qué un paquete y no \"hago lo que necesites\"",
      "p": [
       "Cuando ofreces \"te ayudo con IA\", el dueño del negocio no sabe qué te está comprando, tú no sabes cuánto cobrar y cada cliente termina siendo un proyecto distinto. Así es muy difícil sostenerlo.",
-      "Un paquete con piezas fijas resuelve las tres cosas: el cliente entiende qué recibe, tú sabes cuántas horas te lleva y cada instalación nueva sale mejor que la anterior porque repetís el mismo camino.",
+      "Un paquete con piezas fijas resuelve las tres cosas: el cliente entiende qué recibe, tú sabes cuántas horas te lleva y cada instalación nueva sale mejor que la anterior porque repites el mismo camino.",
       "Este sistema base tiene nueve módulos. Este primero define qué vendes. Los demás te llevan desde elegir a quién venderle hasta el contrato."
      ]
     },
@@ -49,7 +49,7 @@
     {
      "h": "Qué no incluye (y conviene escribirlo)",
      "p": [
-      "Lo que no escribís, el cliente lo da por incluido. Pon esta lista en la propuesta y en el acuerdo."
+      "Lo que no escribes, el cliente lo da por incluido. Pon esta lista en la propuesta y en el acuerdo."
      ],
      "lista": [
       "Agentes que hablan solos con los clientes: un agente de WhatsApp que atiende y agenda es otro proyecto, con otras reglas y otros costos. Está explicado en \"Agente de WhatsApp que atiende y agenda turnos\".",
@@ -188,7 +188,7 @@
    "faq": [
     {
      "q": "¿Y si en mi ciudad no hay 50 negocios del rubro?",
-     "a": "Suma ciudades cercanas o un rubro parecido (por ejemplo, odontologías y kinesiologías). O vendé a distancia, eligiendo una ciudad por vez."
+     "a": "Suma ciudades cercanas o un rubro parecido (por ejemplo, odontologías y kinesiologías). O vende a distancia, eligiendo una ciudad por vez."
     },
     {
      "q": "¿Puedo pedirle a Claude que me busque los negocios?",
@@ -218,10 +218,10 @@
     {
      "h": "Las reglas antes de mandar nada",
      "lista": [
-      "Uno por uno: cada mensaje lo escribís o lo revisas para ese negocio. Nada de copiar y pegar el mismo texto a cincuenta personas.",
+      "Uno por uno: cada mensaje lo escribes o lo revisas para ese negocio. Nada de copiar y pegar el mismo texto a cincuenta personas.",
       "A mano: no uses programas que manden mensajes solos desde tu cuenta personal o de negocio.",
       "Pocos por día: es mejor mandar diez buenos que cien iguales. También te deja tiempo para responder.",
-      "Un seguimiento y listo: si no responde, mandas un solo recordatorio que aporte algo. Si sigue sin responder, lo dejas. Si te dice que no, no insistís.",
+      "Un seguimiento y listo: si no responde, mandas un solo recordatorio que aporte algo. Si sigue sin responder, lo dejas. Si te dice que no, no insistes.",
       "Honestidad: di que vas a usar IA y qué hace. No te presentes como cliente ni inventes que alguien te recomendó.",
       "Lee las reglas de cada plataforma: Instagram, WhatsApp y los servicios de mail tienen normas de uso y pueden limitar cuentas. Revísalas antes de empezar."
      ],
@@ -302,7 +302,7 @@
      "h": "El guion, minuto a minuto",
      "pasos": [
       "Minuto 0 a 2: agradece, recuerda para qué es la charla (\"ver qué tareas de tu negocio podría cubrir Claude y cuáles no\") y pide permiso para tomar notas.",
-      "Minuto 2 a 5: pide que te cuente un día normal. \"¿Qué haces desde que abrís hasta que cierras? ¿Qué parte la haces en la computadora o el celular?\"",
+      "Minuto 2 a 5: pide que te cuente un día normal. \"¿Qué haces desde que abres hasta que cierras? ¿Qué parte la haces en la computadora o el celular?\"",
       "Minuto 5 a 9: busca la tarea que más tiempo come (preguntas abajo). Cuando aparezca una, pide un ejemplo real: \"¿Cómo fue el último presupuesto que mandaste?\"",
       "Minuto 9 a 12: devuelve lo que entendiste en una frase y di qué parte podría hacer Claude y qué parte seguiría haciendo una persona.",
       "Minuto 12 a 15: propón el próximo paso y acuerda una fecha."
@@ -699,7 +699,7 @@
     {
      "h": "Cuándo subir el precio",
      "lista": [
-      "Cuando el alcance creció: si cada mes haces más de lo acordado, o ofreces más mejoras de las que entran, o lo cobras aparte o subís el mensual.",
+      "Cuando el alcance creció: si cada mes haces más de lo acordado, o ofreces más mejoras de las que entran, o lo cobras aparte o subes el mensual.",
       "Cuando tu paquete mejoró: para clientes nuevos, si sumaste piezas o ya tienes casos que mostrar.",
       "Cuando cambian tus costos: si tu valor hora cambió, revisa la fórmula del Módulo 5.",
       "Cómo hacerlo: avisa por escrito con anticipación (por ejemplo, 30 días), explica qué cambia y respeta lo que firmaste. Nunca en medio de un período ya pagado.",
@@ -761,7 +761,7 @@
       "Datos mínimos: sube al proyecto solo lo que hace falta. Nada de contraseñas, números de tarjeta ni datos que no aportan.",
       "Revisión humana: el acuerdo dice que Claude arma borradores y que una persona del negocio revisa antes de mandar algo a un cliente.",
       "Transparencia: el cliente sabe qué hace la IA y qué no, y decide si le cuenta a sus clientes que la usa.",
-      "Confidencialidad: tú no usas ni compartís sus datos, ni para mostrar casos, sin permiso por escrito."
+      "Confidencialidad: tú no usas ni compartes sus datos, ni para mostrar casos, sin permiso por escrito."
      ]
     },
     {

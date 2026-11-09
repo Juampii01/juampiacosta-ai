@@ -129,7 +129,7 @@
     {
      "h": "Cómo conectar cualquiera de estos",
      "p": [
-      "En Claude Code casi todos se agregan con un comando del tipo claude mcp add --transport http, el nombre y la URL oficial. Después abrís Claude Code, escribís /mcp y terminas de iniciar sesión.",
+      "En Claude Code casi todos se agregan con un comando del tipo claude mcp add --transport http, el nombre y la URL oficial. Después abres Claude Code, escribes /mcp y terminas de iniciar sesión.",
       "En la app de Claude se suman desde Configuración, en Conectores. Algunos están en el directorio y otros se agregan como conector personalizado con su URL. Los conectores personalizados están disponibles en los planes pagos."
      ],
      "pasos": [

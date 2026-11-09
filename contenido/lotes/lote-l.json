@@ -188,7 +188,7 @@
      "prompts": [
       {
        "t": "Respuesta a consulta con derivación",
-       "c": "Llegó esta consulta: [PEGA EL MENSAJE].\nUsa solo la información de tratamientos del Proyecto.\nEscribe una respuesta corta y cálida en voseo.\nReglas:\n1. Si pregunta precio, duración o preparación, responde con los datos aprobados.\n2. Si pregunta algo de salud (si le sirve, si es seguro con su condición, si tiene contraindicaciones), no respondas eso: decile que lo evalúa el profesional en la consulta y ofrece un turno.\n3. No prometas resultados ni uses \"garantizado\".\n4. Si falta un dato, márcalo como CONSULTAR."
+       "c": "Llegó esta consulta: [PEGA EL MENSAJE].\nUsa solo la información de tratamientos del Proyecto.\nEscribe una respuesta corta y cálida en voseo.\nReglas:\n1. Si pregunta precio, duración o preparación, responde con los datos aprobados.\n2. Si pregunta algo de salud (si le sirve, si es seguro con su condición, si tiene contraindicaciones), no respondas eso: dile que lo evalúa el profesional en la consulta y ofrece un turno.\n3. No prometas resultados ni uses \"garantizado\".\n4. Si falta un dato, márcalo como CONSULTAR."
       },
       {
        "t": "Indicaciones antes y después",
@@ -582,7 +582,7 @@
       }
      ],
      "lista": [
-      "Argumento central: \"Subís productos más rápido, los clientes reciben respuestas parejas y el lunes sabes qué reponer sin abrir diez pantallas.\"",
+      "Argumento central: \"Subes productos más rápido, los clientes reciben respuestas parejas y el lunes sabes qué reponer sin abrir diez pantallas.\"",
       "Muestra el reporte con datos reales de su tienda en solo lectura: es lo que más convence y no toca nada."
      ]
     },
@@ -697,7 +697,7 @@
      "prompts": [
       {
        "t": "Mensaje de primer contacto",
-       "c": "Hola [NOMBRE], soy [TU NOMBRE]. Armo sistemas con Claude para gimnasios y entrenadores.\nUna de las cosas que más se repite es que la gente deja de venir y nadie se entera a tiempo. Lo que hago es dejarte un asistente que todos los lunes te dice quién no vino y te deja el mensaje listo, responde las consultas nuevas y te arma borradores de planes con tu forma de entrenar. Tú revisas y decidís.\n¿Te muestro cómo quedaría con tu lista de esta semana?"
+       "c": "Hola [NOMBRE], soy [TU NOMBRE]. Armo sistemas con Claude para gimnasios y entrenadores.\nUna de las cosas que más se repite es que la gente deja de venir y nadie se entera a tiempo. Lo que hago es dejarte un asistente que todos los lunes te dice quién no vino y te deja el mensaje listo, responde las consultas nuevas y te arma borradores de planes con tu forma de entrenar. Tú revisas y decides.\n¿Te muestro cómo quedaría con tu lista de esta semana?"
       }
      ],
      "lista": [
@@ -1064,7 +1064,7 @@
      "prompts": [
       {
        "t": "Mensaje de primer contacto",
-       "c": "Hola [NOMBRE], soy [TU NOMBRE]. Armo sistemas con Claude para profesores y academias.\nLo que más se repite es que la planificación, los ejercicios y las devoluciones se comen las noches del docente. Lo que hago es dejarte un asistente con tu programa y tus materiales que te arma la clase, la práctica por nivel y el borrador de cada devolución. Tú corregís y decidís.\n¿Te muestro cómo armaría tu próxima clase?"
+       "c": "Hola [NOMBRE], soy [TU NOMBRE]. Armo sistemas con Claude para profesores y academias.\nLo que más se repite es que la planificación, los ejercicios y las devoluciones se comen las noches del docente. Lo que hago es dejarte un asistente con tu programa y tus materiales que te arma la clase, la práctica por nivel y el borrador de cada devolución. Tú corriges y decides.\n¿Te muestro cómo armaría tu próxima clase?"
       }
      ],
      "lista": [

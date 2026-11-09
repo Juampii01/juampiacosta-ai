@@ -23,7 +23,7 @@
     ],
     [
      "Qué no hace",
-     "No reemplaza probar tú la app: Claude construye, tú decidís si está bien."
+     "No reemplaza probar tú la app: Claude construye, tú decides si está bien."
     ]
    ],
    "secciones": [
@@ -37,7 +37,7 @@
       "Especificación: un documento corto con pantallas, datos y lo que la app NO hace.",
       "Construir: Claude Code arma la app por partes, siguiendo ese documento.",
       "Probar: la usas como si fueras el cliente y anotas lo que falla.",
-      "Publicar: la subís a GitHub y la conectas con Vercel o Netlify para tener un link real."
+      "Publicar: la subes a GitHub y la conectas con Vercel o Netlify para tener un link real."
      ]
     },
     {
@@ -99,7 +99,7 @@
     },
     {
      "q": "¿Vercel o Netlify?",
-     "a": "Las dos conectan tu repositorio de GitHub y publican solas cada vez que subís cambios. Elige una y quédate con esa; la guía de publicar te muestra los pasos de ambas."
+     "a": "Las dos conectan tu repositorio de GitHub y publican solas cada vez que subes cambios. Elige una y quédate con esa; la guía de publicar te muestra los pasos de ambas."
     },
     {
      "q": "¿Cuánto tarda todo el camino?",
@@ -285,7 +285,7 @@
      "h": "Copias de seguridad",
      "p": [
       "Los planes pagos de Supabase hacen copias diarias automáticas. En el plan gratis, Supabase recomienda exportar tus datos seguido con el comando db dump de la CLI y guardar la copia en otro lugar.",
-      "Ojo: esas copias son de la base de datos. Los archivos que subís a Storage no están incluidos."
+      "Ojo: esas copias son de la base de datos. Los archivos que subes a Storage no están incluidos."
      ]
     }
    ],
@@ -422,7 +422,7 @@
     {
      "h": "Tres formas de cobrar",
      "lista": [
-      "Link de pago (Stripe Payment Links): lo creas desde el panel de Stripe sin programar y lo compartís por mail, mensaje o redes. Sirve para vender un producto, una suscripción o recibir donaciones.",
+      "Link de pago (Stripe Payment Links): lo creas desde el panel de Stripe sin programar y lo compartes por mail, mensaje o redes. Sirve para vender un producto, una suscripción o recibir donaciones.",
       "Checkout: tu app manda al cliente a una página de pago de Stripe o de Mercado Pago (Checkout Pro) y después lo devuelve. En Checkout Pro, el comprador paga en un ambiente de Mercado Pago, con opciones como tarjeta, cuenta de Mercado Pago, Rapipago o Pago Fácil.",
       "Suscripciones: cobros que se repiten. En Stripe puedes crear un link de pago de suscripción. En Mercado Pago existen las suscripciones con plan asociado (por ejemplo, un plan mensual y uno anual) y sin plan asociado."
      ],
@@ -528,7 +528,7 @@
      ]
     },
     {
-     "h": "Cada vez que subís cambios",
+     "h": "Cada vez que subes cambios",
      "p": [
       "Desde ahí, Vercel publica solo. Lo que subas a la rama principal (normalmente main) se convierte en la versión de producción. Lo que subas a cualquier otra rama genera una versión de vista previa, con su propio link, para probar sin tocar lo que ven tus clientes.",
       "Si algo se rompe en producción, desde el panel tienes Instant Rollback para volver a una versión anterior. En el plan Hobby puedes volver a la inmediatamente anterior."
@@ -556,7 +556,7 @@
      "aviso": "Si eliges cambiar los nameservers en vez de cargar un registro, copia antes tus registros existentes (sobre todo los MX del mail). Si no, puedes dejar de recibir correos."
     },
     {
-     "h": "Si preferís Netlify",
+     "h": "Si prefieres Netlify",
      "lista": [
       "Publicar: en tu equipo de Netlify, Add new project → Import an existing project, eliges el proveedor de Git, autorizas y confirmas con Publish.",
       "Variables: en Project configuration → Environment variables. Después de crearlas o cambiarlas, hace falta publicar de nuevo.",

@@ -4,7 +4,7 @@
  "correcciones": [
   {
    "antes": "Con /context all ves el detalle completo.",
-   "despues": "Si usas la pantalla completa (fullscreen), el detalle por ítem aparece colapsado para que se vea la grilla; con /context all lo expandís.",
+   "despues": "Si usas la pantalla completa (fullscreen), el detalle por ítem aparece colapsado para que se vea la grilla; con /context all lo expandes.",
    "motivo": "La referencia de comandos dice que en fullscreen /context colapsa el desglose por ítem para mantener visible la grilla, y que el argumento all sirve para expandirlo. Fuera de fullscreen el detalle ya se ve.",
    "fuente": "https://code.claude.com/docs/en/commands"
   },
@@ -22,7 +22,7 @@
   },
   {
    "antes": "opusplan: con /model opusplan usa Opus en el modo plan y pasa a Sonnet para ejecutar.",
-   "despues": "opusplan: con /model opusplan usa Opus en el modo plan y pasa a Sonnet para ejecutar. Ojo: cada vez que entras o salís del modo plan cambia el modelo, y el pedido siguiente arranca sin caché.",
+   "despues": "opusplan: con /model opusplan usa Opus en el modo plan y pasa a Sonnet para ejecutar. Ojo: cada vez que entras o sales del modo plan cambia el modelo, y el pedido siguiente arranca sin caché.",
    "motivo": "La documentación de prompt caching dice que opusplan resuelve a Opus en el modo plan y a Sonnet en la ejecución, así que cada cambio de modo es un cambio de modelo y arranca una caché nueva.",
    "fuente": "https://code.claude.com/docs/en/prompt-caching"
   }

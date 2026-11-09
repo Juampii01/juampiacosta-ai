@@ -22,7 +22,7 @@
   },
   {
    "antes": "En Claude Code: /plugin y pestaña Installed. Con Espacio lo activas o desactivas, con Enter ves sus opciones (desactivar, actualizar, desinstalar).",
-   "despues": "En Claude Code: /plugin y pestaña Installed. Puedes escribir para filtrar la lista y, con Enter sobre un plugin, abrís su detalle para activarlo, desactivarlo o desinstalarlo. Para actualizar, usa el comando de la terminal de más abajo.",
+   "despues": "En Claude Code: /plugin y pestaña Installed. Puedes escribir para filtrar la lista y, con Enter sobre un plugin, abres su detalle para activarlo, desactivarlo o desinstalarlo. Para actualizar, usa el comando de la terminal de más abajo.",
    "motivo": "La documentación de la pestaña Installed lista estas acciones: f para marcar favorito, escribir para filtrar y Enter para abrir el detalle y activar, desactivar o desinstalar. No menciona la tecla Espacio ni actualizar desde ese detalle; la actualización se hace con claude plugin update.",
    "fuente": "https://code.claude.com/docs/en/discover-plugins"
   },
@@ -55,7 +55,7 @@
  },
  "si_falla": [
   {
-   "sintoma": "Escribís /plugin y Claude responde \"/plugin isn't available in this environment\".",
+   "sintoma": "Escribes /plugin y Claude responde \"/plugin isn't available in this environment\".",
    "solucion": "Estás en un lugar sin terminal para el panel: la pestaña Code de la app de escritorio, la extensión de VS Code, Claude Code en la web o claude -p. En la app de escritorio usa el botón + al lado del cuadro de texto, después Plugins y Add plugin. Si no, abre una terminal, corre claude y escribe /plugin ahí, o instala directo con claude plugin install nombre@marketplace."
   },
   {

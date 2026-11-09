@@ -41,7 +41,7 @@
  "si_falla": [
   {
    "sintoma": "No aparece la sección Skills o no deja prender la skill.",
-   "solucion": "Prendé Code execution and file creation (o Create and edit files, según cómo se vea tu Settings) en Settings → Capabilities. En Team o Enterprise, si está bloqueado, pídele al owner que lo habilite en Organization settings → Plugins & skills, en la pestaña Policy."
+   "solucion": "Prende Code execution and file creation (o Create and edit files, según cómo se vea tu Settings) en Settings → Capabilities. En Team o Enterprise, si está bloqueado, pídele al owner que lo habilite en Organization settings → Plugins & skills, en la pestaña Policy."
   },
   {
    "sintoma": "Al subir el .zip aparece un error.",

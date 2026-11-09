@@ -57,7 +57,7 @@
    "solucion": "Claude Code borra las copias de los archivos de una sesión unos 30 días después de la última. Para esa sesión ya no hay vuelta con rewind: usa git. Si quieres que las guarde más tiempo, configura cleanupPeriodDays en tu settings.json."
   },
   {
-   "sintoma": "Escribís el comando y Claude lo toma como un mensaje común.",
+   "sintoma": "Escribes el comando y Claude lo toma como un mensaje común.",
    "solucion": "El comando tiene que ser lo primero del mensaje, sin espacios ni texto antes. Escribe / y elígelo de la lista para no equivocarte en el nombre."
   },
   {

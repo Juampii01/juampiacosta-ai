@@ -21,7 +21,7 @@
     ],
     [
      "Qué no hace",
-     "No reemplaza tu revisión: tú decidís qué se guarda."
+     "No reemplaza tu revisión: tú decides qué se guarda."
     ]
    ],
    "fichaNombre": "El flujo",
@@ -34,7 +34,7 @@
      ],
      "lista": [
       "Explorar: Claude lee y te explica, sin tocar nada.",
-      "Planificar: escribe un plan que tú corregís.",
+      "Planificar: escribe un plan que tú corriges.",
       "Construir: de a un paso, con una prueba que Claude pueda correr.",
       "Revisar: con ojos frescos, no los mismos que escribieron el código.",
       "Guardar: un commit con un mensaje claro y la sesión cerrada."
@@ -109,7 +109,7 @@
        "c": "Antes de guardar esto, hazme 5 preguntas sobre el cambio que hiciste: qué hace, por qué así y qué pasa en los casos raros. Corrígeme si respondo mal."
       }
      ],
-     "aviso": "Un revisor al que le pides problemas siempre encuentra alguno. Si corregís todo, terminas con código más complicado. Quédate con lo que afecta que funcione."
+     "aviso": "Un revisor al que le pides problemas siempre encuentra alguno. Si corriges todo, terminas con código más complicado. Quédate con lo que afecta que funcione."
     },
     {
      "h": "5. Guardar y cerrar",
@@ -217,7 +217,7 @@
     {
      "h": "Que crezca con tus errores, no con tus ganas",
      "p": [
-      "Boris, del equipo de Claude Code, cuenta que su equipo lo actualiza cada vez que Claude se equivoca. La doc dice cuándo sumar algo: cuando Claude repite un error, cuando una revisión encuentra algo que debería haber sabido o cuando escribís la misma aclaración que la sesión anterior."
+      "Boris, del equipo de Claude Code, cuenta que su equipo lo actualiza cada vez que Claude se equivoca. La doc dice cuándo sumar algo: cuando Claude repite un error, cuando una revisión encuentra algo que debería haber sabido o cuando escribes la misma aclaración que la sesión anterior."
      ],
      "prompts": [
       {
@@ -315,7 +315,7 @@
     {
      "h": "Instrucción o hook",
      "p": [
-      "Lo que escribís en el CLAUDE.md es un consejo: Claude lo tiene en cuenta, pero puede olvidarlo. Un hook es un comando que Claude Code ejecuta siempre en un momento fijo, decida lo que decida Claude.",
+      "Lo que escribes en el CLAUDE.md es un consejo: Claude lo tiene en cuenta, pero puede olvidarlo. Un hook es un comando que Claude Code ejecuta siempre en un momento fijo, decida lo que decida Claude.",
       "En los hilos de Reddit lo resumen así: las skills son para \"cómo hacer X\" y los hooks para \"nunca hagas Y\". La documentación dice lo mismo: usa hooks para lo que tiene que pasar siempre, sin excepciones."
      ],
      "lista": [
@@ -747,7 +747,7 @@
      "h": "Un Proyecto por trabajo real",
      "p": [
       "En un hilo de r/ClaudeAI sobre Proyectos con cientos de votos, el autor cuenta que tenía un Proyecto para todo y que separarlo por cliente le dio respuestas más enfocadas.",
-      "La ayuda oficial explica por qué importa: lo que subís al conocimiento del Proyecto se usa en todos sus chats, pero lo que hablas en un chat no pasa a los otros si no está en el conocimiento."
+      "La ayuda oficial explica por qué importa: lo que subes al conocimiento del Proyecto se usa en todos sus chats, pero lo que hablas en un chat no pasa a los otros si no está en el conocimiento."
      ],
      "pasos": [
       "Entra a Projects en la barra de la izquierda y toca + New Project.",
@@ -828,7 +828,7 @@
      "h": "Artifacts y memoria, sin sorpresas",
      "lista": [
       "Artifacts: Claude los crea cuando el contenido es grande y se sostiene solo, y se abren al lado del chat. Para cambiarlos, pídeselo. Si editas un mensaje anterior, el chat se bifurca y conservas la versión previa.",
-      "Arrancan privados: los artifacts nuevos son solo tuyos hasta que los compartís. Antes de cargar datos sensibles, fíjate si usan almacenamiento compartido, porque otros lo pueden ver.",
+      "Arrancan privados: los artifacts nuevos son solo tuyos hasta que los compartes. Antes de cargar datos sensibles, fíjate si usan almacenamiento compartido, porque otros lo pueden ver.",
       "Memoria por Proyecto: cada Proyecto tiene la suya. Si quieres que uno quede aislado del todo, apaga Use account memory en ese Proyecto.",
       "Chat sin memoria: un chat de incógnito no se guarda en el historial ni en la memoria.",
       "Buscar chats anteriores: es de planes pagos y se apaga en Settings, sección Your Claude."

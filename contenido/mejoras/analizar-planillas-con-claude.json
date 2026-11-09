@@ -49,11 +49,11 @@
  "si_falla": [
   {
    "sintoma": "Al subir el Excel, Claude dice que no puede abrirlo o el archivo no se adjunta.",
-   "solucion": "Prendé Code execution and file creation (Create and edit files en el diseño nuevo) en Settings → Capabilities: la ayuda oficial la pide para subir .xlsx. Si el archivo es .xls, guárdalo como .xlsx o CSV desde Excel. En Team o Enterprise, si la opción no está, la apagó el owner."
+   "solucion": "Prende Code execution and file creation (Create and edit files en el diseño nuevo) en Settings → Capabilities: la ayuda oficial la pide para subir .xlsx. Si el archivo es .xls, guárdalo como .xlsx o CSV desde Excel. En Team o Enterprise, si la opción no está, la apagó el owner."
   },
   {
    "sintoma": "Los totales por mes no coinciden con lo que sabes que vendiste.",
-   "solucion": "Casi siempre son fechas leídas al revés (mes/día en vez de día/mes) o números con punto de miles tomados como decimales. Decile el formato exacto (día/mes/año, coma decimal) y pídele que te muestre cinco filas con fecha e importe tal como los interpretó."
+   "solucion": "Casi siempre son fechas leídas al revés (mes/día en vez de día/mes) o números con punto de miles tomados como decimales. Dile el formato exacto (día/mes/año, coma decimal) y pídele que te muestre cinco filas con fecha e importe tal como los interpretó."
   },
   {
    "sintoma": "El archivo es demasiado grande o la subida falla sin un mensaje claro.",

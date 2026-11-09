@@ -34,7 +34,7 @@
      ],
      "lista": [
       "App de escritorio: viene con Claude Code adentro, no tienes que instalar nada más. Ideal para empezar.",
-      "Terminal: instalas el programa con un comando y lo abrís escribiendo claude. Es la versión más completa."
+      "Terminal: instalas el programa con un comando y lo abres escribiendo claude. Es la versión más completa."
      ]
     },
     {
@@ -96,7 +96,7 @@
     {
      "h": "Cuando te pide permiso",
      "p": [
-      "Antes de editar un archivo o correr un comando, Claude Code te muestra qué quiere hacer y espera tu respuesta. Léelo: si está bien, elige Yes; si no, decile qué cambiar.",
+      "Antes de editar un archivo o correr un comando, Claude Code te muestra qué quiere hacer y espera tu respuesta. Léelo: si está bien, elige Yes; si no, dile qué cambiar.",
       "En la terminal, Shift+Tab cambia el modo de permisos (cuánto puede hacer sin preguntarte). En la app de escritorio el modo está en la fila de abajo del cuadro de mensaje. Si recién empiezas, quédate en un modo que te pregunte todo."
      ]
     }
@@ -132,7 +132,7 @@
      "h": "Cómo funcionan",
      "p": [
       "Un comando es una palabra que empieza con barra y va al principio del mensaje. Escribe / y aparece la lista de todo lo que tienes disponible; si sigues escribiendo, se filtra.",
-      "No hace falta memorizarlos. Con estos de abajo cubrís casi todo el día a día."
+      "No hace falta memorizarlos. Con estos de abajo cubres casi todo el día a día."
      ]
     },
     {
@@ -177,7 +177,7 @@
       "/rewind: vuelves el código y/o la conversación a un punto anterior. También se abre apretando Esc dos veces con el cuadro de mensaje vacío.",
       "/doctor: chequea tu instalación y configuración y te propone arreglos.",
       "/help: la ayuda y los comandos disponibles.",
-      "/exit: salís de Claude Code."
+      "/exit: sales de Claude Code."
      ],
      "aviso": "/rewind deshace lo que Claude cambió con sus herramientas de edición, pero no todo lo que hizo un comando de terminal. Para estar tranquilo, guarda tu trabajo con git antes de cambios grandes.",
      "prompts": [
@@ -212,7 +212,7 @@
    "slug": "modo-plan-de-claude-code",
    "post": "PLAN",
    "t": "Modo plan: que Claude piense antes de construir",
-   "d": "Claude investiga tu proyecto y te escribe un plan sin tocar tu código. Lo corregís, lo apruebas y recién ahí construye.",
+   "d": "Claude investiga tu proyecto y te escribe un plan sin tocar tu código. Lo corriges, lo apruebas y recién ahí construye.",
    "tema": "Claude Code",
    "min": 7,
    "secciones": [
@@ -254,7 +254,7 @@
       "Yes, manually approve edits: lo apruebas, pero te pregunta antes de cada cambio. La más segura si estás empezando.",
       "No, keep planning: sigues en modo plan y le dices qué corregir."
      ],
-     "aviso": "Con Ctrl+G abrís el plan en tu editor y lo cambias tú a mano antes de que siga."
+     "aviso": "Con Ctrl+G abres el plan en tu editor y lo cambias tú a mano antes de que siga."
     },
     {
      "h": "Cuándo usarlo y cuándo no",
@@ -272,7 +272,7 @@
     },
     {
      "q": "Aprobé el plan y no me gusta cómo va",
-     "a": "Frénalo con Esc (en la app, con el botón de stop) y decile qué cambiar. Si ya hizo cambios, /rewind te deja volver a un punto anterior."
+     "a": "Frénalo con Esc (en la app, con el botón de stop) y dile qué cambiar. Si ya hizo cambios, /rewind te deja volver a un punto anterior."
     },
     {
      "q": "¿Puedo guardar el plan?",
@@ -314,7 +314,7 @@
     {
      "h": "Para qué sirve",
      "p": [
-      "Cada sesión de Claude Code arranca sin recordar la anterior. CLAUDE.md es donde escribís lo que, si no, tendrías que volver a explicar cada vez.",
+      "Cada sesión de Claude Code arranca sin recordar la anterior. CLAUDE.md es donde escribes lo que, si no, tendrías que volver a explicar cada vez.",
       "Una buena señal para sumar algo: Claude comete el mismo error por segunda vez, o tú tipeas la misma aclaración que la semana pasada."
      ]
     },
@@ -419,7 +419,7 @@
      "h": "Cuándo conviene uno propio",
      "lista": [
       "Tareas que generan mucho texto que después no vas a mirar: revisar muchas páginas, leer registros, buscar en todo el proyecto.",
-      "Tareas que repetís y quieres hacer siempre igual: revisar textos, chequear enlaces rotos, revisar código antes de publicar.",
+      "Tareas que repites y quieres hacer siempre igual: revisar textos, chequear enlaces rotos, revisar código antes de publicar.",
       "Cuando quieres limitar qué puede hacer: por ejemplo, un revisor que solo lee y nunca edita."
      ],
      "p": [
@@ -542,7 +542,7 @@
      "pasos": [
       "En la pestaña Code, toca Scheduled en la barra lateral (o en el menú More) y después New task.",
       "Ponle nombre y escribe las instrucciones.",
-      "En Advanced settings, pestaña General, prendé Only on this computer y elige la carpeta en Local folder.",
+      "En Advanced settings, pestaña General, prende Only on this computer y elige la carpeta en Local folder.",
       "En Trigger elige Hourly, Daily, Weekdays o Weekly.",
       "Elige el modo de permisos y el modelo en la barra del cuadro de instrucciones, y toca Create.",
       "Toca Run now una vez y aprueba los permisos que pida con \"always allow\": así las próximas no se traban esperándote."
@@ -564,7 +564,7 @@
     {
      "h": "Escribe bien el pedido",
      "p": [
-      "Una tarea programada trabaja sin ti. Decile qué revisar, qué hacer si no hay nada nuevo y qué no tiene que tocar."
+      "Una tarea programada trabaja sin ti. Dile qué revisar, qué hacer si no hay nada nuevo y qué no tiene que tocar."
      ],
      "prompts": [
       {

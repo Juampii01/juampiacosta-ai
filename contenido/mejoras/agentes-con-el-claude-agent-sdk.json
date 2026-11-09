@@ -27,8 +27,8 @@
    "fuente": "https://code.claude.com/docs/en/agent-sdk/agent-loop"
   },
   {
-   "antes": "Client SDK: llamas a la API directo y el bucle de herramientas lo escribís tú.",
-   "despues": "Client SDK: llamas a la API directo y el bucle de herramientas lo escribís tú (o usas su tool runner, que está en beta). Si preferís que Anthropic aloje el agente, existe una cuarta opción: Managed Agents.",
+   "antes": "Client SDK: llamas a la API directo y el bucle de herramientas lo escribes tú.",
+   "despues": "Client SDK: llamas a la API directo y el bucle de herramientas lo escribes tú (o usas su tool runner, que está en beta). Si prefieres que Anthropic aloje el agente, existe una cuarta opción: Managed Agents.",
    "motivo": "La comparación oficial suma el tool runner en beta del Client SDK y una cuarta fila, Managed Agents, donde Anthropic corre el bucle en un sandbox administrado.",
    "fuente": "https://code.claude.com/docs/en/agent-sdk/overview"
   }

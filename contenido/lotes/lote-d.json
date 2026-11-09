@@ -69,7 +69,7 @@
     {
      "h": "Deja que Claude te ayude a puntuar",
      "p": [
-      "Pega tu lista de tareas y pídele un primer borrador del puntaje. Después lo corregís tú: tú conoces tu negocio, Claude no."
+      "Pega tu lista de tareas y pídele un primer borrador del puntaje. Después lo corriges tú: tú conoces tu negocio, Claude no."
      ],
      "prompts": [
       {
@@ -416,7 +416,7 @@
   {
    "slug": "panel-de-metricas-de-tu-negocio-con-claude",
    "t": "Panel de métricas de tu negocio con Claude",
-   "d": "Subís tus datos de ventas y Claude te arma un panel visual o una planilla con los números que importan. Con el prompt listo y cómo no comerte errores.",
+   "d": "Subes tus datos de ventas y Claude te arma un panel visual o una planilla con los números que importan. Con el prompt listo y cómo no comerte errores.",
    "tema": "Negocio",
    "min": 9,
    "fichaNombre": "Panel de métricas",
@@ -477,7 +477,7 @@
     {
      "h": "Camino 2: una planilla que puedes seguir usando",
      "p": [
-      "Si preferís algo que viva en tu computadora y puedas actualizar pegando datos nuevos, pídele un Excel con fórmulas en lugar de números fijos."
+      "Si prefieres algo que viva en tu computadora y puedas actualizar pegando datos nuevos, pídele un Excel con fórmulas en lugar de números fijos."
      ],
      "prompts": [
       {
@@ -491,8 +491,8 @@
      "lista": [
       "Pide los cálculos: que te diga con qué fórmula sacó cada número.",
       "Chequea uno a mano: elige un número del panel y calcúlalo tú con la planilla original.",
-      "Ojo con las fechas: los formatos día/mes y mes/día se confunden fácil. Decile cuál usas.",
-      "Guarda el prompt: el mes que viene subís el archivo nuevo y pegas el mismo prompt, así comparas peras con peras."
+      "Ojo con las fechas: los formatos día/mes y mes/día se confunden fácil. Dile cuál usas.",
+      "Guarda el prompt: el mes que viene subes el archivo nuevo y pegas el mismo prompt, así comparas peras con peras."
      ]
     }
    ],
@@ -730,7 +730,7 @@
     {
      "h": "Por qué importa",
      "p": [
-      "Sin este dato, decidís dónde poner tiempo y dinero por sensación. Con el dato, ves qué canal trae consultas, cuál trae ventas y cuál solo te da trabajo."
+      "Sin este dato, decides dónde poner tiempo y dinero por sensación. Con el dato, ves qué canal trae consultas, cuál trae ventas y cuál solo te da trabajo."
      ]
     },
     {

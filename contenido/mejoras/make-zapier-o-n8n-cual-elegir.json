@@ -41,7 +41,7 @@
   },
   {
    "sintoma": "Claude ve tus flujos de n8n en la lista pero no puede ejecutarlos ni ver su detalle.",
-   "solucion": "La búsqueda de flujos muestra una vista previa de todos los que puedes ver, pero para usarlos cada flujo tiene que estar habilitado. Entra a la configuración del flujo y prendé Available in MCP, o usa la página Workflows enabled. El MCP de la instancia lo activa un owner o admin en Settings → Instance-level MCP."
+   "solucion": "La búsqueda de flujos muestra una vista previa de todos los que puedes ver, pero para usarlos cada flujo tiene que estar habilitado. Entra a la configuración del flujo y prende Available in MCP, o usa la página Workflows enabled. El MCP de la instancia lo activa un owner o admin en Settings → Instance-level MCP."
   },
   {
    "sintoma": "La app de Claude no logra conectarse a tu n8n instalado en tu computadora o en la red de la oficina.",

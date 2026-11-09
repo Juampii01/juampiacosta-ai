@@ -121,7 +121,7 @@
     },
     {
      "q": "¿Anthropic revisa las skills que subo o me comparten?",
-     "a": "No. Las que subís tú o te comparten no pasan por una revisión de Anthropic, por eso conviene leer el SKILL.md y sus archivos antes de activarlas."
+     "a": "No. Las que subes tú o te comparten no pasan por una revisión de Anthropic, por eso conviene leer el SKILL.md y sus archivos antes de activarlas."
     },
     {
      "q": "¿Pongo mis claves o contraseñas en la skill?",
@@ -141,7 +141,7 @@
   {
    "slug": "convertir-una-tarea-manual-en-skill",
    "t": "Convierte una tarea que haces a mano en una skill",
-   "d": "El método para pasar a una skill algo que repetís todas las semanas, más un prompt para que Claude la arme a partir de cómo lo haces tú.",
+   "d": "El método para pasar a una skill algo que repites todas las semanas, más un prompt para que Claude la arme a partir de cómo lo haces tú.",
    "tema": "Skills",
    "min": 8,
    "secciones": [
@@ -350,7 +350,7 @@
       "Un marketplace es un catálogo de plugins guardado en un repositorio de GitHub. Agregas el catálogo una vez y después instalas lo que quieras de ahí."
      ],
      "lista": [
-      "claude-plugins-official: el oficial de Anthropic. Claude Code lo agrega solo la primera vez que lo abrís en la terminal.",
+      "claude-plugins-official: el oficial de Anthropic. Claude Code lo agrega solo la primera vez que lo abres en la terminal.",
       "claude-community: plugins de terceros que pasaron por el envío a Anthropic. Se agrega con /plugin marketplace add anthropics/claude-plugins-community.",
       "claude-code-plugins: el de demostración, en anthropics/claude-code. Muchos de sus plugins también están en el oficial: instálalos desde el oficial para no tener dos copias.",
       "De terceros: cualquier otro. Anthropic no los revisa."
@@ -456,7 +456,7 @@
     {
      "h": "Qué va a hacer",
      "p": [
-      "Le escribís algo como \"presupuesto para Laura, 3 cajas del producto A y una instalación\" y la skill busca los precios en tu lista, hace las cuentas, aplica tus condiciones y lo arma con tu formato. Si un ítem no está en la lista, no lo inventa: te lo marca para que lo confirmes."
+      "Le escribes algo como \"presupuesto para Laura, 3 cajas del producto A y una instalación\" y la skill busca los precios en tu lista, hace las cuentas, aplica tus condiciones y lo arma con tu formato. Si un ítem no está en la lista, no lo inventa: te lo marca para que lo confirmes."
      ],
      "lista": [
       "SKILL.md: el procedimiento, las reglas y el formato.",
@@ -495,7 +495,7 @@
        "c": "# Lista de precios de [TU NEGOCIO]\nActualizada: [FECHA]\n\n| Código | Producto o servicio | Unidad | Precio |\n|--------|---------------------|--------|--------|\n| [A01]  | [NOMBRE]            | [UNIDAD] | [PRECIO] |\n| [A02]  | [NOMBRE]            | [UNIDAD] | [PRECIO] |\n\n## Notas\n- [EJ.: EL ENVÍO SE COTIZA APARTE]\n- [EJ.: PEDIDO MÍNIMO]"
       }
      ],
-     "aviso": "Si preferís no armarlo a mano, pásale a Claude tu lista en Excel o PDF y pídele que la convierta a esta tabla."
+     "aviso": "Si prefieres no armarlo a mano, pásale a Claude tu lista en Excel o PDF y pídele que la convierta a esta tabla."
     },
     {
      "h": "Instálala",
@@ -789,7 +789,7 @@
     {
      "h": "Revísala antes de instalar",
      "p": [
-      "Una skill son instrucciones que Claude sigue, y algunas traen código que se ejecuta. Los riesgos principales son que te hagan hacer cosas que no pediste o que se lleven datos tuyos. Las que subís tú no pasan por revisión de Anthropic."
+      "Una skill son instrucciones que Claude sigue, y algunas traen código que se ejecuta. Los riesgos principales son que te hagan hacer cosas que no pediste o que se lleven datos tuyos. Las que subes tú no pasan por revisión de Anthropic."
      ],
      "lista": [
       "Lee el SKILL.md entero: que haga lo que dice la descripción y nada más.",
@@ -826,7 +826,7 @@
      "prompts": [
       {
        "t": "Que Claude Code la baje y te la muestre",
-       "c": "Bajá la skill que está en [URL DE LA CARPETA EN GITHUB] a una carpeta temporal. No la instales todavía.\nMuéstrame el SKILL.md completo y la lista de archivos, y explícame qué hace cada script.\nCuando te confirme, cópiala a ~/.claude/skills/[NOMBRE]/."
+       "c": "Baja la skill que está en [URL DE LA CARPETA EN GITHUB] a una carpeta temporal. No la instales todavía.\nMuéstrame el SKILL.md completo y la lista de archivos, y explícame qué hace cada script.\nCuando te confirme, cópiala a ~/.claude/skills/[NOMBRE]/."
       }
      ]
     },
@@ -993,7 +993,7 @@
    "cat": "Skills",
    "tipo": "Plugin",
    "t": "Marketplace oficial de plugins",
-   "d": "El catálogo oficial de plugins para Claude Code (claude-plugins-official), con plugins de Anthropic y de socios. Claude Code lo agrega solo la primera vez que lo abrís en la terminal.",
+   "d": "El catálogo oficial de plugins para Claude Code (claude-plugins-official), con plugins de Anthropic y de socios. Claude Code lo agrega solo la primera vez que lo abres en la terminal.",
    "para": "Buscar e instalar plugins de una fuente oficial.",
    "cmds": [
     {

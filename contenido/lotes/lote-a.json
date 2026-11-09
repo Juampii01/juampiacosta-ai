@@ -101,7 +101,7 @@
    "faq": [
     {
      "q": "¿Las instrucciones y la memoria son lo mismo?",
-     "a": "No. Las instrucciones las escribís tú y se aplican siempre. La memoria la arma Claude con lo que van hablando, y tú la puedes corregir."
+     "a": "No. Las instrucciones las escribes tú y se aplican siempre. La memoria la arma Claude con lo que van hablando, y tú la puedes corregir."
     },
     {
      "q": "¿Funciona en el plan gratis?",
@@ -129,13 +129,13 @@
      "h": "El chat: donde empieza todo",
      "p": [
       "Es la conversación de siempre, en claude.ai, en la app de escritorio o en el celular. Está en todos los planes, incluido el gratis.",
-      "Sirve para casi todo lo del día a día: escribir, resumir, pensar una idea, revisar un texto o analizar un archivo que le subís."
+      "Sirve para casi todo lo del día a día: escribir, resumir, pensar una idea, revisar un texto o analizar un archivo que le subes."
      ]
     },
     {
      "h": "Proyectos: un espacio por tema",
      "p": [
-      "Un Proyecto junta chats, documentos e instrucciones de un mismo tema. Todo lo que subís al conocimiento del proyecto lo usa en cada chat de adentro, así no lo vuelves a explicar.",
+      "Un Proyecto junta chats, documentos e instrucciones de un mismo tema. Todo lo que subes al conocimiento del proyecto lo usa en cada chat de adentro, así no lo vuelves a explicar.",
       "Están en todos los planes. En el gratis puedes tener hasta cinco."
      ]
     },
@@ -143,7 +143,7 @@
      "h": "La app de escritorio y Cowork",
      "p": [
       "La app se baja de claude.ai/download y funciona en macOS 13 o más nuevo, Windows 10 o más nuevo y, en beta, en algunas versiones de Linux.",
-      "Además del chat, en los planes pagos trae Cowork: le describís una tarea de varios pasos y Claude la hace trabajando directo con los archivos de las carpetas que le habilitas. También trae Claude Code."
+      "Además del chat, en los planes pagos trae Cowork: le describes una tarea de varios pasos y Claude la hace trabajando directo con los archivos de las carpetas que le habilitas. También trae Claude Code."
      ],
      "aviso": "En Cowork, Claude puede hacer acciones reales sobre tus archivos. Dale acceso solo a las carpetas que necesita y deja la app abierta mientras trabaja."
     },
@@ -255,7 +255,7 @@
     {
      "h": "Cambiar de modelo en Claude Code",
      "p": [
-      "En Claude Code escribís /model sin nada más para abrir el selector, o /model con el nombre corto: haiku, sonnet, opus o fable.",
+      "En Claude Code escribes /model sin nada más para abrir el selector, o /model con el nombre corto: haiku, sonnet, opus o fable.",
       "El esfuerzo se cambia con /effort: solo abre un control deslizante, o le pasas el nivel directo (por ejemplo /effort high)."
      ],
      "prompts": [
@@ -404,7 +404,7 @@
   {
    "slug": "artifacts-apps-sin-programar",
    "t": "Artifacts: herramientas para tu negocio sin programar",
-   "d": "Pídele a Claude una calculadora, un cotizador o un tablero y te lo arma al lado del chat. Después lo publicas o lo compartís con tu equipo.",
+   "d": "Pídele a Claude una calculadora, un cotizador o un tablero y te lo arma al lado del chat. Después lo publicas o lo compartes con tu equipo.",
    "tema": "Claude",
    "min": 9,
    "fichaNombre": "Artifacts",
@@ -650,7 +650,7 @@
      "h": "Errores 6 y 7: modelo y herramientas de más",
      "lista": [
       "El modelo más potente para todo: Haiku es el que menos gasta y alcanza para resúmenes y tareas simples. Opus y Fable, para lo que de verdad los necesita.",
-      "Esfuerzo alto en tareas de rutina: bajá el nivel de esfuerzo o apaga el razonamiento extendido cuando no hace falta.",
+      "Esfuerzo alto en tareas de rutina: baja el nivel de esfuerzo o apaga el razonamiento extendido cuando no hace falta.",
       "Conectores y herramientas siempre prendidos: consumen mucho. Revisa qué tienes activado (en la versión nueva de la app, los conectores están en Customize → Connectors) y deja solo lo que vas a usar en ese chat."
      ]
     }

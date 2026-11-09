@@ -4,7 +4,7 @@
  "correcciones": [
   {
    "antes": "En el plan Hobby puedes volver a la inmediatamente anterior.",
-   "despues": "En el plan Hobby puedes volver a la inmediatamente anterior. Ojo: después de un rollback, Vercel deja de pasar a producción lo que subís a main. Cuando arreglaste el problema, toca Manage en el recuadro de la versión de producción y promueve la versión buena para que todo vuelva a funcionar como antes.",
+   "despues": "En el plan Hobby puedes volver a la inmediatamente anterior. Ojo: después de un rollback, Vercel deja de pasar a producción lo que subes a main. Cuando arreglaste el problema, toca Manage en el recuadro de la versión de producción y promueve la versión buena para que todo vuelva a funcionar como antes.",
    "motivo": "La doc oficial aclara que después de un Instant Rollback Vercel apaga la asignación automática de dominios de producción: los nuevos push a la rama de producción no salen en vivo hasta que deshaces el rollback con Manage en el Production Deployment tile o con vercel promote. Sin ese dato, la persona sube el arreglo y no entiende por qué no aparece.",
    "fuente": "https://vercel.com/docs/instant-rollback"
   },

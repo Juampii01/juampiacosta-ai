@@ -54,7 +54,7 @@
  "si_falla": [
   {
    "sintoma": "No aparece la sección Skills o las skills se ven en gris.",
-   "solucion": "Prendé Code execution and file creation (o Create and edit files, según cómo se vea tu Settings) en Settings → Capabilities. En una cuenta Team o Enterprise, si está en gris, la apagó el owner: pídele que la habilite en Organization settings → Plugins & skills, pestaña Policy."
+   "solucion": "Prende Code execution and file creation (o Create and edit files, según cómo se vea tu Settings) en Settings → Capabilities. En una cuenta Team o Enterprise, si está en gris, la apagó el owner: pídele que la habilite en Organization settings → Plugins & skills, pestaña Policy."
   },
   {
    "sintoma": "Una pieza sale con el tono de otro cliente.",

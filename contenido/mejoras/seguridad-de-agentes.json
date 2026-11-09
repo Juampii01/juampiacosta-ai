@@ -54,15 +54,15 @@
   },
   {
    "sintoma": "Bloqueaste \"Bash(rm *)\" y aun así apareció un borrado con otra forma del comando.",
-   "solucion": "Las reglas de Bash comparan el texto del comando tal como está escrito: /bin/rm o un comando dentro de sh -c no coinciden. Usa la regla como red, no como muro: deja rm en ask, trabaja con git para poder volver atrás y, si necesitas aislamiento real, prendé el sandbox con /sandbox o corre en un contenedor."
+   "solucion": "Las reglas de Bash comparan el texto del comando tal como está escrito: /bin/rm o un comando dentro de sh -c no coinciden. Usa la regla como red, no como muro: deja rm en ask, trabaja con git para poder volver atrás y, si necesitas aislamiento real, prende el sandbox con /sandbox o corre en un contenedor."
   },
   {
    "sintoma": "En modo Auto, Claude Code de golpe vuelve a pedirte permiso para todo.",
    "solucion": "Es una protección: después de varios bloqueos seguidos del clasificador (3 seguidos o 20 en total), el modo Auto se pausa y vuelve a preguntar. Lee qué estaba intentando hacer antes de seguir; con /permissions puedes ver las denegaciones recientes del modo Auto."
   },
   {
-   "sintoma": "Cada vez que abrís Claude Code te vuelve a preguntar si confías en la carpeta.",
-   "solucion": "Pasa cuando lo abrís directo en tu carpeta personal (home): ahí la confianza vale solo para esa sesión. Ábrelo desde la carpeta del proyecto y la confianza queda guardada para esa carpeta."
+   "sintoma": "Cada vez que abres Claude Code te vuelve a preguntar si confías en la carpeta.",
+   "solucion": "Pasa cuando lo abres directo en tu carpeta personal (home): ahí la confianza vale solo para esa sesión. Ábrelo desde la carpeta del proyecto y la confianza queda guardada para esa carpeta."
   }
  ],
  "kit": [

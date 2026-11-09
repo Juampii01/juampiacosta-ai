@@ -47,7 +47,7 @@
   },
   {
    "sintoma": "En la cuenta del cliente no aparece Skills o las skills se ven en gris.",
-   "solucion": "Prendé Code execution and file creation (o Create and edit files) en Settings → Capabilities. Si la cuenta es Team o Enterprise y la opción está bloqueada, la tiene que habilitar el owner en Organization settings → Plugins & skills. Conviene pedírselo antes del día de instalación."
+   "solucion": "Prende Code execution and file creation (o Create and edit files) en Settings → Capabilities. Si la cuenta es Team o Enterprise y la opción está bloqueada, la tiene que habilitar el owner en Organization settings → Plugins & skills. Conviene pedírselo antes del día de instalación."
   },
   {
    "sintoma": "Al conectar Gmail o Drive aparece un aviso de acceso bloqueado por el administrador de la institución.",

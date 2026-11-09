@@ -16,7 +16,7 @@
   },
   {
    "antes": "Desde /memory ves esas notas y prendes o apagas la función. Cuando aparece \"Saved memories\" o algo parecido, está anotando.",
-   "despues": "Desde /memory ves esas notas, prendes o apagas la función y abrís la carpeta donde las guarda. Mientras trabaja, Writing memory quiere decir que está anotando y Recalled memory, que usó una nota guardada. Necesita Claude Code v2.1.59 o más nuevo (lo ves con claude --version).",
+   "despues": "Desde /memory ves esas notas, prendes o apagas la función y abres la carpeta donde las guarda. Mientras trabaja, Writing memory quiere decir que está anotando y Recalled memory, que usó una nota guardada. Necesita Claude Code v2.1.59 o más nuevo (lo ves con claude --version).",
    "motivo": "La doc oficial nombra los mensajes Writing memory y Recalled memory, no Saved memories. También aclara que /memory da un link a la carpeta de la memoria automática y que la función requiere Claude Code v2.1.59 o posterior.",
    "fuente": "https://code.claude.com/docs/en/memory"
   },

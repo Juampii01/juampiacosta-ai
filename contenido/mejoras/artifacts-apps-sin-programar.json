@@ -28,7 +28,7 @@
   },
   {
    "antes": "Para verlo y usarlo, no. Se le pide cuenta solo para funciones como personalizarlo o las partes que usan IA.",
-   "despues": "En general, no: la mayoría de los artifacts compartidos por link se abren sin cuenta. Las excepciones: los documentos piden iniciar sesión y son solo de lectura, algunos artifacts (como los tableros) muestran parte del contenido solo con sesión iniciada, y las partes que usan Claude o apps conectadas piden cuenta y gastan del plan de quien las usa. En Team y Enterprise, si lo compartís dentro de la organización, la persona necesita su cuenta.",
+   "despues": "En general, no: la mayoría de los artifacts compartidos por link se abren sin cuenta. Las excepciones: los documentos piden iniciar sesión y son solo de lectura, algunos artifacts (como los tableros) muestran parte del contenido solo con sesión iniciada, y las partes que usan Claude o apps conectadas piden cuenta y gastan del plan de quien las usa. En Team y Enterprise, si lo compartes dentro de la organización, la persona necesita su cuenta.",
    "motivo": "La ayuda oficial aclara que los Docs requieren iniciar sesión, que algunos artifacts como los tableros muestran contenido solo después de iniciar sesión y que quien abre solo con el link, sin sesión, no puede usar las partes que dependen de Claude o de apps conectadas.",
    "fuente": "https://support.claude.com/en/articles/9547008"
   },
