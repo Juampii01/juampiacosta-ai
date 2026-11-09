@@ -134,6 +134,7 @@ export default async function handler(req, res) {
   else turnos.push({ role: "user", content: actual });
 
   let salida = { derivar: true, mensajes: [] };
+  let motivo = "modelo";
   try {
     const r = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
@@ -143,13 +144,16 @@ export default async function handler(req, res) {
     });
     if (!r.ok) throw new Error(`Claude ${r.status}: ${(await r.text()).slice(0, 200)}`);
     const j = await r.json();
-    salida = leerSalida((j.content || []).map((b) => b.text || "").join(""));
+    const crudo = (j.content || []).map((b) => b.text || "").join("");
+    salida = leerSalida(crudo);
+    if (salida.derivar) motivo = `modelo: ${crudo.slice(0, 300)}`;
   } catch (e) {
     console.error("Falló Claude:", e.message);
+    motivo = `error: ${e.message}`.slice(0, 300);
   }
 
   if (salida.derivar) {
-    await guardar("derivado", "modelo");
+    await guardar("derivado", motivo);
     return responder({ ok: true, derivar: "si" });
   }
   await guardar("agente", salida.mensajes.join("\n"));
