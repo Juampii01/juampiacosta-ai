@@ -146,7 +146,7 @@ export default async function handler(req, res) {
     const j = await r.json();
     const crudo = (j.content || []).map((b) => b.text || "").join("");
     salida = leerSalida(crudo);
-    if (salida.derivar) motivo = `modelo: ${crudo.slice(0, 300)}`;
+    if (salida.derivar) motivo = `modelo (${j.stop_reason}; ${(j.content || []).map((b) => b.type).join(",")}): ${crudo.slice(0, 300)}`;
   } catch (e) {
     console.error("Falló Claude:", e.message);
     motivo = `error: ${e.message}`.slice(0, 300);
