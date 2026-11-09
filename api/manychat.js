@@ -42,7 +42,7 @@ export default async function handler(req, res) {
 
   const cuerpo = await leerJson(req);
   const fila = limpiarRegistro(cuerpo);
-  if (!fila) return responder(200, { ok: false, error: "email" });
+  if (!fila) return responder(200, { ok: false, error: "email", link: "" });
   fila.origen = "manychat";
   const guia = guiaGratis(cuerpo.guia);
   if (guia) fila.utm_content = guia.slice(0, 120);
