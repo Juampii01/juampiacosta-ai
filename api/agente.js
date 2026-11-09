@@ -139,7 +139,7 @@ export default async function handler(req, res) {
     const r = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
       headers: { "x-api-key": ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "content-type": "application/json" },
-      body: JSON.stringify({ model: MODELO, max_tokens: 400, system: INSTRUCCIONES, messages: turnos }),
+      body: JSON.stringify({ model: MODELO, max_tokens: 1200, thinking: { type: "disabled" }, system: INSTRUCCIONES, messages: turnos }),
       signal: AbortSignal.timeout(8000)
     });
     if (!r.ok) throw new Error(`Claude ${r.status}: ${(await r.text()).slice(0, 200)}`);
