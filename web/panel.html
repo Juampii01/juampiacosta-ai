@@ -20,6 +20,12 @@
 <main class="fj-main ancho">
   <div class="fj-cab"><span class="fj-eyebrow">Panel de equipo · solo admin</span><h1>Usuarios</h1></div>
   <div class="fj-stats" id="pa-stats"></div>
+  <section class="fj-card fj-interes" id="pa-interes">
+    <h2>Quieren el acceso completo</h2>
+    <p class="sub">Los que tocaron «Sí, lo quiero» en el aviso del Classroom, abrieron la ventana de compra o intentaron abrir una guía paga. Del más reciente al más viejo: escríbeles mientras está caliente.</p>
+    <div class="kpis" id="pa-int-kpis"></div>
+    <div class="fj-tabla-caja"><table><thead><tr><th scope="col">Usuario</th><th scope="col">Qué hizo</th><th scope="col">Cuándo</th><th scope="col">Perfil</th><th scope="col"><span class="fj-oculto">Escribir</span></th></tr></thead><tbody id="pa-int-filas"><tr><td colspan="5">Cargando…</td></tr></tbody></table></div>
+  </section>
   <section class="fj-card" id="pa-invitar" style="padding:20px;margin-bottom:20px;display:flex;flex-wrap:wrap;align-items:center;gap:12px">
     <div style="flex:1;min-width:240px"><b>Invitación a Forja IA por mail</b><p class="fj-nota" style="font-size:14px;margin:4px 0 0" id="pa-inv-txt">Cargando…</p></div>
     <button type="button" class="fj-btn fj-btn-borde" id="pa-inv-prueba">Mandarme una prueba</button>
@@ -71,6 +77,24 @@
     }).join("") : '<tr><td colspan="8">No hay usuarios con ese filtro.</td></tr>';
     document.getElementById("pa-pie").textContent = "Mostrando " + lista.length + " de " + todos.length + ". «Dar acceso completo» sirve para pagos por Mercado Pago: la próxima vez que esa persona entre con su código, se le abre todo.";
   }
+  function hace(iso) {
+    var m = Math.round((Date.now() - Date.parse(iso)) / 6e4);
+    return m < 1 ? "recién" : m < 60 ? "hace " + m + " min" : m < 1440 ? "hace " + Math.round(m / 60) + " h" : fecha(iso);
+  }
+  var QUE = { hotmart: ["Fue a pagar (Hotmart)", ""], mpago: ["Fue a pagar (Mercado Pago)", ""], si: ["Tocó «Sí, lo quiero»", ""], guia_paga: ["Abrió una guía paga", ""], ventana: ["Abrió la ventana de compra", ""], no: ["Tocó «Ahora no»", " n"] };
+  function pintarInteres(it, s) {
+    if (!it) return;
+    document.getElementById("pa-int-kpis").innerHTML = [["Vieron el aviso", it.vieron, ""], ["Tocaron «Sí, lo quiero»", it.si, "color:#ff7a45"], ["Abrieron la compra", it.ventana, ""], ["Fueron a pagar", it.pagar, ""], ["Compraron", s.compraron, "color:#22c55e"]]
+      .map(function (k) { return '<div class="kpi"><small>' + k[0] + '</small><b style="' + k[2] + '">' + k[1] + '</b></div>'; }).join("");
+    document.getElementById("pa-int-filas").innerHTML = it.lista.length ? it.lista.map(function (x) {
+      var q = x.compro ? ["Compró", " g"] : (QUE[x.top] || [x.top, ""]);
+      var extra = [x.si > 1 ? "Tocó «Sí» " + x.si + " veces" : "", x.guias.length ? "Guías: " + x.guias.join(", ") : "", x.top === "si" && !x.pagos ? "No abrió el pago" : ""].filter(Boolean).join(" · ");
+      var wa = x.whatsapp && !x.compro ? '<a class="wa" href="https://wa.me/' + String(x.whatsapp).replace(/\D/g, "") + '" target="_blank" rel="noopener">WhatsApp</a>' : "";
+      return '<tr><td><b>' + esc(x.nombre || "Sin nombre") + '</b><small>' + esc(x.email) + (x.pais ? " · " + esc(x.pais) : "") + '</small></td>' +
+        '<td><span class="tag' + q[1] + '">' + esc(q[0]) + '</span>' + (extra ? '<small>' + esc(extra) + '</small>' : '') + '</td>' +
+        '<td>' + hace(x.ultimo) + '</td><td>' + esc(x.objetivo || "Sin completar") + (x.inversion ? '<small>' + esc(x.inversion) + '</small>' : '') + '</td><td>' + wa + '</td></tr>';
+    }).join("") : '<tr><td colspan="5">Todavía nadie. Aparecen acá apenas alguien toque «Sí, lo quiero» o abra la compra.</td></tr>';
+  }
   function cargar() {
     fetch("/api/panel", { credentials: "same-origin" }).then(function (r) { if (!r.ok) throw r.status; return r.json(); }).then(function (d) {
       todos = d.usuarios;
@@ -78,6 +102,7 @@
       document.getElementById("pa-stats").innerHTML = [["Registrados", s.registrados, "en total"], ["Entraron hoy", s.hoy, "a la plataforma"], ["Últimos 7 días", s.semana, "entraron al menos una vez"], ["Vuelven", s.vuelven, "entraron 2 días o más"], ["Acceso completo", s.compraron, "compraron"]]
         .map(function (x, i) { return '<div class="fj-card fj-stat"' + (i === 4 ? ' style="border-color:var(--fj-acento)"' : '') + '><small>' + x[0] + '</small><b' + (i === 4 ? ' style="color:var(--fj-acento-txt)"' : '') + '>' + x[1] + '</b><span>' + x[2] + '</span></div>'; }).join("");
       pintar();
+      pintarInteres(d.interes, s);
       var pend = todos.filter(function (u) { return !u.invitado_forja && !u.baja; }).length, ya = todos.filter(function (u) { return u.invitado_forja; }).length;
       document.getElementById("pa-inv-txt").textContent = pend ? "Les avisa que la biblioteca ahora es Forja IA y cómo entrar con su email. Pendientes: " + pend + (ya ? " · ya enviada a " + ya : "") + ". A cada persona le llega una sola vez." : "Ya se mandó a todos (" + ya + "). Los nuevos registros entran directo a Forja IA.";
       var bt = document.getElementById("pa-inv-todos"); bt.disabled = !pend; bt.textContent = "Enviar a " + pend; bt.dataset.n = pend;

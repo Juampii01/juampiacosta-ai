@@ -153,11 +153,20 @@ var FJ = (function () {
       '<p class="fj-paywall-nota" id="fj-pw-nota"></p>' +
       '</div>';
     document.body.appendChild(caja);
-    caja.addEventListener("click", function (e) { if (e.target.closest("[data-cerrar]")) cerrar(); });
+    caja.addEventListener("click", function (e) {
+      if (e.target.closest("[data-cerrar]")) return cerrar();
+      if (e.target.closest("#fj-pw-hotmart")) anotar("hotmart");
+      else if (e.target.closest(".fj-paywall-mp")) anotar("mpago");
+    });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !caja.hidden) cerrar(); });
   }
-  function abrir() {
+  function anotar(evento, detalle) {
+    try { fetch("/api/interes", { method: "POST", headers: { "Content-Type": "application/json" }, credentials: "same-origin", keepalive: true, body: JSON.stringify({ evento: evento, detalle: detalle || "" }) }).catch(function () {}); } catch (e) {}
+  }
+  FJ.anotar = anotar;
+  function abrir(origen) {
     if (!caja) armar();
+    anotar("ventana", typeof origen === "string" ? origen : (document.body.dataset.seccion || ""));
     var h = document.getElementById("fj-pw-hotmart");
     h.href = HOTMART + (email ? "&email=" + encodeURIComponent(email) : "");
     document.getElementById("fj-pw-nota").innerHTML = (email ? 'Paga con el mismo mail de tu cuenta (<b>' + FJ.esc(email) + '</b>). ' : 'Paga con el mismo mail con el que entras. ') +
@@ -173,8 +182,36 @@ var FJ = (function () {
     e.preventDefault(); abrir();
   }, true);
   FJ.desbloquear = abrir;
-  if (/[?&]desbloquear=/.test(location.search)) {
+  var pedida = (location.search.match(/[?&]desbloquear=([a-z0-9-]{1,120})/) || [])[1];
+  if (pedida) {
     history.replaceState(null, "", location.pathname + location.hash);
-    setTimeout(abrir, 300);
+    if (pedida !== "1") anotar("guia_paga", pedida);
+    setTimeout(function () { abrir(pedida === "1" ? "precio" : "guia:" + pedida); }, 300);
+  }
+
+  // Aviso arriba del Classroom: «¿Te gustaría tener el acceso completo por solo US$ 24,90?»
+  // «Sí, lo quiero» abre la ventana de compra; «Ahora no» lo esconde 3 días. Todo queda anotado para el Panel.
+  if (document.body.dataset.seccion === "classroom") {
+    var NO = "fj_oferta_no", esconder = false;
+    try { esconder = Date.now() - Number(localStorage.getItem(NO) || 0) < 3 * 864e5; } catch (e) {}
+    var main = document.querySelector("main");
+    if (!esconder && main) {
+      var av = document.createElement("section");
+      av.className = "fj-oferta";
+      av.innerHTML = '<div class="tx"><span class="eb"><i></i>Precio de lanzamiento · hasta el 30 de noviembre</span>' +
+        '<h2>¿Te gustaría tener el acceso completo por solo <b>US$ 24,90</b>?</h2>' +
+        '<p>Las ' + FJ.total + ' guías, el roadmap para vender IA, los sistemas listos para replicar y Maestro. Pago único, es tuyo para siempre. Desde el 1/12 pasa a US$ 44,90.</p></div>' +
+        '<div class="acc"><button type="button" class="si">Sí, lo quiero →</button>' +
+        '<span class="mini">Hoy tienes ' + FJ.abiertas + ' de ' + FJ.total + ' abiertas</span>' +
+        '<button type="button" class="no">Ahora no</button></div>';
+      main.insertBefore(av, main.firstChild);
+      var banda = document.getElementById("cl-plan"); if (banda) banda.classList.add("fj-oculta-oferta");
+      anotar("aviso");
+      av.querySelector(".si").addEventListener("click", function () { anotar("si"); abrir("aviso"); });
+      av.querySelector(".no").addEventListener("click", function () {
+        anotar("no"); try { localStorage.setItem(NO, String(Date.now())); } catch (e) {}
+        av.remove(); if (banda) banda.classList.remove("fj-oculta-oferta");
+      });
+    }
   }
 })();

@@ -24,6 +24,31 @@ export function resumen(todos, admins = process.env.ADMINS) {
   };
 }
 
+const PESO = { hotmart: 5, mpago: 5, si: 4, guia_paga: 3, ventana: 2, no: 1, aviso: 0 };
+/** Embudo de intención de compra y la lista de quienes mostraron interés (sin admins), del más reciente al más viejo. */
+export function embudo(eventos, usuarios) {
+  const porEmail = Object.fromEntries((usuarios || []).map((u) => [u.email, u]));
+  const ev = (eventos || []).filter((e) => porEmail[e.email] && !porEmail[e.email].admin);
+  const quien = (tipos) => new Set(ev.filter((e) => tipos.includes(e.evento)).map((e) => e.email)).size;
+  const p = {};
+  ev.forEach((e) => {
+    if (e.evento === "aviso") return;
+    const x = p[e.email] || (p[e.email] = { email: e.email, ultimo: e.creado, top: e.evento, detalle: e.detalle, si: 0, pagos: 0, guias: [] });
+    if (e.evento === "si") x.si++;
+    if (e.evento === "hotmart" || e.evento === "mpago") x.pagos++;
+    if (e.evento === "guia_paga" && e.detalle && !x.guias.includes(e.detalle) && x.guias.length < 3) x.guias.push(e.detalle);
+    if (PESO[e.evento] > PESO[x.top]) { x.top = e.evento; x.detalle = e.detalle; }
+  });
+  const lista = Object.values(p).map((x) => {
+    const u = porEmail[x.email];
+    return { ...x, nombre: u.nombre, pais: u.pais, whatsapp: u.whatsapp, compro: u.compro, objetivo: u.objetivo, inversion: u.inversion };
+  }).sort((a, b) => (a.ultimo < b.ultimo ? 1 : -1)).slice(0, 200);
+  return {
+    vieron: quien(["aviso"]), si: quien(["si"]), ventana: quien(["ventana"]), pagar: quien(["hotmart", "mpago"]),
+    no: quien(["no"]), compraron: lista.filter((x) => x.compro).length, lista
+  };
+}
+
 /** Días distintos que entró cada uno (últimos 30 y últimos 7), si entró hoy, páginas vistas y guías abiertas. */
 export function frecuencia(filas, hoy = new Date(Date.now() - 3 * 36e5).toISOString().slice(0, 10)) {
   const hace7 = new Date(Date.parse(hoy) - 6 * 864e5).toISOString().slice(0, 10);
@@ -70,16 +95,17 @@ export default async function handler(req, res) {
   try {
     if (req.method === "GET") {
       const desde = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
-      const [regs, prog, act] = await Promise.all([
+      const [regs, prog, act, int] = await Promise.all([
         sb(`registros?select=${CAMPOS}&order=creado.desc&limit=5000`),
         sb("progreso?select=email,visto&limit=50000"),
+        sb("interes?select=email,evento,detalle,creado&order=creado.desc&limit=20000").catch(() => []),
         sb(`actividad?select=email,dia,paginas,secciones&dia=gte.${desde}&limit=50000`)
       ]);
       const vistas = {}, ultimo = {};
       prog.forEach((p) => { vistas[p.email] = (vistas[p.email] || 0) + 1; if (!ultimo[p.email] || p.visto > ultimo[p.email]) ultimo[p.email] = p.visto; });
       const frec = frecuencia(act);
       const usuarios = regs.map((r) => ({ ...r, admin: esAdmin(r.email), vistas: vistas[r.email] || 0, ultima_guia: ultimo[r.email] || null, ...(frec[r.email] || { dias: 0, dias7: 0, paginas: 0, abiertas: 0 }) }));
-      return json(res, 200, { usuarios, resumen: resumen(usuarios) });
+      return json(res, 200, { usuarios, resumen: resumen(usuarios), interes: embudo(int, usuarios) });
     }
     if (req.method === "POST") {
       const c = await leerCuerpo(req);

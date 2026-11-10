@@ -366,3 +366,38 @@ body.fj-app main.fj-main > section { margin-top: 0; padding-top: 0; }
 .fj-paywall-mp{color:#d4d4d8!important;border-color:#3f3f46!important}
 .fj-paywall-nota{font-size:12.5px;line-height:1.5;color:#a1a1aa;margin:12px 0 0}
 .fj-paywall-nota b{color:#e4e4e7}
+
+/* Aviso de oferta arriba del Classroom (shell.js) */
+.fj-main .fj-oferta{position:relative;overflow:hidden;display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:28px 30px!important;margin:0 0 24px;border-radius:18px;border:1px solid rgba(255,90,31,.35);color:#f4f4f5;
+  background-color:#0d0c0b;background-image:radial-gradient(600px 220px at 100% 0%,rgba(255,90,31,.22),transparent 70%),linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:auto,28px 28px,28px 28px}
+.fj-oferta .tx{flex:1;min-width:240px}
+.fj-oferta .eb{font:700 11px/1.4 "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#ff7a45;display:flex;align-items:center;gap:8px}
+.fj-oferta .eb i{flex:none;width:7px;height:7px;border-radius:50%;background:#ff5a1f;box-shadow:0 0 0 4px rgba(255,90,31,.2)}
+.fj-oferta h2{font-size:clamp(20px,2.6vw,26px);font-weight:800;letter-spacing:-.02em;line-height:1.2;margin:10px 0 6px;color:#fff}
+.fj-oferta h2 b{color:#ff7a45;font-family:"JetBrains Mono",monospace}
+.fj-oferta p{margin:0;color:#a1a1aa;font-size:14.5px;line-height:1.5}
+.fj-oferta .acc{display:flex;flex-direction:column;align-items:stretch;gap:8px;min-width:220px}
+.fj-oferta .si{background:#ff5a1f;color:#0a0a0b;font-weight:800;font-size:15px;border:0;border-radius:12px;padding:14px 20px;cursor:pointer;box-shadow:0 8px 24px rgba(255,90,31,.35)}
+.fj-oferta .si:hover{background:#ff6f3a}
+.fj-oferta .no{background:none;border:0;color:#71717a;font-size:13px;cursor:pointer;padding:4px}
+.fj-oferta .no:hover{color:#d4d4d8}
+.fj-oferta .mini{font-size:12px;color:#71717a;text-align:center}
+@media (max-width:640px){.fj-main .fj-oferta{padding:22px 20px!important}.fj-oferta .acc{width:100%}}
+.fj-oculta-oferta{display:none!important}
+
+/* Panel: quieren el acceso completo */
+.fj-interes{padding:22px!important;margin:0 0 20px}
+.fj-interes h2{font-size:18px;font-weight:800;margin:0 0 4px}
+.fj-interes .sub{color:var(--fj-muted);font-size:14px;margin:0 0 14px;line-height:1.5}
+.fj-interes .kpis{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.fj-interes .kpi{border:1px solid var(--fj-line);border-radius:12px;padding:10px 14px;min-width:120px}
+.fj-interes .kpi small{display:block;color:var(--fj-muted);font-size:12px}
+.fj-interes .kpi b{font-size:22px}
+.fj-interes table{width:100%;border-collapse:collapse;font-size:14px}
+.fj-interes th{text-align:left;font-size:12px;color:var(--fj-muted);font-weight:600;padding:8px;border-bottom:1px solid var(--fj-line)}
+.fj-interes td{padding:10px 8px;border-bottom:1px solid var(--fj-line);vertical-align:top}
+.fj-interes td small{display:block;color:var(--fj-muted);font-size:12px;margin-top:2px}
+.fj-interes .tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 8px;border-radius:99px;background:rgba(255,90,31,.14);color:#ff7a45}
+.fj-interes .tag.g{background:rgba(34,197,94,.14);color:#16a34a}
+.fj-interes .tag.n{background:rgba(161,161,170,.16);color:var(--fj-muted)}
+.fj-interes .wa{display:inline-block;background:#22c55e;color:#04120a;font-weight:700;font-size:12px;padding:6px 10px;border-radius:8px;text-decoration:none;white-space:nowrap}

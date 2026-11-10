@@ -104,3 +104,24 @@ test("actividad: frecuencia por persona", () => {
   assert.equal(f["a@x.co"].hoy, true);
   assert.equal(f["a@x.co"].abiertas, 2);
 });
+
+import { embudo } from "../api/panel.js";
+import { limpiarInteres } from "../api/interes.js";
+test("interés: solo eventos conocidos", () => {
+  assert.equal(limpiarInteres({ evento: "hackeo" }), null);
+  assert.deepEqual(limpiarInteres({ evento: "guia_paga", detalle: "Sistema-Base<script>" }), { evento: "guia_paga", detalle: "sistema-basescript" });
+});
+test("interés: embudo y lista por persona", () => {
+  const us = [{ email: "a@x.co", nombre: "Ana" }, { email: "b@x.co", nombre: "Beto" }, { email: "yo@x.co", admin: true }];
+  const ev = [
+    { email: "a@x.co", evento: "hotmart", creado: "2026-11-10T22:00:00Z" },
+    { email: "a@x.co", evento: "si", creado: "2026-11-10T21:59:00Z" },
+    { email: "a@x.co", evento: "aviso", creado: "2026-11-10T21:58:00Z" },
+    { email: "b@x.co", evento: "no", creado: "2026-11-10T21:00:00Z" },
+    { email: "b@x.co", evento: "aviso", creado: "2026-11-10T20:59:00Z" },
+    { email: "yo@x.co", evento: "si", creado: "2026-11-10T23:00:00Z" }
+  ];
+  const e = embudo(ev, us);
+  assert.equal(e.vieron, 2); assert.equal(e.si, 1); assert.equal(e.pagar, 1); assert.equal(e.no, 1);
+  assert.deepEqual(e.lista.map((x) => [x.email, x.top]), [["a@x.co", "hotmart"], ["b@x.co", "no"]]);
+});
