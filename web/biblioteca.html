@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="web/organizar.css?v={{V}}">
 <link rel="stylesheet" href="web/tema.css?v={{V}}">
 <link rel="stylesheet" href="web/bienvenida.css?v={{V}}">
+<link rel="stylesheet" href="web/menu.css?v={{V}}">
 <link rel="stylesheet" href="web/forja.css?v={{V}}">
 <script src="web/tema.js?v={{V}}"></script>
 <link rel="icon" href="web/favicon.svg?v={{V}}" type="image/svg+xml">
@@ -179,6 +180,7 @@ function verBiblio() {
   document.querySelectorAll("main > section").forEach(function (s) { s.hidden = s.id !== id; });
   document.querySelectorAll(".fj-sub a").forEach(function (a) { if (a.dataset.sub === id) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
   window.scrollTo(0, 0);
+  setTimeout(function () { window.scrollTo(0, 0); }, 0);
 }
 window.addEventListener("hashchange", verBiblio);
 verBiblio();

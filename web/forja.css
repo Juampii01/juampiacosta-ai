@@ -338,3 +338,6 @@ body.fj-acceso { min-height: 100vh; display: grid; place-items: center; padding:
 .fj-top-acciones .tema-boton { width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--fj-line); background: var(--fj-surface); color: var(--fj-text2); }
 .fj-top-acciones .tema-boton:hover { background: var(--fj-surface2); color: var(--fj-text); }
 .fj-top-acciones .tema-boton svg { width: 18px; height: 18px; }
+
+/* Biblioteca: cada sección arranca arriba, sin el espacio de la portada vieja */
+body.fj-app main.fj-main > section { margin-top: 0; padding-top: 0; }
