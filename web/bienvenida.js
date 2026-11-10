@@ -362,7 +362,13 @@
   var forzar = /[?&]bienvenida=1/.test(location.search);
   var gratis = /(?:^|;\s*)jpa_nivel=gratis/.test(document.cookie);
   var hecho = cookie("jpa_perfil") === "1" || guardado("jpa_perfil") === "1";
-  if (forzar || (gratis && !hecho)) {
-    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", abrir); else abrir();
+  function arrancar() { if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", abrir); else abrir(); }
+  if (forzar) arrancar();
+  else if (gratis && !hecho) {
+    // Antes de preguntar, confirma en la cuenta: si ya respondió en otro dispositivo o dominio, no se lo vuelve a pedir
+    fetch("/api/cuenta", { credentials: "same-origin" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+      if (d && d.perfil) { guardado("jpa_perfil", "1"); document.cookie = "jpa_perfil=1; Path=/; Max-Age=31536000; Secure; SameSite=Lax"; return; }
+      arrancar();
+    }).catch(arrancar);
   }
 })();

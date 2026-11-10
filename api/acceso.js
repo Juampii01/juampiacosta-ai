@@ -29,7 +29,15 @@ export default async function handler(req, res) {
   // El acceso completo se activa entrando con el código del mail.
   const nivel = "gratis";
   const cookie = await crearCookie(p.m, p.n || "", secreto, nivel);
+  let perfil = false;
+  try {
+    if (url && clave) {
+      const r = await fetch(`${url.replace(/\/$/, "")}/rest/v1/registros?email=eq.${encodeURIComponent(p.m)}&select=perfil_completo`, { headers: { apikey: clave, ...(clave.startsWith("eyJ") ? { Authorization: `Bearer ${clave}` } : {}) }, signal: AbortSignal.timeout(4000) });
+      perfil = r.ok && !!((await r.json())[0] || {}).perfil_completo;
+    }
+  } catch (e) { console.error("acceso: no se pudo leer el perfil:", e.message); }
   res.setHeader("Set-Cookie", [
+    ...(perfil ? [`jpa_perfil=1; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; Secure; SameSite=Lax`] : []),
     `${ACCESS_COOKIE_NAME}=${encodeURIComponent(cookie)}; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; HttpOnly; Secure; SameSite=Lax`,
     `${AVISO_COOKIE_NAME}=${nivel}; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; Secure; SameSite=Lax`,
     `jpa_nombre=${encodeURIComponent((p.n || "").split(" ")[0].slice(0, 30))}; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; Secure; SameSite=Lax`

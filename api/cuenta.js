@@ -19,8 +19,8 @@ export default async function handler(req, res) {
 
   if (req.method === "GET") {
     try {
-      const f = (await sb(`registros?email=eq.${enc(yo.email)}&select=nombre,rubro,baja,compro,creado`))[0] || {};
-      return json(res, 200, { email: yo.email, nombre: f.nombre || yo.nombre, rubro: f.rubro || "", mails: !f.baja, nivel: yo.nivel, compro: !!f.compro, desde: f.creado || null, admin: yo.admin });
+      const f = (await sb(`registros?email=eq.${enc(yo.email)}&select=nombre,rubro,baja,compro,creado,perfil_completo`))[0] || {};
+      return json(res, 200, { email: yo.email, nombre: f.nombre || yo.nombre, rubro: f.rubro || "", mails: !f.baja, nivel: yo.nivel, compro: !!f.compro, desde: f.creado || null, perfil: !!f.perfil_completo, admin: yo.admin });
     } catch (e) { console.error("cuenta GET:", e.message); return json(res, 502, { error: "servidor" }); }
   }
   if (req.method === "POST") {

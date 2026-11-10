@@ -43,12 +43,15 @@ export default async function handler(req, res) {
       return json(res, 400, { error: "codigo", quedan: Math.max(0, CODIGO_INTENTOS - fila.intentos - 1) });
     }
     await sb(`codigos?email=eq.${enc(email)}`, { method: "DELETE", prefer: "return=minimal" });
-    const reg = (await sb(`registros?email=eq.${enc(email)}&select=nombre`))[0] || {};
+    const reg = (await sb(`registros?email=eq.${enc(email)}&select=nombre,perfil_completo`))[0] || {};
     let pago = false;
     try { pago = await yaCompro(email, cfg); } catch (e) { console.error("No se pudo ver si compró:", e.message); }
     const nivel = pago ? "pago" : "gratis";
     const cookie = await crearCookie(email, reg.nombre || "", secreto, nivel);
-    res.setHeader("Set-Cookie", cookiesDeSesion(cookie, nivel, reg.nombre, esAdmin(email)));
+    const cookies = cookiesDeSesion(cookie, nivel, reg.nombre, esAdmin(email));
+    // Si ya respondió las preguntas de bienvenida (en cualquier dispositivo), no se las vuelve a pedir
+    if (reg.perfil_completo) cookies.push(`jpa_perfil=1; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; Secure; SameSite=Lax`);
+    res.setHeader("Set-Cookie", cookies);
     return json(res, 200, { ok: true, nivel, destino: destinoSeguro(cuerpo.volver) });
   } catch (e) {
     console.error("No se pudo verificar el código:", e.message);
