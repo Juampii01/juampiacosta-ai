@@ -20,3 +20,21 @@ test("lee el JSON del modelo y deriva si no se entiende", () => {
   assert.deepEqual(leerSalida('{"derivar": true, "mensajes": []}'), { derivar: true, mensajes: [] });
   assert.equal(leerSalida('{"derivar":false,"mensajes":["a","b","c"]}').mensajes.length, 2);
 });
+
+test("la palabra del reel escrita a mano se reconoce, pero no frases comunes", async () => {
+  const { palabraDeReel } = await import("../api/agente.js");
+  assert.equal(palabraDeReel("Linkedin"), "LINKEDIN");
+  assert.equal(palabraDeReel("GUÍA"), "GUIA");
+  assert.equal(palabraDeReel("Quiero la guia"), "GUIA");
+  assert.equal(palabraDeReel("jarvis 🙏"), "JARVIS");
+  assert.equal(palabraDeReel("plan pago"), null);
+  assert.equal(palabraDeReel("hola que tal"), null);
+});
+
+test("encuentra el mail y la guía que pidió antes", async () => {
+  const { mailEn, guiaPedida } = await import("../api/agente.js");
+  assert.equal(mailEn("mi mail es Ana.Perez@Gmail.com."), "ana.perez@gmail.com");
+  assert.equal(mailEn("no tengo mail"), null);
+  assert.equal(guiaPedida(["hola", "Linkedin", "ok"]), "linkedin-agent-11-skills");
+  assert.equal(guiaPedida(["hola"]), null);
+});

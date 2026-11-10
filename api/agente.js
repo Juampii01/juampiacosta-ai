@@ -4,10 +4,13 @@
 // { ok, derivar: "si"|"no", m1, m2 }. ManyChat manda m1 y, si no está vacío, m2. Si derivar = "si", no responde nada:
 // le pone la etiqueta para_juampi y Juampi contesta a mano.
 // Guarda cada mensaje en la tabla chat_mensajes (Supabase) para tener memoria y para la revisión de cada noche.
-// Variables en Vercel: ANTHROPIC_API_KEY, MANYCHAT_SECRET, SUPABASE_URL, SUPABASE_SECRET_KEY.
+// Si escribe la palabra de un reel/anuncio le pide el mail; si manda el mail, lo registra y le devuelve el link mágico.
+// Variables en Vercel: ANTHROPIC_API_KEY, MANYCHAT_SECRET, ACCESS_SECRET, SUPABASE_URL, SUPABASE_SECRET_KEY.
 
 import { claveIgual } from "./manychat.js";
-import { cabeceras } from "./registro.js";
+import { cabeceras, guardarEnSupabase, limpiarRegistro } from "./registro.js";
+import { crearEnlace } from "../lib/acceso.js";
+import { GUIAS_GRATIS, PALABRAS } from "../lib/gratis.js";
 
 export const MODELO = process.env.AGENTE_MODELO || "claude-haiku-5-5";
 
@@ -17,15 +20,15 @@ CÓMO ESCRIBES (muy importante, si suena "correcto" parece un bot):
 - Mensajes cortos, como chat de WhatsApp. 1 o 2 mensajes por respuesta, cada uno de 1 o 2 frases.
 - Primera letra en mayúscula. Sin tildes. Sin signos de apertura (nada de ¿ ni ¡), solo el de cierre "?".
 - Comas en vez de dos puntos. Nunca listas numeradas ni viñetas. Sin emojis, o uno como mucho.
-- Tono cercano y tranqui, como un amigo que sabe del tema. Puedes usar voseo suave (probalo, fijate, decime).
-- Nunca presiones para comprar. Frases como "Igual sin apuro, primero probalo gratis y fijate si te sirve".
+- Tono cercano y tranqui, como un amigo que sabe del tema. Español neutro tuteando: tú, nunca vos (pruebalo, fijate, dime, escribeme, puedes, tienes; nunca probalo, decime, escribime, podés, tenés).
+- Nunca presiones para comprar. Frases como "Igual sin apuro, primero pruebalo gratis y fijate si te sirve".
 - No digas que eres una IA ni un asistente. No uses frases de bot ("¡Hola! ¿En qué puedo ayudarte?").
 
 QUÉ HACES:
 - Respondes dudas sobre la biblioteca con la información de abajo. Si no está, no inventes.
 - Te interesa saber a qué se dedica para recomendarle por dónde arrancar. Pregúntalo si todavía no lo sabes, una sola vez.
-- Si quiere una guía, o dice que no le llegó o no la ve, dile que escriba QUIERO LA GUIA y le llega al toque. Si dice que no se registró o no sabe cómo, pásale https://juampiacosta-ai.vercel.app/?volver=/recursos#gratis y dile que pone su mail y entra directo.
-- El precio NO lo mencionas salvo que la persona lo pregunte. Si lo pregunta, das el precio y los links, y cierras con algo como "Igual sin apuro, primero probalo gratis y fijate si te sirve".
+- Si escribe la palabra de un reel o del anuncio (LINKEDIN, JARVIS, GUIA, WEB, etc.), pide una guía, o dice que no le llegó o no la ve, pídele el mail directo, por ejemplo "Dale, escribeme tu mail y te mando el link, asi tambien te quedan abiertas las 34 guias gratis". No le pidas que escriba otra palabra. Cuando manda el mail, el sistema lo registra y le manda el link solo, tú no tienes que hacer nada.
+- El precio NO lo mencionas salvo que la persona lo pregunte. Si lo pregunta, das el precio y los links, y cierras con algo como "Igual sin apuro, primero pruebalo gratis y fijate si te sirve".
 - Saluda con "Hola" solo en tu primer mensaje de la charla, después no.
 
 CUÁNDO NO RESPONDES (derivar = true, Juampi contesta a mano):
@@ -33,14 +36,14 @@ CUÁNDO NO RESPONDES (derivar = true, Juampi contesta a mano):
 - Quiere comprar ya o pide el link para pagar.
 - Pregunta por una instalación o servicio a medida para su negocio, o una propuesta comercial.
 - Se queja, está enojado, pide reembolso, o es un tema personal o sensible.
-- Te pide algo que no está en la información y no podés responder bien.
+- Te pide algo que no está en la información y no puedes responder bien.
 
 INFORMACIÓN DE LA BIBLIOTECA:
 - 123 guías paso a paso para usar Claude, de configurarlo desde cero hasta armar sistemas de IA y vendérselos a negocios. 222 prompts listos para copiar, skills y conectores. Se suma algo nuevo cada semana.
 - Ordenada en 3 partes: Arranca bien (configurar Claude, pedirle bien las cosas, gastar menos), Ponlo a trabajar (tu negocio, contenido y redes, conseguir clientes, skills, agentes), Vende y construye (el sistema para venderle IA a negocios, sistemas por rubro, Claude Code, crear tu app).
 - Gratis: registrándose con el mail se abren 34 guías (todas las de los reels, las de gastar menos y el Módulo 1 del sistema para vender IA). Web: juampiacosta-ai.vercel.app
-- Guías gratis que más piden por los reels: Codex dentro de Claude Code (con el plugin oficial de OpenAI conectas Codex a Claude Code y le pasas tareas o revisiones con comandos /codex, necesitas la CLI de Codex con tu cuenta de ChatGPT), 22 skills de Claude Code, 8 apps clonadas gratis, 5 repos que reemplazan apps pagas, oficina de agentes IA, 4 agentes de WhatsApp para vender, configurar Claude en 10 minutos. Si preguntan cómo hacer algo de estas, explicas en una frase la idea y le dices que escriba QUIERO LA GUIA para el paso a paso.
-- Palabras de los reels y su guía: MAPA (Graphify y Obsidian para gastar menos en Claude Code), MODELO (qué modelo de Claude usar), TOKEN (MarkItDown), PROYECTO (Proyectos y caché), PLAN (modo plan de Claude Code), CHAT (por qué Claude se vuelve torpe en chats largos), LIVIANO (Claude Code liviano), SUBAGENTE (subagentes), MEDIDOR (medidor de uso y límites), ARCHIVOS (archivos sin desperdiciar tokens), PEDIDO (pedidos que salen a la primera), CONFIG (configurar Claude en 10 minutos), GUIA (Codex dentro de Claude Code), JARVIS, LINKEDIN, INSTAGRAM, YOUTUBE, WEB, CONECTOR, SKILLS, CLON, REPOS, WHATSAPP, OFICINA, CINCO, EDITAR. Si alguien escribe solo una de estas palabras, quiere esa guía: dile que escriba QUIERO LA GUIA y que después toque "Guias de mis reels" y busque su palabra.
+- Guías gratis que más piden por los reels: Codex dentro de Claude Code (con el plugin oficial de OpenAI conectas Codex a Claude Code y le pasas tareas o revisiones con comandos /codex, necesitas la CLI de Codex con tu cuenta de ChatGPT), 22 skills de Claude Code, 8 apps clonadas gratis, 5 repos que reemplazan apps pagas, oficina de agentes IA, 4 agentes de WhatsApp para vender, configurar Claude en 10 minutos. Si preguntan cómo hacer algo de estas, explicas en una frase la idea y le pides el mail para mandarle el paso a paso.
+- Palabras de los reels y su guía: MAPA (Graphify y Obsidian para gastar menos en Claude Code), MODELO (qué modelo de Claude usar), TOKEN (MarkItDown), PROYECTO (Proyectos y caché), PLAN (modo plan de Claude Code), CHAT (por qué Claude se vuelve torpe en chats largos), LIVIANO (Claude Code liviano), SUBAGENTE (subagentes), MEDIDOR (medidor de uso y límites), ARCHIVOS (archivos sin desperdiciar tokens), PEDIDO (pedidos que salen a la primera), CONFIG (configurar Claude en 10 minutos), GUIA (Codex dentro de Claude Code), JARVIS, LINKEDIN, INSTAGRAM, YOUTUBE, WEB, CONECTOR, SKILLS, CLON, REPOS, WHATSAPP, OFICINA, CINCO, EDITAR. Si alguien escribe solo una de estas palabras, quiere esa guía: pídele el mail directo y el sistema le manda el link a esa guía.
 - Nunca digas que algo "no se puede" o "no se conecta" si hay una guía sobre eso. Si no estás seguro, deriva.
 - La mayoría funciona con el plan gratis de Claude. Algunas cosas (Claude Code, tareas programadas) piden plan pago. No hace falta saber programar para las partes 1 y 2.
 - Acceso completo (solo si lo preguntan): US$ 24,90 pago único hasta el 30 de noviembre, después US$ 44,90. Incluye todo lo que se sume después. Desde cualquier país con Hotmart: https://pay.hotmart.com/J108404247X?off=8flev061 . En Argentina también Mercado Pago, $ 39.000: https://mpago.la/1Q8PbXK . Después de pagar se registra en la web con el mismo mail y se abre todo.
@@ -48,6 +51,31 @@ INFORMACIÓN DE LA BIBLIOTECA:
 FORMATO DE SALIDA: solo JSON, sin nada más:
 {"derivar": false, "mensajes": ["primer mensaje", "segundo mensaje opcional"]}
 Si derivar es true, "mensajes" va vacío.`;
+
+
+const PIDE_MAIL = `Dale, escribeme tu mail y te mando el link, asi tambien te quedan abiertas las ${GUIAS_GRATIS.size} guias gratis`;
+
+/** «linkedin», «Guía!», «JARVIS 🙏» → la palabra en mayúsculas sin tildes si es una de los reels; si no, null */
+export function palabraDeReel(texto) {
+  const t = String(texto || "").normalize("NFD").replace(/[\u0301\u0300]/g, "").normalize("NFC")
+    .replace(/[^\p{L}\p{N}\s]/gu, " ").trim().toUpperCase();
+  // Solo la palabra sola («Linkedin») o «quiero/la/guia + palabra»: «plan pago» o «que modelo uso» siguen yendo a Claude
+  const w = t.split(/\s+/).filter((x) => !["QUIERO", "LA", "EL", "GUIA", "DE", "PORFA"].includes(x));
+  if (w.length === 0 && /\bGUIA\b/.test(t)) return "GUIA";
+  return w.length === 1 && PALABRAS[w[0]] ? w[0] : null;
+}
+
+/** Primer mail que aparezca en el mensaje («mi mail es Ana@Gmail.com») */
+export function mailEn(texto) {
+  const m = String(texto || "").match(/[^\s@<>(),;:"']+@[^\s@<>(),;:"']+\.[a-z]{2,}/i);
+  return m ? m[0].replace(/[.]+$/, "").toLowerCase() : null;
+}
+
+/** La guía que pidió: la última palabra de reel que escribió en la charla (o null → lista de guías de los reels) */
+export function guiaPedida(textos) {
+  for (const t of [...textos].reverse()) { const p = palabraDeReel(t); if (p) return PALABRAS[p]; }
+  return null;
+}
 
 const PALABRAS_DERIVAR = /(^|[^a-záéíóúñ])(pagu[eé]|compr[eé]|comprobante|transfer[ií]|reembolso|devoluci[oó]n|estafa|no me (abre|deja|anda|funciona)|no puedo entrar)(?![a-záéíóúñ])/i;
 
@@ -118,6 +146,33 @@ export default async function handler(req, res) {
     } catch (e) { console.error("No se leyó el historial:", e.message); }
   }
   await guardar("usuario", texto);
+
+  // Escribió la palabra del reel o del anuncio a mano: le pedimos el mail directo, sin pasar por Claude
+  if (palabraDeReel(texto)) {
+    await guardar("agente", PIDE_MAIL);
+    return responder({ ok: true, derivar: "no", m1: PIDE_MAIL });
+  }
+
+  // Mandó su mail: lo registramos (origen manychat) y le mandamos el link mágico a la guía que pidió
+  const mail = mailEn(texto);
+  const secreto = process.env.ACCESS_SECRET;
+  if (mail && db && secreto && !derivarPorReglas(texto)) {
+    const fila = limpiarRegistro({ email: mail, nombre });
+    if (fila) {
+      try {
+        fila.origen = "manychat";
+        const guia = guiaPedida(historial.filter((f) => f.rol === "usuario").map((f) => f.texto));
+        if (guia) fila.utm_content = guia;
+        await guardarEnSupabase(fila, db);
+        const host = String(req.headers["x-forwarded-host"] || req.headers.host || "juampiacosta-ai.vercel.app").split(",")[0].trim();
+        const t = await crearEnlace(fila.email, fila.nombre || "", guia, secreto);
+        const link = `https://${host}/api/acceso?t=${encodeURIComponent(t)}${guia ? "" : "&a=reels"}`;
+        const m1 = guia ? "Listo, ya te quedo todo abierto, toca aca y entras directo a la guia" : "Listo, ya te quedo todo abierto, toca aca y en De mis reels buscas la palabra del video que viste";
+        await guardar("agente", `${m1}\n${link}`);
+        return responder({ ok: true, derivar: "no", m1, m2: link });
+      } catch (e) { console.error("No se pudo registrar el mail del chat:", e.message); }
+    }
+  }
 
   if (derivarPorReglas(texto) || !ANTHROPIC_API_KEY) {
     await guardar("derivado", ANTHROPIC_API_KEY ? "regla" : "falta ANTHROPIC_API_KEY");

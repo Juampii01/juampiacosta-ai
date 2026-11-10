@@ -10,6 +10,7 @@ import html
 import json
 import re
 import runpy
+import unicodedata
 from pathlib import Path
 
 RAIZ = Path(__file__).parent
@@ -186,6 +187,11 @@ GRATIS_EXTRA = ["sistema-base-modulo-1-la-oferta", "errores-que-agotan-tu-plan-d
                 "que-modelo-de-claude-uso", "markitdown-para-ahorrar-tokens", "ahorra-tokens-graphify-obsidian"]
 
 
+def quitar_tildes(t):
+    """«GUÍA» → «GUIA» (deja la Ñ)."""
+    return unicodedata.normalize("NFC", re.sub("[\u0301\u0300]", "", unicodedata.normalize("NFD", t)))
+
+
 def es_gratis(g):
     """Abiertas para quien se registra gratis: las guías de los reels, el Módulo 1 y las de gastar menos tokens."""
     return bool(g.get("post")) or g["slug"] in GRATIS_EXTRA
@@ -202,6 +208,8 @@ def guias_web(v, datos):
     (RAIZ / "lib" / "gratis.js").write_text(
         "// Generado por build.py: guías que abre quien se registra gratis (las de los reels y el Módulo 1).\n"
         f"export const GUIAS_GRATIS = new Set({json.dumps([g['slug'] for g in datos if es_gratis(g)])});\n"
+        "// Palabra del reel o anuncio (en mayúsculas, sin tildes) → guía. La usa el agente para mandar el link directo.\n"
+        f"export const PALABRAS = {json.dumps({quitar_tildes(g['post']).upper(): g['slug'] for g in datos if g.get('post')}, ensure_ascii=False)};\n"
     )
     carpeta = RAIZ / "guias"
     carpeta.mkdir(exist_ok=True)
