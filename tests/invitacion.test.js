@@ -23,3 +23,11 @@ test("enviarLote usa la API batch de Resend", async () => {
   assert.deepEqual(llamada.b[0].to, ["a@b.co"]);
   delete process.env.RESEND_API_KEY;
 });
+
+import { notaDeCuenta, INSTRUCCIONES } from "../api/agente.js";
+test("agente: nota de cuenta según el registro", () => {
+  assert.match(notaDeCuenta(null), /no sabemos/);
+  assert.match(notaDeCuenta({ email: "a@b.co", compro: false }), /ya esta registrado/);
+  assert.match(notaDeCuenta({ email: "a@b.co", compro: true }), /COMPRO/);
+  assert.match(INSTRUCCIONES, /NUNCA le ofrezcas registrarse/);
+});

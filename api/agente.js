@@ -28,7 +28,8 @@ CÓMO ESCRIBES (muy importante, si suena "correcto" parece un bot):
 QUÉ HACES:
 - Respondes dudas sobre la biblioteca con la información de abajo. Si no está, no inventes.
 - Te interesa saber a qué se dedica para recomendarle por dónde arrancar. Pregúntalo si todavía no lo sabes, una sola vez.
-- Si escribe la palabra de un reel o del anuncio (LINKEDIN, JARVIS, GUIA, WEB, etc.), pide una guía, o dice que no le llegó o no la ve, pídele el mail directo, por ejemplo "Dale, escribeme tu mail y te mando el link, asi tambien te quedan abiertas las 34 guias gratis". No le pidas que escriba otra palabra. Cuando manda el mail, el sistema lo registra y le manda el link solo, tú no tienes que hacer nada.
+- Si escribe la palabra de un reel o del anuncio (LINKEDIN, JARVIS, GUIA, WEB, etc.), pide una guía, o dice que no le llegó o no la ve, pídele el mail directo, por ejemplo "Dale, escribeme tu mail y te mando el link, asi tambien te quedan abiertas las 35 guias gratis". No le pidas que escriba otra palabra. Cuando manda el mail, el sistema lo registra y le manda el link solo, tú no tienes que hacer nada.
+- Antes de cada mensaje de la persona puede venir una nota "[Sistema: ...]" con lo que sabemos de su cuenta. Si dice que ya está registrado, NUNCA le ofrezcas registrarse ni las guias gratis como algo nuevo: ya las tiene. Si quiere una guia, dile que la busque en www.forjaia.com (entra con su mail y le llega un codigo), o pídele el mail solo para mandarle el link directo. Si la nota dice que no sabemos si se registró y la charla muestra que ya vio las guias, no le ofrezcas registrarse, preguntale si ya entró a Forja IA.
 - El precio NO lo mencionas salvo que la persona lo pregunte. Si lo pregunta, das el precio y los links, y cierras con algo como "Igual sin apuro, primero pruebalo gratis y fijate si te sirve".
 - Saluda con "Hola" solo en tu primer mensaje de la charla, después no.
 
@@ -123,6 +124,28 @@ async function supabase(ruta, opciones, { url, clave }) {
   return r.status === 204 || r.headers.get("content-length") === "0" ? null : r.json().catch(() => null);
 }
 
+/** Busca su registro por el mail que trae ManyChat o por mails que escribió antes en el chat. null si no lo encontramos. */
+async function cuentaDelContacto(c, contacto, db) {
+  try {
+    const mails = new Set();
+    const m0 = mailEn(String(c.email || "")); if (m0) mails.add(m0);
+    const filas = await supabase(`chat_mensajes?contacto=eq.${encodeURIComponent(contacto)}&rol=eq.usuario&texto=like.*%40*&select=texto&limit=20`, { method: "GET" }, db);
+    (filas || []).forEach((f) => { const m = mailEn(f.texto); if (m) mails.add(m); });
+    if (!mails.size) return null;
+    const lista = [...mails].map((m) => `"${m.replace(/"/g, "")}"`).join(",");
+    const regs = await supabase(`registros?email=in.(${encodeURIComponent(lista)})&select=email,nombre,compro&limit=5`, { method: "GET" }, db);
+    if (!regs || !regs.length) return null;
+    return regs.find((r) => r.compro) || regs[0];
+  } catch (e) { console.error("No se pudo ver la cuenta del contacto:", e.message); return null; }
+}
+
+export function notaDeCuenta(cuenta) {
+  if (!cuenta) return "[Sistema: no sabemos si ya se registro en la web.] ";
+  return cuenta.compro
+    ? "[Sistema: ya esta registrado y COMPRO el acceso completo, tiene todo abierto. No le ofrezcas registrarse ni comprar.] "
+    : "[Sistema: ya esta registrado, tiene abiertas las 35 guias gratis. No le ofrezcas registrarse ni las guias gratis como algo nuevo.] ";
+}
+
 export default async function handler(req, res) {
   const responder = (datos) => { res.statusCode = 200; res.setHeader("Content-Type", "application/json"); res.end(JSON.stringify({ m1: "", m2: "", ...datos })); };
   if (req.method !== "POST") { res.statusCode = 405; return res.end(); }
@@ -148,8 +171,24 @@ export default async function handler(req, res) {
   }
   await guardar("usuario", texto);
 
+  // ¿Ya está registrado? Por el mail que manda ManyChat o por un mail que haya escrito antes en este chat
+  const cuenta = db ? await cuentaDelContacto(c, contacto, db) : null;
+
+  // Ya registrado y escribe la palabra de un reel: le mandamos el link directo a esa guía, sin pedirle el mail otra vez
+  const palabra = palabraDeReel(texto);
+  if (palabra && cuenta && process.env.ACCESS_SECRET) {
+    try {
+      const guia = guiaPedida([texto]);
+      const t = await crearEnlace(cuenta.email, cuenta.nombre || nombre, guia, process.env.ACCESS_SECRET);
+      const link = `${SITIO}/api/acceso?t=${encodeURIComponent(t)}${guia ? "" : "&a=reels"}`;
+      const m1 = guia ? "Ahi va, toca aca y entras directo a la guia" : "Ahi va, toca aca y en De mis reels buscas la palabra del video";
+      await guardar("agente", `${m1}\n${link}`);
+      return responder({ ok: true, derivar: "no", m1, m2: link });
+    } catch (e) { console.error("No se pudo armar el link directo:", e.message); }
+  }
+
   // Escribió la palabra del reel o del anuncio a mano: le pedimos el mail directo, sin pasar por Claude
-  if (palabraDeReel(texto)) {
+  if (palabra) {
     await guardar("agente", PIDE_MAIL);
     return responder({ ok: true, derivar: "no", m1: PIDE_MAIL });
   }
@@ -188,7 +227,7 @@ export default async function handler(req, res) {
     else turnos.push({ role, content });
   }
   while (turnos.length && turnos[0].role !== "user") turnos.shift();
-  const actual = `${nombre ? `(Se llama ${nombre}.) ` : ""}${texto}`;
+  const actual = `${notaDeCuenta(cuenta)}${nombre ? `(Se llama ${nombre}.) ` : ""}${texto}`;
   if (turnos.length && turnos[turnos.length - 1].role === "user") turnos[turnos.length - 1].content += "\n" + actual;
   else turnos.push({ role: "user", content: actual });
 
