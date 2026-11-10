@@ -62,6 +62,14 @@ var RUTAS = [
             "cuanto-cobrar-por-automatizar-con-ia", "propuesta-comercial-con-claude", "seguimiento-de-prospectos-sin-ser-pesado"]
   },
   {
+    id: "roadmap", color: "azul", t: "El roadmap: de cero a tu primer cliente",
+    d: "El camino completo para vender IA a negocios: los números, cómo prospectar, la llamada de venta, el precio y la entrega.",
+    pasos: ["roadmap-de-cero-a-vender-ia", "tu-cadena-de-numeros", "el-tablero-diario-de-prospeccion", "elegir-solucion-y-rubros-para-empezar",
+            "los-metodos-para-conseguir-clientes", "la-llamada-en-frio-que-consigue-la-reunion", "secuencia-de-seguimiento-de-14-dias",
+            "la-llamada-de-venta-en-cuatro-fases", "calcula-el-retorno-de-tu-propuesta", "objeciones-y-como-responderlas",
+            "precios-de-referencia-y-formas-de-pago", "entregar-un-agente-de-punta-a-punta", "la-rutina-del-que-vende-ia"]
+  },
+  {
     id: "sistema-base", color: "azul", t: "El sistema base para vender IA a negocios",
     d: "El método completo, módulo por módulo: la oferta, a quién venderle, el primer mensaje, el diagnóstico, la propuesta, la instalación, la entrega y el mantenimiento.",
     pasos: ["sistema-base-modulo-1-la-oferta", "sistema-base-modulo-2-elegir-a-quien-venderle", "sistema-base-modulo-3-el-primer-mensaje",

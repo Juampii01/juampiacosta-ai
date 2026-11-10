@@ -133,11 +133,11 @@
    ],
    "secciones": [
     {
-     "h": "Por qué un solo rubro",
+     "h": "Por qué pocos rubros y no \"cualquier negocio\"",
      "p": [
-      "Si le vendes a una inmobiliaria, una odontología y una ferretería en la misma semana, tienes que entender tres negocios distintos. Si le vendes a diez inmobiliarias, a la tercera ya sabes qué preguntar, qué les duele y cómo armar sus skills.",
-      "Además, en un mismo rubro los dueños se conocen y se recomiendan. Un caso que funcionó vale más cuando el próximo cliente se parece al anterior.",
-      "No es para siempre: eliges uno para tus primeros clientes y lo revisas después de diez contactos reales."
+      "Si le vendes a una inmobiliaria, una odontología y una ferretería en la misma semana sin ningún criterio, tienes que entender tres negocios distintos sin aprender de ninguno. Si repites el mismo rubro, al tercer cliente ya sabes qué preguntar, qué les duele y cómo armar sus skills.",
+      "Al empezar, la clave es elegir primero la solución (el paquete del Módulo 1) y probarla en 3 rubros a la vez. Si uno no responde después de un volumen real (no 8 o 10 contactos), lo cambias por otro. Cuando tengas casos de éxito, te quedas con el que mejor funcionó.",
+      "En un mismo rubro los dueños se conocen y se recomiendan: un caso que funcionó vale más cuando el próximo cliente se parece al anterior. Para elegir los 3, mira \"Elegir la solución y los rubros para tus primeros clientes\"."
      ]
     },
     {
@@ -146,7 +146,8 @@
       "Hay muchos negocios del rubro: en tu ciudad o en tu alcance tiene que haber al menos 50. Si hay 12, se te termina la lista antes de aprender.",
       "Tienen procesos que se repiten: presupuestos, turnos, consultas parecidas, documentos con el mismo formato. Ahí es donde un proyecto con skills ayuda de verdad.",
       "Hablan mucho con sus clientes: mails, mensajes, propuestas. Cuanta más comunicación escrita, más uso le van a dar a la skill de respuestas y a la de marca.",
-      "Un extra que suma: que el dueño o alguien del equipo use la computadora todos los días. Si todo pasa por el teléfono y en papel, la instalación cuesta más."
+      "Un extra que suma: que el dueño o alguien del equipo use la computadora todos los días. Si todo pasa por el teléfono y en papel, la instalación cuesta más.",
+      "Descarta: micro-negocios que no buscan crecer, negocios con muy poco volumen de consultas y negocios sin nada digital. No pueden pagarlo o no lo van a usar."
      ],
      "prompts": [
       {
@@ -212,7 +213,8 @@
      "h": "Qué ofreces en el primer mensaje",
      "p": [
       "En el primer mensaje no vendes el paquete. Ofreces algo chico, concreto y sin riesgo: un diagnóstico de 15 minutos donde miras cómo trabajan y les dices qué tareas podría cubrir Claude. Si no hay nada para hacer, se lo dices.",
-      "El mensaje tiene cuatro partes: quién eres en una línea, qué viste de su negocio (el dato de la columna \"Qué viste\" del Módulo 2), qué ofreces y una pregunta fácil de responder."
+      "El mensaje tiene cuatro partes: quién eres en una línea, qué viste de su negocio (el dato de la columna \"Qué viste\" del Módulo 2), qué ofreces y una pregunta fácil de responder.",
+      "El primer mensaje busca una respuesta, no cerrar la reunión en el acto: menos de 125 palabras, un solo pedido y tono de persona, no de plantilla."
      ]
     },
     {
@@ -220,8 +222,8 @@
      "lista": [
       "Uno por uno: cada mensaje lo escribes o lo revisas para ese negocio. Nada de copiar y pegar el mismo texto a cincuenta personas.",
       "A mano: no uses programas que manden mensajes solos desde tu cuenta personal o de negocio.",
-      "Pocos por día: es mejor mandar diez buenos que cien iguales. También te deja tiempo para responder.",
-      "Un seguimiento y listo: si no responde, mandas un solo recordatorio que aporte algo. Si sigue sin responder, lo dejas. Si te dice que no, no insistes.",
+      "La cantidad la decide tu cadena de números: haz la cuenta en \"Tu cadena de números\" y ese es tu mínimo diario. Personalizar cada mensaje te lleva un minuto si ya investigaste el negocio; mejor diez buenos que cien iguales, pero sin bajar de tu número.",
+      "Seguimientos con un calendario: si no responde, sigues la secuencia de \"La secuencia de seguimiento de 14 días\" (unos 6 toques, cada uno con algo nuevo y cambiando de canal) y la cierras con un mensaje de despedida. Si te dice que no, se termina ahí y no insistes.",
       "Honestidad: di que vas a usar IA y qué hace. No te presentes como cliente ni inventes que alguien te recomendó.",
       "Lee las reglas de cada plataforma: Instagram, WhatsApp y los servicios de mail tienen normas de uso y pueden limitar cuentas. Revísalas antes de empezar."
      ],
@@ -402,10 +404,12 @@
     {
      "h": "La fórmula del precio",
      "p": [
+      "El precio se fija por solución y por el valor que genera, nunca por hora. Las horas sirven para saber tu piso (lo mínimo para no perder plata); el valor para el cliente marca hasta dónde puedes llegar.",
       "El precio tiene dos partes. La instalación se cobra una vez. El mensual se cobra mientras el cliente quiera mantenimiento.",
       "Instalación = horas de instalación × tu valor hora × 1,3. El 1,3 es un colchón del 30% para imprevistos: siempre aparece un documento que falta o un acceso que no funciona.",
       "Mensual = horas de mantenimiento por mes × tu valor hora. Las suscripciones (plan de Claude y otras herramientas) no entran aquí porque las paga el cliente, a su nombre.",
-      "Tu valor hora sale de lo que necesitas ganar por mes dividido por las horas que de verdad puedes cobrar, no por las que trabajas. Para el detalle de piso, techo y dónde ubicarte, mira \"Cuánto cobrar por automatizar con IA\"."
+      "Tu valor hora sale de lo que necesitas ganar por mes dividido por las horas que de verdad puedes cobrar, no por las que trabajas. Para el detalle de piso, techo y dónde ubicarte, mira \"Cuánto cobrar por automatizar con IA\".",
+      "El techo sale del retorno: una referencia es cobrar alrededor del 10% de lo que el sistema le ahorra o le hace ganar en un año, o más o menos un mes de lo que recupera en el escenario conservador. El cálculo está en \"Calcula el retorno de tu propuesta\" y los rangos que se ven en el mercado, en \"Precios de referencia y formas de pago\"."
      ]
     },
     {
@@ -658,7 +662,8 @@
      "h": "Por qué existe el mensual",
      "p": [
       "El negocio cambia: suben los precios, aparece un servicio nuevo, cambia una política. Si nadie actualiza el proyecto, en tres meses Claude responde con datos viejos y el equipo deja de confiar.",
-      "Las herramientas también cambian. Las funciones de Claude se actualizan seguido y lo que hoy se configura de una forma mañana puede estar en otro lado. El mensual cubre ese trabajo de mantener todo al día."
+      "Las herramientas también cambian. Las funciones de Claude se actualizan seguido y lo que hoy se configura de una forma mañana puede estar en otro lado. El mensual cubre ese trabajo de mantener todo al día.",
+      "Cuándo ofrecerlo: en la propuesta va solo una línea (\"planes de mantenimiento desde X\"). Lo ofreces de verdad cuando el sistema ya funciona y el cliente pide su primer cambio: en ese momento ve el valor y está contento de pagarlo. Lo que pide después del pago final ya es mantenimiento, no desarrollo."
      ]
     },
     {

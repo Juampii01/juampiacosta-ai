@@ -26,7 +26,7 @@
    "n": "Parte 3 · Vende y construye",
    "d": "El sistema para venderle IA a empresas, los rubros listos para replicar y tus propias apps con Claude Code.",
    "muestra": [
-    "sistema-base-modulo-1-la-oferta",
+    "roadmap-de-cero-a-vender-ia",
     "cuanto-cobrar-por-automatizar-con-ia",
     "de-idea-a-app-publicada-con-claude-code"
    ]
@@ -240,6 +240,30 @@
     "Instrucciones para agentes de investigación y contenido",
     "Prueba tu agente antes de soltarlo"
    ]
+  },
+  {
+   "id": "roadmap",
+   "parte": "construi",
+   "e": "🧭",
+   "n": "El roadmap para vender IA",
+   "d": "El camino completo, los números y cómo prospectar, llamar, cobrar y entregar.",
+   "guias": [
+    "roadmap-de-cero-a-vender-ia",
+    "tu-cadena-de-numeros",
+    "el-tablero-diario-de-prospeccion",
+    "la-rutina-del-que-vende-ia",
+    "elegir-solucion-y-rubros-para-empezar",
+    "que-sistemas-venderle-a-cada-negocio",
+    "los-metodos-para-conseguir-clientes",
+    "la-llamada-en-frio-que-consigue-la-reunion",
+    "secuencia-de-seguimiento-de-14-dias",
+    "la-llamada-de-venta-en-cuatro-fases",
+    "calcula-el-retorno-de-tu-propuesta",
+    "objeciones-y-como-responderlas",
+    "precios-de-referencia-y-formas-de-pago",
+    "entregar-un-agente-de-punta-a-punta"
+   ],
+   "prompts": []
   },
   {
    "id": "sistema-base",

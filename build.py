@@ -184,7 +184,8 @@ def datos_js(prompts, herrs):
 
 # Módulo 1 y las 5 guías de «Gasta menos tokens» (las que se mandan por la palabra TOKEN)
 GRATIS_EXTRA = ["sistema-base-modulo-1-la-oferta", "errores-que-agotan-tu-plan-de-claude", "por-que-claude-se-vuelve-torpe-en-chats-largos",
-                "que-modelo-de-claude-uso", "markitdown-para-ahorrar-tokens", "ahorra-tokens-graphify-obsidian"]
+                "que-modelo-de-claude-uso", "markitdown-para-ahorrar-tokens", "ahorra-tokens-graphify-obsidian",
+                "roadmap-de-cero-a-vender-ia"]
 
 
 def quitar_tildes(t):

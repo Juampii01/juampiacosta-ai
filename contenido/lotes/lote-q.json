@@ -1,0 +1,941 @@
+{
+ "guias": [
+  {
+   "slug": "roadmap-de-cero-a-vender-ia",
+   "t": "El roadmap: de cero a vender sistemas de IA a negocios",
+   "d": "El camino completo en 8 etapas, qué haces en cada una, cuándo pasas a la siguiente y qué guías usar. Empieza por aquí.",
+   "tema": "Vender IA",
+   "min": 12,
+   "ficha": [
+    [
+     "Para quién",
+     "Quien quiere vivir de instalar sistemas de IA en negocios"
+    ],
+    [
+     "Cuánto lleva",
+     "Unas 2 semanas de base técnica y después prospección todos los días"
+    ],
+    [
+     "Lo más importante",
+     "Desde la etapa 3, al menos el 80% de tu tiempo va a conseguir clientes"
+    ]
+   ],
+   "secciones": [
+    {
+     "h": "Cómo usar este roadmap",
+     "p": [
+      "Este es el mapa de toda la biblioteca para quien quiere vender sistemas de IA. Cada etapa tiene qué hacer, cuándo pasar a la siguiente y qué guías leer. No hace falta leer todo antes de empezar: haz la etapa en la que estás.",
+      "La trampa más común es quedarse en las etapas 0 y 1 aprendiendo herramientas para siempre. Aprender rinde mucho al principio, después se estanca y al final te frena. Cuando tengas la base, salta a conseguir clientes aunque no te sientas listo: nadie se siente listo."
+     ]
+    },
+    {
+     "h": "Etapa 0 · La base técnica (unas 2 semanas)",
+     "lista": [
+      "Qué haces: configuras Claude, aprendes a pedirle bien y armas de punta a punta 2 o 3 sistemas en tus propias cuentas. Ese es tu portafolio de demostración.",
+      "Cuándo pasas: cuando puedes mostrar funcionando al menos 2 sistemas. Con eso estás listo para vender aunque sientas que no.",
+      "Qué leer: la ruta \"Empieza con Claude\", \"Agente de atención con base de conocimiento\" y los sistemas por rubro."
+     ],
+     "aviso": "Menos de 2 semanas suele ser poco. Más de un mes ya suele ser postergar."
+    },
+    {
+     "h": "Etapas 1 y 2 · Elegir qué vender y hacer la cuenta",
+     "lista": [
+      "Etapa 1, la oferta: eliges una solución de entrada que sepas entregar (la más pedida es el agente que atiende y vende por WhatsApp e Instagram) y 3 rubros para probarla. Lee \"Elegir la solución y los rubros para tus primeros clientes\".",
+      "Etapa 2, la cuenta: partes de cuánto quieres facturar y llegas a cuántos contactos tienes que hacer por día. Ese número es tu tarea diaria no negociable. Lee \"Tu cadena de números\" y arma \"El tablero diario\"."
+     ]
+    },
+    {
+     "h": "Etapas 3 y 4 · Prospectar y vender",
+     "lista": [
+      "Etapa 3, prospectar: eliges 2 o 3 métodos para conseguir clientes y los sostienes todos los días. El único objetivo es agendar llamadas de venta. Lee \"Los métodos para conseguir clientes\", \"La llamada en frío\" y \"La secuencia de seguimiento de 14 días\".",
+      "Cuándo pasas: cuando tienes llamadas agendadas. Con constancia diaria, lo normal es agendar la primera en la primera semana.",
+      "Etapa 4, vender: haces la llamada de diagnóstico, calculas el retorno y presentas el precio. Lee \"La llamada de venta en cuatro fases\", \"Calcula el retorno de tu propuesta\" y \"Objeciones y cómo responderlas\".",
+      "Cuándo pasas: precio aceptado, acuerdo aprobado y primer pago cobrado. Sin pago inicial no se empieza."
+     ]
+    },
+    {
+     "h": "Etapas 5 a 7 · Entregar, cobrar mensual y crecer",
+     "lista": [
+      "Etapa 5, el primer cliente: al principio importa más el caso de éxito que el dinero. Cobra bajo pero cobra, y consigue un testimonio.",
+      "Etapa 6, entregar: versión de prueba, ajustes, versión final y pase a producción contra el pago final. Lee \"Entregar un agente de punta a punta\" y los módulos 6 a 9 del sistema base.",
+      "Etapa 7, el mensual: no vendas el mantenimiento de entrada. Ofrécelo cuando el cliente pide el primer cambio. Lee \"El mantenimiento mensual\".",
+      "Después: con 3 a 5 casos subes precios, eliges un rubro más fino y empiezas a delegar el desarrollo para quedarte en ventas."
+     ]
+    },
+    {
+     "h": "La regla que sostiene todo",
+     "p": [
+      "Mientras no tengas clientes, al menos el 80% de tu tiempo de trabajo va a conseguirlos. Mejorar tu web, tu logo o aprender una herramienta más no es conseguir clientes, aunque se sienta productivo.",
+      "Lo único que controlas al 100% es cuántos contactos haces por día. Las respuestas, las llamadas y los cierres llegan después, y a veces tardan semanas. Mídete por lo que haces, no por lo que facturas este mes."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Necesito saber programar?",
+     "a": "Para las etapas 0 a 3, no. Los sistemas de la biblioteca se arman con Claude, conectores y herramientas sin código. Claude Code te abre más opciones, pero no es requisito para el primer cliente."
+    },
+    {
+     "q": "¿Puedo saltarme etapas?",
+     "a": "Puedes adelantar la prospección mientras terminas la base técnica, pero no al revés: no vendas algo que nunca armaste de punta a punta."
+    },
+    {
+     "q": "¿En cuánto tiempo llega el primer cliente?",
+     "a": "Depende de tu volumen diario y de tu constancia. Entre que empiezas a prospectar y cierras suelen pasar semanas, y entre lo que haces hoy y el resultado en facturación pueden pasar dos o tres meses. Por eso se mide la tarea diaria."
+    }
+   ]
+  },
+  {
+   "slug": "tu-cadena-de-numeros",
+   "t": "Tu cadena de números: cuántos mensajes mandar por día",
+   "d": "Parte de cuánto quieres facturar y llega, paso a paso, a cuántos contactos tienes que hacer hoy. Con ejemplo y prompt para calcular la tuya.",
+   "tema": "Vender IA",
+   "min": 8,
+   "ficha": [
+    [
+     "Qué es",
+     "Una cuenta hacia atrás: de la facturación al trabajo diario"
+    ],
+    [
+     "Necesitas",
+     "Tu meta del mes, tu precio y tasas de referencia"
+    ],
+    [
+     "Cuánto lleva",
+     "10 minutos una vez; después lo revisas cada semana"
+    ]
+   ],
+   "secciones": [
+    {
+     "h": "Por qué hacer la cuenta",
+     "p": [
+      "\"Quiero conseguir clientes\" no se puede hacer hoy. \"Hoy hago 16 contactos\" sí. La cadena de números convierte una meta del mes en una tarea del día, y te dice si tu meta es realista con el tiempo que tienes.",
+      "Se arma hacia atrás: facturación → clientes → llamadas → agendamientos → contactos. En cada paso divides por una tasa: cuántos de cada 100 pasan al siguiente."
+     ]
+    },
+    {
+     "h": "La cuenta, paso a paso",
+     "pasos": [
+      "Meta del mes: cuánto quieres facturar con clientes nuevos. Si nunca facturaste con esto, una meta prudente es entre 1.000 y 2.000 dólares.",
+      "Clientes necesarios = meta ÷ precio de tu solución.",
+      "Llamadas de venta = clientes ÷ tasa de cierre. Para planificar, usa una tasa baja, por ejemplo 10%. Si cierras más, mejor.",
+      "Agendamientos = llamadas ÷ tasa de asistencia. No todos los que agendan se presentan; una referencia es 6 de cada 10.",
+      "Contactos del mes = agendamientos ÷ tasa de agendamiento. Depende mucho del canal (mira la sección siguiente).",
+      "Contactos por día = contactos del mes ÷ días que vas a prospectar."
+     ]
+    },
+    {
+     "h": "Un ejemplo con números",
+     "lista": [
+      "Meta: 5.000 dólares. Precio: 2.500. Clientes: 2.",
+      "Cierre del 10%: 20 llamadas de venta.",
+      "Asistencia de 6 de cada 10: unos 32 agendamientos.",
+      "Agendamiento del 10% (ofreciendo un diagnóstico gratis por llamada): 320 contactos al mes.",
+      "En 20 días de trabajo: 16 contactos por día."
+     ],
+     "aviso": "Las tasas cambian muchísimo según el canal. Un mensaje frío por WhatsApp puede agendar 1 de cada 100, no 10: ahí el volumen se multiplica por diez. Usa estas cifras para arrancar y reemplázalas por las tuyas a las 3 o 4 semanas."
+    },
+    {
+     "h": "Qué tasas usar al principio",
+     "lista": [
+      "Contacto a reunión: el promedio que se suele citar para prospección en frío es de 2 a 3 de cada 100, y los mejores equipos llegan a 5 u 8. Esperar 20 de cada 100 lleva a frustrarse y abandonar.",
+      "Si lo que ofreces para agendar es un diagnóstico gratis y no \"una reunión de ventas\", la tasa sube.",
+      "Asistencia: confirma por WhatsApp el día anterior y pide un formulario corto antes de la llamada; las dos cosas suben la asistencia.",
+      "Cierre: con un buen diagnóstico y el retorno bien calculado, el cierre sube mucho. Para planificar, igual arranca bajo."
+     ]
+    },
+    {
+     "h": "Calcula la tuya con Claude",
+     "prompts": [
+      {
+       "t": "Mi cadena de números",
+       "c": "Quiero calcular mi cadena de números para vender [TU SOLUCIÓN] a [TIPO DE NEGOCIO].\nMeta de facturación del mes: [META] dólares.\nPrecio de la solución: [PRECIO] dólares.\nDías que voy a prospectar por mes: [DÍAS].\nCanal principal: [CANAL: llamada, WhatsApp, Instagram, mail, en persona].\n\n1. Haz la cuenta hacia atrás con estas tasas iniciales: cierre 10%, asistencia 60% y agendamiento [10% si ofrezco diagnóstico gratis por llamada / 2% si es mensaje frío por escrito]. Muéstrame cada paso.\n2. Dime cuántos contactos tengo que hacer por día y por semana.\n3. Si el número diario es más de lo que puedo hacer en [HORAS] horas por día, dime qué palanca mover primero: precio, canal o meta.\n4. Arma una tabla para que yo complete con mis tasas reales a fin de mes."
+      }
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Y si el número me da altísimo?",
+     "a": "Tienes tres palancas: subir el precio (menos clientes necesarios), cambiar a un canal que agende más (llamada o en persona en vez de mensaje frío) o bajar la meta del primer mes. No bajes la cantidad de contactos sin mover otra palanca."
+    },
+    {
+     "q": "¿Cada cuánto la recalculo?",
+     "a": "Una vez por mes con tus tasas reales. Las primeras semanas son hipótesis; desde el mes dos ya tienes datos."
+    }
+   ]
+  },
+  {
+   "slug": "el-tablero-diario-de-prospeccion",
+   "t": "El tablero diario: 30 segundos por día para no frenar",
+   "d": "Una planilla simple para anotar contactos, agendamientos, llamadas y cierres cada día, y una revisión de 15 minutos cada semana.",
+   "tema": "Vender IA",
+   "min": 6,
+   "secciones": [
+    {
+     "h": "Para qué sirve",
+     "p": [
+      "El resultado (facturar) llega tarde. Lo que haces hoy se ve en la facturación dentro de uno, dos o tres meses. Si solo miras la facturación, abandonas antes de que lleguen los resultados.",
+      "El tablero mide lo que sí controlas: cuántos contactos hiciste contra tu meta del día. Si cumpliste, el día está bien aunque nadie haya respondido."
+     ]
+    },
+    {
+     "h": "Las tres hojas",
+     "lista": [
+      "Mi cadena: las entradas de \"Tu cadena de números\" (meta, precio, tasas, días) y el resultado: contactos por día, por semana y por mes.",
+      "Tablero diario: una fila por día con Fecha, Meta de contactos, Contactos hechos, Respuestas, Agendamientos, Llamadas hechas, Cierres, Nota del día y % de cumplimiento (contactos hechos ÷ meta).",
+      "Revisión semanal: una fila por semana con tres preguntas: ¿salió bien o mal?, ¿dónde se rompió (contactos, respuestas, asistencia, cierre, entrega o algo personal)? y ¿qué única cosa cambio la semana que viene?"
+     ]
+    },
+    {
+     "h": "Las reglas",
+     "lista": [
+      "Se llena a mano: lleva 30 segundos. Si lo automatizas, dejas de mirarlo.",
+      "Una sola palanca por semana: si cambias el mensaje, el canal y el horario a la vez, no sabes qué funcionó.",
+      "Check verde: si cumpliste los contactos del día, cortas sin culpa. La única frustración válida es no haber hecho la tarea.",
+      "Mínimo diario aunque estés entregando: si dejas de prospectar cuando entra un cliente, al mes siguiente no tienes nada. Baja el número, pero no lo lleves a cero."
+     ]
+    },
+    {
+     "h": "Ármalo con Claude",
+     "prompts": [
+      {
+       "t": "Mi tablero de prospección",
+       "c": "Ármame una planilla de Google Sheets (o un archivo .xlsx) con tres hojas:\n1. \"Mi cadena\": celdas para Meta del mes, Precio, Tasa de cierre, Tasa de asistencia, Tasa de agendamiento y Días de prospección, y fórmulas que calculen clientes, llamadas, agendamientos, contactos por mes, por semana y por día.\n2. \"Tablero diario\": fechas de [FECHA DE INICIO] a 30 días después, columnas Meta de contactos (tomada de la hoja 1), Contactos hechos, Respuestas, Agendamientos, Llamadas, Cierres, Nota y % de cumplimiento, con totales por semana y colores: verde si el cumplimiento es 100% o más, amarillo entre 70% y 99%, rojo debajo de 70%.\n3. \"Revisión semanal\": una fila por semana con Qué salió bien, Dónde se rompió (lista desplegable: contactos, respuestas, asistencia, cierre, entrega, personal) y Qué cambio la semana próxima.\nDeja en gris las celdas que tengo que completar yo."
+      }
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Qué cuenta como contacto?",
+     "a": "Un mensaje, llamada o visita personalizada a un negocio de tu lista. Un seguimiento a alguien que ya contactaste cuenta solo si aporta algo nuevo."
+    },
+    {
+     "q": "¿Y si un día no llego?",
+     "a": "Anota el porcentaje real y escribe en la nota por qué. Mira la semana completa, no el día suelto."
+    }
+   ]
+  },
+  {
+   "slug": "elegir-solucion-y-rubros-para-empezar",
+   "t": "Elegir la solución y los rubros para tus primeros clientes",
+   "d": "Por qué conviene elegir primero qué resuelves y después a quién, qué negocios descartar y cómo probar 3 rubros sin perder tiempo.",
+   "tema": "Vender IA",
+   "min": 8,
+   "secciones": [
+    {
+     "h": "Primero la solución, después el rubro",
+     "p": [
+      "Elegir solo por rubro (\"le vendo a dentistas\") te ata a un mercado chico y te deja sin salida si en tu ciudad no responden. Elegir por solución (\"instalo un agente que atiende y agenda por WhatsApp\") te deja ofrecer lo mismo a clínicas, inmobiliarias, concesionarias o tiendas online.",
+      "Al empezar, elige una solución que sepas entregar y pruébala en 3 rubros. Si después de un volumen real (no 8 contactos) uno no responde, cámbialo por otro. Cuando tengas casos de éxito, ahí sí te especializas."
+     ]
+    },
+    {
+     "h": "La solución de entrada más pedida",
+     "p": [
+      "El agente que atiende, responde y agenda por WhatsApp e Instagram es la puerta de entrada más fácil de vender: el dueño entiende el problema (mensajes sin responder, consultas a las once de la noche) y ve el resultado rápido. Una vez adentro, aparecen los siguientes sistemas: CRM, reportes, seguimiento.",
+      "Si prefieres no tocar la atención al cliente, el paquete \"Claude instalado en tu negocio\" del sistema base es otra entrada válida: proyecto con el conocimiento del negocio, skills y conectores."
+     ]
+    },
+    {
+     "h": "Qué negocios descartar",
+     "lista": [
+      "Micro-negocios que no buscan crecer: kioscos, comercios de barrio sin volumen. No pueden pagarlo ni lo necesitan.",
+      "Negocios con muy poco volumen: si reciben 3 a 5 mensajes por día o 2 llamadas, un agente no se justifica.",
+      "Negocios sin nada digital: sin web, sin redes, todo en papel. La IA es la última capa: primero hay que ordenar lo de abajo.",
+      "Negocios donde el retorno da muy poco: si al calcular lo que recuperan da menos de 100 dólares por mes, no hay precio que cierre."
+     ]
+    },
+    {
+     "h": "Qué negocios suelen encajar",
+     "lista": [
+      "Pueden estimar cuántas consultas reciben, conocen su ticket promedio y pagan publicidad: clínicas (estética, odontología, dermatología), veterinarias grandes, tiendas online que venden por WhatsApp, inmobiliarias y concesionarias.",
+      "Filtra por el dolor de quien tiene plata: \"pymes que facturan más de X por mes\" en vez de \"dueños de pyme\".",
+      "Para venderle a empresas (B2B), los canales son la llamada, LinkedIn, el mail y WhatsApp. Instagram rinde para marcas personales y negocios que venden por ahí."
+     ]
+    },
+    {
+     "h": "Valida antes de construir",
+     "p": [
+      "La regla: primero alguien te dice que sí con un precio, después lo construyes. Vale más un cliente que pagó por algo que todavía armas que un sistema perfecto que nadie compró.",
+      "La oferta fina aparece sola con las llamadas: después de 10 o 20 diagnósticos vas a escuchar los mismos dolores y vas a saber qué vender exactamente."
+     ],
+     "prompts": [
+      {
+       "t": "Elegir 3 rubros para mi solución",
+       "c": "Vendo [TU SOLUCIÓN] y vivo en [CIUDAD/PAÍS]. Proponme 6 rubros donde esta solución resuelva un dolor caro. Para cada uno dime: el dolor concreto, cuántas consultas o tareas por día suele tener un negocio mediano, si suelen pagar publicidad, qué tan digitalizados están y por qué canal conviene contactarlos. Después elige los 3 mejores para empezar y explica por qué. No inventes cifras: si no sabes un número, di cómo averiguarlo."
+      }
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Y si ya tengo un rubro que conozco bien?",
+     "a": "Úsalo como uno de los 3. Conocer el negocio por dentro es una ventaja grande en el diagnóstico."
+    },
+    {
+     "q": "¿Cuántos contactos antes de descartar un rubro?",
+     "a": "No hay un número mágico, pero 8 o 10 no es volumen. Sostén el mismo rubro y el mismo método unas semanas antes de cambiar."
+    }
+   ]
+  },
+  {
+   "slug": "los-metodos-para-conseguir-clientes",
+   "t": "Los 10 métodos para conseguir clientes y cómo elegir 2 o 3",
+   "d": "Llamada en frío, WhatsApp, mail, en persona, comunidades, contenido, eventos, plataformas, referidos y anuncios: qué tiene cada uno y con cuáles empezar.",
+   "tema": "Vender IA",
+   "min": 9,
+   "secciones": [
+    {
+     "h": "La idea",
+     "p": [
+      "Todos los métodos funcionan. Cuando uno \"no funciona\", casi siempre faltó volumen o faltó mejorar el mensaje. El error es probar uno una semana, cambiar a otro y no llegar a ninguna parte.",
+      "Elige 2 o 3 según tu personalidad, tus contactos y tu país, y sostenlos varias semanas sin cambiar."
+     ]
+    },
+    {
+     "h": "Los métodos directos (resultados en días)",
+     "lista": [
+      "Llamada en frío: no cuesta nada y es el más rápido: puedes agendar hoy. Es un juego de números y pide tolerar el rechazo. El más potente y el más incómodo.",
+      "Mensaje por WhatsApp: gratis y directo, con poco rechazo explícito. Es el más fácil de volver invasivo y tiene riesgo de bloqueo del número si mandas en frío a muchos.",
+      "Mail en frío: lento y con curva de aprendizaje. En Latinoamérica suele rendir bastante menos que WhatsApp; en Estados Unidos funciona mejor.",
+      "En persona: la tasa de éxito más alta. Es el único método donde puedes cerrar en la primera visita. Rinde mucho con negocios locales."
+     ]
+    },
+    {
+     "h": "Los métodos que se acumulan (resultados en meses)",
+     "lista": [
+      "Comunidades: grupos de Facebook, Skool, Discord, cámaras y asociaciones del rubro. Aportas valor, muestras lo que sabes hacer y llegan consultas. Con asociaciones puedes acordar un descuento para socios.",
+      "Contenido: Instagram, LinkedIn o YouTube (elige uno). Al principio casi no trae consultas, pero cada pieza queda trabajando. Mide llamadas agendadas, no vistas: un video con 20 vistas puede cerrar un cliente.",
+      "Eventos presenciales del rubro: uno por mes. Si comunicas bien, rinden mucho.",
+      "Plataformas para freelancers: lentas al principio.",
+      "Referidos: hacer un trabajo excelente y pedirlos de forma activa. No llegan solos.",
+      "Anuncios pagos: necesitan presupuesto y saber hacerlo. Son el siguiente nivel, no el punto de partida: primero tu forma de vender tiene que funcionar."
+     ]
+    },
+    {
+     "h": "Con cuáles empezar",
+     "lista": [
+      "Si te cuesta hablar por teléfono: en persona con negocios locales + WhatsApp a los que visitaste + contenido.",
+      "Si te animas a llamar: llamada en frío como principal + WhatsApp como seguimiento + contenido.",
+      "Si vas a venderle a empresas: llamada + LinkedIn + mail, cruzando canales (\"ayer te llamé…\").",
+      "En todos los casos: el contenido convive con lo directo. Quien recibe tu mensaje va a mirar tu perfil."
+     ],
+     "aviso": "Antes de mandar mensajes en frío, revisa las reglas de cada plataforma. Nunca uses un número nuevo ni herramientas no oficiales para mandar en volumen: es la forma más rápida de perder el número."
+    },
+    {
+     "h": "Arma tu lista de prospectos con Claude",
+     "p": [
+      "Busca por zona acotada (una ciudad o provincia, no un país entero). Antes de contactar, investiga al dueño: su perfil, su web y cómo atienden hoy. Probar el negocio como cliente (mandar una consulta fuera de horario) te da la mejor apertura posible."
+     ],
+     "prompts": [
+      {
+       "t": "Investigar un prospecto antes de contactarlo",
+       "c": "Voy a contactar a [NEGOCIO] de [CIUDAD], rubro [RUBRO]. Su web es [URL] y su Instagram es [@USUARIO]. Busca en su web y redes: qué venden, a quién, cómo atienden consultas hoy, si tienen WhatsApp o formulario, si hacen publicidad y quién es el dueño o responsable. Después dame: 1) un dolor probable relacionado con [TU SOLUCIÓN], con la evidencia que lo sugiere; 2) una observación concreta para abrir la conversación; 3) qué no pude confirmar."
+      }
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Puedo usar los 10 a la vez?",
+     "a": "No te lo recomiendo. Dos o tres bien hechos todos los días rinden más que diez a medias."
+    },
+    {
+     "q": "¿Qué método para negocios de otro país?",
+     "a": "Mail, WhatsApp y llamada funcionan a distancia. Cada país tiene sus costumbres: en algunos desconfían de números de otras ciudades, y ahí necesitas más volumen o cambiar de canal."
+    }
+   ]
+  },
+  {
+   "slug": "secuencia-de-seguimiento-de-14-dias",
+   "t": "La secuencia de seguimiento de 14 días (sin ser pesado)",
+   "d": "Cuántas veces volver a contactar, por qué canal y qué decir en cada toque para que la mitad de las respuestas no se pierdan.",
+   "tema": "Vender IA",
+   "min": 7,
+   "secciones": [
+    {
+     "h": "Por qué seguir",
+     "p": [
+      "Una parte grande de las respuestas llega en los seguimientos, no en el primer mensaje: se suele hablar de entre 4 y 5 de cada 10. Si mandas un solo mensaje y esperas, pierdes la mitad.",
+      "Seguir no es insistir. Cada toque aporta algo nuevo, cambia de canal y termina en una fecha. Si te dicen que no, se termina ahí."
+     ]
+    },
+    {
+     "h": "La secuencia",
+     "pasos": [
+      "Día 1: primer contacto por tu canal principal (llamada o mensaje). Si es una empresa, también solicitud de conexión en LinkedIn con nota personalizada.",
+      "Día 3: mensaje o mail corto con otro ángulo del mismo problema.",
+      "Día 6: segundo intento por el canal principal, en otro horario.",
+      "Día 8 o 9: algo de valor concreto: un dato de su rubro, un caso parecido o un video corto mostrando cómo se vería en su negocio.",
+      "Día 11: WhatsApp o audio breve, más personal.",
+      "Día 14: mensaje de cierre: \"No quiero llenarte de mensajes. Si no es prioridad ahora, lo dejo aquí. Si en algún momento quieres verlo, me escribes.\""
+     ],
+     "aviso": "Mover un toque uno o dos días no importa. Hacer el del día 14 el día 29 rompe la secuencia."
+    },
+    {
+     "h": "Qué decir en cada toque",
+     "lista": [
+      "Siempre algo nuevo: un dato, un caso, una idea aplicada a su negocio. \"¿Pudiste ver mi mensaje?\" no funciona.",
+      "A mitad de la secuencia, pregunta: \"¿Es tema de que ahora no es prioridad o de que no le ves utilidad?\". Cualquiera de las dos respuestas te sirve.",
+      "Nada de mandar noticias genéricas de IA como \"valor\": no rinden lo que cuestan.",
+      "Cada contacto termina con una acción y una fecha: \"te llamo el jueves a las 10\" en vez de \"cualquier cosa me avisas\"."
+     ]
+    },
+    {
+     "h": "Llévalo en tu planilla",
+     "p": [
+      "Por cada prospecto anota canal, fecha, intento, resultado y fecha del próximo contacto. Si tu planilla te avisa qué toques tocan hoy, no se te pasa ninguno."
+     ],
+     "prompts": [
+      {
+       "t": "Escribir la secuencia para un prospecto",
+       "c": "Ármame la secuencia de seguimiento de 14 días para [NEGOCIO], rubro [RUBRO]. Lo que sé de ellos: [DATOS Y OBSERVACIÓN]. Mi solución: [SOLUCIÓN]. Mi canal principal: [CANAL].\nPara cada toque (días 1, 3, 6, 9, 11 y 14) escribe el mensaje o el guion breve, con menos de 80 palabras, un solo pedido por mensaje y algo nuevo en cada uno. Tono humano, sin frases de plantilla, en español [neutro/rioplatense]. El del día 14 es un cierre amable."
+      }
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Y si responde \"ahora no\"?",
+     "a": "Pregúntale cuándo sería un mejor momento, anota la fecha y sácalo de la secuencia. Vuelves a contactarlo ese día."
+    },
+    {
+     "q": "¿Esto reemplaza \"Seguimiento de prospectos sin ser pesado\"?",
+     "a": "Lo complementa: esa guía tiene las reglas de tono y cuándo parar; esta, el calendario de toques."
+    }
+   ]
+  },
+  {
+   "slug": "la-llamada-en-frio-que-consigue-la-reunion",
+   "t": "La llamada en frío que consigue la reunión",
+   "d": "Cómo abrir en los primeros 10 segundos, qué decir en 20 y cómo terminar con una cita agendada. Con guion para armar con Claude.",
+   "tema": "Vender IA",
+   "min": 9,
+   "secciones": [
+    {
+     "h": "El objetivo es la reunión, no la venta",
+     "p": [
+      "En una llamada en frío no vendes tu sistema. Vendes una reunión corta de diagnóstico. Si intentas explicar todo, te cortan.",
+      "Los primeros 7 a 10 segundos deciden si la llamada sigue. Prepárate: de pie o con la espalda recta, en un lugar tranquilo, sonriendo (se escucha) y con un poco más de pausas que en una charla normal."
+     ]
+    },
+    {
+     "h": "La apertura en cuatro partes",
+     "pasos": [
+      "Quién eres, en una línea.",
+      "Un gancho específico para ese negocio: algo que viste de ellos.",
+      "Algo que rompa lo esperado. Lo más simple: decir con honestidad que es una llamada en frío. Casi nadie lo hace y baja la guardia.",
+      "Pedir permiso para seguir: \"¿te robo 30 segundos y si no te sirve cortamos?\"."
+     ],
+     "aviso": "Evita abrir con \"¿cómo estás?\", con diminutivos o con tu currículum (\"soy ingeniero, tengo una agencia\"). Suena a venta y te cortan."
+    },
+    {
+     "h": "El pitch de 20 segundos y el resto de la llamada",
+     "lista": [
+      "Pitch: problema → resultado → prueba. \"Muchas clínicas pierden consultas que llegan de noche por WhatsApp. Instalo un asistente que responde y agenda solo. A una clínica de [CIUDAD] le está agendando [X] turnos por semana.\" Si no tienes casos, usa el resultado típico de la tecnología, sin inventar.",
+      "Preguntas: detecta el dolor con preguntas sobre su negocio. Habla él el 80% del tiempo.",
+      "Solo si confirmó el dolor, cuenta en una frase cómo lo resolverías. Si no hay dolor, no presentes nada.",
+      "Califica: ¿es quien decide?, ¿lo quiere resolver ahora?",
+      "Agenda en el momento: día, hora e invitación enviada mientras siguen en línea."
+     ]
+    },
+    {
+     "h": "Señales para seguir o para cortar",
+     "lista": [
+      "Señales de compra: pregunta cómo funciona o cuánto tarda, te da detalles de su operación, nombra el problema con ejemplos, pregunta precio o próximos pasos.",
+      "Señales de salida: monosílabos, \"mándame info por mail\" sin más, \"no soy la persona\". Agradece y corta rápido.",
+      "Si atiende otra persona: no aceptes \"manda la propuesta por mail\". Pregunta con amabilidad cuál es la mejor forma de hablar unos minutos con el dueño o el responsable."
+     ]
+    },
+    {
+     "h": "Arma tu guion con Claude",
+     "prompts": [
+      {
+       "t": "Guion de llamada en frío",
+       "c": "Ármame un guion de llamada en frío para ofrecer [SOLUCIÓN] a [RUBRO] en [CIUDAD/PAÍS]. El objetivo es agendar una llamada de diagnóstico de 20 minutos, no vender.\nIncluye: 1) apertura en 4 partes (quién soy, gancho específico, aviso honesto de que es una llamada en frío, pedido de permiso); 2) pitch de menos de 20 segundos con problema, resultado y prueba (no inventes casos: usa [MI CASO o \"sin casos todavía\"]); 3) 5 preguntas para detectar el dolor; 4) cómo pasar a agendar; 5) respuesta corta a: \"mandame un mail\", \"no tengo tiempo\", \"ya tenemos algo\", \"no soy quien decide\". Español [neutro/rioplatense], frases cortas para decir en voz alta."
+      }
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Cuántas llamadas por día?",
+     "a": "Las que te dé tu cadena de números. Como mínimo para arrancar, 10 por día. Mídete por cuántas hiciste y si seguiste el guion, no por cuántos dijeron que no."
+    },
+    {
+     "q": "¿Grabo mis llamadas?",
+     "a": "Sí, con permiso. Escucharte una vez por semana es la forma más rápida de mejorar: cuánto hablaste tú y qué señales se te pasaron."
+    }
+   ]
+  },
+  {
+   "slug": "la-llamada-de-venta-en-cuatro-fases",
+   "t": "La llamada de venta en cuatro fases: apertura, diagnóstico, retorno y cierre",
+   "d": "La estructura completa de la videollamada donde se decide la venta, con las preguntas del diagnóstico y cómo decir el precio.",
+   "tema": "Vender IA",
+   "min": 11,
+   "secciones": [
+    {
+     "h": "Antes de la llamada",
+     "lista": [
+      "Formulario corto al agendar: rubro, facturación aproximada, empleados, qué quiere resolver, si probó IA antes y quién más decide.",
+      "Filtro: si tu solución sale 2.000 y el negocio factura menos que eso por mes, probablemente no es tu cliente.",
+      "WhatsApp de confirmación el día anterior.",
+      "Siempre con quien decide. Si decide con un socio, que esté en la llamada.",
+      "Graba con permiso: después la transcripción te sirve para la propuesta."
+     ]
+    },
+    {
+     "h": "Fase 1 · Apertura (3 a 5 minutos)",
+     "p": [
+      "Rompe el hielo con algo que no sea del tema. Después explica cómo va a ser la llamada: \"Te voy a hacer preguntas, algunas de números, para ver si te puedo ayudar. Como un médico: sin estudios no hay diagnóstico. Si al final veo que no tiene sentido, te lo digo.\" Pide que te confirme que está de acuerdo."
+     ]
+    },
+    {
+     "h": "Fase 2 · Diagnóstico (15 a 30 minutos)",
+     "lista": [
+      "El negocio hoy: qué vende, a quién, objetivo a 6 o 12 meses y qué es lo que más lo frena.",
+      "Los números: cuántas consultas o pedidos por día y por qué canal, cuántas personas atienden y cuánto les cuesta, ticket promedio, cuántos de cada 10 compran.",
+      "Lo que ya probó: si le fue bien con IA o con una agencia, si le fue mal (empatiza y diferénciate) o si nunca probó.",
+      "Dónde quiere llegar y por qué ahora.",
+      "La brecha: qué le impide llegar solo. Lo que diga acá son sus propios argumentos de compra."
+     ],
+     "aviso": "En esta fase habla él el 80 o 90% del tiempo. Si no confirmaste el dolor con sus palabras, no tienes derecho a presentar la solución."
+    },
+    {
+     "h": "Fase 3 · Retorno y solución (5 a 8 minutos)",
+     "p": [
+      "Repite sus números y confírmalos. Presenta la transformación sin palabras técnicas: qué cambia en su día a día. Pasa el impacto a cifras del año (horas liberadas, consultas que hoy se pierden, ventas que entran). Antes del precio pregunta: \"¿Es exactamente esto lo que necesitas?\". Si hay dudas, se resuelven ahora, no después del precio.",
+      "El cálculo del retorno está en \"Calcula el retorno de tu propuesta\"."
+     ]
+    },
+    {
+     "h": "Fase 4 · Cierre",
+     "pasos": [
+      "Di la inversión con convicción, sin titubear y sin justificarla de más.",
+      "Si quieres, suma un beneficio por decidir hoy (un pago único con descuento o un módulo extra).",
+      "Cállate. El primero que habla después del precio pierde.",
+      "Resuelve la forma de pago (por ejemplo, mitad al empezar y mitad al entregar).",
+      "Si dice que sí: manda el acuerdo en el momento y agenda el arranque."
+     ]
+    },
+    {
+     "h": "Si haces dos llamadas",
+     "p": [
+      "Para soluciones a medida suele convenir dividir: la primera llamada es solo diagnóstico (sin precio, a lo sumo un rango), con eso armas un documento de retorno y un video corto explicándolo, y la segunda llamada, a las 24 o 48 horas, es solo para cerrar. Agenda la segunda dentro de la primera. Nunca termines una llamada sin la siguiente reunión con fecha y hora."
+     ],
+     "prompts": [
+      {
+       "t": "Propuesta desde la transcripción",
+       "c": "Te paso la transcripción de mi llamada de diagnóstico con [NEGOCIO]. Ármame un documento de una página con: 1) la situación actual con frases textuales del cliente; 2) dónde está perdiendo tiempo o dinero, con sus números; 3) cómo queda con la solución; 4) inversión y plazos (déjame [PRECIO] y [PLAZO] para que los complete yo); 5) retorno en un escenario conservador y uno probable, con en cuántos meses recupera la inversión. Cada número tiene que salir de algo que dijo el cliente; si falta un dato, márcalo como \"a confirmar\".\n\n[TRANSCRIPCIÓN]"
+      }
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Doy el precio en la primera llamada?",
+     "a": "Si vendes una solución estándar, sí, en una sola llamada. Si es a medida, da un rango en la primera para filtrar y el número final en la segunda."
+    },
+    {
+     "q": "¿Y si dice \"lo voy a pensar\"?",
+     "a": "Mira \"Objeciones y cómo responderlas\". La clave es preguntar qué parte le genera dudas antes de cortar."
+    }
+   ]
+  },
+  {
+   "slug": "calcula-el-retorno-de-tu-propuesta",
+   "t": "Calcula el retorno de tu propuesta (y ponle precio con eso)",
+   "d": "Las cuatro formas en que un sistema de IA genera valor, cómo pasarlas a números con lo que dijo el cliente y cómo usar eso para fijar el precio.",
+   "tema": "Vender IA",
+   "min": 9,
+   "secciones": [
+    {
+     "h": "Por qué calcular el retorno",
+     "p": [
+      "Cuando un dueño dice \"es caro\", casi siempre quiere decir \"no veo cuánto me devuelve\". Si le muestras con sus propios números cuánto pierde hoy y cuánto recupera, el precio deja de ser el tema.",
+      "La regla de oro: cada número sale de algo que dijo el cliente en el diagnóstico. Si no hay una frase suya que lo respalde, ese número no va."
+     ]
+    },
+    {
+     "h": "Las cuatro palancas de valor",
+     "lista": [
+      "Tiempo del equipo: personas × horas que se liberan × lo que cuesta cada hora. Ojo: no lideres con \"ahorras sueldos\"; suena a despidos. Habla de tiempo liberado para vender o atender mejor.",
+      "Ventas que se escapan: consultas por mes × porcentaje que hoy se pierde (sin respuesta o fuera de horario) × ticket promedio × cuántos de cada 10 compran.",
+      "Mejor conversión: consultas por mes × (conversión nueva − conversión actual) × ticket.",
+      "Menos errores: lo que cuesta un error × cuántas veces pasa por mes × cuánto se reduce."
+     ]
+    },
+    {
+     "h": "Dos escenarios y el tiempo de recuperación",
+     "lista": [
+      "Escenario conservador: usa la mitad o menos de lo que podría mejorar. Es el número que defiendes.",
+      "Escenario probable: lo que esperas que pase de verdad.",
+      "Recuperación: inversión ÷ valor mensual del escenario conservador = en cuántos meses se paga solo. Si da menos de 3 meses, el precio es fácil de defender.",
+      "Costo de no hacer nada: lo que pierde por mes × los meses que piensa esperar. Sirve para la objeción \"ahora no\".",
+      "Incluye los costos que siguen: mantenimiento, plan de Claude, mensajes de WhatsApp. Si no los pones, después parece que mentiste."
+     ]
+    },
+    {
+     "h": "Cómo fijar el precio con esto",
+     "lista": [
+      "Por solución, nunca por hora. Las horas sirven para saber tu piso, no para el precio.",
+      "Una referencia simple: cobrar alrededor del 10% de lo que el sistema le ahorra o le hace ganar en un año. Otra: que el precio sea más o menos un mes de recuperación del escenario conservador.",
+      "En la llamada das un rango; en la propuesta, un número concreto un poco debajo del medio del rango y no redondo (si el rango era 2.500 a 3.500, por ejemplo 2.897).",
+      "Si el retorno da muy poco (menos de 100 dólares por mes), no es tu cliente: no hay precio que cierre."
+     ]
+    },
+    {
+     "h": "Hazlo con Claude",
+     "prompts": [
+      {
+       "t": "Calcular el retorno desde mis notas",
+       "c": "Te paso mis notas o la transcripción del diagnóstico con [NEGOCIO]. Calcula el valor mensual de [SOLUCIÓN] usando solo estas cuatro palancas: tiempo del equipo, ventas que se escapan, mejor conversión y menos errores.\nPara cada palanca: 1) la frase textual del cliente que la respalda (si no hay, descártala); 2) la fórmula con sus números; 3) el resultado mensual.\nDespués: escenario conservador (mitad de la mejora) y probable, costos recurrentes que tengo que sumar ([COSTOS]), en cuántos meses recupera una inversión de [PRECIO] y cuánto pierde por mes si espera. Marca como \"a confirmar\" todo dato que falte.\n\n[NOTAS]"
+      }
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Y si el cliente no sabe sus números?",
+     "a": "Pregúntale estimaciones (\"más o menos, ¿cuántos mensajes por día?\") y anótalas como estimaciones suyas. Si no puede estimar ni eso, probablemente no es el momento."
+    },
+    {
+     "q": "¿Le muestro el cálculo completo?",
+     "a": "Muéstrale el resultado y las frases suyas que lo respaldan. Las fórmulas, solo si las pide."
+    }
+   ]
+  },
+  {
+   "slug": "objeciones-y-como-responderlas",
+   "t": "Objeciones y cómo responderlas: en la llamada en frío y en la de venta",
+   "d": "\"Es caro\", \"lo voy a pensar\", \"tengo que hablarlo\", \"ahora no\", \"mándame un mail\": qué hay detrás de cada una y qué responder.",
+   "tema": "Vender IA",
+   "min": 9,
+   "secciones": [
+    {
+     "h": "Qué es una objeción",
+     "p": [
+      "Una objeción no es una mentira: es un riesgo que el otro ve. La mayoría se previene en el diagnóstico (preguntando quién decide, cuándo lo quiere resolver y qué probó antes) y se responde con las palabras y los números que dio el propio cliente.",
+      "Distingue la superficial (la primera excusa que sale) de la real (lo que de verdad lo frena). Si respondes la superficial, aparece otra."
+     ]
+    },
+    {
+     "h": "El método en tres pasos",
+     "pasos": [
+      "Validar: \"Tiene sentido que lo pienses\" (sin discutir).",
+      "Profundizar y aislar: \"Si la inversión no fuera un tema, ¿avanzarías?\". Así sabes si el problema es el precio u otra cosa.",
+      "Responder a la raíz con su información: sus números, sus frases, su urgencia."
+     ]
+    },
+    {
+     "h": "En la llamada en frío",
+     "lista": [
+      "\"Mándame un mail\": \"Claro. Para mandarte algo que te sirva, ¿qué tendría que tener?\". Y vuelve a proponer 15 minutos.",
+      "\"No tengo tiempo\": \"Te entiendo. ¿Te queda mejor el martes a las 10 o el jueves a las 17?\" o \"dame dos minutos y si no te sirve cortamos\".",
+      "\"Ya tenemos algo\": \"Bien. ¿Qué parte del proceso quedó afuera?\".",
+      "\"No es prioridad\": costo de no hacer nada y una fecha concreta para retomar.",
+      "\"No soy quien decide\": \"¿Quién sería la mejor persona? ¿Cómo la puedo contactar?\".",
+      "\"No te conozco\": \"Es lógico. Por eso te propongo una videollamada corta donde te muestro cómo funciona\"."
+     ]
+    },
+    {
+     "h": "En la llamada de venta",
+     "lista": [
+      "\"Es caro\": casi siempre es \"no veo el retorno\". Vuelve al impacto en dinero o en horas con sus números. Distingue \"caro\" de \"no puedo pagarlo\": para lo segundo, ofrece pagar en partes antes que bajar el precio.",
+      "\"Lo voy a pensar\": \"¿Qué parte te genera dudas: la solución, el momento o la inversión?\". Aísla y resuelve esa.",
+      "\"Lo tengo que hablar con mi socio\": se previene preguntando antes quién decide. Si aparece, agenda en el momento una reunión con los dos. Lo que le llega al socio contado por otro es una fracción de lo que escuchó tu cliente.",
+      "\"Ahora no\": meses de espera × lo que pierde por mes, comparado con la inversión.",
+      "\"Miedo a que la IA responda mal\": nada se activa sin su aprobación, siempre hay pase a una persona y la IA cubre lo repetitivo.",
+      "\"Ya lo probamos y no funcionó\": pregunta qué probaron, con quién y qué falló. Se previene en el diagnóstico.",
+      "\"No tienes casos\": no mientas. Apóyate en resultados de la tecnología en otras empresas, ofrece una versión de prueba y pregunta qué necesitaría para confiar."
+     ]
+    },
+    {
+     "h": "La regla del WhatsApp",
+     "p": [
+      "Las objeciones por mensaje casi nunca se resuelven: se enfrían. Si aparece una objeción por WhatsApp, la respuesta es proponer una llamada corta con día y hora."
+     ],
+     "prompts": [
+      {
+       "t": "Practicar objeciones",
+       "c": "Haz de dueño de [RUBRO] que recibe mi propuesta de [SOLUCIÓN] por [PRECIO]. Ponme objeciones reales, una por vez, empezando por la superficial y, si la respondo bien, pasando a la real. Después de cada respuesta mía, dime en una línea qué hice bien, qué no y cómo lo diría mejor. Terminamos cuando acepte o cuando no queden objeciones."
+      }
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Bajo el precio si insiste?",
+     "a": "Antes de bajar, ofrece facilidades de pago o achica el alcance. Si bajas el precio sin cambiar nada, le enseñas que tu precio era inventado."
+    }
+   ]
+  },
+  {
+   "slug": "precios-de-referencia-y-formas-de-pago",
+   "t": "Precios de referencia y formas de pago para sistemas de IA",
+   "d": "Rangos que se ven en el mercado hispano para agentes, CRMs, sistemas y mantenimiento, cómo cobrar el primer cliente y cómo armar los pagos.",
+   "tema": "Vender IA",
+   "min": 8,
+   "secciones": [
+    {
+     "h": "Antes de mirar números",
+     "p": [
+      "Estos rangos son referencias que se escuchan entre quienes venden sistemas de IA en español, no precios oficiales ni garantizados. El mismo sistema puede valer 2.000 o 10.000 dólares según el tamaño del cliente, el país, el retorno que genera y tu experiencia.",
+      "Úsalos para no cobrar ridículamente poco y para tener un rango que decir con seguridad. El número final sale del retorno (\"Calcula el retorno de tu propuesta\") y de tus horas reales (\"Cuánto cobrar por automatizar con IA\")."
+     ]
+    },
+    {
+     "h": "Rangos de desarrollo (pago único)",
+     "lista": [
+      "Primer agente de atención o ventas: entre 500 y 1.200 dólares. Por debajo de 500 se pierde dinero.",
+      "Agente estándar con algo de experiencia: entre 1.000 y 1.500; con experiencia y casos, de 1.000 a 3.000; los avanzados, más.",
+      "Módulos extra de un agente (audio, imágenes, alta en CRM, agenda): alrededor de 500 cada uno.",
+      "CRM sencillo a medida: entre 1.000 y 2.000.",
+      "Sistemas grandes tipo \"centro de control\" de la empresa: desde 5.000 a 10.000 o más.",
+      "Diagnóstico pago (cuando ya tienes demanda): unos 500, descontables si contrata."
+     ]
+    },
+    {
+     "h": "Rangos de mantenimiento (mensual)",
+     "lista": [
+      "Tres escalones simples que se usan mucho: 100 (solo arreglos), 300 (arreglos y mejoras chicas) y 600 (prioridad y mejoras todos los meses).",
+      "Una solución que solo ordena o ahorra un poco de tiempo: alrededor de 200 por mes.",
+      "Un agente crítico, que hace el trabajo de varias personas: de 500 a 700 por mes.",
+      "La regla: el mensual tiene que ser una fracción de lo que el sistema le aporta cada mes. Para cobrar 500, tiene que aportar por lo menos 1.000."
+     ],
+     "aviso": "Un mantenimiento barato con cambios ilimitados te quema cuando tienes cinco clientes. Pon horas o cantidad de cambios por plan."
+    },
+    {
+     "h": "El primer cliente",
+     "lista": [
+      "Experiencia antes que dinero: cobra bajo para conseguir el caso de éxito, pero cobra. Elige un número que puedas decir sin que te tiemble la voz.",
+      "Un precio que no sea redondo y desglosado (agente + CRM + capacitación) se percibe como calculado. Desglosar también evita perder toda la venta si rechaza una parte.",
+      "Una opción extrema que algunos usan: desarrollo sin cargo a cambio de un mensual desde el primer día. Si lo haces, pon un plazo mínimo por escrito.",
+      "Suma tus herramientas al precio: si cobras 1.000 y usas un plan de 100, cobra 1.100. Mejor aún: que las suscripciones estén a nombre y con la tarjeta del cliente."
+     ]
+    },
+    {
+     "h": "Formas de pago",
+     "lista": [
+      "Lo más común: 50% al empezar y 50% al entregar, contra los criterios de aceptación cumplidos. También se usa 70/30.",
+      "Por etapas, en proyectos largos.",
+      "Dos cuotas antes que un descuento.",
+      "Un beneficio por pagar todo junto (por ejemplo, 10% menos).",
+      "Nunca empieces sin el primer pago. Y conecta el sistema a producción recién con el pago final."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Cobro en dólares o en moneda local?",
+     "a": "Si tu cliente está en otro país, en dólares. Si está en el tuyo, depende de la estabilidad de tu moneda; lo importante es que el acuerdo diga moneda, montos y fechas."
+    },
+    {
+     "q": "¿Menciono el mantenimiento en la propuesta?",
+     "a": "Solo como una línea (\"planes de mantenimiento desde X\"). Lo ofreces de verdad cuando el sistema funciona y el cliente pide su primer cambio."
+    }
+   ]
+  },
+  {
+   "slug": "que-sistemas-venderle-a-cada-negocio",
+   "t": "Qué sistemas de IA venderle a cada tipo de negocio",
+   "d": "Un mapa de 15 sistemas que se están vendiendo hoy, para qué negocio sirve cada uno y con qué se arma.",
+   "tema": "Vender IA",
+   "min": 9,
+   "secciones": [
+    {
+     "h": "Cómo usar este mapa",
+     "p": [
+      "Empieza con uno de entrada (el agente de atención es el más fácil de vender) y usa el resto como siguiente paso con el mismo cliente. Cada sistema de esta lista tiene su guía o su rubro en la biblioteca; si no, pídele a Claude el plan con el prompt del final."
+     ]
+    },
+    {
+     "h": "Para entrar",
+     "lista": [
+      "Agente que atiende, vende y agenda por WhatsApp e Instagram: clínicas, consultorios, tiendas online, inmobiliarias, concesionarias y salones. Es el sistema más validado.",
+      "Agente que agenda llamadas desde los mensajes (setter): marcas personales, infoproductores y negocios que venden por llamada.",
+      "Aviso de nuevas consultas por Telegram o WhatsApp con respuesta automática: dueños que no miran el mail. Es barato y rápido de vender.",
+      "Facturas a planilla o CRM automáticamente: pymes con mucha administración."
+     ]
+    },
+    {
+     "h": "Para crecer con el mismo cliente",
+     "lista": [
+      "CRM a medida: negocios que hoy viven en Excel o en un cuaderno (concesionarias, peluquerías grandes, distribuidoras).",
+      "Panel con las métricas del agente (conversaciones, etapas, sin respuesta): clientes que ya tienen agente.",
+      "Reportes mensuales automáticos con recomendaciones: agencias de marketing.",
+      "Respuesta a reseñas de Google y publicaciones a partir de fotos: restaurantes y comercios locales.",
+      "Análisis de datos: suben un Excel y reciben limpieza, indicadores y recomendaciones."
+     ]
+    },
+    {
+     "h": "Sistemas más grandes",
+     "lista": [
+      "Panel de contenido: métricas propias y de la competencia, transcripciones y un asistente para preguntarle. Para marcas personales y agencias.",
+      "Análisis de llamadas de venta y comparación de vendedores: empresas con equipo comercial que graba sus llamadas.",
+      "Agente de voz que atiende o confirma por teléfono: clínicas, inmobiliarias. Solo si reciben muchas llamadas.",
+      "Centro de control de la empresa: mini aplicaciones por área y por empleado.",
+      "Prospección automática (buscar negocios, investigarlos y escribir el mensaje), que algunos cobran a comisión.",
+      "Capacitaciones en vivo para equipos: como producto aparte o como entrada."
+     ]
+    },
+    {
+     "h": "Arma el plan de cualquiera con Claude",
+     "prompts": [
+      {
+       "t": "Plan de un sistema para un cliente",
+       "c": "Quiero venderle [SISTEMA] a [NEGOCIO], que [DATOS: tamaño, volumen de consultas, herramientas que usa]. Dame: 1) qué problema resuelve en su caso, en una frase que entienda el dueño; 2) la versión mínima que puedo poner a funcionar en 1 o 2 semanas; 3) con qué herramientas lo armaría (prefiere Claude, conectores y herramientas sin código; si hace falta algo más, dímelo); 4) qué tiene que darme el cliente; 5) qué módulos le podría ofrecer después; 6) qué riesgos o datos sensibles hay."
+      }
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Por cuál empiezo si no sé programar?",
+     "a": "Por el agente de atención o por el paquete \"Claude instalado en tu negocio\". Los dos se arman con herramientas sin código y están explicados paso a paso en la biblioteca."
+    }
+   ]
+  },
+  {
+   "slug": "entregar-un-agente-de-punta-a-punta",
+   "t": "Entregar un agente de punta a punta: de la prueba a producción",
+   "d": "El orden para instalar un agente sin sorpresas: accesos, versión de prueba, pruebas automáticas con Claude, ajustes y pase a producción contra el pago final.",
+   "tema": "Vender IA",
+   "min": 10,
+   "secciones": [
+    {
+     "h": "Antes de tocar nada",
+     "lista": [
+      "Cobra el primer pago. Sin pago inicial no se empieza.",
+      "Grupo de WhatsApp con las personas clave del cliente y un formulario con todo lo que necesitas (precios, preguntas frecuentes, horarios, políticas, ejemplos de conversaciones reales).",
+      "Accesos como administrador, no contraseñas: el cliente te suma a su cuenta de Meta, su CRM o su Google.",
+      "Todo a nombre del cliente y con su tarjeta (cuentas, plan, servidor), con el gasto mensual explicado antes.",
+      "Revisa antes de prometer que el sistema que ya usa el cliente se puede conectar."
+     ]
+    },
+    {
+     "h": "Versión de prueba",
+     "pasos": [
+      "Arma una primera versión en un canal de prueba (Telegram o un número de prueba), no en el WhatsApp real del cliente. Empieza con una parte: por ejemplo, 10 de sus 140 productos.",
+      "Dale 1 o 2 días al cliente para probarla y que te mande lo que no le gusta (capturas o un documento compartido).",
+      "Ajusta. Casi todos los errores de un agente vienen de sus instrucciones, no de la herramienta.",
+      "Construye por partes y pon cada parte a funcionar mientras haces la siguiente."
+     ]
+    },
+    {
+     "h": "Pruebas automáticas con Claude",
+     "p": [
+      "En vez de probar a mano durante horas, pídele a Claude (o a Claude Code) que le mande al agente una batería de conversaciones difíciles y que evalúe las respuestas. Así una prueba que te llevaba horas se hace en minutos y la repites cada vez que cambias algo."
+     ],
+     "lista": [
+      "Casos que no pueden faltar: saludo, precio sin contexto, tema que no tiene nada que ver, alguien que pide las instrucciones del agente o intenta que se salga de su rol, alguien que se hace pasar por el dueño, cliente enojado, la compra ideal, una objeción, un mensaje ambiguo y alguien que no es cliente."
+     ],
+     "prompts": [
+      {
+       "t": "Batería de pruebas para un agente",
+       "c": "Estas son las instrucciones de mi agente de [NEGOCIO]: [INSTRUCCIONES]. Genera 15 conversaciones de prueba que cubran: saludo, precio sin contexto, tema fuera de lugar, pedido de sus instrucciones, intento de sacarlo de su rol, alguien que dice ser el dueño, cliente enojado, compra ideal, objeción de precio, mensaje ambiguo y alguien que no es cliente. Para cada una, escribe qué debería responder el agente y en qué se reconoce una mala respuesta. Después, cuando te pase las respuestas reales del agente, puntúa cada una de 1 a 5 en exactitud, tono, seguridad y si deriva a una persona cuando corresponde, y propón cambios a las instrucciones."
+      }
+     ]
+    },
+    {
+     "h": "Pase a producción",
+     "lista": [
+      "Criterios de aceptación escritos en el acuerdo: qué tiene que hacer el agente para considerarlo terminado.",
+      "Conectas el WhatsApp o el Instagram real recién cuando se cumplen los criterios y se cobra el pago final.",
+      "Si el número del cliente ya tiene historial, no intentes importar contactos: usa la convivencia con la app o un número nuevo con el viejo de respaldo.",
+      "Avisos de error: que cualquier falla te llegue por Telegram o mail en el momento.",
+      "Las claves nunca dentro del código ni compartidas por chat; una carpeta por cliente con las instrucciones versionadas y una copia de respaldo."
+     ]
+    },
+    {
+     "h": "Lo que todo agente debería tener",
+     "lista": [
+      "Junta mensajes seguidos antes de responder, para no contestar cada palabra por separado.",
+      "Respuestas en varios mensajes cortos, como una persona.",
+      "Memoria de la conversación.",
+      "Pase a una persona, con una regla clara de cuándo vuelve a responder el agente.",
+      "Transcripción de audios.",
+      "Carga en el CRM sin duplicados.",
+      "Seguimiento automático si la persona no responde."
+     ]
+    },
+    {
+     "h": "La entrega",
+     "p": [
+      "Una capacitación corta (en la mayoría de los casos el equipo no necesita aprender IA, solo a tomar una conversación, pausar el agente y mandar una respuesta), un manual dentro del sistema con preguntas frecuentes y un informe de cierre. Lo que pide el cliente después del pago final ya es mantenimiento, no desarrollo."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Cuánto tarda una entrega?",
+     "a": "Una versión de prueba de un agente simple puede estar en horas; con pruebas, ajustes y aprobación del cliente, lo normal es de una a cuatro semanas. Las empresas grandes tardan más en aprobar."
+    },
+    {
+     "q": "¿Y si el cliente no me manda la información?",
+     "a": "Pon en el acuerdo un plazo para que entregue cada cosa (por ejemplo, 2 o 3 días) y que si no responde en 5 días hábiles, el calendario se corre."
+    }
+   ]
+  },
+  {
+   "slug": "la-rutina-del-que-vende-ia",
+   "t": "La rutina del que vende IA: el día, la semana y las reglas",
+   "d": "Cómo organizar tu día para que la venta no quede para después, qué revisar cada semana y las reglas que separan a los que consiguen clientes de los que no.",
+   "tema": "Vender IA",
+   "min": 7,
+   "secciones": [
+    {
+     "h": "El día",
+     "lista": [
+      "Bloque de prospección primero, en el calendario, como una reunión con un cliente. Mientras no tengas clientes, al menos el 80% de tu tiempo de trabajo va acá.",
+      "Una lista de tareas del día, no de horas: contactos hechos, seguimientos del día, llamadas. Cuando cumples, check verde y cortas.",
+      "Si haces contenido: 30 minutos por día o todo en un día por semana.",
+      "Lo que te da energía antes de llamar (entrenar, música, caminar). Las llamadas se escuchan distinto.",
+      "Pregunta de la noche: \"¿Hoy hice algo para conseguir clientes o me quedé en la web y las herramientas?\"."
+     ]
+    },
+    {
+     "h": "La semana",
+     "lista": [
+      "Revisión de 15 minutos en el calendario: cuántos contactos, respuestas, agendamientos y cierres; dónde se rompió la cadena; qué única cosa cambias.",
+      "Escucha una de tus llamadas grabadas: cuánto hablaste tú y qué señal se te pasó.",
+      "Pregunta del domingo: \"¿Me incomodé esta semana?\". Si la respuesta es no, probablemente no prospectaste lo suficiente."
+     ]
+    },
+    {
+     "h": "Las reglas",
+     "lista": [
+      "Mejorar la web, el logo o aprender una herramienta más no es conseguir clientes.",
+      "Si ya sabes armar lo que vendes, frena lo técnico y sal a vender.",
+      "Una palanca por semana.",
+      "No cambies de método en las primeras semanas.",
+      "No automatices ni delegues algo que todavía no funciona hecho a mano.",
+      "Ninguna conversación termina sin próxima acción con fecha y hora.",
+      "No trabajes sin pago inicial ni construyas sin precio acordado.",
+      "Di que no a lo que está fuera de lo que vendes.",
+      "Aunque estés entregando, haz un mínimo de contactos por día: si cortas, al mes siguiente no tienes nada."
+     ]
+    },
+    {
+     "h": "La cabeza",
+     "p": [
+      "Nunca te vas a sentir listo para vender. Esperar a estarlo es la excusa más común, y \"una herramienta más\" es su forma más elegante.",
+      "Habla desde la posición de quien ofrece algo útil, no desde la necesidad: si te dice que no, pierde él. El que más vende es el que más tolera el rechazo, y la incomodidad de las primeras llamadas pasa rápido.",
+      "Si una creencia te frena (\"la gente no quiere que la llamen\"), escríbela, piensa de dónde viene, cuánto te cuesta, qué evidencia hay en contra, escribe la nueva en presente y haz una acción en las próximas 24 horas que la desafíe."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Y si trabajo en otra cosa y tengo 2 horas por día?",
+     "a": "Haz la cuenta con esas 2 horas. Si la cadena de números te pide más contactos de los que entran, mueve otra palanca (precio, canal, meta) pero protege ese bloque todos los días."
+    }
+   ]
+  }
+ ],
+ "prompts": [],
+ "herramientas": []
+}
