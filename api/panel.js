@@ -2,14 +2,16 @@
 // GET  /api/panel                               -> usuarios (registros + guías vistas) y números del resumen
 // POST /api/panel (JSON: accion "acceso", email, compro) -> da o saca el acceso completo a mano (por ejemplo, pagos por Mercado Pago)
 
-import { sesion } from "../lib/sesion.js";
+import { esAdmin, sesion } from "../lib/sesion.js";
 import { limpiarEmail } from "../lib/codigo.js";
 import { config, enc, json, leerCuerpo, sb } from "../lib/db.js";
 import { enviarLote, mailInvitacion } from "../lib/invitacion.js";
 
 const CAMPOS = "email,nombre,origen,compro,baja,perfil_completo,situacion,rubro,nivel,objetivo,inversion,foco,pais,whatsapp,creado,actualizado,utm_source,utm_campaign,invitado_forja";
 
-export function resumen(usuarios) {
+// Los admins (el equipo) no cuentan en los números: sus pruebas no son registros ni ventas reales.
+export function resumen(todos, admins = process.env.ADMINS) {
+  const usuarios = todos.filter((u) => !esAdmin(u.email, admins));
   return {
     registrados: usuarios.length,
     chat: usuarios.filter((u) => /chat|manychat|agente/i.test(u.origen || "")).length,
@@ -54,7 +56,7 @@ export default async function handler(req, res) {
       ]);
       const vistas = {}, ultimo = {};
       prog.forEach((p) => { vistas[p.email] = (vistas[p.email] || 0) + 1; if (!ultimo[p.email] || p.visto > ultimo[p.email]) ultimo[p.email] = p.visto; });
-      const usuarios = regs.map((r) => ({ ...r, vistas: vistas[r.email] || 0, ultima_guia: ultimo[r.email] || null }));
+      const usuarios = regs.map((r) => ({ ...r, admin: esAdmin(r.email), vistas: vistas[r.email] || 0, ultima_guia: ultimo[r.email] || null }));
       return json(res, 200, { usuarios, resumen: resumen(usuarios) });
     }
     if (req.method === "POST") {

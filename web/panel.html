@@ -43,7 +43,7 @@
     ["llamar", "Para llamar", function (u) { return u.inversion === "Sí, ahora" && u.whatsapp; }],
     ["instalar", "Quieren instalación", function (u) { return /instal/i.test(u.objetivo || ""); }],
     ["perfil", "Perfil completo", function (u) { return u.perfil_completo; }],
-    ["compraron", "Compraron", function (u) { return u.compro; }]
+    ["compraron", "Compraron", function (u) { return u.compro && !u.admin; }]
   ];
   function fecha(iso) { return iso ? new Date(iso).toLocaleDateString("es", { day: "numeric", month: "short" }) : "—"; }
   function visibles() {

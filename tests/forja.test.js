@@ -74,6 +74,12 @@ test("maestro: turnos alternados y sin instrucciones de afuera", () => {
   assert.match(instrucciones("", false, ""), /\/guias\//);
 });
 
+test("panel: el admin no cuenta en el resumen", () => {
+  const r = resumen([{ email: "yo@x.co", compro: true, vistas: 1 }, { email: "a@x.co", compro: true, vistas: 0 }], "yo@x.co");
+  assert.equal(r.registrados, 1);
+  assert.equal(r.compraron, 1);
+});
+
 test("panel: resumen de usuarios", () => {
   assert.deepEqual(resumen([{ origen: "chat", perfil_completo: true, compro: false, vistas: 2 }, { origen: "web", compro: true, vistas: 0 }]),
     { registrados: 2, chat: 1, perfil: 1, compraron: 1, activos: 1 });
