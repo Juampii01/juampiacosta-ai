@@ -4,11 +4,15 @@
 
 import { ACCESS_COOKIE_NAME, ACCESS_COOKIE_MAX_AGE, AVISO_COOKIE_NAME, crearCookie, leerCookie, leerEnlace, nivelDe, valorCookie } from "../lib/acceso.js";
 import { guiaGratis } from "./manychat.js";
+import { HOST_SITIO, SITIO } from "../lib/sitio.js";
 
 export default async function handler(req, res) {
   const ir = (a) => { res.statusCode = 303; res.setHeader("Location", a); res.setHeader("Cache-Control", "no-store"); res.end(); };
   const { ACCESS_SECRET: secreto, SUPABASE_URL: url } = process.env;
   const clave = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
+  // Links viejos (juampiacosta-ai.vercel.app/api/acceso?t=…): se canjean en el dominio nuevo para que la sesión quede ahí
+  const host = String(req.headers["x-forwarded-host"] || req.headers.host || "").split(",")[0].trim();
+  if (host === "juampiacosta-ai.vercel.app" && HOST_SITIO !== host) return ir(SITIO + req.url);
   const q = new URL(req.url, "http://x").searchParams;
   const p = await leerEnlace(q.get("t"), secreto);
   if (!p) { const g = guiaGratis(q.get("a")); return ir(g ? `/?volver=/guias/${g}#gratis` : "/#gratis"); }
@@ -16,7 +20,7 @@ export default async function handler(req, res) {
   // &a=reels lleva a «De mis reels» de la biblioteca: todas las guías de los reels con su palabra
   const reels = q.get("a") === "reels";
   const g = reels ? null : guiaGratis(q.get("a")) || p.g;
-  const destino = reels ? "/recursos#posts" : g ? `/guias/${g}` : "/recursos";
+  const destino = reels ? "/biblioteca#posts" : g ? `/guias/${g}` : "/recursos";
 
   const actual = nivelDe(await leerCookie(valorCookie(req.headers.cookie, ACCESS_COOKIE_NAME), secreto));
   if (actual === "pago") return ir(destino);

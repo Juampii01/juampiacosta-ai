@@ -23,5 +23,18 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/:ruta((?!api/).*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "juampiacosta-ai.vercel.app"
+        }
+      ],
+      "destination": "https://www.forjaia.com/:ruta",
+      "permanent": true
+    }
   ]
 }

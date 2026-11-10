@@ -7,6 +7,7 @@
 // Variables en Vercel: MANYCHAT_SECRET, ACCESS_SECRET, SUPABASE_URL, SUPABASE_SECRET_KEY.
 
 import { crearEnlace } from "../lib/acceso.js";
+import { SITIO } from "../lib/sitio.js";
 import { GUIAS_GRATIS } from "../lib/gratis.js";
 import { guardarEnSupabase, limpiarRegistro } from "./registro.js";
 
@@ -44,9 +45,8 @@ export default async function handler(req, res) {
   // ManyChat puede mandar «Full Contact Data»: el nombre viene en first_name / name
   if (!cuerpo.nombre) cuerpo.nombre = cuerpo.first_name || cuerpo.name || "";
   const fila = limpiarRegistro(cuerpo);
-  const host = String(req.headers["x-forwarded-host"] || req.headers.host || "juampiacosta-ai.vercel.app").split(",")[0].trim();
   // Sin mail válido (por ejemplo, si tocó «Sin mail»): el link lleva al registro normal de la web, así los botones nunca quedan rotos
-  if (!fila) return responder(200, { ok: false, error: "email", link: `https://${host}/api/acceso?t=` });
+  if (!fila) return responder(200, { ok: false, error: "email", link: `${SITIO}/api/acceso?t=` });
   fila.origen = "manychat";
   const guia = guiaGratis(cuerpo.guia);
   if (guia) fila.utm_content = guia.slice(0, 120);
@@ -55,5 +55,5 @@ export default async function handler(req, res) {
   catch (e) { console.error("No se pudo guardar el registro de ManyChat:", e.message); return responder(500, { ok: false, error: "guardar" }); }
 
   const t = await crearEnlace(fila.email, fila.nombre || "", guia, secreto);
-  return responder(200, { ok: true, link: `https://${host}/api/acceso?t=${encodeURIComponent(t)}` });
+  return responder(200, { ok: true, link: `${SITIO}/api/acceso?t=${encodeURIComponent(t)}` });
 }
