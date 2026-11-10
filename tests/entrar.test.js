@@ -35,11 +35,13 @@ import { nivelDe } from "../lib/acceso.js";
 
 test("sin cookie: solo el inicio; lo privado nunca", () => {
   assert.deepEqual(decidir("/", null), { pasa: true });
-  assert.deepEqual(decidir("/recursos", null), { a: "/#entrar" });
+  assert.deepEqual(decidir("/recursos", null), { a: "/entrar" });
+  assert.deepEqual(decidir("/comunidad", null), { a: "/entrar?volver=/comunidad" });
+  assert.deepEqual(decidir("/panel", null), { a: "/entrar?volver=/panel" });
   assert.deepEqual(decidir("/web/prompts.js", null), { prohibido: true });
   // Guía gratis sin sesión: al registro y de vuelta a la guía. Guía paga sin sesión: a entrar.
   assert.deepEqual(decidir("/guias/errores-que-agotan-tu-plan-de-claude.html", null), { a: "/?volver=/guias/errores-que-agotan-tu-plan-de-claude#gratis" });
-  assert.deepEqual(decidir("/guias/sistema-ia-para-clinicas-y-centros-de-estetica.html", null), { a: "/#entrar" });
+  assert.deepEqual(decidir("/guias/sistema-ia-para-clinicas-y-centros-de-estetica.html", null), { a: "/entrar" });
   assert.deepEqual(decidir("/web/guias-web.json", "pago"), { no: true });
   assert.deepEqual(decidir("/contenido/config.json", "pago"), { no: true });
   assert.deepEqual(decidir("/supabase/registros.sql", "pago"), { no: true });
@@ -52,6 +54,13 @@ test("gratis: guías de reels sí, el resto a comprar; prompts y herramientas en
   assert.deepEqual(decidir("/guias/sistema-base-modulo-2-elegir-a-quien-venderle", "gratis"), { a: "/?bloqueada=sistema-base-modulo-2-elegir-a-quien-venderle#precio" });
   assert.deepEqual(decidir("/web/prompts.js", "gratis"), { reescribir: "/web/prompts-vista.js" });
   assert.deepEqual(decidir("/web/herramientas.js", "gratis"), { reescribir: "/web/herramientas-vista.js" });
+});
+
+test("panel: solo el equipo, aunque haya pagado", () => {
+  assert.deepEqual(decidir("/panel", "pago", false), { a: "/recursos" });
+  assert.deepEqual(decidir("/panel.html", "gratis", false), { a: "/recursos" });
+  assert.deepEqual(decidir("/panel", "pago", true), { pasa: true });
+  assert.deepEqual(decidir("/comunidad", "gratis"), { pasa: true });
 });
 
 test("pago: todo", () => {

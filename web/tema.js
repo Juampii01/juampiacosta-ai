@@ -27,7 +27,7 @@
   // El botón va en la cabecera: la de la biblioteca y las guías (.cab nav), la del mapa de repos (.top-right)
   // o la de la landing (.cm-header__nav)
   document.addEventListener("DOMContentLoaded", function () {
-    var sitio = document.querySelector(".cab nav, .top-right, .cm-header__nav");
+    var sitio = document.querySelector(".fj-top-acciones, .cab nav, .top-right, .cm-header__nav");
     if (!sitio) return;
     boton = document.createElement("button");
     boton.type = "button";

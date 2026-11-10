@@ -1,0 +1,136 @@
+<!doctype html>
+<!-- Plantilla de /comunidad. build.py la copia a ../comunidad.html con la versión (63a94931) -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comunidad | Forja IA</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="web/base.css?v=63a94931">
+<link rel="stylesheet" href="web/tema.css?v=63a94931">
+<link rel="stylesheet" href="web/forja.css?v=63a94931">
+<script src="web/tema.js?v=63a94931"></script>
+<link rel="icon" href="web/favicon.svg?v=63a94931" type="image/svg+xml">
+</head>
+<body class="fj-app" data-seccion="comunidad" data-raiz="/">
+<script src="web/guias-web.js?v=63a94931"></script>
+<script src="web/comun.js?v=63a94931"></script>
+<main class="fj-main ancho">
+  <div class="fj-cab"><span class="fj-eyebrow">Comunidad</span><h1>Lo que están construyendo</h1><p>Avances, dudas y clientes cerrados. Lo leo todo y respondo.</p></div>
+  <div class="fj-comunidad">
+    <nav class="fj-card fj-canales" aria-label="Canales" id="co-canales"></nav>
+    <div class="fj-feed">
+      <form class="fj-card fj-post" id="co-nuevo" novalidate>
+        <div class="fj-post-cab"><span class="fj-avatar" id="co-yo">·</span><div><b>Publica algo</b><small>Cuenta qué armaste, qué vendiste o en qué te trabaste.</small></div></div>
+        <label class="fj-oculto" for="co-titulo">Título</label>
+        <input class="fj-input" id="co-titulo" maxlength="140" placeholder="Título (opcional)">
+        <label class="fj-oculto" for="co-texto">Texto</label>
+        <textarea class="fj-input" id="co-texto" maxlength="5000" rows="3" placeholder="¿Qué estás construyendo?" style="min-height:90px;resize:vertical"></textarea>
+        <div class="fj-post-pie"><label class="fj-oculto" for="co-canal">Canal</label><select class="fj-input" id="co-canal" style="width:auto;min-height:40px;padding:0 10px"></select><span style="flex:1"></span><button class="fj-btn fj-btn-primario" type="submit">Publicar</button></div>
+        <p class="fj-error" role="alert"></p>
+      </form>
+      <div id="co-feed"><p class="fj-vacio">Cargando…</p></div>
+    </div>
+    <aside class="fj-card fj-reglas">
+      <span class="fj-eyebrow" style="color:var(--fj-muted)">Cómo funciona</span>
+      <p><b>Clientes cerrados:</b> cuenta qué vendiste, a quién y cómo. Es lo que más ayuda a los demás.</p>
+      <p><b>Lo que armé:</b> muestra tu sistema funcionando, aunque esté a medio hacer.</p>
+      <p><b>Preguntas:</b> si te trabas, pregunta. Si sabes la respuesta, ayuda.</p>
+      <p class="fj-nota">Sin spam ni venta de servicios a otros miembros. Lo que no respete esto se borra.</p>
+    </aside>
+  </div>
+</main>
+<script src="web/shell.js?v=63a94931"></script>
+<script>
+(function () {
+  var esc = FJ.esc;
+  var CANALES = [["", "Todo"], ["anuncios", "Anuncios"], ["clientes", "Clientes cerrados"], ["arme", "Lo que armé"], ["preguntas", "Preguntas"], ["general", "General"]];
+  var canal = (location.hash.slice(1) || "");
+  if (!CANALES.some(function (c) { return c[0] === canal; })) canal = "";
+  var datos = null, equipo = false;
+  function hace(iso) {
+    var s = (Date.now() - Date.parse(iso)) / 1000;
+    if (s < 60) return "recién"; if (s < 3600) return "hace " + Math.floor(s / 60) + " min"; if (s < 86400) return "hace " + Math.floor(s / 3600) + " h";
+    var d = Math.floor(s / 86400); return d === 1 ? "ayer" : d < 30 ? "hace " + d + " días" : new Date(iso).toLocaleDateString("es");
+  }
+  function nombreCanal(id) { return (CANALES.filter(function (c) { return c[0] === id; })[0] || ["", id])[1]; }
+  function api(cuerpo) {
+    return fetch("/api/comunidad", { method: "POST", headers: { "Content-Type": "application/json" }, credentials: "same-origin", body: JSON.stringify(cuerpo) })
+      .then(function (r) { return r.json().then(function (d) { if (!r.ok) throw d; return d; }); });
+  }
+  function pintarCanales() {
+    var c = (datos && datos.canales) || {};
+    document.getElementById("co-canales").innerHTML = '<div class="fj-nav-tit" style="padding:4px 10px 8px">CANALES</div>' + CANALES.map(function (x) {
+      var n = x[0] ? c[x[0]] || 0 : (datos ? datos.total : 0);
+      return '<button type="button" data-canal="' + x[0] + '" aria-pressed="' + (x[0] === canal) + '"><span>' + x[1] + '</span><span class="fj-mono" style="font-size:11px">' + n + '</span></button>';
+    }).join("");
+    var sel = document.getElementById("co-canal");
+    sel.innerHTML = CANALES.slice(1).filter(function (x) { return x[0] !== "anuncios" || equipo; }).map(function (x) { return '<option value="' + x[0] + '">' + x[1] + '</option>'; }).join("");
+    sel.value = canal && (canal !== "anuncios" || equipo) ? canal : "general";
+  }
+  function pintarFeed() {
+    var feed = document.getElementById("co-feed");
+    if (!datos.posts.length) { feed.innerHTML = '<div class="fj-card fj-vacio">Todavía no hay nada en este canal. Sé el primero en publicar.</div>'; return; }
+    feed.innerHTML = datos.posts.map(function (p) {
+      var acciones = (p.mio || equipo ? '<button type="button" data-borrar="' + p.id + '">Borrar</button>' : '') + (equipo ? '<button type="button" data-fijar="' + p.id + '" data-v="' + !p.fijado + '">' + (p.fijado ? 'Desfijar' : 'Fijar') + '</button>' : '');
+      return '<article class="fj-card fj-post' + (p.fijado ? ' fijado' : '') + '" style="margin-bottom:14px">' +
+        (p.fijado ? '<span class="fj-eyebrow" style="font-size:10px">Fijado</span>' : '') +
+        '<div class="fj-post-cab"><span class="fj-avatar">' + esc(p.autor.charAt(0).toUpperCase()) + '</span><div><b>' + esc(p.autor) + (p.equipo ? '<span class="fj-equipo">EQUIPO</span>' : '') + '</b><small>' + nombreCanal(p.canal) + ' · ' + hace(p.creado) + '</small></div></div>' +
+        (p.titulo ? '<h3>' + esc(p.titulo) + '</h3>' : '') + '<div class="txt">' + esc(p.texto) + '</div>' +
+        '<div class="fj-post-pie"><button type="button" data-like="' + p.id + '" aria-pressed="' + p.megusta + '">♥ ' + p.likes + '</button><button type="button" data-abrir="' + p.id + '">' + p.comentarios.length + ' comentarios</button><span style="flex:1"></span>' + acciones + '</div>' +
+        '<div class="fj-comentarios" id="com-' + p.id + '"' + (p.comentarios.length ? '' : ' hidden') + '>' + p.comentarios.map(function (c) {
+          return '<div class="fj-comentario"><span class="fj-avatar">' + esc(c.autor.charAt(0).toUpperCase()) + '</span><div><b>' + esc(c.autor) + (c.equipo ? ' <span class="fj-equipo">EQUIPO</span>' : '') + ' · <span style="font-weight:400;color:var(--fj-muted)">' + hace(c.creado) + '</span></b>' + esc(c.texto) +
+            (c.mio || equipo ? ' <button type="button" class="fj-link" data-borrar-com="' + c.id + '" style="padding:0;font-size:12px">Borrar</button>' : '') + '</div></div>';
+        }).join("") +
+        '<form class="fj-comentar" data-post="' + p.id + '"><label class="fj-oculto" for="cm-' + p.id + '">Comentar</label><input id="cm-' + p.id + '" maxlength="2000" placeholder="Escribe un comentario…"><button class="fj-btn fj-btn-borde" type="submit">Enviar</button></form></div></article>';
+    }).join("");
+  }
+  function cargar() {
+    return fetch("/api/comunidad" + (canal ? "?canal=" + canal : ""), { credentials: "same-origin" }).then(function (r) { return r.json().then(function (d) { if (!r.ok) throw d; return d; }); })
+      .then(function (d) {
+        datos = d; equipo = d.yo.equipo;
+        document.getElementById("co-yo").textContent = (d.yo.nombre || "?").charAt(0).toUpperCase();
+        pintarCanales(); pintarFeed();
+      })
+      .catch(function (e) {
+        document.getElementById("co-feed").innerHTML = '<div class="fj-card fj-vacio">' + esc((e && e.mensaje) || "No se pudo cargar la comunidad. Prueba de nuevo en un rato.") + '</div>';
+        document.getElementById("co-nuevo").hidden = true;
+      });
+  }
+  document.getElementById("co-canales").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-canal]"); if (!b) return;
+    canal = b.dataset.canal; history.replaceState(null, "", canal ? "#" + canal : location.pathname); cargar();
+  });
+  var form = document.getElementById("co-nuevo"), err = form.querySelector(".fj-error");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); err.style.display = "none";
+    var texto = document.getElementById("co-texto").value.trim();
+    if (texto.length < 2) { err.textContent = "Escribe algo antes de publicar."; err.style.display = "block"; return; }
+    var b = form.querySelector("button[type=submit]"); b.disabled = true;
+    api({ accion: "post", canal: document.getElementById("co-canal").value, titulo: document.getElementById("co-titulo").value, texto: texto })
+      .then(function () { form.reset(); b.disabled = false; cargar(); })
+      .catch(function (d) { b.disabled = false; err.textContent = d && d.error === "espera" ? "Vas muy rápido. Espera un minuto." : "No se pudo publicar. Prueba de nuevo."; err.style.display = "block"; });
+  });
+  document.getElementById("co-feed").addEventListener("click", function (e) {
+    var t = e.target;
+    if (t.dataset.like) api({ accion: "like", post: t.dataset.like }).then(cargar);
+    else if (t.dataset.abrir) { var c = document.getElementById("com-" + t.dataset.abrir); c.hidden = false; c.querySelector("input").focus(); }
+    else if (t.dataset.borrar && confirm("¿Borrar esta publicación?")) api({ accion: "borrar", post: t.dataset.borrar }).then(cargar);
+    else if (t.dataset.borrarCom && confirm("¿Borrar este comentario?")) api({ accion: "borrar", comentario: t.dataset.borrarCom }).then(cargar);
+    else if (t.dataset.fijar) api({ accion: "fijar", post: t.dataset.fijar, fijado: t.dataset.v === "true" }).then(cargar);
+  });
+  document.getElementById("co-feed").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var f = e.target, input = f.querySelector("input"), texto = input.value.trim();
+    if (!texto) return;
+    input.disabled = true;
+    api({ accion: "comentar", post: f.dataset.post, texto: texto }).then(cargar).catch(function () { input.disabled = false; });
+  });
+  pintarCanales();
+  cargar();
+})();
+</script>
+</body>
+</html>

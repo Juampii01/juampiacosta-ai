@@ -1,9 +1,8 @@
 // Canjea el link mágico del chat (api/manychat.js) por la sesión. GET /api/acceso?t=<token>
-// Deja la cookie de nivel «gratis» (o «pago», si ese email ya compró) y lleva a la guía que pidió.
+// Deja la cookie de nivel «gratis» y lleva a la guía que pidió (el acceso completo se activa con el código del mail).
 // Con &a=<slug> va a otra guía gratis; con &a=reels, a la lista de guías de los reels. Si el link no sirve o venció, manda al registro normal.
 
 import { ACCESS_COOKIE_NAME, ACCESS_COOKIE_MAX_AGE, AVISO_COOKIE_NAME, crearCookie, leerCookie, leerEnlace, nivelDe, valorCookie } from "../lib/acceso.js";
-import { yaCompro } from "./registro.js";
 import { guiaGratis } from "./manychat.js";
 
 export default async function handler(req, res) {
@@ -22,9 +21,9 @@ export default async function handler(req, res) {
   const actual = nivelDe(await leerCookie(valorCookie(req.headers.cookie, ACCESS_COOKIE_NAME), secreto));
   if (actual === "pago") return ir(destino);
 
-  let pago = false;
-  if (url && clave) { try { pago = await yaCompro(p.m, { url, clave }); } catch (e) { console.error("No se pudo ver si compró:", e.message); } }
-  const nivel = pago ? "pago" : "gratis";
+  // El link del chat solo prueba que escribió por Instagram, no que el email es suyo: abre el plan gratis.
+  // El acceso completo se activa entrando con el código del mail.
+  const nivel = "gratis";
   const cookie = await crearCookie(p.m, p.n || "", secreto, nivel);
   res.setHeader("Set-Cookie", [
     `${ACCESS_COOKIE_NAME}=${encodeURIComponent(cookie)}; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; HttpOnly; Secure; SameSite=Lax`,

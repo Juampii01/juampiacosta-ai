@@ -1,0 +1,122 @@
+<!doctype html>
+<!-- Plantilla de /entrar. build.py la copia a ../entrar.html y pone la versión ({{V}}) -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entrar | Forja IA</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="web/base.css?v={{V}}">
+<link rel="stylesheet" href="web/tema.css?v={{V}}">
+<link rel="stylesheet" href="web/forja.css?v={{V}}">
+<script src="web/tema.js?v={{V}}"></script>
+<link rel="icon" href="web/favicon.svg?v={{V}}" type="image/svg+xml">
+</head>
+<body class="fj-acceso">
+<main class="fj-acceso-caja">
+  <a class="fj-marca" href="/">{{LOGO}}<span>Forja <b>IA</b></span></a>
+
+  <form id="paso-email" class="fj-card fj-form" novalidate>
+    <span class="fj-eyebrow">Paso 1 de 2</span>
+    <h1>Entra con tu email</h1>
+    <p class="fj-desc">Te mandamos un código de 6 números. Sin contraseñas. Si compraste, usa el email del pago y se te abre todo.</p>
+    <label for="email">Tu email</label>
+    <input id="email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" required maxlength="254" placeholder="tu@mail.com">
+    <p class="fj-error" role="alert"></p>
+    <button class="fj-btn fj-btn-primario" type="submit">Mandarme el código →</button>
+    <p class="fj-nota">¿Primera vez? Es lo mismo: con tu email quedas registrado y se te abren las guías gratis.</p>
+  </form>
+
+  <form id="paso-codigo" class="fj-card fj-form" novalidate hidden>
+    <span class="fj-eyebrow">Paso 2 de 2</span>
+    <h1>Revisa tu mail</h1>
+    <p class="fj-desc">Te mandamos el código a <b id="email-mostrado"></b>. Vence en 10 minutos. Si no lo ves, busca en spam o promociones.</p>
+    <label for="codigo">Código de 6 números</label>
+    <input id="codigo" name="codigo" class="fj-codigo" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]*" maxlength="7" required placeholder="000000">
+    <p class="fj-error" role="alert"></p>
+    <button class="fj-btn fj-btn-primario" type="submit">Entrar →</button>
+    <div class="fj-fila-links">
+      <button type="button" class="fj-link" id="reenviar">Reenviar código</button>
+      <button type="button" class="fj-link" id="otro-email">Usar otro email</button>
+    </div>
+  </form>
+</main>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var fEmail = document.getElementById("paso-email"), fCodigo = document.getElementById("paso-codigo");
+  var inEmail = document.getElementById("email"), inCodigo = document.getElementById("codigo");
+  var volver = q.get("volver") || "";
+  var email = "";
+  function cookie(n) { var m = document.cookie.match(new RegExp("(?:^|;\\s*)" + n + "=([^;]+)")); try { return m ? decodeURIComponent(m[1]) : ""; } catch (e) { return ""; } }
+  function error(f, t) { var p = f.querySelector(".fj-error"); p.textContent = t || ""; p.style.display = t ? "block" : "none"; }
+  var MENSAJES = { email: "Revisa tu email: parece que tiene un error.", envio: "No pudimos mandar el mail. Prueba de nuevo en un minuto.",
+    vencido: "El código venció o ya se usó. Pide uno nuevo.", bloqueado: "Demasiados intentos con este código. Pide uno nuevo.",
+    config: "No pudimos completar esto ahora. Escríbeme por Instagram.", servidor: "No pudimos completar esto ahora. Prueba de nuevo." };
+  function verCodigo() {
+    fEmail.hidden = true; fCodigo.hidden = false;
+    document.getElementById("email-mostrado").textContent = email;
+    setTimeout(function () { inCodigo.focus(); }, 50);
+  }
+  var espera = 0, reloj = null, reenviar = document.getElementById("reenviar");
+  function cuenta(seg) {
+    espera = seg; clearInterval(reloj);
+    function pintar() { reenviar.disabled = espera > 0; reenviar.textContent = espera > 0 ? "Reenviar código (en " + espera + " s)" : "Reenviar código"; }
+    pintar();
+    reloj = setInterval(function () { espera--; pintar(); if (espera <= 0) clearInterval(reloj); }, 1000);
+  }
+  function pedir(boton, f) {
+    boton.disabled = true; error(f, "");
+    return fetch("/api/codigo", { method: "POST", headers: { "Content-Type": "application/json" }, credentials: "same-origin",
+      body: JSON.stringify({ email: email, utm_source: q.get("utm_source") || "", utm_medium: q.get("utm_medium") || "", utm_campaign: q.get("utm_campaign") || "", utm_content: q.get("utm_content") || "" }) })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; }); })
+      .then(function (x) {
+        boton.disabled = false;
+        if (x.ok) { verCodigo(); cuenta(45); return; }
+        if (x.d.error === "espera") { verCodigo(); cuenta(x.d.segundos || 45); error(fCodigo, "Ya te mandamos un código hace un momento. Revisa tu mail."); return; }
+        error(f, MENSAJES[x.d.error] || MENSAJES.servidor);
+      })
+      .catch(function () { boton.disabled = false; error(f, "Sin conexión. Prueba de nuevo."); });
+  }
+  fEmail.addEventListener("submit", function (e) {
+    e.preventDefault();
+    email = inEmail.value.trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { error(fEmail, MENSAJES.email); return; }
+    pedir(fEmail.querySelector("button[type=submit]"), fEmail);
+  });
+  reenviar.addEventListener("click", function () { pedir(reenviar, fCodigo); });
+  document.getElementById("otro-email").addEventListener("click", function () { fCodigo.hidden = true; fEmail.hidden = false; error(fCodigo, ""); inEmail.focus(); });
+  inCodigo.addEventListener("input", function () {
+    inCodigo.value = inCodigo.value.replace(/\D/g, "").slice(0, 6);
+    if (inCodigo.value.length === 6) fCodigo.requestSubmit ? fCodigo.requestSubmit() : fCodigo.dispatchEvent(new Event("submit"));
+  });
+  var enviando = false;
+  fCodigo.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (enviando) return;
+    var codigo = inCodigo.value.replace(/\D/g, "");
+    if (codigo.length !== 6) { error(fCodigo, "El código tiene 6 números."); return; }
+    enviando = true; error(fCodigo, "");
+    var boton = fCodigo.querySelector("button[type=submit]");
+    boton.disabled = true; boton.textContent = "Entrando…";
+    fetch("/api/verificar", { method: "POST", headers: { "Content-Type": "application/json" }, credentials: "same-origin",
+      body: JSON.stringify({ email: email, codigo: codigo, volver: volver }) })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; }); })
+      .then(function (x) {
+        if (x.ok) { location.href = x.d.destino || "/recursos"; return; }
+        enviando = false; boton.disabled = false; boton.textContent = "Entrar →"; inCodigo.select();
+        if (x.d.error === "codigo") error(fCodigo, "Ese código no es. " + (x.d.quedan ? "Te quedan " + x.d.quedan + " intentos." : "Pide uno nuevo."));
+        else error(fCodigo, MENSAJES[x.d.error] || MENSAJES.servidor);
+      })
+      .catch(function () { enviando = false; boton.disabled = false; boton.textContent = "Entrar →"; error(fCodigo, "Sin conexión. Prueba de nuevo."); });
+  });
+  // Llegó desde el registro con un email que compró: el código ya está en camino
+  var pend = cookie("jpa_pend");
+  if (q.get("paso") === "codigo" && pend) { email = pend; verCodigo(); cuenta(45); document.cookie = "jpa_pend=; Path=/; Max-Age=0"; }
+  else inEmail.focus();
+})();
+</script>
+</body>
+</html>

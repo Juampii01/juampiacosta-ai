@@ -1,0 +1,95 @@
+<!doctype html>
+<!-- Plantilla de /panel (solo equipo). build.py la copia a ../panel.html con la versión (63a94931) -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel | Forja IA</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="web/base.css?v=63a94931">
+<link rel="stylesheet" href="web/tema.css?v=63a94931">
+<link rel="stylesheet" href="web/forja.css?v=63a94931">
+<script src="web/tema.js?v=63a94931"></script>
+<link rel="icon" href="web/favicon.svg?v=63a94931" type="image/svg+xml">
+</head>
+<body class="fj-app" data-seccion="panel" data-raiz="/">
+<script src="web/guias-web.js?v=63a94931"></script>
+<script src="web/comun.js?v=63a94931"></script>
+<main class="fj-main ancho">
+  <div class="fj-cab"><span class="fj-eyebrow">Panel de equipo · solo admin</span><h1>Usuarios</h1></div>
+  <div class="fj-stats" id="pa-stats"></div>
+  <div class="fj-filtros">
+    <label class="fj-buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span class="fj-oculto">Buscar usuario</span><input type="search" id="pa-buscar" placeholder="Nombre, email, rubro o país"></label>
+    <div id="pa-filtros" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+    <span style="flex:1"></span>
+    <button type="button" class="fj-btn fj-btn-borde" id="pa-csv">Exportar CSV</button>
+  </div>
+  <div class="fj-card fj-tabla-caja"><table class="fj-tabla"><thead><tr><th scope="col">Usuario</th><th scope="col">Plan</th><th scope="col">Origen</th><th scope="col">Perfil</th><th scope="col">Quiere</th><th scope="col">Guías vistas</th><th scope="col">Alta</th><th scope="col"><span class="fj-oculto">Acciones</span></th></tr></thead><tbody id="pa-filas"><tr><td colspan="8">Cargando…</td></tr></tbody></table></div>
+  <p class="fj-nota" style="margin-top:12px" id="pa-pie"></p>
+</main>
+<script src="web/shell.js?v=63a94931"></script>
+<script>
+(function () {
+  var esc = FJ.esc, todos = [], filtro = "todos", q = "";
+  var FILTROS = [
+    ["todos", "Todos", function () { return true; }],
+    ["llamar", "Para llamar", function (u) { return u.inversion === "Sí, ahora" && u.whatsapp; }],
+    ["instalar", "Quieren instalación", function (u) { return /instal/i.test(u.objetivo || ""); }],
+    ["perfil", "Perfil completo", function (u) { return u.perfil_completo; }],
+    ["compraron", "Compraron", function (u) { return u.compro; }]
+  ];
+  function fecha(iso) { return iso ? new Date(iso).toLocaleDateString("es", { day: "numeric", month: "short" }) : "—"; }
+  function visibles() {
+    var f = FILTROS.filter(function (x) { return x[0] === filtro; })[0][2];
+    return todos.filter(function (u) { return f(u) && (!q || [u.nombre, u.email, u.rubro, u.pais, u.origen].join(" ").toLowerCase().indexOf(q) > -1); });
+  }
+  function pintar() {
+    var lista = visibles();
+    document.getElementById("pa-filtros").innerHTML = FILTROS.map(function (x) {
+      var n = todos.filter(x[2]).length;
+      return '<button type="button" class="fj-chip" data-f="' + x[0] + '" aria-pressed="' + (x[0] === filtro) + '">' + x[1] + ' · ' + n + '</button>';
+    }).join("");
+    document.getElementById("pa-filas").innerHTML = lista.length ? lista.map(function (u) {
+      var wa = u.whatsapp ? '<a href="https://wa.me/' + String(u.whatsapp).replace(/\D/g, "") + '" target="_blank" rel="noopener">' + esc(u.whatsapp) + '</a>' : '';
+      return '<tr><td><b>' + esc(u.nombre || "Sin nombre") + '</b><small>' + esc(u.email) + '</small>' + (wa ? '<small>' + wa + (u.pais ? ' · ' + esc(u.pais) : '') + '</small>' : (u.pais ? '<small>' + esc(u.pais) + '</small>' : '')) + '</td>' +
+        '<td><span class="fj-pill' + (u.compro ? ' pago' : '') + '">' + (u.compro ? 'Completo' : 'Gratis') + '</span></td>' +
+        '<td>' + esc(u.origen || "web") + (u.utm_campaign ? '<small>' + esc(u.utm_campaign) + '</small>' : '') + '</td>' +
+        '<td>' + (u.perfil_completo ? esc([u.situacion, u.rubro].filter(Boolean).join(" · ")) + '<small>' + esc(u.nivel || "") + '</small>' : '<span class="fj-nota">Sin completar</span>') + '</td>' +
+        '<td>' + esc(u.objetivo || "—") + (u.inversion ? '<small>' + (u.inversion === "Sí, ahora" ? '<span class="fj-pill si">Invierte ahora</span>' : esc(u.inversion)) + '</small>' : '') + '</td>' +
+        '<td>' + u.vistas + '/' + FJ.total + (u.ultima_guia ? '<small>última ' + fecha(u.ultima_guia) + '</small>' : '') + '</td>' +
+        '<td>' + fecha(u.creado) + '</td>' +
+        '<td><button type="button" class="fj-btn ' + (u.compro ? 'fj-btn-borde' : 'fj-btn-primario') + '" data-acceso="' + esc(u.email) + '" data-v="' + !u.compro + '">' + (u.compro ? 'Quitar acceso' : 'Dar acceso completo') + '</button></td></tr>';
+    }).join("") : '<tr><td colspan="8">No hay usuarios con ese filtro.</td></tr>';
+    document.getElementById("pa-pie").textContent = "Mostrando " + lista.length + " de " + todos.length + ". «Dar acceso completo» sirve para pagos por Mercado Pago: la próxima vez que esa persona entre con su código, se le abre todo.";
+  }
+  function cargar() {
+    fetch("/api/panel", { credentials: "same-origin" }).then(function (r) { if (!r.ok) throw r.status; return r.json(); }).then(function (d) {
+      todos = d.usuarios;
+      var s = d.resumen;
+      document.getElementById("pa-stats").innerHTML = [["Registrados", s.registrados, "en total"], ["Llegaron por el chat", s.chat, "ManyChat y agente"], ["Perfil completo", s.perfil, "llenaron el formulario"], ["Leyendo", s.activos, "con alguna guía vista"], ["Acceso completo", s.compraron, "compraron"]]
+        .map(function (x, i) { return '<div class="fj-card fj-stat"' + (i === 4 ? ' style="border-color:var(--fj-acento)"' : '') + '><small>' + x[0] + '</small><b' + (i === 4 ? ' style="color:var(--fj-acento-txt)"' : '') + '>' + x[1] + '</b><span>' + x[2] + '</span></div>'; }).join("");
+      pintar();
+    }).catch(function () { document.getElementById("pa-filas").innerHTML = '<tr><td colspan="8">No se pudo cargar el panel.</td></tr>'; });
+  }
+  document.getElementById("pa-filtros").addEventListener("click", function (e) { var b = e.target.closest("[data-f]"); if (b) { filtro = b.dataset.f; pintar(); } });
+  document.getElementById("pa-buscar").addEventListener("input", function () { q = this.value.trim().toLowerCase(); pintar(); });
+  document.getElementById("pa-filas").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-acceso]"); if (!b) return;
+    var dar = b.dataset.v === "true";
+    if (!confirm((dar ? "¿Dar acceso completo a " : "¿Quitar el acceso completo a ") + b.dataset.acceso + "?")) return;
+    b.disabled = true;
+    fetch("/api/panel", { method: "POST", headers: { "Content-Type": "application/json" }, credentials: "same-origin", body: JSON.stringify({ accion: "acceso", email: b.dataset.acceso, compro: dar }) })
+      .then(function (r) { if (!r.ok) throw r.status; cargar(); }).catch(function () { b.disabled = false; alert("No se pudo cambiar el acceso."); });
+  });
+  document.getElementById("pa-csv").addEventListener("click", function () {
+    var cols = ["nombre", "email", "whatsapp", "pais", "origen", "compro", "perfil_completo", "situacion", "rubro", "nivel", "objetivo", "inversion", "foco", "vistas", "creado"];
+    var csv = [cols.join(",")].concat(visibles().map(function (u) { return cols.map(function (c) { var v = u[c] == null ? "" : String(u[c]); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }).join(","); })).join("\n");
+    var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob(["﻿" + csv], { type: "text/csv" })); a.download = "forja-usuarios.csv"; a.click();
+  });
+  cargar();
+})();
+</script>
+</body>
+</html>

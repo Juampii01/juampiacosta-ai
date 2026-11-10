@@ -1,0 +1,87 @@
+<!doctype html>
+<!-- Plantilla de /maestro (tutor con IA). build.py la copia a ../maestro.html con la versión ({{V}}) -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maestro | Forja IA</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="web/base.css?v={{V}}">
+<link rel="stylesheet" href="web/tema.css?v={{V}}">
+<link rel="stylesheet" href="web/forja.css?v={{V}}">
+<script src="web/tema.js?v={{V}}"></script>
+<link rel="icon" href="web/favicon.svg?v={{V}}" type="image/svg+xml">
+<style>
+.ma { display: flex; flex-direction: column; gap: 16px; max-width: 820px; }
+.ma-chat { display: flex; flex-direction: column; gap: 14px; }
+.ma-msg { max-width: 88%; padding: 14px 16px; border-radius: 14px; font-size: 15px; line-height: 1.6; white-space: pre-wrap; word-wrap: break-word; }
+.ma-msg.yo { align-self: flex-end; background: var(--fj-acento-fondo); border: 1px solid var(--fj-acento); color: var(--fj-text); }
+.ma-msg.maestro { align-self: flex-start; background: var(--fj-surface); border: 1px solid var(--fj-line); color: var(--fj-cuerpo); }
+.ma-msg.maestro a { color: var(--fj-acento-txt); font-weight: 600; text-decoration: underline; }
+.ma-msg.maestro b { color: var(--fj-text); }
+.ma-sug { display: flex; flex-wrap: wrap; gap: 8px; }
+.ma-form { position: sticky; bottom: 16px; display: flex; gap: 10px; padding: 10px; }
+.ma-form textarea { flex: 1; min-height: 46px; max-height: 180px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--fj-line2); background: var(--fj-inner); color: var(--fj-text); font: 15px "Inter", sans-serif; resize: none; }
+.ma-escribiendo { color: var(--fj-muted); font-size: 14px; }
+</style>
+</head>
+<body class="fj-app" data-seccion="maestro" data-raiz="/">
+<script src="web/guias-web.js?v={{V}}"></script>
+<script src="web/comun.js?v={{V}}"></script>
+<main class="fj-main">
+  <div class="ma">
+    <div class="fj-cab" style="margin-bottom:8px"><span class="fj-eyebrow">Herramientas IA · Maestro</span><h1>Pregúntale a Maestro</h1>
+      <p id="ma-sub">Tu tutor con IA. Conoce las 137 guías: te dice cuál abrir y te ayuda a aplicarla a tu negocio.</p></div>
+    <div class="ma-sug" id="ma-sug"></div>
+    <div class="ma-chat" id="ma-chat" aria-live="polite"></div>
+    <form class="fj-card ma-form" id="ma-form">
+      <label class="fj-oculto" for="ma-txt">Tu pregunta</label>
+      <textarea id="ma-txt" rows="1" maxlength="2000" placeholder="Pregúntale lo que sea sobre Claude, tus sistemas o tu negocio…"></textarea>
+      <button class="fj-btn fj-btn-primario" type="submit">Enviar</button>
+    </form>
+    <p class="fj-nota">Maestro es una IA y se puede equivocar. Lo importante, verifícalo en la guía o en la documentación oficial.</p>
+  </div>
+</main>
+<script src="web/shell.js?v={{V}}"></script>
+<script>
+(function () {
+  var esc = FJ.esc, q = new URLSearchParams(location.search), slug = q.get("guia") || "";
+  var guia = GUIAS_WEB.filter(function (g) { return g.slug === slug; })[0];
+  var mensajes = [];
+  try { var guardado = JSON.parse(sessionStorage.getItem("maestro:" + slug) || "[]"); if (Array.isArray(guardado)) mensajes = guardado; } catch (e) {}
+  if (guia) document.getElementById("ma-sub").innerHTML = 'Estás en la guía <a href="/guias/' + guia.slug + '" style="color:var(--fj-acento-txt);font-weight:600">' + esc(guia.t) + '</a>. Pregúntale cómo aplicarla a tu caso.';
+  var SUG = guia ? ["Explícamela en 5 pasos simples", "¿Cómo la aplico a mi negocio?", "¿Qué hago si algo falla?"]
+    : ["¿Por dónde empiezo?", "¿Cómo consigo mi primer cliente vendiendo IA?", "¿Qué sistema le vendo a una inmobiliaria?", "¿Cómo gasto menos tokens en Claude?"];
+  function formato(t) {
+    return esc(t).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/(^|[\s(])(\/guias\/[a-z0-9-]+)/g, function (m, a, url) {
+      var g = GUIAS_WEB.filter(function (x) { return "/guias/" + x.slug === url; })[0];
+      return a + '<a href="' + url + '">' + (g ? esc(g.t) : url) + '</a>';
+    });
+  }
+  function pintar(cargando) {
+    document.getElementById("ma-sug").innerHTML = mensajes.length ? "" : SUG.map(function (s) { return '<button type="button" class="fj-chip">' + esc(s) + '</button>'; }).join("");
+    document.getElementById("ma-chat").innerHTML = mensajes.map(function (m) { return '<div class="ma-msg ' + m.rol + '">' + (m.rol === "yo" ? esc(m.texto) : formato(m.texto)) + '</div>'; }).join("") +
+      (cargando ? '<p class="ma-escribiendo">Maestro está escribiendo…</p>' : '');
+    try { sessionStorage.setItem("maestro:" + slug, JSON.stringify(mensajes.slice(-20))); } catch (e) {}
+  }
+  var txt = document.getElementById("ma-txt"), form = document.getElementById("ma-form"), ocupado = false;
+  function enviar(texto) {
+    if (ocupado || !texto.trim()) return;
+    ocupado = true; mensajes.push({ rol: "yo", texto: texto.trim() }); txt.value = ""; pintar(true);
+    window.scrollTo(0, document.body.scrollHeight);
+    fetch("/api/maestro", { method: "POST", headers: { "Content-Type": "application/json" }, credentials: "same-origin", body: JSON.stringify({ mensajes: mensajes, guia: slug }) })
+      .then(function (r) { return r.json().then(function (d) { if (!r.ok) throw d; return d; }); })
+      .then(function (d) { mensajes.push({ rol: "maestro", texto: d.texto }); })
+      .catch(function (d) { mensajes.push({ rol: "maestro", texto: d && d.error === "espera" ? "Vas muy rápido. Espera un minuto y vuelve a preguntar." : "No pude responder ahora. Prueba de nuevo en un rato." }); })
+      .then(function () { ocupado = false; pintar(false); window.scrollTo(0, document.body.scrollHeight); txt.focus(); });
+  }
+  form.addEventListener("submit", function (e) { e.preventDefault(); enviar(txt.value); });
+  txt.addEventListener("keydown", function (e) { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); enviar(txt.value); } });
+  document.getElementById("ma-sug").addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) enviar(b.textContent); });
+  pintar(false);
+})();
+</script>
+</body>
+</html>

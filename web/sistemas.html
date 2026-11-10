@@ -1,0 +1,55 @@
+<!doctype html>
+<!-- Plantilla de /sistemas. build.py la copia a ../sistemas.html con la versión ({{V}}) y los datos de contenido/sistemas.json ({{SISTEMAS}}) -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sistemas | Forja IA</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="web/base.css?v={{V}}">
+<link rel="stylesheet" href="web/tema.css?v={{V}}">
+<link rel="stylesheet" href="web/forja.css?v={{V}}">
+<script src="web/tema.js?v={{V}}"></script>
+<link rel="icon" href="web/favicon.svg?v={{V}}" type="image/svg+xml">
+</head>
+<body class="fj-app" data-seccion="sistemas" data-raiz="/">
+<script src="web/guias-web.js?v={{V}}"></script>
+<script src="web/comun.js?v={{V}}"></script>
+<main class="fj-main ancho">
+  <section class="fj-card" style="padding:32px;margin-bottom:24px;background-color:#0d0c0b;color:#f4f4f5;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:28px 28px;border-color:#26262b">
+    <span class="fj-eyebrow" style="color:#ff7a45" id="si-eyebrow">Sistemas</span>
+    <h1 style="font-size:clamp(28px,4vw,36px);font-weight:800;letter-spacing:-.03em;margin:10px 0">Sistemas listos para replicar</h1>
+    <p style="font-size:16px;line-height:1.55;color:#a1a1aa;max-width:680px">El repo de cada sistema con su guía paso a paso: qué necesitas, cómo instalarlo con Claude Code, cómo publicarlo y qué cambiar para vendérselo a un cliente.</p>
+  </section>
+  <div class="fj-filtros" role="group" aria-label="Filtrar sistemas" id="si-filtros"></div>
+  <div class="fj-sistemas" id="si-lista"></div>
+</main>
+<script src="web/shell.js?v={{V}}"></script>
+<script>
+var SISTEMAS = {{SISTEMAS}};
+(function () {
+  var esc = FJ.esc, cat = "";
+  var CATS = [["", "Todos"], ["ventas", "Ventas"], ["contenido", "Contenido"], ["agentes", "Agentes"], ["prospeccion", "Prospección"]];
+  var candado = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+  var listos = SISTEMAS.filter(function (s) { return s.estado === "listo"; }).length;
+  document.getElementById("si-eyebrow").textContent = "Sistemas · " + SISTEMAS.length + (listos ? " · " + listos + " con guía" : "");
+  function pintar() {
+    document.getElementById("si-filtros").innerHTML = CATS.map(function (c) { return '<button type="button" class="fj-chip" data-cat="' + c[0] + '" aria-pressed="' + (c[0] === cat) + '">' + c[1] + '</button>'; }).join("");
+    document.getElementById("si-lista").innerHTML = SISTEMAS.filter(function (s) { return !cat || s.categoria === cat; }).map(function (s) {
+      var listo = s.estado === "listo", cerrado = listo && FJ.gratis;
+      var href = !listo ? "#" : cerrado ? "/#precio" : "/sistemas/" + s.slug;
+      var cta = !listo ? "Guía en camino" : cerrado ? candado + " Acceso completo" : "Ver la guía →";
+      return '<a class="fj-card fj-sistema' + (listo ? '' : ' pronto') + '" href="' + href + '"' + (listo ? '' : ' aria-disabled="true" onclick="return false"') + '>' +
+        '<div class="tags"><span class="nivel' + (s.nivel === "avanzado" ? ' avanzado' : '') + '">' + esc(s.nivel.toUpperCase()) + '</span><span>' + esc(s.plataforma.toUpperCase()) + '</span></div>' +
+        '<h2>' + esc(s.titulo) + '</h2><p>' + esc(s.resumen) + '</p><div class="stack">' + s.stack.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join("") + '</div>' +
+        '<div class="pie"><span>' + esc(s.tiempo) + '</span><b style="display:flex;align-items:center;gap:6px' + (listo ? '' : ';color:var(--fj-muted)') + '">' + cta + '</b></div></a>';
+    }).join("");
+  }
+  document.getElementById("si-filtros").addEventListener("click", function (e) { var b = e.target.closest("[data-cat]"); if (b) { cat = b.dataset.cat; pintar(); } });
+  pintar();
+})();
+</script>
+</body>
+</html>

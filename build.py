@@ -268,6 +268,23 @@ def video_html(cfg, n_guias, n_prompts, n_skills):
     return f'<p class="l-linea"><b>{n_guias}</b> guías · <b>{n_prompts}</b> prompts · <b>{n_skills}</b> skills listas para subir · se actualiza cada semana</p>'
 
 
+LOGO_FORJA = '<svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#17110e"/><path d="M9 22h14l-2-5H11z" fill="#ff5a1f"/><path d="M16 6c3 3 4 5 2 8-1-1-2-1-3 0-2-2-1-5 1-8z" fill="#ffb27a"/></svg>'
+PAGINAS = ["recursos", "biblioteca", "entrar", "cuenta", "comunidad", "sistemas", "panel", "maestro"]
+
+
+def paginas(v):
+    """Las páginas de la plataforma: Classroom (/recursos), biblioteca, entrar, cuenta, comunidad, sistemas, panel y Maestro."""
+    sistemas = json.loads((RAIZ / "contenido" / "sistemas.json").read_text())["sistemas"]
+    for s in sistemas:
+        for k in ("slug", "titulo", "categoria", "nivel", "plataforma", "tiempo", "resumen", "stack", "estado"):
+            assert s.get(k), f"sistemas.json: a {s.get('slug')} le falta {k}"
+    datos = json.dumps(sistemas, ensure_ascii=False).replace("</", "<\\/")
+    for nombre in PAGINAS:
+        t = (WEB / f"{nombre}.html").read_text().replace("{{V}}", v).replace("{{LOGO}}", LOGO_FORJA).replace("{{SISTEMAS}}", datos)
+        assert "{{" not in t, f"{nombre}.html: quedó un {{{{…}}}} sin rellenar"
+        (RAIZ / f"{nombre}.html").write_text(t)
+
+
 def inicio(v):
     """Página de inicio: cifras y títulos de las guías desde los datos, precio y link de pago desde contenido/config.json.
     Sin pago_url, el botón lleva al DM de Instagram para comprar a mano."""
@@ -316,8 +333,7 @@ if __name__ == "__main__":
     datos_js(prompts, herrs)
     v = version()
     n = guias_web(v, guias)
-    (RAIZ / "recursos.html").write_text((WEB / "recursos.html").read_text().replace("{{V}}", v)
-                                        .replace("{{PUERTAS}}", puertas(guias, prompts, True)))
+    paginas(v)
     inicio(v)
     if SKILLS_LARGAS:
         print(f"aviso: {len(SKILLS_LARGAS)} skills con description de más de 200 caracteres (la app no las acepta)")

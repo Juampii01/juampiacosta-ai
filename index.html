@@ -13,10 +13,10 @@
 <meta property="og:description" content="Guías, prompts, skills y conectores para armar sistemas con Claude. Acceso fundador US$ 24,90.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="web/base.css?v=518c478a">
-<link rel="stylesheet" href="web/camino.css?v=518c478a">
-<link rel="stylesheet" href="web/tema.css?v=518c478a">
-<script src="web/tema.js?v=518c478a"></script>
+<link rel="stylesheet" href="web/base.css?v=63a94931">
+<link rel="stylesheet" href="web/camino.css?v=63a94931">
+<link rel="stylesheet" href="web/tema.css?v=63a94931">
+<script src="web/tema.js?v=63a94931"></script>
 <script>if (/(?:^|;\s*)jpa_nivel=(pago|gratis)/.test(document.cookie) || location.hash === "#entrar" || /[?&]error=clave/.test(location.search)) document.documentElement.classList.add("con-acceso");</script>
 <style>
   .l-wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
@@ -120,7 +120,7 @@
   .p-caja .l-form-gratis { margin-top: 8px; }
   @media (max-width: 480px) { .p-caja { padding: 24px 18px; } }
 </style>
-<link rel="icon" href="web/favicon.svg?v=518c478a" type="image/svg+xml">
+<link rel="icon" href="web/favicon.svg?v=63a94931" type="image/svg+xml">
 <meta name="theme-color" content="#0b0a09">
 </head>
 <body>
@@ -150,7 +150,7 @@
       <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#17110e"/><rect x=".75" y=".75" width="62.5" height="62.5" rx="15.25" fill="none" stroke="#ff5a1f" stroke-opacity=".35" stroke-width="1.5"/><path d="M32 18 18 44h28z" fill="none" stroke="#ff5a1f" stroke-width="3.5" stroke-linejoin="round" stroke-opacity=".55"/><circle cx="32" cy="18" r="7" fill="#ff5a1f"/><circle cx="18" cy="44" r="7" fill="#ff5a1f"/><circle cx="46" cy="44" r="7" fill="#fff"/></svg>
       <span>juampiiacosta<b>.ai</b></span>
     </a>
-    <nav><a class="l-boton l-boton--chico l-boton--borde" id="boton-entrar" href="#entrar">Ya compré</a></nav>
+    <nav><a class="l-boton l-boton--chico l-boton--borde" id="boton-entrar" href="/entrar">Entrar</a></nav>
   </div>
 </header>
 
@@ -236,14 +236,16 @@
         </div>
         <div class="l-caja glass l-entrar" id="entrar">
           <span class="mono" style="color:var(--glow)">Ya compré</span>
-          <h3 style="font-size:22px;margin-top:8px;letter-spacing:-.02em">Entra con tu clave</h3>
-          <p class="l-chico" style="margin-top:6px">Te llega después de pagar. Si no la encuentras, escríbeme por Instagram.</p>
+          <h3 style="font-size:22px;margin-top:8px;letter-spacing:-.02em">Entra con tu email</h3>
+          <p class="l-chico" style="margin-top:6px">Pon el mismo email del pago: te llega un código de 6 números y se te abre todo. Sin contraseñas.</p>
+          <a class="l-boton" href="/entrar" style="margin-top:14px">Entrar con mi email →</a>
+          <details style="margin-top:16px"><summary class="l-chico" style="cursor:pointer">Tengo una clave de acceso</summary>
           <form method="post" action="/api/entrar">
             <label for="clave">Tu clave de acceso</label>
             <input id="clave" name="clave" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" required maxlength="64" placeholder="EJ.: FUNDADOR-1234">
             <p class="l-error" id="error"></p>
-            <button class="l-boton" type="submit">Entrar a la biblioteca →</button>
-          </form>
+            <button class="l-boton" type="submit">Entrar con la clave →</button>
+          </form></details>
         </div>
       </div>
     </div>
@@ -310,6 +312,7 @@
     var p = document.getElementById(!conAcceso && e !== "clave" ? "error-puerta" : (location.hash === "#gratis" ? "error-gratis" : "error"));
     p.textContent = errores[e];
     p.style.display = "block";
+    if (e === "clave") { var d = document.querySelector("#entrar details"); if (d) d.open = true; }
   }
   // Llegó desde una guía cerrada del plan gratis
   if (q.get("bloqueada")) {

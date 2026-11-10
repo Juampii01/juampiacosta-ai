@@ -4,39 +4,45 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{TITULO}} | juampiiacosta.ai</title>
+<title>{{TITULO}} | Forja IA</title>
 <meta name="description" content="{{DESC}}">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../web/base.css?v={{V}}">
 <link rel="stylesheet" href="../web/cta.css?v={{V}}">
 <link rel="stylesheet" href="../web/biblioteca.css?v={{V}}">
 <link rel="stylesheet" href="../web/guia.css?v={{V}}">
 <link rel="stylesheet" href="../web/tema.css?v={{V}}">
 <link rel="stylesheet" href="../web/bienvenida.css?v={{V}}">
+<link rel="stylesheet" href="../web/forja.css?v={{V}}">
 <script src="../web/tema.js?v={{V}}"></script>
 <link rel="icon" href="../web/favicon.svg?v={{V}}" type="image/svg+xml">
-<meta name="theme-color" content="#0b0a09">
+<meta name="theme-color" content="#0a0a0b">
 </head>
-<body>
-<div class="fondo"></div>
+<body class="fj-app" data-seccion="classroom" data-raiz="/">
 <script src="../web/redes.js?v={{V}}"></script>
 <script src="../web/guias-web.js?v={{V}}"></script>
+<script src="../web/categorias.js?v={{V}}"></script>
 <script src="../web/comun.js?v={{V}}"></script>
-<script>document.write(cabecera());</script>
+<script src="../web/modulos.js?v={{V}}"></script>
 
-<main class="lectura" id="guia" data-slug="{{SLUG}}"></main>
+<main class="fj-guia" data-slug="{{SLUG}}">
+  <div class="fj-guia-col">
+    <nav class="fj-miga" aria-label="Ruta" id="fj-miga"></nav>
+    <div class="fj-card fj-acciones" id="fj-acciones"></div>
+    <nav class="fj-card fj-saltos" id="fj-saltos" aria-label="Partes de la guía"></nav>
+    <article class="lectura" id="guia"></article>
+  </div>
+  <aside class="fj-card fj-lista-mod" id="fj-lista" aria-label="Guías del módulo"></aside>
+</main>
 <script>var GUIA = {{GUIA}};</script>
 
+<script src="../web/shell.js?v={{V}}"></script>
 <script src="../web/rutas.js?v={{V}}"></script>
 <script src="../web/logos.js?v={{V}}"></script>
 <script src="../web/guia.js?v={{V}}"></script>
+<script src="../web/guia-forja.js?v={{V}}"></script>
 <script src="../web/bienvenida.js?v={{V}}"></script>
-<script>
-(function () {
-  pintarGuia(document.getElementById("guia"), GUIA);
-})();
-</script>
 </body>
 </html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<!-- Plantilla de /cuenta. build.py la copia a ../cuenta.html con la versión ({{V}}) -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi cuenta | Forja IA</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="web/base.css?v={{V}}">
+<link rel="stylesheet" href="web/tema.css?v={{V}}">
+<link rel="stylesheet" href="web/forja.css?v={{V}}">
+<script src="web/tema.js?v={{V}}"></script>
+<link rel="icon" href="web/favicon.svg?v={{V}}" type="image/svg+xml">
+</head>
+<body class="fj-app" data-seccion="cuenta" data-raiz="/">
+<script src="web/guias-web.js?v={{V}}"></script>
+<script src="web/comun.js?v={{V}}"></script>
+<main class="fj-main" style="max-width:920px">
+  <div class="fj-cab"><span class="fj-eyebrow">Mi cuenta</span><h1>Tu perfil y tu acceso</h1></div>
+
+  <form class="fj-card fj-seccion fj-form" id="perfil" novalidate>
+    <h2>Perfil</h2>
+    <div style="display:flex;align-items:center;gap:14px"><span class="fj-avatar" id="cu-avatar" style="width:56px;height:56px;font-size:22px">·</span><span class="fj-nota" id="cu-desde"></span></div>
+    <div class="fj-grid2">
+      <div class="fj-campo"><label for="cu-nombre">Nombre</label><input id="cu-nombre" type="text" maxlength="80" autocomplete="name"></div>
+      <div class="fj-campo"><label for="cu-rubro">Rubro</label><input id="cu-rubro" type="text" maxlength="80" placeholder="Inmobiliaria, estética, agencia…"></div>
+    </div>
+    <p class="fj-error" role="alert"></p><p class="fj-ok" id="cu-ok" hidden>Guardado ✓</p>
+    <button class="fj-btn fj-btn-solido" type="submit" style="align-self:flex-start">Guardar cambios</button>
+  </form>
+
+  <section class="fj-card fj-seccion">
+    <h2>Cómo entras</h2>
+    <div class="fj-dato"><span><small>Email</small><b id="cu-email">…</b></span></div>
+    <p class="fj-nota" style="font-size:14px">Sin contraseña: cada vez que entras desde un dispositivo nuevo te llega un código de 6 números a este mail. ¿Quieres cambiar el email? Escríbeme por Instagram y lo paso a tu nuevo mail.</p>
+    <div class="fj-dato"><span><small>Este dispositivo</small><b>Conectado</b></span><button type="button" class="fj-btn fj-btn-borde" id="cu-salir">Cerrar sesión</button></div>
+  </section>
+
+  <section class="fj-card fj-seccion" id="cu-plan"></section>
+
+  <section class="fj-card fj-seccion">
+    <h2>Mails</h2>
+    <label class="fj-toggle">Guías nuevas y novedades de la semana<input type="checkbox" id="cu-mails"></label>
+    <p class="fj-nota" id="cu-mails-ok" role="status"></p>
+  </section>
+</main>
+<script src="web/shell.js?v={{V}}"></script>
+<script>
+(function () {
+  var f = document.getElementById("perfil"), err = f.querySelector(".fj-error"), ok = document.getElementById("cu-ok");
+  var plan = document.getElementById("cu-plan");
+  plan.innerHTML = FJ.gratis
+    ? '<h2>Tu plan: gratis</h2><p class="fj-nota" style="font-size:14px">' + FJ.abiertas + ' de ' + FJ.total + ' guías abiertas. Con el acceso completo se abre todo, los sistemas incluidos, con un solo pago y para siempre. ¿Ya compraste? Cierra sesión y entra con el email del pago.</p><a class="fj-btn fj-btn-primario" href="/#precio" style="align-self:flex-start">Desbloquear todo</a>'
+    : '<h2>Tu plan: acceso completo</h2><p class="fj-nota" style="font-size:14px">Las ' + FJ.total + ' guías, los prompts, las herramientas y todo lo que se sume. Es tuyo para siempre.</p>';
+  fetch("/api/cuenta", { credentials: "same-origin" }).then(function (r) { return r.json(); }).then(function (d) {
+    document.getElementById("cu-email").textContent = d.email || "Entraste con clave de compra";
+    document.getElementById("cu-nombre").value = d.nombre || "";
+    document.getElementById("cu-rubro").value = d.rubro || "";
+    document.getElementById("cu-avatar").textContent = (d.nombre || d.email || "?").charAt(0).toUpperCase();
+    document.getElementById("cu-mails").checked = d.mails !== false;
+    if (d.desde) document.getElementById("cu-desde").textContent = "En Forja IA desde el " + new Date(d.desde).toLocaleDateString("es", { day: "numeric", month: "long", year: "numeric" });
+    if (!d.email) { f.querySelectorAll("input,button").forEach(function (x) { x.disabled = true; }); document.getElementById("cu-mails").disabled = true; }
+  }).catch(function () { document.getElementById("cu-email").textContent = "No se pudo cargar"; });
+  function guardar(datos) {
+    return fetch("/api/cuenta", { method: "POST", headers: { "Content-Type": "application/json" }, credentials: "same-origin", body: JSON.stringify(datos) })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); });
+  }
+  f.addEventListener("submit", function (e) {
+    e.preventDefault(); err.style.display = "none"; ok.hidden = true;
+    var nombre = document.getElementById("cu-nombre").value.trim();
+    if (!nombre) { err.textContent = "Pon tu nombre."; err.style.display = "block"; return; }
+    guardar({ nombre: nombre, rubro: document.getElementById("cu-rubro").value.trim() })
+      .then(function () { ok.hidden = false; document.getElementById("cu-avatar").textContent = nombre.charAt(0).toUpperCase(); })
+      .catch(function () { err.textContent = "No se pudo guardar. Prueba de nuevo."; err.style.display = "block"; });
+  });
+  document.getElementById("cu-mails").addEventListener("change", function () {
+    var m = document.getElementById("cu-mails-ok");
+    guardar({ mails: this.checked }).then(function () { m.textContent = "Guardado ✓"; }, function () { m.textContent = "No se pudo guardar."; });
+  });
+  document.getElementById("cu-salir").addEventListener("click", function () { document.getElementById("fj-salir").click(); });
+})();
+</script>
+</body>
+</html>

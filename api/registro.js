@@ -5,6 +5,7 @@
 
 import { ACCESS_COOKIE_NAME, ACCESS_COOKIE_MAX_AGE, AVISO_COOKIE_NAME, crearCookie, leerCookie, nivelDe, valorCookie } from "../lib/acceso.js";
 import { permitido } from "./entrar.js";
+import { mandarCodigo } from "./codigo.js";
 
 const EMAIL = /^[^\s@]{1,64}@[^\s@]{1,190}\.[^\s@]{2,}$/;
 const UTM = ["utm_source", "utm_medium", "utm_campaign", "utm_content"];
@@ -81,19 +82,29 @@ export default async function handler(req, res) {
     return volver("config");
   }
 
-  // Quien ya pagó sigue con su acceso completo
+  // Quien ya pagó sigue con su acceso completo. El registro solo da el plan gratis: el acceso completo exige
+  // probar que el email es tuyo con el código del mail (api/codigo.js + api/verificar.js).
   const actual = nivelDe(await leerCookie(valorCookie(req.headers.cookie, ACCESS_COOKIE_NAME), secreto));
-  let pago = false;
   if (actual !== "pago") {
-    try { pago = await yaCompro(fila.email, { url, clave }); } catch (e) { console.error("No se pudo ver si compró:", e.message); }
-    const nivel = pago ? "pago" : "gratis";
-    const cookie = await crearCookie(fila.email, fila.nombre || "", secreto, nivel);
-    res.setHeader("Set-Cookie", [
+    let compro = false;
+    try { compro = await yaCompro(fila.email, { url, clave }); } catch (e) { console.error("No se pudo ver si compró:", e.message); }
+    const cookie = await crearCookie(fila.email, fila.nombre || "", secreto, "gratis");
+    const cookies = [
       `${ACCESS_COOKIE_NAME}=${encodeURIComponent(cookie)}; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; HttpOnly; Secure; SameSite=Lax`,
-      `${AVISO_COOKIE_NAME}=${nivel}; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; Secure; SameSite=Lax`,
+      `${AVISO_COOKIE_NAME}=gratis; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; Secure; SameSite=Lax`,
       // Primer nombre legible por la página: el formulario de bienvenida saluda con él
       `jpa_nombre=${encodeURIComponent((fila.nombre || "").split(" ")[0].slice(0, 30))}; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; Secure; SameSite=Lax`
-    ]);
+    ];
+    if (compro) {
+      // Compró: le mandamos el código y lo llevamos a ponerlo; con eso se abre todo
+      try { await mandarCodigo(fila.email, fila.nombre || ""); } catch (e) { console.error("No se pudo mandar el código:", e.message); }
+      cookies.push(`jpa_pend=${encodeURIComponent(fila.email)}; Path=/; Max-Age=900; Secure; SameSite=Lax`);
+      res.setHeader("Set-Cookie", cookies);
+      res.statusCode = 303;
+      res.setHeader("Location", "/entrar?paso=codigo");
+      return res.end();
+    }
+    res.setHeader("Set-Cookie", cookies);
   }
   res.statusCode = 303;
   // Si vino desde una guía gratis, vuelve a esa guía; si no, a la biblioteca
