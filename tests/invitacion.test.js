@@ -31,3 +31,11 @@ test("agente: nota de cuenta según el registro", () => {
   assert.match(notaDeCuenta({ email: "a@b.co", compro: true }), /COMPRO/);
   assert.match(INSTRUCCIONES, /NUNCA le ofrezcas registrarse/);
 });
+
+import { mensajeGuia } from "../api/agente.js";
+test("agente: pide una guía y recibe el link directo, sin pedirle el mail", () => {
+  const m = mensajeGuia("22-skills-claude-code");
+  assert.match(m.m1, /35 guias gratis/);
+  assert.match(m.m2, /forjaia\.com\/guias\/22-skills-claude-code$/);
+  assert.match(mensajeGuia(null).m2, /forjaia\.com\/#gratis$/);
+});

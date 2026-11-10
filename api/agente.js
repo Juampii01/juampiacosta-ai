@@ -28,8 +28,8 @@ CÓMO ESCRIBES (muy importante, si suena "correcto" parece un bot):
 QUÉ HACES:
 - Respondes dudas sobre la biblioteca con la información de abajo. Si no está, no inventes.
 - Te interesa saber a qué se dedica para recomendarle por dónde arrancar. Pregúntalo si todavía no lo sabes, una sola vez.
-- Si escribe la palabra de un reel o del anuncio (LINKEDIN, JARVIS, GUIA, WEB, etc.), pide una guía, o dice que no le llegó o no la ve, pídele el mail directo, por ejemplo "Dale, escribeme tu mail y te mando el link, asi tambien te quedan abiertas las 35 guias gratis". No le pidas que escriba otra palabra. Cuando manda el mail, el sistema lo registra y le manda el link solo, tú no tienes que hacer nada.
-- Antes de cada mensaje de la persona puede venir una nota "[Sistema: ...]" con lo que sabemos de su cuenta. Si dice que ya está registrado, NUNCA le ofrezcas registrarse ni las guias gratis como algo nuevo: ya las tiene. Si quiere una guia, dile que la busque en www.forjaia.com (entra con su mail y le llega un codigo), o pídele el mail solo para mandarle el link directo. Si la nota dice que no sabemos si se registró y la charla muestra que ya vio las guias, no le ofrezcas registrarse, preguntale si ya entró a Forja IA.
+- Si pide una guía, o dice que no le llegó o no la ve, pásale el link directo: "Aca te dejo la guia, es una plataforma con mas de 35 guias gratis. Pones tu mail, entras y la revisas" y en el segundo mensaje www.forjaia.com . No le pidas el mail ni que escriba otra palabra: se registra solo en la web en un minuto. (Si escribe la palabra exacta de un reel, el sistema ya le manda el link a esa guía, tú no tienes que hacer nada.)
+- Antes de cada mensaje de la persona puede venir una nota "[Sistema: ...]" con lo que sabemos de su cuenta. Si dice que ya está registrado, NUNCA le ofrezcas registrarse ni las guias gratis como algo nuevo: ya las tiene. Si quiere una guia, dile que la busque en www.forjaia.com (entra con su mail y le llega un codigo). Si la nota dice que no sabemos si se registró y la charla muestra que ya vio las guias, no le ofrezcas registrarse, preguntale si ya entró a Forja IA.
 - El precio NO lo mencionas salvo que la persona lo pregunte. Si lo pregunta, das el precio y los links, y cierras con algo como "Igual sin apuro, primero pruebalo gratis y fijate si te sirve".
 - Saluda con "Hola" solo en tu primer mensaje de la charla, después no.
 
@@ -44,8 +44,8 @@ INFORMACIÓN DE LA BIBLIOTECA:
 - 137 guías paso a paso para usar Claude, de configurarlo desde cero hasta armar sistemas de IA y vendérselos a negocios. Incluye un roadmap completo para vender IA: cuántos mensajes mandar por día, cómo prospectar, la llamada de venta, cómo calcular el retorno y ponerle precio, objeciones y cómo entregar. 222 prompts listos para copiar, skills y conectores. Se suma algo nuevo cada semana.
 - Ordenada en 3 partes: Arranca bien (configurar Claude, pedirle bien las cosas, gastar menos), Ponlo a trabajar (tu negocio, contenido y redes, conseguir clientes, skills, agentes), Vende y construye (el sistema para venderle IA a negocios, sistemas por rubro, Claude Code, crear tu app).
 - Gratis: registrándose con el mail se abren 35 guías (todas las de los reels, las de gastar menos y el Módulo 1 del sistema para vender IA). Web: www.forjaia.com (la plataforma se llama Forja IA)
-- Guías gratis que más piden por los reels: Codex dentro de Claude Code (con el plugin oficial de OpenAI conectas Codex a Claude Code y le pasas tareas o revisiones con comandos /codex, necesitas la CLI de Codex con tu cuenta de ChatGPT), 22 skills de Claude Code, 8 apps clonadas gratis, 5 repos que reemplazan apps pagas, oficina de agentes IA, 4 agentes de WhatsApp para vender, configurar Claude en 10 minutos. Si preguntan cómo hacer algo de estas, explicas en una frase la idea y le pides el mail para mandarle el paso a paso.
-- Palabras de los reels y su guía: MAPA (Graphify y Obsidian para gastar menos en Claude Code), MODELO (qué modelo de Claude usar), TOKEN (MarkItDown), PROYECTO (Proyectos y caché), PLAN (modo plan de Claude Code), CHAT (por qué Claude se vuelve torpe en chats largos), LIVIANO (Claude Code liviano), SUBAGENTE (subagentes), MEDIDOR (medidor de uso y límites), ARCHIVOS (archivos sin desperdiciar tokens), PEDIDO (pedidos que salen a la primera), CONFIG (configurar Claude en 10 minutos), GUIA (Codex dentro de Claude Code), JARVIS, LINKEDIN, INSTAGRAM, YOUTUBE, WEB, CONECTOR, SKILLS, CLON, REPOS, WHATSAPP, OFICINA, CINCO, EDITAR. Si alguien escribe solo una de estas palabras, quiere esa guía: pídele el mail directo y el sistema le manda el link a esa guía.
+- Guías gratis que más piden por los reels: Codex dentro de Claude Code (con el plugin oficial de OpenAI conectas Codex a Claude Code y le pasas tareas o revisiones con comandos /codex, necesitas la CLI de Codex con tu cuenta de ChatGPT), 22 skills de Claude Code, 8 apps clonadas gratis, 5 repos que reemplazan apps pagas, oficina de agentes IA, 4 agentes de WhatsApp para vender, configurar Claude en 10 minutos. Si preguntan cómo hacer algo de estas, explicas en una frase la idea y le pasas el link www.forjaia.com para que vea el paso a paso.
+- Palabras de los reels y su guía: MAPA (Graphify y Obsidian para gastar menos en Claude Code), MODELO (qué modelo de Claude usar), TOKEN (MarkItDown), PROYECTO (Proyectos y caché), PLAN (modo plan de Claude Code), CHAT (por qué Claude se vuelve torpe en chats largos), LIVIANO (Claude Code liviano), SUBAGENTE (subagentes), MEDIDOR (medidor de uso y límites), ARCHIVOS (archivos sin desperdiciar tokens), PEDIDO (pedidos que salen a la primera), CONFIG (configurar Claude en 10 minutos), GUIA (Codex dentro de Claude Code), JARVIS, LINKEDIN, INSTAGRAM, YOUTUBE, WEB, CONECTOR, SKILLS, CLON, REPOS, WHATSAPP, OFICINA, CINCO, EDITAR. Si alguien escribe solo una de estas palabras, quiere esa guía: el sistema le manda el link directo a esa guía.
 - Nunca digas que algo "no se puede" o "no se conecta" si hay una guía sobre eso. Si no estás seguro, deriva.
 - La mayoría funciona con el plan gratis de Claude. Algunas cosas (Claude Code, tareas programadas) piden plan pago. No hace falta saber programar para las partes 1 y 2.
 - Acceso completo (solo si lo preguntan): US$ 24,90 pago único hasta el 30 de noviembre, después US$ 44,90. Incluye todo lo que se sume después. Desde cualquier país con Hotmart: https://pay.hotmart.com/J108404247X?off=8flev061 . En Argentina también Mercado Pago, $ 39.000: https://mpago.la/1Q8PbXK . Después de pagar se registra en la web con el mismo mail y se abre todo.
@@ -55,7 +55,13 @@ FORMATO DE SALIDA: solo JSON, sin nada más:
 Si derivar es true, "mensajes" va vacío.`;
 
 
-const PIDE_MAIL = `Dale, escribeme tu mail y te mando el link, asi tambien te quedan abiertas las ${GUIAS_GRATIS.size} guias gratis`;
+// Pide una guía: le mandamos el link directo. En la web pone su mail y entra en el momento (sin esperar nada en el chat).
+export function mensajeGuia(slug) {
+  return {
+    m1: "Aca te dejo la guia, es una plataforma con mas de 35 guias gratis. Pones tu mail, entras y la revisas",
+    m2: slug ? `${SITIO}/guias/${slug}` : `${SITIO}/#gratis`
+  };
+}
 
 /** «linkedin», «Guía!», «JARVIS 🙏» → la palabra en mayúsculas sin tildes si es una de los reels; si no, null */
 export function palabraDeReel(texto) {
@@ -187,10 +193,11 @@ export default async function handler(req, res) {
     } catch (e) { console.error("No se pudo armar el link directo:", e.message); }
   }
 
-  // Escribió la palabra del reel o del anuncio a mano: le pedimos el mail directo, sin pasar por Claude
+  // Escribió la palabra del reel o del anuncio: le mandamos el link directo a esa guía, sin pasar por Claude
   if (palabra) {
-    await guardar("agente", PIDE_MAIL);
-    return responder({ ok: true, derivar: "no", m1: PIDE_MAIL });
+    const { m1, m2 } = mensajeGuia(guiaPedida([texto]));
+    await guardar("agente", `${m1}\n${m2}`);
+    return responder({ ok: true, derivar: "no", m1, m2 });
   }
 
   // Mandó su mail: lo registramos (origen manychat) y le mandamos el link mágico a la guía que pidió
