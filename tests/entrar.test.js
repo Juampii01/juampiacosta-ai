@@ -51,7 +51,7 @@ test("gratis: guías de reels sí, el resto a comprar; prompts y herramientas en
   assert.deepEqual(decidir("/recursos", "gratis"), { pasa: true });
   assert.deepEqual(decidir("/guias/codex-dentro-de-claude-code", "gratis"), { pasa: true });
   assert.deepEqual(decidir("/guias/sistema-base-modulo-1-la-oferta.html", "gratis"), { pasa: true });
-  assert.deepEqual(decidir("/guias/sistema-base-modulo-2-elegir-a-quien-venderle", "gratis"), { a: "/?bloqueada=sistema-base-modulo-2-elegir-a-quien-venderle#precio" });
+  assert.deepEqual(decidir("/guias/sistema-base-modulo-2-elegir-a-quien-venderle", "gratis"), { a: "/recursos?desbloquear=sistema-base-modulo-2-elegir-a-quien-venderle" });
   assert.deepEqual(decidir("/web/prompts.js", "gratis"), { reescribir: "/web/prompts-vista.js" });
   assert.deepEqual(decidir("/web/herramientas.js", "gratis"), { reescribir: "/web/herramientas-vista.js" });
 });

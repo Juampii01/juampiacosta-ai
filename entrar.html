@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de /entrar. build.py la copia a ../entrar.html y pone la versión (1a2ccfb7) -->
+<!-- Plantilla de /entrar. build.py la copia a ../entrar.html y pone la versión (6a6b4c0e) -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -8,11 +8,11 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="web/base.css?v=1a2ccfb7">
-<link rel="stylesheet" href="web/tema.css?v=1a2ccfb7">
-<link rel="stylesheet" href="web/forja.css?v=1a2ccfb7">
-<script src="web/tema.js?v=1a2ccfb7"></script>
-<link rel="icon" href="web/favicon.svg?v=1a2ccfb7" type="image/svg+xml">
+<link rel="stylesheet" href="web/base.css?v=6a6b4c0e">
+<link rel="stylesheet" href="web/tema.css?v=6a6b4c0e">
+<link rel="stylesheet" href="web/forja.css?v=6a6b4c0e">
+<script src="web/tema.js?v=6a6b4c0e"></script>
+<link rel="icon" href="web/favicon.svg?v=6a6b4c0e" type="image/svg+xml">
 </head>
 <body class="fj-acceso">
 <main class="fj-acceso-caja">
@@ -34,7 +34,7 @@
     <h1>Revisa tu mail</h1>
     <p class="fj-desc">Te mandamos el código a <b id="email-mostrado"></b>. Vence en 10 minutos. Si no lo ves, busca en spam o promociones.</p>
     <label for="codigo">Código de 6 números</label>
-    <input id="codigo" name="codigo" class="fj-codigo" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]*" maxlength="7" required placeholder="000000">
+    <input id="codigo" name="codigo" class="fj-codigo" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]*" required placeholder="000000">
     <p class="fj-error" role="alert"></p>
     <button class="fj-btn fj-btn-primario" type="submit">Entrar →</button>
     <div class="fj-fila-links">
@@ -48,6 +48,12 @@
   var q = new URLSearchParams(location.search);
   var fEmail = document.getElementById("paso-email"), fCodigo = document.getElementById("paso-codigo");
   var inEmail = document.getElementById("email"), inCodigo = document.getElementById("codigo");
+  // Si pegan el código con espacios o guiones («2 0 4 3 1 7»), quedan solo los 6 números
+  inCodigo.addEventListener("paste", function (e) {
+    var t = (e.clipboardData || window.clipboardData); if (!t) return;
+    e.preventDefault(); inCodigo.value = t.getData("text").replace(/\D/g, "").slice(0, 6);
+    if (inCodigo.value.length === 6 && fCodigo.requestSubmit) fCodigo.requestSubmit();
+  });
   var volver = q.get("volver") || "";
   var email = "";
   function cookie(n) { var m = document.cookie.match(new RegExp("(?:^|;\\s*)" + n + "=([^;]+)")); try { return m ? decodeURIComponent(m[1]) : ""; } catch (e) { return ""; } }

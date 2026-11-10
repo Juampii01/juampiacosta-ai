@@ -2,6 +2,8 @@
 // POST /api/cuenta (JSON: nombre, rubro, mails) -> guarda los cambios. Quién eres sale de la cookie, no del cuerpo.
 
 import { sesion } from "../lib/sesion.js";
+import { crearCookie } from "../lib/acceso.js";
+import { cookiesDeSesion } from "./verificar.js";
 import { config, enc, json, leerCuerpo, sb } from "../lib/db.js";
 
 export function limpiarCuenta(c) {
@@ -36,7 +38,14 @@ export default async function handler(req, res) {
     }
     try {
       const f = (await sb(`registros?email=eq.${enc(yo.email)}&select=nombre,rubro,baja,compro,creado,perfil_completo`))[0] || {};
-      return json(res, 200, { email: yo.email, nombre: f.nombre || yo.nombre, rubro: f.rubro || "", mails: !f.baja, nivel: yo.nivel, compro: !!f.compro, desde: f.creado || null, perfil: !!f.perfil_completo, admin: yo.admin });
+      // Pagó (Hotmart o acceso a mano desde el Panel) y sigue con la cookie del plan gratis: se la pasamos a «pago» acá mismo
+      let nivel = yo.nivel, subio = false;
+      if (f.compro && yo.nivel === "gratis" && process.env.ACCESS_SECRET) {
+        const cookie = await crearCookie(yo.email, f.nombre || yo.nombre || "", process.env.ACCESS_SECRET, "pago");
+        res.setHeader("Set-Cookie", cookiesDeSesion(cookie, "pago", f.nombre || yo.nombre, yo.admin));
+        nivel = "pago"; subio = true;
+      }
+      return json(res, 200, { subio, email: yo.email, nombre: f.nombre || yo.nombre, rubro: f.rubro || "", mails: !f.baja, nivel, compro: !!f.compro, desde: f.creado || null, perfil: !!f.perfil_completo, admin: yo.admin });
     } catch (e) { console.error("cuenta GET:", e.message); return json(res, 502, { error: "servidor" }); }
   }
   if (req.method === "POST") {

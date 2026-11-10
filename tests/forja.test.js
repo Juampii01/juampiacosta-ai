@@ -24,7 +24,7 @@ test("código: el mail lleva el código y no el hash", () => {
   const m = mailCodigo("482913", "Juan Pérez");
   assert.match(m.subject, /482913/);
   assert.match(m.text, /Hola, Juan\./);
-  assert.match(m.html, /4 8 2 9 1 3/);
+  assert.match(m.html, />482913</); assert.doesNotMatch(m.html, /4 8 2 9/);
 });
 
 test("emails: se normalizan y los raros no pasan", () => {

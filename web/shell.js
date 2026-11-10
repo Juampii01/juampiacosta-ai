@@ -95,6 +95,7 @@ var FJ = (function () {
   // Email de la cuenta en el menú (la cookie de acceso no se puede leer desde la página)
   fetch("/api/cuenta?p=" + encodeURIComponent(location.pathname), { credentials: "same-origin" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
     if (d && d.email) document.getElementById("fj-email").textContent = d.email;
+    if (d && d.subio) location.reload(); // acaba de acreditarse el pago: recarga con todo abierto
   }).catch(function () {});
 
   // Progreso guardado en tu cuenta: se mezcla con el del navegador para que se vea igual en el móvil y en la compu
@@ -118,4 +119,62 @@ var FJ = (function () {
 
   return { raiz: raiz, gratis: gratis, admin: admin, nombre: nombre, svg: svg, total: total, abiertas: abiertas, cookie: cookie,
     esc: function (s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); } };
+})();
+
+// Ventana «Desbloquear todo»: quien ya está adentro con el plan gratis no vuelve a la página de venta.
+// Cualquier link a /?plan=1#precio (guías con candado, «Desbloquear todo», etc.) abre esta ventana.
+// También se abre sola con ?desbloquear= en la URL (middleware.js lo manda acá cuando abre una guía paga).
+(function () {
+  if (!FJ.gratis) return;
+  var HOTMART = "https://pay.hotmart.com/J108404247X?off=8flev061", MPAGO = "https://mpago.la/1Q8PbXK";
+  var email = "", caja = null, previo = null;
+  fetch("/api/cuenta", { credentials: "same-origin" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) { if (d && d.email) email = d.email; }).catch(function () {});
+  function ok(t) { return '<li><svg viewBox="0 0 24 24" aria-hidden="true">' + '<path d="M5 12l5 5L20 7"/>' + '</svg><span>' + t + '</span></li>'; }
+  function armar() {
+    caja = document.createElement("div");
+    caja.className = "fj-paywall"; caja.hidden = true;
+    caja.innerHTML = '<div class="fj-paywall-fondo" data-cerrar></div>' +
+      '<div class="fj-paywall-caja" role="dialog" aria-modal="true" aria-labelledby="fj-pw-titulo">' +
+      '<button type="button" class="fj-paywall-x" data-cerrar aria-label="Cerrar">×</button>' +
+      '<span class="fj-eyebrow">Acceso completo · pago único</span>' +
+      '<h2 id="fj-pw-titulo">Desbloquea todo Forja IA</h2>' +
+      '<p class="fj-paywall-sub">Lo que tienes abierto es la puerta. Adentro está el sistema completo para usar IA en serio y venderla a negocios.</p>' +
+      '<ul class="fj-paywall-lista">' +
+        ok('<b>Las ' + FJ.total + ' guías</b> paso a paso (hoy tienes ' + FJ.abiertas + ' abiertas)') +
+        ok('<b>El roadmap completo para vender IA:</b> prospección, llamada de venta, cómo ponerle precio, objeciones y entrega') +
+        ok('<b>222 prompts</b> listos para copiar, skills y conectores') +
+        ok('<b>Sistemas listos para replicar</b> y vendérselos a un cliente') +
+        ok('<b>Maestro</b>, tu tutor con IA, y todo lo que se sume después') +
+      '</ul>' +
+      '<div class="fj-paywall-valor">Todo esto armado como curso vale tranquilamente más de US$ 200. Y con un solo cliente al que le vendas un sistema lo recuperas varias veces.</div>' +
+      '<div class="fj-paywall-precio"><s>US$ 44,90</s><b>US$ 24,90</b><span>pago único · es tuyo para siempre<br>precio de lanzamiento hasta el 30 de noviembre</span></div>' +
+      '<a class="fj-btn fj-btn-primario fj-paywall-pagar" id="fj-pw-hotmart" href="' + HOTMART + '" target="_blank" rel="noopener">Desbloquear todo · US$ 24,90</a>' +
+      '<a class="fj-btn fj-btn-borde fj-paywall-mp" href="' + MPAGO + '" target="_blank" rel="noopener">Estoy en Argentina: Mercado Pago ($ 39.000)</a>' +
+      '<p class="fj-paywall-nota" id="fj-pw-nota"></p>' +
+      '</div>';
+    document.body.appendChild(caja);
+    caja.addEventListener("click", function (e) { if (e.target.closest("[data-cerrar]")) cerrar(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !caja.hidden) cerrar(); });
+  }
+  function abrir() {
+    if (!caja) armar();
+    var h = document.getElementById("fj-pw-hotmart");
+    h.href = HOTMART + (email ? "&email=" + encodeURIComponent(email) : "");
+    document.getElementById("fj-pw-nota").innerHTML = (email ? 'Paga con el mismo mail de tu cuenta (<b>' + FJ.esc(email) + '</b>). ' : 'Paga con el mismo mail con el que entras. ') +
+      'Con Hotmart se abre todo solo en unos minutos: vuelve a esta página y recárgala. Con Mercado Pago, mándame el comprobante por Instagram y te lo activo.';
+    previo = document.activeElement;
+    caja.hidden = false; document.documentElement.style.overflow = "hidden";
+    h.focus();
+  }
+  function cerrar() { caja.hidden = true; document.documentElement.style.overflow = ""; if (previo && previo.focus) previo.focus(); }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="plan=1#precio"], a[href*="#precio"][href^="/?"]');
+    if (!a || e.metaKey || e.ctrlKey) return;
+    e.preventDefault(); abrir();
+  }, true);
+  FJ.desbloquear = abrir;
+  if (/[?&]desbloquear=/.test(location.search)) {
+    history.replaceState(null, "", location.pathname + location.hash);
+    setTimeout(abrir, 300);
+  }
 })();
