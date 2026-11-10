@@ -1,0 +1,58 @@
+<!doctype html>
+<!-- Plantilla de la guía de cada sistema. build.py la copia a ../sistemas/<slug>.html con {{TITULO}}, {{RESUMEN}}, {{FICHA}}, {{REQUISITOS}}, {{GUIA}}, {{SLUG}}, {{ZIP}} y {{V}} -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITULO}} | Sistemas | Forja IA</title>
+<meta name="description" content="{{RESUMEN}}">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../web/base.css?v={{V}}">
+<link rel="stylesheet" href="../web/tema.css?v={{V}}">
+<link rel="stylesheet" href="../web/forja.css?v={{V}}">
+<script src="../web/tema.js?v={{V}}"></script>
+<link rel="icon" href="../web/favicon.svg?v={{V}}" type="image/svg+xml">
+</head>
+<body class="fj-app" data-seccion="sistemas" data-raiz="/">
+<script src="../web/guias-web.js?v={{V}}"></script>
+<script src="../web/comun.js?v={{V}}"></script>
+<main class="fj-main ancho fj-sis">
+  <nav class="fj-sis-miga" aria-label="Ruta"><a href="/sistemas">Sistemas</a> <span aria-hidden="true">/</span> <span>{{TITULO}}</span></nav>
+  <section class="fj-card fj-sis-cab">
+    <span class="fj-eyebrow">Sistema listo para replicar</span>
+    <h1>{{TITULO}}</h1>
+    <p>{{RESUMEN}}</p>
+    <div class="fj-sis-ficha">{{FICHA}}</div>
+    <div class="fj-sis-bajar">
+      <a class="fj-btn fj-btn-primario" href="/descargas/{{SLUG}}.zip" download="{{SLUG}}.zip" id="si-zip">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Descargar el sistema (ZIP · {{ZIP}})
+      </a>
+      <span>El código completo, ya adaptado. Lo subes a tu GitHub en el paso 1.</span>
+    </div>
+  </section>
+  <section class="fj-card fj-sis-req">
+    <h2>Antes de empezar</h2>
+    <ul>{{REQUISITOS}}</ul>
+  </section>
+  <article class="fj-card fj-sis-guia">
+{{GUIA}}
+  </article>
+</main>
+<script src="../web/shell.js?v={{V}}"></script>
+<script>
+// Botón «Copiar» en cada bloque de código
+document.querySelectorAll(".fj-sis-guia pre").forEach(function (pre) {
+  var b = document.createElement("button");
+  b.type = "button"; b.className = "fj-sis-copiar"; b.textContent = "Copiar";
+  b.addEventListener("click", function () {
+    var t = pre.querySelector("code") ? pre.querySelector("code").innerText : pre.innerText;
+    navigator.clipboard.writeText(t).then(function () { b.textContent = "Copiado"; setTimeout(function () { b.textContent = "Copiar"; }, 1500); });
+  });
+  pre.appendChild(b);
+});
+</script>
+</body>
+</html>

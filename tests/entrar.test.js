@@ -56,6 +56,16 @@ test("gratis: guías de reels sí, el resto a comprar; prompts y herramientas en
   assert.deepEqual(decidir("/web/herramientas.js", "gratis"), { reescribir: "/web/herramientas-vista.js" });
 });
 
+test("sistemas: la guía y el ZIP solo con acceso completo", () => {
+  assert.deepEqual(decidir("/sistemas/setter-ai", null), { a: "/entrar?volver=/sistemas" });
+  assert.deepEqual(decidir("/descargas/setter-ai.zip", null), { prohibido: true });
+  assert.deepEqual(decidir("/sistemas", "gratis"), { pasa: true });
+  assert.deepEqual(decidir("/sistemas/setter-ai", "gratis"), { a: "/recursos?desbloquear=sistema-setter-ai" });
+  assert.deepEqual(decidir("/descargas/setter-ai.zip", "gratis"), { prohibido: true });
+  assert.deepEqual(decidir("/sistemas/setter-ai.html", "pago"), { pasa: true });
+  assert.deepEqual(decidir("/descargas/setter-ai.zip", "pago"), { pasa: true });
+});
+
 test("panel: solo el equipo, aunque haya pagado", () => {
   assert.deepEqual(decidir("/panel", "pago", false), { a: "/recursos" });
   assert.deepEqual(decidir("/panel.html", "gratis", false), { a: "/recursos" });

@@ -1,0 +1,606 @@
+<!doctype html>
+<!-- Plantilla de la guía de cada sistema. build.py la copia a ../sistemas/<slug>.html con Setter AI, Tu propio ManyChat con IA para Instagram: responde comentarios, manda DMs con botones y un setter con Claude conversa con tus leads, los cualifica y les pasa tu agenda., <span class="nivel">AVANZADO</span><span>WEB · NEON + RENDER + INSTAGRAM</span><span>60–90 min</span><span>Node.js</span><span>React</span><span>Postgres (Neon)</span><span>Claude API</span><span>Instagram API</span>, <li>Cuenta de Instagram profesional (empresa o creador)</li><li>Cuenta en Meta for Developers</li><li>Cuenta en GitHub</li><li>Cuenta en Neon (tiene plan gratis)</li><li>Cuenta en Render (plan Starter, de pago)</li><li>API key de Anthropic</li><li>Node 22+ y Docker (solo para probar en local)</li>, <h2>Qué es</h2>
+<p>Setter AI es tu propio ManyChat con IA para Instagram, corriendo en tu servidor:</p>
+<ul>
+<li><strong>Flujos</strong>: comentario en un reel, palabra clave por DM, respuesta o mención en historia, enlace ig.me. Respuesta pública + DM con botones, condiciones («¿me sigue?»), esperas, etiquetas y carruseles, con un <strong>constructor visual</strong>.</li>
+<li><strong>Setter con IA</strong>: Claude conversa con quien te escribe como una persona del equipo: hace preguntas, completa la ficha del lead y le pasa tu agenda o tu membresía. Tiene modo prueba, borradores y un <strong>simulador</strong>.</li>
+<li><strong>Métricas</strong>: embudo por reel y por día, tablero de leads por etapa, clics en tu agenda y análisis de objeciones con IA.</li>
+<li><strong>Seguridad</strong>: firma de Meta comprobada, token cifrado, límites anti-ban, pausa automática si Meta bloquea, y <strong>BORRAR</strong> por DM para borrar los datos de una persona.</li>
+<li><strong>Espacios</strong>: varias cuentas de Instagram (tus clientes) en un mismo servidor, cada una con su base de datos.</li>
+</ul>
+<p>Lo que vendes: el setter de Instagram de un creador o infoproductor, sin pagar ManyChat Pro y con la IA entrenada con su oferta.</p>
+<blockquote>
+<p>Licencia MIT (proyecto original de código abierto), adaptado para Forja IA.</p>
+</blockquote>
+<h2>Qué necesitas</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Cuenta</th>
+<th>¿Obligatoria?</th>
+<th>Para qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Instagram profesional</strong> (empresa o creador)</td>
+<td>Sí</td>
+<td>La API de Instagram solo funciona con cuentas profesionales.</td>
+</tr>
+<tr>
+<td><strong>Meta for Developers</strong></td>
+<td>Sí</td>
+<td>Crear tu app de Instagram. Gratis.</td>
+</tr>
+<tr>
+<td><strong>GitHub</strong></td>
+<td>Sí</td>
+<td>Render despliega desde tu repo.</td>
+</tr>
+<tr>
+<td><strong>Neon</strong></td>
+<td>Sí</td>
+<td>La base de datos (Postgres). Tiene plan gratis.</td>
+</tr>
+<tr>
+<td><strong>Render</strong></td>
+<td>Sí</td>
+<td>El servidor, prendido 24/7. El <code>render.yaml</code> usa el plan <strong>Starter</strong> (de pago): los servicios gratis se duermen y los avisos de Meta se pierden.</td>
+</tr>
+<tr>
+<td><strong>Anthropic</strong></td>
+<td>Para el setter</td>
+<td>La IA. Pago por uso, centavos por conversación.</td>
+</tr>
+</tbody>
+</table></div>
+<p>En tu computadora: <strong>Node 22+</strong>, <strong>git</strong> y <strong>Docker</strong> (solo para probar en local).</p>
+<blockquote>
+<p>Regla de oro: las claves (tokens, contraseñas, App Secret, API keys) van <strong>solo</strong> en tu <code>.env</code> o en Render. Nunca las pegues en un chat ni las subas a GitHub.</p>
+</blockquote>
+<h2>1. Descarga y súbelo a tu GitHub</h2>
+<ol>
+<li>Descarga el ZIP con el botón de arriba de esta guía y descomprímelo.</li>
+<li>En GitHub, crea un repositorio nuevo <strong>privado</strong> y vacío (sin README), por ejemplo <code>setter-ai</code>.</li>
+<li>Abre una terminal dentro de la carpeta descomprimida y corre:</li>
+</ol>
+<pre><code class="language-bash">git init
+git add .
+git commit -m &quot;Setter AI&quot;
+git branch -M main
+git remote add origin https://github.com/TU-USUARIO/setter-ai.git
+git push -u origin main
+</code></pre>
+<h2>2. Pruébalo en tu computadora (opcional)</h2>
+<pre><code class="language-bash">npm ci
+docker run --name setter-db -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres:17
+cp .env.example .env
+</code></pre>
+<p>En <code>.env</code> pon como mínimo:</p>
+<pre><code class="language-bash">DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres?sslmode=disable
+ADMIN_PASSWORD=una-clave-de-12-o-mas
+WEBHOOK_VERIFY_TOKEN=cualquier-texto
+</code></pre>
+<pre><code class="language-bash">npm run build
+npm run dev
+</code></pre>
+<p>Abre <code>http://localhost:3000/app</code> y crea tu cuenta de admin con la <code>ADMIN_PASSWORD</code>. En local Instagram no te puede avisar (necesita una dirección pública): para eso está Render.</p>
+<blockquote>
+<p>Con Claude Code: abre <code>claude</code> en la carpeta y dile «Lee docs/INSTALACION.md y guíame en el paso 2. No me muestres las claves en el chat». Cada paso de esa guía trae un prompt listo para copiar.</p>
+</blockquote>
+<h2>3. Base de datos en Neon</h2>
+<ol>
+<li>Entra en <a href="https://console.neon.tech/" target="_blank" rel="noopener">console.neon.tech</a> y crea un proyecto (en una región cercana a la de Render).</li>
+<li>Pulsa <strong>Connect</strong> y copia la <strong>connection string</strong> (empieza con <code>postgresql://</code> y termina en <code>sslmode=require</code>).</li>
+<li>Esa es tu <code>DATABASE_URL</code>. Las tablas se crean solas al arrancar.</li>
+</ol>
+<h2>4. Servidor en Render</h2>
+<ol>
+<li>En <a href="https://dashboard.render.com/" target="_blank" rel="noopener">dashboard.render.com</a> → <strong>New → Blueprint</strong> y conecta tu repo.</li>
+<li>Render lee <code>render.yaml</code> y crea el servicio <code>setter-ai</code>. <code>WEBHOOK_VERIFY_TOKEN</code> y <code>TOKEN_ENCRYPTION_KEY</code> se generan solos.</li>
+<li>Completa <code>DATABASE_URL</code> (la de Neon) y <code>ADMIN_PASSWORD</code> (inventa una larga). Las demás las completas en el paso 6.</li>
+<li>Cuando termine el despliegue, abre <code>https://TU-SERVICIO.onrender.com/healthz</code>: tiene que responder <code>{"ok":true}</code>.</li>
+</ol>
+<h2>5. Tu app de Meta (Instagram)</h2>
+<p>Es la «app» que le da permiso a tu servidor para leer comentarios y mandar mensajes de <strong>tu</strong> cuenta.</p>
+<ol>
+<li><a href="https://developers.facebook.com/apps" target="_blank" rel="noopener">developers.facebook.com/apps</a> → <strong>Crear app</strong>, con el caso de uso <strong>«Administrar mensajes y contenido en Instagram»</strong>.</li>
+<li>En ese caso de uso, menú de la izquierda → <strong>«Configuración de la API con el inicio de sesión de Instagram»</strong>:<ul>
+<li><strong>Identificador de la aplicación de Instagram</strong> → <code>INSTAGRAM_APP_ID</code>.</li>
+<li><strong>Clave secreta de la aplicación de Instagram</strong> (botón Mostrar) → <code>META_APP_SECRET</code>.</li>
+<li><strong>1. Añade los permisos</strong>: <code>instagram_business_basic</code>, <code>instagram_business_manage_comments</code> e <code>instagram_business_manage_messages</code>.</li>
+<li><strong>2. Genera identificadores de acceso</strong>: agrega tu cuenta de Instagram y genera el token → <code>IG_ACCESS_TOKEN</code>.</li>
+<li><strong>3. Configura los webhooks</strong>: URL <code>https://TU-SERVICIO.onrender.com/webhooks/instagram</code> y, como token de verificación, el <code>WEBHOOK_VERIFY_TOKEN</code> de Render. Suscríbete a comentarios y mensajes.</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>Si tu cuenta de Instagram tiene un rol en la app (administrador o evaluador), no necesitas pasar la revisión de Meta para usarla con <strong>tu propia</strong> cuenta. Para la cuenta de un cliente, agrégala como evaluador o usa <strong>Espacios</strong> (ver abajo).</p>
+<p>Meta marca hoy esta configuración como «heredada», aunque sigue funcionando. Si la retirara, habría que adaptar <code>src/instagram-connect.ts</code> y <code>src/meta/client.ts</code>.</p>
+</blockquote>
+<h2>6. Variables en Render</h2>
+<p>Render → tu servicio → <strong>Environment</strong>:</p>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Obligatoria</th>
+<th>Para qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DATABASE_URL</code></td>
+<td>Sí</td>
+<td>La connection string de Neon.</td>
+</tr>
+<tr>
+<td><code>ADMIN_PASSWORD</code></td>
+<td>Sí</td>
+<td>Para crear la cuenta de admin en la web.</td>
+</tr>
+<tr>
+<td><code>WEBHOOK_VERIFY_TOKEN</code></td>
+<td>Sí</td>
+<td>La genera Render. La misma que pusiste en Meta.</td>
+</tr>
+<tr>
+<td><code>TOKEN_ENCRYPTION_KEY</code></td>
+<td>Sí</td>
+<td>La genera Render. Cifra el token y firma los enlaces.</td>
+</tr>
+<tr>
+<td><code>META_APP_SECRET</code></td>
+<td>Sí</td>
+<td>Clave secreta de la app de Instagram.</td>
+</tr>
+<tr>
+<td><code>IG_ACCESS_TOKEN</code></td>
+<td>Sí</td>
+<td>Token de tu cuenta de Instagram.</td>
+</tr>
+<tr>
+<td><code>INSTAGRAM_APP_ID</code></td>
+<td>Sí</td>
+<td>Identificador de la app de Instagram.</td>
+</tr>
+<tr>
+<td><code>ANTHROPIC_API_KEY</code></td>
+<td>Para el setter</td>
+<td>Sin ella los DMs se guardan, pero la IA no responde.</td>
+</tr>
+<tr>
+<td><code>SETTER_MODEL</code></td>
+<td>No</td>
+<td>Modelo de Claude del setter. Por defecto, Haiku.</td>
+</tr>
+<tr>
+<td><code>SEND_LIMIT_*</code></td>
+<td>No</td>
+<td>Límites de envíos por hora (anti-ban). Vienen con valores seguros.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Guarda: Render vuelve a desplegar solo. Todas las variables están explicadas en <code>.env.example</code>.</p>
+<h2>7. Primer arranque</h2>
+<ol>
+<li>Abre <code>https://TU-SERVICIO.onrender.com/app</code> y crea tu cuenta de admin con la <code>ADMIN_PASSWORD</code>.</li>
+<li><strong>Configuración → Instagram y envíos</strong>: comprueba que aparece tu cuenta y pulsa <strong>Volver a suscribir los avisos de Meta</strong>.</li>
+</ol>
+<h2>8. El setter con IA</h2>
+<ol>
+<li><strong>Setter IA → Documentos</strong>: pega el documento de ejemplo (<code>ejemplos/documento-setter.md</code>) para probar y después cámbialo por el de tu negocio: cliente ideal, oferta, precios, objeciones, tono y lo que nunca debe decir.</li>
+<li><strong>Setter IA → Modo → Tus enlaces</strong>: tu agenda, tu enlace de pago y tu correo.</li>
+<li>Déjalo en <strong>Modo Prueba</strong> y pon en <em>Usuarios de prueba</em> una cuenta tuya.</li>
+<li><strong>Simulador</strong>: elige un escenario y mira cómo contestaría (cuesta centavos).</li>
+</ol>
+<blockquote>
+<p>Con Claude Code: «Ayúdame a escribir el documento del setter de mi negocio a partir de ejemplos/documento-setter.md. Hazme las preguntas de a una. Lo que no sepa, márcalo como [COMPLETAR]».</p>
+</blockquote>
+<h2>9. Tu primer flujo y la prueba real</h2>
+<ol>
+<li><strong>Flujos → Crear flujo</strong> con la plantilla <strong>Recurso por comentario</strong>.</li>
+<li>Cambia los textos y el enlace del recurso y pulsa <strong>Activar</strong> (te pide escribir ACTIVAR).</li>
+<li>Desde <strong>otra</strong> cuenta de Instagram, comenta en uno de tus reels.</li>
+<li>Mira <strong>Conversaciones</strong>, <strong>Contactos</strong> y <strong>Configuración → Registro</strong>.</li>
+</ol>
+<p>Cuando todo funcione con tu cuenta de prueba, saca el setter del Modo Prueba.</p>
+<h2>Espacios: varios clientes en un servidor (opcional)</h2>
+<p>En <strong>Configuración → Clientes</strong> creas un espacio por cada cuenta de Instagram de un cliente. Cada espacio tiene su base de datos y sus usuarios. Un espacio nuevo nace con los <strong>envíos bloqueados</strong> hasta que el admin principal los activa. Si solo usas tu cuenta, no necesitas esto.</p>
+<h2>Seguridad</h2>
+<ul>
+<li>Prueba siempre primero en <strong>Modo Prueba</strong>: la IA solo contesta a las cuentas que pongas.</li>
+<li>La app solo escribe a quien comenta o te escribe primero, y tiene límites por hora. Aun así, Meta puede restringir una cuenta si hay muchos rechazos.</li>
+<li>Revisa las páginas legales (<code>/privacy</code>, <code>/terms</code>, <code>/data-deletion</code>, en <code>src/legal.ts</code>) y ponles los datos de tu negocio antes de usarlo con gente real.</li>
+<li>Quien escribe <strong>BORRAR</strong> por DM borra sus datos.</li>
+</ul>
+<h2>Errores frecuentes</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Síntoma</th>
+<th>Causa probable</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Meta no verifica el webhook</td>
+<td>El token no coincide o la URL está mal</td>
+<td>Revisa <code>WEBHOOK_VERIFY_TOKEN</code> en Render y la URL <code>…/webhooks/instagram</code>.</td>
+</tr>
+<tr>
+<td>Registro: «Firma no válida»</td>
+<td><code>META_APP_SECRET</code> no es el de la app de Instagram</td>
+<td>Copia la clave secreta de la <strong>app de Instagram</strong> (o prueba <code>META_APP_SECRET_ALT</code> con la de Facebook).</td>
+</tr>
+<tr>
+<td>No responde a comentarios</td>
+<td>Flujo inactivo, en modo prueba o sin avisos suscritos</td>
+<td>Activa el flujo, revisa los usuarios de prueba y pulsa <strong>Volver a suscribir los avisos de Meta</strong>.</td>
+</tr>
+<tr>
+<td>«Falta el token de Instagram»</td>
+<td><code>IG_ACCESS_TOKEN</code> vacío o vencido</td>
+<td>Genera otro en Meta y ponlo en Render.</td>
+</tr>
+<tr>
+<td>El setter no contesta</td>
+<td>Modo apagado, sin enlaces, sin documento o sin <code>ANTHROPIC_API_KEY</code></td>
+<td><strong>Configuración → Registro</strong> dice el motivo exacto.</td>
+</tr>
+<tr>
+<td>Envíos pausados 24 h</td>
+<td>Meta devolvió el error 368 (bloqueo por política)</td>
+<td>Espera y revisa el estado de tu cuenta en Instagram antes de reanudar.</td>
+</tr>
+<tr>
+<td>Algunos no reciben el DM</td>
+<td>Meta no deja escribirle a esa persona (error 2534025)</td>
+<td>Es normal. Activa el <em>plan B</em> del flujo: respuesta pública pidiéndole que te escriba.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Cómo adaptarlo a tu cliente</h2>
+<ul>
+<li><strong>Lo que dice la IA</strong>: el documento del setter (Setter IA → Documentos) es lo más importante. Uno por cliente, con su oferta y su tono.</li>
+<li><strong>Idioma y reglas fijas</strong>: Setter IA → Marco técnico (por defecto contesta en español).</li>
+<li><strong>Enlaces</strong>: agenda, membresía y correo en Setter IA → Modo, o con <code>SETTER_LINK_AGENDA</code>, <code>SETTER_LINK_MEMBERSHIP</code> y <code>SETTER_CONTACT_EMAIL</code>.</li>
+<li><strong>Nombre de la web</strong>: el <code>&lt;title&gt;</code> de <code>web/index.html</code> («Setter IA»).</li>
+<li><strong>Colores</strong>: las variables <code>--color-*</code> de <code>web/src/styles.css</code>. El sistema de diseño completo está en <code>design-system/</code>.</li>
+<li><strong>Páginas legales</strong>: <code>src/legal.ts</code>.</li>
+<li><strong>Varios clientes</strong>: un espacio por cliente en el mismo servidor, o un servidor y una base de datos por cliente si prefieres tenerlos separados.</li>
+</ul>
+<blockquote>
+<p>¿Te trabaste? Pregúntale a <strong>Maestro</strong> (en el menú, <a href="/maestro">/maestro</a>) con el mensaje de error exacto.</p>
+</blockquote>, setter-ai, 2,5 MB y dd650f52 -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Setter AI | Sistemas | Forja IA</title>
+<meta name="description" content="Tu propio ManyChat con IA para Instagram: responde comentarios, manda DMs con botones y un setter con Claude conversa con tus leads, los cualifica y les pasa tu agenda.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../web/base.css?v=dd650f52">
+<link rel="stylesheet" href="../web/tema.css?v=dd650f52">
+<link rel="stylesheet" href="../web/forja.css?v=dd650f52">
+<script src="../web/tema.js?v=dd650f52"></script>
+<link rel="icon" href="../web/favicon.svg?v=dd650f52" type="image/svg+xml">
+</head>
+<body class="fj-app" data-seccion="sistemas" data-raiz="/">
+<script src="../web/guias-web.js?v=dd650f52"></script>
+<script src="../web/comun.js?v=dd650f52"></script>
+<main class="fj-main ancho fj-sis">
+  <nav class="fj-sis-miga" aria-label="Ruta"><a href="/sistemas">Sistemas</a> <span aria-hidden="true">/</span> <span>Setter AI</span></nav>
+  <section class="fj-card fj-sis-cab">
+    <span class="fj-eyebrow">Sistema listo para replicar</span>
+    <h1>Setter AI</h1>
+    <p>Tu propio ManyChat con IA para Instagram: responde comentarios, manda DMs con botones y un setter con Claude conversa con tus leads, los cualifica y les pasa tu agenda.</p>
+    <div class="fj-sis-ficha"><span class="nivel">AVANZADO</span><span>WEB · NEON + RENDER + INSTAGRAM</span><span>60–90 min</span><span>Node.js</span><span>React</span><span>Postgres (Neon)</span><span>Claude API</span><span>Instagram API</span></div>
+    <div class="fj-sis-bajar">
+      <a class="fj-btn fj-btn-primario" href="/descargas/setter-ai.zip" download="setter-ai.zip" id="si-zip">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Descargar el sistema (ZIP · 2,5 MB)
+      </a>
+      <span>El código completo, ya adaptado. Lo subes a tu GitHub en el paso 1.</span>
+    </div>
+  </section>
+  <section class="fj-card fj-sis-req">
+    <h2>Antes de empezar</h2>
+    <ul><li>Cuenta de Instagram profesional (empresa o creador)</li><li>Cuenta en Meta for Developers</li><li>Cuenta en GitHub</li><li>Cuenta en Neon (tiene plan gratis)</li><li>Cuenta en Render (plan Starter, de pago)</li><li>API key de Anthropic</li><li>Node 22+ y Docker (solo para probar en local)</li></ul>
+  </section>
+  <article class="fj-card fj-sis-guia">
+<h2>Qué es</h2>
+<p>Setter AI es tu propio ManyChat con IA para Instagram, corriendo en tu servidor:</p>
+<ul>
+<li><strong>Flujos</strong>: comentario en un reel, palabra clave por DM, respuesta o mención en historia, enlace ig.me. Respuesta pública + DM con botones, condiciones («¿me sigue?»), esperas, etiquetas y carruseles, con un <strong>constructor visual</strong>.</li>
+<li><strong>Setter con IA</strong>: Claude conversa con quien te escribe como una persona del equipo: hace preguntas, completa la ficha del lead y le pasa tu agenda o tu membresía. Tiene modo prueba, borradores y un <strong>simulador</strong>.</li>
+<li><strong>Métricas</strong>: embudo por reel y por día, tablero de leads por etapa, clics en tu agenda y análisis de objeciones con IA.</li>
+<li><strong>Seguridad</strong>: firma de Meta comprobada, token cifrado, límites anti-ban, pausa automática si Meta bloquea, y <strong>BORRAR</strong> por DM para borrar los datos de una persona.</li>
+<li><strong>Espacios</strong>: varias cuentas de Instagram (tus clientes) en un mismo servidor, cada una con su base de datos.</li>
+</ul>
+<p>Lo que vendes: el setter de Instagram de un creador o infoproductor, sin pagar ManyChat Pro y con la IA entrenada con su oferta.</p>
+<blockquote>
+<p>Licencia MIT (proyecto original de código abierto), adaptado para Forja IA.</p>
+</blockquote>
+<h2>Qué necesitas</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Cuenta</th>
+<th>¿Obligatoria?</th>
+<th>Para qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Instagram profesional</strong> (empresa o creador)</td>
+<td>Sí</td>
+<td>La API de Instagram solo funciona con cuentas profesionales.</td>
+</tr>
+<tr>
+<td><strong>Meta for Developers</strong></td>
+<td>Sí</td>
+<td>Crear tu app de Instagram. Gratis.</td>
+</tr>
+<tr>
+<td><strong>GitHub</strong></td>
+<td>Sí</td>
+<td>Render despliega desde tu repo.</td>
+</tr>
+<tr>
+<td><strong>Neon</strong></td>
+<td>Sí</td>
+<td>La base de datos (Postgres). Tiene plan gratis.</td>
+</tr>
+<tr>
+<td><strong>Render</strong></td>
+<td>Sí</td>
+<td>El servidor, prendido 24/7. El <code>render.yaml</code> usa el plan <strong>Starter</strong> (de pago): los servicios gratis se duermen y los avisos de Meta se pierden.</td>
+</tr>
+<tr>
+<td><strong>Anthropic</strong></td>
+<td>Para el setter</td>
+<td>La IA. Pago por uso, centavos por conversación.</td>
+</tr>
+</tbody>
+</table></div>
+<p>En tu computadora: <strong>Node 22+</strong>, <strong>git</strong> y <strong>Docker</strong> (solo para probar en local).</p>
+<blockquote>
+<p>Regla de oro: las claves (tokens, contraseñas, App Secret, API keys) van <strong>solo</strong> en tu <code>.env</code> o en Render. Nunca las pegues en un chat ni las subas a GitHub.</p>
+</blockquote>
+<h2>1. Descarga y súbelo a tu GitHub</h2>
+<ol>
+<li>Descarga el ZIP con el botón de arriba de esta guía y descomprímelo.</li>
+<li>En GitHub, crea un repositorio nuevo <strong>privado</strong> y vacío (sin README), por ejemplo <code>setter-ai</code>.</li>
+<li>Abre una terminal dentro de la carpeta descomprimida y corre:</li>
+</ol>
+<pre><code class="language-bash">git init
+git add .
+git commit -m &quot;Setter AI&quot;
+git branch -M main
+git remote add origin https://github.com/TU-USUARIO/setter-ai.git
+git push -u origin main
+</code></pre>
+<h2>2. Pruébalo en tu computadora (opcional)</h2>
+<pre><code class="language-bash">npm ci
+docker run --name setter-db -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres:17
+cp .env.example .env
+</code></pre>
+<p>En <code>.env</code> pon como mínimo:</p>
+<pre><code class="language-bash">DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres?sslmode=disable
+ADMIN_PASSWORD=una-clave-de-12-o-mas
+WEBHOOK_VERIFY_TOKEN=cualquier-texto
+</code></pre>
+<pre><code class="language-bash">npm run build
+npm run dev
+</code></pre>
+<p>Abre <code>http://localhost:3000/app</code> y crea tu cuenta de admin con la <code>ADMIN_PASSWORD</code>. En local Instagram no te puede avisar (necesita una dirección pública): para eso está Render.</p>
+<blockquote>
+<p>Con Claude Code: abre <code>claude</code> en la carpeta y dile «Lee docs/INSTALACION.md y guíame en el paso 2. No me muestres las claves en el chat». Cada paso de esa guía trae un prompt listo para copiar.</p>
+</blockquote>
+<h2>3. Base de datos en Neon</h2>
+<ol>
+<li>Entra en <a href="https://console.neon.tech/" target="_blank" rel="noopener">console.neon.tech</a> y crea un proyecto (en una región cercana a la de Render).</li>
+<li>Pulsa <strong>Connect</strong> y copia la <strong>connection string</strong> (empieza con <code>postgresql://</code> y termina en <code>sslmode=require</code>).</li>
+<li>Esa es tu <code>DATABASE_URL</code>. Las tablas se crean solas al arrancar.</li>
+</ol>
+<h2>4. Servidor en Render</h2>
+<ol>
+<li>En <a href="https://dashboard.render.com/" target="_blank" rel="noopener">dashboard.render.com</a> → <strong>New → Blueprint</strong> y conecta tu repo.</li>
+<li>Render lee <code>render.yaml</code> y crea el servicio <code>setter-ai</code>. <code>WEBHOOK_VERIFY_TOKEN</code> y <code>TOKEN_ENCRYPTION_KEY</code> se generan solos.</li>
+<li>Completa <code>DATABASE_URL</code> (la de Neon) y <code>ADMIN_PASSWORD</code> (inventa una larga). Las demás las completas en el paso 6.</li>
+<li>Cuando termine el despliegue, abre <code>https://TU-SERVICIO.onrender.com/healthz</code>: tiene que responder <code>{"ok":true}</code>.</li>
+</ol>
+<h2>5. Tu app de Meta (Instagram)</h2>
+<p>Es la «app» que le da permiso a tu servidor para leer comentarios y mandar mensajes de <strong>tu</strong> cuenta.</p>
+<ol>
+<li><a href="https://developers.facebook.com/apps" target="_blank" rel="noopener">developers.facebook.com/apps</a> → <strong>Crear app</strong>, con el caso de uso <strong>«Administrar mensajes y contenido en Instagram»</strong>.</li>
+<li>En ese caso de uso, menú de la izquierda → <strong>«Configuración de la API con el inicio de sesión de Instagram»</strong>:<ul>
+<li><strong>Identificador de la aplicación de Instagram</strong> → <code>INSTAGRAM_APP_ID</code>.</li>
+<li><strong>Clave secreta de la aplicación de Instagram</strong> (botón Mostrar) → <code>META_APP_SECRET</code>.</li>
+<li><strong>1. Añade los permisos</strong>: <code>instagram_business_basic</code>, <code>instagram_business_manage_comments</code> e <code>instagram_business_manage_messages</code>.</li>
+<li><strong>2. Genera identificadores de acceso</strong>: agrega tu cuenta de Instagram y genera el token → <code>IG_ACCESS_TOKEN</code>.</li>
+<li><strong>3. Configura los webhooks</strong>: URL <code>https://TU-SERVICIO.onrender.com/webhooks/instagram</code> y, como token de verificación, el <code>WEBHOOK_VERIFY_TOKEN</code> de Render. Suscríbete a comentarios y mensajes.</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>Si tu cuenta de Instagram tiene un rol en la app (administrador o evaluador), no necesitas pasar la revisión de Meta para usarla con <strong>tu propia</strong> cuenta. Para la cuenta de un cliente, agrégala como evaluador o usa <strong>Espacios</strong> (ver abajo).</p>
+<p>Meta marca hoy esta configuración como «heredada», aunque sigue funcionando. Si la retirara, habría que adaptar <code>src/instagram-connect.ts</code> y <code>src/meta/client.ts</code>.</p>
+</blockquote>
+<h2>6. Variables en Render</h2>
+<p>Render → tu servicio → <strong>Environment</strong>:</p>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Obligatoria</th>
+<th>Para qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DATABASE_URL</code></td>
+<td>Sí</td>
+<td>La connection string de Neon.</td>
+</tr>
+<tr>
+<td><code>ADMIN_PASSWORD</code></td>
+<td>Sí</td>
+<td>Para crear la cuenta de admin en la web.</td>
+</tr>
+<tr>
+<td><code>WEBHOOK_VERIFY_TOKEN</code></td>
+<td>Sí</td>
+<td>La genera Render. La misma que pusiste en Meta.</td>
+</tr>
+<tr>
+<td><code>TOKEN_ENCRYPTION_KEY</code></td>
+<td>Sí</td>
+<td>La genera Render. Cifra el token y firma los enlaces.</td>
+</tr>
+<tr>
+<td><code>META_APP_SECRET</code></td>
+<td>Sí</td>
+<td>Clave secreta de la app de Instagram.</td>
+</tr>
+<tr>
+<td><code>IG_ACCESS_TOKEN</code></td>
+<td>Sí</td>
+<td>Token de tu cuenta de Instagram.</td>
+</tr>
+<tr>
+<td><code>INSTAGRAM_APP_ID</code></td>
+<td>Sí</td>
+<td>Identificador de la app de Instagram.</td>
+</tr>
+<tr>
+<td><code>ANTHROPIC_API_KEY</code></td>
+<td>Para el setter</td>
+<td>Sin ella los DMs se guardan, pero la IA no responde.</td>
+</tr>
+<tr>
+<td><code>SETTER_MODEL</code></td>
+<td>No</td>
+<td>Modelo de Claude del setter. Por defecto, Haiku.</td>
+</tr>
+<tr>
+<td><code>SEND_LIMIT_*</code></td>
+<td>No</td>
+<td>Límites de envíos por hora (anti-ban). Vienen con valores seguros.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Guarda: Render vuelve a desplegar solo. Todas las variables están explicadas en <code>.env.example</code>.</p>
+<h2>7. Primer arranque</h2>
+<ol>
+<li>Abre <code>https://TU-SERVICIO.onrender.com/app</code> y crea tu cuenta de admin con la <code>ADMIN_PASSWORD</code>.</li>
+<li><strong>Configuración → Instagram y envíos</strong>: comprueba que aparece tu cuenta y pulsa <strong>Volver a suscribir los avisos de Meta</strong>.</li>
+</ol>
+<h2>8. El setter con IA</h2>
+<ol>
+<li><strong>Setter IA → Documentos</strong>: pega el documento de ejemplo (<code>ejemplos/documento-setter.md</code>) para probar y después cámbialo por el de tu negocio: cliente ideal, oferta, precios, objeciones, tono y lo que nunca debe decir.</li>
+<li><strong>Setter IA → Modo → Tus enlaces</strong>: tu agenda, tu enlace de pago y tu correo.</li>
+<li>Déjalo en <strong>Modo Prueba</strong> y pon en <em>Usuarios de prueba</em> una cuenta tuya.</li>
+<li><strong>Simulador</strong>: elige un escenario y mira cómo contestaría (cuesta centavos).</li>
+</ol>
+<blockquote>
+<p>Con Claude Code: «Ayúdame a escribir el documento del setter de mi negocio a partir de ejemplos/documento-setter.md. Hazme las preguntas de a una. Lo que no sepa, márcalo como [COMPLETAR]».</p>
+</blockquote>
+<h2>9. Tu primer flujo y la prueba real</h2>
+<ol>
+<li><strong>Flujos → Crear flujo</strong> con la plantilla <strong>Recurso por comentario</strong>.</li>
+<li>Cambia los textos y el enlace del recurso y pulsa <strong>Activar</strong> (te pide escribir ACTIVAR).</li>
+<li>Desde <strong>otra</strong> cuenta de Instagram, comenta en uno de tus reels.</li>
+<li>Mira <strong>Conversaciones</strong>, <strong>Contactos</strong> y <strong>Configuración → Registro</strong>.</li>
+</ol>
+<p>Cuando todo funcione con tu cuenta de prueba, saca el setter del Modo Prueba.</p>
+<h2>Espacios: varios clientes en un servidor (opcional)</h2>
+<p>En <strong>Configuración → Clientes</strong> creas un espacio por cada cuenta de Instagram de un cliente. Cada espacio tiene su base de datos y sus usuarios. Un espacio nuevo nace con los <strong>envíos bloqueados</strong> hasta que el admin principal los activa. Si solo usas tu cuenta, no necesitas esto.</p>
+<h2>Seguridad</h2>
+<ul>
+<li>Prueba siempre primero en <strong>Modo Prueba</strong>: la IA solo contesta a las cuentas que pongas.</li>
+<li>La app solo escribe a quien comenta o te escribe primero, y tiene límites por hora. Aun así, Meta puede restringir una cuenta si hay muchos rechazos.</li>
+<li>Revisa las páginas legales (<code>/privacy</code>, <code>/terms</code>, <code>/data-deletion</code>, en <code>src/legal.ts</code>) y ponles los datos de tu negocio antes de usarlo con gente real.</li>
+<li>Quien escribe <strong>BORRAR</strong> por DM borra sus datos.</li>
+</ul>
+<h2>Errores frecuentes</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Síntoma</th>
+<th>Causa probable</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Meta no verifica el webhook</td>
+<td>El token no coincide o la URL está mal</td>
+<td>Revisa <code>WEBHOOK_VERIFY_TOKEN</code> en Render y la URL <code>…/webhooks/instagram</code>.</td>
+</tr>
+<tr>
+<td>Registro: «Firma no válida»</td>
+<td><code>META_APP_SECRET</code> no es el de la app de Instagram</td>
+<td>Copia la clave secreta de la <strong>app de Instagram</strong> (o prueba <code>META_APP_SECRET_ALT</code> con la de Facebook).</td>
+</tr>
+<tr>
+<td>No responde a comentarios</td>
+<td>Flujo inactivo, en modo prueba o sin avisos suscritos</td>
+<td>Activa el flujo, revisa los usuarios de prueba y pulsa <strong>Volver a suscribir los avisos de Meta</strong>.</td>
+</tr>
+<tr>
+<td>«Falta el token de Instagram»</td>
+<td><code>IG_ACCESS_TOKEN</code> vacío o vencido</td>
+<td>Genera otro en Meta y ponlo en Render.</td>
+</tr>
+<tr>
+<td>El setter no contesta</td>
+<td>Modo apagado, sin enlaces, sin documento o sin <code>ANTHROPIC_API_KEY</code></td>
+<td><strong>Configuración → Registro</strong> dice el motivo exacto.</td>
+</tr>
+<tr>
+<td>Envíos pausados 24 h</td>
+<td>Meta devolvió el error 368 (bloqueo por política)</td>
+<td>Espera y revisa el estado de tu cuenta en Instagram antes de reanudar.</td>
+</tr>
+<tr>
+<td>Algunos no reciben el DM</td>
+<td>Meta no deja escribirle a esa persona (error 2534025)</td>
+<td>Es normal. Activa el <em>plan B</em> del flujo: respuesta pública pidiéndole que te escriba.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Cómo adaptarlo a tu cliente</h2>
+<ul>
+<li><strong>Lo que dice la IA</strong>: el documento del setter (Setter IA → Documentos) es lo más importante. Uno por cliente, con su oferta y su tono.</li>
+<li><strong>Idioma y reglas fijas</strong>: Setter IA → Marco técnico (por defecto contesta en español).</li>
+<li><strong>Enlaces</strong>: agenda, membresía y correo en Setter IA → Modo, o con <code>SETTER_LINK_AGENDA</code>, <code>SETTER_LINK_MEMBERSHIP</code> y <code>SETTER_CONTACT_EMAIL</code>.</li>
+<li><strong>Nombre de la web</strong>: el <code>&lt;title&gt;</code> de <code>web/index.html</code> («Setter IA»).</li>
+<li><strong>Colores</strong>: las variables <code>--color-*</code> de <code>web/src/styles.css</code>. El sistema de diseño completo está en <code>design-system/</code>.</li>
+<li><strong>Páginas legales</strong>: <code>src/legal.ts</code>.</li>
+<li><strong>Varios clientes</strong>: un espacio por cliente en el mismo servidor, o un servidor y una base de datos por cliente si prefieres tenerlos separados.</li>
+</ul>
+<blockquote>
+<p>¿Te trabaste? Pregúntale a <strong>Maestro</strong> (en el menú, <a href="/maestro">/maestro</a>) con el mensaje de error exacto.</p>
+</blockquote>
+  </article>
+</main>
+<script src="../web/shell.js?v=dd650f52"></script>
+<script>
+// Botón «Copiar» en cada bloque de código
+document.querySelectorAll(".fj-sis-guia pre").forEach(function (pre) {
+  var b = document.createElement("button");
+  b.type = "button"; b.className = "fj-sis-copiar"; b.textContent = "Copiar";
+  b.addEventListener("click", function () {
+    var t = pre.querySelector("code") ? pre.querySelector("code").innerText : pre.innerText;
+    navigator.clipboard.writeText(t).then(function () { b.textContent = "Copiado"; setTimeout(function () { b.textContent = "Copiar"; }, 1500); });
+  });
+  pre.appendChild(b);
+});
+</script>
+</body>
+</html>

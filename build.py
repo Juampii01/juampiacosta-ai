@@ -285,6 +285,45 @@ def paginas(v):
         (RAIZ / f"{nombre}.html").write_text(t)
 
 
+def sistemas_paginas(v):
+    """Una página por sistema con guía (estado «listo»): sistemas/<slug>.html desde contenido/sistemas/<slug>.md
+    y el ZIP del código en descargas/<slug>.zip (los dos solo para el acceso completo, ver middleware.js)."""
+    import markdown
+    sistemas = json.loads((RAIZ / "contenido" / "sistemas.json").read_text())["sistemas"]
+    plantilla = (WEB / "sistema.html").read_text()
+    salida = RAIZ / "sistemas"
+    salida.mkdir(exist_ok=True)
+    hechos = set()
+    for s in sistemas:
+        if s["estado"] != "listo":
+            continue
+        md = RAIZ / "contenido" / "sistemas" / f"{s['slug']}.md"
+        zip_ = RAIZ / "descargas" / f"{s['slug']}.zip"
+        assert md.exists(), f"sistemas.json: {s['slug']} está «listo» pero falta {md.relative_to(RAIZ)}"
+        assert zip_.exists(), f"sistemas.json: {s['slug']} está «listo» pero falta {zip_.relative_to(RAIZ)}"
+        assert s.get("requisitos"), f"sistemas.json: a {s['slug']} le faltan los requisitos"
+        texto = md.read_text()
+        assert not re.search(r"MaestrIA|maestria|TU-REPO-PRIVADO", texto), f"{md.name}: quedó una referencia a la marca original"
+        texto = re.sub(r"(?m)^ {2,3}(?=[-*] |\d+\. )", "    ", texto)  # listas anidadas: markdown pide 4 espacios
+        cuerpo = markdown.markdown(texto, extensions=["tables", "fenced_code"], output_format="html")
+        cuerpo = cuerpo.replace("<table>", '<div class="fj-sis-tabla"><table>').replace("</table>", "</table></div>")
+        cuerpo = re.sub(r'<a href="(https?://[^"]+)"', r'<a href="\1" target="_blank" rel="noopener"', cuerpo)
+        mb = zip_.stat().st_size / 1e6
+        ficha = "".join(f"<span>{html.escape(t)}</span>" for t in [s["plataforma"].upper(), s["tiempo"]] + s["stack"])
+        ficha = f'<span class="nivel">{html.escape(s["nivel"].upper())}</span>' + ficha
+        t = (plantilla.replace("{{V}}", v).replace("{{TITULO}}", html.escape(s["titulo"])).replace("{{RESUMEN}}", html.escape(s["resumen"]))
+             .replace("{{FICHA}}", ficha).replace("{{REQUISITOS}}", "".join(f"<li>{html.escape(r)}</li>" for r in s["requisitos"]))
+             .replace("{{SLUG}}", s["slug"]).replace("{{ZIP}}", f"{mb:.1f} MB".replace(".", ",") if mb >= 0.1 else "menos de 0,1 MB"))
+        assert "{{" not in t.replace("{{GUIA}}", ""), f"sistema {s['slug']}: quedó un {{{{…}}}} sin rellenar"
+        t = t.replace("{{GUIA}}", cuerpo)
+        (salida / f"{s['slug']}.html").write_text(t)
+        hechos.add(f"{s['slug']}.html")
+    for viejo in salida.glob("*.html"):
+        if viejo.name not in hechos:
+            viejo.unlink()
+    return len(hechos)
+
+
 def inicio(v):
     """Página de inicio: cifras y títulos de las guías desde los datos, precio y link de pago desde contenido/config.json.
     Sin pago_url, el botón lleva al DM de Instagram para comprar a mano."""
@@ -334,7 +373,8 @@ if __name__ == "__main__":
     v = version()
     n = guias_web(v, guias)
     paginas(v)
+    n_sis = sistemas_paginas(v)
     inicio(v)
     if SKILLS_LARGAS:
         print(f"aviso: {len(SKILLS_LARGAS)} skills con description de más de 200 caracteres (la app no las acepta)")
-    print(f"ok · {n} guías · {n_mejoras} elevadas · versión {v}")
+    print(f"ok · {n} guías · {n_mejoras} elevadas · {n_sis} sistemas · versión {v}")

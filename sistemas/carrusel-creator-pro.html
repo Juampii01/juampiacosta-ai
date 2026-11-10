@@ -1,0 +1,550 @@
+<!doctype html>
+<!-- Plantilla de la guía de cada sistema. build.py la copia a ../sistemas/<slug>.html con Carrusel Creator Pro, Convierte carruseles virales de Instagram (o tu propio guion) en carruseles con la marca de tu cliente, listos para subir. Un perfil por cliente., <span class="nivel">INTERMEDIO</span><span>MAC Y WINDOWS · LOCAL</span><span>30–45 min</span><span>Next.js</span><span>Python</span><span>Codex CLI</span><span>Claude Code</span>, <li>Mac o PC con Windows 10/11</li><li>Homebrew (Mac) o winget (Windows)</li><li>Plan de ChatGPT para usar Codex CLI</li><li>Cuenta de Claude con Claude Code</li><li>Google Chrome (recomendado)</li><li>Clave de ScrapeCreators (opcional: copiar carruseles virales)</li><li>Cuenta en GitHub (opcional, recomendada)</li>, <h2>Qué es</h2>
+<p>Carrusel Creator Pro convierte carruseles virales de Instagram (o tu propio guion) en carruseles con <strong>tu marca</strong>, generados con <strong>Codex</strong> y listos para subir. Corre en tu computadora (<strong>Mac o Windows</strong>), en el navegador. Nada sale de tu computadora salvo las llamadas a ScrapeCreators (bajar el original), a Claude Code (redactar la ficha) y a Codex (generar las imágenes).</p>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Quién</th>
+<th>Qué pasa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Link o guion</td>
+<td>Tú</td>
+<td>Pegas el link del carrusel original, o tu guion con bloques "SLIDE 1", "SLIDE 2"...</td>
+</tr>
+<tr>
+<td>Ficha</td>
+<td>Claude Code</td>
+<td>Redacta la ficha de tu versión leyendo los slides del original. La editas en pantalla.</td>
+</tr>
+<tr>
+<td>Comprobación</td>
+<td>La app</td>
+<td>Frena cifras que no están en el original, textos demasiado largos y palabras que ya dieron problemas.</td>
+</tr>
+<tr>
+<td>Generar</td>
+<td>Codex</td>
+<td>Genera la escena de cada slide, sin pie ni contador.</td>
+</tr>
+<tr>
+<td>Estampar</td>
+<td>La app</td>
+<td>Pone el contador y el pie idénticos en todos los slides.</td>
+</tr>
+<tr>
+<td>Revisión</td>
+<td>Tú</td>
+<td>Ves cada slide en grande, corriges lo que falle (1 imagen por corrección) y apruebas.</td>
+</tr>
+<tr>
+<td>Descripción</td>
+<td>Claude Code</td>
+<td>Texto para Instagram con 5 hashtags, y opcionalmente 5 variaciones con otro gancho.</td>
+</tr>
+<tr>
+<td>Cerrar</td>
+<td>La app</td>
+<td>Exporta JPG a 1080×1350 sin metadatos de IA y los deja para descargar en ZIP.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Tiene <strong>varios clientes</strong>: cada uno con su marca (fotos, @, color, lema, ropa), su ubicación para los metadatos y su biblioteca de carruseles.</p>
+<p>Lo que puedes vender: producción de carruseles para la cuenta de Instagram de un cliente, con su cara y su marca.</p>
+<blockquote>
+<p><strong>Límite importante:</strong> Codex, con un plan de ChatGPT, bloquea la generación de imágenes en torno a las <strong>60 imágenes al día por cuenta</strong> (medido, no publicado). Un carrusel de 7 slides con dos correcciones son 9 imágenes: da para 5 o 6 carruseles al día. Cada carrusel tarda de 5 a 12 minutos.</p>
+</blockquote>
+<h2>Qué necesitas</h2>
+<ul>
+<li><strong>Un Mac o una PC con Windows 10/11.</strong> Corre en tu computadora: no se puede subir a Vercel (Codex y Claude Code usan la sesión de tu plan y cada carrusel tarda minutos).</li>
+<li>Para instalar las herramientas: <a href="https://brew.sh" target="_blank" rel="noopener">Homebrew</a> en Mac, o <strong>winget</strong> en Windows (ya viene en Windows 10 y 11).</li>
+<li><strong>Codex CLI</strong> conectado a tu cuenta de ChatGPT (<code>codex login</code>): genera las imágenes con tu plan, sin pagar API.</li>
+<li><strong>Claude Code</strong> conectado a tu cuenta (<code>claude</code>): redacta las fichas y las descripciones.</li>
+<li>Una clave de <a href="https://scrapecreators.com" target="_blank" rel="noopener">ScrapeCreators</a> para bajar los carruseles originales (1 crédito por carrusel). Sin clave puedes trabajar con tu propio guion.</li>
+<li>Las fotos del cliente: de 1 a 3 del personaje (con 2 o 3 la cara sale más fiel) y de 1 a 3 referencias de estilo.</li>
+<li>Google Chrome (la app se abre en Chrome y se puede instalar como app).</li>
+</ul>
+<p>Cada persona usa <strong>sus propias cuentas</strong> y <strong>su propia marca</strong>. Tus fotos, fichas, carruseles y claves viven en la carpeta <code>datos/</code>, que nunca se sube a GitHub.</p>
+<h2>1. Descarga y súbelo a tu GitHub</h2>
+<p>Es una app local, así que GitHub no es obligatorio, pero te sirve de respaldo y para llevar tus cambios.</p>
+<ol>
+<li>Descarga el ZIP con el botón de arriba de esta guía y descomprímelo donde la vayas a dejar (si después la mueves, hay que rehacer el lanzador del paso 5).</li>
+<li>En GitHub, crea un repositorio nuevo <strong>privado</strong> y vacío (sin README), por ejemplo <code>carrusel-creator-pro</code>.</li>
+<li>Abre una terminal dentro de la carpeta descomprimida (en Windows sirve PowerShell) y corre:</li>
+</ol>
+<pre><code class="language-bash">git init
+git add .
+git commit -m &quot;Carrusel Creator Pro&quot;
+git branch -M main
+git remote add origin https://github.com/TU-USUARIO/carrusel-creator-pro.git
+git push -u origin main
+</code></pre>
+<p>Si prefieres no usar la terminal, <a href="https://desktop.github.com" target="_blank" rel="noopener">GitHub Desktop</a> también sirve: <strong>File → Add local repository</strong>, elige la carpeta y publícala como privada.</p>
+<blockquote>
+<p>Nunca subas la carpeta <code>datos/</code>: tiene tus fotos, tus claves y los carruseles de tus clientes. El <code>.gitignore</code> ya la excluye.</p>
+</blockquote>
+<h2>2. Instala</h2>
+<p><strong>Mac</strong> (en la Terminal, dentro de la carpeta):</p>
+<pre><code class="language-bash">chmod +x instalar.sh arrancar.sh crear-lanzador.sh
+./instalar.sh
+</code></pre>
+<p>El <code>chmod</code> es por si al descomprimir el ZIP los scripts perdieron el permiso de ejecución. El instalador usa Homebrew para Node (20 o más), Python, ffmpeg y exiftool, instala Pillow (con eso se dibuja el pie), Codex CLI en la versión probada (0.158.0), Claude Code y las dependencias de la app.</p>
+<p><strong>Windows</strong> (en PowerShell, dentro de la carpeta):</p>
+<pre><code class="language-powershell">powershell -ExecutionPolicy Bypass -File .\instalar.ps1
+</code></pre>
+<p>Instala con winget Node, Python, ffmpeg, ExifTool y Git, después Pillow, Codex CLI, Claude Code y las dependencias, y crea un acceso directo <strong>Carrusel Creator Pro</strong> en el escritorio.</p>
+<ul>
+<li>Si dice que no encuentra algo que acaba de instalar, cierra PowerShell, abre una nueva y vuelve a correrlo.</li>
+<li>Si <code>python</code> no responde, entra a <strong>Configuración → Aplicaciones → Alias de ejecución de aplicaciones</strong>, desactiva los dos de python y vuelve a correrlo.</li>
+</ul>
+<p><strong>En los dos sistemas</strong>, al final te dice si Codex tiene sesión. Si no la tiene, corre:</p>
+<pre><code class="language-bash">codex login
+</code></pre>
+<p>Se abre el navegador con tu cuenta de ChatGPT. Para Claude Code, corre <code>claude</code> una vez e inicia sesión. También puedes conectar los dos desde la app, en <strong>Ajustes</strong>.</p>
+<p><strong>Lo más fácil: que la instale tu Claude.</strong> Abre Claude Code dentro de la carpeta (<code>claude</code>) y dile "instálame esta app". Sigue los pasos de <code>CLAUDE.md</code> en Mac o en Windows y te dice qué tienes que hacer tú (por ejemplo <code>codex login</code>).</p>
+<h2>3. Arranca</h2>
+<ul>
+<li><strong>Mac:</strong> <code>./arrancar.sh</code></li>
+<li><strong>Windows:</strong> doble clic en el acceso directo <strong>Carrusel Creator Pro</strong> del escritorio (o en <code>arrancar.cmd</code>).</li>
+</ul>
+<p>Se abre sola en <code>http://carrusel.localhost:3000</code>. Usa siempre esa dirección (no <code>localhost:3000</code> a secas) y usa Chrome. Deja abierta la ventana de la terminal mientras uses la app: al cerrarla, se apaga.</p>
+<h2>4. Primera vez: la bienvenida</h2>
+<p>La primera vez aparece una <strong>bienvenida</strong> de 11 pasos (unos 3 minutos): tu nombre, tu @, el color, a quién le hablas, el lema del pie, tus fotos, tus referencias de estilo, la ropa, la clave de ScrapeCreators, la comprobación de Codex y Claude Code, y la ubicación de los metadatos.</p>
+<p>Se repite desde <strong>Ajustes → Repetir bienvenida</strong>, y todo se puede cambiar después en <strong>Branding</strong> y <strong>Ajustes</strong>. Las claves las pegas tú en la app: no las pases por ningún chat.</p>
+<p>Para sumar un cliente: selector de arriba en la barra lateral → <strong>+ Nuevo cliente</strong> (bienvenida corta de 9 pasos).</p>
+<h2>5. Solo en Mac: instálala como app del Dock (opcional)</h2>
+<p>En Windows no hace falta: ya tienes el acceso directo del escritorio.</p>
+<ol>
+<li>Con <code>./arrancar.sh</code> en marcha, en Chrome aprieta el ícono de <strong>Instalar</strong> de la barra de direcciones (o menú ⋮ → Transmitir, guardar y compartir → Instalar página como aplicación).</li>
+<li>Cierra el servidor que arrancaste (Ctrl+C en la Terminal) y corre una vez:</li>
+</ol>
+<pre><code class="language-bash">./crear-lanzador.sh
+</code></pre>
+<p>Crea el ícono <strong>Carrusel Creator Pro</strong> en <code>~/Applications</code>. Arrástralo al Dock y quita el que instaló Chrome (clic derecho → Opciones → Quitar del Dock). Desde ahí:</p>
+<ul>
+<li>Al abrirlo se enciende el servidor y se abre la app.</li>
+<li>Al cerrar la app (X o Cmd+Q) el servidor se apaga solo.</li>
+<li>El registro queda en <code>~/Library/Logs/carrusel-creator-pro.log</code>.</li>
+<li>Si mueves la carpeta, vuelve a correr <code>./crear-lanzador.sh</code>. Para quitarlo: <code>./crear-lanzador.sh --quitar</code>.</li>
+</ul>
+<h2>Actualizar</h2>
+<p>Cuando haya una versión nueva, descarga el ZIP nuevo, reemplaza los archivos (sin tocar tu carpeta <code>datos/</code>) y vuelve a correr el instalador (<code>./instalar.sh</code> en Mac, <code>instalar.ps1</code> en Windows). Tus datos no se tocan.</p>
+<h2>Seguridad</h2>
+<ul>
+<li><strong><code>datos/</code> es tuyo y de tus clientes</strong>: fotos, claves y carruseles. Nunca lo subas a GitHub ni lo compartas.</li>
+<li><strong>Las claves se pegan en la app</strong>, no en un chat ni en archivos sueltos. <code>codex login</code> lo haces tú en tu navegador.</li>
+<li><strong>Contenido de terceros:</strong> los carruseles virales son de otras personas. Úsalos como referencia para hacer tu versión.</li>
+<li><strong>Metadatos:</strong> al cerrar, cada imagen se recodifica como JPEG y se le borran todos los metadatos, incluido el manifiesto de contenido de IA. Como único dato se escribe una ubicación (por defecto Newark, New Jersey). La marca de agua invisible en los píxeles se degrada, pero no hay forma de confirmar que desaparece. Úsalo bajo tu criterio y el de las normas de la plataforma donde publiques.</li>
+<li>Eliminar un cliente no borra nada: su carpeta pasa a <code>datos/_papelera/</code>.</li>
+</ul>
+<h2>Errores frecuentes</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Mensaje</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Este instalador es para Mac. En Windows usa instalar.ps1 (ver README).</code></td>
+<td>En Windows corre <code>powershell -ExecutionPolicy Bypass -File .\instalar.ps1</code>.</td>
+</tr>
+<tr>
+<td><code>No encuentro ... después de instalarlo. Cierra esta ventana, abre una nueva y vuelve a ejecutar el script.</code></td>
+<td>(Windows) Cierra PowerShell, abre una nueva y vuelve a correr <code>instalar.ps1</code>.</td>
+</tr>
+<tr>
+<td><code>'python' no responde: ... Alias de ejecución de aplicaciones</code></td>
+<td>(Windows) Desactiva los alias de python en Configuración y vuelve a correr el instalador.</td>
+</tr>
+<tr>
+<td><code>Falta Homebrew. Instálalo desde https://brew.sh y vuelve a ejecutar este script.</code></td>
+<td>Instala Homebrew (te pide tu contraseña del Mac) y vuelve a correr <code>./instalar.sh</code>.</td>
+</tr>
+<tr>
+<td><code>Node ... es antiguo: la app necesita Node 20 o más (brew upgrade node)</code></td>
+<td>Corre <code>brew upgrade node</code> y vuelve a instalar.</td>
+</tr>
+<tr>
+<td><code>Codex sin sesión: ejecuta  codex login  (se abre el navegador)</code></td>
+<td>Corre <code>codex login</code> y entra con tu cuenta de ChatGPT.</td>
+</tr>
+<tr>
+<td><code>Primero ejecuta ./instalar.sh</code> / <code>Primero ejecuta instalar.ps1</code></td>
+<td>Falta instalar las dependencias: corre el instalador de tu sistema.</td>
+</tr>
+<tr>
+<td><code>SESION_CLAUDE_CADUCADA: tu sesión de Claude caducó. Inicia sesión y vuelve a probar.</code></td>
+<td>Corre <code>claude</code> en la terminal (o conéctalo desde <strong>Ajustes</strong>), inicia sesión y reintenta.</td>
+</tr>
+<tr>
+<td><code>Falta Claude Code. Instálalo (npm install -g @anthropic-ai/claude-code) y entra con: claude</code></td>
+<td>Instala Claude Code con ese comando e inicia sesión.</td>
+</tr>
+<tr>
+<td><code>Falta SCRAPECREATORS_API_KEY</code></td>
+<td>Carga tu clave de ScrapeCreators en <strong>Ajustes</strong>, o trabaja con tu propio guion.</td>
+</tr>
+<tr>
+<td><code>FALLO_SCRAPECREATORS: Ese post tiene restricción de edad…</code> / <code>…cuenta privada…</code></td>
+<td>ScrapeCreators solo baja posts públicos: prueba con otro carrusel. No se gasta crédito.</td>
+</tr>
+<tr>
+<td><code>FALLO_SCRAPECREATORS: ScrapeCreators respondió 404</code></td>
+<td>El post no existe: copia el link desde la barra del navegador, no lo tipees (una <code>l</code> y un <code>1</code> se confunden).</td>
+</tr>
+<tr>
+<td><code>LIMITE_DE_USO</code></td>
+<td>Codex llegó al cupo de imágenes del día. Espera al día siguiente o usa otra cuenta de ChatGPT.</td>
+</tr>
+<tr>
+<td><code>FALTA_MARCA: este cliente no tiene fotos del personaje. Súbelas en Branding.</code></td>
+<td>Sube de 1 a 3 fotos del personaje en <strong>Branding</strong>.</td>
+</tr>
+<tr>
+<td><code>SOBRAN: Codex generó ... imágenes para ... slides</code></td>
+<td>Codex rehízo alguna imagen. Elige en la app cuál es la buena de cada slide.</td>
+</tr>
+<tr>
+<td><code>Pega el link de un carrusel de Instagram (https://www.instagram.com/p/…)</code></td>
+<td>El link no es de un post de Instagram.</td>
+</tr>
+<tr>
+<td><code>Ese link es de un reel, no de un carrusel.</code></td>
+<td>Pega el link de un post con varios slides.</td>
+</tr>
+<tr>
+<td><code>No encontré ningún "SLIDE 1", "SLIDE 2"… en el guion</code></td>
+<td>Separa tu guion en bloques que empiecen con "SLIDE 1", "SLIDE 2", etc.</td>
+</tr>
+<tr>
+<td><code>Espera a que termine la generación</code></td>
+<td>Codex genera de a un carrusel por vez entre todos los clientes. Espera.</td>
+</tr>
+<tr>
+<td>Falla al generar con un error de opciones de Codex</td>
+<td>Vuelve a la versión probada: <code>npm install -g @openai/codex@0.158.0</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Si algo tapa el @ del pie, sin gastar imágenes: <code>python3 motor/carrusel.py encoger NOMBRE-DEL-CARRUSEL NUMERO-DE-SLIDE</code> (en Windows, <code>python</code> en vez de <code>python3</code>) encoge la escena de ese slide.</p>
+<h2>Cómo adaptarlo a tu cliente</h2>
+<ul>
+<li><strong>Marca de cada cliente</strong> (lo principal, sin tocar código): pestaña <strong>Branding</strong>: fotos del personaje, referencias de estilo, @, color, lema, ángulo, ropa y ubicación. Cada cliente queda en <code>datos/perfiles/NOMBRE-DEL-CLIENTE/</code>.</li>
+<li><strong>Prompt que recibe Codex</strong>: <code>motor/PROMPT_BASE.txt</code> (y <code>motor/PROMPT_BASE_CLARO.txt</code>). Ahí está fijo, por ejemplo, que el carrusel es "sobre AI", el fondo oscuro y futurista y la tipografía Montserrat. Si tu cliente es de otro rubro o estilo, cámbialo ahí.</li>
+<li><strong>Prompt de la ficha, la descripción y las variaciones</strong>: <code>motor/PROMPT_FICHA.txt</code>, <code>motor/PROMPT_DESCRIPCION.txt</code> y <code>motor/PROMPT_VARIACIONES.txt</code>.</li>
+<li><strong>Reglas del motor</strong> (ficha, comprobaciones): <code>motor/REGLAS.md</code>.</li>
+<li><strong>Pie y contador</strong> (se dibujan con Pillow, en Python): <code>motor/plantilla/plantilla.py</code>. En Mac usa Helvetica Neue; en Windows, la fuente Inter que viene en <code>motor/plantilla/fuentes/</code>.</li>
+<li><strong>Logo e íconos de la app</strong>: <code>app/public/</code> (<code>icon-192.png</code>, <code>icon-512.png</code>, <code>forja.png</code>) y la intro en <code>app/public/intro</code>.</li>
+<li><strong>Probar otra marca sin tocar la tuya</strong>: en Mac, <code>CCP_DATOS=/ruta/a/otra/carpeta ./arrancar.sh</code>; en Windows, en PowerShell, <code>$env:CCP_DATOS="C:\ruta"; .\arrancar.ps1</code>.</li>
+</ul>
+<p>Después de tocar el motor, corre <code>python3 motor/pruebas/correr.py</code> (en Windows, <code>python motor\pruebas\correr.py</code>): tiene que terminar con "fallan 0". No gasta imágenes ni créditos.</p>
+<blockquote>
+<p>¿Te trabaste? Pregúntale a <strong>Maestro</strong> (en el menú, <a href="/maestro">/maestro</a>) con el mensaje de error exacto.</p>
+</blockquote>, carrusel-creator-pro, 1,0 MB y dd650f52 -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carrusel Creator Pro | Sistemas | Forja IA</title>
+<meta name="description" content="Convierte carruseles virales de Instagram (o tu propio guion) en carruseles con la marca de tu cliente, listos para subir. Un perfil por cliente.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../web/base.css?v=dd650f52">
+<link rel="stylesheet" href="../web/tema.css?v=dd650f52">
+<link rel="stylesheet" href="../web/forja.css?v=dd650f52">
+<script src="../web/tema.js?v=dd650f52"></script>
+<link rel="icon" href="../web/favicon.svg?v=dd650f52" type="image/svg+xml">
+</head>
+<body class="fj-app" data-seccion="sistemas" data-raiz="/">
+<script src="../web/guias-web.js?v=dd650f52"></script>
+<script src="../web/comun.js?v=dd650f52"></script>
+<main class="fj-main ancho fj-sis">
+  <nav class="fj-sis-miga" aria-label="Ruta"><a href="/sistemas">Sistemas</a> <span aria-hidden="true">/</span> <span>Carrusel Creator Pro</span></nav>
+  <section class="fj-card fj-sis-cab">
+    <span class="fj-eyebrow">Sistema listo para replicar</span>
+    <h1>Carrusel Creator Pro</h1>
+    <p>Convierte carruseles virales de Instagram (o tu propio guion) en carruseles con la marca de tu cliente, listos para subir. Un perfil por cliente.</p>
+    <div class="fj-sis-ficha"><span class="nivel">INTERMEDIO</span><span>MAC Y WINDOWS · LOCAL</span><span>30–45 min</span><span>Next.js</span><span>Python</span><span>Codex CLI</span><span>Claude Code</span></div>
+    <div class="fj-sis-bajar">
+      <a class="fj-btn fj-btn-primario" href="/descargas/carrusel-creator-pro.zip" download="carrusel-creator-pro.zip" id="si-zip">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Descargar el sistema (ZIP · 1,0 MB)
+      </a>
+      <span>El código completo, ya adaptado. Lo subes a tu GitHub en el paso 1.</span>
+    </div>
+  </section>
+  <section class="fj-card fj-sis-req">
+    <h2>Antes de empezar</h2>
+    <ul><li>Mac o PC con Windows 10/11</li><li>Homebrew (Mac) o winget (Windows)</li><li>Plan de ChatGPT para usar Codex CLI</li><li>Cuenta de Claude con Claude Code</li><li>Google Chrome (recomendado)</li><li>Clave de ScrapeCreators (opcional: copiar carruseles virales)</li><li>Cuenta en GitHub (opcional, recomendada)</li></ul>
+  </section>
+  <article class="fj-card fj-sis-guia">
+<h2>Qué es</h2>
+<p>Carrusel Creator Pro convierte carruseles virales de Instagram (o tu propio guion) en carruseles con <strong>tu marca</strong>, generados con <strong>Codex</strong> y listos para subir. Corre en tu computadora (<strong>Mac o Windows</strong>), en el navegador. Nada sale de tu computadora salvo las llamadas a ScrapeCreators (bajar el original), a Claude Code (redactar la ficha) y a Codex (generar las imágenes).</p>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Quién</th>
+<th>Qué pasa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Link o guion</td>
+<td>Tú</td>
+<td>Pegas el link del carrusel original, o tu guion con bloques "SLIDE 1", "SLIDE 2"...</td>
+</tr>
+<tr>
+<td>Ficha</td>
+<td>Claude Code</td>
+<td>Redacta la ficha de tu versión leyendo los slides del original. La editas en pantalla.</td>
+</tr>
+<tr>
+<td>Comprobación</td>
+<td>La app</td>
+<td>Frena cifras que no están en el original, textos demasiado largos y palabras que ya dieron problemas.</td>
+</tr>
+<tr>
+<td>Generar</td>
+<td>Codex</td>
+<td>Genera la escena de cada slide, sin pie ni contador.</td>
+</tr>
+<tr>
+<td>Estampar</td>
+<td>La app</td>
+<td>Pone el contador y el pie idénticos en todos los slides.</td>
+</tr>
+<tr>
+<td>Revisión</td>
+<td>Tú</td>
+<td>Ves cada slide en grande, corriges lo que falle (1 imagen por corrección) y apruebas.</td>
+</tr>
+<tr>
+<td>Descripción</td>
+<td>Claude Code</td>
+<td>Texto para Instagram con 5 hashtags, y opcionalmente 5 variaciones con otro gancho.</td>
+</tr>
+<tr>
+<td>Cerrar</td>
+<td>La app</td>
+<td>Exporta JPG a 1080×1350 sin metadatos de IA y los deja para descargar en ZIP.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Tiene <strong>varios clientes</strong>: cada uno con su marca (fotos, @, color, lema, ropa), su ubicación para los metadatos y su biblioteca de carruseles.</p>
+<p>Lo que puedes vender: producción de carruseles para la cuenta de Instagram de un cliente, con su cara y su marca.</p>
+<blockquote>
+<p><strong>Límite importante:</strong> Codex, con un plan de ChatGPT, bloquea la generación de imágenes en torno a las <strong>60 imágenes al día por cuenta</strong> (medido, no publicado). Un carrusel de 7 slides con dos correcciones son 9 imágenes: da para 5 o 6 carruseles al día. Cada carrusel tarda de 5 a 12 minutos.</p>
+</blockquote>
+<h2>Qué necesitas</h2>
+<ul>
+<li><strong>Un Mac o una PC con Windows 10/11.</strong> Corre en tu computadora: no se puede subir a Vercel (Codex y Claude Code usan la sesión de tu plan y cada carrusel tarda minutos).</li>
+<li>Para instalar las herramientas: <a href="https://brew.sh" target="_blank" rel="noopener">Homebrew</a> en Mac, o <strong>winget</strong> en Windows (ya viene en Windows 10 y 11).</li>
+<li><strong>Codex CLI</strong> conectado a tu cuenta de ChatGPT (<code>codex login</code>): genera las imágenes con tu plan, sin pagar API.</li>
+<li><strong>Claude Code</strong> conectado a tu cuenta (<code>claude</code>): redacta las fichas y las descripciones.</li>
+<li>Una clave de <a href="https://scrapecreators.com" target="_blank" rel="noopener">ScrapeCreators</a> para bajar los carruseles originales (1 crédito por carrusel). Sin clave puedes trabajar con tu propio guion.</li>
+<li>Las fotos del cliente: de 1 a 3 del personaje (con 2 o 3 la cara sale más fiel) y de 1 a 3 referencias de estilo.</li>
+<li>Google Chrome (la app se abre en Chrome y se puede instalar como app).</li>
+</ul>
+<p>Cada persona usa <strong>sus propias cuentas</strong> y <strong>su propia marca</strong>. Tus fotos, fichas, carruseles y claves viven en la carpeta <code>datos/</code>, que nunca se sube a GitHub.</p>
+<h2>1. Descarga y súbelo a tu GitHub</h2>
+<p>Es una app local, así que GitHub no es obligatorio, pero te sirve de respaldo y para llevar tus cambios.</p>
+<ol>
+<li>Descarga el ZIP con el botón de arriba de esta guía y descomprímelo donde la vayas a dejar (si después la mueves, hay que rehacer el lanzador del paso 5).</li>
+<li>En GitHub, crea un repositorio nuevo <strong>privado</strong> y vacío (sin README), por ejemplo <code>carrusel-creator-pro</code>.</li>
+<li>Abre una terminal dentro de la carpeta descomprimida (en Windows sirve PowerShell) y corre:</li>
+</ol>
+<pre><code class="language-bash">git init
+git add .
+git commit -m &quot;Carrusel Creator Pro&quot;
+git branch -M main
+git remote add origin https://github.com/TU-USUARIO/carrusel-creator-pro.git
+git push -u origin main
+</code></pre>
+<p>Si prefieres no usar la terminal, <a href="https://desktop.github.com" target="_blank" rel="noopener">GitHub Desktop</a> también sirve: <strong>File → Add local repository</strong>, elige la carpeta y publícala como privada.</p>
+<blockquote>
+<p>Nunca subas la carpeta <code>datos/</code>: tiene tus fotos, tus claves y los carruseles de tus clientes. El <code>.gitignore</code> ya la excluye.</p>
+</blockquote>
+<h2>2. Instala</h2>
+<p><strong>Mac</strong> (en la Terminal, dentro de la carpeta):</p>
+<pre><code class="language-bash">chmod +x instalar.sh arrancar.sh crear-lanzador.sh
+./instalar.sh
+</code></pre>
+<p>El <code>chmod</code> es por si al descomprimir el ZIP los scripts perdieron el permiso de ejecución. El instalador usa Homebrew para Node (20 o más), Python, ffmpeg y exiftool, instala Pillow (con eso se dibuja el pie), Codex CLI en la versión probada (0.158.0), Claude Code y las dependencias de la app.</p>
+<p><strong>Windows</strong> (en PowerShell, dentro de la carpeta):</p>
+<pre><code class="language-powershell">powershell -ExecutionPolicy Bypass -File .\instalar.ps1
+</code></pre>
+<p>Instala con winget Node, Python, ffmpeg, ExifTool y Git, después Pillow, Codex CLI, Claude Code y las dependencias, y crea un acceso directo <strong>Carrusel Creator Pro</strong> en el escritorio.</p>
+<ul>
+<li>Si dice que no encuentra algo que acaba de instalar, cierra PowerShell, abre una nueva y vuelve a correrlo.</li>
+<li>Si <code>python</code> no responde, entra a <strong>Configuración → Aplicaciones → Alias de ejecución de aplicaciones</strong>, desactiva los dos de python y vuelve a correrlo.</li>
+</ul>
+<p><strong>En los dos sistemas</strong>, al final te dice si Codex tiene sesión. Si no la tiene, corre:</p>
+<pre><code class="language-bash">codex login
+</code></pre>
+<p>Se abre el navegador con tu cuenta de ChatGPT. Para Claude Code, corre <code>claude</code> una vez e inicia sesión. También puedes conectar los dos desde la app, en <strong>Ajustes</strong>.</p>
+<p><strong>Lo más fácil: que la instale tu Claude.</strong> Abre Claude Code dentro de la carpeta (<code>claude</code>) y dile "instálame esta app". Sigue los pasos de <code>CLAUDE.md</code> en Mac o en Windows y te dice qué tienes que hacer tú (por ejemplo <code>codex login</code>).</p>
+<h2>3. Arranca</h2>
+<ul>
+<li><strong>Mac:</strong> <code>./arrancar.sh</code></li>
+<li><strong>Windows:</strong> doble clic en el acceso directo <strong>Carrusel Creator Pro</strong> del escritorio (o en <code>arrancar.cmd</code>).</li>
+</ul>
+<p>Se abre sola en <code>http://carrusel.localhost:3000</code>. Usa siempre esa dirección (no <code>localhost:3000</code> a secas) y usa Chrome. Deja abierta la ventana de la terminal mientras uses la app: al cerrarla, se apaga.</p>
+<h2>4. Primera vez: la bienvenida</h2>
+<p>La primera vez aparece una <strong>bienvenida</strong> de 11 pasos (unos 3 minutos): tu nombre, tu @, el color, a quién le hablas, el lema del pie, tus fotos, tus referencias de estilo, la ropa, la clave de ScrapeCreators, la comprobación de Codex y Claude Code, y la ubicación de los metadatos.</p>
+<p>Se repite desde <strong>Ajustes → Repetir bienvenida</strong>, y todo se puede cambiar después en <strong>Branding</strong> y <strong>Ajustes</strong>. Las claves las pegas tú en la app: no las pases por ningún chat.</p>
+<p>Para sumar un cliente: selector de arriba en la barra lateral → <strong>+ Nuevo cliente</strong> (bienvenida corta de 9 pasos).</p>
+<h2>5. Solo en Mac: instálala como app del Dock (opcional)</h2>
+<p>En Windows no hace falta: ya tienes el acceso directo del escritorio.</p>
+<ol>
+<li>Con <code>./arrancar.sh</code> en marcha, en Chrome aprieta el ícono de <strong>Instalar</strong> de la barra de direcciones (o menú ⋮ → Transmitir, guardar y compartir → Instalar página como aplicación).</li>
+<li>Cierra el servidor que arrancaste (Ctrl+C en la Terminal) y corre una vez:</li>
+</ol>
+<pre><code class="language-bash">./crear-lanzador.sh
+</code></pre>
+<p>Crea el ícono <strong>Carrusel Creator Pro</strong> en <code>~/Applications</code>. Arrástralo al Dock y quita el que instaló Chrome (clic derecho → Opciones → Quitar del Dock). Desde ahí:</p>
+<ul>
+<li>Al abrirlo se enciende el servidor y se abre la app.</li>
+<li>Al cerrar la app (X o Cmd+Q) el servidor se apaga solo.</li>
+<li>El registro queda en <code>~/Library/Logs/carrusel-creator-pro.log</code>.</li>
+<li>Si mueves la carpeta, vuelve a correr <code>./crear-lanzador.sh</code>. Para quitarlo: <code>./crear-lanzador.sh --quitar</code>.</li>
+</ul>
+<h2>Actualizar</h2>
+<p>Cuando haya una versión nueva, descarga el ZIP nuevo, reemplaza los archivos (sin tocar tu carpeta <code>datos/</code>) y vuelve a correr el instalador (<code>./instalar.sh</code> en Mac, <code>instalar.ps1</code> en Windows). Tus datos no se tocan.</p>
+<h2>Seguridad</h2>
+<ul>
+<li><strong><code>datos/</code> es tuyo y de tus clientes</strong>: fotos, claves y carruseles. Nunca lo subas a GitHub ni lo compartas.</li>
+<li><strong>Las claves se pegan en la app</strong>, no en un chat ni en archivos sueltos. <code>codex login</code> lo haces tú en tu navegador.</li>
+<li><strong>Contenido de terceros:</strong> los carruseles virales son de otras personas. Úsalos como referencia para hacer tu versión.</li>
+<li><strong>Metadatos:</strong> al cerrar, cada imagen se recodifica como JPEG y se le borran todos los metadatos, incluido el manifiesto de contenido de IA. Como único dato se escribe una ubicación (por defecto Newark, New Jersey). La marca de agua invisible en los píxeles se degrada, pero no hay forma de confirmar que desaparece. Úsalo bajo tu criterio y el de las normas de la plataforma donde publiques.</li>
+<li>Eliminar un cliente no borra nada: su carpeta pasa a <code>datos/_papelera/</code>.</li>
+</ul>
+<h2>Errores frecuentes</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Mensaje</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Este instalador es para Mac. En Windows usa instalar.ps1 (ver README).</code></td>
+<td>En Windows corre <code>powershell -ExecutionPolicy Bypass -File .\instalar.ps1</code>.</td>
+</tr>
+<tr>
+<td><code>No encuentro ... después de instalarlo. Cierra esta ventana, abre una nueva y vuelve a ejecutar el script.</code></td>
+<td>(Windows) Cierra PowerShell, abre una nueva y vuelve a correr <code>instalar.ps1</code>.</td>
+</tr>
+<tr>
+<td><code>'python' no responde: ... Alias de ejecución de aplicaciones</code></td>
+<td>(Windows) Desactiva los alias de python en Configuración y vuelve a correr el instalador.</td>
+</tr>
+<tr>
+<td><code>Falta Homebrew. Instálalo desde https://brew.sh y vuelve a ejecutar este script.</code></td>
+<td>Instala Homebrew (te pide tu contraseña del Mac) y vuelve a correr <code>./instalar.sh</code>.</td>
+</tr>
+<tr>
+<td><code>Node ... es antiguo: la app necesita Node 20 o más (brew upgrade node)</code></td>
+<td>Corre <code>brew upgrade node</code> y vuelve a instalar.</td>
+</tr>
+<tr>
+<td><code>Codex sin sesión: ejecuta  codex login  (se abre el navegador)</code></td>
+<td>Corre <code>codex login</code> y entra con tu cuenta de ChatGPT.</td>
+</tr>
+<tr>
+<td><code>Primero ejecuta ./instalar.sh</code> / <code>Primero ejecuta instalar.ps1</code></td>
+<td>Falta instalar las dependencias: corre el instalador de tu sistema.</td>
+</tr>
+<tr>
+<td><code>SESION_CLAUDE_CADUCADA: tu sesión de Claude caducó. Inicia sesión y vuelve a probar.</code></td>
+<td>Corre <code>claude</code> en la terminal (o conéctalo desde <strong>Ajustes</strong>), inicia sesión y reintenta.</td>
+</tr>
+<tr>
+<td><code>Falta Claude Code. Instálalo (npm install -g @anthropic-ai/claude-code) y entra con: claude</code></td>
+<td>Instala Claude Code con ese comando e inicia sesión.</td>
+</tr>
+<tr>
+<td><code>Falta SCRAPECREATORS_API_KEY</code></td>
+<td>Carga tu clave de ScrapeCreators en <strong>Ajustes</strong>, o trabaja con tu propio guion.</td>
+</tr>
+<tr>
+<td><code>FALLO_SCRAPECREATORS: Ese post tiene restricción de edad…</code> / <code>…cuenta privada…</code></td>
+<td>ScrapeCreators solo baja posts públicos: prueba con otro carrusel. No se gasta crédito.</td>
+</tr>
+<tr>
+<td><code>FALLO_SCRAPECREATORS: ScrapeCreators respondió 404</code></td>
+<td>El post no existe: copia el link desde la barra del navegador, no lo tipees (una <code>l</code> y un <code>1</code> se confunden).</td>
+</tr>
+<tr>
+<td><code>LIMITE_DE_USO</code></td>
+<td>Codex llegó al cupo de imágenes del día. Espera al día siguiente o usa otra cuenta de ChatGPT.</td>
+</tr>
+<tr>
+<td><code>FALTA_MARCA: este cliente no tiene fotos del personaje. Súbelas en Branding.</code></td>
+<td>Sube de 1 a 3 fotos del personaje en <strong>Branding</strong>.</td>
+</tr>
+<tr>
+<td><code>SOBRAN: Codex generó ... imágenes para ... slides</code></td>
+<td>Codex rehízo alguna imagen. Elige en la app cuál es la buena de cada slide.</td>
+</tr>
+<tr>
+<td><code>Pega el link de un carrusel de Instagram (https://www.instagram.com/p/…)</code></td>
+<td>El link no es de un post de Instagram.</td>
+</tr>
+<tr>
+<td><code>Ese link es de un reel, no de un carrusel.</code></td>
+<td>Pega el link de un post con varios slides.</td>
+</tr>
+<tr>
+<td><code>No encontré ningún "SLIDE 1", "SLIDE 2"… en el guion</code></td>
+<td>Separa tu guion en bloques que empiecen con "SLIDE 1", "SLIDE 2", etc.</td>
+</tr>
+<tr>
+<td><code>Espera a que termine la generación</code></td>
+<td>Codex genera de a un carrusel por vez entre todos los clientes. Espera.</td>
+</tr>
+<tr>
+<td>Falla al generar con un error de opciones de Codex</td>
+<td>Vuelve a la versión probada: <code>npm install -g @openai/codex@0.158.0</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Si algo tapa el @ del pie, sin gastar imágenes: <code>python3 motor/carrusel.py encoger NOMBRE-DEL-CARRUSEL NUMERO-DE-SLIDE</code> (en Windows, <code>python</code> en vez de <code>python3</code>) encoge la escena de ese slide.</p>
+<h2>Cómo adaptarlo a tu cliente</h2>
+<ul>
+<li><strong>Marca de cada cliente</strong> (lo principal, sin tocar código): pestaña <strong>Branding</strong>: fotos del personaje, referencias de estilo, @, color, lema, ángulo, ropa y ubicación. Cada cliente queda en <code>datos/perfiles/NOMBRE-DEL-CLIENTE/</code>.</li>
+<li><strong>Prompt que recibe Codex</strong>: <code>motor/PROMPT_BASE.txt</code> (y <code>motor/PROMPT_BASE_CLARO.txt</code>). Ahí está fijo, por ejemplo, que el carrusel es "sobre AI", el fondo oscuro y futurista y la tipografía Montserrat. Si tu cliente es de otro rubro o estilo, cámbialo ahí.</li>
+<li><strong>Prompt de la ficha, la descripción y las variaciones</strong>: <code>motor/PROMPT_FICHA.txt</code>, <code>motor/PROMPT_DESCRIPCION.txt</code> y <code>motor/PROMPT_VARIACIONES.txt</code>.</li>
+<li><strong>Reglas del motor</strong> (ficha, comprobaciones): <code>motor/REGLAS.md</code>.</li>
+<li><strong>Pie y contador</strong> (se dibujan con Pillow, en Python): <code>motor/plantilla/plantilla.py</code>. En Mac usa Helvetica Neue; en Windows, la fuente Inter que viene en <code>motor/plantilla/fuentes/</code>.</li>
+<li><strong>Logo e íconos de la app</strong>: <code>app/public/</code> (<code>icon-192.png</code>, <code>icon-512.png</code>, <code>forja.png</code>) y la intro en <code>app/public/intro</code>.</li>
+<li><strong>Probar otra marca sin tocar la tuya</strong>: en Mac, <code>CCP_DATOS=/ruta/a/otra/carpeta ./arrancar.sh</code>; en Windows, en PowerShell, <code>$env:CCP_DATOS="C:\ruta"; .\arrancar.ps1</code>.</li>
+</ul>
+<p>Después de tocar el motor, corre <code>python3 motor/pruebas/correr.py</code> (en Windows, <code>python motor\pruebas\correr.py</code>): tiene que terminar con "fallan 0". No gasta imágenes ni créditos.</p>
+<blockquote>
+<p>¿Te trabaste? Pregúntale a <strong>Maestro</strong> (en el menú, <a href="/maestro">/maestro</a>) con el mensaje de error exacto.</p>
+</blockquote>
+  </article>
+</main>
+<script src="../web/shell.js?v=dd650f52"></script>
+<script>
+// Botón «Copiar» en cada bloque de código
+document.querySelectorAll(".fj-sis-guia pre").forEach(function (pre) {
+  var b = document.createElement("button");
+  b.type = "button"; b.className = "fj-sis-copiar"; b.textContent = "Copiar";
+  b.addEventListener("click", function () {
+    var t = pre.querySelector("code") ? pre.querySelector("code").innerText : pre.innerText;
+    navigator.clipboard.writeText(t).then(function () { b.textContent = "Copiado"; setTimeout(function () { b.textContent = "Copiar"; }, 1500); });
+  });
+  pre.appendChild(b);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,552 @@
+<!doctype html>
+<!-- Plantilla de la guía de cada sistema. build.py la copia a ../sistemas/<slug>.html con Dashboard de Ventas, Un panel para dirigir la parte comercial de tu negocio: CRM con pipelines, equipo de callers y closers, reparto de leads, ventas, comisiones y pagos. Opcional: análisis de llamadas con IA y conexión con GoHighLevel., <span class="nivel">INTERMEDIO</span><span>WEB · SUPABASE + VERCEL</span><span>45–60 min</span><span>Next.js</span><span>Supabase</span><span>Vercel</span><span>Claude API</span>, <li>Cuenta en GitHub</li><li>Cuenta en Supabase y su CLI en tu computadora</li><li>Cuenta en Vercel</li><li>Node.js 20 o superior</li><li>Cuenta en Resend con dominio verificado (recomendada: emails)</li><li>API key de Anthropic y de Deepgram (opcional: análisis de llamadas)</li><li>GoHighLevel (opcional)</li>, <h2>Qué es</h2>
+<p>Dashboard de Ventas es la app web de un equipo comercial (Next.js + Supabase). Reúne en un solo lugar lo que hoy suele estar repartido en planillas, GoHighLevel y WhatsApp:</p>
+<ul>
+<li><strong>CRM con pipelines</strong>: los leads entran por formularios, CSV o GoHighLevel y se reparten solos entre el equipo.</li>
+<li><strong>Roles</strong>: CEO, director, closer y caller. Cada uno ve solo lo suyo (permisos por rol, persona y pipeline).</li>
+<li><strong>Ventas, KPIs y finanzas</strong>: ventas, comisiones, pagos, ranking del equipo, reportes diarios y objetivos.</li>
+<li><strong>Llamadas con IA (opcional)</strong>: transcribe las llamadas (Fathom, GHL o Deepgram) y Claude las analiza: objeciones, puntaje y qué mejorar.</li>
+<li><strong>GoHighLevel (opcional)</strong>: escribe contactos, etiquetas y oportunidades en GHL y lee de ahí citas, leads y grabaciones cada minuto.</li>
+</ul>
+<p>Lo que vendes: el tablero de mando de un equipo de ventas (infoproductores, agencias, high ticket) con el dueño viendo cifras reales y no capturas de WhatsApp.</p>
+<blockquote>
+<p>La app está en español de España (textos como «pulsa» o «vale»). Más abajo te digo dónde cambiarlo si tu cliente es de Latinoamérica.</p>
+</blockquote>
+<h2>Qué necesitas</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Cuenta</th>
+<th>¿Obligatoria?</th>
+<th>Para qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GitHub</strong></td>
+<td>Sí</td>
+<td>Vercel publica desde tu repo.</td>
+</tr>
+<tr>
+<td><strong>Supabase</strong></td>
+<td>Sí</td>
+<td>Base de datos, login y el programador (lecturas de GHL cada minuto, email diario).</td>
+</tr>
+<tr>
+<td><strong>Vercel</strong></td>
+<td>Sí</td>
+<td>La web. Cada push a <code>main</code> se publica solo.</td>
+</tr>
+<tr>
+<td><strong>Resend</strong></td>
+<td>Recomendada</td>
+<td>Emails: enlace mágico, avisos y el email diario. Necesita un dominio verificado.</td>
+</tr>
+<tr>
+<td><strong>Anthropic</strong></td>
+<td>Opcional</td>
+<td>Analizar llamadas, coach y puntaje de leads. Pago por uso.</td>
+</tr>
+<tr>
+<td><strong>Deepgram</strong></td>
+<td>Opcional</td>
+<td>Transcribir las llamadas que GHL no transcribió.</td>
+</tr>
+<tr>
+<td><strong>GoHighLevel</strong></td>
+<td>Opcional</td>
+<td>Si el equipo ya trabaja en GHL.</td>
+</tr>
+</tbody>
+</table></div>
+<p>En tu computadora: <strong>Node.js 20 o superior</strong>, <strong>git</strong> y la <strong>CLI de Supabase</strong> (<code>brew install supabase/tap/supabase</code> en Mac, <code>scoop install supabase</code> en Windows).</p>
+<h2>1. Descarga y súbelo a tu GitHub</h2>
+<ol>
+<li>Descarga el ZIP con el botón de arriba de esta guía y descomprímelo.</li>
+<li>En GitHub, crea un repositorio nuevo <strong>privado</strong> y vacío (sin README), por ejemplo <code>dashboard-ventas</code>.</li>
+<li>Abre una terminal dentro de la carpeta descomprimida y corre:</li>
+</ol>
+<pre><code class="language-bash">git init
+git add .
+git commit -m &quot;Dashboard de ventas&quot;
+git branch -M main
+git remote add origin https://github.com/TU-USUARIO/dashboard-ventas.git
+git push -u origin main
+</code></pre>
+<blockquote>
+<p>Nunca subas <code>.env.local</code> ni <code>.env.produccion</code>. El <code>.gitignore</code> ya los excluye.</p>
+</blockquote>
+<h2>2. Crea la base de datos en Supabase</h2>
+<ol>
+<li>Crea un proyecto en <a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a>. Guarda la contraseña de la base de datos.</li>
+<li>En la carpeta del repo, enlaza el proyecto y aplica las migraciones (son 65 y crean todas las tablas, permisos y tareas programadas):</li>
+</ol>
+<pre><code class="language-bash">supabase login
+supabase link --project-ref TU-PROJECT-REF
+supabase db push --dry-run
+supabase db push
+</code></pre>
+<p><code>--dry-run</code> te muestra qué va a aplicar sin tocar nada. El <code>project-ref</code> está en la URL de tu proyecto (<code>https://supabase.com/dashboard/project/&lt;project-ref&gt;</code>).</p>
+<ol>
+<li>En <strong>Authentication → Sign In / Providers</strong>, apaga <strong>Allow new users to sign up</strong>: solo entra quien crea el CEO o un director.</li>
+<li>En <strong>Project Settings → API Keys</strong> copia la <strong>Project URL</strong>, la clave <strong>publishable</strong> (<code>sb_publishable_…</code>) y la <strong>secret</strong> (<code>sb_secret_…</code>).</li>
+</ol>
+<h2>3. Variables de entorno</h2>
+<p>Copia <code>.env.example</code> como <code>.env.local</code> para probar en tu computadora. En producción van en Vercel → <strong>Settings → Environment Variables</strong>.</p>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Obligatoria</th>
+<th>Para qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NEXT_PUBLIC_SUPABASE_URL</code></td>
+<td>Sí</td>
+<td>Dirección de Supabase. Tiene que estar <strong>al compilar</strong>: si la agregas después, vuelve a desplegar.</td>
+</tr>
+<tr>
+<td><code>NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY</code></td>
+<td>Sí</td>
+<td>Clave pública, solo para iniciar sesión.</td>
+</tr>
+<tr>
+<td><code>SUPABASE_SECRET_KEY</code></td>
+<td>Sí</td>
+<td>Clave secreta. Da acceso total: nunca la compartas.</td>
+</tr>
+<tr>
+<td><code>CLAVE_CIFRADO</code></td>
+<td>Sí</td>
+<td>Cifra el token de GHL y las claves de Fathom. Genérala con <code>openssl rand -base64 32</code> y guárdala en tu gestor de contraseñas: si cambia, hay que volver a pegar esos tokens.</td>
+</tr>
+<tr>
+<td><code>RESEND_API_KEY</code></td>
+<td>Para emails</td>
+<td>Clave de Resend con permiso de envío.</td>
+</tr>
+<tr>
+<td><code>APP_URL</code></td>
+<td>Para emails</td>
+<td>La dirección pública de la app, para los enlaces de los emails.</td>
+</tr>
+<tr>
+<td><code>EMAIL_REMITENTE</code></td>
+<td>No</td>
+<td>Remitente, por ejemplo <code>Tu Marca &lt;no-reply@tudominio.com&gt;</code>.</td>
+</tr>
+<tr>
+<td><code>ANTHROPIC_API_KEY</code></td>
+<td>No</td>
+<td>Análisis de llamadas. Sin ella, la app funciona y avisa en amarillo.</td>
+</tr>
+<tr>
+<td><code>DEEPGRAM_API_KEY</code></td>
+<td>No</td>
+<td>Transcripción de llamadas.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>4. Prepara el proyecto y crea tu equipo</h2>
+<p>Los scripts simulan primero y solo hacen cambios con <code>--confirmar</code>. Crea un archivo <code>.env.produccion</code> (fuera de GitHub) con las variables de Supabase y corre:</p>
+<pre><code class="language-bash">node --env-file=.env.produccion scripts/preparar-proyecto.mjs
+node --env-file=.env.produccion scripts/preparar-proyecto.mjs --confirmar
+</code></pre>
+<p>Eso crea el proyecto con sus pipelines, columnas y productos (los defines en <code>scripts/proyecto-base.json</code>: cámbialos antes por los de tu cliente).</p>
+<p>Después arma un CSV con el equipo, por ejemplo <code>equipo.csv</code>:</p>
+<pre><code class="language-csv">nombre,email,rol,proyecto,admin
+Ana Pérez,ana@tuempresa.com,ceo,Forja,
+Luis Gómez,luis@tuempresa.com,director,Forja,si
+Sofía Ruiz,sofia@tuempresa.com,closer,Forja,
+</code></pre>
+<pre><code class="language-bash">node --env-file=.env.produccion scripts/crear-usuarios.mjs equipo.csv
+node --env-file=.env.produccion scripts/crear-usuarios.mjs equipo.csv --confirmar
+</code></pre>
+<p>Las contraseñas temporales quedan en <code>scripts/salida/</code> (no salen en pantalla). Mándalas a cada persona y <strong>borra ese archivo</strong>. Al entrar por primera vez, cada uno hace su onboarding.</p>
+<h2>5. Pruébalo en tu computadora (opcional)</h2>
+<pre><code class="language-bash">npm ci
+npm run dev
+</code></pre>
+<p>Abre <code>http://localhost:3000</code> y entra con tu usuario. Para correr las pruebas: <code>npm test</code>.</p>
+<h2>6. Publícalo en Vercel</h2>
+<ol>
+<li>En <a href="https://vercel.com" target="_blank" rel="noopener">vercel.com</a> → <strong>Add New → Project</strong> e importa tu repo.</li>
+<li>Carga las variables del paso 3 (las <code>NEXT_PUBLIC_</code> también).</li>
+<li><strong>Deploy</strong>. Cuando termine, pon la URL en <code>APP_URL</code> y vuelve a desplegar (<strong>Deployments → Redeploy</strong>).</li>
+<li>Si tienes dominio, agrégalo en <strong>Settings → Domains</strong> (por ejemplo <code>dashboard.tuempresa.com</code>).</li>
+</ol>
+<h2>7. Conecta GoHighLevel (opcional)</h2>
+<ol>
+<li>En GHL → <strong>Settings → Private Integrations</strong>, crea una integración con todos los permisos y copia el token. Copia también el <strong>Location ID</strong>.</li>
+<li>En el dashboard → <strong>Administración → Integraciones GHL</strong>, pega los dos y pulsa <strong>Probar conexión</strong>. El token se guarda cifrado y no se vuelve a mostrar.</li>
+<li><strong>Administración → Entradas</strong>: crea una Entrada por cada web o formulario. Cada una tiene su dirección secreta, su pipeline y qué hacer en GHL (campos, etiquetas, oportunidades).</li>
+</ol>
+<p>La guía completa está en <code>docs/GUIA-GHL.md</code> y el manual para conectar una landing en <code>Team/Template-landing.md</code>. Si usas Claude Code, la skill <code>Team/skills/conectar-web-al-dashboard</code> lo hace contigo.</p>
+<h2>8. Llamadas con IA (opcional)</h2>
+<ul>
+<li><strong>Fathom de cada closer</strong>: Agendas → Llamadas → Grabaciones → Cuentas → Añadir cuenta (su API key de Fathom) → Probar → Sincronizar.</li>
+<li><strong>Contexto de la IA</strong>: Agendas → Análisis → Configurar IA. Ahí escribes qué vende el negocio, a quién y cómo, para que el análisis sea útil.</li>
+</ul>
+<h2>Seguridad</h2>
+<ul>
+<li>Registro abierto <strong>apagado</strong> en Supabase: nadie se crea una cuenta solo.</li>
+<li>Nunca compartas <code>SUPABASE_SECRET_KEY</code>, <code>CLAVE_CIFRADO</code>, el token de GHL ni la clave del proyecto (<code>x-forja-secreto</code>).</li>
+<li>Las direcciones de las Entradas son secretas. Si una se filtra, usa <strong>Cambiar la dirección</strong> en su tarjeta.</li>
+<li>Ya viene hecho: RLS en todas las tablas, permisos por rol, límite de intentos en el login y en los webhooks, claves cifradas y nunca en el navegador, y CSV protegidos contra fórmulas.</li>
+</ul>
+<h2>Errores frecuentes</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Síntoma</th>
+<th>Qué mirar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>La web da error al entrar</td>
+<td>Vercel → Deployments → Logs. Casi siempre es una variable mal copiada.</td>
+</tr>
+<tr>
+<td>«Email o contraseña incorrectos» con la buena</td>
+<td>Que el usuario exista. Un administrador le pone otra en su ficha → Acceso.</td>
+</tr>
+<tr>
+<td>No llegan emails</td>
+<td><code>RESEND_API_KEY</code> en Vercel y el dominio «Verified» en Resend. Cada envío aparece en Resend → Logs.</td>
+</tr>
+<tr>
+<td>Llamadas «En cola» que no avanzan</td>
+<td><code>ANTHROPIC_API_KEY</code> (y <code>DEEPGRAM_API_KEY</code>) en Vercel; después «Analizar pendientes».</td>
+</tr>
+<tr>
+<td>«Falta la variable CLAVE_CIFRADO»</td>
+<td>Agrégala y Redeploy. Si la cambiaste, vuelve a pegar el token de GHL.</td>
+</tr>
+<tr>
+<td>No se suben PDF ni CSV</td>
+<td><code>NEXT_PUBLIC_SUPABASE_URL</code> tiene que estar al compilar: revísala y Redeploy.</td>
+</tr>
+<tr>
+<td><code>supabase db push</code> falla</td>
+<td>Corre <code>supabase link</code> otra vez y revisa la contraseña de la base de datos.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Cómo adaptarlo a tu cliente</h2>
+<ul>
+<li><strong>Logos</strong>: <code>public/marca/</code> (<code>forja-marca.png</code> es el favicon y el logo del menú). Lo más simple: reemplázalos con el mismo nombre de archivo (se usan en el menú, el login, la bienvenida, el onboarding y los emails).</li>
+<li><strong>Colores</strong>: los tokens de <code>src/app/globals.css</code> (<code>--primario</code>, <code>--oro</code> y el resto), en modo claro y oscuro. Todo el detalle está en <code>docs/manual-branding.md</code>.</li>
+<li><strong>Pipelines, columnas y productos</strong>: <code>scripts/proyecto-base.json</code>, antes de correr <code>preparar-proyecto.mjs</code>.</li>
+<li><strong>Textos de España a Latinoamérica</strong>: están en las páginas de <code>src/app/(panel)/</code>. Pídele a Claude Code: «pasa los textos visibles de la app a español neutro con tú, sin tocar nombres de variables».</li>
+<li><strong>Remitente de los emails</strong>: <code>EMAIL_REMITENTE</code> en Vercel.</li>
+<li><strong>Un dashboard por cliente</strong>: un repo, un proyecto de Supabase y un proyecto de Vercel por cliente. No mezcles datos de dos negocios en la misma base.</li>
+</ul>
+<blockquote>
+<p>¿Te trabaste? Pregúntale a <strong>Maestro</strong> (en el menú, <a href="/maestro">/maestro</a>) con el mensaje de error exacto.</p>
+</blockquote>, dashboard-de-ventas, 1,3 MB y dd650f52 -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard de Ventas | Sistemas | Forja IA</title>
+<meta name="description" content="Un panel para dirigir la parte comercial de tu negocio: CRM con pipelines, equipo de callers y closers, reparto de leads, ventas, comisiones y pagos. Opcional: análisis de llamadas con IA y conexión con GoHighLevel.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../web/base.css?v=dd650f52">
+<link rel="stylesheet" href="../web/tema.css?v=dd650f52">
+<link rel="stylesheet" href="../web/forja.css?v=dd650f52">
+<script src="../web/tema.js?v=dd650f52"></script>
+<link rel="icon" href="../web/favicon.svg?v=dd650f52" type="image/svg+xml">
+</head>
+<body class="fj-app" data-seccion="sistemas" data-raiz="/">
+<script src="../web/guias-web.js?v=dd650f52"></script>
+<script src="../web/comun.js?v=dd650f52"></script>
+<main class="fj-main ancho fj-sis">
+  <nav class="fj-sis-miga" aria-label="Ruta"><a href="/sistemas">Sistemas</a> <span aria-hidden="true">/</span> <span>Dashboard de Ventas</span></nav>
+  <section class="fj-card fj-sis-cab">
+    <span class="fj-eyebrow">Sistema listo para replicar</span>
+    <h1>Dashboard de Ventas</h1>
+    <p>Un panel para dirigir la parte comercial de tu negocio: CRM con pipelines, equipo de callers y closers, reparto de leads, ventas, comisiones y pagos. Opcional: análisis de llamadas con IA y conexión con GoHighLevel.</p>
+    <div class="fj-sis-ficha"><span class="nivel">INTERMEDIO</span><span>WEB · SUPABASE + VERCEL</span><span>45–60 min</span><span>Next.js</span><span>Supabase</span><span>Vercel</span><span>Claude API</span></div>
+    <div class="fj-sis-bajar">
+      <a class="fj-btn fj-btn-primario" href="/descargas/dashboard-de-ventas.zip" download="dashboard-de-ventas.zip" id="si-zip">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Descargar el sistema (ZIP · 1,3 MB)
+      </a>
+      <span>El código completo, ya adaptado. Lo subes a tu GitHub en el paso 1.</span>
+    </div>
+  </section>
+  <section class="fj-card fj-sis-req">
+    <h2>Antes de empezar</h2>
+    <ul><li>Cuenta en GitHub</li><li>Cuenta en Supabase y su CLI en tu computadora</li><li>Cuenta en Vercel</li><li>Node.js 20 o superior</li><li>Cuenta en Resend con dominio verificado (recomendada: emails)</li><li>API key de Anthropic y de Deepgram (opcional: análisis de llamadas)</li><li>GoHighLevel (opcional)</li></ul>
+  </section>
+  <article class="fj-card fj-sis-guia">
+<h2>Qué es</h2>
+<p>Dashboard de Ventas es la app web de un equipo comercial (Next.js + Supabase). Reúne en un solo lugar lo que hoy suele estar repartido en planillas, GoHighLevel y WhatsApp:</p>
+<ul>
+<li><strong>CRM con pipelines</strong>: los leads entran por formularios, CSV o GoHighLevel y se reparten solos entre el equipo.</li>
+<li><strong>Roles</strong>: CEO, director, closer y caller. Cada uno ve solo lo suyo (permisos por rol, persona y pipeline).</li>
+<li><strong>Ventas, KPIs y finanzas</strong>: ventas, comisiones, pagos, ranking del equipo, reportes diarios y objetivos.</li>
+<li><strong>Llamadas con IA (opcional)</strong>: transcribe las llamadas (Fathom, GHL o Deepgram) y Claude las analiza: objeciones, puntaje y qué mejorar.</li>
+<li><strong>GoHighLevel (opcional)</strong>: escribe contactos, etiquetas y oportunidades en GHL y lee de ahí citas, leads y grabaciones cada minuto.</li>
+</ul>
+<p>Lo que vendes: el tablero de mando de un equipo de ventas (infoproductores, agencias, high ticket) con el dueño viendo cifras reales y no capturas de WhatsApp.</p>
+<blockquote>
+<p>La app está en español de España (textos como «pulsa» o «vale»). Más abajo te digo dónde cambiarlo si tu cliente es de Latinoamérica.</p>
+</blockquote>
+<h2>Qué necesitas</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Cuenta</th>
+<th>¿Obligatoria?</th>
+<th>Para qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GitHub</strong></td>
+<td>Sí</td>
+<td>Vercel publica desde tu repo.</td>
+</tr>
+<tr>
+<td><strong>Supabase</strong></td>
+<td>Sí</td>
+<td>Base de datos, login y el programador (lecturas de GHL cada minuto, email diario).</td>
+</tr>
+<tr>
+<td><strong>Vercel</strong></td>
+<td>Sí</td>
+<td>La web. Cada push a <code>main</code> se publica solo.</td>
+</tr>
+<tr>
+<td><strong>Resend</strong></td>
+<td>Recomendada</td>
+<td>Emails: enlace mágico, avisos y el email diario. Necesita un dominio verificado.</td>
+</tr>
+<tr>
+<td><strong>Anthropic</strong></td>
+<td>Opcional</td>
+<td>Analizar llamadas, coach y puntaje de leads. Pago por uso.</td>
+</tr>
+<tr>
+<td><strong>Deepgram</strong></td>
+<td>Opcional</td>
+<td>Transcribir las llamadas que GHL no transcribió.</td>
+</tr>
+<tr>
+<td><strong>GoHighLevel</strong></td>
+<td>Opcional</td>
+<td>Si el equipo ya trabaja en GHL.</td>
+</tr>
+</tbody>
+</table></div>
+<p>En tu computadora: <strong>Node.js 20 o superior</strong>, <strong>git</strong> y la <strong>CLI de Supabase</strong> (<code>brew install supabase/tap/supabase</code> en Mac, <code>scoop install supabase</code> en Windows).</p>
+<h2>1. Descarga y súbelo a tu GitHub</h2>
+<ol>
+<li>Descarga el ZIP con el botón de arriba de esta guía y descomprímelo.</li>
+<li>En GitHub, crea un repositorio nuevo <strong>privado</strong> y vacío (sin README), por ejemplo <code>dashboard-ventas</code>.</li>
+<li>Abre una terminal dentro de la carpeta descomprimida y corre:</li>
+</ol>
+<pre><code class="language-bash">git init
+git add .
+git commit -m &quot;Dashboard de ventas&quot;
+git branch -M main
+git remote add origin https://github.com/TU-USUARIO/dashboard-ventas.git
+git push -u origin main
+</code></pre>
+<blockquote>
+<p>Nunca subas <code>.env.local</code> ni <code>.env.produccion</code>. El <code>.gitignore</code> ya los excluye.</p>
+</blockquote>
+<h2>2. Crea la base de datos en Supabase</h2>
+<ol>
+<li>Crea un proyecto en <a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a>. Guarda la contraseña de la base de datos.</li>
+<li>En la carpeta del repo, enlaza el proyecto y aplica las migraciones (son 65 y crean todas las tablas, permisos y tareas programadas):</li>
+</ol>
+<pre><code class="language-bash">supabase login
+supabase link --project-ref TU-PROJECT-REF
+supabase db push --dry-run
+supabase db push
+</code></pre>
+<p><code>--dry-run</code> te muestra qué va a aplicar sin tocar nada. El <code>project-ref</code> está en la URL de tu proyecto (<code>https://supabase.com/dashboard/project/&lt;project-ref&gt;</code>).</p>
+<ol>
+<li>En <strong>Authentication → Sign In / Providers</strong>, apaga <strong>Allow new users to sign up</strong>: solo entra quien crea el CEO o un director.</li>
+<li>En <strong>Project Settings → API Keys</strong> copia la <strong>Project URL</strong>, la clave <strong>publishable</strong> (<code>sb_publishable_…</code>) y la <strong>secret</strong> (<code>sb_secret_…</code>).</li>
+</ol>
+<h2>3. Variables de entorno</h2>
+<p>Copia <code>.env.example</code> como <code>.env.local</code> para probar en tu computadora. En producción van en Vercel → <strong>Settings → Environment Variables</strong>.</p>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Obligatoria</th>
+<th>Para qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NEXT_PUBLIC_SUPABASE_URL</code></td>
+<td>Sí</td>
+<td>Dirección de Supabase. Tiene que estar <strong>al compilar</strong>: si la agregas después, vuelve a desplegar.</td>
+</tr>
+<tr>
+<td><code>NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY</code></td>
+<td>Sí</td>
+<td>Clave pública, solo para iniciar sesión.</td>
+</tr>
+<tr>
+<td><code>SUPABASE_SECRET_KEY</code></td>
+<td>Sí</td>
+<td>Clave secreta. Da acceso total: nunca la compartas.</td>
+</tr>
+<tr>
+<td><code>CLAVE_CIFRADO</code></td>
+<td>Sí</td>
+<td>Cifra el token de GHL y las claves de Fathom. Genérala con <code>openssl rand -base64 32</code> y guárdala en tu gestor de contraseñas: si cambia, hay que volver a pegar esos tokens.</td>
+</tr>
+<tr>
+<td><code>RESEND_API_KEY</code></td>
+<td>Para emails</td>
+<td>Clave de Resend con permiso de envío.</td>
+</tr>
+<tr>
+<td><code>APP_URL</code></td>
+<td>Para emails</td>
+<td>La dirección pública de la app, para los enlaces de los emails.</td>
+</tr>
+<tr>
+<td><code>EMAIL_REMITENTE</code></td>
+<td>No</td>
+<td>Remitente, por ejemplo <code>Tu Marca &lt;no-reply@tudominio.com&gt;</code>.</td>
+</tr>
+<tr>
+<td><code>ANTHROPIC_API_KEY</code></td>
+<td>No</td>
+<td>Análisis de llamadas. Sin ella, la app funciona y avisa en amarillo.</td>
+</tr>
+<tr>
+<td><code>DEEPGRAM_API_KEY</code></td>
+<td>No</td>
+<td>Transcripción de llamadas.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>4. Prepara el proyecto y crea tu equipo</h2>
+<p>Los scripts simulan primero y solo hacen cambios con <code>--confirmar</code>. Crea un archivo <code>.env.produccion</code> (fuera de GitHub) con las variables de Supabase y corre:</p>
+<pre><code class="language-bash">node --env-file=.env.produccion scripts/preparar-proyecto.mjs
+node --env-file=.env.produccion scripts/preparar-proyecto.mjs --confirmar
+</code></pre>
+<p>Eso crea el proyecto con sus pipelines, columnas y productos (los defines en <code>scripts/proyecto-base.json</code>: cámbialos antes por los de tu cliente).</p>
+<p>Después arma un CSV con el equipo, por ejemplo <code>equipo.csv</code>:</p>
+<pre><code class="language-csv">nombre,email,rol,proyecto,admin
+Ana Pérez,ana@tuempresa.com,ceo,Forja,
+Luis Gómez,luis@tuempresa.com,director,Forja,si
+Sofía Ruiz,sofia@tuempresa.com,closer,Forja,
+</code></pre>
+<pre><code class="language-bash">node --env-file=.env.produccion scripts/crear-usuarios.mjs equipo.csv
+node --env-file=.env.produccion scripts/crear-usuarios.mjs equipo.csv --confirmar
+</code></pre>
+<p>Las contraseñas temporales quedan en <code>scripts/salida/</code> (no salen en pantalla). Mándalas a cada persona y <strong>borra ese archivo</strong>. Al entrar por primera vez, cada uno hace su onboarding.</p>
+<h2>5. Pruébalo en tu computadora (opcional)</h2>
+<pre><code class="language-bash">npm ci
+npm run dev
+</code></pre>
+<p>Abre <code>http://localhost:3000</code> y entra con tu usuario. Para correr las pruebas: <code>npm test</code>.</p>
+<h2>6. Publícalo en Vercel</h2>
+<ol>
+<li>En <a href="https://vercel.com" target="_blank" rel="noopener">vercel.com</a> → <strong>Add New → Project</strong> e importa tu repo.</li>
+<li>Carga las variables del paso 3 (las <code>NEXT_PUBLIC_</code> también).</li>
+<li><strong>Deploy</strong>. Cuando termine, pon la URL en <code>APP_URL</code> y vuelve a desplegar (<strong>Deployments → Redeploy</strong>).</li>
+<li>Si tienes dominio, agrégalo en <strong>Settings → Domains</strong> (por ejemplo <code>dashboard.tuempresa.com</code>).</li>
+</ol>
+<h2>7. Conecta GoHighLevel (opcional)</h2>
+<ol>
+<li>En GHL → <strong>Settings → Private Integrations</strong>, crea una integración con todos los permisos y copia el token. Copia también el <strong>Location ID</strong>.</li>
+<li>En el dashboard → <strong>Administración → Integraciones GHL</strong>, pega los dos y pulsa <strong>Probar conexión</strong>. El token se guarda cifrado y no se vuelve a mostrar.</li>
+<li><strong>Administración → Entradas</strong>: crea una Entrada por cada web o formulario. Cada una tiene su dirección secreta, su pipeline y qué hacer en GHL (campos, etiquetas, oportunidades).</li>
+</ol>
+<p>La guía completa está en <code>docs/GUIA-GHL.md</code> y el manual para conectar una landing en <code>Team/Template-landing.md</code>. Si usas Claude Code, la skill <code>Team/skills/conectar-web-al-dashboard</code> lo hace contigo.</p>
+<h2>8. Llamadas con IA (opcional)</h2>
+<ul>
+<li><strong>Fathom de cada closer</strong>: Agendas → Llamadas → Grabaciones → Cuentas → Añadir cuenta (su API key de Fathom) → Probar → Sincronizar.</li>
+<li><strong>Contexto de la IA</strong>: Agendas → Análisis → Configurar IA. Ahí escribes qué vende el negocio, a quién y cómo, para que el análisis sea útil.</li>
+</ul>
+<h2>Seguridad</h2>
+<ul>
+<li>Registro abierto <strong>apagado</strong> en Supabase: nadie se crea una cuenta solo.</li>
+<li>Nunca compartas <code>SUPABASE_SECRET_KEY</code>, <code>CLAVE_CIFRADO</code>, el token de GHL ni la clave del proyecto (<code>x-forja-secreto</code>).</li>
+<li>Las direcciones de las Entradas son secretas. Si una se filtra, usa <strong>Cambiar la dirección</strong> en su tarjeta.</li>
+<li>Ya viene hecho: RLS en todas las tablas, permisos por rol, límite de intentos en el login y en los webhooks, claves cifradas y nunca en el navegador, y CSV protegidos contra fórmulas.</li>
+</ul>
+<h2>Errores frecuentes</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Síntoma</th>
+<th>Qué mirar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>La web da error al entrar</td>
+<td>Vercel → Deployments → Logs. Casi siempre es una variable mal copiada.</td>
+</tr>
+<tr>
+<td>«Email o contraseña incorrectos» con la buena</td>
+<td>Que el usuario exista. Un administrador le pone otra en su ficha → Acceso.</td>
+</tr>
+<tr>
+<td>No llegan emails</td>
+<td><code>RESEND_API_KEY</code> en Vercel y el dominio «Verified» en Resend. Cada envío aparece en Resend → Logs.</td>
+</tr>
+<tr>
+<td>Llamadas «En cola» que no avanzan</td>
+<td><code>ANTHROPIC_API_KEY</code> (y <code>DEEPGRAM_API_KEY</code>) en Vercel; después «Analizar pendientes».</td>
+</tr>
+<tr>
+<td>«Falta la variable CLAVE_CIFRADO»</td>
+<td>Agrégala y Redeploy. Si la cambiaste, vuelve a pegar el token de GHL.</td>
+</tr>
+<tr>
+<td>No se suben PDF ni CSV</td>
+<td><code>NEXT_PUBLIC_SUPABASE_URL</code> tiene que estar al compilar: revísala y Redeploy.</td>
+</tr>
+<tr>
+<td><code>supabase db push</code> falla</td>
+<td>Corre <code>supabase link</code> otra vez y revisa la contraseña de la base de datos.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Cómo adaptarlo a tu cliente</h2>
+<ul>
+<li><strong>Logos</strong>: <code>public/marca/</code> (<code>forja-marca.png</code> es el favicon y el logo del menú). Lo más simple: reemplázalos con el mismo nombre de archivo (se usan en el menú, el login, la bienvenida, el onboarding y los emails).</li>
+<li><strong>Colores</strong>: los tokens de <code>src/app/globals.css</code> (<code>--primario</code>, <code>--oro</code> y el resto), en modo claro y oscuro. Todo el detalle está en <code>docs/manual-branding.md</code>.</li>
+<li><strong>Pipelines, columnas y productos</strong>: <code>scripts/proyecto-base.json</code>, antes de correr <code>preparar-proyecto.mjs</code>.</li>
+<li><strong>Textos de España a Latinoamérica</strong>: están en las páginas de <code>src/app/(panel)/</code>. Pídele a Claude Code: «pasa los textos visibles de la app a español neutro con tú, sin tocar nombres de variables».</li>
+<li><strong>Remitente de los emails</strong>: <code>EMAIL_REMITENTE</code> en Vercel.</li>
+<li><strong>Un dashboard por cliente</strong>: un repo, un proyecto de Supabase y un proyecto de Vercel por cliente. No mezcles datos de dos negocios en la misma base.</li>
+</ul>
+<blockquote>
+<p>¿Te trabaste? Pregúntale a <strong>Maestro</strong> (en el menú, <a href="/maestro">/maestro</a>) con el mensaje de error exacto.</p>
+</blockquote>
+  </article>
+</main>
+<script src="../web/shell.js?v=dd650f52"></script>
+<script>
+// Botón «Copiar» en cada bloque de código
+document.querySelectorAll(".fj-sis-guia pre").forEach(function (pre) {
+  var b = document.createElement("button");
+  b.type = "button"; b.className = "fj-sis-copiar"; b.textContent = "Copiar";
+  b.addEventListener("click", function () {
+    var t = pre.querySelector("code") ? pre.querySelector("code").innerText : pre.innerText;
+    navigator.clipboard.writeText(t).then(function () { b.textContent = "Copiado"; setTimeout(function () { b.textContent = "Copiar"; }, 1500); });
+  });
+  pre.appendChild(b);
+});
+</script>
+</body>
+</html>

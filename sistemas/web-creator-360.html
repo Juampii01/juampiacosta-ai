@@ -1,0 +1,964 @@
+<!doctype html>
+<!-- Plantilla de la guía de cada sistema. build.py la copia a ../sistemas/<slug>.html con Web Creator 360, Encuentra negocios sin web, Claude les escribe una web y les mandas el email para cobrarla. Un sistema completo para vender webs a negocios., <span class="nivel">AVANZADO</span><span>WEB · SUPABASE + RENDER</span><span>90–120 min</span><span>Node.js</span><span>Express</span><span>Supabase</span><span>Claude API</span><span>Render</span>, <li>Cuenta en GitHub</li><li>Cuenta en Supabase</li><li>Cuenta en Render (plan Starter, de pago)</li><li>API key de Anthropic</li><li>API key de Google Places (para el flujo Google Maps)</li><li>Cuenta en Resend con dominio verificado (para el flujo Google Maps)</li><li>Cuenta en Instantly (para la campaña de LLCs)</li><li>Vercel, Stripe y Telegram (opcionales)</li>, <h2>Qué es</h2>
+<p>Web Creator 360 es un panel web (Node.js + Express + Supabase) para conseguir clientes que necesitan una web. Tiene dos flujos:</p>
+<ul>
+<li><strong>Google Maps</strong>: buscas negocios con Google Places, Claude lee su información y les escribe una web, se publica (en Vercel o como preview propia), se les manda un email con Resend y pueden pagar la web con Stripe ($497 por defecto).</li>
+<li><strong>LLCs nuevas (Connecticut)</strong>: baja empresas recién registradas del registro público de Connecticut (data.ct.gov), o las importas por CSV, y las manda a una campaña de <strong>Instantly</strong>, que es quien envía los emails. Opcionalmente, a cada lead se le crea una web demo antes del email.</li>
+</ul>
+<p>Lo que vendes: webs listas para negocios locales de EE. UU., con prospección y envío casi automáticos.</p>
+<blockquote>
+<p>Viene <strong>apagado y en modo prueba</strong> a propósito: el panel está bloqueado hasta que pongas usuario y contraseña, y con <code>OUTREACH_DRY_RUN=true</code> no sale ningún email real.</p>
+</blockquote>
+<h2>Qué necesitas</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Cuenta</th>
+<th>¿Obligatoria?</th>
+<th>Para qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GitHub</strong></td>
+<td>Sí</td>
+<td>Render despliega desde tu repo.</td>
+</tr>
+<tr>
+<td><strong>Supabase</strong></td>
+<td>Sí</td>
+<td>Base de datos.</td>
+</tr>
+<tr>
+<td><strong>Render</strong></td>
+<td>Sí</td>
+<td>Hosting. El <code>render.yaml</code> usa el plan <code>starter</code> (de pago) en los dos servicios.</td>
+</tr>
+<tr>
+<td><strong>Anthropic</strong></td>
+<td>Sí para crear webs</td>
+<td>Claude Haiku lee el perfil del negocio y Claude Sonnet escribe la web. El código estima unos $0.25–0.30 por web completa.</td>
+</tr>
+<tr>
+<td><strong>Google Places</strong></td>
+<td>Para el flujo Google Maps</td>
+<td>Búsqueda de negocios. No hace falta para LLCs.</td>
+</tr>
+<tr>
+<td><strong>Resend</strong></td>
+<td>Para el flujo Google Maps</td>
+<td>Envío de emails y seguimientos. La campaña de LLCs no lo usa.</td>
+</tr>
+<tr>
+<td><strong>Instantly</strong></td>
+<td>Para la campaña de LLCs</td>
+<td>Envía los emails de la campaña (API v2, sirve cualquier plan, incluida la prueba gratis).</td>
+</tr>
+<tr>
+<td><strong>Vercel</strong></td>
+<td>Opcional</td>
+<td>Publica las webs. Sin Vercel queda una preview en <code>TU_BASE_URL/preview/&lt;slug&gt;</code>. Obligatorio para las webs demo de LLCs.</td>
+</tr>
+<tr>
+<td><strong>Stripe</strong></td>
+<td>Opcional</td>
+<td>Cobro por web (checkout + webhook).</td>
+</tr>
+<tr>
+<td><strong>Telegram</strong></td>
+<td>Opcional</td>
+<td>Avisos al celular cuando un lead pide llamada o responde.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Para probarlo en tu computadora necesitas <strong>Node.js 20 o superior</strong>. Si vas a correr los tests (<code>npm test</code>), usa <strong>Node.js 24</strong>.</p>
+<h2>1. Descarga y súbelo a tu GitHub</h2>
+<ol>
+<li>Descarga el ZIP con el botón de arriba de esta guía y descomprímelo.</li>
+<li>En GitHub, crea un repositorio nuevo <strong>privado</strong> y vacío (sin README), por ejemplo <code>web-creator-360</code>.</li>
+<li>Abre una terminal dentro de la carpeta descomprimida y corre:</li>
+</ol>
+<pre><code class="language-bash">git init
+git add .
+git commit -m &quot;Web Creator 360&quot;
+git branch -M main
+git remote add origin https://github.com/TU-USUARIO/web-creator-360.git
+git push -u origin main
+</code></pre>
+<p>Los comandos son iguales en macOS, Linux y Windows (PowerShell). Si prefieres no usar la terminal, <a href="https://desktop.github.com" target="_blank" rel="noopener">GitHub Desktop</a> también sirve: <strong>File → Add local repository</strong>, elige la carpeta y publícala como privada.</p>
+<blockquote>
+<p>Nunca subas el archivo <code>.env</code> ni CSV con leads. El <code>.gitignore</code> ya los excluye: no lo fuerces. Antes del commit puedes revisar con <code>git status</code> que <code>.env</code> no aparezca.</p>
+</blockquote>
+<h2>2. Crea la base de datos en Supabase</h2>
+<ol>
+<li>Crea un proyecto en <a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a>.</li>
+<li>Ve a <strong>SQL Editor</strong>. Vas a correr 3 archivos del repo <strong>en este orden</strong>: abres el archivo, copias todo, lo pegas y aprietas <strong>Run</strong>.</li>
+<li>Primero <code>src/db/schema.sql</code> (tablas base).</li>
+<li>Después <code>src/db/schema-saas.sql</code>.</li>
+<li>Por último <code>src/db/schema-new-business-leads.sql</code> (leads de LLCs, supresiones, autopilot).</li>
+<li>Ve a <strong>Authentication → Users → Add user</strong>, crea tu usuario y copia su <strong>User UID</strong>: es tu <code>NEW_LEADS_OWNER_USER_ID</code>.</li>
+<li>En <strong>Project Settings → API</strong> copia la <strong>Project URL</strong> (<code>SUPABASE_URL</code>) y la clave <code>service_role</code> (<code>SUPABASE_SERVICE_KEY</code>).</li>
+</ol>
+<p>Los 3 SQL se pueden correr más de una vez sin romper nada. Si actualizas el repo, vuelve a correr el tercero.</p>
+<h2>3. Variables de entorno</h2>
+<p>Leyenda: <strong>W</strong> = servicio web (el panel) · <strong>C</strong> = servicio campaign (solo para la campaña de LLCs).</p>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Obligatoria</th>
+<th>Para qué</th>
+<th>Dónde se saca</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DASHBOARD_USER</code></td>
+<td>Sí (W)</td>
+<td>Usuario del login del panel. Sin él, el panel responde 503.</td>
+<td>Lo inventas tú.</td>
+</tr>
+<tr>
+<td><code>DASHBOARD_PASSWORD</code></td>
+<td>Sí (W)</td>
+<td>Contraseña del panel.</td>
+<td>La inventas tú: larga y única.</td>
+</tr>
+<tr>
+<td><code>SUPABASE_URL</code></td>
+<td>Sí (W, C)</td>
+<td>URL del proyecto.</td>
+<td>Supabase → Project Settings → API → Project URL.</td>
+</tr>
+<tr>
+<td><code>SUPABASE_SERVICE_KEY</code></td>
+<td>Sí (W, C)</td>
+<td>Clave de servidor. Secreta.</td>
+<td>Supabase → Project Settings → API → <code>service_role</code>.</td>
+</tr>
+<tr>
+<td><code>NEW_LEADS_OWNER_USER_ID</code></td>
+<td>Sí (C) · Sí para LLCs (W)</td>
+<td>UUID de tu usuario; cada lead lo lleva. Sin él, el servicio campaign no arranca.</td>
+<td>Supabase → Authentication → Users → User UID.</td>
+</tr>
+<tr>
+<td><code>BASE_URL</code></td>
+<td>Sí (W)</td>
+<td>URL pública del panel: links de preview, checkout y Stripe.</td>
+<td>La URL <code>https://...onrender.com</code> de tu servicio web, sin <code>/</code> al final.</td>
+</tr>
+<tr>
+<td><code>ANTHROPIC_API_KEY</code></td>
+<td>Para crear webs (W; C si <code>LEAD_DEMOS=true</code>)</td>
+<td>Claude escribe y analiza.</td>
+<td>console.anthropic.com → API Keys → Create Key.</td>
+</tr>
+<tr>
+<td><code>GOOGLE_PLACES_API_KEY</code></td>
+<td>Para Google Maps (W)</td>
+<td>Búsqueda de negocios.</td>
+<td>Google Cloud Console → habilita Places API → Credentials → Create API key.</td>
+</tr>
+<tr>
+<td><code>RESEND_API_KEY</code></td>
+<td>Para Google Maps (W)</td>
+<td>Envío de emails.</td>
+<td>resend.com → API Keys.</td>
+</tr>
+<tr>
+<td><code>RESEND_FROM_EMAIL</code></td>
+<td>Con Resend (W)</td>
+<td>Remitente. Tiene que ser de un dominio verificado en Resend.</td>
+<td>Resend → Domains.</td>
+</tr>
+<tr>
+<td><code>SENDER_NAME</code></td>
+<td>No (W)</td>
+<td>Tu nombre en la firma. Por defecto <code>Tu Nombre</code>.</td>
+<td>Lo escribes tú.</td>
+</tr>
+<tr>
+<td><code>BRAND_NAME</code></td>
+<td>No (W, C)</td>
+<td>Tu marca (firma y texto de consentimiento de llamada). Por defecto <code>Tu Marca</code>.</td>
+<td>Lo escribes tú.</td>
+</tr>
+<tr>
+<td><code>POSTAL_ADDRESS</code></td>
+<td>Sí antes de enviar emails reales</td>
+<td>Dirección postal al pie del email (la exige la ley CAN-SPAM de EE. UU.).</td>
+<td>Tu dirección física o casilla postal (calle, ciudad, estado, ZIP).</td>
+</tr>
+<tr>
+<td><code>OUTREACH_DRY_RUN</code></td>
+<td>No (W, C)</td>
+<td><code>true</code> = modo prueba, no sale nada. Viene en <code>true</code>.</td>
+<td>Lo pasas a <code>false</code> cuando probaste todo.</td>
+</tr>
+<tr>
+<td><code>INSTANTLY_API_KEY</code></td>
+<td>Para la campaña (W, C)</td>
+<td>Clave API v2 con scope "leads".</td>
+<td>Instantly → Settings → Integrations → API keys.</td>
+</tr>
+<tr>
+<td><code>INSTANTLY_CAMPAIGN_ID</code></td>
+<td>Para la campaña (W, C)</td>
+<td>ID (UUID) de la campaña.</td>
+<td>Instantly → abre la campaña → copia el ID de la URL.</td>
+</tr>
+<tr>
+<td><code>CAMPAIGN_PUBLIC_URL</code></td>
+<td>Para la campaña (W, C)</td>
+<td>URL <code>https://</code> del servicio campaign. Los links de los emails apuntan ahí. No puede ser localhost.</td>
+<td>La URL de tu servicio <code>web-creator-360-campaign</code> en Render.</td>
+</tr>
+<tr>
+<td><code>LEAD_DEMOS</code></td>
+<td>No (W, C)</td>
+<td><code>true</code> = a cada lead se le crea una web demo antes del email. Necesita Anthropic + Vercel.</td>
+<td>Viene en <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>VERCEL_TOKEN</code></td>
+<td>Con <code>LEAD_DEMOS=true</code></td>
+<td>Publica webs en Vercel.</td>
+<td>vercel.com/account/tokens.</td>
+</tr>
+<tr>
+<td><code>VERCEL_SCOPE</code></td>
+<td>No</td>
+<td>Equipo de Vercel. Vacío = cuenta personal.</td>
+<td>El slug de tu team en Vercel.</td>
+</tr>
+<tr>
+<td><code>STRIPE_SECRET_KEY</code></td>
+<td>No (W)</td>
+<td>Cobros.</td>
+<td>Stripe → Developers → API keys.</td>
+</tr>
+<tr>
+<td><code>STRIPE_WEBHOOK_SECRET</code></td>
+<td>Con Stripe</td>
+<td>Verifica el webhook <code>/webhooks/stripe</code>.</td>
+<td>Stripe → Developers → Webhooks → endpoint <code>TU_BASE_URL/webhooks/stripe</code> → Signing secret (<code>whsec_...</code>).</td>
+</tr>
+<tr>
+<td><code>STRIPE_PRICE_AMOUNT</code></td>
+<td>No</td>
+<td>Precio en centavos. Por defecto <code>49700</code> ($497).</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>STRIPE_CURRENCY</code></td>
+<td>No</td>
+<td>Moneda. Por defecto <code>usd</code>.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>CALENDAR_URL</code></td>
+<td>No (W)</td>
+<td>Link de agenda para el botón de llamada en webs y emails de Google Maps. Sin él, el botón no aparece.</td>
+<td>Tu Calendly o similar.</td>
+</tr>
+<tr>
+<td><code>TELEGRAM_BOT_TOKEN</code></td>
+<td>No (W, C)</td>
+<td>Bot para avisos.</td>
+<td>Telegram → @BotFather → <code>/newbot</code>.</td>
+</tr>
+<tr>
+<td><code>TELEGRAM_CHAT_ID</code></td>
+<td>No (W, C)</td>
+<td>Tu chat.</td>
+<td>Mándale un mensaje al bot y corre <code>npm run telegram:setup</code> en tu computadora.</td>
+</tr>
+<tr>
+<td><code>AUTO_PIPELINE</code></td>
+<td>No (W)</td>
+<td><code>true</code> = pipeline automático de Google Maps cada 30 min. Cuesta plata.</td>
+<td>Viene apagado.</td>
+</tr>
+<tr>
+<td><code>PIPELINE_TIMEZONE</code></td>
+<td>No (W)</td>
+<td>Zona horaria del pipeline.</td>
+<td>Nombre IANA, por ejemplo <code>America/New_York</code>.</td>
+</tr>
+<tr>
+<td><code>SOCRATA_APP_TOKEN</code></td>
+<td>No</td>
+<td>Evita el límite de peticiones de data.ct.gov.</td>
+<td><code>data.ct.gov/profile/edit/developer_settings</code> (gratis).</td>
+</tr>
+<tr>
+<td><code>SAAS_MODE</code></td>
+<td>No</td>
+<td>Modo SaaS experimental. <strong>Déjalo en <code>false</code>.</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>PORT</code> y <code>NODE_ENV</code> las maneja Render: no las toques. <code>SUPABASE_ANON_KEY</code>, <code>ADMIN_EMAILS</code> y las <code>STRIPE_*_MONTHLY/ANNUAL</code> son solo para el modo SaaS: dejalas vacías.</p>
+<h2>4. Pruébalo en tu computadora (opcional)</h2>
+<p>macOS / Linux:</p>
+<pre><code class="language-bash">npm install
+cp .env.example .env
+</code></pre>
+<p>Windows (PowerShell):</p>
+<pre><code class="language-powershell">npm install
+copy .env.example .env
+</code></pre>
+<p>Completa en <code>.env</code> al menos <code>SUPABASE_URL</code>, <code>SUPABASE_SERVICE_KEY</code>, <code>NEW_LEADS_OWNER_USER_ID</code>, <code>DASHBOARD_USER</code> y <code>DASHBOARD_PASSWORD</code>. Después:</p>
+<pre><code class="language-bash">npm run dev
+</code></pre>
+<p>Abre <code>http://localhost:3001</code>. Para correr los tests: <code>npm test</code>.</p>
+<h2>5. Publícalo en Render</h2>
+<ol>
+<li>En Render: <strong>New → Blueprint</strong> → elige tu repo. Render lee el <code>render.yaml</code> y crea dos servicios.</li>
+<li><code>web-creator-360</code> es el panel completo (privado, con usuario y contraseña). Lo necesitas siempre.</li>
+<li><code>web-creator-360-campaign</code> es el servidor público de la campaña de LLCs: la página que abre cada lead desde el email y el autopilot. Solo lo necesitas si usas la campaña con Instantly.</li>
+<li>Si no vas a usar la campaña, puedes crear solo el servicio web: <strong>New → Web Service</strong>, build <code>npm install</code>, start <code>node src/index.js</code>.</li>
+<li>Render te pide las variables marcadas como secretas. En el servicio web completa al menos <code>DASHBOARD_USER</code>, <code>DASHBOARD_PASSWORD</code>, <code>SUPABASE_URL</code>, <code>SUPABASE_SERVICE_KEY</code>, <code>NEW_LEADS_OWNER_USER_ID</code>, <code>BASE_URL</code> y las claves de los servicios que uses.</li>
+<li>En el servicio campaign: <code>SUPABASE_URL</code>, <code>SUPABASE_SERVICE_KEY</code>, <code>NEW_LEADS_OWNER_USER_ID</code>, <code>INSTANTLY_API_KEY</code>, <code>INSTANTLY_CAMPAIGN_ID</code> y <code>CAMPAIGN_PUBLIC_URL</code>.</li>
+<li><code>BASE_URL</code> y <code>CAMPAIGN_PUBLIC_URL</code> las sabes recién después del primer deploy: cargalas y haz <strong>Manual Deploy</strong>.</li>
+</ol>
+<h2>6. Primer acceso</h2>
+<ol>
+<li>Abre tu <code>BASE_URL</code>. El navegador muestra un cuadro de usuario y contraseña: pon <code>DASHBOARD_USER</code> y <code>DASHBOARD_PASSWORD</code>.</li>
+<li>Comprueba que <code>TU_BASE_URL/health</code> devuelva <code>{"status":"ok"}</code>. En el servicio campaign, <code>/health</code> además muestra qué partes del autopilot están activas y qué variables faltan.</li>
+<li>El menú tiene <strong>Resumen</strong>, <strong>Prospección</strong>, <strong>Scraping</strong>, <strong>Crear webs</strong>, <strong>Enviar</strong> (flujo Google Maps), <strong>Fuentes</strong>, <strong>Leads</strong>, <strong>Envío</strong> (LLCs), <strong>Seguimiento</strong> y <strong>Pagos</strong>.</li>
+</ol>
+<h2>7. Del modo prueba a envíos reales</h2>
+<p>Con <code>OUTREACH_DRY_RUN=true</code> no sale nada: ni Instantly, ni Resend, ni Telegram. Todo se escribe en los logs de Render con <code>[dry-run]</code>.</p>
+<ol>
+<li>Importa un CSV chico en <strong>Fuentes</strong>, ve a <strong>Envío</strong>, manda un lote y busca la línea <code>[dry-run]</code> en Render → Logs.</li>
+<li>Para obtener el texto que tienes que pegar en tu campaña de Instantly, corre en tu computadora <code>npm run leads:email-template</code> (o <code>npm run leads:email-template -- --demo</code> si usas webs demo). Pega asunto y cuerpo tal cual, con las <code>{{variables}}</code>.</li>
+<li>Cuando todo funcione: completa <code>POSTAL_ADDRESS</code>, pon <code>OUTREACH_DRY_RUN=false</code> en <strong>los dos</strong> servicios y redespliega.</li>
+</ol>
+<p>El <strong>autopilot</strong> de la campaña viene encendido (20 leads por ciclo), pero solo corre en el servicio campaign y respeta el modo prueba. Revisa Connecticut todos los días a las 7:00 (Nueva York) y envía a Instantly cada 3 horas. Se prende y apaga desde la pestaña <strong>Envío</strong>, sin redeploy.</p>
+<h2>Seguridad</h2>
+<ul>
+<li><strong><code>DASHBOARD_USER</code> y <code>DASHBOARD_PASSWORD</code> siempre.</strong> La app no tiene otro login: sin ellas el panel responde 503; con una contraseña débil, cualquiera con la URL ve tus leads y puede mandar emails.</li>
+<li><strong>No actives <code>SAAS_MODE</code>.</strong> Es experimental y no separa datos entre usuarios: todas las cuentas verían los datos de todos.</li>
+<li><strong>Arranca con <code>OUTREACH_DRY_RUN=true</code></strong> y pásalo a <code>false</code> recién cuando probaste todo.</li>
+<li><strong><code>POSTAL_ADDRESS</code> antes de enviar emails reales.</strong> La ley CAN-SPAM de EE. UU. exige una dirección postal en cada email comercial.</li>
+<li><strong>Nunca subas el <code>.env</code> ni CSV de leads a GitHub.</strong></li>
+<li><strong><code>SUPABASE_SERVICE_KEY</code> es secreta</strong>: va solo en Render o en tu <code>.env</code>. Las tablas tienen RLS activado sin políticas a propósito: no agregues políticas.</li>
+<li><strong><code>AUTO_PIPELINE</code> viene apagado</strong> porque cada web consume Claude. Actívalo solo si sabes cuánto vas a gastar.</li>
+<li><code>ALLOW_NO_AUTH=true</code> es solo para desarrollo local y Render lo ignora. Nunca lo uses en un servidor.</li>
+</ul>
+<h2>Errores frecuentes</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Mensaje</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Panel bloqueado: configura DASHBOARD_USER y DASHBOARD_PASSWORD (o ALLOW_NO_AUTH=true solo en desarrollo local).</code></td>
+<td>Carga las dos variables en el servicio web y redespliega.</td>
+</tr>
+<tr>
+<td><code>Autenticación requerida</code></td>
+<td>Usuario o contraseña incorrectos. Revisa mayúsculas y espacios, o prueba en una ventana de incógnito.</td>
+</tr>
+<tr>
+<td><code>Falta NEW_LEADS_OWNER_USER_ID: sin él el servidor no sabe a qué usuario pertenecen los leads.</code></td>
+<td>Copia el User UID de Supabase → Authentication → Users y cárgalo en el servicio campaign.</td>
+</tr>
+<tr>
+<td><code>Falta NEW_LEADS_OWNER_USER_ID en tu .env (el UUID de tu usuario de Supabase)</code></td>
+<td>La misma variable, pero en el servicio web.</td>
+</tr>
+<tr>
+<td><code>SUPABASE_URL and SUPABASE_SERVICE_KEY must be set in your .env file</code></td>
+<td>Carga las dos desde Project Settings → API (la <code>service_role</code>, no la <code>anon</code>).</td>
+</tr>
+<tr>
+<td><code>...¿Has ejecutado src/db/schema-new-business-leads.sql en Supabase?</code></td>
+<td>Corre los 3 SQL en orden (paso 2). Si actualizaste el repo, vuelve a correr el tercero.</td>
+</tr>
+<tr>
+<td><code>Falta la columna demo_all: ejecuta de nuevo src/db/schema-new-business-leads.sql en Supabase</code></td>
+<td>Vuelve a correr ese SQL.</td>
+</tr>
+<tr>
+<td><code>Configuración incompleta para enviar leads a Instantly. Revisa en tu .env: ...</code></td>
+<td>Revisa la variable que nombra el mensaje. <code>INSTANTLY_CAMPAIGN_ID</code> tiene que ser un UUID y <code>CAMPAIGN_PUBLIC_URL</code> tiene que ser <code>https://</code> (no localhost).</td>
+</tr>
+<tr>
+<td><code>Instantly respondió 401: ...</code></td>
+<td>Clave mal copiada o sin scope "leads". Crea una API key v2 nueva con ese scope.</td>
+</tr>
+<tr>
+<td><code>Falta ANTHROPIC_API_KEY en tu .env (Claude escribe las webs)</code></td>
+<td>Carga <code>ANTHROPIC_API_KEY</code>.</td>
+</tr>
+<tr>
+<td><code>Falta VERCEL_TOKEN en tu .env (las webs se publican en Vercel)</code></td>
+<td>Carga <code>VERCEL_TOKEN</code> (obligatorio con <code>LEAD_DEMOS=true</code>).</td>
+</tr>
+<tr>
+<td><code>Token de Vercel inválido — crea uno en vercel.com/account/tokens</code></td>
+<td>Crea un token nuevo.</td>
+</tr>
+<tr>
+<td><code>Vercel: tu cuenta alcanzó el límite de N proyectos; ...</code></td>
+<td>Borra proyectos viejos en Vercel. Las demos de LLCs se borran solas a los 7 días.</td>
+</tr>
+<tr>
+<td><code>Business has not been scraped yet. Run scraping first.</code></td>
+<td>Pasa primero por la pestaña <strong>Scraping</strong> y después por <strong>Crear webs</strong>.</td>
+</tr>
+<tr>
+<td><code>Sin email disponible para contactar este negocio</code></td>
+<td>Ese negocio no tiene email: cárgalo a mano o elige otro.</td>
+</tr>
+<tr>
+<td><code>Ya contactado en las últimas 24 horas</code></td>
+<td>Protección contra doble envío. Espera 24 h.</td>
+</tr>
+<tr>
+<td><code>Contacto dado de baja o con rebote (lista de supresiones)</code></td>
+<td>Ese email se dio de baja o rebotó. No se le escribe más, a propósito.</td>
+</tr>
+<tr>
+<td><code>data.ct.gov respondió 429 (límite de peticiones: pon SOCRATA_APP_TOKEN)</code></td>
+<td>Crea el token gratis en data.ct.gov y cárgalo en <code>SOCRATA_APP_TOKEN</code>.</td>
+</tr>
+<tr>
+<td><code>Webhook Error: ...</code> en <code>/webhooks/stripe</code></td>
+<td>El <code>STRIPE_WEBHOOK_SECRET</code> no corresponde a ese endpoint en Stripe. Copia el Signing secret correcto.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Muchos errores muestran el detalle solo en los logs: Render → tu servicio → <strong>Logs</strong>.</p>
+<h2>Cómo adaptarlo a tu cliente</h2>
+<ul>
+<li><strong>Tu nombre, marca y dirección</strong>: variables <code>SENDER_NAME</code>, <code>BRAND_NAME</code> y <code>POSTAL_ADDRESS</code> (se leen en <code>src/lib/brand.js</code>).</li>
+<li><strong>Precio de la web</strong>: <code>STRIPE_PRICE_AMOUNT</code> (en centavos) y <code>STRIPE_CURRENCY</code>. Ojo: el texto "$497" también está escrito en <code>src/services/resend.js</code>, <code>src/prompts/generation.js</code>, algunas plantillas de <code>templates/sites/</code> y en <code>public/</code>. Si cambias el precio, busca y cambia también esos textos.</li>
+<li><strong>Cómo escribe Claude las webs</strong>: <code>src/prompts/generation.js</code> (web del flujo Google Maps) y <code>src/prompts/scraping.js</code> (cómo lee la información del negocio).</li>
+<li><strong>Plantillas de las webs demo de LLCs</strong>: <code>templates/sites/</code> (una por rubro: <code>construccion</code>, <code>limpieza</code>, <code>jardineria</code>, <code>comida</code>, <code>belleza</code>, <code>barberia</code>, <code>general</code>). Qué plantilla usa cada rubro se decide en <code>src/sitegen/templates.js</code>.</li>
+<li><strong>Email de la campaña de LLCs</strong> (el que pegas en Instantly): <code>src/prompts/newBusinessEmails.js</code>. Después corre <code>npm run leads:email-template</code> para ver el texto final.</li>
+<li><strong>Emails del flujo Google Maps y seguimientos</strong>: <code>src/services/resend.js</code>.</li>
+<li><strong>Botón de agendar llamada</strong>: <code>CALENDAR_URL</code>.</li>
+<li><strong>Horario y zona del pipeline automático</strong>: <code>PIPELINE_TIMEZONE</code>.</li>
+<li><strong>Interfaz del panel</strong>: <code>public/index.html</code> y <code>public/app.js</code>.</li>
+</ul>
+<p>Después de cambiar código, haz commit y push: Render redespliega solo desde tu repo.</p>
+<blockquote>
+<p>¿Te trabaste? Pregúntale a <strong>Maestro</strong> (en el menú, <a href="/maestro">/maestro</a>) con el mensaje de error exacto.</p>
+</blockquote>, web-creator-360, 1,8 MB y dd650f52 -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Web Creator 360 | Sistemas | Forja IA</title>
+<meta name="description" content="Encuentra negocios sin web, Claude les escribe una web y les mandas el email para cobrarla. Un sistema completo para vender webs a negocios.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../web/base.css?v=dd650f52">
+<link rel="stylesheet" href="../web/tema.css?v=dd650f52">
+<link rel="stylesheet" href="../web/forja.css?v=dd650f52">
+<script src="../web/tema.js?v=dd650f52"></script>
+<link rel="icon" href="../web/favicon.svg?v=dd650f52" type="image/svg+xml">
+</head>
+<body class="fj-app" data-seccion="sistemas" data-raiz="/">
+<script src="../web/guias-web.js?v=dd650f52"></script>
+<script src="../web/comun.js?v=dd650f52"></script>
+<main class="fj-main ancho fj-sis">
+  <nav class="fj-sis-miga" aria-label="Ruta"><a href="/sistemas">Sistemas</a> <span aria-hidden="true">/</span> <span>Web Creator 360</span></nav>
+  <section class="fj-card fj-sis-cab">
+    <span class="fj-eyebrow">Sistema listo para replicar</span>
+    <h1>Web Creator 360</h1>
+    <p>Encuentra negocios sin web, Claude les escribe una web y les mandas el email para cobrarla. Un sistema completo para vender webs a negocios.</p>
+    <div class="fj-sis-ficha"><span class="nivel">AVANZADO</span><span>WEB · SUPABASE + RENDER</span><span>90–120 min</span><span>Node.js</span><span>Express</span><span>Supabase</span><span>Claude API</span><span>Render</span></div>
+    <div class="fj-sis-bajar">
+      <a class="fj-btn fj-btn-primario" href="/descargas/web-creator-360.zip" download="web-creator-360.zip" id="si-zip">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Descargar el sistema (ZIP · 1,8 MB)
+      </a>
+      <span>El código completo, ya adaptado. Lo subes a tu GitHub en el paso 1.</span>
+    </div>
+  </section>
+  <section class="fj-card fj-sis-req">
+    <h2>Antes de empezar</h2>
+    <ul><li>Cuenta en GitHub</li><li>Cuenta en Supabase</li><li>Cuenta en Render (plan Starter, de pago)</li><li>API key de Anthropic</li><li>API key de Google Places (para el flujo Google Maps)</li><li>Cuenta en Resend con dominio verificado (para el flujo Google Maps)</li><li>Cuenta en Instantly (para la campaña de LLCs)</li><li>Vercel, Stripe y Telegram (opcionales)</li></ul>
+  </section>
+  <article class="fj-card fj-sis-guia">
+<h2>Qué es</h2>
+<p>Web Creator 360 es un panel web (Node.js + Express + Supabase) para conseguir clientes que necesitan una web. Tiene dos flujos:</p>
+<ul>
+<li><strong>Google Maps</strong>: buscas negocios con Google Places, Claude lee su información y les escribe una web, se publica (en Vercel o como preview propia), se les manda un email con Resend y pueden pagar la web con Stripe ($497 por defecto).</li>
+<li><strong>LLCs nuevas (Connecticut)</strong>: baja empresas recién registradas del registro público de Connecticut (data.ct.gov), o las importas por CSV, y las manda a una campaña de <strong>Instantly</strong>, que es quien envía los emails. Opcionalmente, a cada lead se le crea una web demo antes del email.</li>
+</ul>
+<p>Lo que vendes: webs listas para negocios locales de EE. UU., con prospección y envío casi automáticos.</p>
+<blockquote>
+<p>Viene <strong>apagado y en modo prueba</strong> a propósito: el panel está bloqueado hasta que pongas usuario y contraseña, y con <code>OUTREACH_DRY_RUN=true</code> no sale ningún email real.</p>
+</blockquote>
+<h2>Qué necesitas</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Cuenta</th>
+<th>¿Obligatoria?</th>
+<th>Para qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GitHub</strong></td>
+<td>Sí</td>
+<td>Render despliega desde tu repo.</td>
+</tr>
+<tr>
+<td><strong>Supabase</strong></td>
+<td>Sí</td>
+<td>Base de datos.</td>
+</tr>
+<tr>
+<td><strong>Render</strong></td>
+<td>Sí</td>
+<td>Hosting. El <code>render.yaml</code> usa el plan <code>starter</code> (de pago) en los dos servicios.</td>
+</tr>
+<tr>
+<td><strong>Anthropic</strong></td>
+<td>Sí para crear webs</td>
+<td>Claude Haiku lee el perfil del negocio y Claude Sonnet escribe la web. El código estima unos $0.25–0.30 por web completa.</td>
+</tr>
+<tr>
+<td><strong>Google Places</strong></td>
+<td>Para el flujo Google Maps</td>
+<td>Búsqueda de negocios. No hace falta para LLCs.</td>
+</tr>
+<tr>
+<td><strong>Resend</strong></td>
+<td>Para el flujo Google Maps</td>
+<td>Envío de emails y seguimientos. La campaña de LLCs no lo usa.</td>
+</tr>
+<tr>
+<td><strong>Instantly</strong></td>
+<td>Para la campaña de LLCs</td>
+<td>Envía los emails de la campaña (API v2, sirve cualquier plan, incluida la prueba gratis).</td>
+</tr>
+<tr>
+<td><strong>Vercel</strong></td>
+<td>Opcional</td>
+<td>Publica las webs. Sin Vercel queda una preview en <code>TU_BASE_URL/preview/&lt;slug&gt;</code>. Obligatorio para las webs demo de LLCs.</td>
+</tr>
+<tr>
+<td><strong>Stripe</strong></td>
+<td>Opcional</td>
+<td>Cobro por web (checkout + webhook).</td>
+</tr>
+<tr>
+<td><strong>Telegram</strong></td>
+<td>Opcional</td>
+<td>Avisos al celular cuando un lead pide llamada o responde.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Para probarlo en tu computadora necesitas <strong>Node.js 20 o superior</strong>. Si vas a correr los tests (<code>npm test</code>), usa <strong>Node.js 24</strong>.</p>
+<h2>1. Descarga y súbelo a tu GitHub</h2>
+<ol>
+<li>Descarga el ZIP con el botón de arriba de esta guía y descomprímelo.</li>
+<li>En GitHub, crea un repositorio nuevo <strong>privado</strong> y vacío (sin README), por ejemplo <code>web-creator-360</code>.</li>
+<li>Abre una terminal dentro de la carpeta descomprimida y corre:</li>
+</ol>
+<pre><code class="language-bash">git init
+git add .
+git commit -m &quot;Web Creator 360&quot;
+git branch -M main
+git remote add origin https://github.com/TU-USUARIO/web-creator-360.git
+git push -u origin main
+</code></pre>
+<p>Los comandos son iguales en macOS, Linux y Windows (PowerShell). Si prefieres no usar la terminal, <a href="https://desktop.github.com" target="_blank" rel="noopener">GitHub Desktop</a> también sirve: <strong>File → Add local repository</strong>, elige la carpeta y publícala como privada.</p>
+<blockquote>
+<p>Nunca subas el archivo <code>.env</code> ni CSV con leads. El <code>.gitignore</code> ya los excluye: no lo fuerces. Antes del commit puedes revisar con <code>git status</code> que <code>.env</code> no aparezca.</p>
+</blockquote>
+<h2>2. Crea la base de datos en Supabase</h2>
+<ol>
+<li>Crea un proyecto en <a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a>.</li>
+<li>Ve a <strong>SQL Editor</strong>. Vas a correr 3 archivos del repo <strong>en este orden</strong>: abres el archivo, copias todo, lo pegas y aprietas <strong>Run</strong>.</li>
+<li>Primero <code>src/db/schema.sql</code> (tablas base).</li>
+<li>Después <code>src/db/schema-saas.sql</code>.</li>
+<li>Por último <code>src/db/schema-new-business-leads.sql</code> (leads de LLCs, supresiones, autopilot).</li>
+<li>Ve a <strong>Authentication → Users → Add user</strong>, crea tu usuario y copia su <strong>User UID</strong>: es tu <code>NEW_LEADS_OWNER_USER_ID</code>.</li>
+<li>En <strong>Project Settings → API</strong> copia la <strong>Project URL</strong> (<code>SUPABASE_URL</code>) y la clave <code>service_role</code> (<code>SUPABASE_SERVICE_KEY</code>).</li>
+</ol>
+<p>Los 3 SQL se pueden correr más de una vez sin romper nada. Si actualizas el repo, vuelve a correr el tercero.</p>
+<h2>3. Variables de entorno</h2>
+<p>Leyenda: <strong>W</strong> = servicio web (el panel) · <strong>C</strong> = servicio campaign (solo para la campaña de LLCs).</p>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Obligatoria</th>
+<th>Para qué</th>
+<th>Dónde se saca</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DASHBOARD_USER</code></td>
+<td>Sí (W)</td>
+<td>Usuario del login del panel. Sin él, el panel responde 503.</td>
+<td>Lo inventas tú.</td>
+</tr>
+<tr>
+<td><code>DASHBOARD_PASSWORD</code></td>
+<td>Sí (W)</td>
+<td>Contraseña del panel.</td>
+<td>La inventas tú: larga y única.</td>
+</tr>
+<tr>
+<td><code>SUPABASE_URL</code></td>
+<td>Sí (W, C)</td>
+<td>URL del proyecto.</td>
+<td>Supabase → Project Settings → API → Project URL.</td>
+</tr>
+<tr>
+<td><code>SUPABASE_SERVICE_KEY</code></td>
+<td>Sí (W, C)</td>
+<td>Clave de servidor. Secreta.</td>
+<td>Supabase → Project Settings → API → <code>service_role</code>.</td>
+</tr>
+<tr>
+<td><code>NEW_LEADS_OWNER_USER_ID</code></td>
+<td>Sí (C) · Sí para LLCs (W)</td>
+<td>UUID de tu usuario; cada lead lo lleva. Sin él, el servicio campaign no arranca.</td>
+<td>Supabase → Authentication → Users → User UID.</td>
+</tr>
+<tr>
+<td><code>BASE_URL</code></td>
+<td>Sí (W)</td>
+<td>URL pública del panel: links de preview, checkout y Stripe.</td>
+<td>La URL <code>https://...onrender.com</code> de tu servicio web, sin <code>/</code> al final.</td>
+</tr>
+<tr>
+<td><code>ANTHROPIC_API_KEY</code></td>
+<td>Para crear webs (W; C si <code>LEAD_DEMOS=true</code>)</td>
+<td>Claude escribe y analiza.</td>
+<td>console.anthropic.com → API Keys → Create Key.</td>
+</tr>
+<tr>
+<td><code>GOOGLE_PLACES_API_KEY</code></td>
+<td>Para Google Maps (W)</td>
+<td>Búsqueda de negocios.</td>
+<td>Google Cloud Console → habilita Places API → Credentials → Create API key.</td>
+</tr>
+<tr>
+<td><code>RESEND_API_KEY</code></td>
+<td>Para Google Maps (W)</td>
+<td>Envío de emails.</td>
+<td>resend.com → API Keys.</td>
+</tr>
+<tr>
+<td><code>RESEND_FROM_EMAIL</code></td>
+<td>Con Resend (W)</td>
+<td>Remitente. Tiene que ser de un dominio verificado en Resend.</td>
+<td>Resend → Domains.</td>
+</tr>
+<tr>
+<td><code>SENDER_NAME</code></td>
+<td>No (W)</td>
+<td>Tu nombre en la firma. Por defecto <code>Tu Nombre</code>.</td>
+<td>Lo escribes tú.</td>
+</tr>
+<tr>
+<td><code>BRAND_NAME</code></td>
+<td>No (W, C)</td>
+<td>Tu marca (firma y texto de consentimiento de llamada). Por defecto <code>Tu Marca</code>.</td>
+<td>Lo escribes tú.</td>
+</tr>
+<tr>
+<td><code>POSTAL_ADDRESS</code></td>
+<td>Sí antes de enviar emails reales</td>
+<td>Dirección postal al pie del email (la exige la ley CAN-SPAM de EE. UU.).</td>
+<td>Tu dirección física o casilla postal (calle, ciudad, estado, ZIP).</td>
+</tr>
+<tr>
+<td><code>OUTREACH_DRY_RUN</code></td>
+<td>No (W, C)</td>
+<td><code>true</code> = modo prueba, no sale nada. Viene en <code>true</code>.</td>
+<td>Lo pasas a <code>false</code> cuando probaste todo.</td>
+</tr>
+<tr>
+<td><code>INSTANTLY_API_KEY</code></td>
+<td>Para la campaña (W, C)</td>
+<td>Clave API v2 con scope "leads".</td>
+<td>Instantly → Settings → Integrations → API keys.</td>
+</tr>
+<tr>
+<td><code>INSTANTLY_CAMPAIGN_ID</code></td>
+<td>Para la campaña (W, C)</td>
+<td>ID (UUID) de la campaña.</td>
+<td>Instantly → abre la campaña → copia el ID de la URL.</td>
+</tr>
+<tr>
+<td><code>CAMPAIGN_PUBLIC_URL</code></td>
+<td>Para la campaña (W, C)</td>
+<td>URL <code>https://</code> del servicio campaign. Los links de los emails apuntan ahí. No puede ser localhost.</td>
+<td>La URL de tu servicio <code>web-creator-360-campaign</code> en Render.</td>
+</tr>
+<tr>
+<td><code>LEAD_DEMOS</code></td>
+<td>No (W, C)</td>
+<td><code>true</code> = a cada lead se le crea una web demo antes del email. Necesita Anthropic + Vercel.</td>
+<td>Viene en <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>VERCEL_TOKEN</code></td>
+<td>Con <code>LEAD_DEMOS=true</code></td>
+<td>Publica webs en Vercel.</td>
+<td>vercel.com/account/tokens.</td>
+</tr>
+<tr>
+<td><code>VERCEL_SCOPE</code></td>
+<td>No</td>
+<td>Equipo de Vercel. Vacío = cuenta personal.</td>
+<td>El slug de tu team en Vercel.</td>
+</tr>
+<tr>
+<td><code>STRIPE_SECRET_KEY</code></td>
+<td>No (W)</td>
+<td>Cobros.</td>
+<td>Stripe → Developers → API keys.</td>
+</tr>
+<tr>
+<td><code>STRIPE_WEBHOOK_SECRET</code></td>
+<td>Con Stripe</td>
+<td>Verifica el webhook <code>/webhooks/stripe</code>.</td>
+<td>Stripe → Developers → Webhooks → endpoint <code>TU_BASE_URL/webhooks/stripe</code> → Signing secret (<code>whsec_...</code>).</td>
+</tr>
+<tr>
+<td><code>STRIPE_PRICE_AMOUNT</code></td>
+<td>No</td>
+<td>Precio en centavos. Por defecto <code>49700</code> ($497).</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>STRIPE_CURRENCY</code></td>
+<td>No</td>
+<td>Moneda. Por defecto <code>usd</code>.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>CALENDAR_URL</code></td>
+<td>No (W)</td>
+<td>Link de agenda para el botón de llamada en webs y emails de Google Maps. Sin él, el botón no aparece.</td>
+<td>Tu Calendly o similar.</td>
+</tr>
+<tr>
+<td><code>TELEGRAM_BOT_TOKEN</code></td>
+<td>No (W, C)</td>
+<td>Bot para avisos.</td>
+<td>Telegram → @BotFather → <code>/newbot</code>.</td>
+</tr>
+<tr>
+<td><code>TELEGRAM_CHAT_ID</code></td>
+<td>No (W, C)</td>
+<td>Tu chat.</td>
+<td>Mándale un mensaje al bot y corre <code>npm run telegram:setup</code> en tu computadora.</td>
+</tr>
+<tr>
+<td><code>AUTO_PIPELINE</code></td>
+<td>No (W)</td>
+<td><code>true</code> = pipeline automático de Google Maps cada 30 min. Cuesta plata.</td>
+<td>Viene apagado.</td>
+</tr>
+<tr>
+<td><code>PIPELINE_TIMEZONE</code></td>
+<td>No (W)</td>
+<td>Zona horaria del pipeline.</td>
+<td>Nombre IANA, por ejemplo <code>America/New_York</code>.</td>
+</tr>
+<tr>
+<td><code>SOCRATA_APP_TOKEN</code></td>
+<td>No</td>
+<td>Evita el límite de peticiones de data.ct.gov.</td>
+<td><code>data.ct.gov/profile/edit/developer_settings</code> (gratis).</td>
+</tr>
+<tr>
+<td><code>SAAS_MODE</code></td>
+<td>No</td>
+<td>Modo SaaS experimental. <strong>Déjalo en <code>false</code>.</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>PORT</code> y <code>NODE_ENV</code> las maneja Render: no las toques. <code>SUPABASE_ANON_KEY</code>, <code>ADMIN_EMAILS</code> y las <code>STRIPE_*_MONTHLY/ANNUAL</code> son solo para el modo SaaS: dejalas vacías.</p>
+<h2>4. Pruébalo en tu computadora (opcional)</h2>
+<p>macOS / Linux:</p>
+<pre><code class="language-bash">npm install
+cp .env.example .env
+</code></pre>
+<p>Windows (PowerShell):</p>
+<pre><code class="language-powershell">npm install
+copy .env.example .env
+</code></pre>
+<p>Completa en <code>.env</code> al menos <code>SUPABASE_URL</code>, <code>SUPABASE_SERVICE_KEY</code>, <code>NEW_LEADS_OWNER_USER_ID</code>, <code>DASHBOARD_USER</code> y <code>DASHBOARD_PASSWORD</code>. Después:</p>
+<pre><code class="language-bash">npm run dev
+</code></pre>
+<p>Abre <code>http://localhost:3001</code>. Para correr los tests: <code>npm test</code>.</p>
+<h2>5. Publícalo en Render</h2>
+<ol>
+<li>En Render: <strong>New → Blueprint</strong> → elige tu repo. Render lee el <code>render.yaml</code> y crea dos servicios.</li>
+<li><code>web-creator-360</code> es el panel completo (privado, con usuario y contraseña). Lo necesitas siempre.</li>
+<li><code>web-creator-360-campaign</code> es el servidor público de la campaña de LLCs: la página que abre cada lead desde el email y el autopilot. Solo lo necesitas si usas la campaña con Instantly.</li>
+<li>Si no vas a usar la campaña, puedes crear solo el servicio web: <strong>New → Web Service</strong>, build <code>npm install</code>, start <code>node src/index.js</code>.</li>
+<li>Render te pide las variables marcadas como secretas. En el servicio web completa al menos <code>DASHBOARD_USER</code>, <code>DASHBOARD_PASSWORD</code>, <code>SUPABASE_URL</code>, <code>SUPABASE_SERVICE_KEY</code>, <code>NEW_LEADS_OWNER_USER_ID</code>, <code>BASE_URL</code> y las claves de los servicios que uses.</li>
+<li>En el servicio campaign: <code>SUPABASE_URL</code>, <code>SUPABASE_SERVICE_KEY</code>, <code>NEW_LEADS_OWNER_USER_ID</code>, <code>INSTANTLY_API_KEY</code>, <code>INSTANTLY_CAMPAIGN_ID</code> y <code>CAMPAIGN_PUBLIC_URL</code>.</li>
+<li><code>BASE_URL</code> y <code>CAMPAIGN_PUBLIC_URL</code> las sabes recién después del primer deploy: cargalas y haz <strong>Manual Deploy</strong>.</li>
+</ol>
+<h2>6. Primer acceso</h2>
+<ol>
+<li>Abre tu <code>BASE_URL</code>. El navegador muestra un cuadro de usuario y contraseña: pon <code>DASHBOARD_USER</code> y <code>DASHBOARD_PASSWORD</code>.</li>
+<li>Comprueba que <code>TU_BASE_URL/health</code> devuelva <code>{"status":"ok"}</code>. En el servicio campaign, <code>/health</code> además muestra qué partes del autopilot están activas y qué variables faltan.</li>
+<li>El menú tiene <strong>Resumen</strong>, <strong>Prospección</strong>, <strong>Scraping</strong>, <strong>Crear webs</strong>, <strong>Enviar</strong> (flujo Google Maps), <strong>Fuentes</strong>, <strong>Leads</strong>, <strong>Envío</strong> (LLCs), <strong>Seguimiento</strong> y <strong>Pagos</strong>.</li>
+</ol>
+<h2>7. Del modo prueba a envíos reales</h2>
+<p>Con <code>OUTREACH_DRY_RUN=true</code> no sale nada: ni Instantly, ni Resend, ni Telegram. Todo se escribe en los logs de Render con <code>[dry-run]</code>.</p>
+<ol>
+<li>Importa un CSV chico en <strong>Fuentes</strong>, ve a <strong>Envío</strong>, manda un lote y busca la línea <code>[dry-run]</code> en Render → Logs.</li>
+<li>Para obtener el texto que tienes que pegar en tu campaña de Instantly, corre en tu computadora <code>npm run leads:email-template</code> (o <code>npm run leads:email-template -- --demo</code> si usas webs demo). Pega asunto y cuerpo tal cual, con las <code>{{variables}}</code>.</li>
+<li>Cuando todo funcione: completa <code>POSTAL_ADDRESS</code>, pon <code>OUTREACH_DRY_RUN=false</code> en <strong>los dos</strong> servicios y redespliega.</li>
+</ol>
+<p>El <strong>autopilot</strong> de la campaña viene encendido (20 leads por ciclo), pero solo corre en el servicio campaign y respeta el modo prueba. Revisa Connecticut todos los días a las 7:00 (Nueva York) y envía a Instantly cada 3 horas. Se prende y apaga desde la pestaña <strong>Envío</strong>, sin redeploy.</p>
+<h2>Seguridad</h2>
+<ul>
+<li><strong><code>DASHBOARD_USER</code> y <code>DASHBOARD_PASSWORD</code> siempre.</strong> La app no tiene otro login: sin ellas el panel responde 503; con una contraseña débil, cualquiera con la URL ve tus leads y puede mandar emails.</li>
+<li><strong>No actives <code>SAAS_MODE</code>.</strong> Es experimental y no separa datos entre usuarios: todas las cuentas verían los datos de todos.</li>
+<li><strong>Arranca con <code>OUTREACH_DRY_RUN=true</code></strong> y pásalo a <code>false</code> recién cuando probaste todo.</li>
+<li><strong><code>POSTAL_ADDRESS</code> antes de enviar emails reales.</strong> La ley CAN-SPAM de EE. UU. exige una dirección postal en cada email comercial.</li>
+<li><strong>Nunca subas el <code>.env</code> ni CSV de leads a GitHub.</strong></li>
+<li><strong><code>SUPABASE_SERVICE_KEY</code> es secreta</strong>: va solo en Render o en tu <code>.env</code>. Las tablas tienen RLS activado sin políticas a propósito: no agregues políticas.</li>
+<li><strong><code>AUTO_PIPELINE</code> viene apagado</strong> porque cada web consume Claude. Actívalo solo si sabes cuánto vas a gastar.</li>
+<li><code>ALLOW_NO_AUTH=true</code> es solo para desarrollo local y Render lo ignora. Nunca lo uses en un servidor.</li>
+</ul>
+<h2>Errores frecuentes</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Mensaje</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Panel bloqueado: configura DASHBOARD_USER y DASHBOARD_PASSWORD (o ALLOW_NO_AUTH=true solo en desarrollo local).</code></td>
+<td>Carga las dos variables en el servicio web y redespliega.</td>
+</tr>
+<tr>
+<td><code>Autenticación requerida</code></td>
+<td>Usuario o contraseña incorrectos. Revisa mayúsculas y espacios, o prueba en una ventana de incógnito.</td>
+</tr>
+<tr>
+<td><code>Falta NEW_LEADS_OWNER_USER_ID: sin él el servidor no sabe a qué usuario pertenecen los leads.</code></td>
+<td>Copia el User UID de Supabase → Authentication → Users y cárgalo en el servicio campaign.</td>
+</tr>
+<tr>
+<td><code>Falta NEW_LEADS_OWNER_USER_ID en tu .env (el UUID de tu usuario de Supabase)</code></td>
+<td>La misma variable, pero en el servicio web.</td>
+</tr>
+<tr>
+<td><code>SUPABASE_URL and SUPABASE_SERVICE_KEY must be set in your .env file</code></td>
+<td>Carga las dos desde Project Settings → API (la <code>service_role</code>, no la <code>anon</code>).</td>
+</tr>
+<tr>
+<td><code>...¿Has ejecutado src/db/schema-new-business-leads.sql en Supabase?</code></td>
+<td>Corre los 3 SQL en orden (paso 2). Si actualizaste el repo, vuelve a correr el tercero.</td>
+</tr>
+<tr>
+<td><code>Falta la columna demo_all: ejecuta de nuevo src/db/schema-new-business-leads.sql en Supabase</code></td>
+<td>Vuelve a correr ese SQL.</td>
+</tr>
+<tr>
+<td><code>Configuración incompleta para enviar leads a Instantly. Revisa en tu .env: ...</code></td>
+<td>Revisa la variable que nombra el mensaje. <code>INSTANTLY_CAMPAIGN_ID</code> tiene que ser un UUID y <code>CAMPAIGN_PUBLIC_URL</code> tiene que ser <code>https://</code> (no localhost).</td>
+</tr>
+<tr>
+<td><code>Instantly respondió 401: ...</code></td>
+<td>Clave mal copiada o sin scope "leads". Crea una API key v2 nueva con ese scope.</td>
+</tr>
+<tr>
+<td><code>Falta ANTHROPIC_API_KEY en tu .env (Claude escribe las webs)</code></td>
+<td>Carga <code>ANTHROPIC_API_KEY</code>.</td>
+</tr>
+<tr>
+<td><code>Falta VERCEL_TOKEN en tu .env (las webs se publican en Vercel)</code></td>
+<td>Carga <code>VERCEL_TOKEN</code> (obligatorio con <code>LEAD_DEMOS=true</code>).</td>
+</tr>
+<tr>
+<td><code>Token de Vercel inválido — crea uno en vercel.com/account/tokens</code></td>
+<td>Crea un token nuevo.</td>
+</tr>
+<tr>
+<td><code>Vercel: tu cuenta alcanzó el límite de N proyectos; ...</code></td>
+<td>Borra proyectos viejos en Vercel. Las demos de LLCs se borran solas a los 7 días.</td>
+</tr>
+<tr>
+<td><code>Business has not been scraped yet. Run scraping first.</code></td>
+<td>Pasa primero por la pestaña <strong>Scraping</strong> y después por <strong>Crear webs</strong>.</td>
+</tr>
+<tr>
+<td><code>Sin email disponible para contactar este negocio</code></td>
+<td>Ese negocio no tiene email: cárgalo a mano o elige otro.</td>
+</tr>
+<tr>
+<td><code>Ya contactado en las últimas 24 horas</code></td>
+<td>Protección contra doble envío. Espera 24 h.</td>
+</tr>
+<tr>
+<td><code>Contacto dado de baja o con rebote (lista de supresiones)</code></td>
+<td>Ese email se dio de baja o rebotó. No se le escribe más, a propósito.</td>
+</tr>
+<tr>
+<td><code>data.ct.gov respondió 429 (límite de peticiones: pon SOCRATA_APP_TOKEN)</code></td>
+<td>Crea el token gratis en data.ct.gov y cárgalo en <code>SOCRATA_APP_TOKEN</code>.</td>
+</tr>
+<tr>
+<td><code>Webhook Error: ...</code> en <code>/webhooks/stripe</code></td>
+<td>El <code>STRIPE_WEBHOOK_SECRET</code> no corresponde a ese endpoint en Stripe. Copia el Signing secret correcto.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Muchos errores muestran el detalle solo en los logs: Render → tu servicio → <strong>Logs</strong>.</p>
+<h2>Cómo adaptarlo a tu cliente</h2>
+<ul>
+<li><strong>Tu nombre, marca y dirección</strong>: variables <code>SENDER_NAME</code>, <code>BRAND_NAME</code> y <code>POSTAL_ADDRESS</code> (se leen en <code>src/lib/brand.js</code>).</li>
+<li><strong>Precio de la web</strong>: <code>STRIPE_PRICE_AMOUNT</code> (en centavos) y <code>STRIPE_CURRENCY</code>. Ojo: el texto "$497" también está escrito en <code>src/services/resend.js</code>, <code>src/prompts/generation.js</code>, algunas plantillas de <code>templates/sites/</code> y en <code>public/</code>. Si cambias el precio, busca y cambia también esos textos.</li>
+<li><strong>Cómo escribe Claude las webs</strong>: <code>src/prompts/generation.js</code> (web del flujo Google Maps) y <code>src/prompts/scraping.js</code> (cómo lee la información del negocio).</li>
+<li><strong>Plantillas de las webs demo de LLCs</strong>: <code>templates/sites/</code> (una por rubro: <code>construccion</code>, <code>limpieza</code>, <code>jardineria</code>, <code>comida</code>, <code>belleza</code>, <code>barberia</code>, <code>general</code>). Qué plantilla usa cada rubro se decide en <code>src/sitegen/templates.js</code>.</li>
+<li><strong>Email de la campaña de LLCs</strong> (el que pegas en Instantly): <code>src/prompts/newBusinessEmails.js</code>. Después corre <code>npm run leads:email-template</code> para ver el texto final.</li>
+<li><strong>Emails del flujo Google Maps y seguimientos</strong>: <code>src/services/resend.js</code>.</li>
+<li><strong>Botón de agendar llamada</strong>: <code>CALENDAR_URL</code>.</li>
+<li><strong>Horario y zona del pipeline automático</strong>: <code>PIPELINE_TIMEZONE</code>.</li>
+<li><strong>Interfaz del panel</strong>: <code>public/index.html</code> y <code>public/app.js</code>.</li>
+</ul>
+<p>Después de cambiar código, haz commit y push: Render redespliega solo desde tu repo.</p>
+<blockquote>
+<p>¿Te trabaste? Pregúntale a <strong>Maestro</strong> (en el menú, <a href="/maestro">/maestro</a>) con el mensaje de error exacto.</p>
+</blockquote>
+  </article>
+</main>
+<script src="../web/shell.js?v=dd650f52"></script>
+<script>
+// Botón «Copiar» en cada bloque de código
+document.querySelectorAll(".fj-sis-guia pre").forEach(function (pre) {
+  var b = document.createElement("button");
+  b.type = "button"; b.className = "fj-sis-copiar"; b.textContent = "Copiar";
+  b.addEventListener("click", function () {
+    var t = pre.querySelector("code") ? pre.querySelector("code").innerText : pre.innerText;
+    navigator.clipboard.writeText(t).then(function () { b.textContent = "Copiado"; setTimeout(function () { b.textContent = "Copiar"; }, 1500); });
+  });
+  pre.appendChild(b);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,814 @@
+<!doctype html>
+<!-- Plantilla de la guía de cada sistema. build.py la copia a ../sistemas/<slug>.html con Constructor de Agencia IA, Una plataforma con un mapa de 11 pasos donde Claude te ayuda a armar cliente ideal, oferta y landing de tu agencia de IA, más una secretaria virtual de WhatsApp para mostrar a negocios., <span class="nivel">AVANZADO</span><span>WEB · SUPABASE + RENDER</span><span>90–120 min</span><span>React + Vite</span><span>Supabase</span><span>Edge Functions</span><span>Claude API</span>, <li>Cuenta en GitHub</li><li>Cuenta en Supabase</li><li>Cuenta en Render</li><li>API key de Anthropic</li><li>Node.js 20+ y pnpm en tu computadora</li><li>SMTP propio, por ejemplo Resend (opcional: invitar por email)</li><li>Docker (opcional: desarrollo local)</li><li>Servidor WAHA en Render (opcional: WhatsApp real, beta)</li>, <h2>Qué es</h2>
+<p>Constructor de Agencia IA es una plataforma web donde cada usuario arma su agencia de IA con ayuda de Claude. Tiene un <strong>Mapa de Ruta de 11 pasos</strong> que entrega tres cosas para vender (cliente ideal, oferta y landing) y una <strong>secretaria virtual de WhatsApp</strong> para mostrar a los clientes:</p>
+<ol>
+<li>Problemas que resuelves.</li>
+<li>Soluciones con IA (cada problema convertido en lo que vendes).</li>
+<li>Tu agencia y tu nicho.</li>
+<li>Precios: deslizadores con los números de un negocio típico y la tabla de lo que puedes cobrar.</li>
+<li>Cliente ideal.</li>
+<li>Oferta.</li>
+<li>Landing de venta.</li>
+<li>Tu agente: ficha de un negocio típico del nicho y una secretaria que atiende, cualifica y agenda.</li>
+<li>Probar el agente en un simulador de WhatsApp.</li>
+<li>Demo para clientes: pegas la web de un negocio (o escribes sus datos) y sale su propia secretaria.</li>
+<li>Conectar WhatsApp (beta): vinculas un número por QR y el agente contesta de verdad.</li>
+</ol>
+<p>El acceso es <strong>solo por invitación</strong> y cada generación con IA cuesta <strong>créditos</strong> (cada usuario arranca con 30; el mapa completo cuesta unos 10). Si una generación falla, los créditos se devuelven solos.</p>
+<p>Lo que puedes hacer con esto: usarlo para armar tu propia agencia, mostrarle a un negocio una secretaria virtual hecha con los datos de su web, o darle acceso a tu comunidad o a tus clientes con créditos controlados.</p>
+<h2>Qué necesitas</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Qué</th>
+<th>¿Obligatorio?</th>
+<th>Para qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GitHub</strong></td>
+<td>Sí</td>
+<td>Render despliega desde tu repo.</td>
+</tr>
+<tr>
+<td><strong>Supabase</strong></td>
+<td>Sí</td>
+<td>Base de datos, login y las funciones de IA (Edge Functions). En el plan Free una función se corta a los 150 s y el proyecto se pausa tras una semana sin actividad.</td>
+</tr>
+<tr>
+<td><strong>Render</strong></td>
+<td>Sí</td>
+<td>Hospeda la web (sitio estático).</td>
+</tr>
+<tr>
+<td><strong>Anthropic</strong> (API key)</td>
+<td>Sí</td>
+<td>Claude genera los entregables (Sonnet por defecto) y responde como secretaria (Haiku por defecto). Pago por uso.</td>
+</tr>
+<tr>
+<td><strong>Node.js 20+ y pnpm</strong></td>
+<td>Sí, en tu computadora</td>
+<td>Para correr los comandos de Supabase y los scripts. pnpm se activa con <code>corepack enable</code>.</td>
+</tr>
+<tr>
+<td><strong>SMTP propio</strong> (Resend, Postmark...)</td>
+<td>Solo para invitar por email</td>
+<td>Para que lleguen los emails de invitación. Sin SMTP puedes dar de alta usuarios desde el panel de admin.</td>
+</tr>
+<tr>
+<td><strong>Docker</strong></td>
+<td>Solo para desarrollo local</td>
+<td>Supabase local.</td>
+</tr>
+<tr>
+<td><strong>Servidor WAHA</strong> (Render, plan de pago con disco)</td>
+<td>Opcional</td>
+<td>Solo para el paso 11 (WhatsApp real, beta).</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>Antes de abrirlo a otras personas, fija un <strong>límite de gasto mensual</strong> en la consola de Anthropic.</p>
+</blockquote>
+<h2>1. Descarga y súbelo a tu GitHub</h2>
+<ol>
+<li>Descarga el ZIP con el botón de arriba de esta guía y descomprímelo.</li>
+<li>En GitHub, crea un repositorio nuevo <strong>privado</strong> y vacío (sin README), por ejemplo <code>constructor-agencia</code>.</li>
+<li>Abre una terminal dentro de la carpeta descomprimida y corre:</li>
+</ol>
+<pre><code class="language-bash">git init
+git add .
+git commit -m &quot;Constructor de Agencia IA&quot;
+git branch -M main
+git remote add origin https://github.com/TU-USUARIO/constructor-agencia.git
+git push -u origin main
+</code></pre>
+<p>Los comandos son iguales en macOS, Linux y Windows (PowerShell). Si prefieres no usar la terminal, <a href="https://desktop.github.com" target="_blank" rel="noopener">GitHub Desktop</a> también sirve: <strong>File → Add local repository</strong>, elige la carpeta y publícala como privada.</p>
+<blockquote>
+<p>Nunca subas <code>.env</code>, <code>.env.local</code> ni <code>supabase/.env.local</code>. El <code>.gitignore</code> ya los excluye. Antes del commit puedes revisar con <code>git status</code> que no aparezcan.</p>
+</blockquote>
+<h2>2. Completa los datos de tu empresa</h2>
+<p>El repo viene limpio, con marcadores para que pongas lo tuyo. Antes de seguir:</p>
+<ol>
+<li><code>src/lib/legal.ts</code>: los datos que aparecen en la política de privacidad y los términos (empresa, identificación fiscal, dirección, email y fecha). Mientras algún valor empiece con <code>[</code>, esas páginas muestran un aviso de borrador.</li>
+<li><code>deploy/supabase-prod-auth/supabase/config.toml</code>: cambia <code>TU-APP</code> por la dirección real de tu web. Solo hace falta si vas a usar ese archivo (paso 3).</li>
+<li><code>.github/workflows/keepalive.yml</code>: es una tarea de GitHub que llama a Supabase cada dos días para que el plan Free no pause el proyecto. No hay que editarlo: en GitHub → tu repo → <strong>Settings → Secrets and variables → Actions</strong> crea la variable <code>SUPABASE_URL</code> y el secret <code>SUPABASE_ANON_KEY</code> (los consigues en el paso 3). Sin esas dos, no hace nada.</li>
+</ol>
+<p>Después haz commit y push:</p>
+<pre><code class="language-bash">git add .
+git commit -m &quot;Configuración propia&quot;
+git push
+</code></pre>
+<h2>3. Crea el proyecto de Supabase</h2>
+<ol>
+<li>Crea un proyecto en <a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a>. Anota la contraseña de la base de datos.</li>
+<li>Tu <strong>project ref</strong> es la parte de la URL del proyecto: <code>https://TU-REF.supabase.co</code>.</li>
+<li>En la carpeta del repo instala las dependencias (incluyen la CLI de Supabase) y conecta el proyecto:</li>
+</ol>
+<pre><code class="language-bash">corepack enable
+pnpm install
+pnpm exec supabase login
+pnpm exec supabase link --project-ref TU-REF
+pnpm exec supabase db push
+</code></pre>
+<p><code>link</code> te pide la contraseña de la base de datos. <code>db push</code> crea las tablas, permisos y funciones desde <code>supabase/migrations/</code>.</p>
+<p>Después, en el panel de Supabase:</p>
+<ul>
+<li><strong>Authentication → Providers → Email</strong>: deja el email <strong>activo</strong> y <strong>desactiva "Allow new users to sign up"</strong> (acceso solo por invitación). Otra opción es aplicar el archivo del paso 2 con <code>pnpm exec supabase config push --project-ref TU-REF --workdir deploy/supabase-prod-auth</code>.</li>
+<li>Si vas a invitar por email, configura un SMTP propio (Resend, Postmark...).</li>
+</ul>
+<h2>4. Clave de IA y funciones</h2>
+<ol>
+<li>En el panel de Supabase, <strong>Edge Functions → Secrets</strong>, crea <code>ANTHROPIC_API_KEY</code> y <code>ALLOWED_ORIGIN</code> (por ahora puedes dejar <code>*</code>; en el paso 6 pones tu dominio). Es mejor cargarlas desde el panel que desde la terminal: así la clave no queda en el historial.</li>
+<li>Despliega las funciones que usa la web:</li>
+</ol>
+<pre><code class="language-bash">pnpm exec supabase functions deploy generate
+pnpm exec supabase functions deploy agent-chat
+pnpm exec supabase functions deploy admin-students
+pnpm exec supabase functions deploy load-sample
+</code></pre>
+<p><code>generate</code> hace las generaciones con IA, <code>agent-chat</code> es el chat con la secretaria, <code>admin-students</code> es la pestaña de admin y <code>load-sample</code> carga el proyecto de ejemplo.</p>
+<h3>Secretos de las funciones</h3>
+<p><code>SUPABASE_URL</code>, <code>SUPABASE_ANON_KEY</code> y <code>SUPABASE_SERVICE_ROLE_KEY</code> las pone Supabase sola. El resto está explicado en <code>supabase/.env.example</code>.</p>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Obligatoria</th>
+<th>Para qué</th>
+<th>Dónde se saca</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ANTHROPIC_API_KEY</code></td>
+<td>Sí</td>
+<td>Claude. Sin ella, la web dice que la IA no está configurada.</td>
+<td><a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a> → API Keys.</td>
+</tr>
+<tr>
+<td><code>ALLOWED_ORIGIN</code></td>
+<td>Sí en producción</td>
+<td>Dominio de tu web (CORS). Por defecto <code>*</code>.</td>
+<td>Tu URL de Render, por ejemplo <code>https://TU-SITIO.onrender.com</code>.</td>
+</tr>
+<tr>
+<td><code>ANTHROPIC_MODEL</code></td>
+<td>No</td>
+<td>Modelo de los entregables. Por defecto <code>claude-sonnet-5-5</code>.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>ANTHROPIC_THINKING</code></td>
+<td>No</td>
+<td><code>off</code> quita el razonamiento: lo más rápido y barato. Por defecto <code>on</code>.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>AGENT_MODEL</code></td>
+<td>No</td>
+<td>Modelo de la secretaria (Haiku por defecto).</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>AGENT_CHAT_PER_MINUTE</code> / <code>AGENT_CHAT_PER_HOUR</code></td>
+<td>No</td>
+<td>Límite de mensajes con la secretaria por usuario. Por defecto 20 y 300.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>RATE_LIMIT_PER_MINUTE</code></td>
+<td>No</td>
+<td>Máximo de generaciones por usuario y minuto. Por defecto 10.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>GENERATION_TIMEOUT_SECONDS</code></td>
+<td>No</td>
+<td>Tiempo máximo de una generación. Por defecto 140. Déjalo por debajo del límite de tu plan (Free: 150 s, Pro: 400 s).</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Variables de la web (Render)</h3>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Obligatoria</th>
+<th>Para qué</th>
+<th>Dónde se saca</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VITE_SUPABASE_URL</code></td>
+<td>Sí</td>
+<td>URL del proyecto de Supabase.</td>
+<td>Supabase → Settings → API.</td>
+</tr>
+<tr>
+<td><code>VITE_SUPABASE_ANON_KEY</code></td>
+<td>Sí</td>
+<td>Clave anónima (es pública por diseño).</td>
+<td>Supabase → Settings → API.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5. Publica la web en Render</h2>
+<ol>
+<li>En Render: <strong>New → Blueprint</strong> → elige tu repo. Render lee el <code>render.yaml</code> (sitio estático con las reglas de la app y cabeceras de seguridad).</li>
+<li>Te pide <code>VITE_SUPABASE_URL</code> y <code>VITE_SUPABASE_ANON_KEY</code>.</li>
+<li>Espera el build. Cada <code>git push</code> a <code>main</code> redespliega.</li>
+</ol>
+<h2>6. Cierra la configuración con tu URL</h2>
+<p>Con la URL de Render ya puedes terminar:</p>
+<ol>
+<li>Supabase → <strong>Authentication → URL configuration</strong>: <strong>Site URL</strong> = tu URL, y agrega <code>https://TU-SITIO.onrender.com/reset-password</code> a <strong>Redirect URLs</strong>.</li>
+<li>Supabase → <strong>Edge Functions → Secrets</strong>: cambia <code>ALLOWED_ORIGIN</code> a tu URL exacta, sin <code>/</code> al final.</li>
+</ol>
+<h2>7. Primer acceso (tu cuenta de admin)</h2>
+<ol>
+<li>Supabase → <strong>Authentication → Users → Add user</strong>: crea tu usuario con email y contraseña.</li>
+<li>Supabase → <strong>SQL Editor</strong>: hazlo admin con el comando de abajo (cambia el email).</li>
+<li>Entra a tu URL e inicia sesión. Vas a ver la pestaña <strong>Alumnos</strong>.</li>
+</ol>
+<pre><code class="language-sql">update profiles set role = 'admin' where email = 'tu-email@ejemplo.com';
+</code></pre>
+<p>Desde <strong>Alumnos</strong> das de alta usuarios sin email: se muestra una contraseña temporal una sola vez, con un mensaje listo para copiar. También sumas o quitas créditos, generas contraseñas nuevas y eliminas usuarios.</p>
+<h3>Invitar por email (opcional)</h3>
+<p>Necesita el SMTP del paso 3. Haz un CSV con columnas <code>email,nombre,creditos</code> y corre (la clave <code>service_role</code> está en Supabase → Settings → API; nunca la subas a git):</p>
+<p>macOS / Linux:</p>
+<pre><code class="language-bash">SUPABASE_URL=https://TU-REF.supabase.co SUPABASE_SERVICE_ROLE_KEY=TU-CLAVE SITE_URL=https://TU-SITIO.onrender.com node scripts/invite.mjs csv alumnos.csv
+</code></pre>
+<p>Windows (PowerShell):</p>
+<pre><code class="language-powershell">$env:SUPABASE_URL=&quot;https://TU-REF.supabase.co&quot;; $env:SUPABASE_SERVICE_ROLE_KEY=&quot;TU-CLAVE&quot;; $env:SITE_URL=&quot;https://TU-SITIO.onrender.com&quot;
+node scripts/invite.mjs csv alumnos.csv
+</code></pre>
+<p>Otros comandos del mismo script: <code>invite ana@correo.com "Ana Pérez" --credits 30</code>, <code>grant ana@correo.com 20 "bonus"</code> y <code>balance ana@correo.com</code>.</p>
+<h2>8. Pruébalo en tu computadora (opcional)</h2>
+<p>Necesitas Node 20+, pnpm y Docker. Supabase local usa los puertos 554xx.</p>
+<p>macOS / Linux:</p>
+<pre><code class="language-bash">pnpm install
+pnpm db:start
+cp .env.example .env.local
+cp supabase/.env.example supabase/.env.local
+pnpm fn:serve
+pnpm dev
+</code></pre>
+<p>Windows (PowerShell):</p>
+<pre><code class="language-powershell">pnpm install
+pnpm db:start
+copy .env.example .env.local
+copy supabase\.env.example supabase\.env.local
+pnpm fn:serve
+pnpm dev
+</code></pre>
+<p><code>pnpm db:start</code> imprime la URL y las claves: pega la clave anónima en <code>.env.local</code> y tu <code>ANTHROPIC_API_KEY</code> real en <code>supabase/.env.local</code>. <code>pnpm fn:serve</code> y <code>pnpm dev</code> se quedan corriendo: usa una terminal para cada uno. La web abre en <code>http://localhost:5173</code>.</p>
+<p>Para crear un usuario de prueba con contraseña (solo local):</p>
+<pre><code class="language-bash">SUPABASE_URL=http://127.0.0.1:55421 SUPABASE_SERVICE_ROLE_KEY=CLAVE-SECRETA-LOCAL node scripts/invite.mjs create alumno@test.com &quot;Contraseña-Larga-1&quot; --credits 30
+</code></pre>
+<h2>9. WhatsApp real (beta, opcional)</h2>
+<p>Usa <strong>WAHA</strong>, una vía <strong>no oficial</strong> de Meta: puede terminar en el bloqueo del número. Por eso el agente solo responde (nunca inicia conversaciones), tiene topes por día y por chat, y se calla si el dueño contesta desde su celular.</p>
+<ol>
+<li>En Render: <strong>New → Web Service → Existing Image</strong> → <code>docker.io/devlikeapro/waha:noweb</code>, plan de pago y un <strong>Disk</strong> montado en <code>/app/.sessions</code> (1 GB).</li>
+<li>Variables de ese servicio: <code>WAHA_API_KEY</code> (clave larga aleatoria), <code>WHATSAPP_DEFAULT_ENGINE=NOWEB</code>, <code>PORT=3000</code>, <code>WAHA_DASHBOARD_ENABLED=false</code>, <code>WHATSAPP_SWAGGER_ENABLED=false</code>.</li>
+<li>En Supabase → <strong>Edge Functions → Secrets</strong>: <code>WAHA_URL</code> (la URL del servicio de WAHA), <code>WAHA_API_KEY</code> (la misma), <code>WA_WEBHOOK_URL</code> (<code>https://TU-REF.supabase.co/functions/v1/wa-webhook</code>) y <code>WA_WEBHOOK_SECRET</code> (otro secreto largo).
+Después despliega:</li>
+</ol>
+<pre><code class="language-bash">pnpm exec supabase db push
+pnpm exec supabase functions deploy wa-connect
+pnpm exec supabase functions deploy wa-webhook
+</code></pre>
+<p>Empieza con el plan más chico y vigila la memoria: si WAHA se reinicia por falta de RAM, sube de plan. Las conversaciones reales se guardan 30 días y solo las ve su dueño: <strong>publica un aviso de privacidad antes de abrirlo a otras personas</strong>.</p>
+<h2>Seguridad</h2>
+<ul>
+<li><strong><code>SUPABASE_SERVICE_ROLE_KEY</code> y <code>ANTHROPIC_API_KEY</code> son secretos</strong>: no van en el frontend, ni en Render, ni en git. La clave de Anthropic vive solo en los secretos de Supabase y nunca llega al navegador.</li>
+<li><strong>Cierra el registro público</strong> ("Allow new users to sign up" desactivado): el acceso es solo por invitación.</li>
+<li><strong>Pon un límite de gasto mensual</strong> en la consola de Anthropic antes de abrirlo a otras personas.</li>
+<li><strong><code>ALLOWED_ORIGIN</code></strong> con tu dominio exacto en producción.</li>
+<li><strong>El rol admin se asigna a mano</strong> por SQL. No lo des a cualquiera: puede crear y borrar usuarios y repartir créditos.</li>
+<li><code>FETCH_ALLOW_HOSTS</code> es solo para pruebas locales: en producción, vacío.</li>
+<li>WhatsApp real es beta y no oficial: riesgo de bloqueo del número y datos de terceros. Aviso de privacidad obligatorio.</li>
+</ul>
+<h2>Errores frecuentes</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Mensaje</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Faltan VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY (ver .env.example)</code></td>
+<td>Carga las dos variables en Render (o en <code>.env.local</code>) y vuelve a desplegar.</td>
+</tr>
+<tr>
+<td><code>Email o contraseña incorrectos.</code></td>
+<td>Revisa el email y la contraseña. Si el usuario no existe, créalo desde <strong>Alumnos</strong> o en Supabase.</td>
+</tr>
+<tr>
+<td><code>La IA aún no está configurada en el servidor.</code></td>
+<td>Falta el secreto <code>ANTHROPIC_API_KEY</code> en Supabase → Edge Functions → Secrets.</td>
+</tr>
+<tr>
+<td><code>Se interrumpió la conexión con la IA. Revisa tus créditos y vuelve a intentarlo.</code></td>
+<td>Revisa que la función <code>generate</code> esté desplegada y que <code>ALLOWED_ORIGIN</code> sea exactamente tu dominio.</td>
+</tr>
+<tr>
+<td><code>No te quedan créditos. Pide más a tu equipo.</code></td>
+<td>Suma créditos desde <strong>Alumnos</strong> o con <code>node scripts/invite.mjs grant</code>.</td>
+</tr>
+<tr>
+<td><code>Vas muy rápido. Espera unos segundos y vuelve a intentarlo.</code></td>
+<td>Límite por minuto (<code>RATE_LIMIT_PER_MINUTE</code>). Espera.</td>
+</tr>
+<tr>
+<td><code>La IA está saturada en este momento. Inténtalo de nuevo en un momento.</code></td>
+<td>Anthropic está ocupado. Reintenta.</td>
+</tr>
+<tr>
+<td><code>La IA ha tardado demasiado. Se te han devuelto los créditos: inténtalo de nuevo.</code></td>
+<td>Sube <code>GENERATION_TIMEOUT_SECONDS</code> (sin pasar el límite de tu plan) o pon <code>ANTHROPIC_THINKING=off</code>.</td>
+</tr>
+<tr>
+<td><code>La IA no respondió correctamente. No se ha descontado ningún crédito.</code></td>
+<td>Reintenta. Si se repite, revisa la clave y el crédito de Anthropic.</td>
+</tr>
+<tr>
+<td><code>Ya se está generando esto. Espera a que termine.</code></td>
+<td>Hay una generación en curso de ese mismo entregable. Espera.</td>
+</tr>
+<tr>
+<td><code>Tu sesión ha caducado. Vuelve a iniciar sesión.</code></td>
+<td>Vuelve a entrar.</td>
+</tr>
+<tr>
+<td><code>Para vincular un número tienes que aceptar el aviso sobre tus clientes.</code></td>
+<td>Acepta el aviso antes de vincular WhatsApp.</td>
+</tr>
+<tr>
+<td><code>Faltan SUPABASE_URL y SUPABASE_SERVICE_ROLE_KEY</code></td>
+<td>Al correr <code>scripts/invite.mjs</code> faltan esas variables.</td>
+</tr>
+<tr>
+<td><code>Falta SITE_URL (el dominio de tu web, ...)</code></td>
+<td>Agrega <code>SITE_URL</code> al comando de invitación.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Cómo adaptarlo a tu cliente</h2>
+<ul>
+<li><strong>Marca</strong>: logos en <code>public/brand/</code> y <code>public/favicon.png</code>; título en <code>index.html</code>; textos con el nombre de la marca en <code>src/pages/</code> (Login, ResetPassword, Settings, Admin, Legal), <code>src/components/AppShell.tsx</code> y los mensajes de <code>src/lib/api.ts</code>.</li>
+<li><strong>Colores</strong>: <code>accent</code> en <code>tailwind.config.ts</code>.</li>
+<li><strong>Datos legales</strong>: <code>src/lib/legal.ts</code> (empresa, dirección, email) y los textos de <code>src/pages/Legal.tsx</code>.</li>
+<li><strong>Pasos del mapa</strong> (nombre, icono, descripción): <code>SECTIONS</code> en <code>src/lib/gamification.ts</code>. La pantalla de cada paso está en <code>src/components/sections/</code>.</li>
+<li><strong>Prompts de la IA</strong>: <code>supabase/functions/generate/prompts.ts</code> (el <code>SYSTEM</code> define cómo escribe). Ojo: hoy los prompts usan euros y los negocios de ejemplo tienen ciudad y teléfono de España. Si tu público es de Latinoamérica o EE. UU., adáptalo ahí.</li>
+<li><strong>Moneda que muestra la web</strong>: la función <code>eur</code> de <code>src/lib/calc.ts</code> (formato <code>es-ES</code>, EUR).</li>
+<li><strong>Catálogo de problemas y soluciones</strong>: <code>supabase/functions/_shared/catalog.ts</code>.</li>
+<li><strong>Tabla de precios y valores por defecto</strong>: <code>supabase/functions/_shared/pricing.ts</code>.</li>
+<li><strong>Secretaria virtual</strong>: las instrucciones del chat se arman en <code>supabase/functions/_shared/agent.ts</code>.</li>
+<li><strong>Proyecto de ejemplo</strong>: <code>supabase/functions/_shared/sample.ts</code> (una clínica dental).</li>
+<li><strong>Costo en créditos de cada generación</strong>: <code>KINDS</code> en <code>supabase/functions/generate/index.ts</code>.</li>
+<li><strong>Créditos iniciales</strong>: <code>initial_credits</code> en la tabla <code>app_settings</code> (30 por defecto).</li>
+</ul>
+<p>Si cambias algo dentro de <code>supabase/functions/</code>, vuelve a desplegar esa función con <code>pnpm exec supabase functions deploy NOMBRE</code>. Si cambias la web, alcanza con commit y push.</p>
+<blockquote>
+<p>¿Te trabaste? Pregúntale a <strong>Maestro</strong> (en el menú, <a href="/maestro">/maestro</a>) con el mensaje de error exacto.</p>
+</blockquote>, crea-tu-agencia, 0,7 MB y dd650f52 -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Constructor de Agencia IA | Sistemas | Forja IA</title>
+<meta name="description" content="Una plataforma con un mapa de 11 pasos donde Claude te ayuda a armar cliente ideal, oferta y landing de tu agencia de IA, más una secretaria virtual de WhatsApp para mostrar a negocios.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../web/base.css?v=dd650f52">
+<link rel="stylesheet" href="../web/tema.css?v=dd650f52">
+<link rel="stylesheet" href="../web/forja.css?v=dd650f52">
+<script src="../web/tema.js?v=dd650f52"></script>
+<link rel="icon" href="../web/favicon.svg?v=dd650f52" type="image/svg+xml">
+</head>
+<body class="fj-app" data-seccion="sistemas" data-raiz="/">
+<script src="../web/guias-web.js?v=dd650f52"></script>
+<script src="../web/comun.js?v=dd650f52"></script>
+<main class="fj-main ancho fj-sis">
+  <nav class="fj-sis-miga" aria-label="Ruta"><a href="/sistemas">Sistemas</a> <span aria-hidden="true">/</span> <span>Constructor de Agencia IA</span></nav>
+  <section class="fj-card fj-sis-cab">
+    <span class="fj-eyebrow">Sistema listo para replicar</span>
+    <h1>Constructor de Agencia IA</h1>
+    <p>Una plataforma con un mapa de 11 pasos donde Claude te ayuda a armar cliente ideal, oferta y landing de tu agencia de IA, más una secretaria virtual de WhatsApp para mostrar a negocios.</p>
+    <div class="fj-sis-ficha"><span class="nivel">AVANZADO</span><span>WEB · SUPABASE + RENDER</span><span>90–120 min</span><span>React + Vite</span><span>Supabase</span><span>Edge Functions</span><span>Claude API</span></div>
+    <div class="fj-sis-bajar">
+      <a class="fj-btn fj-btn-primario" href="/descargas/crea-tu-agencia.zip" download="crea-tu-agencia.zip" id="si-zip">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Descargar el sistema (ZIP · 0,7 MB)
+      </a>
+      <span>El código completo, ya adaptado. Lo subes a tu GitHub en el paso 1.</span>
+    </div>
+  </section>
+  <section class="fj-card fj-sis-req">
+    <h2>Antes de empezar</h2>
+    <ul><li>Cuenta en GitHub</li><li>Cuenta en Supabase</li><li>Cuenta en Render</li><li>API key de Anthropic</li><li>Node.js 20+ y pnpm en tu computadora</li><li>SMTP propio, por ejemplo Resend (opcional: invitar por email)</li><li>Docker (opcional: desarrollo local)</li><li>Servidor WAHA en Render (opcional: WhatsApp real, beta)</li></ul>
+  </section>
+  <article class="fj-card fj-sis-guia">
+<h2>Qué es</h2>
+<p>Constructor de Agencia IA es una plataforma web donde cada usuario arma su agencia de IA con ayuda de Claude. Tiene un <strong>Mapa de Ruta de 11 pasos</strong> que entrega tres cosas para vender (cliente ideal, oferta y landing) y una <strong>secretaria virtual de WhatsApp</strong> para mostrar a los clientes:</p>
+<ol>
+<li>Problemas que resuelves.</li>
+<li>Soluciones con IA (cada problema convertido en lo que vendes).</li>
+<li>Tu agencia y tu nicho.</li>
+<li>Precios: deslizadores con los números de un negocio típico y la tabla de lo que puedes cobrar.</li>
+<li>Cliente ideal.</li>
+<li>Oferta.</li>
+<li>Landing de venta.</li>
+<li>Tu agente: ficha de un negocio típico del nicho y una secretaria que atiende, cualifica y agenda.</li>
+<li>Probar el agente en un simulador de WhatsApp.</li>
+<li>Demo para clientes: pegas la web de un negocio (o escribes sus datos) y sale su propia secretaria.</li>
+<li>Conectar WhatsApp (beta): vinculas un número por QR y el agente contesta de verdad.</li>
+</ol>
+<p>El acceso es <strong>solo por invitación</strong> y cada generación con IA cuesta <strong>créditos</strong> (cada usuario arranca con 30; el mapa completo cuesta unos 10). Si una generación falla, los créditos se devuelven solos.</p>
+<p>Lo que puedes hacer con esto: usarlo para armar tu propia agencia, mostrarle a un negocio una secretaria virtual hecha con los datos de su web, o darle acceso a tu comunidad o a tus clientes con créditos controlados.</p>
+<h2>Qué necesitas</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Qué</th>
+<th>¿Obligatorio?</th>
+<th>Para qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GitHub</strong></td>
+<td>Sí</td>
+<td>Render despliega desde tu repo.</td>
+</tr>
+<tr>
+<td><strong>Supabase</strong></td>
+<td>Sí</td>
+<td>Base de datos, login y las funciones de IA (Edge Functions). En el plan Free una función se corta a los 150 s y el proyecto se pausa tras una semana sin actividad.</td>
+</tr>
+<tr>
+<td><strong>Render</strong></td>
+<td>Sí</td>
+<td>Hospeda la web (sitio estático).</td>
+</tr>
+<tr>
+<td><strong>Anthropic</strong> (API key)</td>
+<td>Sí</td>
+<td>Claude genera los entregables (Sonnet por defecto) y responde como secretaria (Haiku por defecto). Pago por uso.</td>
+</tr>
+<tr>
+<td><strong>Node.js 20+ y pnpm</strong></td>
+<td>Sí, en tu computadora</td>
+<td>Para correr los comandos de Supabase y los scripts. pnpm se activa con <code>corepack enable</code>.</td>
+</tr>
+<tr>
+<td><strong>SMTP propio</strong> (Resend, Postmark...)</td>
+<td>Solo para invitar por email</td>
+<td>Para que lleguen los emails de invitación. Sin SMTP puedes dar de alta usuarios desde el panel de admin.</td>
+</tr>
+<tr>
+<td><strong>Docker</strong></td>
+<td>Solo para desarrollo local</td>
+<td>Supabase local.</td>
+</tr>
+<tr>
+<td><strong>Servidor WAHA</strong> (Render, plan de pago con disco)</td>
+<td>Opcional</td>
+<td>Solo para el paso 11 (WhatsApp real, beta).</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>Antes de abrirlo a otras personas, fija un <strong>límite de gasto mensual</strong> en la consola de Anthropic.</p>
+</blockquote>
+<h2>1. Descarga y súbelo a tu GitHub</h2>
+<ol>
+<li>Descarga el ZIP con el botón de arriba de esta guía y descomprímelo.</li>
+<li>En GitHub, crea un repositorio nuevo <strong>privado</strong> y vacío (sin README), por ejemplo <code>constructor-agencia</code>.</li>
+<li>Abre una terminal dentro de la carpeta descomprimida y corre:</li>
+</ol>
+<pre><code class="language-bash">git init
+git add .
+git commit -m &quot;Constructor de Agencia IA&quot;
+git branch -M main
+git remote add origin https://github.com/TU-USUARIO/constructor-agencia.git
+git push -u origin main
+</code></pre>
+<p>Los comandos son iguales en macOS, Linux y Windows (PowerShell). Si prefieres no usar la terminal, <a href="https://desktop.github.com" target="_blank" rel="noopener">GitHub Desktop</a> también sirve: <strong>File → Add local repository</strong>, elige la carpeta y publícala como privada.</p>
+<blockquote>
+<p>Nunca subas <code>.env</code>, <code>.env.local</code> ni <code>supabase/.env.local</code>. El <code>.gitignore</code> ya los excluye. Antes del commit puedes revisar con <code>git status</code> que no aparezcan.</p>
+</blockquote>
+<h2>2. Completa los datos de tu empresa</h2>
+<p>El repo viene limpio, con marcadores para que pongas lo tuyo. Antes de seguir:</p>
+<ol>
+<li><code>src/lib/legal.ts</code>: los datos que aparecen en la política de privacidad y los términos (empresa, identificación fiscal, dirección, email y fecha). Mientras algún valor empiece con <code>[</code>, esas páginas muestran un aviso de borrador.</li>
+<li><code>deploy/supabase-prod-auth/supabase/config.toml</code>: cambia <code>TU-APP</code> por la dirección real de tu web. Solo hace falta si vas a usar ese archivo (paso 3).</li>
+<li><code>.github/workflows/keepalive.yml</code>: es una tarea de GitHub que llama a Supabase cada dos días para que el plan Free no pause el proyecto. No hay que editarlo: en GitHub → tu repo → <strong>Settings → Secrets and variables → Actions</strong> crea la variable <code>SUPABASE_URL</code> y el secret <code>SUPABASE_ANON_KEY</code> (los consigues en el paso 3). Sin esas dos, no hace nada.</li>
+</ol>
+<p>Después haz commit y push:</p>
+<pre><code class="language-bash">git add .
+git commit -m &quot;Configuración propia&quot;
+git push
+</code></pre>
+<h2>3. Crea el proyecto de Supabase</h2>
+<ol>
+<li>Crea un proyecto en <a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a>. Anota la contraseña de la base de datos.</li>
+<li>Tu <strong>project ref</strong> es la parte de la URL del proyecto: <code>https://TU-REF.supabase.co</code>.</li>
+<li>En la carpeta del repo instala las dependencias (incluyen la CLI de Supabase) y conecta el proyecto:</li>
+</ol>
+<pre><code class="language-bash">corepack enable
+pnpm install
+pnpm exec supabase login
+pnpm exec supabase link --project-ref TU-REF
+pnpm exec supabase db push
+</code></pre>
+<p><code>link</code> te pide la contraseña de la base de datos. <code>db push</code> crea las tablas, permisos y funciones desde <code>supabase/migrations/</code>.</p>
+<p>Después, en el panel de Supabase:</p>
+<ul>
+<li><strong>Authentication → Providers → Email</strong>: deja el email <strong>activo</strong> y <strong>desactiva "Allow new users to sign up"</strong> (acceso solo por invitación). Otra opción es aplicar el archivo del paso 2 con <code>pnpm exec supabase config push --project-ref TU-REF --workdir deploy/supabase-prod-auth</code>.</li>
+<li>Si vas a invitar por email, configura un SMTP propio (Resend, Postmark...).</li>
+</ul>
+<h2>4. Clave de IA y funciones</h2>
+<ol>
+<li>En el panel de Supabase, <strong>Edge Functions → Secrets</strong>, crea <code>ANTHROPIC_API_KEY</code> y <code>ALLOWED_ORIGIN</code> (por ahora puedes dejar <code>*</code>; en el paso 6 pones tu dominio). Es mejor cargarlas desde el panel que desde la terminal: así la clave no queda en el historial.</li>
+<li>Despliega las funciones que usa la web:</li>
+</ol>
+<pre><code class="language-bash">pnpm exec supabase functions deploy generate
+pnpm exec supabase functions deploy agent-chat
+pnpm exec supabase functions deploy admin-students
+pnpm exec supabase functions deploy load-sample
+</code></pre>
+<p><code>generate</code> hace las generaciones con IA, <code>agent-chat</code> es el chat con la secretaria, <code>admin-students</code> es la pestaña de admin y <code>load-sample</code> carga el proyecto de ejemplo.</p>
+<h3>Secretos de las funciones</h3>
+<p><code>SUPABASE_URL</code>, <code>SUPABASE_ANON_KEY</code> y <code>SUPABASE_SERVICE_ROLE_KEY</code> las pone Supabase sola. El resto está explicado en <code>supabase/.env.example</code>.</p>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Obligatoria</th>
+<th>Para qué</th>
+<th>Dónde se saca</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ANTHROPIC_API_KEY</code></td>
+<td>Sí</td>
+<td>Claude. Sin ella, la web dice que la IA no está configurada.</td>
+<td><a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a> → API Keys.</td>
+</tr>
+<tr>
+<td><code>ALLOWED_ORIGIN</code></td>
+<td>Sí en producción</td>
+<td>Dominio de tu web (CORS). Por defecto <code>*</code>.</td>
+<td>Tu URL de Render, por ejemplo <code>https://TU-SITIO.onrender.com</code>.</td>
+</tr>
+<tr>
+<td><code>ANTHROPIC_MODEL</code></td>
+<td>No</td>
+<td>Modelo de los entregables. Por defecto <code>claude-sonnet-5-5</code>.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>ANTHROPIC_THINKING</code></td>
+<td>No</td>
+<td><code>off</code> quita el razonamiento: lo más rápido y barato. Por defecto <code>on</code>.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>AGENT_MODEL</code></td>
+<td>No</td>
+<td>Modelo de la secretaria (Haiku por defecto).</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>AGENT_CHAT_PER_MINUTE</code> / <code>AGENT_CHAT_PER_HOUR</code></td>
+<td>No</td>
+<td>Límite de mensajes con la secretaria por usuario. Por defecto 20 y 300.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>RATE_LIMIT_PER_MINUTE</code></td>
+<td>No</td>
+<td>Máximo de generaciones por usuario y minuto. Por defecto 10.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>GENERATION_TIMEOUT_SECONDS</code></td>
+<td>No</td>
+<td>Tiempo máximo de una generación. Por defecto 140. Déjalo por debajo del límite de tu plan (Free: 150 s, Pro: 400 s).</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Variables de la web (Render)</h3>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Obligatoria</th>
+<th>Para qué</th>
+<th>Dónde se saca</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VITE_SUPABASE_URL</code></td>
+<td>Sí</td>
+<td>URL del proyecto de Supabase.</td>
+<td>Supabase → Settings → API.</td>
+</tr>
+<tr>
+<td><code>VITE_SUPABASE_ANON_KEY</code></td>
+<td>Sí</td>
+<td>Clave anónima (es pública por diseño).</td>
+<td>Supabase → Settings → API.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5. Publica la web en Render</h2>
+<ol>
+<li>En Render: <strong>New → Blueprint</strong> → elige tu repo. Render lee el <code>render.yaml</code> (sitio estático con las reglas de la app y cabeceras de seguridad).</li>
+<li>Te pide <code>VITE_SUPABASE_URL</code> y <code>VITE_SUPABASE_ANON_KEY</code>.</li>
+<li>Espera el build. Cada <code>git push</code> a <code>main</code> redespliega.</li>
+</ol>
+<h2>6. Cierra la configuración con tu URL</h2>
+<p>Con la URL de Render ya puedes terminar:</p>
+<ol>
+<li>Supabase → <strong>Authentication → URL configuration</strong>: <strong>Site URL</strong> = tu URL, y agrega <code>https://TU-SITIO.onrender.com/reset-password</code> a <strong>Redirect URLs</strong>.</li>
+<li>Supabase → <strong>Edge Functions → Secrets</strong>: cambia <code>ALLOWED_ORIGIN</code> a tu URL exacta, sin <code>/</code> al final.</li>
+</ol>
+<h2>7. Primer acceso (tu cuenta de admin)</h2>
+<ol>
+<li>Supabase → <strong>Authentication → Users → Add user</strong>: crea tu usuario con email y contraseña.</li>
+<li>Supabase → <strong>SQL Editor</strong>: hazlo admin con el comando de abajo (cambia el email).</li>
+<li>Entra a tu URL e inicia sesión. Vas a ver la pestaña <strong>Alumnos</strong>.</li>
+</ol>
+<pre><code class="language-sql">update profiles set role = 'admin' where email = 'tu-email@ejemplo.com';
+</code></pre>
+<p>Desde <strong>Alumnos</strong> das de alta usuarios sin email: se muestra una contraseña temporal una sola vez, con un mensaje listo para copiar. También sumas o quitas créditos, generas contraseñas nuevas y eliminas usuarios.</p>
+<h3>Invitar por email (opcional)</h3>
+<p>Necesita el SMTP del paso 3. Haz un CSV con columnas <code>email,nombre,creditos</code> y corre (la clave <code>service_role</code> está en Supabase → Settings → API; nunca la subas a git):</p>
+<p>macOS / Linux:</p>
+<pre><code class="language-bash">SUPABASE_URL=https://TU-REF.supabase.co SUPABASE_SERVICE_ROLE_KEY=TU-CLAVE SITE_URL=https://TU-SITIO.onrender.com node scripts/invite.mjs csv alumnos.csv
+</code></pre>
+<p>Windows (PowerShell):</p>
+<pre><code class="language-powershell">$env:SUPABASE_URL=&quot;https://TU-REF.supabase.co&quot;; $env:SUPABASE_SERVICE_ROLE_KEY=&quot;TU-CLAVE&quot;; $env:SITE_URL=&quot;https://TU-SITIO.onrender.com&quot;
+node scripts/invite.mjs csv alumnos.csv
+</code></pre>
+<p>Otros comandos del mismo script: <code>invite ana@correo.com "Ana Pérez" --credits 30</code>, <code>grant ana@correo.com 20 "bonus"</code> y <code>balance ana@correo.com</code>.</p>
+<h2>8. Pruébalo en tu computadora (opcional)</h2>
+<p>Necesitas Node 20+, pnpm y Docker. Supabase local usa los puertos 554xx.</p>
+<p>macOS / Linux:</p>
+<pre><code class="language-bash">pnpm install
+pnpm db:start
+cp .env.example .env.local
+cp supabase/.env.example supabase/.env.local
+pnpm fn:serve
+pnpm dev
+</code></pre>
+<p>Windows (PowerShell):</p>
+<pre><code class="language-powershell">pnpm install
+pnpm db:start
+copy .env.example .env.local
+copy supabase\.env.example supabase\.env.local
+pnpm fn:serve
+pnpm dev
+</code></pre>
+<p><code>pnpm db:start</code> imprime la URL y las claves: pega la clave anónima en <code>.env.local</code> y tu <code>ANTHROPIC_API_KEY</code> real en <code>supabase/.env.local</code>. <code>pnpm fn:serve</code> y <code>pnpm dev</code> se quedan corriendo: usa una terminal para cada uno. La web abre en <code>http://localhost:5173</code>.</p>
+<p>Para crear un usuario de prueba con contraseña (solo local):</p>
+<pre><code class="language-bash">SUPABASE_URL=http://127.0.0.1:55421 SUPABASE_SERVICE_ROLE_KEY=CLAVE-SECRETA-LOCAL node scripts/invite.mjs create alumno@test.com &quot;Contraseña-Larga-1&quot; --credits 30
+</code></pre>
+<h2>9. WhatsApp real (beta, opcional)</h2>
+<p>Usa <strong>WAHA</strong>, una vía <strong>no oficial</strong> de Meta: puede terminar en el bloqueo del número. Por eso el agente solo responde (nunca inicia conversaciones), tiene topes por día y por chat, y se calla si el dueño contesta desde su celular.</p>
+<ol>
+<li>En Render: <strong>New → Web Service → Existing Image</strong> → <code>docker.io/devlikeapro/waha:noweb</code>, plan de pago y un <strong>Disk</strong> montado en <code>/app/.sessions</code> (1 GB).</li>
+<li>Variables de ese servicio: <code>WAHA_API_KEY</code> (clave larga aleatoria), <code>WHATSAPP_DEFAULT_ENGINE=NOWEB</code>, <code>PORT=3000</code>, <code>WAHA_DASHBOARD_ENABLED=false</code>, <code>WHATSAPP_SWAGGER_ENABLED=false</code>.</li>
+<li>En Supabase → <strong>Edge Functions → Secrets</strong>: <code>WAHA_URL</code> (la URL del servicio de WAHA), <code>WAHA_API_KEY</code> (la misma), <code>WA_WEBHOOK_URL</code> (<code>https://TU-REF.supabase.co/functions/v1/wa-webhook</code>) y <code>WA_WEBHOOK_SECRET</code> (otro secreto largo).
+Después despliega:</li>
+</ol>
+<pre><code class="language-bash">pnpm exec supabase db push
+pnpm exec supabase functions deploy wa-connect
+pnpm exec supabase functions deploy wa-webhook
+</code></pre>
+<p>Empieza con el plan más chico y vigila la memoria: si WAHA se reinicia por falta de RAM, sube de plan. Las conversaciones reales se guardan 30 días y solo las ve su dueño: <strong>publica un aviso de privacidad antes de abrirlo a otras personas</strong>.</p>
+<h2>Seguridad</h2>
+<ul>
+<li><strong><code>SUPABASE_SERVICE_ROLE_KEY</code> y <code>ANTHROPIC_API_KEY</code> son secretos</strong>: no van en el frontend, ni en Render, ni en git. La clave de Anthropic vive solo en los secretos de Supabase y nunca llega al navegador.</li>
+<li><strong>Cierra el registro público</strong> ("Allow new users to sign up" desactivado): el acceso es solo por invitación.</li>
+<li><strong>Pon un límite de gasto mensual</strong> en la consola de Anthropic antes de abrirlo a otras personas.</li>
+<li><strong><code>ALLOWED_ORIGIN</code></strong> con tu dominio exacto en producción.</li>
+<li><strong>El rol admin se asigna a mano</strong> por SQL. No lo des a cualquiera: puede crear y borrar usuarios y repartir créditos.</li>
+<li><code>FETCH_ALLOW_HOSTS</code> es solo para pruebas locales: en producción, vacío.</li>
+<li>WhatsApp real es beta y no oficial: riesgo de bloqueo del número y datos de terceros. Aviso de privacidad obligatorio.</li>
+</ul>
+<h2>Errores frecuentes</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Mensaje</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Faltan VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY (ver .env.example)</code></td>
+<td>Carga las dos variables en Render (o en <code>.env.local</code>) y vuelve a desplegar.</td>
+</tr>
+<tr>
+<td><code>Email o contraseña incorrectos.</code></td>
+<td>Revisa el email y la contraseña. Si el usuario no existe, créalo desde <strong>Alumnos</strong> o en Supabase.</td>
+</tr>
+<tr>
+<td><code>La IA aún no está configurada en el servidor.</code></td>
+<td>Falta el secreto <code>ANTHROPIC_API_KEY</code> en Supabase → Edge Functions → Secrets.</td>
+</tr>
+<tr>
+<td><code>Se interrumpió la conexión con la IA. Revisa tus créditos y vuelve a intentarlo.</code></td>
+<td>Revisa que la función <code>generate</code> esté desplegada y que <code>ALLOWED_ORIGIN</code> sea exactamente tu dominio.</td>
+</tr>
+<tr>
+<td><code>No te quedan créditos. Pide más a tu equipo.</code></td>
+<td>Suma créditos desde <strong>Alumnos</strong> o con <code>node scripts/invite.mjs grant</code>.</td>
+</tr>
+<tr>
+<td><code>Vas muy rápido. Espera unos segundos y vuelve a intentarlo.</code></td>
+<td>Límite por minuto (<code>RATE_LIMIT_PER_MINUTE</code>). Espera.</td>
+</tr>
+<tr>
+<td><code>La IA está saturada en este momento. Inténtalo de nuevo en un momento.</code></td>
+<td>Anthropic está ocupado. Reintenta.</td>
+</tr>
+<tr>
+<td><code>La IA ha tardado demasiado. Se te han devuelto los créditos: inténtalo de nuevo.</code></td>
+<td>Sube <code>GENERATION_TIMEOUT_SECONDS</code> (sin pasar el límite de tu plan) o pon <code>ANTHROPIC_THINKING=off</code>.</td>
+</tr>
+<tr>
+<td><code>La IA no respondió correctamente. No se ha descontado ningún crédito.</code></td>
+<td>Reintenta. Si se repite, revisa la clave y el crédito de Anthropic.</td>
+</tr>
+<tr>
+<td><code>Ya se está generando esto. Espera a que termine.</code></td>
+<td>Hay una generación en curso de ese mismo entregable. Espera.</td>
+</tr>
+<tr>
+<td><code>Tu sesión ha caducado. Vuelve a iniciar sesión.</code></td>
+<td>Vuelve a entrar.</td>
+</tr>
+<tr>
+<td><code>Para vincular un número tienes que aceptar el aviso sobre tus clientes.</code></td>
+<td>Acepta el aviso antes de vincular WhatsApp.</td>
+</tr>
+<tr>
+<td><code>Faltan SUPABASE_URL y SUPABASE_SERVICE_ROLE_KEY</code></td>
+<td>Al correr <code>scripts/invite.mjs</code> faltan esas variables.</td>
+</tr>
+<tr>
+<td><code>Falta SITE_URL (el dominio de tu web, ...)</code></td>
+<td>Agrega <code>SITE_URL</code> al comando de invitación.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Cómo adaptarlo a tu cliente</h2>
+<ul>
+<li><strong>Marca</strong>: logos en <code>public/brand/</code> y <code>public/favicon.png</code>; título en <code>index.html</code>; textos con el nombre de la marca en <code>src/pages/</code> (Login, ResetPassword, Settings, Admin, Legal), <code>src/components/AppShell.tsx</code> y los mensajes de <code>src/lib/api.ts</code>.</li>
+<li><strong>Colores</strong>: <code>accent</code> en <code>tailwind.config.ts</code>.</li>
+<li><strong>Datos legales</strong>: <code>src/lib/legal.ts</code> (empresa, dirección, email) y los textos de <code>src/pages/Legal.tsx</code>.</li>
+<li><strong>Pasos del mapa</strong> (nombre, icono, descripción): <code>SECTIONS</code> en <code>src/lib/gamification.ts</code>. La pantalla de cada paso está en <code>src/components/sections/</code>.</li>
+<li><strong>Prompts de la IA</strong>: <code>supabase/functions/generate/prompts.ts</code> (el <code>SYSTEM</code> define cómo escribe). Ojo: hoy los prompts usan euros y los negocios de ejemplo tienen ciudad y teléfono de España. Si tu público es de Latinoamérica o EE. UU., adáptalo ahí.</li>
+<li><strong>Moneda que muestra la web</strong>: la función <code>eur</code> de <code>src/lib/calc.ts</code> (formato <code>es-ES</code>, EUR).</li>
+<li><strong>Catálogo de problemas y soluciones</strong>: <code>supabase/functions/_shared/catalog.ts</code>.</li>
+<li><strong>Tabla de precios y valores por defecto</strong>: <code>supabase/functions/_shared/pricing.ts</code>.</li>
+<li><strong>Secretaria virtual</strong>: las instrucciones del chat se arman en <code>supabase/functions/_shared/agent.ts</code>.</li>
+<li><strong>Proyecto de ejemplo</strong>: <code>supabase/functions/_shared/sample.ts</code> (una clínica dental).</li>
+<li><strong>Costo en créditos de cada generación</strong>: <code>KINDS</code> en <code>supabase/functions/generate/index.ts</code>.</li>
+<li><strong>Créditos iniciales</strong>: <code>initial_credits</code> en la tabla <code>app_settings</code> (30 por defecto).</li>
+</ul>
+<p>Si cambias algo dentro de <code>supabase/functions/</code>, vuelve a desplegar esa función con <code>pnpm exec supabase functions deploy NOMBRE</code>. Si cambias la web, alcanza con commit y push.</p>
+<blockquote>
+<p>¿Te trabaste? Pregúntale a <strong>Maestro</strong> (en el menú, <a href="/maestro">/maestro</a>) con el mensaje de error exacto.</p>
+</blockquote>
+  </article>
+</main>
+<script src="../web/shell.js?v=dd650f52"></script>
+<script>
+// Botón «Copiar» en cada bloque de código
+document.querySelectorAll(".fj-sis-guia pre").forEach(function (pre) {
+  var b = document.createElement("button");
+  b.type = "button"; b.className = "fj-sis-copiar"; b.textContent = "Copiar";
+  b.addEventListener("click", function () {
+    var t = pre.querySelector("code") ? pre.querySelector("code").innerText : pre.innerText;
+    navigator.clipboard.writeText(t).then(function () { b.textContent = "Copiado"; setTimeout(function () { b.textContent = "Copiar"; }, 1500); });
+  });
+  pre.appendChild(b);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,436 @@
+<!doctype html>
+<!-- Plantilla de la guía de cada sistema. build.py la copia a ../sistemas/<slug>.html con Jarvis OS, Tu asistente personal en WhatsApp con Claude como cerebro: le escribes o le mandas notas de voz y te prepara mensajes para tus clientes, contratos en Word y enlaces de pago. Solo envía algo cuando respondes «sí»., <span class="nivel">INTERMEDIO</span><span>MAC · LOCAL (WHATSAPP)</span><span>30–45 min</span><span>Claude Code</span><span>WhatsApp</span><span>Whisper</span><span>Docker</span>, <li>Una Mac (en Windows funciona con scripts aparte)</li><li>Docker Desktop</li><li>Node 22 o superior</li><li>Claude Code con tu propia cuenta de Claude</li><li>Un número secundario de WhatsApp en un celular</li><li>Unos 4 GB libres</li><li>Clave restringida de Stripe (opcional: enlaces de pago)</li>, <h2>Qué es</h2>
+<p>Jarvis OS es tu asistente personal en WhatsApp, con Claude como cerebro. Le escribes o le mandas notas de voz desde tu WhatsApp personal y él:</p>
+<ul>
+<li>te contesta y te transcribe los audios («Te entendí: …»),</li>
+<li>te prepara mensajes de seguimiento para tus clientes,</li>
+<li>te arma <strong>contratos en Word</strong> con los datos de tu empresa,</li>
+<li>crea <strong>enlaces de pago de Stripe</strong> (opcional),</li>
+<li>y <strong>solo envía algo a un cliente cuando tú respondes <code>sí N</code></strong>.</li>
+</ul>
+<p>Todo corre en tu Mac: WhatsApp (WAHA, en Docker), la transcripción (Whisper) y el puente con Claude Code. No hay servidor ni base de datos en la nube.</p>
+<p>Lo que vendes: un asistente de WhatsApp para dueños de negocio, coaches o agencias que viven en el teléfono. Lo instalas en la computadora del cliente, con <strong>su</strong> cuenta de Claude.</p>
+<h2>Qué necesitas</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Necesitas</th>
+<th>Cómo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Una Mac</strong></td>
+<td>El instalador de un comando es para Mac. En Windows hay scripts aparte (ver abajo).</td>
+</tr>
+<tr>
+<td><strong>Docker Desktop</strong></td>
+<td><a href="https://www.docker.com/products/docker-desktop/" target="_blank" rel="noopener">docker.com/products/docker-desktop</a>. Ábrelo una vez y acepta los permisos.</td>
+</tr>
+<tr>
+<td><strong>Node 22 o más</strong></td>
+<td><code>brew install node</code></td>
+</tr>
+<tr>
+<td><strong>Claude Code con tu propia cuenta de Claude</strong></td>
+<td><code>brew install --cask claude-code</code>, después abre <code>claude</code> y escribe <code>/login</code>.</td>
+</tr>
+<tr>
+<td><strong>Un número secundario de WhatsApp</strong> en un celular</td>
+<td>Será el número de Jarvis. Tus clientes verán ese número.</td>
+</tr>
+<tr>
+<td><strong>Unos 4 GB libres</strong></td>
+<td>La primera instalación baja entre 2 y 3 GB.</td>
+</tr>
+<tr>
+<td><strong>Stripe</strong></td>
+<td>Opcional, para los enlaces de pago.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>1. Descarga</h2>
+<ol>
+<li>Descarga el ZIP con el botón de arriba de esta guía.</li>
+<li>Descomprímelo en tu <strong>carpeta personal</strong> con el nombre <code>jarvis-os</code> (queda en <code>~/jarvis-os</code>). <strong>No</strong> lo pongas en Escritorio ni en Documentos: macOS puede bloquear ahí el arranque automático.</li>
+</ol>
+<p>No hace falta subirlo a GitHub: Jarvis vive en tu Mac.</p>
+<h2>2. Instala (un comando)</h2>
+<p>Abre la Terminal y corre:</p>
+<pre><code class="language-bash">cd ~/jarvis-os &amp;&amp; bash scripts/setup.sh
+</code></pre>
+<p>El instalador va en 8 pasos:</p>
+<ol>
+<li>Comprueba Docker, Node y que Claude Code tenga la sesión iniciada.</li>
+<li>Te pide tu nombre, a qué te dedicas, tu WhatsApp <strong>personal</strong> (con prefijo, por ejemplo <code>+5491122334455</code>) y tu zona horaria (por ejemplo <code>America/Argentina/Buenos_Aires</code> o <code>Mexico_City</code>).</li>
+<li>Genera las claves (quedan en <code>.secrets/</code>, fuera de git).</li>
+<li>Arranca WAHA y Whisper en Docker.</li>
+<li>Te muestra un <strong>QR</strong>: escanéalo con el celular del número <strong>secundario</strong> (WhatsApp → Dispositivos vinculados → Vincular dispositivo).</li>
+<li>Guarda tu configuración.</li>
+<li>Lo deja siempre encendido (arranca solo cuando prendes la Mac).</li>
+<li>Te manda un «Hola, soy Jarvis» a tu WhatsApp personal.</li>
+</ol>
+<blockquote>
+<p>Si la zona horaria que escribes no existe, usa <code>Europe/Madrid</code>. Escríbela bien para que las fechas de los contratos salgan con tu hora.</p>
+</blockquote>
+<h2>3. Datos para los contratos</h2>
+<p>El instalador crea <code>perfil/emisor.txt</code>. Ábrelo y completa los datos de tu empresa: nombre legal, estado o país, dirección, quién firma, email, moneda e idioma. Jarvis los lee en cada mensaje y nunca se suben a ningún lado.</p>
+<h2>4. Enlaces de pago con Stripe (opcional)</h2>
+<ol>
+<li>En Stripe → <strong>Desarrolladores → Claves de API → Crear clave restringida</strong>.</li>
+<li>Dale permiso de <strong>Escritura</strong> solo a <strong>Products</strong>, <strong>Prices</strong> y <strong>Payment Links</strong>. Todo lo demás en <strong>Ninguno</strong>.</li>
+<li>Pega la clave en <code>.secrets/stripe.env</code> así: <code>STRIPE_API_KEY=rk_live_…</code></li>
+</ol>
+<p>Sin esa clave, Jarvis funciona igual pero sin enlaces de pago. Crear un enlace no cobra nada.</p>
+<h2>5. Cómo se usa</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Le dices</th>
+<th>Qué pasa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cualquier mensaje o nota de voz</td>
+<td>Te contesta. Los audios los transcribe primero.</td>
+</tr>
+<tr>
+<td>«Haz seguimiento a Ana (+5491122334455) sobre la propuesta»</td>
+<td>Te muestra un <strong>Borrador N</strong> con el texto exacto.</td>
+</tr>
+<tr>
+<td>«Hazme un contrato de mentoría para Ana, 3 meses, 1.500 USD»</td>
+<td>Te llega el contrato en <strong>Word</strong> por WhatsApp. Es un borrador: revísalo.</td>
+</tr>
+<tr>
+<td>«Envíaselo a Ana (+5491122334455)»</td>
+<td><strong>Borrador N</strong> con el Word adjunto.</td>
+</tr>
+<tr>
+<td>«Enlace de pago de 1.500 USD por la mentoría de Ana»</td>
+<td>Te llega el enlace de Stripe.</td>
+</tr>
+<tr>
+<td><code>sí N</code> (escrito)</td>
+<td>El borrador se envía. Por voz no vale, a propósito.</td>
+</tr>
+<tr>
+<td><code>no N</code></td>
+<td>El borrador se descarta.</td>
+</tr>
+<tr>
+<td><code>/nuevo</code></td>
+<td>Empieza una conversación desde cero.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>En Windows</h2>
+<p>Funciona igual con Docker Desktop, pero sin el instalador de un comando: usa <code>scripts/start-jarvis.ps1</code> para arrancarlo y <code>scripts/install-task.ps1</code> para que arranque solo al iniciar sesión. Copia <code>config.example.env</code> como <code>config.env</code> y complétalo antes.</p>
+<h2>Seguridad</h2>
+<ul>
+<li><strong>Solo tu WhatsApp personal le da órdenes.</strong> Lo que escriban otros (texto o audio) te llega reenviado como información; nunca lo obedece.</li>
+<li><strong>Nada sale sin tu <code>sí N</code>.</strong> Claude no tiene herramientas: el envío lo hace el puente, no Claude.</li>
+<li>WAHA, Whisper y el puente solo escuchan en tu Mac (<code>127.0.0.1</code>). Las claves se generan en tu Mac y viven en <code>.secrets/</code>.</li>
+<li>Cada persona usa <strong>su propia</strong> cuenta de Claude. No instales Jarvis de un cliente con tu cuenta.</li>
+</ul>
+<h2>Errores frecuentes</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Problema</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No contesta</td>
+<td>Mira <code>logs/start.log</code>, <code>logs/bridge.log</code> y <code>logs/bridge-console.log</code>.</td>
+</tr>
+<tr>
+<td>«Claude Code no tiene sesión»</td>
+<td>Abre <code>claude</code>, escribe <code>/login</code> y vuelve a correr el instalador.</td>
+</tr>
+<tr>
+<td>«Ya hay un Jarvis configurado aquí»</td>
+<td>Para empezar de cero borra <code>config.env</code>, <code>.secrets/</code> y <code>waha/.sessions/</code>.</td>
+</tr>
+<tr>
+<td>Docker no arranca</td>
+<td>Ábrelo a mano, espera a que diga «running» y repite.</td>
+</tr>
+<tr>
+<td>Reiniciar Jarvis</td>
+<td><code>launchctl kickstart -k gui/$(id -u)/com.jarvis.agent</code></td>
+</tr>
+<tr>
+<td>Apagarlo</td>
+<td><code>launchctl bootout gui/$(id -u)/com.jarvis.agent</code></td>
+</tr>
+<tr>
+<td>Volver a vincular WhatsApp</td>
+<td>Borra <code>config.env</code>, <code>.secrets/</code> y <code>waha/.sessions/</code> y repite <code>bash scripts/setup.sh</code>.</td>
+</tr>
+<tr>
+<td>Contestan dos Jarvis</td>
+<td>Vinculaste el mismo número en dos computadoras. Un número secundario = un solo Jarvis.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Si la Mac se duerme, Jarvis no contesta hasta que despierte. En una Mac que queda prendida, desactiva el reposo en <strong>Ajustes → Batería / Energía</strong>.</p>
+<h2>Cómo adaptarlo a tu cliente</h2>
+<ul>
+<li><strong>Su personalidad y reglas</strong>: <code>bridge/system-prompt.txt</code>. Ahí defines cómo habla Jarvis, qué hace y qué nunca hace. Cambia el tono al de tu cliente (por ejemplo, tú en vez de vos, o más formal).</li>
+<li><strong>Datos de su empresa</strong>: <code>perfil/emisor.txt</code> (contratos).</li>
+<li><strong>Nombre y a qué se dedica</strong>: los pide el instalador y quedan en <code>config.env</code> (<code>OWNER_NAME</code>, <code>OWNER_ABOUT</code>).</li>
+<li><strong>Idioma de los audios</strong>: <code>WHISPER_LANGUAGE</code> en <code>config.env</code>.</li>
+<li><strong>Un Jarvis por persona</strong>: cada cliente con su Mac, su número secundario y su cuenta de Claude.</li>
+</ul>
+<blockquote>
+<p>¿Te trabaste? Pregúntale a <strong>Maestro</strong> (en el menú, <a href="/maestro">/maestro</a>) con el mensaje de error exacto.</p>
+</blockquote>, jarvis-os, menos de 0,1 MB y dd650f52 -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jarvis OS | Sistemas | Forja IA</title>
+<meta name="description" content="Tu asistente personal en WhatsApp con Claude como cerebro: le escribes o le mandas notas de voz y te prepara mensajes para tus clientes, contratos en Word y enlaces de pago. Solo envía algo cuando respondes «sí».">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../web/base.css?v=dd650f52">
+<link rel="stylesheet" href="../web/tema.css?v=dd650f52">
+<link rel="stylesheet" href="../web/forja.css?v=dd650f52">
+<script src="../web/tema.js?v=dd650f52"></script>
+<link rel="icon" href="../web/favicon.svg?v=dd650f52" type="image/svg+xml">
+</head>
+<body class="fj-app" data-seccion="sistemas" data-raiz="/">
+<script src="../web/guias-web.js?v=dd650f52"></script>
+<script src="../web/comun.js?v=dd650f52"></script>
+<main class="fj-main ancho fj-sis">
+  <nav class="fj-sis-miga" aria-label="Ruta"><a href="/sistemas">Sistemas</a> <span aria-hidden="true">/</span> <span>Jarvis OS</span></nav>
+  <section class="fj-card fj-sis-cab">
+    <span class="fj-eyebrow">Sistema listo para replicar</span>
+    <h1>Jarvis OS</h1>
+    <p>Tu asistente personal en WhatsApp con Claude como cerebro: le escribes o le mandas notas de voz y te prepara mensajes para tus clientes, contratos en Word y enlaces de pago. Solo envía algo cuando respondes «sí».</p>
+    <div class="fj-sis-ficha"><span class="nivel">INTERMEDIO</span><span>MAC · LOCAL (WHATSAPP)</span><span>30–45 min</span><span>Claude Code</span><span>WhatsApp</span><span>Whisper</span><span>Docker</span></div>
+    <div class="fj-sis-bajar">
+      <a class="fj-btn fj-btn-primario" href="/descargas/jarvis-os.zip" download="jarvis-os.zip" id="si-zip">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Descargar el sistema (ZIP · menos de 0,1 MB)
+      </a>
+      <span>El código completo, ya adaptado. Lo subes a tu GitHub en el paso 1.</span>
+    </div>
+  </section>
+  <section class="fj-card fj-sis-req">
+    <h2>Antes de empezar</h2>
+    <ul><li>Una Mac (en Windows funciona con scripts aparte)</li><li>Docker Desktop</li><li>Node 22 o superior</li><li>Claude Code con tu propia cuenta de Claude</li><li>Un número secundario de WhatsApp en un celular</li><li>Unos 4 GB libres</li><li>Clave restringida de Stripe (opcional: enlaces de pago)</li></ul>
+  </section>
+  <article class="fj-card fj-sis-guia">
+<h2>Qué es</h2>
+<p>Jarvis OS es tu asistente personal en WhatsApp, con Claude como cerebro. Le escribes o le mandas notas de voz desde tu WhatsApp personal y él:</p>
+<ul>
+<li>te contesta y te transcribe los audios («Te entendí: …»),</li>
+<li>te prepara mensajes de seguimiento para tus clientes,</li>
+<li>te arma <strong>contratos en Word</strong> con los datos de tu empresa,</li>
+<li>crea <strong>enlaces de pago de Stripe</strong> (opcional),</li>
+<li>y <strong>solo envía algo a un cliente cuando tú respondes <code>sí N</code></strong>.</li>
+</ul>
+<p>Todo corre en tu Mac: WhatsApp (WAHA, en Docker), la transcripción (Whisper) y el puente con Claude Code. No hay servidor ni base de datos en la nube.</p>
+<p>Lo que vendes: un asistente de WhatsApp para dueños de negocio, coaches o agencias que viven en el teléfono. Lo instalas en la computadora del cliente, con <strong>su</strong> cuenta de Claude.</p>
+<h2>Qué necesitas</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Necesitas</th>
+<th>Cómo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Una Mac</strong></td>
+<td>El instalador de un comando es para Mac. En Windows hay scripts aparte (ver abajo).</td>
+</tr>
+<tr>
+<td><strong>Docker Desktop</strong></td>
+<td><a href="https://www.docker.com/products/docker-desktop/" target="_blank" rel="noopener">docker.com/products/docker-desktop</a>. Ábrelo una vez y acepta los permisos.</td>
+</tr>
+<tr>
+<td><strong>Node 22 o más</strong></td>
+<td><code>brew install node</code></td>
+</tr>
+<tr>
+<td><strong>Claude Code con tu propia cuenta de Claude</strong></td>
+<td><code>brew install --cask claude-code</code>, después abre <code>claude</code> y escribe <code>/login</code>.</td>
+</tr>
+<tr>
+<td><strong>Un número secundario de WhatsApp</strong> en un celular</td>
+<td>Será el número de Jarvis. Tus clientes verán ese número.</td>
+</tr>
+<tr>
+<td><strong>Unos 4 GB libres</strong></td>
+<td>La primera instalación baja entre 2 y 3 GB.</td>
+</tr>
+<tr>
+<td><strong>Stripe</strong></td>
+<td>Opcional, para los enlaces de pago.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>1. Descarga</h2>
+<ol>
+<li>Descarga el ZIP con el botón de arriba de esta guía.</li>
+<li>Descomprímelo en tu <strong>carpeta personal</strong> con el nombre <code>jarvis-os</code> (queda en <code>~/jarvis-os</code>). <strong>No</strong> lo pongas en Escritorio ni en Documentos: macOS puede bloquear ahí el arranque automático.</li>
+</ol>
+<p>No hace falta subirlo a GitHub: Jarvis vive en tu Mac.</p>
+<h2>2. Instala (un comando)</h2>
+<p>Abre la Terminal y corre:</p>
+<pre><code class="language-bash">cd ~/jarvis-os &amp;&amp; bash scripts/setup.sh
+</code></pre>
+<p>El instalador va en 8 pasos:</p>
+<ol>
+<li>Comprueba Docker, Node y que Claude Code tenga la sesión iniciada.</li>
+<li>Te pide tu nombre, a qué te dedicas, tu WhatsApp <strong>personal</strong> (con prefijo, por ejemplo <code>+5491122334455</code>) y tu zona horaria (por ejemplo <code>America/Argentina/Buenos_Aires</code> o <code>Mexico_City</code>).</li>
+<li>Genera las claves (quedan en <code>.secrets/</code>, fuera de git).</li>
+<li>Arranca WAHA y Whisper en Docker.</li>
+<li>Te muestra un <strong>QR</strong>: escanéalo con el celular del número <strong>secundario</strong> (WhatsApp → Dispositivos vinculados → Vincular dispositivo).</li>
+<li>Guarda tu configuración.</li>
+<li>Lo deja siempre encendido (arranca solo cuando prendes la Mac).</li>
+<li>Te manda un «Hola, soy Jarvis» a tu WhatsApp personal.</li>
+</ol>
+<blockquote>
+<p>Si la zona horaria que escribes no existe, usa <code>Europe/Madrid</code>. Escríbela bien para que las fechas de los contratos salgan con tu hora.</p>
+</blockquote>
+<h2>3. Datos para los contratos</h2>
+<p>El instalador crea <code>perfil/emisor.txt</code>. Ábrelo y completa los datos de tu empresa: nombre legal, estado o país, dirección, quién firma, email, moneda e idioma. Jarvis los lee en cada mensaje y nunca se suben a ningún lado.</p>
+<h2>4. Enlaces de pago con Stripe (opcional)</h2>
+<ol>
+<li>En Stripe → <strong>Desarrolladores → Claves de API → Crear clave restringida</strong>.</li>
+<li>Dale permiso de <strong>Escritura</strong> solo a <strong>Products</strong>, <strong>Prices</strong> y <strong>Payment Links</strong>. Todo lo demás en <strong>Ninguno</strong>.</li>
+<li>Pega la clave en <code>.secrets/stripe.env</code> así: <code>STRIPE_API_KEY=rk_live_…</code></li>
+</ol>
+<p>Sin esa clave, Jarvis funciona igual pero sin enlaces de pago. Crear un enlace no cobra nada.</p>
+<h2>5. Cómo se usa</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Le dices</th>
+<th>Qué pasa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cualquier mensaje o nota de voz</td>
+<td>Te contesta. Los audios los transcribe primero.</td>
+</tr>
+<tr>
+<td>«Haz seguimiento a Ana (+5491122334455) sobre la propuesta»</td>
+<td>Te muestra un <strong>Borrador N</strong> con el texto exacto.</td>
+</tr>
+<tr>
+<td>«Hazme un contrato de mentoría para Ana, 3 meses, 1.500 USD»</td>
+<td>Te llega el contrato en <strong>Word</strong> por WhatsApp. Es un borrador: revísalo.</td>
+</tr>
+<tr>
+<td>«Envíaselo a Ana (+5491122334455)»</td>
+<td><strong>Borrador N</strong> con el Word adjunto.</td>
+</tr>
+<tr>
+<td>«Enlace de pago de 1.500 USD por la mentoría de Ana»</td>
+<td>Te llega el enlace de Stripe.</td>
+</tr>
+<tr>
+<td><code>sí N</code> (escrito)</td>
+<td>El borrador se envía. Por voz no vale, a propósito.</td>
+</tr>
+<tr>
+<td><code>no N</code></td>
+<td>El borrador se descarta.</td>
+</tr>
+<tr>
+<td><code>/nuevo</code></td>
+<td>Empieza una conversación desde cero.</td>
+</tr>
+</tbody>
+</table></div>
+<h2>En Windows</h2>
+<p>Funciona igual con Docker Desktop, pero sin el instalador de un comando: usa <code>scripts/start-jarvis.ps1</code> para arrancarlo y <code>scripts/install-task.ps1</code> para que arranque solo al iniciar sesión. Copia <code>config.example.env</code> como <code>config.env</code> y complétalo antes.</p>
+<h2>Seguridad</h2>
+<ul>
+<li><strong>Solo tu WhatsApp personal le da órdenes.</strong> Lo que escriban otros (texto o audio) te llega reenviado como información; nunca lo obedece.</li>
+<li><strong>Nada sale sin tu <code>sí N</code>.</strong> Claude no tiene herramientas: el envío lo hace el puente, no Claude.</li>
+<li>WAHA, Whisper y el puente solo escuchan en tu Mac (<code>127.0.0.1</code>). Las claves se generan en tu Mac y viven en <code>.secrets/</code>.</li>
+<li>Cada persona usa <strong>su propia</strong> cuenta de Claude. No instales Jarvis de un cliente con tu cuenta.</li>
+</ul>
+<h2>Errores frecuentes</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Problema</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No contesta</td>
+<td>Mira <code>logs/start.log</code>, <code>logs/bridge.log</code> y <code>logs/bridge-console.log</code>.</td>
+</tr>
+<tr>
+<td>«Claude Code no tiene sesión»</td>
+<td>Abre <code>claude</code>, escribe <code>/login</code> y vuelve a correr el instalador.</td>
+</tr>
+<tr>
+<td>«Ya hay un Jarvis configurado aquí»</td>
+<td>Para empezar de cero borra <code>config.env</code>, <code>.secrets/</code> y <code>waha/.sessions/</code>.</td>
+</tr>
+<tr>
+<td>Docker no arranca</td>
+<td>Ábrelo a mano, espera a que diga «running» y repite.</td>
+</tr>
+<tr>
+<td>Reiniciar Jarvis</td>
+<td><code>launchctl kickstart -k gui/$(id -u)/com.jarvis.agent</code></td>
+</tr>
+<tr>
+<td>Apagarlo</td>
+<td><code>launchctl bootout gui/$(id -u)/com.jarvis.agent</code></td>
+</tr>
+<tr>
+<td>Volver a vincular WhatsApp</td>
+<td>Borra <code>config.env</code>, <code>.secrets/</code> y <code>waha/.sessions/</code> y repite <code>bash scripts/setup.sh</code>.</td>
+</tr>
+<tr>
+<td>Contestan dos Jarvis</td>
+<td>Vinculaste el mismo número en dos computadoras. Un número secundario = un solo Jarvis.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Si la Mac se duerme, Jarvis no contesta hasta que despierte. En una Mac que queda prendida, desactiva el reposo en <strong>Ajustes → Batería / Energía</strong>.</p>
+<h2>Cómo adaptarlo a tu cliente</h2>
+<ul>
+<li><strong>Su personalidad y reglas</strong>: <code>bridge/system-prompt.txt</code>. Ahí defines cómo habla Jarvis, qué hace y qué nunca hace. Cambia el tono al de tu cliente (por ejemplo, tú en vez de vos, o más formal).</li>
+<li><strong>Datos de su empresa</strong>: <code>perfil/emisor.txt</code> (contratos).</li>
+<li><strong>Nombre y a qué se dedica</strong>: los pide el instalador y quedan en <code>config.env</code> (<code>OWNER_NAME</code>, <code>OWNER_ABOUT</code>).</li>
+<li><strong>Idioma de los audios</strong>: <code>WHISPER_LANGUAGE</code> en <code>config.env</code>.</li>
+<li><strong>Un Jarvis por persona</strong>: cada cliente con su Mac, su número secundario y su cuenta de Claude.</li>
+</ul>
+<blockquote>
+<p>¿Te trabaste? Pregúntale a <strong>Maestro</strong> (en el menú, <a href="/maestro">/maestro</a>) con el mensaje de error exacto.</p>
+</blockquote>
+  </article>
+</main>
+<script src="../web/shell.js?v=dd650f52"></script>
+<script>
+// Botón «Copiar» en cada bloque de código
+document.querySelectorAll(".fj-sis-guia pre").forEach(function (pre) {
+  var b = document.createElement("button");
+  b.type = "button"; b.className = "fj-sis-copiar"; b.textContent = "Copiar";
+  b.addEventListener("click", function () {
+    var t = pre.querySelector("code") ? pre.querySelector("code").innerText : pre.innerText;
+    navigator.clipboard.writeText(t).then(function () { b.textContent = "Copiado"; setTimeout(function () { b.textContent = "Copiar"; }, 1500); });
+  });
+  pre.appendChild(b);
+});
+</script>
+</body>
+</html>

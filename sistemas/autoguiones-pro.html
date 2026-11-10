@@ -1,0 +1,892 @@
+<!doctype html>
+<!-- Plantilla de la guía de cada sistema. build.py la copia a ../sistemas/<slug>.html con AutoGuiones PRO, Genera guiones de video listos para grabar a partir de noticias de IA y de videos virales de la competencia, con la voz de tu marca, puntuados del 0 al 10., <span class="nivel">INTERMEDIO</span><span>WEB · RENDER</span><span>45–60 min</span><span>Next.js</span><span>SQLite</span><span>Claude API</span><span>Whisper</span><span>Render</span>, <li>Cuenta en GitHub</li><li>Cuenta en Render (plan Starter, de pago, con disco persistente)</li><li>API key de Anthropic</li><li>API key de OpenAI (opcional: competencia y subtítulos)</li><li>Token de Apify (opcional: Instagram)</li><li>HeyGen y Metricool (opcionales)</li>, <h2>Qué es</h2>
+<p>AutoGuiones PRO es una web que arma guiones de video listos para grabar. Toma ideas de dos lados: <strong>noticias de IA</strong> (RSS, Hacker News, Reddit) y <strong>videos virales de tu competencia</strong> (Instagram, TikTok, YouTube). Puntúa cada noticia de 0 a 100, escribe guiones con la voz de tu marca, los autocritica de 0 a 10 y te dice cómo mejorarlos. Opcional: conviertes guiones en videos con tu avatar de <strong>HeyGen</strong> y los publicas con <strong>Metricool</strong>.</p>
+<p>Es multiusuario: cada persona crea su cuenta y usa <strong>sus propias claves de API</strong>. El gasto va a la cuenta de cada uno.</p>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Pantalla</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Noticias</strong></td>
+<td>Noticias de IA puntuadas por lo útiles que son para tu negocio. Desde ahí conviertes cualquiera en guion.</td>
+</tr>
+<tr>
+<td><strong>Competencia</strong></td>
+<td>Busca videos virales de otros creadores, los transcribe y los adapta a guiones tuyos.</td>
+</tr>
+<tr>
+<td><strong>Guiones / Adaptados</strong></td>
+<td>Guiones de noticias y guiones adaptados de la competencia, con nota, crítica y mejoras.</td>
+</tr>
+<tr>
+<td><strong>Drive</strong></td>
+<td>Tus audios, videos grabados y videos del avatar, vinculados a cada guion (no es Google Drive).</td>
+</tr>
+<tr>
+<td><strong>Calendario</strong></td>
+<td>Lo programado y lo publicado.</td>
+</tr>
+<tr>
+<td><strong>Marca</strong></td>
+<td>El "cerebro" de tus guiones: negocio, cliente ideal, oferta, tonalidad, historia.</td>
+</tr>
+<tr>
+<td><strong>Ajustes</strong></td>
+<td>Claves, generación, publicación y consumo.</td>
+</tr>
+<tr>
+<td><strong>Admin</strong></td>
+<td>Solo admins: cuentas, gasto y topes por cuenta.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Un proceso de fondo (worker) corre cada 2 horas: trae noticias, las clasifica, genera guiones de las más relevantes y procesa los videos de competencia. Los videos con avatar <strong>nunca se lanzan solos</strong>: los eliges tú.</p>
+<p>Lo que puedes vender: un sistema de contenido para la marca personal de un cliente, que le entrega guiones nuevos todos los días.</p>
+<h2>Qué necesitas</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Qué</th>
+<th>¿Obligatorio?</th>
+<th>Para qué</th>
+<th>Costo (según el repo)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GitHub</strong></td>
+<td>Sí</td>
+<td>Render despliega desde tu repo.</td>
+<td>Gratis.</td>
+</tr>
+<tr>
+<td><strong>Render</strong> (plan Starter + disco)</td>
+<td>Sí</td>
+<td>Servidor 24/7 + disco para la base de datos y los archivos.</td>
+<td>De pago. El plan free no tiene disco: pierdes cuentas y guiones en cada deploy, y el servicio se duerme.</td>
+</tr>
+<tr>
+<td><strong>Clave de Anthropic</strong> (<code>sk-ant-...</code>)</td>
+<td>Sí</td>
+<td>Clasificar noticias, escribir, puntuar y adaptar guiones.</td>
+<td>Por uso. Tope diario por defecto: 5 USD por cuenta.</td>
+</tr>
+<tr>
+<td><strong>Clave de OpenAI</strong></td>
+<td>Para Competencia y subtítulos</td>
+<td>Transcribir con Whisper.</td>
+<td>Unos 0,006 USD por minuto de audio.</td>
+</tr>
+<tr>
+<td><strong>Token de Apify</strong></td>
+<td>Para Instagram</td>
+<td>Traer reels de Instagram.</td>
+<td>Unos 0,5–2 USD cada 1000 reels. Apify tiene crédito gratis mensual.</td>
+</tr>
+<tr>
+<td><strong>yt-dlp + ffmpeg</strong> en el servidor</td>
+<td>Para TikTok y YouTube</td>
+<td>Bajar videos de TikTok y YouTube.</td>
+<td>Gratis, pero hay que cambiar el Build Command (paso 6).</td>
+</tr>
+<tr>
+<td><strong>HeyGen</strong></td>
+<td>Opcional</td>
+<td>Videos con tu avatar.</td>
+<td>Unos 4 USD por minuto de video. Tope diario por defecto: 10 USD.</td>
+</tr>
+<tr>
+<td><strong>Metricool</strong></td>
+<td>Opcional</td>
+<td>Publicar los videos en tus redes.</td>
+<td>Según tu plan.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Para probarlo en tu computadora necesitas <strong>Node.js 24</strong> (usa el SQLite que viene con Node).</p>
+<blockquote>
+<p>No sirve en Vercel tal cual: necesita un servidor siempre encendido y disco.</p>
+</blockquote>
+<h2>1. Descarga y súbelo a tu GitHub</h2>
+<ol>
+<li>Descarga el ZIP con el botón de arriba de esta guía y descomprímelo.</li>
+<li>En GitHub, crea un repositorio nuevo <strong>privado</strong> y vacío (sin README), por ejemplo <code>autoguiones-pro</code>.</li>
+<li>Abre una terminal dentro de la carpeta descomprimida y corre:</li>
+</ol>
+<pre><code class="language-bash">git init
+git add .
+git commit -m &quot;AutoGuiones PRO&quot;
+git branch -M main
+git remote add origin https://github.com/TU-USUARIO/autoguiones-pro.git
+git push -u origin main
+</code></pre>
+<p>Los comandos son iguales en macOS, Linux y Windows (PowerShell). Si prefieres no usar la terminal, <a href="https://desktop.github.com" target="_blank" rel="noopener">GitHub Desktop</a> también sirve: <strong>File → Add local repository</strong>, elige la carpeta y publícala como privada.</p>
+<blockquote>
+<p>Nunca subas el archivo <code>.env</code>. El <code>.gitignore</code> ya lo excluye. Antes del commit puedes revisar con <code>git status</code> que no aparezca.</p>
+</blockquote>
+<h2>2. Variables de entorno del servidor</h2>
+<p>Se cargan en Render → tu servicio → <strong>Environment</strong>. Ninguna es una clave de API: las claves las pone cada usuario dentro de la app, en <strong>Ajustes</strong>.</p>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Obligatoria</th>
+<th>Para qué</th>
+<th>Dónde se saca</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DB_PATH</code></td>
+<td>Sí (la pone el Blueprint)</td>
+<td>Dónde se guarda la base de datos. Tiene que ser <code>/data/app.db</code>.</td>
+<td>Viene en <code>render.yaml</code>.</td>
+</tr>
+<tr>
+<td><code>ADMIN_EMAILS</code></td>
+<td>Sí</td>
+<td>Emails admin, separados por coma. Quien se registra con uno de esos emails es admin.</td>
+<td>Tu email.</td>
+</tr>
+<tr>
+<td><code>REGISTRATION_CODE</code></td>
+<td>Muy recomendada</td>
+<td>Código secreto que se pide al crear cuenta. Sin código, cualquiera con tu URL puede registrarse.</td>
+<td>Lo inventas tú.</td>
+</tr>
+<tr>
+<td><code>ALLOW_REGISTRATION</code></td>
+<td>No</td>
+<td><code>false</code> = solo se puede registrar la primera cuenta o un email de <code>ADMIN_EMAILS</code>. Por defecto <code>true</code>.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>NODE_VERSION</code></td>
+<td>Sí (la pone el Blueprint)</td>
+<td>Versión de Node: <code>24</code>.</td>
+<td>Viene en <code>render.yaml</code>.</td>
+</tr>
+<tr>
+<td><code>POLL_CRON</code></td>
+<td>No</td>
+<td>Cada cuánto corre el worker. Por defecto cada 2 horas.</td>
+<td>Formato cron, por ejemplo <code>0 */2 * * *</code>.</td>
+</tr>
+<tr>
+<td><code>NEWS_RETENTION_DAYS</code></td>
+<td>No</td>
+<td>Días que se guardan las noticias. Por defecto <code>21</code>. Los guiones no se borran.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>AI_PREFILTER</code></td>
+<td>No</td>
+<td>Descarta al entrar noticias que claramente no son de IA. Por defecto <code>true</code>.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>USE_BATCH_CLASSIFY</code></td>
+<td>No</td>
+<td><code>true</code> = clasifica por lotes: más barato, pero tarda minutos u horas.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>MODEL_CLASSIFY</code></td>
+<td>No</td>
+<td>Modelo para puntuar noticias. Por defecto <code>claude-haiku-4-5</code>.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>REDDIT_SUBS</code></td>
+<td>No</td>
+<td>Subreddits a leer, separados por coma.</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>NODE_ENV</code> la maneja Render. Otras variables de <code>.env.example</code> (<code>MODEL_GENERATE</code>, <code>RELEVANCE_THRESHOLD</code>, <code>MAX_DAILY_USD</code>, <code>MAX_SCRIPTS_PER_DAY</code>...) hoy se configuran por usuario en <strong>Ajustes</strong> o por el admin en <strong>Admin</strong>. Twitter/X está desactivado: deja <code>TWITTER_ENABLED=false</code>.</p>
+<h3>Claves que carga cada usuario en Ajustes</h3>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Clave</th>
+<th>Formato</th>
+<th>Dónde se consigue</th>
+<th>Para qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anthropic</td>
+<td>empieza con <code>sk-ant-</code></td>
+<td><a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a></td>
+<td>Todo lo de guiones.</td>
+</tr>
+<tr>
+<td>OpenAI (transcripción)</td>
+<td>empieza con <code>sk-</code></td>
+<td><a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">platform.openai.com/api-keys</a></td>
+<td>Transcribir competencia y subtítulos del avatar.</td>
+</tr>
+<tr>
+<td>Instagram (Apify)</td>
+<td><code>apify_api_...</code></td>
+<td><a href="https://console.apify.com/account/integrations" target="_blank" rel="noopener">console.apify.com/account/integrations</a></td>
+<td>Traer reels de Instagram.</td>
+</tr>
+<tr>
+<td>HeyGen</td>
+<td>tu clave de HeyGen</td>
+<td><a href="https://app.heygen.com/settings?nav=API" target="_blank" rel="noopener">app.heygen.com/settings?nav=API</a></td>
+<td>Videos con avatar. Después de guardarla: <strong>Cargar mis avatares</strong> y elige uno.</td>
+</tr>
+<tr>
+<td>Metricool</td>
+<td>userToken + userId</td>
+<td><a href="https://app.metricool.com/settings/api" target="_blank" rel="noopener">app.metricool.com/settings/api</a></td>
+<td>Publicar. Después agregas las cuentas destino.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Las claves quedan guardadas en el servidor y no se vuelven a mostrar en el navegador.</p>
+<h2>3. Pruébalo en tu computadora (opcional)</h2>
+<p>macOS / Linux:</p>
+<pre><code class="language-bash">cp .env.example .env
+npm install
+npm run dev
+</code></pre>
+<p>Windows (PowerShell):</p>
+<pre><code class="language-powershell">copy .env.example .env
+npm install
+npm run dev
+</code></pre>
+<p>Antes de arrancar, pon tu email en <code>ADMIN_EMAILS</code> dentro de <code>.env</code>. Abre <code>http://localhost:3000</code>: <code>npm run dev</code> levanta la web y el worker a la vez. Es normal ver un aviso <code>ExperimentalWarning</code> de <code>node:sqlite</code>.</p>
+<p>Otros comandos útiles: <code>npm run worker:once</code> (un solo ciclo del worker y sale) y <code>npm run db:reset</code> (borra la base de datos local).</p>
+<h2>4. Publícalo en Render</h2>
+<ol>
+<li>En Render: <strong>New + → Blueprint</strong> → conecta tu repo.</li>
+<li>Render lee <code>render.yaml</code> y crea el servicio web (plan Starter, región Frankfurt), un <strong>disco de 1 GB montado en <code>/data</code></strong> y las variables <code>NODE_VERSION=24</code>, <code>DB_PATH=/data/app.db</code> y <code>POLL_CRON</code>.</li>
+<li>Te pide dos valores: <code>ADMIN_EMAILS</code> (tu email, el mismo con el que te vas a registrar) y <code>REGISTRATION_CODE</code> (un código secreto que inventas).</li>
+<li>Si quieres cerrar el registro del todo, agrega <code>ALLOW_REGISTRATION=false</code> en Environment.</li>
+<li>Aprieta <strong>Apply</strong> y espera a que termine el build.</li>
+<li>Revisa los <strong>Logs</strong>. Tiene que aparecer <code>[db] Base de datos: /data/app.db (DB_PATH)</code>. Si dice <code>local (efímero)</code>, no hay disco y tus datos se van a borrar.</li>
+</ol>
+<h2>5. Primer uso</h2>
+<ol>
+<li>Entra a tu URL → <strong>Crear cuenta</strong> con el email de <code>ADMIN_EMAILS</code>, una contraseña de 8 caracteres o más y el código de registro. Vas a ver la pestaña <strong>Admin</strong>.</li>
+<li><strong>Ajustes → Conexiones</strong>: carga como mínimo la clave de Anthropic. Para Competencia, también OpenAI y Apify.</li>
+<li><strong>Marca</strong>: completa negocio, cliente ideal, oferta, tonalidad e historia. Se usa al instante en el próximo guion.</li>
+<li><strong>Competencia → escaneo puntual</strong>: elige plataforma y pega la URL del perfil, por ejemplo <code>https://www.instagram.com/usuario/</code>. Los filtros por defecto son 50.000 vistas y 300 comentarios. Si no entra nada, bájalos.</li>
+<li>Los videos nuevos se transcriben y adaptan solos en el siguiente ciclo del worker (o desde los botones de Competencia). Los guiones aparecen en <strong>Adaptados</strong>.</li>
+<li>Para el avatar: marca guiones, aprieta <strong>Generar vídeo con avatar</strong>, y cuando HeyGen termine, <strong>Continuar proceso de vídeos</strong> para agregar subtítulos y publicar.</li>
+</ol>
+<h2>6. TikTok y YouTube (opcional)</h2>
+<p>Instagram funciona con Apify sin instalar nada. Para TikTok y YouTube el servidor necesita <code>yt-dlp</code> y <code>ffmpeg</code>. En Render → <strong>Settings → Build Command</strong>, el <code>DEPLOY.md</code> propone:</p>
+<pre><code class="language-bash">pip install yt-dlp &amp;&amp; apt-get install -y ffmpeg || true &amp;&amp; npm install &amp;&amp; npm run build
+</code></pre>
+<p>Después haz <strong>Manual Deploy</strong>. Si al escanear sigue diciendo que falta yt-dlp, no quedó instalado; Instagram sigue funcionando igual.</p>
+<p>En tu Mac, para probar en local: <code>brew install yt-dlp ffmpeg</code>.</p>
+<h2>Seguridad</h2>
+<ul>
+<li><strong>Usa siempre <code>REGISTRATION_CODE</code>.</strong> Sin código, cualquiera que conozca tu URL puede crear una cuenta en tu instancia.</li>
+<li><strong>Admin = email en <code>ADMIN_EMAILS</code>.</strong> No hay otro modo de ser admin. Si la dejas vacía, nadie puede ajustar topes de gasto.</li>
+<li><strong>Los topes de gasto solo los cambia el admin</strong> desde <strong>Admin</strong>: Anthropic (5 USD/día por defecto) y HeyGen (10 USD/día por defecto). Se reinician a medianoche UTC. No pongas el tope en 0: significa sin límite.</li>
+<li><strong>No compartas tu instancia.</strong> Las claves de cada usuario quedan guardadas en el servidor y quien lo administra podría verlas. La app lo avisa: "Úsala solo si confías en quien lo administra". Cada cliente, su propio deploy.</li>
+<li><strong>Límites anti-abuso:</strong> 5 registros por hora por IP y 10 intentos de login cada 15 minutos por cuenta.</li>
+<li><strong>Nunca pongas claves de API en el repo ni en variables de entorno.</strong> Van en Ajustes.</li>
+</ul>
+<h2>Errores frecuentes</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Mensaje</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Código de registro incorrecto</code></td>
+<td>Copia el código exacto de Render → Environment, sin espacios.</td>
+</tr>
+<tr>
+<td><code>El registro está cerrado en esta instancia</code></td>
+<td>Agrega el email a <code>ADMIN_EMAILS</code>, o pon <code>ALLOW_REGISTRATION=true</code> y redespliega.</td>
+</tr>
+<tr>
+<td><code>Ya existe una cuenta con ese email</code></td>
+<td>Entra por Login. Si "se borró", revisa el disco (último renglón de esta tabla).</td>
+</tr>
+<tr>
+<td><code>Demasiadas cuentas creadas desde aquí. Prueba de nuevo más tarde.</code></td>
+<td>Límite anti-abuso. Espera.</td>
+</tr>
+<tr>
+<td><code>Demasiados intentos. Prueba de nuevo en unos minutos.</code></td>
+<td>Límite de intentos de login. Espera.</td>
+</tr>
+<tr>
+<td><code>Configura tu clave de Anthropic en Ajustes.</code></td>
+<td>Ajustes → Conexiones → pega tu clave de Anthropic.</td>
+</tr>
+<tr>
+<td><code>Falta tu clave de Anthropic (debe empezar por 'sk-ant-'). Ponla en Ajustes.</code></td>
+<td>La clave no empieza con <code>sk-ant-</code>. Revisa que sea de Anthropic.</td>
+</tr>
+<tr>
+<td><code>Alcanzado el tope diario de gasto (USD)</code> / <code>Alcanzado el tope diario de guiones</code></td>
+<td>Espera a medianoche UTC, o el admin sube el tope en <strong>Admin</strong> / subes "guiones por día" en Ajustes.</td>
+</tr>
+<tr>
+<td><code>Tope diario de guiones adaptados alcanzado (X/Y)...</code></td>
+<td>Ajustes → "Tope de guiones adaptados por día" (0 = sin tope).</td>
+</tr>
+<tr>
+<td><code>Instagram requiere tu token de Apify (Ajustes → Instagram).</code></td>
+<td>Carga el token de Apify en Ajustes.</td>
+</tr>
+<tr>
+<td><code>Apify 401: ...</code> / <code>Apify 402: ...</code></td>
+<td>Token inválido o sin crédito. Revisa en console.apify.com.</td>
+</tr>
+<tr>
+<td><code>yt-dlp no está instalado en el servidor, hace falta para TikTok/YouTube.</code></td>
+<td>Cambia el Build Command (paso 6) o usa solo Instagram.</td>
+</tr>
+<tr>
+<td><code>URL inválida para instagram</code> (o tiktok/youtube)</td>
+<td>Pega la URL completa del perfil, de la plataforma elegida.</td>
+</tr>
+<tr>
+<td><code>Configura tu clave de OpenAI en Ajustes para transcribir.</code></td>
+<td>Carga una clave de OpenAI (no de Anthropic).</td>
+</tr>
+<tr>
+<td><code>video XMB supera el límite de Whisper (24MB)</code></td>
+<td>Usa videos más cortos (reels o shorts).</td>
+</tr>
+<tr>
+<td><code>Sin transcripción disponible. El video debe estar transcrito primero.</code></td>
+<td>Transcríbelo primero o espera al worker.</td>
+</tr>
+<tr>
+<td><code>Configura tu clave y avatar de HeyGen en Ajustes.</code></td>
+<td>Ajustes → HeyGen → <strong>Cargar mis avatares</strong> → elige uno.</td>
+</tr>
+<tr>
+<td><code>No se pudo determinar la voz de tu avatar — vuelve a elegirlo en Ajustes.</code></td>
+<td>Vuelve a elegir el avatar.</td>
+</tr>
+<tr>
+<td><code>Tope diario de gasto en HeyGen alcanzado</code></td>
+<td>Espera a medianoche UTC o pídele al admin que lo suba.</td>
+</tr>
+<tr>
+<td><code>Falló el renderizado de subtítulos 3 veces seguidas (probable falta de memoria en el servidor)...</code></td>
+<td>El servidor se quedó sin RAM. Sube el plan de Render y vuelve a lanzar.</td>
+</tr>
+<tr>
+<td><code>Configura antes tu token de Metricool.</code></td>
+<td>Ajustes → Publicación → Metricool.</td>
+</tr>
+<tr>
+<td><code>Archivo demasiado grande (máx. 300MB)</code> / <code>Formato no admitido (usa un audio o video)</code></td>
+<td>Comprime el archivo o usa un formato de audio o video.</td>
+</tr>
+<tr>
+<td>Los logs dicen <code>local (efímero)</code> o se te borra la cuenta en cada deploy</td>
+<td>Falta el disco. Revisa Render → Settings → Disks (Mount Path <code>/data</code>) y <code>DB_PATH=/data/app.db</code>, y haz Manual Deploy. Lo más fácil: borrar el servicio y recrearlo con Blueprint.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reddit suele dar 403 desde Render: es normal, RSS y Hacker News siguen funcionando.</p>
+<h2>Cómo adaptarlo a tu cliente</h2>
+<ul>
+<li><strong>Lo principal no es código</strong>: la pestaña <strong>Marca</strong> define negocio, cliente ideal, oferta, tonalidad e historia. Cada cliente con su cuenta (o mejor, su propio deploy).</li>
+<li><strong>Temática de las noticias</strong>: el prompt que puntúa noticias está en la constante <code>SYSTEM</code> de <code>src/lib/classify.ts</code> (viene enfocado en IA aplicada a negocios digitales). Si tu cliente es de otro nicho, cámbialo ahí.</li>
+<li><strong>Fuentes de noticias</strong>: RSS y términos de Hacker News en <code>src/lib/sources/feeds.ts</code>; subreddits con <code>REDDIT_SUBS</code>.</li>
+<li><strong>Cómo escribe los guiones</strong>: <code>PERSONA</code> y <code>formatBrief</code> en <code>src/lib/generate.ts</code>; la autocrítica en <code>src/lib/critique.ts</code>; la adaptación de videos de competencia en <code>src/lib/competitor-generate.ts</code>.</li>
+<li><strong>Nombre de la app</strong>: <code>src/components/AppShell.tsx</code> (menú), <code>src/app/layout.tsx</code> (título de la pestaña) y <code>src/app/compartido/[token]/page.tsx</code> (enlaces compartidos).</li>
+<li><strong>Colores</strong>: <code>brand</code> y <code>brand2</code> en <code>tailwind.config.ts</code>.</li>
+<li><strong>Modelo de guiones</strong>: por usuario en Ajustes (Opus 4.8 o Sonnet 4.6, más barato). El de clasificar noticias, con <code>MODEL_CLASSIFY</code>.</li>
+</ul>
+<p>Después de cambiar código, haz commit y push: Render redespliega solo (<code>autoDeploy</code> está activo).</p>
+<blockquote>
+<p>¿Te trabaste? Pregúntale a <strong>Maestro</strong> (en el menú, <a href="/maestro">/maestro</a>) con el mensaje de error exacto.</p>
+</blockquote>, autoguiones-pro, 0,3 MB y dd650f52 -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AutoGuiones PRO | Sistemas | Forja IA</title>
+<meta name="description" content="Genera guiones de video listos para grabar a partir de noticias de IA y de videos virales de la competencia, con la voz de tu marca, puntuados del 0 al 10.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../web/base.css?v=dd650f52">
+<link rel="stylesheet" href="../web/tema.css?v=dd650f52">
+<link rel="stylesheet" href="../web/forja.css?v=dd650f52">
+<script src="../web/tema.js?v=dd650f52"></script>
+<link rel="icon" href="../web/favicon.svg?v=dd650f52" type="image/svg+xml">
+</head>
+<body class="fj-app" data-seccion="sistemas" data-raiz="/">
+<script src="../web/guias-web.js?v=dd650f52"></script>
+<script src="../web/comun.js?v=dd650f52"></script>
+<main class="fj-main ancho fj-sis">
+  <nav class="fj-sis-miga" aria-label="Ruta"><a href="/sistemas">Sistemas</a> <span aria-hidden="true">/</span> <span>AutoGuiones PRO</span></nav>
+  <section class="fj-card fj-sis-cab">
+    <span class="fj-eyebrow">Sistema listo para replicar</span>
+    <h1>AutoGuiones PRO</h1>
+    <p>Genera guiones de video listos para grabar a partir de noticias de IA y de videos virales de la competencia, con la voz de tu marca, puntuados del 0 al 10.</p>
+    <div class="fj-sis-ficha"><span class="nivel">INTERMEDIO</span><span>WEB · RENDER</span><span>45–60 min</span><span>Next.js</span><span>SQLite</span><span>Claude API</span><span>Whisper</span><span>Render</span></div>
+    <div class="fj-sis-bajar">
+      <a class="fj-btn fj-btn-primario" href="/descargas/autoguiones-pro.zip" download="autoguiones-pro.zip" id="si-zip">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Descargar el sistema (ZIP · 0,3 MB)
+      </a>
+      <span>El código completo, ya adaptado. Lo subes a tu GitHub en el paso 1.</span>
+    </div>
+  </section>
+  <section class="fj-card fj-sis-req">
+    <h2>Antes de empezar</h2>
+    <ul><li>Cuenta en GitHub</li><li>Cuenta en Render (plan Starter, de pago, con disco persistente)</li><li>API key de Anthropic</li><li>API key de OpenAI (opcional: competencia y subtítulos)</li><li>Token de Apify (opcional: Instagram)</li><li>HeyGen y Metricool (opcionales)</li></ul>
+  </section>
+  <article class="fj-card fj-sis-guia">
+<h2>Qué es</h2>
+<p>AutoGuiones PRO es una web que arma guiones de video listos para grabar. Toma ideas de dos lados: <strong>noticias de IA</strong> (RSS, Hacker News, Reddit) y <strong>videos virales de tu competencia</strong> (Instagram, TikTok, YouTube). Puntúa cada noticia de 0 a 100, escribe guiones con la voz de tu marca, los autocritica de 0 a 10 y te dice cómo mejorarlos. Opcional: conviertes guiones en videos con tu avatar de <strong>HeyGen</strong> y los publicas con <strong>Metricool</strong>.</p>
+<p>Es multiusuario: cada persona crea su cuenta y usa <strong>sus propias claves de API</strong>. El gasto va a la cuenta de cada uno.</p>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Pantalla</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Noticias</strong></td>
+<td>Noticias de IA puntuadas por lo útiles que son para tu negocio. Desde ahí conviertes cualquiera en guion.</td>
+</tr>
+<tr>
+<td><strong>Competencia</strong></td>
+<td>Busca videos virales de otros creadores, los transcribe y los adapta a guiones tuyos.</td>
+</tr>
+<tr>
+<td><strong>Guiones / Adaptados</strong></td>
+<td>Guiones de noticias y guiones adaptados de la competencia, con nota, crítica y mejoras.</td>
+</tr>
+<tr>
+<td><strong>Drive</strong></td>
+<td>Tus audios, videos grabados y videos del avatar, vinculados a cada guion (no es Google Drive).</td>
+</tr>
+<tr>
+<td><strong>Calendario</strong></td>
+<td>Lo programado y lo publicado.</td>
+</tr>
+<tr>
+<td><strong>Marca</strong></td>
+<td>El "cerebro" de tus guiones: negocio, cliente ideal, oferta, tonalidad, historia.</td>
+</tr>
+<tr>
+<td><strong>Ajustes</strong></td>
+<td>Claves, generación, publicación y consumo.</td>
+</tr>
+<tr>
+<td><strong>Admin</strong></td>
+<td>Solo admins: cuentas, gasto y topes por cuenta.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Un proceso de fondo (worker) corre cada 2 horas: trae noticias, las clasifica, genera guiones de las más relevantes y procesa los videos de competencia. Los videos con avatar <strong>nunca se lanzan solos</strong>: los eliges tú.</p>
+<p>Lo que puedes vender: un sistema de contenido para la marca personal de un cliente, que le entrega guiones nuevos todos los días.</p>
+<h2>Qué necesitas</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Qué</th>
+<th>¿Obligatorio?</th>
+<th>Para qué</th>
+<th>Costo (según el repo)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GitHub</strong></td>
+<td>Sí</td>
+<td>Render despliega desde tu repo.</td>
+<td>Gratis.</td>
+</tr>
+<tr>
+<td><strong>Render</strong> (plan Starter + disco)</td>
+<td>Sí</td>
+<td>Servidor 24/7 + disco para la base de datos y los archivos.</td>
+<td>De pago. El plan free no tiene disco: pierdes cuentas y guiones en cada deploy, y el servicio se duerme.</td>
+</tr>
+<tr>
+<td><strong>Clave de Anthropic</strong> (<code>sk-ant-...</code>)</td>
+<td>Sí</td>
+<td>Clasificar noticias, escribir, puntuar y adaptar guiones.</td>
+<td>Por uso. Tope diario por defecto: 5 USD por cuenta.</td>
+</tr>
+<tr>
+<td><strong>Clave de OpenAI</strong></td>
+<td>Para Competencia y subtítulos</td>
+<td>Transcribir con Whisper.</td>
+<td>Unos 0,006 USD por minuto de audio.</td>
+</tr>
+<tr>
+<td><strong>Token de Apify</strong></td>
+<td>Para Instagram</td>
+<td>Traer reels de Instagram.</td>
+<td>Unos 0,5–2 USD cada 1000 reels. Apify tiene crédito gratis mensual.</td>
+</tr>
+<tr>
+<td><strong>yt-dlp + ffmpeg</strong> en el servidor</td>
+<td>Para TikTok y YouTube</td>
+<td>Bajar videos de TikTok y YouTube.</td>
+<td>Gratis, pero hay que cambiar el Build Command (paso 6).</td>
+</tr>
+<tr>
+<td><strong>HeyGen</strong></td>
+<td>Opcional</td>
+<td>Videos con tu avatar.</td>
+<td>Unos 4 USD por minuto de video. Tope diario por defecto: 10 USD.</td>
+</tr>
+<tr>
+<td><strong>Metricool</strong></td>
+<td>Opcional</td>
+<td>Publicar los videos en tus redes.</td>
+<td>Según tu plan.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Para probarlo en tu computadora necesitas <strong>Node.js 24</strong> (usa el SQLite que viene con Node).</p>
+<blockquote>
+<p>No sirve en Vercel tal cual: necesita un servidor siempre encendido y disco.</p>
+</blockquote>
+<h2>1. Descarga y súbelo a tu GitHub</h2>
+<ol>
+<li>Descarga el ZIP con el botón de arriba de esta guía y descomprímelo.</li>
+<li>En GitHub, crea un repositorio nuevo <strong>privado</strong> y vacío (sin README), por ejemplo <code>autoguiones-pro</code>.</li>
+<li>Abre una terminal dentro de la carpeta descomprimida y corre:</li>
+</ol>
+<pre><code class="language-bash">git init
+git add .
+git commit -m &quot;AutoGuiones PRO&quot;
+git branch -M main
+git remote add origin https://github.com/TU-USUARIO/autoguiones-pro.git
+git push -u origin main
+</code></pre>
+<p>Los comandos son iguales en macOS, Linux y Windows (PowerShell). Si prefieres no usar la terminal, <a href="https://desktop.github.com" target="_blank" rel="noopener">GitHub Desktop</a> también sirve: <strong>File → Add local repository</strong>, elige la carpeta y publícala como privada.</p>
+<blockquote>
+<p>Nunca subas el archivo <code>.env</code>. El <code>.gitignore</code> ya lo excluye. Antes del commit puedes revisar con <code>git status</code> que no aparezca.</p>
+</blockquote>
+<h2>2. Variables de entorno del servidor</h2>
+<p>Se cargan en Render → tu servicio → <strong>Environment</strong>. Ninguna es una clave de API: las claves las pone cada usuario dentro de la app, en <strong>Ajustes</strong>.</p>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Obligatoria</th>
+<th>Para qué</th>
+<th>Dónde se saca</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DB_PATH</code></td>
+<td>Sí (la pone el Blueprint)</td>
+<td>Dónde se guarda la base de datos. Tiene que ser <code>/data/app.db</code>.</td>
+<td>Viene en <code>render.yaml</code>.</td>
+</tr>
+<tr>
+<td><code>ADMIN_EMAILS</code></td>
+<td>Sí</td>
+<td>Emails admin, separados por coma. Quien se registra con uno de esos emails es admin.</td>
+<td>Tu email.</td>
+</tr>
+<tr>
+<td><code>REGISTRATION_CODE</code></td>
+<td>Muy recomendada</td>
+<td>Código secreto que se pide al crear cuenta. Sin código, cualquiera con tu URL puede registrarse.</td>
+<td>Lo inventas tú.</td>
+</tr>
+<tr>
+<td><code>ALLOW_REGISTRATION</code></td>
+<td>No</td>
+<td><code>false</code> = solo se puede registrar la primera cuenta o un email de <code>ADMIN_EMAILS</code>. Por defecto <code>true</code>.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>NODE_VERSION</code></td>
+<td>Sí (la pone el Blueprint)</td>
+<td>Versión de Node: <code>24</code>.</td>
+<td>Viene en <code>render.yaml</code>.</td>
+</tr>
+<tr>
+<td><code>POLL_CRON</code></td>
+<td>No</td>
+<td>Cada cuánto corre el worker. Por defecto cada 2 horas.</td>
+<td>Formato cron, por ejemplo <code>0 */2 * * *</code>.</td>
+</tr>
+<tr>
+<td><code>NEWS_RETENTION_DAYS</code></td>
+<td>No</td>
+<td>Días que se guardan las noticias. Por defecto <code>21</code>. Los guiones no se borran.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>AI_PREFILTER</code></td>
+<td>No</td>
+<td>Descarta al entrar noticias que claramente no son de IA. Por defecto <code>true</code>.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>USE_BATCH_CLASSIFY</code></td>
+<td>No</td>
+<td><code>true</code> = clasifica por lotes: más barato, pero tarda minutos u horas.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>MODEL_CLASSIFY</code></td>
+<td>No</td>
+<td>Modelo para puntuar noticias. Por defecto <code>claude-haiku-4-5</code>.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>REDDIT_SUBS</code></td>
+<td>No</td>
+<td>Subreddits a leer, separados por coma.</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>NODE_ENV</code> la maneja Render. Otras variables de <code>.env.example</code> (<code>MODEL_GENERATE</code>, <code>RELEVANCE_THRESHOLD</code>, <code>MAX_DAILY_USD</code>, <code>MAX_SCRIPTS_PER_DAY</code>...) hoy se configuran por usuario en <strong>Ajustes</strong> o por el admin en <strong>Admin</strong>. Twitter/X está desactivado: deja <code>TWITTER_ENABLED=false</code>.</p>
+<h3>Claves que carga cada usuario en Ajustes</h3>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Clave</th>
+<th>Formato</th>
+<th>Dónde se consigue</th>
+<th>Para qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anthropic</td>
+<td>empieza con <code>sk-ant-</code></td>
+<td><a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a></td>
+<td>Todo lo de guiones.</td>
+</tr>
+<tr>
+<td>OpenAI (transcripción)</td>
+<td>empieza con <code>sk-</code></td>
+<td><a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">platform.openai.com/api-keys</a></td>
+<td>Transcribir competencia y subtítulos del avatar.</td>
+</tr>
+<tr>
+<td>Instagram (Apify)</td>
+<td><code>apify_api_...</code></td>
+<td><a href="https://console.apify.com/account/integrations" target="_blank" rel="noopener">console.apify.com/account/integrations</a></td>
+<td>Traer reels de Instagram.</td>
+</tr>
+<tr>
+<td>HeyGen</td>
+<td>tu clave de HeyGen</td>
+<td><a href="https://app.heygen.com/settings?nav=API" target="_blank" rel="noopener">app.heygen.com/settings?nav=API</a></td>
+<td>Videos con avatar. Después de guardarla: <strong>Cargar mis avatares</strong> y elige uno.</td>
+</tr>
+<tr>
+<td>Metricool</td>
+<td>userToken + userId</td>
+<td><a href="https://app.metricool.com/settings/api" target="_blank" rel="noopener">app.metricool.com/settings/api</a></td>
+<td>Publicar. Después agregas las cuentas destino.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Las claves quedan guardadas en el servidor y no se vuelven a mostrar en el navegador.</p>
+<h2>3. Pruébalo en tu computadora (opcional)</h2>
+<p>macOS / Linux:</p>
+<pre><code class="language-bash">cp .env.example .env
+npm install
+npm run dev
+</code></pre>
+<p>Windows (PowerShell):</p>
+<pre><code class="language-powershell">copy .env.example .env
+npm install
+npm run dev
+</code></pre>
+<p>Antes de arrancar, pon tu email en <code>ADMIN_EMAILS</code> dentro de <code>.env</code>. Abre <code>http://localhost:3000</code>: <code>npm run dev</code> levanta la web y el worker a la vez. Es normal ver un aviso <code>ExperimentalWarning</code> de <code>node:sqlite</code>.</p>
+<p>Otros comandos útiles: <code>npm run worker:once</code> (un solo ciclo del worker y sale) y <code>npm run db:reset</code> (borra la base de datos local).</p>
+<h2>4. Publícalo en Render</h2>
+<ol>
+<li>En Render: <strong>New + → Blueprint</strong> → conecta tu repo.</li>
+<li>Render lee <code>render.yaml</code> y crea el servicio web (plan Starter, región Frankfurt), un <strong>disco de 1 GB montado en <code>/data</code></strong> y las variables <code>NODE_VERSION=24</code>, <code>DB_PATH=/data/app.db</code> y <code>POLL_CRON</code>.</li>
+<li>Te pide dos valores: <code>ADMIN_EMAILS</code> (tu email, el mismo con el que te vas a registrar) y <code>REGISTRATION_CODE</code> (un código secreto que inventas).</li>
+<li>Si quieres cerrar el registro del todo, agrega <code>ALLOW_REGISTRATION=false</code> en Environment.</li>
+<li>Aprieta <strong>Apply</strong> y espera a que termine el build.</li>
+<li>Revisa los <strong>Logs</strong>. Tiene que aparecer <code>[db] Base de datos: /data/app.db (DB_PATH)</code>. Si dice <code>local (efímero)</code>, no hay disco y tus datos se van a borrar.</li>
+</ol>
+<h2>5. Primer uso</h2>
+<ol>
+<li>Entra a tu URL → <strong>Crear cuenta</strong> con el email de <code>ADMIN_EMAILS</code>, una contraseña de 8 caracteres o más y el código de registro. Vas a ver la pestaña <strong>Admin</strong>.</li>
+<li><strong>Ajustes → Conexiones</strong>: carga como mínimo la clave de Anthropic. Para Competencia, también OpenAI y Apify.</li>
+<li><strong>Marca</strong>: completa negocio, cliente ideal, oferta, tonalidad e historia. Se usa al instante en el próximo guion.</li>
+<li><strong>Competencia → escaneo puntual</strong>: elige plataforma y pega la URL del perfil, por ejemplo <code>https://www.instagram.com/usuario/</code>. Los filtros por defecto son 50.000 vistas y 300 comentarios. Si no entra nada, bájalos.</li>
+<li>Los videos nuevos se transcriben y adaptan solos en el siguiente ciclo del worker (o desde los botones de Competencia). Los guiones aparecen en <strong>Adaptados</strong>.</li>
+<li>Para el avatar: marca guiones, aprieta <strong>Generar vídeo con avatar</strong>, y cuando HeyGen termine, <strong>Continuar proceso de vídeos</strong> para agregar subtítulos y publicar.</li>
+</ol>
+<h2>6. TikTok y YouTube (opcional)</h2>
+<p>Instagram funciona con Apify sin instalar nada. Para TikTok y YouTube el servidor necesita <code>yt-dlp</code> y <code>ffmpeg</code>. En Render → <strong>Settings → Build Command</strong>, el <code>DEPLOY.md</code> propone:</p>
+<pre><code class="language-bash">pip install yt-dlp &amp;&amp; apt-get install -y ffmpeg || true &amp;&amp; npm install &amp;&amp; npm run build
+</code></pre>
+<p>Después haz <strong>Manual Deploy</strong>. Si al escanear sigue diciendo que falta yt-dlp, no quedó instalado; Instagram sigue funcionando igual.</p>
+<p>En tu Mac, para probar en local: <code>brew install yt-dlp ffmpeg</code>.</p>
+<h2>Seguridad</h2>
+<ul>
+<li><strong>Usa siempre <code>REGISTRATION_CODE</code>.</strong> Sin código, cualquiera que conozca tu URL puede crear una cuenta en tu instancia.</li>
+<li><strong>Admin = email en <code>ADMIN_EMAILS</code>.</strong> No hay otro modo de ser admin. Si la dejas vacía, nadie puede ajustar topes de gasto.</li>
+<li><strong>Los topes de gasto solo los cambia el admin</strong> desde <strong>Admin</strong>: Anthropic (5 USD/día por defecto) y HeyGen (10 USD/día por defecto). Se reinician a medianoche UTC. No pongas el tope en 0: significa sin límite.</li>
+<li><strong>No compartas tu instancia.</strong> Las claves de cada usuario quedan guardadas en el servidor y quien lo administra podría verlas. La app lo avisa: "Úsala solo si confías en quien lo administra". Cada cliente, su propio deploy.</li>
+<li><strong>Límites anti-abuso:</strong> 5 registros por hora por IP y 10 intentos de login cada 15 minutos por cuenta.</li>
+<li><strong>Nunca pongas claves de API en el repo ni en variables de entorno.</strong> Van en Ajustes.</li>
+</ul>
+<h2>Errores frecuentes</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Mensaje</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Código de registro incorrecto</code></td>
+<td>Copia el código exacto de Render → Environment, sin espacios.</td>
+</tr>
+<tr>
+<td><code>El registro está cerrado en esta instancia</code></td>
+<td>Agrega el email a <code>ADMIN_EMAILS</code>, o pon <code>ALLOW_REGISTRATION=true</code> y redespliega.</td>
+</tr>
+<tr>
+<td><code>Ya existe una cuenta con ese email</code></td>
+<td>Entra por Login. Si "se borró", revisa el disco (último renglón de esta tabla).</td>
+</tr>
+<tr>
+<td><code>Demasiadas cuentas creadas desde aquí. Prueba de nuevo más tarde.</code></td>
+<td>Límite anti-abuso. Espera.</td>
+</tr>
+<tr>
+<td><code>Demasiados intentos. Prueba de nuevo en unos minutos.</code></td>
+<td>Límite de intentos de login. Espera.</td>
+</tr>
+<tr>
+<td><code>Configura tu clave de Anthropic en Ajustes.</code></td>
+<td>Ajustes → Conexiones → pega tu clave de Anthropic.</td>
+</tr>
+<tr>
+<td><code>Falta tu clave de Anthropic (debe empezar por 'sk-ant-'). Ponla en Ajustes.</code></td>
+<td>La clave no empieza con <code>sk-ant-</code>. Revisa que sea de Anthropic.</td>
+</tr>
+<tr>
+<td><code>Alcanzado el tope diario de gasto (USD)</code> / <code>Alcanzado el tope diario de guiones</code></td>
+<td>Espera a medianoche UTC, o el admin sube el tope en <strong>Admin</strong> / subes "guiones por día" en Ajustes.</td>
+</tr>
+<tr>
+<td><code>Tope diario de guiones adaptados alcanzado (X/Y)...</code></td>
+<td>Ajustes → "Tope de guiones adaptados por día" (0 = sin tope).</td>
+</tr>
+<tr>
+<td><code>Instagram requiere tu token de Apify (Ajustes → Instagram).</code></td>
+<td>Carga el token de Apify en Ajustes.</td>
+</tr>
+<tr>
+<td><code>Apify 401: ...</code> / <code>Apify 402: ...</code></td>
+<td>Token inválido o sin crédito. Revisa en console.apify.com.</td>
+</tr>
+<tr>
+<td><code>yt-dlp no está instalado en el servidor, hace falta para TikTok/YouTube.</code></td>
+<td>Cambia el Build Command (paso 6) o usa solo Instagram.</td>
+</tr>
+<tr>
+<td><code>URL inválida para instagram</code> (o tiktok/youtube)</td>
+<td>Pega la URL completa del perfil, de la plataforma elegida.</td>
+</tr>
+<tr>
+<td><code>Configura tu clave de OpenAI en Ajustes para transcribir.</code></td>
+<td>Carga una clave de OpenAI (no de Anthropic).</td>
+</tr>
+<tr>
+<td><code>video XMB supera el límite de Whisper (24MB)</code></td>
+<td>Usa videos más cortos (reels o shorts).</td>
+</tr>
+<tr>
+<td><code>Sin transcripción disponible. El video debe estar transcrito primero.</code></td>
+<td>Transcríbelo primero o espera al worker.</td>
+</tr>
+<tr>
+<td><code>Configura tu clave y avatar de HeyGen en Ajustes.</code></td>
+<td>Ajustes → HeyGen → <strong>Cargar mis avatares</strong> → elige uno.</td>
+</tr>
+<tr>
+<td><code>No se pudo determinar la voz de tu avatar — vuelve a elegirlo en Ajustes.</code></td>
+<td>Vuelve a elegir el avatar.</td>
+</tr>
+<tr>
+<td><code>Tope diario de gasto en HeyGen alcanzado</code></td>
+<td>Espera a medianoche UTC o pídele al admin que lo suba.</td>
+</tr>
+<tr>
+<td><code>Falló el renderizado de subtítulos 3 veces seguidas (probable falta de memoria en el servidor)...</code></td>
+<td>El servidor se quedó sin RAM. Sube el plan de Render y vuelve a lanzar.</td>
+</tr>
+<tr>
+<td><code>Configura antes tu token de Metricool.</code></td>
+<td>Ajustes → Publicación → Metricool.</td>
+</tr>
+<tr>
+<td><code>Archivo demasiado grande (máx. 300MB)</code> / <code>Formato no admitido (usa un audio o video)</code></td>
+<td>Comprime el archivo o usa un formato de audio o video.</td>
+</tr>
+<tr>
+<td>Los logs dicen <code>local (efímero)</code> o se te borra la cuenta en cada deploy</td>
+<td>Falta el disco. Revisa Render → Settings → Disks (Mount Path <code>/data</code>) y <code>DB_PATH=/data/app.db</code>, y haz Manual Deploy. Lo más fácil: borrar el servicio y recrearlo con Blueprint.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reddit suele dar 403 desde Render: es normal, RSS y Hacker News siguen funcionando.</p>
+<h2>Cómo adaptarlo a tu cliente</h2>
+<ul>
+<li><strong>Lo principal no es código</strong>: la pestaña <strong>Marca</strong> define negocio, cliente ideal, oferta, tonalidad e historia. Cada cliente con su cuenta (o mejor, su propio deploy).</li>
+<li><strong>Temática de las noticias</strong>: el prompt que puntúa noticias está en la constante <code>SYSTEM</code> de <code>src/lib/classify.ts</code> (viene enfocado en IA aplicada a negocios digitales). Si tu cliente es de otro nicho, cámbialo ahí.</li>
+<li><strong>Fuentes de noticias</strong>: RSS y términos de Hacker News en <code>src/lib/sources/feeds.ts</code>; subreddits con <code>REDDIT_SUBS</code>.</li>
+<li><strong>Cómo escribe los guiones</strong>: <code>PERSONA</code> y <code>formatBrief</code> en <code>src/lib/generate.ts</code>; la autocrítica en <code>src/lib/critique.ts</code>; la adaptación de videos de competencia en <code>src/lib/competitor-generate.ts</code>.</li>
+<li><strong>Nombre de la app</strong>: <code>src/components/AppShell.tsx</code> (menú), <code>src/app/layout.tsx</code> (título de la pestaña) y <code>src/app/compartido/[token]/page.tsx</code> (enlaces compartidos).</li>
+<li><strong>Colores</strong>: <code>brand</code> y <code>brand2</code> en <code>tailwind.config.ts</code>.</li>
+<li><strong>Modelo de guiones</strong>: por usuario en Ajustes (Opus 4.8 o Sonnet 4.6, más barato). El de clasificar noticias, con <code>MODEL_CLASSIFY</code>.</li>
+</ul>
+<p>Después de cambiar código, haz commit y push: Render redespliega solo (<code>autoDeploy</code> está activo).</p>
+<blockquote>
+<p>¿Te trabaste? Pregúntale a <strong>Maestro</strong> (en el menú, <a href="/maestro">/maestro</a>) con el mensaje de error exacto.</p>
+</blockquote>
+  </article>
+</main>
+<script src="../web/shell.js?v=dd650f52"></script>
+<script>
+// Botón «Copiar» en cada bloque de código
+document.querySelectorAll(".fj-sis-guia pre").forEach(function (pre) {
+  var b = document.createElement("button");
+  b.type = "button"; b.className = "fj-sis-copiar"; b.textContent = "Copiar";
+  b.addEventListener("click", function () {
+    var t = pre.querySelector("code") ? pre.querySelector("code").innerText : pre.innerText;
+    navigator.clipboard.writeText(t).then(function () { b.textContent = "Copiado"; setTimeout(function () { b.textContent = "Copiar"; }, 1500); });
+  });
+  pre.appendChild(b);
+});
+</script>
+</body>
+</html>
