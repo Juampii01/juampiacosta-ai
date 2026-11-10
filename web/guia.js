@@ -298,7 +298,7 @@ function pintarGuia(caja, g) {
   // Plan gratis: después de una guía abierta, mostrar lo que hay del otro lado
   if (/(?:^|;\s*)jpa_nivel=gratis/.test(document.cookie)) {
     var abiertas = GUIAS_WEB.filter(function (x) { return x.gratis; }).length;
-    html += '<a class="g-mas-acceso glass" href="/#precio"><span class="g-etq">Plan gratis</span><b>Tienes abiertas ' + abiertas + ' de las ' + GUIAS_WEB.length + ' guías de la biblioteca.</b>' +
+    html += '<a class="g-mas-acceso glass" href="/?plan=1#precio"><span class="g-etq">Plan gratis</span><b>Tienes abiertas ' + abiertas + ' de las ' + GUIAS_WEB.length + ' guías de la biblioteca.</b>' +
       '<span>Con el acceso completo abres las ' + (GUIAS_WEB.length - abiertas) + ' que faltan, más los prompts para copiar y las herramientas con su instalación.</span><em>Ver el acceso completo →</em></a>';
   }
   html += '<div class="cta-card"><h3>¿Quieres que te lo instale en tu negocio?</h3><p>Escríbeme por Instagram, cuéntame qué haces y te digo qué le automatizaría.</p><a class="btn-blanco" href="' + REDES.dm + '" target="_blank" rel="noopener">Escríbeme →</a></div>';

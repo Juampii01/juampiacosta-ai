@@ -27,7 +27,7 @@
       '<a class="fj-btn fj-btn-borde" href="/maestro?guia=' + g.slug + '">✦ Pregúntale a Maestro</a><span class="esp"></span>' +
       (ant ? '<a class="fj-btn fj-btn-borde" href="/guias/' + ant.slug + '" aria-label="Guía anterior: ' + esc(ant.t) + '">←</a>' : '') +
       (sig ? (MODULOS.abierta(sig) ? '<a class="fj-btn fj-btn-primario" href="/guias/' + sig.slug + '">Siguiente guía →</a>'
-        : '<a class="fj-btn fj-btn-primario" href="/#precio">' + candado + 'Siguiente: acceso completo</a>') : '<a class="fj-btn fj-btn-primario" href="/recursos">Volver al Classroom</a>');
+        : '<a class="fj-btn fj-btn-primario" href="/?plan=1#precio">' + candado + 'Siguiente: acceso completo</a>') : '<a class="fj-btn fj-btn-primario" href="/recursos">Volver al Classroom</a>');
     document.getElementById("fj-vista").addEventListener("click", function () { PROGRESO.marcar(g.slug); pintarAcciones(); pintarLista(); });
     document.getElementById("fj-copiar").addEventListener("click", function () {
       var b = this, txt = "# " + g.t + "\n\n" + g.d + "\n\n" + g.secciones.map(function (s) {
@@ -67,10 +67,10 @@
       '<span class="fj-anillo" style="--p:' + e.pct + '">' + e.pct + '%</span></a>' +
       '<div class="fj-lista"><div class="fj-lista-tit">GUÍAS</div>' + guias.map(function (x, i) {
         var bloq = !MODULOS.abierta(x), vista = !!leidas[x.slug], actual = x.slug === g.slug;
-        return '<a class="fj-fila' + (actual ? ' actual' : '') + (vista ? ' vista' : '') + (bloq ? ' bloq' : '') + '" href="' + (bloq ? '/#precio' : '/guias/' + x.slug) + '"' + (actual ? ' aria-current="page"' : '') + ' aria-label="' + esc(x.t) + (bloq ? ', bloqueada' : vista ? ', vista' : '') + '">' +
+        return '<a class="fj-fila' + (actual ? ' actual' : '') + (vista ? ' vista' : '') + (bloq ? ' bloq' : '') + '" href="' + (bloq ? '/?plan=1#precio' : '/guias/' + x.slug) + '"' + (actual ? ' aria-current="page"' : '') + ' aria-label="' + esc(x.t) + (bloq ? ', bloqueada' : vista ? ', vista' : '') + '">' +
           '<span class="marca">' + (vista ? '✓' : (i < 9 ? '0' : '') + (i + 1)) + '</span><span class="t">' + esc(x.t) + '</span>' + (bloq ? candado : '<small>' + x.min + ' min</small>') + '</a>';
       }).join("") + '</div>' +
-      (MODULOS.gratis && cerradas ? '<div class="fj-lista-pie">' + cerradas + (cerradas === 1 ? ' guía de este módulo está' : ' guías de este módulo están') + ' en el acceso completo.<a class="fj-btn fj-btn-primario" href="/#precio">Desbloquear todo</a></div>' : '');
+      (MODULOS.gratis && cerradas ? '<div class="fj-lista-pie">' + cerradas + (cerradas === 1 ? ' guía de este módulo está' : ' guías de este módulo están') + ' en el acceso completo.<a class="fj-btn fj-btn-primario" href="/?plan=1#precio">Desbloquear todo</a></div>' : '');
     var act = caja.querySelector(".fj-fila.actual");
     if (act) { var l = caja.querySelector(".fj-lista"); l.scrollTop = act.offsetTop - l.offsetTop - 60; }
   }

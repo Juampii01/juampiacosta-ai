@@ -51,6 +51,10 @@ export default async function middleware(request) {
   const url = new URL(request.url);
   const p = await leerCookie(valorCookie(request.headers.get("cookie"), ACCESS_COOKIE_NAME), process.env.ACCESS_SECRET);
   const nivel = nivelDe(p);
+  // Quien ya está adentro no ve la página de venta al entrar al dominio: va directo al Classroom.
+  // (Los botones «Desbloquear todo» de adentro llevan a /?plan=1#precio para ver el precio igual.)
+  if (nivel && (url.pathname === "/" || url.pathname === "/index.html") && !["plan", "bloqueada", "error", "volver"].some((k) => url.searchParams.has(k)))
+    return Response.redirect(new URL("/recursos", url), 307);
   const d = decidir(url.pathname, nivel, !!(p && esAdmin(p.m)));
   if (d.no) return new Response("No encontrado", { status: 404 });
   if (d.prohibido) return new Response("Necesitás acceso", { status: 401 });

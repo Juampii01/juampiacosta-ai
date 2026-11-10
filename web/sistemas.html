@@ -39,7 +39,7 @@ var SISTEMAS = {{SISTEMAS}};
     document.getElementById("si-filtros").innerHTML = CATS.map(function (c) { return '<button type="button" class="fj-chip" data-cat="' + c[0] + '" aria-pressed="' + (c[0] === cat) + '">' + c[1] + '</button>'; }).join("");
     document.getElementById("si-lista").innerHTML = SISTEMAS.filter(function (s) { return !cat || s.categoria === cat; }).map(function (s) {
       var listo = s.estado === "listo", cerrado = listo && FJ.gratis;
-      var href = !listo ? "#" : cerrado ? "/#precio" : "/sistemas/" + s.slug;
+      var href = !listo ? "#" : cerrado ? "/?plan=1#precio" : "/sistemas/" + s.slug;
       var cta = !listo ? "Guía en camino" : cerrado ? candado + " Acceso completo" : "Ver la guía →";
       return '<a class="fj-card fj-sistema' + (listo ? '' : ' pronto') + '" href="' + href + '"' + (listo ? '' : ' aria-disabled="true" onclick="return false"') + '>' +
         '<div class="tags"><span class="nivel' + (s.nivel === "avanzado" ? ' avanzado' : '') + '">' + esc(s.nivel.toUpperCase()) + '</span><span>' + esc(s.plataforma.toUpperCase()) + '</span></div>' +

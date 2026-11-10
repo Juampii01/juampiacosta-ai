@@ -163,7 +163,7 @@ function plegarPack(boton) {
 // Guías: cada una tiene su página en guias/<slug>.html
 function tarjetaGuia(g, etiqueta) {
   var cerrada = GRATIS && !g.gratis;
-  return '<a class="herr glass' + (cerrada ? ' cerrada' : '') + '" href="' + (cerrada ? '/#precio' : '/guias/' + g.slug) + '" data-buscar="' + buscable(g) + ' guia ' + g.tema + ' ' + (g.post || '') + '">' +
+  return '<a class="herr glass' + (cerrada ? ' cerrada' : '') + '" href="' + (cerrada ? '/?plan=1#precio' : '/guias/' + g.slug) + '" data-buscar="' + buscable(g) + ' guia ' + g.tema + ' ' + (g.post || '') + '">' +
     '<div class="herr-cab"><span class="tipo">' + etiqueta + '</span><span class="herr-meta">' + g.min + ' min</span></div>' +
     '<h3>' + g.t + '</h3><p>' + g.d + '</p><span class="bajar">' + (cerrada ? '🔒 Desbloquear' : 'Leer la guía →') + '</span></a>';
 }

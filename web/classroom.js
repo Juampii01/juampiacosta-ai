@@ -26,7 +26,7 @@
       caja.href = "/guias/" + g.slug;
       caja.innerHTML = '<small>' + etiqueta + '</small><b>' + esc(g.t) + '</b><span>' + (m ? m.codigo + ' · ' + esc(m.nombre) + ' · guía ' + pos + ' de ' + m.guias.length + ' · ' : '') + g.min + ' min</span><em>Continuar →</em>';
     } else {
-      caja.href = "/#precio";
+      caja.href = "/?plan=1#precio";
       caja.innerHTML = '<small>Leíste todo lo abierto</small><b>Desbloquea las ' + GUIAS_WEB.length + ' guías y sigue el camino</b><em>Ver el acceso →</em>';
     }
 
@@ -37,7 +37,7 @@
       plan.innerHTML = '<div><b>Plan gratis: tienes abiertas <span style="color:var(--fj-acento-txt)">' + ab + ' de ' + GUIAS_WEB.length + ' guías</span></b>' +
         '<div class="fj-barra"><i style="width:' + Math.round(ab / GUIAS_WEB.length * 100) + '%"></i></div></div>' +
         '<p>Acceso completo: las ' + GUIAS_WEB.length + ' guías, los prompts, los sistemas y todo lo que se sume. Un solo pago, para siempre.</p>' +
-        '<a class="fj-btn fj-btn-primario" href="/#precio">Desbloquear todo</a>';
+        '<a class="fj-btn fj-btn-primario" href="/?plan=1#precio">Desbloquear todo</a>';
     }
 
     // Fases y módulos

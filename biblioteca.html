@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de /biblioteca (prompts, skills, conectores, herramientas, reels y rutas). build.py la copia a ../biblioteca.html con la versión (30481b87) -->
+<!-- Plantilla de /biblioteca (prompts, skills, conectores, herramientas, reels y rutas). build.py la copia a ../biblioteca.html con la versión (91814862) -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -8,31 +8,31 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="web/base.css?v=30481b87">
-<link rel="stylesheet" href="web/cta.css?v=30481b87">
-<link rel="stylesheet" href="web/biblioteca.css?v=30481b87">
-<link rel="stylesheet" href="web/camino.css?v=30481b87">
-<link rel="stylesheet" href="web/organizar.css?v=30481b87">
-<link rel="stylesheet" href="web/tema.css?v=30481b87">
-<link rel="stylesheet" href="web/bienvenida.css?v=30481b87">
-<link rel="stylesheet" href="web/forja.css?v=30481b87">
-<script src="web/tema.js?v=30481b87"></script>
-<link rel="icon" href="web/favicon.svg?v=30481b87" type="image/svg+xml">
+<link rel="stylesheet" href="web/base.css?v=91814862">
+<link rel="stylesheet" href="web/cta.css?v=91814862">
+<link rel="stylesheet" href="web/biblioteca.css?v=91814862">
+<link rel="stylesheet" href="web/camino.css?v=91814862">
+<link rel="stylesheet" href="web/organizar.css?v=91814862">
+<link rel="stylesheet" href="web/tema.css?v=91814862">
+<link rel="stylesheet" href="web/bienvenida.css?v=91814862">
+<link rel="stylesheet" href="web/forja.css?v=91814862">
+<script src="web/tema.js?v=91814862"></script>
+<link rel="icon" href="web/favicon.svg?v=91814862" type="image/svg+xml">
 <meta name="theme-color" content="#0a0a0b">
 </head>
 <body class="fj-app" data-seccion="biblioteca" data-raiz="/">
-<script src="web/redes.js?v=30481b87"></script>
-<script src="web/guias-web.js?v=30481b87"></script>
-<script src="web/herramientas.js?v=30481b87"></script>
-<script src="web/prompts.js?v=30481b87"></script>
-<script src="web/datos.js?v=30481b87"></script>
-<script src="web/comun.js?v=30481b87"></script>
-<script src="web/rutas.js?v=30481b87"></script>
-<script src="web/categorias.js?v=30481b87"></script>
-<script src="web/iconos.js?v=30481b87"></script>
-<script src="web/organizar.js?v=30481b87"></script>
-<script src="web/menu.js?v=30481b87"></script>
-<script src="web/shell.js?v=30481b87"></script>
+<script src="web/redes.js?v=91814862"></script>
+<script src="web/guias-web.js?v=91814862"></script>
+<script src="web/herramientas.js?v=91814862"></script>
+<script src="web/prompts.js?v=91814862"></script>
+<script src="web/datos.js?v=91814862"></script>
+<script src="web/comun.js?v=91814862"></script>
+<script src="web/rutas.js?v=91814862"></script>
+<script src="web/categorias.js?v=91814862"></script>
+<script src="web/iconos.js?v=91814862"></script>
+<script src="web/organizar.js?v=91814862"></script>
+<script src="web/menu.js?v=91814862"></script>
+<script src="web/shell.js?v=91814862"></script>
 
 <main class="fj-main ancho">
   <section id="rutas">
@@ -163,7 +163,7 @@ function plegarPack(boton) {
 // Guías: cada una tiene su página en guias/<slug>.html
 function tarjetaGuia(g, etiqueta) {
   var cerrada = GRATIS && !g.gratis;
-  return '<a class="herr glass' + (cerrada ? ' cerrada' : '') + '" href="' + (cerrada ? '/#precio' : '/guias/' + g.slug) + '" data-buscar="' + buscable(g) + ' guia ' + g.tema + ' ' + (g.post || '') + '">' +
+  return '<a class="herr glass' + (cerrada ? ' cerrada' : '') + '" href="' + (cerrada ? '/?plan=1#precio' : '/guias/' + g.slug) + '" data-buscar="' + buscable(g) + ' guia ' + g.tema + ' ' + (g.post || '') + '">' +
     '<div class="herr-cab"><span class="tipo">' + etiqueta + '</span><span class="herr-meta">' + g.min + ' min</span></div>' +
     '<h3>' + g.t + '</h3><p>' + g.d + '</p><span class="bajar">' + (cerrada ? '🔒 Desbloquear' : 'Leer la guía →') + '</span></a>';
 }
@@ -185,6 +185,6 @@ verBiblio();
 // Búsqueda que llega desde otra página (/biblioteca?q=…)
 (function () { var q = new URLSearchParams(location.search).get("q"); var b = document.getElementById("fj-buscar"); if (q && b) { b.value = q; b.dispatchEvent(new Event("input")); } })();
 </script>
-<script src="web/bienvenida.js?v=30481b87"></script>
+<script src="web/bienvenida.js?v=91814862"></script>
 </body>
 </html>

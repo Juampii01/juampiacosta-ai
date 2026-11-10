@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de /cuenta. build.py la copia a ../cuenta.html con la versión (30481b87) -->
+<!-- Plantilla de /cuenta. build.py la copia a ../cuenta.html con la versión (91814862) -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -8,15 +8,15 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="web/base.css?v=30481b87">
-<link rel="stylesheet" href="web/tema.css?v=30481b87">
-<link rel="stylesheet" href="web/forja.css?v=30481b87">
-<script src="web/tema.js?v=30481b87"></script>
-<link rel="icon" href="web/favicon.svg?v=30481b87" type="image/svg+xml">
+<link rel="stylesheet" href="web/base.css?v=91814862">
+<link rel="stylesheet" href="web/tema.css?v=91814862">
+<link rel="stylesheet" href="web/forja.css?v=91814862">
+<script src="web/tema.js?v=91814862"></script>
+<link rel="icon" href="web/favicon.svg?v=91814862" type="image/svg+xml">
 </head>
 <body class="fj-app" data-seccion="cuenta" data-raiz="/">
-<script src="web/guias-web.js?v=30481b87"></script>
-<script src="web/comun.js?v=30481b87"></script>
+<script src="web/guias-web.js?v=91814862"></script>
+<script src="web/comun.js?v=91814862"></script>
 <main class="fj-main" style="max-width:920px">
   <div class="fj-cab"><span class="fj-eyebrow">Mi cuenta</span><h1>Tu perfil y tu acceso</h1></div>
 
@@ -46,13 +46,13 @@
     <p class="fj-nota" id="cu-mails-ok" role="status"></p>
   </section>
 </main>
-<script src="web/shell.js?v=30481b87"></script>
+<script src="web/shell.js?v=91814862"></script>
 <script>
 (function () {
   var f = document.getElementById("perfil"), err = f.querySelector(".fj-error"), ok = document.getElementById("cu-ok");
   var plan = document.getElementById("cu-plan");
   plan.innerHTML = FJ.gratis
-    ? '<h2>Tu plan: gratis</h2><p class="fj-nota" style="font-size:14px">' + FJ.abiertas + ' de ' + FJ.total + ' guías abiertas. Con el acceso completo se abre todo, los sistemas incluidos, con un solo pago y para siempre. ¿Ya compraste? Cierra sesión y entra con el email del pago.</p><a class="fj-btn fj-btn-primario" href="/#precio" style="align-self:flex-start">Desbloquear todo</a>'
+    ? '<h2>Tu plan: gratis</h2><p class="fj-nota" style="font-size:14px">' + FJ.abiertas + ' de ' + FJ.total + ' guías abiertas. Con el acceso completo se abre todo, los sistemas incluidos, con un solo pago y para siempre. ¿Ya compraste? Cierra sesión y entra con el email del pago.</p><a class="fj-btn fj-btn-primario" href="/?plan=1#precio" style="align-self:flex-start">Desbloquear todo</a>'
     : '<h2>Tu plan: acceso completo</h2><p class="fj-nota" style="font-size:14px">Las ' + FJ.total + ' guías, los prompts, las herramientas y todo lo que se sume. Es tuyo para siempre.</p>';
   fetch("/api/cuenta", { credentials: "same-origin" }).then(function (r) { return r.json(); }).then(function (d) {
     document.getElementById("cu-email").textContent = d.email || "Entraste con clave de compra";

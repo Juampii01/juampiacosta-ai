@@ -107,7 +107,7 @@
 
     var tarjetas = lista.map(function (x) {
       var cerrada = gratis && !x.g.gratis;
-      return '<a class="pv-card' + (cerrada ? ' cerrada' : '') + '" href="' + (cerrada ? '/#precio' : 'guias/' + x.g.slug + '.html') + '">' +
+      return '<a class="pv-card' + (cerrada ? ' cerrada' : '') + '" href="' + (cerrada ? '/?plan=1#precio' : 'guias/' + x.g.slug + '.html') + '">' +
         '<span class="pv-motivo">' + x.motivo + '</span><h4>' + x.g.t + '</h4><p>' + x.g.d + '</p>' +
         '<span class="pv-pie"><b>' + x.g.min + ' min</b><i>' + x.g.tema + '</i><em>' + (cerrada ? '🔒 Desbloquear' : 'Leer →') + '</em></span></a>';
     }).join("");
@@ -119,7 +119,7 @@
       '<div class="pv-grid">' + tarjetas + '</div>' +
       (packs.length ? '<div class="pv-packs"><small>Prompts para lo tuyo</small>' + packs.map(function (p) {
         return '<a href="#p-' + p.cat + '" data-ir="prompts">' + p.t + ' <b>' + p.prompts.length + '</b></a>'; }).join("") + '</div>' : '') +
-      (gratis && abiertas < lista.length ? '<a class="pv-cta" href="/#precio"><b>' + (lista.length - abiertas) + ' de tus ' + lista.length + ' recomendados</b> son del acceso completo. Desbloquéalos →</a>' : '') +
+      (gratis && abiertas < lista.length ? '<a class="pv-cta" href="/?plan=1#precio"><b>' + (lista.length - abiertas) + ' de tus ' + lista.length + ' recomendados</b> son del acceso completo. Desbloquéalos →</a>' : '') +
       (r.objetivo === "Que me lo instalen en mi negocio" ? '<a class="pv-cta pv-cta--dm" href="' + ((window.REDES && REDES.dm) || "#") + '" target="_blank" rel="noopener">🛠️ <b>¿Quieres que te lo instale yo?</b> Escríbeme «INSTALAR» por Instagram →</a>' : '') +
       '</div>';
 

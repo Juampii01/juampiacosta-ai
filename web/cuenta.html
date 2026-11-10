@@ -52,7 +52,7 @@
   var f = document.getElementById("perfil"), err = f.querySelector(".fj-error"), ok = document.getElementById("cu-ok");
   var plan = document.getElementById("cu-plan");
   plan.innerHTML = FJ.gratis
-    ? '<h2>Tu plan: gratis</h2><p class="fj-nota" style="font-size:14px">' + FJ.abiertas + ' de ' + FJ.total + ' guías abiertas. Con el acceso completo se abre todo, los sistemas incluidos, con un solo pago y para siempre. ¿Ya compraste? Cierra sesión y entra con el email del pago.</p><a class="fj-btn fj-btn-primario" href="/#precio" style="align-self:flex-start">Desbloquear todo</a>'
+    ? '<h2>Tu plan: gratis</h2><p class="fj-nota" style="font-size:14px">' + FJ.abiertas + ' de ' + FJ.total + ' guías abiertas. Con el acceso completo se abre todo, los sistemas incluidos, con un solo pago y para siempre. ¿Ya compraste? Cierra sesión y entra con el email del pago.</p><a class="fj-btn fj-btn-primario" href="/?plan=1#precio" style="align-self:flex-start">Desbloquear todo</a>'
     : '<h2>Tu plan: acceso completo</h2><p class="fj-nota" style="font-size:14px">Las ' + FJ.total + ' guías, los prompts, las herramientas y todo lo que se sume. Es tuyo para siempre.</p>';
   fetch("/api/cuenta", { credentials: "same-origin" }).then(function (r) { return r.json(); }).then(function (d) {
     document.getElementById("cu-email").textContent = d.email || "Entraste con clave de compra";
