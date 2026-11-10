@@ -4,19 +4,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>juampiiacosta.ai · Todo lo que uso para armar sistemas con Claude</title>
+<title>Forja IA · Aprende a armar y vender sistemas con Claude</title>
 <meta name="description" content="Guías paso a paso, prompts, skills y conectores para armar sistemas con Claude. Acceso fundador US$ 24,90, de por vida.">
-<meta property="og:title" content="juampiiacosta.ai · Sistemas con Claude">
+<meta property="og:title" content="Forja IA · Sistemas con Claude">
 <meta property="og:image" content="https://www.forjaia.com/web/og.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:description" content="Guías, prompts, skills y conectores para armar sistemas con Claude. Acceso fundador US$ 24,90.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="web/base.css?v=de19d460">
-<link rel="stylesheet" href="web/camino.css?v=de19d460">
-<link rel="stylesheet" href="web/tema.css?v=de19d460">
-<script src="web/tema.js?v=de19d460"></script>
+<link rel="stylesheet" href="web/base.css?v=30481b87">
+<link rel="stylesheet" href="web/camino.css?v=30481b87">
+<link rel="stylesheet" href="web/tema.css?v=30481b87">
+<link rel="stylesheet" href="web/forja.css?v=30481b87">
+<script src="web/tema.js?v=30481b87"></script>
 <script>if (/(?:^|;\s*)jpa_nivel=(pago|gratis)/.test(document.cookie) || location.hash === "#entrar" || /[?&]error=clave/.test(location.search)) document.documentElement.classList.add("con-acceso");</script>
 <style>
   .l-wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
@@ -119,14 +120,35 @@
   .p-caja .p-sub { color: var(--muted); line-height: 1.5; margin-top: 10px; font-size: 15px; }
   .p-caja .l-form-gratis { margin-top: 8px; }
   @media (max-width: 480px) { .p-caja { padding: 24px 18px; } }
+  /* ---- Forja IA: misma paleta y textura que la plataforma ---- */
+  body.fj-landing { background-color: var(--fj-bg); color: var(--fj-text);
+    background-image: linear-gradient(var(--fj-grid) 1px, transparent 1px), linear-gradient(90deg, var(--fj-grid) 1px, transparent 1px); background-size: 40px 40px; }
+  .fj-landing .glass { background: var(--fj-surface); border: 1px solid var(--fj-line); backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: var(--fj-sombra); }
+  .fj-landing .l-cab { background: var(--fj-top); border-bottom-color: var(--fj-line); }
+  .fj-landing .l-marca { font-weight: 800; font-size: 18px; }
+  .fj-landing .l-marca b { color: var(--fj-acento); }
+  .fj-landing .l-marca svg { border-radius: 8px; }
+  .fj-landing .l-boton { border-radius: 10px; background: var(--fj-acento); color: var(--fj-sobre-acento); box-shadow: none; }
+  .fj-landing .l-boton--borde { background: transparent; color: var(--fj-text); border: 1px solid var(--fj-line2); }
+  .fj-landing .mono, .fj-landing .l-hero .mono { color: var(--fj-acento-txt) !important; font-family: "JetBrains Mono", monospace; letter-spacing: .16em; text-transform: uppercase; font-size: 12px; }
+  .fj-landing .l-hero h1 em, .fj-landing .l-quien-ig, .fj-landing .l-caja li::before { color: var(--fj-acento-txt); }
+  .fj-landing .l-pasos b { background: var(--fj-acento); color: var(--fj-sobre-acento); }
+  .fj-landing .l-video { border-radius: 16px; border-color: var(--fj-line); box-shadow: none; }
+  .fj-landing .l-caja--precio { border-color: var(--fj-acento); box-shadow: none; }
+  .fj-landing .l-gratis { border-color: var(--fj-acento); border-radius: 16px; }
+  .fj-landing .l-valor { background: var(--fj-acento-suave); border-color: transparent; }
+  .fj-landing .l-faq summary::after { color: var(--fj-acento-txt); background: var(--fj-acento-suave); }
+  .fj-landing .l-entrar input, .fj-landing .l-form-gratis input:not([type=hidden]) { background: var(--fj-inner); border-color: var(--fj-line2); border-radius: 12px; }
+  .fj-landing #puerta { background: color-mix(in srgb, var(--fj-bg) 85%, transparent); }
+  .fj-landing .p-caja { border-radius: 16px; }
 </style>
-<link rel="icon" href="web/favicon.svg?v=de19d460" type="image/svg+xml">
-<meta name="theme-color" content="#0b0a09">
+<link rel="icon" href="web/favicon.svg?v=30481b87" type="image/svg+xml">
+<meta name="theme-color" content="#0a0a0b">
 </head>
-<body>
+<body class="fj-landing">
 <div id="puerta" role="dialog" aria-modal="true" aria-labelledby="puerta-tit">
   <div class="p-caja glass">
-    <span class="l-marca"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#17110e"/><rect x=".75" y=".75" width="62.5" height="62.5" rx="15.25" fill="none" stroke="#ff5a1f" stroke-opacity=".35" stroke-width="1.5"/><path d="M32 18 18 44h28z" fill="none" stroke="#ff5a1f" stroke-width="3.5" stroke-linejoin="round" stroke-opacity=".55"/><circle cx="32" cy="18" r="7" fill="#ff5a1f"/><circle cx="18" cy="44" r="7" fill="#ff5a1f"/><circle cx="46" cy="44" r="7" fill="#fff"/></svg><span>juampiiacosta<b>.ai</b></span></span>
+    <span class="l-marca"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#17110e"/><path d="M9 22h14l-2-5H11z" fill="#ff5a1f"/><path d="M16 6c3 3 4 5 2 8-1-1-2-1-3 0-2-2-1-5 1-8z" fill="#ffb27a"/></svg><span>Forja <b>IA</b></span></span>
     <span class="mono" style="color:var(--glow)">Empieza gratis</span>
     <h2 id="puerta-tit">Regístrate gratis y tienes los recursos ya</h2>
     <p class="p-sub">Tu nombre y tu mail. Se te abren al instante las guías de mis reels y te armo tus recomendados.</p>
@@ -138,17 +160,16 @@
       <input type="hidden" name="volver"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content">
       <p class="l-error" id="error-puerta"></p>
       <button class="l-boton" type="submit">Entrar gratis →</button>
-      <p class="l-chico"><b>¿Ya compraste?</b> Pon el mismo email que usaste en el pago y se te abre todo.</p>
+      <p class="l-chico"><b>¿Ya compraste?</b> <a href="/entrar" style="color:var(--fj-acento-txt)">Entra con el email del pago</a>: te llega un código y se te abre todo.</p>
     </form>
   </div>
 </div>
-<div class="fondo"></div>
 
 <header class="l-cab">
   <div class="l-wrap">
     <a class="l-marca" href="/">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#17110e"/><rect x=".75" y=".75" width="62.5" height="62.5" rx="15.25" fill="none" stroke="#ff5a1f" stroke-opacity=".35" stroke-width="1.5"/><path d="M32 18 18 44h28z" fill="none" stroke="#ff5a1f" stroke-width="3.5" stroke-linejoin="round" stroke-opacity=".55"/><circle cx="32" cy="18" r="7" fill="#ff5a1f"/><circle cx="18" cy="44" r="7" fill="#ff5a1f"/><circle cx="46" cy="44" r="7" fill="#fff"/></svg>
-      <span>juampiiacosta<b>.ai</b></span>
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#17110e"/><path d="M9 22h14l-2-5H11z" fill="#ff5a1f"/><path d="M16 6c3 3 4 5 2 8-1-1-2-1-3 0-2-2-1-5 1-8z" fill="#ffb27a"/></svg>
+      <span>Forja <b>IA</b></span>
     </a>
     <nav><a class="l-boton l-boton--chico l-boton--borde" id="boton-entrar" href="/entrar">Entrar</a></nav>
   </div>
@@ -157,7 +178,7 @@
 <main>
   <section class="l-hero">
     <div class="l-wrap">
-      <span class="mono">Biblioteca · Acceso fundador</span>
+      <span class="mono">Forja IA · Acceso fundador</span>
       <h1>Todo lo que uso para <em>armar sistemas con Claude</em>, en un solo lugar.</h1>
       <p>Un camino en 3 partes, de configurar Claude a venderle sistemas a negocios. Sin saber programar.</p>
       <div class="l-acciones">
@@ -184,7 +205,7 @@
       <ol class="l-pasos">
         <li class="glass"><b>1</b><div><h3>Regístrate gratis</h3><p>Tu nombre y tu mail. Entras al instante.</p></div></li>
         <li class="glass"><b>2</b><div><h3>Cuéntame qué haces</h3><p>8 preguntas rápidas y te armo tus recomendados según tu rubro y lo que quieres lograr.</p></div></li>
-        <li class="glass"><b>3</b><div><h3>Sigue tu próximo paso</h3><p>La biblioteca te dice qué guía leer ahora. Cuando quieras todo, pasas al acceso fundador.</p></div></li>
+        <li class="glass"><b>3</b><div><h3>Sigue tu próximo paso</h3><p>El Classroom te dice qué guía leer ahora. Cuando quieras todo, pasas al acceso fundador.</p></div></li>
       </ol>
       <a class="l-boton" href="#gratis" style="margin-top:22px">Empezar gratis →</a>
     </div>
@@ -195,7 +216,7 @@
       <div class="l-gratis glass">
         <div>
           <span class="mono" style="color:var(--glow)">Empieza gratis</span>
-          <h2>Regístrate gratis y armamos tu biblioteca a medida</h2>
+          <h2>Regístrate gratis y armamos tu camino a medida</h2>
           <p>Te quedan abiertas las guías de mis reels, las 5 guías para gastar menos tokens y el Módulo 1 del sistema para vender IA. Respondes 8 preguntas rápidas y te armo la sección <b>Recomendados para ti</b> con lo que más te sirve según tu rubro y lo que quieres lograr.</p>
         </div>
         <form method="post" action="/api/registro" class="l-form-gratis">
@@ -207,7 +228,7 @@
           <p class="l-error" id="error-gratis"></p>
           <button class="l-boton" type="submit">Entrar gratis →</button>
           <p class="l-chico">Te escribo por mail cuando sumo recursos. Te das de baja cuando quieras.</p>
-          <p class="l-chico"><b>¿Ya compraste?</b> Entra aquí con el mismo email que usaste en el pago y se te abre todo.</p>
+          <p class="l-chico"><b>¿Ya compraste?</b> <a href="/entrar" style="color:var(--fj-acento-txt)">Entra con el email del pago</a>: te llega un código y se te abre todo.</p>
         </form>
       </div>
     </div>
@@ -232,7 +253,7 @@
             <li>Dudas por Instagram</li>
           </ul>
           <a class="l-boton" href="https://pay.hotmart.com/J108404247X?off=8flev061" target="_blank" rel="noopener">Quiero el acceso fundador →</a>
-          <p class="l-chico">Pago seguro con Hotmart, en la moneda de tu país. Después de pagar te registras con el mismo email y se abre todo. ¿Estás en Argentina? <a href="https://mpago.la/1Q8PbXK" target="_blank" rel="noopener">Paga $ 39.000 con Mercado Pago</a> y escríbeme por Instagram para activarte.</p>
+          <p class="l-chico">Pago seguro con Hotmart, en la moneda de tu país. Después de pagar entras con el mismo email (te llega un código) y se abre todo. ¿Estás en Argentina? <a href="https://mpago.la/1Q8PbXK" target="_blank" rel="noopener">Paga $ 39.000 con Mercado Pago</a> y escríbeme por Instagram para activarte.</p>
         </div>
         <div class="l-caja glass l-entrar" id="entrar">
           <span class="mono" style="color:var(--glow)">Ya compré</span>
@@ -254,10 +275,10 @@
   <section class="l-sec">
     <div class="l-wrap">
       <div class="l-quien glass">
-        <i class="l-quien-logo" aria-hidden="true"><svg viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#17110e"/><rect x=".75" y=".75" width="62.5" height="62.5" rx="15.25" fill="none" stroke="#ff5a1f" stroke-opacity=".35" stroke-width="1.5"/><path d="M32 18 18 44h28z" fill="none" stroke="#ff5a1f" stroke-width="3.5" stroke-linejoin="round" stroke-opacity=".55"/><circle cx="32" cy="18" r="7" fill="#ff5a1f"/><circle cx="18" cy="44" r="7" fill="#ff5a1f"/><circle cx="46" cy="44" r="7" fill="#fff"/></svg></i>
+        <i class="l-quien-logo" aria-hidden="true"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#17110e"/><path d="M9 22h14l-2-5H11z" fill="#ff5a1f"/><path d="M16 6c3 3 4 5 2 8-1-1-2-1-3 0-2-2-1-5 1-8z" fill="#ffb27a"/></svg></i>
         <div><span class="mono" style="color:var(--glow)">Quién la arma</span>
           <h3>Juampi Acosta</h3>
-          <p>Soy desarrollador y armo sistemas con Claude para negocios. Esta biblioteca es lo que uso y lo que voy probando: cada guía está verificada con la documentación oficial y se actualiza cuando algo cambia.</p></div>
+          <p>Soy desarrollador y armo sistemas con Claude para negocios. Forja IA es lo que uso y lo que voy probando: cada guía está verificada con la documentación oficial y se actualiza cuando algo cambia.</p></div>
         <a class="l-quien-ig" href="https://www.instagram.com/juampiiacosta.ia/" target="_blank" rel="noopener">@juampiiacosta.ia →</a>
       </div>
     </div>
@@ -270,7 +291,7 @@
       <div class="l-faq">
         <details class="glass"><summary>¿Necesito saber programar?</summary><p>No. Cada guía te dice qué pegar y dónde. Las de Claude Code usan la terminal, pero los comandos los copias de la guía o se los pides a Claude.</p></details>
         <details class="glass"><summary>¿Qué plan de Claude necesito?</summary><p>Muchas cosas funcionan con el plan gratis. Claude Code, las tareas programadas y algunos conectores necesitan un plan pago. Cada guía lo aclara al principio.</p></details>
-        <details class="glass"><summary>¿Cómo entro después de pagar?</summary><p>Después de pagar te llega un PDF con los pasos: entras a la web, te registras con el mismo email de la compra y se te abre todo. Si pagaste con Mercado Pago, escríbeme por Instagram con tu email y te lo activo.</p></details>
+        <details class="glass"><summary>¿Cómo entro después de pagar?</summary><p>Entras a forjaia.com con el mismo email que usaste en el pago, te llega un código de 6 números y se te abre todo. Sin contraseñas. Si pagaste con Mercado Pago, escríbeme por Instagram con tu email y te lo activo.</p></details>
         <details class="glass"><summary>¿Qué tiene el plan gratis?</summary><p>Las guías de cada palabra que pedí en mis reels, las 5 guías para gastar menos tokens y el Módulo 1 del sistema para vender IA. Ves el resto de la biblioteca con candado, y tu sección de recomendados según tus respuestas.</p></details>
         <details class="glass"><summary>¿Y si quiero que me lo instales en mi negocio?</summary><p>Escríbeme por Instagram, cuéntame qué haces y vemos qué conviene automatizar.</p></details>
       </div>
@@ -279,15 +300,15 @@
 </main>
 
 <footer class="l-pie">
-  <div class="l-wrap">© 2026 juampiiacosta.ai · <a href="https://www.instagram.com/juampiiacosta.ia/" target="_blank" rel="noopener">@juampiiacosta.ia</a></div>
+  <div class="l-wrap">© 2026 Forja IA · <a href="https://www.instagram.com/juampiiacosta.ia/" target="_blank" rel="noopener">@juampiiacosta.ia</a></div>
 </footer>
 
 <script>
 (function () {
-  // Quien ya tiene acceso ve «Entrar a la biblioteca» arriba
+  // Quien ya tiene acceso ve «Ir al Classroom» arriba
   if (/(?:^|;\s*)jpa_nivel=(pago|gratis)/.test(document.cookie)) {
     var b = document.getElementById("boton-entrar");
-    b.textContent = "Entrar a la biblioteca";
+    b.textContent = "Ir al Classroom";
     b.href = "/recursos";
   }
   var q = new URLSearchParams(location.search);

@@ -298,12 +298,12 @@ def inicio(v):
     herrs = json.loads(re.search(r"var HERRAMIENTAS = (.*);\n", (WEB / "herramientas.js").read_text()).group(1))
     n_skills = sum(1 for f in (RAIZ / "contenido" / "mejoras").glob("*.json") for k in json.loads(f.read_text()).get("kit", []) if k["archivo"].endswith("SKILL.md"))
     if cfg.get("pago_url"):
-        url, target, nota = cfg["pago_url"], 'target="_blank" rel="noopener"', 'Pago seguro con Hotmart, en la moneda de tu país. Después de pagar te registras con el mismo email y se abre todo. ¿Estás en Argentina? <a href="https://mpago.la/1Q8PbXK" target="_blank" rel="noopener">Paga $ 39.000 con Mercado Pago</a> y escríbeme por Instagram para activarte.'
+        url, target, nota = cfg["pago_url"], 'target="_blank" rel="noopener"', 'Pago seguro con Hotmart, en la moneda de tu país. Después de pagar entras con el mismo email (te llega un código) y se abre todo. ¿Estás en Argentina? <a href="https://mpago.la/1Q8PbXK" target="_blank" rel="noopener">Paga $ 39.000 con Mercado Pago</a> y escríbeme por Instagram para activarte.'
     else:
         url, target, nota = "https://ig.me/m/juampiiacosta.ia", 'target="_blank" rel="noopener"', "Escríbeme «ACCESO» por Instagram y te paso el link de pago y tu clave."
     reemplazos = {"{{V}}": v, "{{PRECIO}}": cfg["precio"], "{{PRECIO_DESPUES}}": cfg["precio_despues"], "{{PAGO_URL}}": html.escape(url),
                   "{{PAGO_TARGET}}": target, "{{PAGO_NOTA}}": nota, "{{PUERTAS}}": puertas(guias, prompts, False), "{{VIDEO}}": video_html(cfg, len(guias), n_prompts, n_skills),
-                  "{{N_GUIAS}}": str(len(guias)), "{{N_PROMPTS}}": str(n_prompts), "{{N_RECURSOS}}": str(len(guias) + n_packs + n_herr)}
+                  "{{N_GUIAS}}": str(len(guias)), "{{LOGO}}": LOGO_FORJA, "{{N_PROMPTS}}": str(n_prompts), "{{N_RECURSOS}}": str(len(guias) + n_packs + n_herr)}
     t = (WEB / "inicio.html").read_text()
     for k, val in reemplazos.items():
         t = t.replace(k, val)
