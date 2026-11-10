@@ -14,7 +14,7 @@ import { esAdmin } from "./lib/sesion.js";
 export const config = {
   matcher: [
     "/", "/index.html",
-    "/recursos", "/recursos.html",
+    "/inicio", "/inicio.html", "/recursos", "/recursos.html",
     "/biblioteca", "/biblioteca.html", "/sistemas", "/sistemas.html", "/comunidad", "/comunidad.html",
     "/cuenta", "/cuenta.html", "/maestro", "/maestro.html", "/panel", "/panel.html",
     "/guias/:path*", "/sistemas/:path*", "/descargas/:path*",
@@ -24,7 +24,7 @@ export const config = {
   ]
 };
 
-const PRIVADAS = /^\/(recursos|biblioteca|sistemas|comunidad|cuenta|maestro|panel)(\.html)?$/;
+const PRIVADAS = /^\/(inicio|recursos|biblioteca|sistemas|comunidad|cuenta|maestro|panel)(\.html)?$/;
 
 export function decidir(ruta, nivel, admin = false) {
   if (/^\/(contenido|supabase|lib|tests)\/|^\/build\.py$|^\/web\/guias-web\.json$/.test(ruta)) return { no: true };
@@ -58,11 +58,11 @@ export default async function middleware(request) {
   const url = new URL(request.url);
   const p = await leerCookie(valorCookie(request.headers.get("cookie"), ACCESS_COOKIE_NAME), process.env.ACCESS_SECRET);
   const nivel = nivelDe(p);
-  // Quien ya está adentro no ve la página de venta: va directo al Classroom. Si venía a ver el precio
+  // Quien ya está adentro no ve la página de venta: va directo a su Inicio. Si venía a ver el precio
   // (/?plan=1, /?bloqueada=...), con plan gratis se le abre ahí la ventana «Desbloquear todo».
   if (nivel && (url.pathname === "/" || url.pathname === "/index.html") && !["error", "volver"].some((k) => url.searchParams.has(k))) {
     const quiere = nivel === "gratis" && (url.searchParams.has("plan") || url.searchParams.has("bloqueada"));
-    return Response.redirect(new URL(quiere ? "/recursos?desbloquear=1" : "/recursos", url), 307);
+    return Response.redirect(new URL(quiere ? "/recursos?desbloquear=1" : "/inicio", url), 307);
   }
   const d = decidir(url.pathname, nivel, !!(p && esAdmin(p.m)));
   if (d.no) return new Response("No encontrado", { status: 404 });

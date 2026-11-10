@@ -16,6 +16,7 @@ var FJ = (function () {
 
   var LOGO = '<svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#17110e"/><path d="M9 22h14l-2-5H11z" fill="#ff5a1f"/><path d="M16 6c3 3 4 5 2 8-1-1-2-1-3 0-2-2-1-5 1-8z" fill="#ffb27a"/></svg>';
   var I = {
+    inicio: '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/>',
     classroom: '<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>',
     comunidad: '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>',
     sistemas: '<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>',
@@ -40,8 +41,9 @@ var FJ = (function () {
   var sub = seccion === "biblioteca" ? '<div class="fj-sub">' +
     [["posts", "De mis reels"], ["prompts", "Prompts"], ["skills", "Skills"], ["mcp", "Conectores (MCP)"], ["herramientas", "Herramientas"], ["rutas", "Rutas"]]
       .map(function (s) { return '<a href="' + raiz + 'biblioteca#' + s[0] + '" data-sub="' + s[0] + '">' + s[1] + '</a>'; }).join("") + '</div>' : '';
-  lado.innerHTML = '<a class="fj-marca" href="' + raiz + 'recursos">' + LOGO + '<span>Forja <b>IA</b></span></a>' +
+  lado.innerHTML = '<a class="fj-marca" href="' + raiz + 'inicio">' + LOGO + '<span>Forja <b>IA</b></span></a>' +
     '<nav class="fj-nav" aria-label="Secciones">' +
+      item("inicio", "Inicio", raiz + "inicio") +
       item("classroom", "Classroom", raiz + "recursos", '<em>' + total + '</em>') +
       item("comunidad", "Comunidad", raiz + "comunidad") +
       item("sistemas", "Sistemas", raiz + "sistemas") +

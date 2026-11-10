@@ -36,9 +36,10 @@ test("emails: se normalizan y los raros no pasan", () => {
 test("después del código solo se vuelve a páginas propias", () => {
   assert.equal(destinoSeguro("/guias/configura-claude-en-10-minutos"), "/guias/configura-claude-en-10-minutos");
   assert.equal(destinoSeguro("/comunidad"), "/comunidad");
-  assert.equal(destinoSeguro("https://malo.com"), "/recursos");
-  assert.equal(destinoSeguro("//malo.com"), "/recursos");
-  assert.equal(destinoSeguro(""), "/recursos");
+  assert.equal(destinoSeguro("/inicio"), "/inicio");
+  assert.equal(destinoSeguro("https://malo.com"), "/inicio");
+  assert.equal(destinoSeguro("//malo.com"), "/inicio");
+  assert.equal(destinoSeguro(""), "/inicio");
 });
 
 test("sesión: cookie de acceso HttpOnly y marca de equipo solo para admins", () => {

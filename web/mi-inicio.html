@@ -1,0 +1,119 @@
+<!doctype html>
+<!-- Plantilla de /inicio (el resumen de cada uno). build.py la copia a ../inicio.html con la versión ({{V}}). Los datos salen de /api/inicio. -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inicio | Forja IA</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="web/base.css?v={{V}}">
+<link rel="stylesheet" href="web/tema.css?v={{V}}">
+<link rel="stylesheet" href="web/forja.css?v={{V}}">
+<script src="web/tema.js?v={{V}}"></script>
+<link rel="icon" href="web/favicon.svg?v={{V}}" type="image/svg+xml">
+<meta name="theme-color" content="#0a0a0b">
+</head>
+<body class="fj-app" data-seccion="inicio" data-raiz="/">
+<script src="web/guias-web.js?v={{V}}"></script>
+<script src="web/comun.js?v={{V}}"></script>
+<main class="fj-main ancho fj-inicio" id="inicio" aria-busy="true">
+  <section class="in-hero in-cargando"><div><span class="fj-eyebrow">Cargando tu resumen…</span><h1>&nbsp;</h1></div></section>
+</main>
+<script src="web/shell.js?v={{V}}"></script>
+<script>
+(function () {
+  var esc = FJ.esc, main = document.getElementById("inicio");
+  var GUIAS = typeof GUIAS_WEB !== "undefined" ? GUIAS_WEB : [];
+  var total = GUIAS.length, enPlan = FJ.gratis ? GUIAS.filter(function (g) { return g.gratis; }).length : total;
+  var porSlug = {}; GUIAS.forEach(function (g) { porSlug[g.slug] = g; });
+
+  function fecha() {
+    var t = new Date().toLocaleDateString("es", { weekday: "long", day: "numeric", month: "long", timeZone: "America/Argentina/Buenos_Aires" });
+    return t.charAt(0).toUpperCase() + t.slice(1);
+  }
+  // La guía para seguir: la última que abrió (si no la terminó); si no, la siguiente que puede abrir y no completó
+  function paraSeguir(vistas) {
+    var hechas = {}; (vistas || []).forEach(function (s) { hechas[s] = 1; });
+    var ult = PROGRESO.ultima();
+    if (ult && porSlug[ult.slug] && !hechas[ult.slug]) return { g: porSlug[ult.slug], cuando: ult.at };
+    var sig = GUIAS.filter(function (g) { return !hechas[g.slug] && (!FJ.gratis || g.gratis); })[0];
+    return sig ? { g: sig } : null;
+  }
+  function hace(ms) {
+    var m = Math.round((Date.now() - ms) / 6e4);
+    if (m < 60) return "Hace " + Math.max(m, 1) + " min";
+    if (m < 1440) return "Hace " + Math.round(m / 60) + " h";
+    var d = Math.round(m / 1440); return d === 1 ? "Ayer" : "Hace " + d + " días";
+  }
+  function anillo(d) {
+    var R = 92, C = 2 * Math.PI * R, pct = total ? d.completadas / total : 0;
+    return '<div class="in-anillo" aria-label="' + d.completadas + ' de ' + total + ' guías completadas"><svg viewBox="0 0 210 210" aria-hidden="true">' +
+      '<circle cx="105" cy="105" r="' + R + '" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="14"/>' +
+      (FJ.gratis ? '<circle cx="105" cy="105" r="' + R + '" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="14" stroke-dasharray="' + C + '" stroke-dashoffset="' + (C * (1 - enPlan / total)) + '"/>' : '') +
+      (d.completadas ? '<circle cx="105" cy="105" r="' + R + '" fill="none" stroke="#ff5a1f" stroke-width="14" stroke-linecap="round" stroke-dasharray="' + C + '" stroke-dashoffset="' + (C * (1 - pct)) + '"/>' : '') +
+      '</svg><div class="num"><b>' + Math.round(pct * 100) + '%</b><span>' + d.completadas + ' de ' + total + ' guías</span></div></div>';
+  }
+  function hero(d) {
+    var nombre = esc((d.nombre || "").split(" ")[0]);
+    var titulo = d.completadas ? 'Hola' + (nombre ? ', ' + nombre : '') + '. <em>Ya completaste ' + d.completadas + (d.completadas === 1 ? ' guía.' : ' guías.') + '</em>'
+      : 'Hola' + (nombre ? ', ' + nombre : '') + '. <em>Empecemos.</em>';
+    var frase = d.racha >= 2 ? 'Llevas <b>' + d.racha + ' días seguidos</b> entrando. Así se construye esto: un poco cada día.'
+      : d.racha === 1 ? 'Entraste hoy. Vuelve mañana y arrancas tu racha.'
+      : 'Un poco cada día rinde más que maratonear un domingo.';
+    if (d.completadasSemana > 0) frase += ' Esta semana completaste ' + d.completadasSemana + '.';
+    return '<section class="in-hero"><div>' +
+      '<span class="fj-eyebrow">' + esc(fecha()) + ' · ' + (FJ.gratis ? 'Plan gratis' : 'Acceso completo') + '</span>' +
+      '<h1>' + titulo + '</h1><p>' + frase + '</p>' +
+      '<div class="in-chips"><span>🔥 Racha <b>' + d.racha + (d.racha === 1 ? ' día' : ' días') + '</b></span>' +
+      '<span>📅 <b>' + d.diasMes + '</b> ' + (d.diasMes === 1 ? 'día activo' : 'días activos') + ' este mes</span>' +
+      '<span>📖 Abriste <b>' + d.abiertas + (d.abiertas === 1 ? ' guía' : ' guías') + '</b></span></div>' +
+      '</div>' + anillo(d) + '</section>';
+  }
+  function seguir(d) {
+    var s = paraSeguir(d.vistas);
+    if (!s) return '<div class="in-card in-c6"><div class="in-tit">Sigue donde quedaste</div><p class="in-vacio">Completaste todo lo que tienes abierto. 👏</p>' +
+      '<a class="fj-btn fj-btn-primario in-ancho" href="/biblioteca#posts">Ver la biblioteca</a></div>';
+    var g = s.g;
+    return '<div class="in-card in-c6"><div class="in-tit">' + (s.cuando ? 'Sigue donde quedaste <small>' + hace(s.cuando) + '</small>' : 'Tu próxima guía <small>' + esc(g.tema || "") + '</small>') + '</div>' +
+      '<a class="in-seguir" href="/guias/' + g.slug + '"><span class="ico" aria-hidden="true">▶</span><span><b>' + esc(g.t) + '</b><small>' + (g.min ? g.min + ' min de lectura' : '') + '</small></span></a>' +
+      '<a class="fj-btn fj-btn-primario in-ancho" href="/guias/' + g.slug + '">' + (s.cuando ? 'Continuar' : 'Empezar') + '</a></div>';
+  }
+  function compra(d) {
+    var faltan = total - enPlan, s = d.sorteo || {};
+    var cierra = s.cierra ? s.cierra.slice(8, 10) + "/" + s.cierra.slice(5, 7) : "30/11";
+    return '<div class="in-up in-c6"><span class="fj-eyebrow">Acceso completo · pago único</span>' +
+      '<h2>Te faltan ' + faltan + ' guías y los sistemas listos para replicar.</h2>' +
+      '<div class="in-precio"><s>US$ 44,90</s><b>US$ 24,90</b><span>hasta el 30/11 · es tuyo para siempre</span></div>' +
+      '<button type="button" class="fj-btn fj-btn-primario in-ancho" id="in-comprar">Desbloquear todo</button>' +
+      (s.chances ? '<p class="in-sorteo">🎁 O gánalo gratis: el ' + cierra + ' sorteamos <b>' + (s.premios || 2) + ' accesos completos</b>. Tienes <b>' + s.chances + (s.chances === 1 ? ' chance' : ' chances') + '</b>: sumas 1 por cada guía que completas y por cada día que entras.</p>' : '') +
+      '</div>';
+  }
+  function medalla(p) { return p === 1 ? "🥇" : p === 2 ? "🥈" : p === 3 ? "🥉" : "#" + p; }
+  function fila(f) {
+    var ini = f.nombre.split(" ").map(function (x) { return x.charAt(0); }).join("").slice(0, 2).toUpperCase();
+    return '<div' + (f.yo ? ' class="yo"' : '') + '><span class="pos">' + medalla(f.pos) + '</span><span class="av">' + esc(ini) + '</span><span>' + esc(f.nombre) + (f.yo ? ' (tú)' : '') + '</span><span class="pts">' + f.pts + ' pts</span></div>';
+  }
+  function rankingHtml(d) {
+    var r = d.ranking || { top: [] }, filas = r.top.slice();
+    if (r.yo && r.yo.pos > 3) filas.push(r.yo);
+    var nota = !r.yo ? '' : r.yo.pos === 1 ? 'Vas primero. 🔥' : r.yo.pos <= 3 ? 'Estás en el podio. Que no te pasen.'
+      : 'Te faltan ' + (r.top[2].pts - r.yo.pts + 1) + ' pts para el podio.';
+    return '<div class="in-card in-c6"><div class="in-tit">🏆 Ranking del mes <small>' + (r.total || 0) + ' en carrera</small></div>' +
+      (filas.length ? '<div class="in-rank">' + filas.map(fila).join("") + '</div>' : '<p class="in-vacio">Todavía nadie sumó puntos este mes. Completa una guía y arrancas primero.</p>') +
+      '<p class="in-nota">' + (nota ? nota + ' ' : '') + '10 pts por guía completada y 5 por cada día que entras.</p></div>';
+  }
+  function pintar(d) {
+    main.innerHTML = hero(d) + '<div class="in-grid">' + seguir(d) + (FJ.gratis ? compra(d) : rankingHtml(d)) + '</div>';
+    main.removeAttribute("aria-busy");
+    var b = document.getElementById("in-comprar");
+    if (b) b.addEventListener("click", function () { if (FJ.desbloquear) FJ.desbloquear("inicio"); else location.href = "/?plan=1#precio"; });
+  }
+  fetch("/api/inicio", { credentials: "same-origin" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+    pintar(d && !d.vacio ? d : { nombre: d && d.nombre, completadas: 0, completadasSemana: 0, racha: 0, diasMes: 0, abiertas: 0, vistas: [] });
+  }).catch(function () { pintar({ completadas: 0, completadasSemana: 0, racha: 0, diasMes: 0, abiertas: 0, vistas: [] }); });
+})();
+</script>
+</body>
+</html>

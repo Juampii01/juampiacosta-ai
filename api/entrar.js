@@ -49,6 +49,6 @@ export default async function handler(req, res) {
     `${AVISO_COOKIE_NAME}=pago; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; Secure; SameSite=Lax`
   ]);
   res.statusCode = 303;
-  res.setHeader("Location", "/recursos");
+  res.setHeader("Location", "/inicio");
   res.end();
 }

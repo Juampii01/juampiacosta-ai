@@ -273,7 +273,7 @@ PAGINAS = ["recursos", "biblioteca", "entrar", "cuenta", "comunidad", "sistemas"
 
 
 def paginas(v):
-    """Las páginas de la plataforma: Classroom (/recursos), biblioteca, entrar, cuenta, comunidad, sistemas, panel y Maestro."""
+    """Las páginas de la plataforma: Inicio, Classroom (/recursos), biblioteca, entrar, cuenta, comunidad, sistemas, panel y Maestro."""
     sistemas = json.loads((RAIZ / "contenido" / "sistemas.json").read_text())["sistemas"]
     for s in sistemas:
         for k in ("slug", "titulo", "categoria", "nivel", "plataforma", "tiempo", "resumen", "stack", "estado"):
@@ -283,6 +283,10 @@ def paginas(v):
         t = (WEB / f"{nombre}.html").read_text().replace("{{V}}", v).replace("{{LOGO}}", LOGO_FORJA).replace("{{SISTEMAS}}", datos)
         assert "{{" not in t, f"{nombre}.html: quedó un {{{{…}}}} sin rellenar"
         (RAIZ / f"{nombre}.html").write_text(t)
+    # /inicio (el resumen de cada uno). La plantilla se llama mi-inicio.html porque web/inicio.html es la página de venta.
+    t = (WEB / "mi-inicio.html").read_text().replace("{{V}}", v)
+    assert "{{" not in t, "mi-inicio.html: quedó un {{…}} sin rellenar"
+    (RAIZ / "inicio.html").write_text(t)
 
 
 def sistemas_paginas(v):
