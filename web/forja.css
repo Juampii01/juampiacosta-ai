@@ -487,8 +487,6 @@ html[data-tema="claro"] body.fj-app, html[data-tema="claro"] body.fj-acceso {
 .fj-inicio .in-up h2{font-size:22px;font-weight:800;letter-spacing:-.02em;margin:8px 0 10px;line-height:1.2}
 .fj-inicio .in-precio{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}
 .fj-inicio .in-precio s{color:#71717a}.fj-inicio .in-precio b{font:800 30px Inter;letter-spacing:-.03em}.fj-inicio .in-precio span{font-size:12px;color:#a1a1aa}
-.fj-inicio .in-sorteo{margin:14px 0 0;font-size:13px;line-height:1.5;color:#b4b4bb}
-.fj-inicio .in-sorteo b{color:#fff}
 .fj-inicio .in-rank{display:grid;gap:6px}
 .fj-inicio .in-rank div{display:grid;grid-template-columns:30px 32px 1fr auto;gap:10px;align-items:center;padding:8px 10px;border-radius:10px;font-size:14px}
 .fj-inicio .in-rank div.yo{background:var(--fj-acento-suave);border:1px solid rgba(255,90,31,.35)}

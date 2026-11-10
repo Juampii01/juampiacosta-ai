@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de /inicio (el resumen de cada uno). build.py la copia a ../inicio.html con la versión (b535fee8). Los datos salen de /api/inicio. -->
+<!-- Plantilla de /inicio (el resumen de cada uno). build.py la copia a ../inicio.html con la versión (2ada8e72). Los datos salen de /api/inicio. -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -8,20 +8,20 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="web/base.css?v=b535fee8">
-<link rel="stylesheet" href="web/tema.css?v=b535fee8">
-<link rel="stylesheet" href="web/forja.css?v=b535fee8">
-<script src="web/tema.js?v=b535fee8"></script>
-<link rel="icon" href="web/favicon.svg?v=b535fee8" type="image/svg+xml">
+<link rel="stylesheet" href="web/base.css?v=2ada8e72">
+<link rel="stylesheet" href="web/tema.css?v=2ada8e72">
+<link rel="stylesheet" href="web/forja.css?v=2ada8e72">
+<script src="web/tema.js?v=2ada8e72"></script>
+<link rel="icon" href="web/favicon.svg?v=2ada8e72" type="image/svg+xml">
 <meta name="theme-color" content="#0a0a0b">
 </head>
 <body class="fj-app" data-seccion="inicio" data-raiz="/">
-<script src="web/guias-web.js?v=b535fee8"></script>
-<script src="web/comun.js?v=b535fee8"></script>
+<script src="web/guias-web.js?v=2ada8e72"></script>
+<script src="web/comun.js?v=2ada8e72"></script>
 <main class="fj-main ancho fj-inicio" id="inicio" aria-busy="true">
   <section class="in-hero in-cargando"><div><span class="fj-eyebrow">Cargando tu resumen…</span><h1>&nbsp;</h1></div></section>
 </main>
-<script src="web/shell.js?v=b535fee8"></script>
+<script src="web/shell.js?v=2ada8e72"></script>
 <script>
 (function () {
   var esc = FJ.esc, main = document.getElementById("inicio");
@@ -80,13 +80,11 @@
       '<a class="fj-btn fj-btn-primario in-ancho" href="/guias/' + g.slug + '">' + (s.cuando ? 'Continuar' : 'Empezar') + '</a></div>';
   }
   function compra(d) {
-    var faltan = total - enPlan, s = d.sorteo || {};
-    var cierra = s.cierra ? s.cierra.slice(8, 10) + "/" + s.cierra.slice(5, 7) : "30/11";
+    var faltan = total - enPlan;
     return '<div class="in-up in-c6"><span class="fj-eyebrow">Acceso completo · pago único</span>' +
       '<h2>Te faltan ' + faltan + ' guías y los sistemas listos para replicar.</h2>' +
       '<div class="in-precio"><s>US$ 44,90</s><b>US$ 24,90</b><span>hasta el 30/11 · es tuyo para siempre</span></div>' +
       '<button type="button" class="fj-btn fj-btn-primario in-ancho" id="in-comprar">Desbloquear todo</button>' +
-      (s.chances ? '<p class="in-sorteo">🎁 O gánalo gratis: el ' + cierra + ' sorteamos <b>' + (s.premios || 2) + ' accesos completos</b>. Tienes <b>' + s.chances + (s.chances === 1 ? ' chance' : ' chances') + '</b>: sumas 1 por cada guía que abres y por cada día que entras.</p>' : '') +
       '</div>';
   }
   function medalla(p) { return p === 1 ? "🥇" : p === 2 ? "🥈" : p === 3 ? "🥉" : "#" + p; }

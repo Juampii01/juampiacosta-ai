@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { racha, mejorRacha, chances, puntos, nombreCorto, ranking, hoyAr } from "../lib/inicio.js";
+import { racha, mejorRacha, puntos, nombreCorto, ranking, hoyAr } from "../lib/inicio.js";
 
 test("racha: cuenta hasta hoy o hasta ayer", () => {
   assert.equal(racha(["2026-11-10", "2026-11-09", "2026-11-08", "2026-11-06"], "2026-11-10"), 3);
@@ -15,9 +15,7 @@ test("mejor racha", () => {
   assert.equal(mejorRacha([]), 0);
 });
 
-test("chances, puntos y nombres", () => {
-  assert.equal(chances(0, 0), 1);
-  assert.equal(chances(9, 6), 16);
+test("puntos y nombres", () => {
   assert.equal(puntos(3, 4), 50);
   assert.equal(nombreCorto("lucas carrizo"), "Lucas C.");
   assert.equal(nombreCorto("Ana"), "Ana");

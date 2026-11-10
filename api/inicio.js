@@ -1,11 +1,10 @@
 // GET /api/inicio -> el resumen de quien está adentro para /inicio:
 // guías que lleva (abiertas o completadas), días activos, racha, guías abiertas, última guía; y además
-//   plan gratis: chances del sorteo de 2 accesos completos
 //   acceso completo: ranking del mes (top 3 y tu puesto)
 
 import { esAdmin, sesion } from "../lib/sesion.js";
 import { config, enc, json, sb } from "../lib/db.js";
-import { SORTEO, chances, hoyAr, mejorRacha, racha, ranking } from "../lib/inicio.js";
+import { hoyAr, mejorRacha, racha, ranking } from "../lib/inicio.js";
 
 function contar(filas) {
   const n = {};
@@ -52,9 +51,7 @@ export default async function handler(req, res) {
       mejorRacha: mejorRacha(dias),
       abiertas: abiertas.size
     };
-    if (!pago) {
-      r.sorteo = { premios: SORTEO.premios, cierra: SORTEO.cierra, chances: chances(llevas.size, dias.filter((d) => d >= SORTEO.desde).length) };
-    } else {
+    if (pago) {
       const [personas, guiasMes, diasMes] = await Promise.all([
         sb("registros?compro=eq.true&select=email,nombre&limit=5000"),
         sb(`progreso?visto=gte.${mes}T03:00:00Z&select=email,slug&limit=50000`),

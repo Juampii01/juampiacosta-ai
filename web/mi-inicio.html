@@ -80,13 +80,11 @@
       '<a class="fj-btn fj-btn-primario in-ancho" href="/guias/' + g.slug + '">' + (s.cuando ? 'Continuar' : 'Empezar') + '</a></div>';
   }
   function compra(d) {
-    var faltan = total - enPlan, s = d.sorteo || {};
-    var cierra = s.cierra ? s.cierra.slice(8, 10) + "/" + s.cierra.slice(5, 7) : "30/11";
+    var faltan = total - enPlan;
     return '<div class="in-up in-c6"><span class="fj-eyebrow">Acceso completo · pago único</span>' +
       '<h2>Te faltan ' + faltan + ' guías y los sistemas listos para replicar.</h2>' +
       '<div class="in-precio"><s>US$ 44,90</s><b>US$ 24,90</b><span>hasta el 30/11 · es tuyo para siempre</span></div>' +
       '<button type="button" class="fj-btn fj-btn-primario in-ancho" id="in-comprar">Desbloquear todo</button>' +
-      (s.chances ? '<p class="in-sorteo">🎁 O gánalo gratis: el ' + cierra + ' sorteamos <b>' + (s.premios || 2) + ' accesos completos</b>. Tienes <b>' + s.chances + (s.chances === 1 ? ' chance' : ' chances') + '</b>: sumas 1 por cada guía que abres y por cada día que entras.</p>' : '') +
       '</div>';
   }
   function medalla(p) { return p === 1 ? "🥇" : p === 2 ? "🥈" : p === 3 ? "🥉" : "#" + p; }
