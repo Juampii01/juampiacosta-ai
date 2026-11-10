@@ -82,5 +82,25 @@ test("panel: el admin no cuenta en el resumen", () => {
 
 test("panel: resumen de usuarios", () => {
   assert.deepEqual(resumen([{ origen: "chat", perfil_completo: true, compro: false, vistas: 2 }, { origen: "web", compro: true, vistas: 0 }]),
-    { registrados: 2, chat: 1, perfil: 1, compraron: 1, activos: 1 });
+    { registrados: 2, chat: 1, perfil: 1, compraron: 1, activos: 1, hoy: 0, semana: 0, vuelven: 0 });
+});
+
+import { frecuencia } from "../api/panel.js";
+import { paginaDe } from "../api/cuenta.js";
+test("actividad: página que se anota", () => {
+  assert.equal(paginaDe("/api/cuenta?p=%2Fguias%2F22-skills-claude-code"), "g:22-skills-claude-code");
+  assert.equal(paginaDe("/api/cuenta?p=/comunidad"), "comunidad");
+  assert.equal(paginaDe("/api/cuenta?p=/"), "inicio");
+  assert.equal(paginaDe("/api/cuenta"), "");
+  assert.equal(paginaDe("/api/cuenta?p=/x/../../etc"), "");
+});
+test("actividad: frecuencia por persona", () => {
+  const f = frecuencia([
+    { email: "a@x.co", dia: "2026-11-10", paginas: 3, secciones: ["g:uno", "classroom"] },
+    { email: "a@x.co", dia: "2026-11-01", paginas: 1, secciones: ["g:dos"] },
+  ], "2026-11-10");
+  assert.equal(f["a@x.co"].dias, 2);
+  assert.equal(f["a@x.co"].dias7, 1);
+  assert.equal(f["a@x.co"].hoy, true);
+  assert.equal(f["a@x.co"].abiertas, 2);
 });

@@ -31,7 +31,7 @@
     <span style="flex:1"></span>
     <button type="button" class="fj-btn fj-btn-borde" id="pa-csv">Exportar CSV</button>
   </div>
-  <div class="fj-card fj-tabla-caja"><table class="fj-tabla"><thead><tr><th scope="col">Usuario</th><th scope="col">Plan</th><th scope="col">Origen</th><th scope="col">Perfil</th><th scope="col">Quiere</th><th scope="col">Guías vistas</th><th scope="col">Alta</th><th scope="col"><span class="fj-oculto">Acciones</span></th></tr></thead><tbody id="pa-filas"><tr><td colspan="8">Cargando…</td></tr></tbody></table></div>
+  <div class="fj-card fj-tabla-caja"><table class="fj-tabla"><thead><tr><th scope="col">Usuario</th><th scope="col">Plan</th><th scope="col">Origen</th><th scope="col">Perfil</th><th scope="col">Quiere</th><th scope="col">Uso</th><th scope="col">Alta</th><th scope="col"><span class="fj-oculto">Acciones</span></th></tr></thead><tbody id="pa-filas"><tr><td colspan="8">Cargando…</td></tr></tbody></table></div>
   <p class="fj-nota" style="margin-top:12px" id="pa-pie"></p>
 </main>
 <script src="web/shell.js?v={{V}}"></script>
@@ -42,6 +42,8 @@
     ["todos", "Todos", function () { return true; }],
     ["llamar", "Para llamar", function (u) { return u.inversion === "Sí, ahora" && u.whatsapp; }],
     ["instalar", "Quieren instalación", function (u) { return /instal/i.test(u.objetivo || ""); }],
+    ["activos", "Activos 7 días", function (u) { return u.dias7 > 0 && !u.admin; }],
+    ["vuelven", "Vuelven", function (u) { return u.dias >= 2 && !u.admin; }],
     ["perfil", "Perfil completo", function (u) { return u.perfil_completo; }],
     ["compraron", "Compraron", function (u) { return u.compro && !u.admin; }]
   ];
@@ -63,7 +65,7 @@
         '<td>' + esc(u.origen || "web") + (u.utm_campaign ? '<small>' + esc(u.utm_campaign) + '</small>' : '') + '</td>' +
         '<td>' + (u.perfil_completo ? esc([u.situacion, u.rubro].filter(Boolean).join(" · ")) + '<small>' + esc(u.nivel || "") + '</small>' : '<span class="fj-nota">Sin completar</span>') + '</td>' +
         '<td>' + esc(u.objetivo || "—") + (u.inversion ? '<small>' + (u.inversion === "Sí, ahora" ? '<span class="fj-pill si">Invierte ahora</span>' : esc(u.inversion)) + '</small>' : '') + '</td>' +
-        '<td>' + u.vistas + '/' + FJ.total + (u.ultima_guia ? '<small>última ' + fecha(u.ultima_guia) + '</small>' : '') + '</td>' +
+        '<td>' + (u.dias ? '<b>' + u.dias + (u.dias === 1 ? ' día' : ' días') + '</b>' + (u.hoy ? ' <span class="fj-pill si">hoy</span>' : '') + '<small>última vez ' + fecha(u.ultimo_ingreso || u.ultimo_dia) + ' · ' + u.abiertas + (u.abiertas === 1 ? ' guía abierta' : ' guías abiertas') + '</small>' : '<span class="fj-nota">No entró</span>') + '</td>' +
         '<td>' + fecha(u.creado) + '</td>' +
         '<td><button type="button" class="fj-btn ' + (u.compro ? 'fj-btn-borde' : 'fj-btn-primario') + '" data-acceso="' + esc(u.email) + '" data-v="' + !u.compro + '">' + (u.compro ? 'Quitar acceso' : 'Dar acceso completo') + '</button></td></tr>';
     }).join("") : '<tr><td colspan="8">No hay usuarios con ese filtro.</td></tr>';
@@ -73,7 +75,7 @@
     fetch("/api/panel", { credentials: "same-origin" }).then(function (r) { if (!r.ok) throw r.status; return r.json(); }).then(function (d) {
       todos = d.usuarios;
       var s = d.resumen;
-      document.getElementById("pa-stats").innerHTML = [["Registrados", s.registrados, "en total"], ["Llegaron por el chat", s.chat, "ManyChat y agente"], ["Perfil completo", s.perfil, "llenaron el formulario"], ["Leyendo", s.activos, "con alguna guía vista"], ["Acceso completo", s.compraron, "compraron"]]
+      document.getElementById("pa-stats").innerHTML = [["Registrados", s.registrados, "en total"], ["Entraron hoy", s.hoy, "a la plataforma"], ["Últimos 7 días", s.semana, "entraron al menos una vez"], ["Vuelven", s.vuelven, "entraron 2 días o más"], ["Acceso completo", s.compraron, "compraron"]]
         .map(function (x, i) { return '<div class="fj-card fj-stat"' + (i === 4 ? ' style="border-color:var(--fj-acento)"' : '') + '><small>' + x[0] + '</small><b' + (i === 4 ? ' style="color:var(--fj-acento-txt)"' : '') + '>' + x[1] + '</b><span>' + x[2] + '</span></div>'; }).join("");
       pintar();
       var pend = todos.filter(function (u) { return !u.invitado_forja && !u.baja; }).length, ya = todos.filter(function (u) { return u.invitado_forja; }).length;
@@ -92,7 +94,7 @@
       .then(function (r) { if (!r.ok) throw r.status; cargar(); }).catch(function () { b.disabled = false; alert("No se pudo cambiar el acceso."); });
   });
   document.getElementById("pa-csv").addEventListener("click", function () {
-    var cols = ["nombre", "email", "whatsapp", "pais", "origen", "compro", "perfil_completo", "situacion", "rubro", "nivel", "objetivo", "inversion", "foco", "vistas", "creado"];
+    var cols = ["nombre", "email", "whatsapp", "pais", "origen", "compro", "perfil_completo", "situacion", "rubro", "nivel", "objetivo", "inversion", "foco", "dias", "dias7", "abiertas", "ultimo_ingreso", "creado"];
     var csv = [cols.join(",")].concat(visibles().map(function (u) { return cols.map(function (c) { var v = u[c] == null ? "" : String(u[c]); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }).join(","); })).join("\n");
     var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob(["﻿" + csv], { type: "text/csv" })); a.download = "forja-usuarios.csv"; a.click();
   });

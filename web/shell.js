@@ -93,7 +93,7 @@ var FJ = (function () {
   else buscar.addEventListener("keydown", function (e) { if (e.key === "Enter" && buscar.value.trim()) location.href = raiz + "biblioteca?q=" + encodeURIComponent(buscar.value.trim()) + "#guias-web"; });
 
   // Email de la cuenta en el menú (la cookie de acceso no se puede leer desde la página)
-  fetch("/api/cuenta", { credentials: "same-origin" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+  fetch("/api/cuenta?p=" + encodeURIComponent(location.pathname), { credentials: "same-origin" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
     if (d && d.email) document.getElementById("fj-email").textContent = d.email;
   }).catch(function () {});
 

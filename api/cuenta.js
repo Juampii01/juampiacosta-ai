@@ -12,12 +12,28 @@ export function limpiarCuenta(c) {
   return fila;
 }
 
+/** "/api/cuenta?p=/guias/22-skills" → "g:22-skills"; "?p=/comunidad" → "comunidad". Nada raro entra a la base. */
+export function paginaDe(url) {
+  let p = "";
+  try { p = new URL(url || "", "http://x").searchParams.get("p") || ""; } catch { return ""; }
+  p = p.toLowerCase().replace(/\.html$/, "").replace(/[#?].*$/, "");
+  const g = p.match(/^\/guias\/([a-z0-9-]{3,120})$/);
+  if (g) return "g:" + g[1];
+  const m = p.match(/^\/([a-z]{3,20})$/);
+  return m ? m[1] : p === "/" ? "inicio" : "";
+}
+
 export default async function handler(req, res) {
   const yo = await sesion(req);
   if (!yo) return json(res, 401, { error: "sesion" });
   if (!yo.email || !config()) return json(res, 200, { email: null, nombre: yo.nombre, nivel: yo.nivel, admin: yo.admin });
 
   if (req.method === "GET") {
+    // Cada página de la plataforma llama acá al cargar: anotamos que entró hoy y qué abrió (los admins no cuentan)
+    const pagina = paginaDe(req.url);
+    if (!yo.admin && pagina) {
+      await sb("rpc/registrar_actividad", { method: "POST", body: { p_email: yo.email, p_seccion: pagina } }).catch((e) => console.error("actividad:", e.message));
+    }
     try {
       const f = (await sb(`registros?email=eq.${enc(yo.email)}&select=nombre,rubro,baja,compro,creado,perfil_completo`))[0] || {};
       return json(res, 200, { email: yo.email, nombre: f.nombre || yo.nombre, rubro: f.rubro || "", mails: !f.baja, nivel: yo.nivel, compro: !!f.compro, desde: f.creado || null, perfil: !!f.perfil_completo, admin: yo.admin });

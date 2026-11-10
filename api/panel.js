@@ -7,7 +7,7 @@ import { limpiarEmail } from "../lib/codigo.js";
 import { config, enc, json, leerCuerpo, sb } from "../lib/db.js";
 import { enviarLote, mailInvitacion } from "../lib/invitacion.js";
 
-const CAMPOS = "email,nombre,origen,compro,baja,perfil_completo,situacion,rubro,nivel,objetivo,inversion,foco,pais,whatsapp,creado,actualizado,utm_source,utm_campaign,invitado_forja";
+const CAMPOS = "email,nombre,origen,compro,baja,perfil_completo,situacion,rubro,nivel,objetivo,inversion,foco,pais,whatsapp,creado,actualizado,utm_source,utm_campaign,invitado_forja,ultimo_ingreso";
 
 // Los admins (el equipo) no cuentan en los números: sus pruebas no son registros ni ventas reales.
 export function resumen(todos, admins = process.env.ADMINS) {
@@ -17,8 +17,27 @@ export function resumen(todos, admins = process.env.ADMINS) {
     chat: usuarios.filter((u) => /chat|manychat|agente/i.test(u.origen || "")).length,
     perfil: usuarios.filter((u) => u.perfil_completo).length,
     compraron: usuarios.filter((u) => u.compro).length,
-    activos: usuarios.filter((u) => u.vistas > 0).length
+    activos: usuarios.filter((u) => u.vistas > 0).length,
+    hoy: usuarios.filter((u) => u.hoy).length,
+    semana: usuarios.filter((u) => u.dias7 > 0).length,
+    vuelven: usuarios.filter((u) => u.dias >= 2).length
   };
+}
+
+/** Días distintos que entró cada uno (últimos 30 y últimos 7), si entró hoy, páginas vistas y guías abiertas. */
+export function frecuencia(filas, hoy = new Date(Date.now() - 3 * 36e5).toISOString().slice(0, 10)) {
+  const hace7 = new Date(Date.parse(hoy) - 6 * 864e5).toISOString().slice(0, 10);
+  const f = {};
+  (filas || []).forEach((a) => {
+    const u = f[a.email] || (f[a.email] = { dias: 0, dias7: 0, hoy: false, paginas: 0, guias: new Set(), ultimo_dia: null });
+    u.dias++; u.paginas += a.paginas || 0;
+    if (a.dia >= hace7) u.dias7++;
+    if (a.dia === hoy) u.hoy = true;
+    if (!u.ultimo_dia || a.dia > u.ultimo_dia) u.ultimo_dia = a.dia;
+    (a.secciones || []).forEach((s) => { if (s.startsWith("g:")) u.guias.add(s); });
+  });
+  Object.values(f).forEach((u) => { u.abiertas = u.guias.size; delete u.guias; });
+  return f;
 }
 
 // accion "invitar": {prueba:true} manda el mail solo al admin; {confirmar:"ENVIAR"} a todos los que no lo recibieron
@@ -50,13 +69,16 @@ export default async function handler(req, res) {
   if (!config()) return json(res, 500, { error: "config" });
   try {
     if (req.method === "GET") {
-      const [regs, prog] = await Promise.all([
+      const desde = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
+      const [regs, prog, act] = await Promise.all([
         sb(`registros?select=${CAMPOS}&order=creado.desc&limit=5000`),
-        sb("progreso?select=email,visto&limit=50000")
+        sb("progreso?select=email,visto&limit=50000"),
+        sb(`actividad?select=email,dia,paginas,secciones&dia=gte.${desde}&limit=50000`)
       ]);
       const vistas = {}, ultimo = {};
       prog.forEach((p) => { vistas[p.email] = (vistas[p.email] || 0) + 1; if (!ultimo[p.email] || p.visto > ultimo[p.email]) ultimo[p.email] = p.visto; });
-      const usuarios = regs.map((r) => ({ ...r, admin: esAdmin(r.email), vistas: vistas[r.email] || 0, ultima_guia: ultimo[r.email] || null }));
+      const frec = frecuencia(act);
+      const usuarios = regs.map((r) => ({ ...r, admin: esAdmin(r.email), vistas: vistas[r.email] || 0, ultima_guia: ultimo[r.email] || null, ...(frec[r.email] || { dias: 0, dias7: 0, paginas: 0, abiertas: 0 }) }));
       return json(res, 200, { usuarios, resumen: resumen(usuarios) });
     }
     if (req.method === "POST") {
