@@ -20,6 +20,11 @@
 <main class="fj-main ancho">
   <div class="fj-cab"><span class="fj-eyebrow">Panel de equipo · solo admin</span><h1>Usuarios</h1></div>
   <div class="fj-stats" id="pa-stats"></div>
+  <section class="fj-card" id="pa-invitar" style="padding:20px;margin-bottom:20px;display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+    <div style="flex:1;min-width:240px"><b>Invitación a Forja IA por mail</b><p class="fj-nota" style="font-size:14px;margin:4px 0 0" id="pa-inv-txt">Cargando…</p></div>
+    <button type="button" class="fj-btn fj-btn-borde" id="pa-inv-prueba">Mandarme una prueba</button>
+    <button type="button" class="fj-btn fj-btn-primario" id="pa-inv-todos" disabled>Enviar a todos</button>
+  </section>
   <div class="fj-filtros">
     <label class="fj-buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span class="fj-oculto">Buscar usuario</span><input type="search" id="pa-buscar" placeholder="Nombre, email, rubro o país"></label>
     <div id="pa-filtros" style="display:flex;flex-wrap:wrap;gap:8px"></div>
@@ -71,6 +76,9 @@
       document.getElementById("pa-stats").innerHTML = [["Registrados", s.registrados, "en total"], ["Llegaron por el chat", s.chat, "ManyChat y agente"], ["Perfil completo", s.perfil, "llenaron el formulario"], ["Leyendo", s.activos, "con alguna guía vista"], ["Acceso completo", s.compraron, "compraron"]]
         .map(function (x, i) { return '<div class="fj-card fj-stat"' + (i === 4 ? ' style="border-color:var(--fj-acento)"' : '') + '><small>' + x[0] + '</small><b' + (i === 4 ? ' style="color:var(--fj-acento-txt)"' : '') + '>' + x[1] + '</b><span>' + x[2] + '</span></div>'; }).join("");
       pintar();
+      var pend = todos.filter(function (u) { return !u.invitado_forja && !u.baja; }).length, ya = todos.filter(function (u) { return u.invitado_forja; }).length;
+      document.getElementById("pa-inv-txt").textContent = pend ? "Les avisa que la biblioteca ahora es Forja IA y cómo entrar con su email. Pendientes: " + pend + (ya ? " · ya enviada a " + ya : "") + ". A cada persona le llega una sola vez." : "Ya se mandó a todos (" + ya + "). Los nuevos registros entran directo a Forja IA.";
+      var bt = document.getElementById("pa-inv-todos"); bt.disabled = !pend; bt.textContent = "Enviar a " + pend; bt.dataset.n = pend;
     }).catch(function () { document.getElementById("pa-filas").innerHTML = '<tr><td colspan="8">No se pudo cargar el panel.</td></tr>'; });
   }
   document.getElementById("pa-filtros").addEventListener("click", function (e) { var b = e.target.closest("[data-f]"); if (b) { filtro = b.dataset.f; pintar(); } });
@@ -87,6 +95,19 @@
     var cols = ["nombre", "email", "whatsapp", "pais", "origen", "compro", "perfil_completo", "situacion", "rubro", "nivel", "objetivo", "inversion", "foco", "vistas", "creado"];
     var csv = [cols.join(",")].concat(visibles().map(function (u) { return cols.map(function (c) { var v = u[c] == null ? "" : String(u[c]); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }).join(","); })).join("\n");
     var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob(["﻿" + csv], { type: "text/csv" })); a.download = "forja-usuarios.csv"; a.click();
+  });
+  function invitar(datos, b, ok) {
+    b.disabled = true;
+    fetch("/api/panel", { method: "POST", headers: { "Content-Type": "application/json" }, credentials: "same-origin", body: JSON.stringify(datos) })
+      .then(function (r) { if (!r.ok) throw r.status; return r.json(); }).then(function (d) { alert(ok(d)); b.disabled = false; cargar(); })
+      .catch(function () { b.disabled = false; alert("No se pudo mandar. Prueba de nuevo en un rato."); });
+  }
+  document.getElementById("pa-inv-prueba").addEventListener("click", function () {
+    invitar({ accion: "invitar", prueba: true }, this, function () { return "Listo: te llegó la prueba a tu mail. Revisa también Spam/Promociones."; });
+  });
+  document.getElementById("pa-inv-todos").addEventListener("click", function () {
+    if (!confirm("¿Mandar la invitación a " + this.dataset.n + " personas? No se puede deshacer.")) return;
+    invitar({ accion: "invitar", confirmar: "ENVIAR" }, this, function (d) { return "Enviada a " + d.enviados + " personas."; });
   });
   cargar();
 })();

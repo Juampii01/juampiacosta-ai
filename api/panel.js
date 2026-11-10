@@ -7,7 +7,7 @@ import { limpiarEmail } from "../lib/codigo.js";
 import { config, enc, json, leerCuerpo, sb } from "../lib/db.js";
 import { enviarLote, mailInvitacion } from "../lib/invitacion.js";
 
-const CAMPOS = "email,nombre,origen,compro,baja,perfil_completo,situacion,rubro,nivel,objetivo,inversion,foco,pais,whatsapp,creado,actualizado,utm_source,utm_campaign";
+const CAMPOS = "email,nombre,origen,compro,baja,perfil_completo,situacion,rubro,nivel,objetivo,inversion,foco,pais,whatsapp,creado,actualizado,utm_source,utm_campaign,invitado_forja";
 
 export function resumen(usuarios) {
   return {
