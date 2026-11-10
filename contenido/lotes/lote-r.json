@@ -3,24 +3,46 @@
   {
    "slug": "fable-5-2-que-trae-y-como-usarlo",
    "post": "FABLE",
-   "t": "Fable 5.2: qué trae y cómo sacarle el máximo",
-   "d": "El modelo nuevo de Anthropic explicado simple: qué cambió, quién lo tiene, cuánto de tu límite gasta, cuándo usarlo (y cuándo no) y los prompts para aprovecharlo.",
+   "t": "Fable 5.2: el tutorial completo (qué trae y qué hacer con él)",
+   "d": "Qué cambió, quién lo tiene y cuánto gasta, más 10 cosas para hacer con Fable con su prompt listo (juegos, animaciones, mundos 3D, apps, informes, agentes) y las reglas oficiales para pedirle bien.",
    "tema": "Claude",
-   "min": 10,
+   "min": 25,
    "fuentes": [
     "https://www.anthropic.com/claude/fable",
     "https://www.anthropic.com/claude-fable-and-mythos-5-2",
     "https://9to5mac.com/2026/11/09/anthropic-upgrades-claude-with-new-fable-5-2-model-details-here/",
     "https://siliconangle.com/2026/11/09/anthropic-launches-fable-5-2-and-mythos-5-2-with-science-coding-upgrades/",
-    "https://techcrunch.com/2026/11/09/anthropic-releases-new-mythos-and-fable-models-amid-rsi-concerns/"
+    "https://techcrunch.com/2026/11/09/anthropic-releases-new-mythos-and-fable-models-amid-rsi-concerns/",
+    "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5",
+    "https://explainx.ai/blog/top-20-things-built-with-claude-fable-5-2-matt-shumer-anthropic-mollick-2026",
+    "https://www.lennysnewsletter.com/p/claude-fable-52-review-fast-creative"
    ],
    "fichaNombre": "Claude Fable 5.2",
    "ficha": [
-    ["Qué es", "El modelo más capaz de Anthropic para trabajo técnico, disponible para el público."],
-    ["Salió", "El 9 de noviembre de 2026."],
-    ["Lo tienen", "Los planes Pro, Max, Ultra, Team y Enterprise, y la API."],
-    ["Lo nuevo", "Hasta 30% más rápido, mejor en código, razonamiento y lectura de gráficos, y se explica más claro."],
-    ["Regla de oro", "Opus 5.5 para el día a día. Fable para lo grande, difícil y abierto."]
+    [
+     "Qué es",
+     "El modelo más capaz de Anthropic para trabajo técnico, disponible para el público."
+    ],
+    [
+     "Salió",
+     "El 9 de noviembre de 2026."
+    ],
+    [
+     "Lo tienen",
+     "Los planes Pro, Max, Ultra, Team y Enterprise, y la API."
+    ],
+    [
+     "Lo nuevo",
+     "Hasta 30% más rápido, mejor en código, razonamiento y lectura de gráficos, y se explica más claro."
+    ],
+    [
+     "Regla de oro",
+     "Opus 5.5 para el día a día. Fable para lo grande, difícil y abierto."
+    ],
+    [
+     "Para qué usarlo",
+     "Juegos, animaciones, 3D, simulaciones, apps, informes, revisión de código, agentes largos e investigación."
+    ]
    ],
    "secciones": [
     {
@@ -56,7 +78,9 @@
     },
     {
      "h": "Cuándo usar Fable (y cuándo no)",
-     "p": ["La recomendación oficial de Anthropic es empezar con Opus 5.5, que llaman su modelo para el día a día, y subir a Fable solo cuando la tarea lo pide."],
+     "p": [
+      "La recomendación oficial de Anthropic es empezar con Opus 5.5, que llaman su modelo para el día a día, y subir a Fable solo cuando la tarea lo pide."
+     ],
      "lista": [
       "Usa Fable para: un proyecto de código grande o con varios repositorios, una migración, un bug que nadie encuentra, un análisis con muchos datos y muchos pasos, una investigación larga, un informe complejo para un cliente, o leer gráficos y PDFs técnicos con precisión.",
       "Usa Opus 5.5 para: casi todo lo demás. Propuestas, código del día a día, análisis normales, planificar.",
@@ -86,13 +110,192 @@
     },
     {
      "h": "Prompts para sacarle el máximo",
-     "p": ["Fable rinde más cuando le das un objetivo grande, contexto completo y una forma clara de saber si terminó. Copia estos y cambia lo que está entre corchetes."],
+     "p": [
+      "Fable rinde más cuando le das un objetivo grande, contexto completo y una forma clara de saber si terminó. Copia estos y cambia lo que está entre corchetes."
+     ],
      "prompts": [
-      {"t": "Proyecto grande de punta a punta", "c": "Quiero [OBJETIVO GRANDE, por ejemplo: migrar mi web de WordPress a Next.js sin perder el SEO].\nContexto: [qué tengo hoy, qué herramientas uso, qué no se puede romper].\nAntes de tocar nada:\n1. Investiga lo que hay y armame un plan por etapas.\n2. Dime los riesgos y qué necesitas que te confirme.\nCuando apruebe el plan, avanza etapa por etapa, prueba cada una y no pases a la siguiente si algo falla. Al final, dame un resumen de qué hiciste y cómo verificarlo."},
-      {"t": "El bug que nadie encuentra", "c": "Tengo este problema: [describe el síntoma, cuándo pasa y qué ya probaste].\nNo me des la primera solución que se te ocurra. Primero busca la causa de fondo: revisa el código, cuestiona lo que asumí y dime por qué pasa.\nDespués proponme el arreglo, aplícalo y demuéstrame con una prueba que quedó resuelto."},
-      {"t": "Leer gráficos, reportes y PDFs", "c": "Te paso [el reporte / las capturas / el PDF].\n1. Extrae los números importantes en una tabla.\n2. Dime las 3 conclusiones principales y qué datos las respaldan.\n3. Marca cualquier número que no cierre o que se contradiga con otro.\nSi algo no se lee bien en la imagen, dímelo en vez de inventarlo."},
-      {"t": "Fable como asesor de Opus", "c": "Estuve trabajando esto con Opus y nos trabamos acá: [pega el problema y lo que se intentó].\nActúa como asesor: revisa el enfoque, dime qué está mal pensado y dame el plan corregido en pasos que Opus pueda ejecutar solo. No hagas tú todo el trabajo, solo destraba la parte difícil."},
-      {"t": "Informe complejo para un cliente", "c": "Necesito un informe para [CLIENTE / RUBRO] sobre [TEMA].\nInvestiga, cruza las fuentes y armame:\n1. Un resumen ejecutivo de 5 líneas.\n2. Los hallazgos con sus datos y de dónde salen.\n3. 3 recomendaciones concretas con lo que cuesta cada una.\nSi un dato no está confirmado, márcalo como estimado."}
+      {
+       "t": "Proyecto grande de punta a punta",
+       "c": "Quiero [OBJETIVO GRANDE, por ejemplo: migrar mi web de WordPress a Next.js sin perder el SEO].\nContexto: [qué tengo hoy, qué herramientas uso, qué no se puede romper].\nAntes de tocar nada:\n1. Investiga lo que hay y ármame un plan por etapas.\n2. Dime los riesgos y qué necesitas que te confirme.\nCuando apruebe el plan, avanza etapa por etapa, prueba cada una y no pases a la siguiente si algo falla. Al final, dame un resumen de qué hiciste y cómo verificarlo."
+      },
+      {
+       "t": "El bug que nadie encuentra",
+       "c": "Tengo este problema: [describe el síntoma, cuándo pasa y qué ya probaste].\nNo me des la primera solución que se te ocurra. Primero busca la causa de fondo: revisa el código, cuestiona lo que asumí y dime por qué pasa.\nDespués proponme el arreglo, aplícalo y demuéstrame con una prueba que quedó resuelto."
+      },
+      {
+       "t": "Leer gráficos, reportes y PDFs",
+       "c": "Te paso [el reporte / las capturas / el PDF].\n1. Extrae los números importantes en una tabla.\n2. Dime las 3 conclusiones principales y qué datos las respaldan.\n3. Marca cualquier número que no cierre o que se contradiga con otro.\nSi algo no se lee bien en la imagen, dímelo en vez de inventarlo."
+      },
+      {
+       "t": "Fable como asesor de Opus",
+       "c": "Estuve trabajando esto con Opus y nos trabamos acá: [pega el problema y lo que se intentó].\nActúa como asesor: revisa el enfoque, dime qué está mal pensado y dame el plan corregido en pasos que Opus pueda ejecutar solo. No hagas tú todo el trabajo, solo destraba la parte difícil."
+      },
+      {
+       "t": "Informe complejo para un cliente",
+       "c": "Necesito un informe para [CLIENTE / RUBRO] sobre [TEMA].\nInvestiga, cruza las fuentes y ármame:\n1. Un resumen ejecutivo de 5 líneas.\n2. Los hallazgos con sus datos y de dónde salen.\n3. 3 recomendaciones concretas con lo que cuesta cada una.\nSi un dato no está confirmado, márcalo como estimado."
+      }
+     ]
+    },
+    {
+     "h": "Dónde lo usas: app o Claude Code",
+     "p": [
+      "Casi todo lo de esta guía se hace en la app de Claude (web, escritorio o celular): pides el juego, la animación o la herramienta y Claude te la muestra funcionando al costado del chat como un artifact, una mini app que puedes usar, compartir y pedirle cambios.",
+      "Claude Code lo usas cuando el proyecto es grande de verdad: una app con base de datos, varios archivos, publicar en internet o agentes trabajando horas. Si nunca lo usaste, en la biblioteca tienes la guía de Claude Code liviano para arrancar."
+     ],
+     "aviso": "Para todo lo visual (juegos, animaciones, 3D) agrega al final del pedido: \"hazlo en un solo archivo HTML que funcione en el navegador\". Así te queda algo que abres con doble clic y que puedes subir a cualquier lado."
+    },
+    {
+     "h": "1. Juegos completos desde un pedido",
+     "p": [
+      "Es lo que más se está viendo en redes: juegos jugables de una, con niveles, puntaje, sonido y pantalla de inicio. Fable acierta mucho más a la primera que los modelos anteriores, sobre todo si le describes bien lo que quieres."
+     ],
+     "pasos": [
+      "Elige Fable 5.2 con esfuerzo High.",
+      "Pega el prompt y completa los corchetes.",
+      "Juega la primera versión y pídele cambios concretos: \"los enemigos son muy rápidos\", \"agrega un jefe al final\".",
+      "Cuando te guste, pídele que lo deje listo para celular (controles táctiles)."
+     ],
+     "prompts": [
+      {
+       "t": "Juego jugable",
+       "c": "Quiero un juego completo para jugar en el navegador: [IDEA, por ejemplo: un runner donde un robot esquiva bugs en una fábrica].\nQue tenga: pantalla de inicio, 3 niveles que se ponen más difíciles, puntaje con récord guardado, sonidos simples y pantalla de game over con \"jugar de nuevo\".\nEstilo visual: [por ejemplo: pixel art con colores neón].\nControles: teclado en compu y táctiles en celular.\nHazlo en un solo archivo HTML. Antes de entregarlo, juega mentalmente cada nivel y arregla lo que no funcione."
+      }
+     ]
+    },
+    {
+     "h": "2. Animaciones y videos explicativos",
+     "p": [
+      "Fable arma animaciones que no parecen diapositivas: textos que entran, gráficos que crecen, personajes que se mueven. Sirven para reels, anuncios, presentaciones o para explicar tu servicio en 20 segundos."
+     ],
+     "pasos": [
+      "Pega el prompt con tu guion o tu idea.",
+      "Ábrelo en pantalla completa y grábalo con la grabadora de pantalla del celular o la compu: ya tienes el video.",
+      "Si lo quieres en formato vertical para reels, pídelo en 1080x1920."
+     ],
+     "prompts": [
+      {
+       "t": "Animación para reel o anuncio",
+       "c": "Hazme una animación de [15-30] segundos en formato vertical 1080x1920 para explicar [TU SERVICIO / TU IDEA].\nGuion, una frase por escena: [escena 1], [escena 2], [escena 3], [cierre con llamado a la acción].\nEstilo: [colores de tu marca, tipografía moderna], transiciones suaves y movimiento en cada escena (nada estático tipo diapositiva).\nQue arranque sola y tenga un botón para repetir. Un solo archivo HTML."
+      }
+     ]
+    },
+    {
+     "h": "3. Mundos 3D y escenas interactivas",
+     "p": [
+      "Uno de los saltos más grandes: Fable arma escenas 3D en el navegador por las que te puedes mover, con luz, física y objetos que reaccionan. Sirve para mostrar un producto, un local, una idea de arquitectura o simplemente para un contenido que llama la atención."
+     ],
+     "prompts": [
+      {
+       "t": "Escena 3D interactiva",
+       "c": "Créame una escena 3D interactiva en el navegador usando three.js: [DESCRIPCIÓN, por ejemplo: un café de estilo industrial con mesas, barra y plantas].\nQue pueda moverme con el mouse o el dedo, que tenga luz realista y que al tocar un objeto aparezca una tarjeta con su nombre y precio.\nUn solo archivo HTML, que cargue rápido también en celular."
+      }
+     ]
+    },
+    {
+     "h": "4. Simulaciones para entender o vender",
+     "p": [
+      "Fable es muy bueno simulando: física, procesos, números de un negocio. Una simulación interactiva convence más que una planilla, porque el cliente mueve una perilla y ve el resultado."
+     ],
+     "prompts": [
+      {
+       "t": "Simulador para un cliente",
+       "c": "Arma un simulador interactivo para [RUBRO, por ejemplo: una inmobiliaria] que muestre cuánto tiempo y dinero ahorra si automatiza [TAREA].\nQue tenga controles deslizables para: [cantidad de consultas por día, minutos por consulta, valor de la hora].\nMostrar en vivo: horas ahorradas por mes, dinero ahorrado y un gráfico de antes y después.\nDiseño limpio y profesional, para mostrarlo en una reunión. Un solo archivo HTML."
+      }
+     ]
+    },
+    {
+     "h": "5. Apps y herramientas completas",
+     "p": [
+      "Lo que antes llevaba días de idas y vueltas, Fable lo puede sacar en una sola pasada si le das un buen pedido: un sistema de turnos, un panel de ventas, un cotizador. Para algo simple alcanza la app; para algo con usuarios, base de datos y que viva en internet, usa Claude Code."
+     ],
+     "prompts": [
+      {
+       "t": "App de punta a punta",
+       "c": "Quiero una app para [QUIÉN LA USA] que sirva para [QUÉ PROBLEMA RESUELVE].\nFunciones que sí o sí tiene que tener: [1], [2], [3].\nLo que NO quiero: [por ejemplo: login complicado, funciones de más].\nAntes de construir, hazme las preguntas que necesites y proponme el plan. Después constrúyela, pruébala tú mismo y dime cómo verificar que todo funciona."
+      }
+     ]
+    },
+    {
+     "h": "6. Leer fotos, planos, capturas y gráficos",
+     "p": [
+      "La visión de Fable mejoró muchísimo: lee capturas de pantalla densas, gráficos, facturas, planos y hasta fotos borrosas. En una prueba conocida armó instrucciones para un mueble a partir de fotos borrosas del piso, sin manual."
+     ],
+     "prompts": [
+      {
+       "t": "De foto a datos",
+       "c": "Te paso [fotos / capturas / un PDF escaneado] de [QUÉ ES: facturas, un plano, un tablero de métricas].\n1. Saca toda la información en una tabla.\n2. Dime qué se ve raro o no cierra.\n3. Si hay algo ilegible, dímelo en vez de adivinar.\nAl final, dame un resumen de 3 líneas de lo importante."
+      }
+     ]
+    },
+    {
+     "h": "7. Informes, planillas y presentaciones de nivel profesional",
+     "p": [
+      "Anthropic lo entrenó para trabajo de empresa: análisis financiero, planillas, presentaciones y documentos que se pueden entregar tal cual. Si vendes servicios, es ideal para la propuesta o el informe que cierra la venta."
+     ],
+     "prompts": [
+      {
+       "t": "Propuesta que cierra",
+       "c": "Estoy armando una propuesta para [CLIENTE, rubro y tamaño]. Necesitan [QUÉ LES VAS A RESOLVER] y esta propuesta es para que el dueño apruebe el presupuesto.\nÁrmame: diagnóstico de su situación, la solución en 3 etapas, qué ganan en tiempo y dinero (con los números que te paso: [datos]), precio y próximos pasos.\nQue sea clara, sin relleno y lista para mandar en PDF."
+      }
+     ]
+    },
+    {
+     "h": "8. Encontrar errores en código y sistemas",
+     "p": [
+      "Fable encuentra bastantes más errores que los modelos anteriores al revisar código, incluso buscando en todo el proyecto y en su historial. Si tienes algo hecho con IA que anda \"más o menos\", pásaselo."
+     ],
+     "prompts": [
+      {
+       "t": "Revisión a fondo",
+       "c": "Revisa este proyecto como si fueras a ponerlo en producción mañana.\nBusca errores, cosas que se pueden romper con datos reales y problemas de seguridad básicos.\nOrdena lo que encuentres de más grave a menos grave, con el archivo y la línea.\nNo arregles nada todavía: primero dame el informe y yo te digo qué corregir."
+      }
+     ]
+    },
+    {
+     "h": "9. Agentes que trabajan horas (Claude Code)",
+     "p": [
+      "Acá está lo más potente: Fable puede trabajar solo durante horas, repartir el trabajo entre muchos subagentes y revisar lo que hace. Anthropic recomienda tres cosas para estos trabajos largos: que verifique su trabajo con subagentes cada tanto, que guarde lo que aprende en un archivo de notas y que solo te frene cuando de verdad te necesite."
+     ],
+     "prompts": [
+      {
+       "t": "Trabajo largo y autónomo",
+       "c": "Objetivo: [TRABAJO GRANDE]. Es para [PARA QUIÉN] y lo necesitan para [QUÉ LES PERMITE].\nTrabaja de forma autónoma. Reparte las partes independientes entre subagentes y sigue trabajando mientras corren.\nCada [30 minutos / cada etapa], verifica lo hecho con un subagente nuevo contra este objetivo.\nAnota lo que aprendas en NOTAS.md (una lección por línea) y léelo antes de cada etapa.\nFrénate solo si algo es irreversible, cambia el alcance o necesitas un dato que solo yo tengo.\nAntes de decirme que algo está listo, muéstrame la prueba de que funciona."
+      }
+     ]
+    },
+    {
+     "h": "10. Investigación profunda",
+     "p": [
+      "Con varias búsquedas, cruce de fuentes y muchos pasos, Fable rinde en investigaciones que a una persona le llevarían días: un mercado, la competencia, un tema técnico nuevo."
+     ],
+     "prompts": [
+      {
+       "t": "Investigación con fuentes",
+       "c": "Investiga [TEMA] para [PARA QUÉ LO NECESITO].\nBusca en varias fuentes y cruza los datos. Quiero: lo más importante en 5 puntos, una tabla comparando [OPCIONES], y qué harías tú en mi lugar.\nCada dato con su fuente. Si algo no está confirmado, márcalo como dudoso."
+      }
+     ]
+    },
+    {
+     "h": "Las reglas oficiales para pedirle bien a Fable",
+     "p": [
+      "Anthropic publicó cómo sacarle el máximo. Estas son las que más cambian el resultado:"
+     ],
+     "lista": [
+      "Dile el porqué, no solo el qué: \"es para un cliente que tiene que aprobar el presupuesto\" le da contexto para decidir mejor.",
+      "Dale tareas difíciles: probarlo con cosas simples no muestra lo que puede. Úsalo para lo que antes no te salía.",
+      "Pídele que se verifique: un revisor aparte (un subagente nuevo) encuentra más errores que pedirle que se autocorrija.",
+      "Pon los límites claros: qué puede hacer solo y qué no. Si solo quieres su opinión, díselo: \"no cambies nada, dame tu diagnóstico\".",
+      "Pídele que vaya al grano: \"empieza por el resultado y después el detalle\" funciona mejor que enumerar todo lo que no quieres.",
+      "Si se frena a mitad de un trabajo largo, alcanza con escribir \"sigue, hazlo de punta a punta\".",
+      "Para tareas de rutina baja el esfuerzo: en Medium o Low igual rinde muy bien y gastas mucho menos."
+     ]
+    },
+    {
+     "h": "Para qué todavía no lo dejaría solo",
+     "lista": [
+      "Diseñar una web entera sin que tú revises: hay reviews que dicen que en diseño web todavía conviene guiarlo y corregirlo.",
+      "Preguntas sueltas o tareas cortas: Opus 5.5 o Sonnet 5.5 lo hacen igual de bien y no te comen el límite.",
+      "Temas de ciberseguridad ofensiva o biología de laboratorio: están bloqueados y te responde otro modelo."
      ]
     },
     {
@@ -106,11 +309,26 @@
     }
    ],
    "faq": [
-    {"q": "¿Fable 5.2 es mejor que Opus 5.5 para todo?", "a": "No. Es mejor en las tareas técnicas más difíciles y largas. Para el día a día, Anthropic recomienda Opus 5.5: es más que suficiente y gasta mucho menos de tu límite."},
-    {"q": "No me aparece Fable 5.2 en el selector.", "a": "Fable está solo en planes pagos (Pro, Max, Ultra, Team y Enterprise). Si tienes uno, actualiza la app o cierra sesión y vuelve a entrar. En Claude Code, actualízalo a la última versión."},
-    {"q": "¿Qué pasa cuando llego al 50% de mi semana con Fable?", "a": "En Pro y en los asientos estándar de Team no puedes seguir usando Fable esa semana, pero sí los demás modelos con el uso que te quede."},
-    {"q": "¿Qué es Mythos 5.2 y lo puedo usar?", "a": "Tiene las mismas capacidades de base que Fable 5.2, pero con protecciones más permisivas para ciberseguridad y biología. Solo lo usan organizaciones verificadas por programas de Anthropic. Para todo lo demás, Fable es el que tienes disponible."},
-    {"q": "¿Me conviene subir el esfuerzo a Max siempre?", "a": "No. Max gasta mucho más y para la mayoría de las tareas Medium o High dan el mismo resultado. Sube solo si la respuesta no te alcanzó."}
+    {
+     "q": "¿Fable 5.2 es mejor que Opus 5.5 para todo?",
+     "a": "No. Es mejor en las tareas técnicas más difíciles y largas. Para el día a día, Anthropic recomienda Opus 5.5: es más que suficiente y gasta mucho menos de tu límite."
+    },
+    {
+     "q": "No me aparece Fable 5.2 en el selector.",
+     "a": "Fable está solo en planes pagos (Pro, Max, Ultra, Team y Enterprise). Si tienes uno, actualiza la app o cierra sesión y vuelve a entrar. En Claude Code, actualízalo a la última versión."
+    },
+    {
+     "q": "¿Qué pasa cuando llego al 50% de mi semana con Fable?",
+     "a": "En Pro y en los asientos estándar de Team no puedes seguir usando Fable esa semana, pero sí los demás modelos con el uso que te quede."
+    },
+    {
+     "q": "¿Qué es Mythos 5.2 y lo puedo usar?",
+     "a": "Tiene las mismas capacidades de base que Fable 5.2, pero con protecciones más permisivas para ciberseguridad y biología. Solo lo usan organizaciones verificadas por programas de Anthropic. Para todo lo demás, Fable es el que tienes disponible."
+    },
+    {
+     "q": "¿Me conviene subir el esfuerzo a Max siempre?",
+     "a": "No. Max gasta mucho más y para la mayoría de las tareas Medium o High dan el mismo resultado. Sube solo si la respuesta no te alcanzó."
+    }
    ]
   }
  ]
