@@ -1,5 +1,5 @@
 // GET /api/inicio -> el resumen de quien está adentro para /inicio:
-// guías completadas, días activos, racha, guías abiertas, última guía; y además
+// guías que lleva (abiertas o completadas), días activos, racha, guías abiertas, última guía; y además
 //   plan gratis: chances del sorteo de 2 accesos completos
 //   acceso completo: ranking del mes (top 3 y tu puesto)
 
@@ -30,8 +30,10 @@ export default async function handler(req, res) {
       sb(`actividad?email=eq.${e}&select=dia,secciones&dia=gte.${hace60}&order=dia.desc&limit=100`)
     ]);
     const dias = act.map((a) => a.dia);
+    // «Llevas N guías»: las que abrió más las que marcó como leídas (casi nadie llega al final de una guía)
     const abiertas = new Set();
     act.forEach((a) => (a.secciones || []).forEach((s) => { if (s.startsWith("g:")) abiertas.add(s.slice(2)); }));
+    const llevas = new Set([...abiertas, ...prog.map((p) => p.slug)]);
     const hace7 = new Date(Date.parse(hoy) - 6 * 864e5).toISOString().slice(0, 10);
     const semana = [];
     for (let i = 6; i >= 0; i--) semana.push(dias.includes(new Date(Date.parse(hoy) - i * 864e5).toISOString().slice(0, 10)));
@@ -39,6 +41,7 @@ export default async function handler(req, res) {
       nombre: (reg[0] && reg[0].nombre) || yo.nombre || "",
       pago,
       completadas: prog.length,
+      llevas: [...llevas],
       completadasSemana: prog.filter((p) => (p.visto || "").slice(0, 10) >= hace7).length,
       ultimaCompletada: prog[0] ? prog[0].slug : null,
       vistas: prog.map((p) => p.slug),
@@ -50,16 +53,22 @@ export default async function handler(req, res) {
       abiertas: abiertas.size
     };
     if (!pago) {
-      r.sorteo = { premios: SORTEO.premios, cierra: SORTEO.cierra, chances: chances(prog.length, dias.filter((d) => d >= SORTEO.desde).length) };
+      r.sorteo = { premios: SORTEO.premios, cierra: SORTEO.cierra, chances: chances(llevas.size, dias.filter((d) => d >= SORTEO.desde).length) };
     } else {
       const [personas, guiasMes, diasMes] = await Promise.all([
         sb("registros?compro=eq.true&select=email,nombre&limit=5000"),
-        sb(`progreso?visto=gte.${mes}T03:00:00Z&select=email&limit=50000`),
-        sb(`actividad?dia=gte.${mes}&select=email&limit=50000`)
+        sb(`progreso?visto=gte.${mes}T03:00:00Z&select=email,slug&limit=50000`),
+        sb(`actividad?dia=gte.${mes}&select=email,secciones&limit=50000`)
       ]);
       const quienes = personas.filter((p) => !esAdmin(p.email));
       if (!yo.admin && !quienes.some((p) => p.email === yo.email)) quienes.push({ email: yo.email, nombre: r.nombre });
-      r.ranking = ranking(quienes, contar(guiasMes), contar(diasMes), yo.admin ? null : yo.email);
+      // Guías del mes por persona: las que abrió o completó este mes (sin repetir)
+      const guias = {};
+      const sumar = (email, slug) => { (guias[email] || (guias[email] = new Set())).add(slug); };
+      guiasMes.forEach((g) => sumar(g.email, g.slug));
+      diasMes.forEach((a) => (a.secciones || []).forEach((x) => { if (x.startsWith("g:")) sumar(a.email, x.slice(2)); }));
+      const nGuias = Object.fromEntries(Object.entries(guias).map(([k, v]) => [k, v.size]));
+      r.ranking = ranking(quienes, nGuias, contar(diasMes), yo.admin ? null : yo.email);
     }
     return json(res, 200, r);
   } catch (err) {
