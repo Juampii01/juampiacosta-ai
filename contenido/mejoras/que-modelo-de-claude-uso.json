@@ -16,8 +16,8 @@
   },
   {
    "antes": "Es la familia más capaz de Anthropic, pero está reservada a organizaciones específicas. Fable es la versión para uso general, con protecciones extra.",
-   "despues": "Mythos 5.1 es el mismo modelo que Fable 5.1, pero con protecciones más permisivas para trabajo de ciberseguridad y ciencias de la vida. Solo lo usan personas y organizaciones verificadas por programas de acceso de Anthropic. Fable 5.1 es la versión disponible para todos, con las protecciones estándar.",
-   "motivo": "El anuncio oficial de Fable 5.1 y Mythos 5.1 dice que son el mismo modelo con distintos niveles de protección: Mythos tiene protecciones más permisivas y su acceso está limitado a programas de verificación (Cyber Verification Program y Life Sciences Verification Program). No es una familia más capaz aparte.",
+   "despues": "Mythos 5.2 es el mismo modelo que Fable 5.2, pero con protecciones más permisivas para trabajo de ciberseguridad y ciencias de la vida. Solo lo usan personas y organizaciones verificadas por programas de acceso de Anthropic. Fable 5.2 es la versión disponible para todos, con las protecciones estándar.",
+   "motivo": "El anuncio oficial de Fable 5.2 y Mythos 5.2 dice que son el mismo modelo con distintos niveles de protección: Mythos tiene protecciones más permisivas y su acceso está limitado a programas de verificación (Cyber Verification Program y Life Sciences Verification Program). No es una familia más capaz aparte.",
    "fuente": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
   }
  ],

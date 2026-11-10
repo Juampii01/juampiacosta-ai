@@ -49,7 +49,7 @@
   },
   {
    "sintoma": "No encuentras el interruptor Thinking para apagar el razonamiento.",
-   "solucion": "En Haiku 5.5, Sonnet 5.5, Opus 5.5, Fable 5.1 y Opus 5 el razonamiento está siempre prendido y no se puede apagar en la app. Ahí la forma de gastar menos es bajar el nivel en Effort."
+   "solucion": "En Haiku 5.5, Sonnet 5.5, Opus 5.5, Fable 5.2 y Opus 5 el razonamiento está siempre prendido y no se puede apagar en la app. Ahí la forma de gastar menos es bajar el nivel en Effort."
   },
   {
    "sintoma": "En Effort no aparece Extra high.",

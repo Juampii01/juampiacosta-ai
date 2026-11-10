@@ -191,7 +191,7 @@ var FJ = (function () {
 
   // Aviso arriba del Classroom: «¿Te gustaría tener el acceso completo por solo US$ 24,90?»
   // «Sí, lo quiero» abre la ventana de compra; «Ahora no» lo esconde 3 días. Todo queda anotado para el Panel.
-  if (document.body.dataset.seccion === "classroom") {
+  if (/^\/recursos(\.html)?$/.test(location.pathname)) {
     var NO = "fj_oferta_no", esconder = false;
     try { esconder = Date.now() - Number(localStorage.getItem(NO) || 0) < 3 * 864e5; } catch (e) {}
     var main = document.querySelector("main");

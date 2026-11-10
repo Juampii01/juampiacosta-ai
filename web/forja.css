@@ -14,11 +14,11 @@ html[data-tema], :root {
   color-scheme: dark;
 }
 html[data-tema="claro"] {
-  --fj-bg: #fafafa; --fj-surface: #ffffff; --fj-surface2: #f4f4f5; --fj-inner: #fafafa; --fj-side: #ffffff;
-  --fj-line: #e4e4e7; --fj-line2: #c4c4cc; --fj-text: #0a0a0b; --fj-text2: #52525b; --fj-muted: #6b6b74; --fj-cuerpo: #3f3f46;
+  --fj-bg: #f3efe9; --fj-surface: #fffdfa; --fj-surface2: #f7f3ee; --fj-inner: #f7f3ee; --fj-side: #fbf8f4;
+  --fj-line: #e2dbd2; --fj-line2: #cbc2b6; --fj-text: #0a0a0b; --fj-text2: #52525b; --fj-muted: #6b6b74; --fj-cuerpo: #3f3f46;
   --fj-acento-txt: #c2410c; --fj-acento-suave: #fff1ea; --fj-acento-fondo: #fff1ea;
-  --fj-grid: rgba(0, 0, 0, .035); --fj-top: rgba(255, 255, 255, .9); --fj-btn: #0a0a0b; --fj-btn-txt: #ffffff;
-  --fj-sombra: 0 1px 2px rgba(0, 0, 0, .04), 0 8px 24px -16px rgba(0, 0, 0, .12);
+  --fj-grid: rgba(60, 40, 20, .075); --fj-top: rgba(251, 248, 244, .9); --fj-btn: #0a0a0b; --fj-btn-txt: #ffffff;
+  --fj-sombra: 0 1px 2px rgba(60, 40, 20, .06), 0 10px 28px -18px rgba(60, 40, 20, .22);
   --fj-aviso-fondo: #fff7e6; --fj-aviso-borde: #f5d38f; --fj-aviso-txt: #5c3a00;
   color-scheme: light;
 }
@@ -401,3 +401,10 @@ body.fj-app main.fj-main > section { margin-top: 0; padding-top: 0; }
 .fj-interes .tag.g{background:rgba(34,197,94,.14);color:#16a34a}
 .fj-interes .tag.n{background:rgba(161,161,170,.16);color:var(--fj-muted)}
 .fj-interes .wa{display:inline-block;background:#22c55e;color:#04120a;font-weight:700;font-size:12px;padding:6px 10px;border-radius:8px;text-decoration:none;white-space:nowrap}
+
+/* Modo claro: un brillo naranja suave arriba para que el fondo no quede plano */
+html[data-tema="claro"] body.fj-app, html[data-tema="claro"] body.fj-acceso {
+  background-image: radial-gradient(900px 420px at 85% -10%, rgba(255, 90, 31, .10), transparent 70%),
+    linear-gradient(var(--fj-grid) 1px, transparent 1px), linear-gradient(90deg, var(--fj-grid) 1px, transparent 1px);
+  background-size: auto, 40px 40px, 40px 40px; background-attachment: fixed;
+}
