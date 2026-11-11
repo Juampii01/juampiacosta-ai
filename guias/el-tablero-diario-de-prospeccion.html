@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena el-tablero-diario-de-prospeccion, El tablero diario: 30 segundos por día para no frenar, Una planilla simple para anotar contactos, agendamientos, llamadas y cierres cada día, y una revisión de 15 minutos cada semana. y 045cd7c1 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena el-tablero-diario-de-prospeccion, El tablero diario: 30 segundos por día para no frenar, Una planilla simple para anotar contactos, agendamientos, llamadas y cierres cada día, y una revisión de 15 minutos cada semana. y 014a1c3f -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,23 +9,23 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=045cd7c1">
-<link rel="stylesheet" href="../web/cta.css?v=045cd7c1">
-<link rel="stylesheet" href="../web/biblioteca.css?v=045cd7c1">
-<link rel="stylesheet" href="../web/guia.css?v=045cd7c1">
-<link rel="stylesheet" href="../web/tema.css?v=045cd7c1">
-<link rel="stylesheet" href="../web/bienvenida.css?v=045cd7c1">
-<link rel="stylesheet" href="../web/forja.css?v=045cd7c1">
-<script src="../web/tema.js?v=045cd7c1"></script>
-<link rel="icon" href="../web/favicon.svg?v=045cd7c1" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=014a1c3f">
+<link rel="stylesheet" href="../web/cta.css?v=014a1c3f">
+<link rel="stylesheet" href="../web/biblioteca.css?v=014a1c3f">
+<link rel="stylesheet" href="../web/guia.css?v=014a1c3f">
+<link rel="stylesheet" href="../web/tema.css?v=014a1c3f">
+<link rel="stylesheet" href="../web/bienvenida.css?v=014a1c3f">
+<link rel="stylesheet" href="../web/forja.css?v=014a1c3f">
+<script src="../web/tema.js?v=014a1c3f"></script>
+<link rel="icon" href="../web/favicon.svg?v=014a1c3f" type="image/svg+xml">
 <meta name="theme-color" content="#0a0a0b">
 </head>
 <body class="fj-app" data-seccion="classroom" data-raiz="/">
-<script src="../web/redes.js?v=045cd7c1"></script>
-<script src="../web/guias-web.js?v=045cd7c1"></script>
-<script src="../web/categorias.js?v=045cd7c1"></script>
-<script src="../web/comun.js?v=045cd7c1"></script>
-<script src="../web/modulos.js?v=045cd7c1"></script>
+<script src="../web/redes.js?v=014a1c3f"></script>
+<script src="../web/guias-web.js?v=014a1c3f"></script>
+<script src="../web/categorias.js?v=014a1c3f"></script>
+<script src="../web/comun.js?v=014a1c3f"></script>
+<script src="../web/modulos.js?v=014a1c3f"></script>
 
 <main class="fj-guia" data-slug="el-tablero-diario-de-prospeccion">
   <div class="fj-guia-col">
@@ -38,11 +38,11 @@
 </main>
 <script>var GUIA = {"slug": "el-tablero-diario-de-prospeccion", "t": "El tablero diario: 30 segundos por día para no frenar", "d": "Una planilla simple para anotar contactos, agendamientos, llamadas y cierres cada día, y una revisión de 15 minutos cada semana.", "tema": "El roadmap para vender IA", "min": 6, "secciones": [{"h": "Para qué sirve", "p": ["El resultado (facturar) llega tarde. Lo que haces hoy se ve en la facturación dentro de uno, dos o tres meses. Si solo miras la facturación, abandonas antes de que lleguen los resultados.", "El tablero mide lo que sí controlas: cuántos contactos hiciste contra tu meta del día. Si cumpliste, el día está bien aunque nadie haya respondido."]}, {"h": "Las tres hojas", "lista": ["Mi cadena: las entradas de \"Tu cadena de números\" (meta, precio, tasas, días) y el resultado: contactos por día, por semana y por mes.", "Tablero diario: una fila por día con Fecha, Meta de contactos, Contactos hechos, Respuestas, Agendamientos, Llamadas hechas, Cierres, Nota del día y % de cumplimiento (contactos hechos ÷ meta).", "Revisión semanal: una fila por semana con tres preguntas: ¿salió bien o mal?, ¿dónde se rompió (contactos, respuestas, asistencia, cierre, entrega o algo personal)? y ¿qué única cosa cambio la semana que viene?"]}, {"h": "Las reglas", "lista": ["Se llena a mano: lleva 30 segundos. Si lo automatizas, dejas de mirarlo.", "Una sola palanca por semana: si cambias el mensaje, el canal y el horario a la vez, no sabes qué funcionó.", "Check verde: si cumpliste los contactos del día, cortas sin culpa. La única frustración válida es no haber hecho la tarea.", "Mínimo diario aunque estés entregando: si dejas de prospectar cuando entra un cliente, al mes siguiente no tienes nada. Baja el número, pero no lo lleves a cero."]}, {"h": "Ármalo con Claude", "prompts": [{"t": "Mi tablero de prospección", "c": "Ármame una planilla de Google Sheets (o un archivo .xlsx) con tres hojas:\n1. \"Mi cadena\": celdas para Meta del mes, Precio, Tasa de cierre, Tasa de asistencia, Tasa de agendamiento y Días de prospección, y fórmulas que calculen clientes, llamadas, agendamientos, contactos por mes, por semana y por día.\n2. \"Tablero diario\": fechas de [FECHA DE INICIO] a 30 días después, columnas Meta de contactos (tomada de la hoja 1), Contactos hechos, Respuestas, Agendamientos, Llamadas, Cierres, Nota y % de cumplimiento, con totales por semana y colores: verde si el cumplimiento es 100% o más, amarillo entre 70% y 99%, rojo debajo de 70%.\n3. \"Revisión semanal\": una fila por semana con Qué salió bien, Dónde se rompió (lista desplegable: contactos, respuestas, asistencia, cierre, entrega, personal) y Qué cambio la semana próxima.\nDeja en gris las celdas que tengo que completar yo."}]}], "faq": [{"q": "¿Qué cuenta como contacto?", "a": "Un mensaje, llamada o visita personalizada a un negocio de tu lista. Un seguimiento a alguien que ya contactaste cuenta solo si aporta algo nuevo."}, {"q": "¿Y si un día no llego?", "a": "Anota el porcentaje real y escribe en la nota por qué. Mira la semana completa, no el día suelto."}], "cat": "roadmap", "parte": "construi"};</script>
 
-<script src="../web/shell.js?v=045cd7c1"></script>
-<script src="../web/rutas.js?v=045cd7c1"></script>
-<script src="../web/logos.js?v=045cd7c1"></script>
-<script src="../web/guia.js?v=045cd7c1"></script>
-<script src="../web/guia-forja.js?v=045cd7c1"></script>
-<script src="../web/bienvenida.js?v=045cd7c1"></script>
+<script src="../web/shell.js?v=014a1c3f"></script>
+<script src="../web/rutas.js?v=014a1c3f"></script>
+<script src="../web/logos.js?v=014a1c3f"></script>
+<script src="../web/guia.js?v=014a1c3f"></script>
+<script src="../web/guia-forja.js?v=014a1c3f"></script>
+<script src="../web/bienvenida.js?v=014a1c3f"></script>
 </body>
 </html>
