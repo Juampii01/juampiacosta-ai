@@ -112,3 +112,11 @@ test("guarda en Supabase con la clave del servidor y sin duplicar emails", async
   const fetchMalo = async () => ({ ok: false, status: 401, text: async () => "no" });
   await assert.rejects(guardarEnSupabase({ email: "a@b.com" }, { url: "https://x", clave: "k", fetchImpl: fetchMalo }));
 });
+
+import { conUtm } from "../middleware.js";
+test("middleware: los utm del anuncio viajan al registro", () => {
+  const q = new URLSearchParams("utm_source=ig&utm_campaign=ad-codex&otro=1");
+  assert.equal(conUtm("/?volver=/guias/x#gratis", q), "/?volver=/guias/x&utm_source=ig&utm_campaign=ad-codex#gratis");
+  assert.equal(conUtm("/entrar", q), "/entrar?utm_source=ig&utm_campaign=ad-codex");
+  assert.equal(conUtm("/entrar", new URLSearchParams("")), "/entrar");
+});

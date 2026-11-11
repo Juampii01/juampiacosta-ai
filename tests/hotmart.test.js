@@ -54,3 +54,12 @@ test("hotmart: solo la biblioteca abre el acceso, no el PDF del order bump", () 
   assert.deepEqual(aviso(8923277), { email: "a@b.co", nombre: "", compro: true });
   assert.equal(leerAviso({ event: "PURCHASE_REFUNDED", data: { product: { id: 8923495 }, buyer: { email: "a@b.co" } } }), null);
 });
+
+test("hotmart: guarda de qué anuncio vino la venta (sck/src del link de pago)", async () => {
+  const ap = leerAviso({ event: "PURCHASE_APPROVED", data: { buyer: { email: "a@b.co", name: "A" }, purchase: { origin: { sck: "ad-acceso" } } } });
+  assert.equal(ap.venta_origen, "ad-acceso");
+  const llamadas = [];
+  const fetchImpl = async (url, o) => { llamadas.push({ url, o }); return { ok: true, json: async () => [{ email: "a@b.co" }] }; };
+  await marcarCompra(ap, { url: "https://x.supabase.co", clave: "sb_secret_x", fetchImpl });
+  assert.deepEqual(JSON.parse(llamadas[0].o.body), { compro: true, venta_origen: "ad-acceso" });
+});

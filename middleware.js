@@ -58,6 +58,15 @@ export function decidir(ruta, nivel, admin = false) {
   return { pasa: true };
 }
 
+// Los utm_* del link de un anuncio o de ManyChat sobreviven a la redirección al registro (así cada registro sabe de qué anuncio vino)
+const UTM = ["utm_source", "utm_medium", "utm_campaign", "utm_content"];
+export function conUtm(destino, params) {
+  const extra = UTM.filter((k) => params.get(k)).map((k) => k + "=" + encodeURIComponent(params.get(k).slice(0, 120)));
+  if (!extra.length) return destino;
+  const [ruta, hash] = destino.split("#");
+  return ruta + (ruta.includes("?") ? "&" : "?") + extra.join("&") + (hash ? "#" + hash : "");
+}
+
 export default async function middleware(request) {
   const url = new URL(request.url);
   const p = await leerCookie(valorCookie(request.headers.get("cookie"), ACCESS_COOKIE_NAME), process.env.ACCESS_SECRET);
@@ -71,7 +80,7 @@ export default async function middleware(request) {
   const d = decidir(url.pathname, nivel, !!(p && esAdmin(p.m)));
   if (d.no) return new Response("No encontrado", { status: 404 });
   if (d.prohibido) return new Response("Necesitas acceso", { status: 401 });
-  if (d.a) return Response.redirect(new URL(d.a, url), 307);
+  if (d.a) return Response.redirect(new URL(nivel ? d.a : conUtm(d.a, url.searchParams), url), 307);
   if (d.reescribir) return rewrite(new URL(d.reescribir, url));
   // Mantiene al día el aviso legible del nivel (por ejemplo, si alguien pasó de gratis a pago)
   if (nivel) return next({ headers: { "Set-Cookie": `${AVISO_COOKIE_NAME}=${nivel}; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; Secure; SameSite=Lax` } });

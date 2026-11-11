@@ -34,30 +34,34 @@ export function leerAviso(cuerpo) {
   const comprador = (cuerpo.data && cuerpo.data.buyer) || {};
   const email = String(comprador.email || "").trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return null;
-  if (APROBADA.has(evento)) return { email, nombre: String(comprador.name || "").slice(0, 80), compro: true };
+  // De qué anuncio vino la venta: el link de pago lleva ?sck=<anuncio> (o src) y Hotmart lo devuelve en purchase.origin
+  const origen = (cuerpo.data && cuerpo.data.purchase && cuerpo.data.purchase.origin) || {};
+  const venta = String(origen.sck || origen.src || "").trim().slice(0, 120);
+  if (APROBADA.has(evento)) return { email, nombre: String(comprador.name || "").slice(0, 80), compro: true, ...(venta ? { venta_origen: venta } : {}) };
   if (ANULADA.has(evento)) return { email, compro: false };
   return null;
 }
 
-export async function marcarCompra({ email, nombre, compro }, { url, clave, fetchImpl = fetch } = {}) {
+export async function marcarCompra({ email, nombre, compro, venta_origen }, { url, clave, fetchImpl = fetch } = {}) {
+  const cambio = venta_origen ? { compro, venta_origen } : { compro };
   const base = url.replace(/\/$/, "");
   const h = cabeceras(clave);
   h.Prefer = "return=minimal";
   // Si ya existe la fila (se registró antes), solo cambia «compro»; si no, la crea
   const r = await fetchImpl(`${base}/rest/v1/registros?email=eq.${encodeURIComponent(email)}`, {
-    method: "PATCH", headers: { ...h, Prefer: "return=representation" }, body: JSON.stringify({ compro }), signal: AbortSignal.timeout(5000)
+    method: "PATCH", headers: { ...h, Prefer: "return=representation" }, body: JSON.stringify(cambio), signal: AbortSignal.timeout(5000)
   });
   if (!r.ok) throw new Error(`Supabase respondió ${r.status}: ${(await r.text()).slice(0, 200)}`);
   const filas = await r.json();
   if (Array.isArray(filas) && filas.length) return;
   if (!compro) return;
   const n = await fetchImpl(`${base}/rest/v1/registros`, {
-    method: "POST", headers: h, body: JSON.stringify({ email, nombre: nombre || null, origen: "hotmart", compro: true }), signal: AbortSignal.timeout(5000)
+    method: "POST", headers: h, body: JSON.stringify({ email, nombre: nombre || null, origen: "hotmart", compro: true, ...(venta_origen ? { venta_origen } : {}) }), signal: AbortSignal.timeout(5000)
   });
   if (n.status === 409) {
     // Dos avisos a la vez (aprobada y completa): el otro ya creó la fila, así que solo se marca
     const p = await fetchImpl(`${base}/rest/v1/registros?email=eq.${encodeURIComponent(email)}`, {
-      method: "PATCH", headers: h, body: JSON.stringify({ compro: true }), signal: AbortSignal.timeout(5000)
+      method: "PATCH", headers: h, body: JSON.stringify(cambio), signal: AbortSignal.timeout(5000)
     });
     if (!p.ok) throw new Error(`Supabase respondió ${p.status}: ${(await p.text()).slice(0, 200)}`);
     return;
