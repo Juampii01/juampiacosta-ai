@@ -29,6 +29,8 @@ test("la palabra del reel escrita a mano se reconoce, pero no frases comunes", a
   assert.equal(palabraDeReel("jarvis 🙏"), "JARVIS");
   assert.equal(palabraDeReel("plan pago"), null);
   assert.equal(palabraDeReel("hola que tal"), null);
+  assert.equal(palabraDeReel("GUIAS"), "GUIAS");
+  assert.equal(palabraDeReel("Equipo"), "EQUIPO");
 });
 
 test("encuentra el mail y la guía que pidió antes", async () => {

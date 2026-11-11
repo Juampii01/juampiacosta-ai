@@ -45,7 +45,7 @@ INFORMACIÓN DE LA BIBLIOTECA:
 - Ordenada en 3 partes: Arranca bien (configurar Claude, pedirle bien las cosas, gastar menos), Ponlo a trabajar (tu negocio, contenido y redes, conseguir clientes, skills, agentes), Vende y construye (el sistema para venderle IA a negocios, sistemas por rubro, Claude Code, crear tu app).
 - Gratis: registrándose con el mail se abren 35 guías (todas las de los reels, las de gastar menos y el Módulo 1 del sistema para vender IA). Web: www.forjaia.com (la plataforma se llama Forja IA)
 - Guías gratis que más piden por los reels: Codex dentro de Claude Code (con el plugin oficial de OpenAI conectas Codex a Claude Code y le pasas tareas o revisiones con comandos /codex, necesitas la CLI de Codex con tu cuenta de ChatGPT), 22 skills de Claude Code, 8 apps clonadas gratis, 5 repos que reemplazan apps pagas, oficina de agentes IA, 4 agentes de WhatsApp para vender, configurar Claude en 10 minutos. Si preguntan cómo hacer algo de estas, explicas en una frase la idea y le pasas el link www.forjaia.com para que vea el paso a paso.
-- Palabras de los reels y su guía: MAPA (Graphify y Obsidian para gastar menos en Claude Code), MODELO (qué modelo de Claude usar), TOKEN (MarkItDown), PROYECTO (Proyectos y caché), PLAN (modo plan de Claude Code), CHAT (por qué Claude se vuelve torpe en chats largos), LIVIANO (Claude Code liviano), SUBAGENTE (subagentes), MEDIDOR (medidor de uso y límites), ARCHIVOS (archivos sin desperdiciar tokens), PEDIDO (pedidos que salen a la primera), CONFIG (configurar Claude en 10 minutos), GUIA (Codex dentro de Claude Code), JARVIS, LINKEDIN, INSTAGRAM, YOUTUBE, WEB, CONECTOR, SKILLS, CLON, REPOS, WHATSAPP, OFICINA, CINCO, EDITAR. Si alguien escribe solo una de estas palabras, quiere esa guía: el sistema le manda el link directo a esa guía.
+- Palabras de los reels y su guía: MAPA (Graphify y Obsidian para gastar menos en Claude Code), MODELO (qué modelo de Claude usar), TOKEN (MarkItDown), PROYECTO (Proyectos y caché), PLAN (modo plan de Claude Code), CHAT (por qué Claude se vuelve torpe en chats largos), LIVIANO (Claude Code liviano), SUBAGENTE (subagentes), MEDIDOR (medidor de uso y límites), ARCHIVOS (archivos sin desperdiciar tokens), PEDIDO (pedidos que salen a la primera), CONFIG (configurar Claude en 10 minutos), GUIA (Codex dentro de Claude Code), JARVIS, LINKEDIN, INSTAGRAM, YOUTUBE, WEB, CONECTOR, SKILLS, CLON, REPOS, WHATSAPP, OFICINA, CINCO, EDITAR, EQUIPO (35 cosas para instalar en Claude como un equipo), VENDER (7 repos para vender a empresas), ROADMAP (de cero a vender IA en 8 etapas), INMOBILIARIA, EXCEL (analizar planillas), CEREBRO (segundo cerebro del negocio), APP (de idea a app publicada), FABLE (Fable 5.2), GUIAS (todas las guías gratis: le pasas el link de registro). Si alguien escribe solo una de estas palabras, quiere esa guía: el sistema le manda el link directo a esa guía.
 - Nunca digas que algo "no se puede" o "no se conecta" si hay una guía sobre eso. Si no estás seguro, deriva.
 - La mayoría funciona con el plan gratis de Claude. Algunas cosas (Claude Code, tareas programadas) piden plan pago. No hace falta saber programar para las partes 1 y 2.
 - Acceso completo (solo si lo preguntan): US$ 24,90 pago único hasta el 30 de noviembre, después US$ 44,90. Incluye todo lo que se sume después. Desde cualquier país con Hotmart: https://pay.hotmart.com/J108404247X?off=8flev061 . En Argentina también Mercado Pago, $ 39.000: https://mpago.la/1Q8PbXK . Después de pagar se registra en la web con el mismo mail y se abre todo.
@@ -70,6 +70,8 @@ export function palabraDeReel(texto) {
   // Solo la palabra sola («Linkedin») o «quiero/la/guia + palabra»: «plan pago» o «que modelo uso» siguen yendo a Claude
   const w = t.split(/\s+/).filter((x) => !["QUIERO", "LA", "EL", "GUIA", "DE", "PORFA"].includes(x));
   if (w.length === 0 && /\bGUIA\b/.test(t)) return "GUIA";
+  // «GUIAS» (carrusel de la biblioteca): no es una guía puntual → el link de registro con todas las gratis
+  if (w.length === 1 && w[0] === "GUIAS") return "GUIAS";
   return w.length === 1 && PALABRAS[w[0]] ? w[0] : null;
 }
 
@@ -81,7 +83,7 @@ export function mailEn(texto) {
 
 /** La guía que pidió: la última palabra de reel que escribió en la charla (o null → lista de guías de los reels) */
 export function guiaPedida(textos) {
-  for (const t of [...textos].reverse()) { const p = palabraDeReel(t); if (p) return PALABRAS[p]; }
+  for (const t of [...textos].reverse()) { const p = palabraDeReel(t); if (p) return PALABRAS[p] || null; }
   return null;
 }
 
