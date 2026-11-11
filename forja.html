@@ -119,6 +119,13 @@
   .v-sis { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
   .v-sis span { padding: 7px 12px; border-radius: 999px; font-size: 14px; border: 1px solid var(--line); }
 </style>
+<!-- Píxel de Meta «Forja IA» (4736870359880696): visita a la landing y clic al pago. La compra la manda Hotmart con el mismo píxel. -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','4736870359880696');fbq('track','PageView');
+</script>
 </head>
 <body>
 <header class="l-cab"><div class="l-wrap">
@@ -225,7 +232,8 @@
   var sck = (q.get("utm_campaign") || "lp-sin-anuncio").toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 60);
   var pago = document.querySelector("[data-base]");
   var link = pago.getAttribute("data-base") + "&sck=" + encodeURIComponent(sck);
-  document.querySelectorAll(".js-pagar").forEach(function (a) { a.href = link; a.target = "_blank"; a.rel = "noopener"; });
+  document.querySelectorAll(".js-pagar").forEach(function (a) { a.href = link; a.target = "_blank"; a.rel = "noopener";
+    a.addEventListener("click", function () { if (window.fbq) fbq("track", "InitiateCheckout", { value: 24.9, currency: "USD" }); }); });
 })();
 </script>
 </body>
