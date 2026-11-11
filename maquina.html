@@ -1,0 +1,326 @@
+<!doctype html>
+<!-- Plantilla de /maquina (Máquina de Contenido, gratis con registro). build.py la copia a ../maquina.html con <h2>Qué hace</h2>
+<p>Es el flujo con el que hice más de 100.000 vistas en una semana, convertido en skills para Claude Code. Tú solo te grabas:</p>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Escribes</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><code>/maquina-perfil</code></td>
+<td>8 preguntas: tu nicho, tus cuentas de referencia, qué vendes y cómo hablas</td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>/maquina-radar</code></td>
+<td>Trae los reels de tu nicho y los ordena por cuánto superaron a su propia cuenta (no por vistas)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>/maquina-guiones</code></td>
+<td>Saca la estructura de los ganadores y te escribe guiones nuevos en tu forma de hablar</td>
+</tr>
+<tr>
+<td>—</td>
+<td><strong>Tú</strong></td>
+<td>Te grabas</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>/nc-editar</code></td>
+<td>Corta silencios, muletillas y tomas repetidas, iguala el audio y pone subtítulos animados</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>/nc-caption</code></td>
+<td>Descripción, comentario fijado y texto de portada con tu palabra clave</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>/maquina-tablero</code></td>
+<td>Anota cómo le fue a cada reel y le dice al radar qué repetir</td>
+</tr>
+</tbody>
+</table></div>
+<p>Con <code>/maquina</code> corre todo en orden y retoma donde quedaste.</p>
+<blockquote>
+<p>No publica nada en tus redes, no se loguea en tu Instagram y no copia textos ajenos: toma la estructura de lo que funciona y escribe con tus palabras.</p>
+</blockquote>
+<h2>Qué necesitas</h2>
+<ul>
+<li><strong>Claude Code</strong>: viene con el plan Pro de Claude o superior (también dentro de la app de escritorio).</li>
+<li><strong>Una cuenta gratis de Apify</strong>: trae US$ 5 de crédito por mes, que alcanzan para unos 1.500 reels.</li>
+<li><strong>Para editar video</strong>: ffmpeg y faster-whisper. Corren en tu computadora y tu video no se sube a ningún lado.</li>
+</ul>
+<h2>1. Descarga e instala</h2>
+<ol>
+<li>Descarga el ZIP con el botón de arriba y descomprímelo.</li>
+<li>Abre la terminal <strong>dentro de la carpeta</strong> <code>maquina-de-contenido</code> y corre el instalador:</li>
+</ol>
+<pre><code class="language-bash">bash instalar.sh
+</code></pre>
+<p>En Windows (PowerShell):</p>
+<pre><code class="language-powershell">powershell -ExecutionPolicy Bypass -File instalar.ps1
+</code></pre>
+<h2>2. Tu clave de Apify (2 minutos)</h2>
+<ol>
+<li>Crea una cuenta gratis en <a href="https://apify.com" target="_blank" rel="noopener">apify.com</a>. No pide tarjeta.</li>
+<li>Tu nombre (arriba a la izquierda) → <strong>Settings</strong> → <strong>API &amp; Integrations</strong> → copia el token.</li>
+<li>Ábrelo y pega la clave después del igual: <code>APIFY_TOKEN=apify_api_...</code><ul>
+<li>Mac: <code>open -e ~/.claude/maquina/.env</code></li>
+<li>Windows: <code>notepad $env:USERPROFILE\.claude\maquina\.env</code></li>
+</ul>
+</li>
+<li>Comprueba que esté todo:</li>
+</ol>
+<pre><code class="language-bash">python3 setup/chequeo.py
+</code></pre>
+<p>En Windows: <code>py setup\chequeo.py</code>. Tiene que marcar ✓ en las skills, Python, Claude Code y Apify.</p>
+<blockquote>
+<p>Nunca pegues la clave en el chat con Claude. Va solo en ese archivo.</p>
+</blockquote>
+<h2>3. Úsala</h2>
+<p>Crea una carpeta para tu contenido (por ejemplo <code>Contenido</code>), abre Claude Code adentro y escribe:</p>
+<pre><code>/maquina
+</code></pre>
+<p>Te hace las preguntas del perfil, te muestra cuánto cuesta el radar antes de gastar y al final te deja los guiones en <code>Contenido/maquina/guiones/</code>.</p>
+<p>¿Quieres verla sin gastar crédito? Pídele a Claude: <em>"corre el radar en modo demo"</em>. Usa cuentas inventadas.</p>
+<h2>4. Edición de video (cuando tengas tu video)</h2>
+<p>La primera vez, en Claude Code escribe: <em>"instálame las dependencias del editor"</em>. Te guía paso a paso y te pide permiso antes de cada comando. Después:</p>
+<pre><code>/nc-editar
+</code></pre>
+<p>Le pasas la ruta de tu video crudo y te muestra el plan de cortes antes de renderizar.</p>
+<h2>Si algo falla</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Problema</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/maquina</code> no aparece</td>
+<td>Cierra y abre Claude Code. Si sigue, corre de nuevo el instalador</td>
+</tr>
+<tr>
+<td>"Falta la clave de Apify"</td>
+<td>Revisa que el archivo <code>.env</code> tenga la clave pegada después de <code>APIFY_TOKEN=</code></td>
+</tr>
+<tr>
+<td>Apify 402</td>
+<td>Se terminó el crédito gratis del mes</td>
+</tr>
+<tr>
+<td>El radar no trae reels</td>
+<td>Las cuentas tienen que ser públicas y estar bien escritas</td>
+</tr>
+<tr>
+<td>El editor dice que falta algo</td>
+<td>Escribe en Claude Code: "instálame las dependencias del editor"</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>¿Te trabaste? Pregúntale a <strong>Maestro</strong> (en el menú, <a href="/maestro">/maestro</a>) con el mensaje de error exacto.</p>
+</blockquote> (contenido/maquina.md), 0,4 MB, 1,2 MB y a65ed43b -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Máquina de Contenido | Forja IA</title>
+<meta name="description" content="Tú te grabas. Claude busca qué funciona en tu nicho, te escribe los guiones, te edita el video y te arma la descripción.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="web/base.css?v=a65ed43b">
+<link rel="stylesheet" href="web/tema.css?v=a65ed43b">
+<link rel="stylesheet" href="web/forja.css?v=a65ed43b">
+<script src="web/tema.js?v=a65ed43b"></script>
+<link rel="icon" href="web/favicon.svg?v=a65ed43b" type="image/svg+xml">
+</head>
+<body class="fj-app" data-seccion="maquina" data-raiz="/">
+<script src="web/guias-web.js?v=a65ed43b"></script>
+<script src="web/comun.js?v=a65ed43b"></script>
+<main class="fj-main ancho fj-sis">
+  <section class="fj-card fj-sis-cab">
+    <span class="fj-eyebrow">Gratis por registrarte</span>
+    <h1>Máquina de Contenido</h1>
+    <p>Tú te grabas. Claude busca qué está funcionando en tu nicho, te escribe los guiones en tu forma de hablar, te edita el video y te arma la descripción.</p>
+    <div class="fj-sis-ficha"><span class="nivel">CLAUDE CODE</span><span>6 SKILLS + /MAQUINA</span><span>APIFY GRATIS</span><span>MAC Y WINDOWS</span><span>20 min para instalar</span></div>
+    <div class="fj-sis-bajar">
+      <a class="fj-btn fj-btn-primario" href="/descargas/maquina-de-contenido.zip" download="maquina-de-contenido.zip">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Descargar la Máquina (ZIP · 0,4 MB)
+      </a>
+      <span>Las skills, el instalador y la guía de Apify.</span>
+    </div>
+  </section>
+  <section class="fj-card fj-sis-req fj-nc" id="mq-nc">
+    <h2>¿Quieres más? El pack completo de NovaCut</h2>
+    <p>Más de 50 skills en español: carruseles, historias, plan semanal, humanizador de textos, brief de edición, YouTube, LinkedIn y X. Se instala igual y usa el mismo perfil de voz.</p>
+    <div class="fj-sis-bajar" id="mq-nc-acc"></div>
+  </section>
+  <article class="fj-card fj-sis-guia">
+<h2>Qué hace</h2>
+<p>Es el flujo con el que hice más de 100.000 vistas en una semana, convertido en skills para Claude Code. Tú solo te grabas:</p>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Escribes</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><code>/maquina-perfil</code></td>
+<td>8 preguntas: tu nicho, tus cuentas de referencia, qué vendes y cómo hablas</td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>/maquina-radar</code></td>
+<td>Trae los reels de tu nicho y los ordena por cuánto superaron a su propia cuenta (no por vistas)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>/maquina-guiones</code></td>
+<td>Saca la estructura de los ganadores y te escribe guiones nuevos en tu forma de hablar</td>
+</tr>
+<tr>
+<td>—</td>
+<td><strong>Tú</strong></td>
+<td>Te grabas</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>/nc-editar</code></td>
+<td>Corta silencios, muletillas y tomas repetidas, iguala el audio y pone subtítulos animados</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>/nc-caption</code></td>
+<td>Descripción, comentario fijado y texto de portada con tu palabra clave</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>/maquina-tablero</code></td>
+<td>Anota cómo le fue a cada reel y le dice al radar qué repetir</td>
+</tr>
+</tbody>
+</table></div>
+<p>Con <code>/maquina</code> corre todo en orden y retoma donde quedaste.</p>
+<blockquote>
+<p>No publica nada en tus redes, no se loguea en tu Instagram y no copia textos ajenos: toma la estructura de lo que funciona y escribe con tus palabras.</p>
+</blockquote>
+<h2>Qué necesitas</h2>
+<ul>
+<li><strong>Claude Code</strong>: viene con el plan Pro de Claude o superior (también dentro de la app de escritorio).</li>
+<li><strong>Una cuenta gratis de Apify</strong>: trae US$ 5 de crédito por mes, que alcanzan para unos 1.500 reels.</li>
+<li><strong>Para editar video</strong>: ffmpeg y faster-whisper. Corren en tu computadora y tu video no se sube a ningún lado.</li>
+</ul>
+<h2>1. Descarga e instala</h2>
+<ol>
+<li>Descarga el ZIP con el botón de arriba y descomprímelo.</li>
+<li>Abre la terminal <strong>dentro de la carpeta</strong> <code>maquina-de-contenido</code> y corre el instalador:</li>
+</ol>
+<pre><code class="language-bash">bash instalar.sh
+</code></pre>
+<p>En Windows (PowerShell):</p>
+<pre><code class="language-powershell">powershell -ExecutionPolicy Bypass -File instalar.ps1
+</code></pre>
+<h2>2. Tu clave de Apify (2 minutos)</h2>
+<ol>
+<li>Crea una cuenta gratis en <a href="https://apify.com" target="_blank" rel="noopener">apify.com</a>. No pide tarjeta.</li>
+<li>Tu nombre (arriba a la izquierda) → <strong>Settings</strong> → <strong>API &amp; Integrations</strong> → copia el token.</li>
+<li>Ábrelo y pega la clave después del igual: <code>APIFY_TOKEN=apify_api_...</code><ul>
+<li>Mac: <code>open -e ~/.claude/maquina/.env</code></li>
+<li>Windows: <code>notepad $env:USERPROFILE\.claude\maquina\.env</code></li>
+</ul>
+</li>
+<li>Comprueba que esté todo:</li>
+</ol>
+<pre><code class="language-bash">python3 setup/chequeo.py
+</code></pre>
+<p>En Windows: <code>py setup\chequeo.py</code>. Tiene que marcar ✓ en las skills, Python, Claude Code y Apify.</p>
+<blockquote>
+<p>Nunca pegues la clave en el chat con Claude. Va solo en ese archivo.</p>
+</blockquote>
+<h2>3. Úsala</h2>
+<p>Crea una carpeta para tu contenido (por ejemplo <code>Contenido</code>), abre Claude Code adentro y escribe:</p>
+<pre><code>/maquina
+</code></pre>
+<p>Te hace las preguntas del perfil, te muestra cuánto cuesta el radar antes de gastar y al final te deja los guiones en <code>Contenido/maquina/guiones/</code>.</p>
+<p>¿Quieres verla sin gastar crédito? Pídele a Claude: <em>"corre el radar en modo demo"</em>. Usa cuentas inventadas.</p>
+<h2>4. Edición de video (cuando tengas tu video)</h2>
+<p>La primera vez, en Claude Code escribe: <em>"instálame las dependencias del editor"</em>. Te guía paso a paso y te pide permiso antes de cada comando. Después:</p>
+<pre><code>/nc-editar
+</code></pre>
+<p>Le pasas la ruta de tu video crudo y te muestra el plan de cortes antes de renderizar.</p>
+<h2>Si algo falla</h2>
+<div class="fj-sis-tabla"><table>
+<thead>
+<tr>
+<th>Problema</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/maquina</code> no aparece</td>
+<td>Cierra y abre Claude Code. Si sigue, corre de nuevo el instalador</td>
+</tr>
+<tr>
+<td>"Falta la clave de Apify"</td>
+<td>Revisa que el archivo <code>.env</code> tenga la clave pegada después de <code>APIFY_TOKEN=</code></td>
+</tr>
+<tr>
+<td>Apify 402</td>
+<td>Se terminó el crédito gratis del mes</td>
+</tr>
+<tr>
+<td>El radar no trae reels</td>
+<td>Las cuentas tienen que ser públicas y estar bien escritas</td>
+</tr>
+<tr>
+<td>El editor dice que falta algo</td>
+<td>Escribe en Claude Code: "instálame las dependencias del editor"</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>¿Te trabaste? Pregúntale a <strong>Maestro</strong> (en el menú, <a href="/maestro">/maestro</a>) con el mensaje de error exacto.</p>
+</blockquote>
+  </article>
+</main>
+<script src="web/shell.js?v=a65ed43b"></script>
+<script>
+// Pack completo de NovaCut: se baja con el acceso completo; con el plan gratis abre la ventana de compra
+(function () {
+  var c = document.getElementById("mq-nc-acc");
+  if (FJ.gratis) {
+    c.innerHTML = '<button type="button" class="fj-btn fj-btn-borde" id="mq-nc-btn"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Viene con el acceso completo</button><span>US$ 24,90 pago único, con las 138 guías y los sistemas.</span>';
+    document.getElementById("mq-nc-btn").addEventListener("click", function () { if (FJ.desbloquear) FJ.desbloquear("novacut"); else location.href = "/?plan=1#precio"; });
+  } else {
+    c.innerHTML = '<a class="fj-btn fj-btn-primario" href="/descargas/novacut-skills.zip" download="novacut-skills.zip">Descargar NovaCut completo (ZIP · 1,2 MB)</a><span>Instálalo después de la Máquina: no pisa nada.</span>';
+  }
+})();
+// Botón «Copiar» en cada bloque de código
+document.querySelectorAll(".fj-sis-guia pre").forEach(function (pre) {
+  var b = document.createElement("button");
+  b.type = "button"; b.className = "fj-sis-copiar"; b.textContent = "Copiar";
+  b.addEventListener("click", function () {
+    var t = pre.querySelector("code") ? pre.querySelector("code").innerText : pre.innerText;
+    navigator.clipboard.writeText(t).then(function () { b.textContent = "Copiado"; setTimeout(function () { b.textContent = "Copiar"; }, 1500); });
+  });
+  pre.appendChild(b);
+});
+</script>
+</body>
+</html>

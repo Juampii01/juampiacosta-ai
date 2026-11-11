@@ -66,6 +66,15 @@ test("sistemas: la guía y el ZIP solo con acceso completo", () => {
   assert.deepEqual(decidir("/descargas/setter-ai.zip", "pago"), { pasa: true });
 });
 
+test("máquina de contenido: gratis con registro; NovaCut completo solo con acceso completo", () => {
+  assert.deepEqual(decidir("/maquina", null), { a: "/?volver=/maquina#gratis" });
+  assert.deepEqual(decidir("/descargas/maquina-de-contenido.zip", null), { prohibido: true });
+  assert.deepEqual(decidir("/maquina", "gratis"), { pasa: true });
+  assert.deepEqual(decidir("/descargas/maquina-de-contenido.zip", "gratis"), { pasa: true });
+  assert.deepEqual(decidir("/descargas/novacut-skills.zip", "gratis"), { prohibido: true });
+  assert.deepEqual(decidir("/descargas/novacut-skills.zip", "pago"), { pasa: true });
+});
+
 test("panel: solo el equipo, aunque haya pagado", () => {
   assert.deepEqual(decidir("/panel", "pago", false), { a: "/recursos" });
   assert.deepEqual(decidir("/panel.html", "gratis", false), { a: "/recursos" });

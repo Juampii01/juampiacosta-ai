@@ -21,6 +21,7 @@ var FJ = (function () {
     comunidad: '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>',
     sistemas: '<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>',
     biblioteca: '<path d="M4 4h6a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4z"/><path d="M20 4h-6a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h6z"/>',
+    maquina: '<rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/>',
     maestro: '<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/>',
     panel: '<path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/>',
     lupa: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>',
@@ -49,7 +50,8 @@ var FJ = (function () {
       item("sistemas", "Sistemas", raiz + "sistemas") +
       item("biblioteca", "Biblioteca", raiz + "biblioteca#posts", seccion === "biblioteca" ? '' : svg("abajo", 2)) + sub +
     '</nav>' +
-    '<nav class="fj-nav" aria-label="Herramientas IA"><div class="fj-nav-tit">HERRAMIENTAS IA</div>' + item("maestro", "Maestro", raiz + "maestro", '<span class="fj-badge">IA</span>') + '</nav>' +
+    '<nav class="fj-nav" aria-label="Herramientas IA"><div class="fj-nav-tit">HERRAMIENTAS IA</div>' + item("maestro", "Maestro", raiz + "maestro", '<span class="fj-badge">IA</span>') +
+      item("maquina", "Máquina de Contenido", raiz + "maquina", gratis ? '<span class="fj-badge">GRATIS</span>' : '') + '</nav>' +
     (admin ? '<nav class="fj-nav" aria-label="Equipo"><div class="fj-nav-tit">EQUIPO</div>' + item("panel", "Panel", raiz + "panel") + '</nav>' : '') +
     (gratis ? '<div class="fj-plan"><b>Plan gratis</b><div class="fj-barra"><i style="width:' + (total ? Math.round(abiertas / total * 100) : 0) + '%"></i></div>' +
       '<small>' + abiertas + ' de ' + total + ' guías abiertas</small><a class="fj-btn fj-btn-primario" href="/?plan=1#precio">Desbloquear todo</a></div>'

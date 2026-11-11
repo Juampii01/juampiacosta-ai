@@ -328,6 +328,22 @@ def sistemas_paginas(v):
     return len(hechos)
 
 
+def maquina_pagina(v):
+    """/maquina: la Máquina de Contenido (gratis con registro) desde contenido/maquina.md, con su ZIP y el de NovaCut completo."""
+    import markdown
+    texto = re.sub(r"(?m)^ {2,3}(?=[-*] |\d+\. )", "    ", (RAIZ / "contenido" / "maquina.md").read_text())
+    cuerpo = markdown.markdown(texto, extensions=["tables", "fenced_code"], output_format="html")
+    cuerpo = cuerpo.replace("<table>", '<div class="fj-sis-tabla"><table>').replace("</table>", "</table></div>")
+    cuerpo = re.sub(r'<a href="(https?://[^"]+)"', r'<a href="\1" target="_blank" rel="noopener"', cuerpo)
+    def mb(nombre):
+        z = RAIZ / "descargas" / nombre
+        assert z.exists(), f"falta descargas/{nombre}"
+        return f"{z.stat().st_size / 1e6:.1f} MB".replace(".", ",")
+    t = (WEB / "maquina.html").read_text().replace("{{V}}", v).replace("{{ZIP}}", mb("maquina-de-contenido.zip")).replace("{{ZIP_NC}}", mb("novacut-skills.zip"))
+    assert "{{" not in t.replace("{{GUIA}}", ""), "maquina.html: quedó un {{…}} sin rellenar"
+    (RAIZ / "maquina.html").write_text(t.replace("{{GUIA}}", cuerpo))
+
+
 def inicio(v):
     """Página de inicio: cifras y títulos de las guías desde los datos, precio y link de pago desde contenido/config.json.
     Sin pago_url, el botón lleva al DM de Instagram para comprar a mano."""
@@ -378,6 +394,7 @@ if __name__ == "__main__":
     n = guias_web(v, guias)
     paginas(v)
     n_sis = sistemas_paginas(v)
+    maquina_pagina(v)
     inicio(v)
     if SKILLS_LARGAS:
         print(f"aviso: {len(SKILLS_LARGAS)} skills con description de más de 200 caracteres (la app no las acepta)")

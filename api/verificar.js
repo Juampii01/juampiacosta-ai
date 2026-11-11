@@ -11,7 +11,7 @@ import { config, enc, ipDe, json, leerCuerpo, sb } from "../lib/db.js";
 
 export function destinoSeguro(v) {
   const d = String(v || "");
-  return /^\/(inicio|recursos|biblioteca|sistemas|comunidad|cuenta|panel|guias\/[a-z0-9-]{3,120})(\.html)?(#[a-z0-9-]{1,40})?$/.test(d) ? d : "/inicio";
+  return /^\/(inicio|maquina|recursos|biblioteca|sistemas|comunidad|cuenta|panel|guias\/[a-z0-9-]{3,120})(\.html)?(#[a-z0-9-]{1,40})?$/.test(d) ? d : "/inicio";
 }
 
 export function cookiesDeSesion(cookie, nivel, nombre, admin = false) {

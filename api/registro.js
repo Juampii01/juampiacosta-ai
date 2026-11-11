@@ -110,6 +110,6 @@ export default async function handler(req, res) {
   // Si vino desde una guía gratis, vuelve a esa guía; si no, a la biblioteca
   const destino = String(cuerpo.volver || "");
   // «/biblioteca» (link de los comentarios de reels): directo a la sección De mis reels para buscar la palabra del video
-  res.setHeader("Location", /^\/guias\/[a-z0-9-]{3,120}(\.html)?$/.test(destino) ? destino : destino === "/biblioteca" ? "/biblioteca#posts" : "/recursos");
+  res.setHeader("Location", /^\/guias\/[a-z0-9-]{3,120}(\.html)?$/.test(destino) ? destino : destino === "/biblioteca" ? "/biblioteca#posts" : destino === "/maquina" ? "/maquina" : "/recursos");
   res.end();
 }

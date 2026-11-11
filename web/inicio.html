@@ -319,7 +319,7 @@
   });
   // Vino desde una guía gratis: después del registro vuelve a esa guía
   var volver = q.get("volver");
-  if (volver && (/^\/guias\/[a-z0-9-]{3,120}(\.html)?$/.test(volver) || volver === "/biblioteca")) {
+  if (volver && (/^\/guias\/[a-z0-9-]{3,120}(\.html)?$/.test(volver) || volver === "/biblioteca" || volver === "/maquina")) {
     document.querySelectorAll('input[name="volver"]').forEach(function (c) { c.value = volver; });
     var tit = document.querySelector("#gratis h2");
     if (tit) tit.textContent = "Regístrate gratis y te abro la guía que pediste";
