@@ -30,8 +30,11 @@ export async function ofertaPara(email, consultar = sb) {
   try {
     const a = (await consultar("ajustes?clave=eq.oferta&select=valor"))[0];
     const o = a && a.valor;
-    if (!o || !o.activa || !o.hotmart || !o.desde) return null;
-    const vista = await consultar(`interes?email=eq.${enc(email)}&evento=eq.oferta_vista&creado=gte.${enc(o.desde)}&select=id&limit=1`);
+    // «prueba»: emails que la ven aunque esté apagada (para probarla antes de prenderla para todos)
+    const prueba = Array.isArray(o && o.prueba) && o.prueba.includes(email);
+    if (!o || !o.hotmart || !(prueba || (o.activa && o.desde))) return null;
+    const desde = o.activa && o.desde ? o.desde : o.prueba_desde || "2000-01-01";
+    const vista = await consultar(`interes?email=eq.${enc(email)}&evento=eq.oferta_vista&creado=gte.${enc(desde)}&select=id&limit=1`);
     if (vista.length) return null;
     return { precio: o.precio, antes: o.antes, hotmart: o.hotmart, mpago: o.mpago || "", pesos: o.pesos || "" };
   } catch (e) { console.error("oferta:", e.message); return null; }

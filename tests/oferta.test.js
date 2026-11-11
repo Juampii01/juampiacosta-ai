@@ -13,6 +13,9 @@ test("oferta: solo si está activa, con link y sin verla en esta ronda", async (
   assert.equal(await ofertaPara("a@x.com", falso({ ...AJ, activa: false }, [])), null);
   assert.equal(await ofertaPara("a@x.com", falso({ ...AJ, hotmart: "" }, [])), null);
   assert.equal(await ofertaPara("a@x.com", falso(null, [])), null);
+  // Apagada, pero el email está en «prueba»: la ve
+  assert.equal((await ofertaPara("a@x.com", falso({ ...AJ, activa: false, prueba: ["a@x.com"] }, [])) || {}).precio, "19,90");
+  assert.equal(await ofertaPara("b@x.com", falso({ ...AJ, activa: false, prueba: ["a@x.com"] }, [])), null);
   assert.equal(await ofertaPara("a@x.com", async () => { throw new Error("caída"); }), null);
 });
 
