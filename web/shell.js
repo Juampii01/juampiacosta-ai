@@ -100,7 +100,7 @@ var FJ = (function () {
   fetch("/api/cuenta?p=" + encodeURIComponent(location.pathname), { credentials: "same-origin" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
     if (d && d.email) document.getElementById("fj-email").textContent = d.email;
     if (d && d.subio) location.reload(); // acaba de acreditarse el pago: recarga con todo abierto
-    if (d && d.oferta && FJ.ofertaUnica) FJ.ofertaUnica(d.oferta, d.email);
+    if (d && d.oferta && FJ.ofertaUnica) FJ.ofertaUnica(d.oferta, d.email, d.perfil);
   }).catch(function () {});
 
   // Progreso guardado en tu cuenta: se mezcla con el del navegador para que se vea igual en el móvil y en la compu
@@ -190,10 +190,10 @@ var FJ = (function () {
 
   // Oferta por única vez (se prende desde el Panel): le aparece una sola vez a cada uno. Apenas se ve queda anotada,
   // así que si cierra la pestaña tampoco le vuelve a salir. Si el formulario de bienvenida está abierto, espera a que cierre.
-  FJ.ofertaUnica = function (o, mail) {
+  FJ.ofertaUnica = function (o, mail, perfil) {
     FJ.oferta = o;
     var guardado = function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } };
-    var conPerfil = FJ.cookie("jpa_perfil") === "1" || guardado("jpa_perfil") === "1";
+    var conPerfil = !!perfil || guardado("jpa_perfil_" + mail) === "1";
     if (conPerfil) return setTimeout(function () { mostrarOferta(o, mail); }, 1200);
     // Recién registrado: el formulario de bienvenida ya pregunta por la oferta (y «Sí, ahora» la abre).
     // Cuando el formulario se cierra: si respondió otra cosa, la oferta cuenta como vista y pasada; si no llegó a esa pregunta, aparece.

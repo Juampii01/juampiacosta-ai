@@ -272,6 +272,7 @@
     var datos = datosHasta(PREGUNTAS.length); datos.completo = true;
     enviar(datos);
     guardado("jpa_perfil", "1");
+    try { var em = document.getElementById("fj-email"); if (em && em.textContent) guardado("jpa_perfil_" + em.textContent, "1"); } catch (e) {}
     var copia = datosHasta(PREGUNTAS.length); delete copia.whatsapp; copia.ruta = rutaPara(st.resp);
     guardado("jpa_respuestas", JSON.stringify(copia));
     pantallaEspera({ emoji: "✨", ceja: "Armando tu ruta", tit: "Un segundo" + (nombre ? ", " + nombre : "") + "…", texto: "Estoy eligiendo por dónde te conviene empezar.", ms: 1300 });
@@ -376,14 +377,15 @@
 
   var forzar = /[?&]bienvenida=1/.test(location.search);
   var gratis = /(?:^|;\s*)jpa_nivel=gratis/.test(document.cookie);
-  var hecho = cookie("jpa_perfil") === "1" || guardado("jpa_perfil") === "1";
   function arrancar() { if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", abrir); else abrir(); }
   if (forzar) arrancar();
-  else if (gratis && !hecho) {
-    // Antes de preguntar, confirma en la cuenta: si ya respondió en otro dispositivo o dominio, no se lo vuelve a pedir
+  else if (gratis) {
+    // Siempre lo confirma en la cuenta (no en el navegador): si en esta compu ya lo completó otra cuenta, a esta igual le sale
     fetch("/api/cuenta", { credentials: "same-origin" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
-      if (d && d.perfil) { guardado("jpa_perfil", "1"); document.cookie = "jpa_perfil=1; Path=/; Max-Age=31536000; Secure; SameSite=Lax"; return; }
+      if (!d || !d.email) return;
+      var marca = "jpa_perfil_" + d.email;
+      if (d.perfil || guardado(marca) === "1") { guardado(marca, "1"); return; }
       arrancar();
-    }).catch(arrancar);
+    }).catch(function () {});
   }
 })();
