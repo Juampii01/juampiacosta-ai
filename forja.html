@@ -1,0 +1,232 @@
+<!doctype html>
+<!-- Landing de venta directa para anuncios (tráfico pago → Hotmart, sin registro gratis). Página suelta: build.py no la toca. -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forja IA · Arma tu primer sistema con Claude y véndeselo a un negocio</title>
+<meta name="description" content="El paso a paso para elegir un sistema, armarlo con Claude y cobrarlo, aunque no sepas programar. US$ 24,90 pago único hasta el 30 de noviembre.">
+<meta property="og:title" content="Arma tu primer sistema con Claude y véndeselo a un negocio">
+<meta property="og:image" content="https://www.forjaia.com/web/og.png">
+<meta property="og:type" content="website">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="web/base.css">
+<link rel="stylesheet" href="web/tema.css">
+<link rel="stylesheet" href="web/forja.css">
+<script src="web/tema.js"></script>
+<style>
+  .l-wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  .l-cab { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    background: color-mix(in srgb, var(--navy) 70%, transparent); border-bottom: 1px solid var(--line); }
+  .l-cab .l-wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 64px; }
+  .l-marca { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.01em; }
+  .l-marca svg { width: 32px; height: 32px; border-radius: 9px; }
+  .l-marca b { color: var(--sky); }
+  .l-cab nav { display: flex; align-items: center; gap: 10px; }
+  .l-boton { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 22px; border-radius: 999px;
+    background: var(--blue); color: #fff; font-weight: 700; border: 0; cursor: pointer; font-size: 16px;
+    box-shadow: 0 10px 30px -10px rgba(255, 90, 31, .7); transition: transform .15s; }
+  .l-boton:hover { transform: translateY(-1px); }
+  .l-boton--chico { padding: 9px 16px; font-size: 14px; }
+  .l-boton--borde { background: transparent; color: var(--ink); border: 1px solid var(--line); box-shadow: none; }
+  .l-hero { padding: 72px 0 40px; text-align: center; }
+  .l-hero .mono { color: var(--glow); }
+  .l-hero h1 { font-size: clamp(34px, 6vw, 64px); line-height: 1.02; letter-spacing: -.035em; margin: 14px auto 18px; max-width: 900px; }
+  .l-hero h1 em { font-style: normal; color: var(--sky); }
+  .l-hero p { color: var(--muted); font-size: clamp(16px, 2vw, 19px); line-height: 1.55; max-width: 640px; margin: 0 auto 28px; }
+  .l-acciones { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .l-video { position: relative; max-width: 760px; margin: 40px auto 0; aspect-ratio: 16 / 9; border-radius: 22px; overflow: hidden;
+    border: 1px solid var(--line); box-shadow: 0 40px 90px -40px rgba(255, 90, 31, .55); background: #000; }
+  .l-video iframe, .l-video video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .l-linea { margin: 34px auto 0 !important; font-size: 15px !important; color: var(--muted); }
+  .l-linea b { color: var(--ink); }
+  .l-pasos { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 26px; }
+  .l-pasos li { display: flex; gap: 14px; padding: 20px; border-radius: var(--radius); }
+  .l-pasos b { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--blue); color: #fff; }
+  .l-pasos h3 { font-size: 17px; letter-spacing: -.01em; }
+  .l-pasos p { color: var(--muted); font-size: 14.5px; line-height: 1.5; margin-top: 4px; }
+  .l-sec { padding: 64px 0 8px; }
+  .l-sec h2 { font-size: clamp(26px, 4vw, 40px); letter-spacing: -.03em; line-height: 1.08; margin: 10px 0 10px; }
+  .l-sec > .l-wrap > p { color: var(--muted); max-width: 620px; line-height: 1.55; }
+  .l-grilla { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 26px; }
+  .l-tarjeta { padding: 22px; border-radius: var(--radius); }
+  .l-tarjeta h3 { font-size: 18px; margin: 8px 0 6px; letter-spacing: -.01em; }
+  .l-tarjeta p { color: var(--muted); font-size: 15px; line-height: 1.5; }
+  .l-tarjeta .mono { color: var(--glow); }
+  .l-precio { display: grid; grid-template-columns: 1.2fr 1fr; gap: 18px; margin-top: 26px; align-items: stretch; }
+  .l-caja { padding: 28px; border-radius: var(--radius); }
+  .l-caja--precio { border: 1px solid rgba(255, 90, 31, .5); box-shadow: 0 0 0 1px rgba(255, 90, 31, .15), 0 30px 80px -40px rgba(255, 90, 31, .6); }
+  .l-monto { display: flex; align-items: baseline; gap: 12px; margin: 10px 0 4px; }
+  .l-monto b { font-size: 56px; letter-spacing: -.04em; }
+  .l-monto s { color: var(--muted); font-size: 20px; }
+  .l-caja ul { list-style: none; margin: 18px 0 24px; display: grid; gap: 10px; }
+  .l-caja li::before { content: "✓"; color: var(--sky); font-weight: 700; margin-right: 10px; }
+  .l-caja .l-boton { width: 100%; }
+  .l-valor { margin-top: 14px; padding: 12px 14px; border-radius: 14px; font-size: 14.5px; line-height: 1.5; background: rgba(255, 90, 31, .1); border: 1px solid rgba(255, 90, 31, .3); }
+  .l-chico { color: var(--muted); font-size: 13px; margin-top: 12px; line-height: 1.5; }
+  .l-entrar label { display: block; font-size: 14px; color: var(--muted); margin: 14px 0 8px; }
+  .l-entrar input { width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line); background: var(--glass); color: var(--ink);
+    font: inherit; font-size: 16px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 12px; }
+  .l-entrar input:focus { outline: 2px solid var(--sky); outline-offset: 1px; }
+  .l-error { display: none; color: #ff8f8f; font-size: 14px; margin-bottom: 10px; }
+  .l-gratis { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; padding: 32px; border-radius: 26px; align-items: center;
+    border: 1px solid rgba(255, 138, 76, .35); }
+  .l-gratis h2 { margin-top: 8px; }
+  .l-gratis p { color: var(--muted); line-height: 1.55; }
+  .l-form-gratis label { display: block; font-size: 14px; color: var(--muted); margin: 10px 0 6px; }
+  .l-form-gratis input:not([type=hidden]) { width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line); background: var(--glass); color: var(--ink);
+    font: inherit; font-size: 16px; }
+  .l-form-gratis input:focus { outline: 2px solid var(--sky); outline-offset: 1px; }
+  .l-form-gratis .l-boton { width: 100%; margin-top: 14px; }
+  .l-faq { margin-top: 22px; display: grid; gap: 10px; max-width: 760px; }
+  .l-faq details { padding: 18px 20px; border-radius: 16px; }
+  .l-faq summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+  .l-faq summary::-webkit-details-marker { display: none; }
+  .l-faq summary::after { content: "+"; flex: none; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; font-size: 18px; font-weight: 500;
+    color: var(--glow); background: rgba(255, 90, 31, .12); transition: transform .2s; }
+  .l-faq details[open] summary::after { transform: rotate(45deg); }
+  .l-faq p { color: var(--muted); margin-top: 10px; line-height: 1.55; }
+  .l-quien { display: flex; align-items: center; gap: 22px; padding: 26px 28px; border-radius: 24px; }
+  .l-quien-logo { flex: none; width: 64px; height: 64px; }
+  .l-quien-logo svg { width: 100%; height: 100%; display: block; }
+  .l-quien h3 { margin-top: 4px; font-size: 22px; }
+  .l-quien p { margin-top: 6px; color: var(--muted); line-height: 1.55; max-width: 620px; }
+  .l-quien-ig { margin-left: auto; flex: none; font-weight: 700; color: var(--sky); }
+  @media (max-width: 720px) { .l-quien { flex-direction: column; align-items: flex-start; } .l-quien-ig { margin-left: 0; } }
+  .l-pie { padding: 64px 0 48px; color: var(--muted); font-size: 14px; text-align: center; }
+  .l-pie a { color: var(--ink); }
+  @media (max-width: 820px) {
+    .l-grilla, .l-precio, .l-gratis, .l-pasos { grid-template-columns: 1fr; }
+    .l-gratis { padding: 22px; }
+      .l-hero { padding-top: 48px; }
+  }
+  @media (max-width: 480px) {
+    .l-cab .l-marca span { display: none; }
+  }
+
+  .v-para { list-style: none; display: grid; gap: 12px; margin-top: 22px; max-width: 760px; }
+  .v-para li { padding: 16px 18px; border-radius: 16px; line-height: 1.5; }
+  .v-para li::before { content: "→"; color: var(--glow); font-weight: 700; margin-right: 10px; }
+  .v-fijo { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: color-mix(in srgb, var(--navy) 88%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid var(--line); display: none; }
+  .v-fijo .l-boton { width: 100%; }
+  @media (max-width: 820px) { .v-fijo { display: block; } body { padding-bottom: 84px; } }
+  .l-monto { flex-wrap: wrap; }
+  @media (max-width: 480px) { .l-monto b { font-size: 46px; } }
+  .v-sis { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .v-sis span { padding: 7px 12px; border-radius: 999px; font-size: 14px; border: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<header class="l-cab"><div class="l-wrap">
+  <span class="l-marca"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#17110e"/><path d="M9 22h14l-2-5H11z" fill="#ff5a1f"/><path d="M16 6c3 3 4 5 2 8-1-1-2-1-3 0-2-2-1-5 1-8z" fill="#ffb27a"/></svg><span>Forja <b>IA</b></span></span>
+  <nav><a class="l-boton l-boton--chico js-pagar" href="#precio">Quiero el acceso</a></nav>
+</div></header>
+
+<main>
+<section class="l-hero"><div class="l-wrap">
+  <span class="mono">Precio de lanzamiento · hasta el 30 de noviembre</span>
+  <h1>Arma tu primer sistema con Claude y <em>véndeselo a un negocio</em>, aunque no sepas programar</h1>
+  <p>Eliges un sistema que ya está probado, lo armas con Claude siguiendo los pasos, y sales a venderlo con la oferta, el primer mensaje y la propuesta ya escritos.</p>
+  <div class="l-acciones"><a class="l-boton js-pagar" href="#precio">Quiero el acceso · US$ 24,90</a></div>
+  <p class="l-linea">Pago único · Es tuyo para siempre · <b>15 días de garantía</b></p>
+</div></section>
+
+<section class="l-sec"><div class="l-wrap">
+  <span class="mono">Esto es para ti si…</span>
+  <h2>Ya usas Claude o ChatGPT, pero todavía no te pagan por eso</h2>
+  <ul class="v-para">
+    <li class="glass">Ves a otros vender automatizaciones y agentes a negocios y no sabes por dónde empezar.</li>
+    <li class="glass">Guardaste mil tutoriales de IA y ninguno te dijo qué construir ni a quién vendérselo.</li>
+    <li class="glass">Tienes un negocio y quieres que Claude haga parte del trabajo, sin contratar a un programador.</li>
+    <li class="glass">No sabes programar y quieres un camino en orden, no videos sueltos.</li>
+  </ul>
+</div></section>
+
+<section class="l-sec"><div class="l-wrap">
+  <span class="mono">Cómo funciona</span>
+  <h2>Tres pasos, en este orden</h2>
+  <ol class="l-pasos">
+    <li class="glass"><b>1</b><div><h3>Elige qué construir</h3><p>10 sistemas listos para replicar y sistemas armados por rubro: inmobiliarias, clínicas y más.</p></div></li>
+    <li class="glass"><b>2</b><div><h3>Ármalo con Claude</h3><p>Guías paso a paso con un ejemplo resuelto, qué hacer si algo falla, prompts para copiar y archivos para descargar.</p></div></li>
+    <li class="glass"><b>3</b><div><h3>Véndelo</h3><p>El roadmap para vender IA: la oferta, el primer mensaje, el diagnóstico, la propuesta y cuánto cobrar.</p></div></li>
+  </ol>
+</div></section>
+
+<section class="l-sec"><div class="l-wrap">
+  <span class="mono">Qué incluye</span>
+  <h2>Todo lo que uso para armar y vender sistemas con Claude</h2>
+  <div class="l-grilla">
+    <div class="l-tarjeta glass"><span class="mono">Construir</span><h3>10 sistemas listos</h3><p>Con su guía y sus archivos para replicarlos.</p>
+      <div class="v-sis"><span>Jarvis OS</span><span>Setter AI</span><span>Dashboard de Ventas</span><span>Web Creator 360</span><span>Lead Tracking</span><span>y 5 más</span></div></div>
+    <div class="l-tarjeta glass"><span class="mono">Vender</span><h3>El roadmap para vender IA</h3><p>25 guías: de cero a tu primer cliente, con el sistema completo para venderle IA a negocios.</p></div>
+    <div class="l-tarjeta glass"><span class="mono">Aprender</span><h3>142 guías paso a paso</h3><p>En 14 temas: Claude, agentes, skills, conectores, Claude Code, contenido y tu propia app.</p></div>
+    <div class="l-tarjeta glass"><span class="mono">Copiar y pegar</span><h3>222 prompts</h3><p>Ordenados por tarea, listos para usar.</p></div>
+    <div class="l-tarjeta glass"><span class="mono">Tu guía</span><h3>Maestro</h3><p>Te dice por dónde arrancar según lo que haces y lo que quieres lograr.</p></div>
+    <div class="l-tarjeta glass"><span class="mono">Para siempre</span><h3>Todo lo que se sume</h3><p>Pagas una vez y te quedas con las guías nuevas que se agregan cada semana.</p></div>
+  </div>
+</div></section>
+
+<section class="l-sec" id="precio"><div class="l-wrap">
+  <span class="mono">Acceso completo</span>
+  <h2>Un solo pago, sin suscripción</h2>
+  <div class="l-precio">
+    <div class="l-caja glass l-caja--precio">
+      <span class="mono">Precio de lanzamiento</span>
+      <div class="l-monto"><b>US$ 24,90</b><s>US$ 44,90</s></div>
+      <p class="l-chico">Hasta el 30 de noviembre. En diciembre sube a US$ 44,90 y desde enero pasa a ser mensual.</p>
+      <ul>
+        <li>10 sistemas listos para replicar</li>
+        <li>El roadmap para vender IA a negocios</li>
+        <li>142 guías y 222 prompts</li>
+        <li>Todo lo que se sume después</li>
+      </ul>
+      <a class="l-boton js-pagar" href="https://pay.hotmart.com/J108404247X?off=8flev061" data-base="https://pay.hotmart.com/J108404247X?off=8flev061">Quiero el acceso · US$ 24,90</a>
+      <p class="l-chico">Pagas con Hotmart en la moneda de tu país. ¿Estás en Argentina? <a href="https://mpago.la/1Q8PbXK">Paga con Mercado Pago ($ 39.000)</a>.</p>
+    </div>
+    <div class="l-caja glass">
+      <span class="mono">Garantía</span>
+      <h3 style="font-size:22px;margin:10px 0 8px">15 días para probarlo</h3>
+      <p class="l-chico" style="font-size:15px">Si entras y sientes que no es para ti, pides el reembolso desde Hotmart dentro de los 15 días y te devuelven el pago completo.</p>
+      <span class="mono" style="display:block;margin-top:22px">Después de pagar</span>
+      <p class="l-chico" style="font-size:15px">Te llega un mail de Hotmart. Entras en forjaia.com, te registras con el mismo email de la compra y se te abre todo.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="l-sec"><div class="l-wrap">
+  <span class="mono">Preguntas</span>
+  <h2>Antes de entrar</h2>
+  <div class="l-faq">
+    <details class="glass"><summary>¿Necesito saber programar?</summary><p>No. Los sistemas y el roadmap para vender están pensados para armarlos con Claude sin programar. Las guías de Claude Code son para quien quiera ir más lejos, y arrancan desde cero.</p></details>
+    <details class="glass"><summary>¿Qué plan de Claude necesito?</summary><p>La mayoría funciona con el plan gratis de Claude. Algunas cosas, como Claude Code o las tareas programadas, necesitan un plan pago. Cada guía dice qué necesita.</p></details>
+    <details class="glass"><summary>¿Es un pago único?</summary><p>Sí, hasta el 30 de noviembre: pagas US$ 24,90 una vez y es tuyo para siempre, con todo lo que se sume después. Desde enero el acceso pasa a ser mensual para quienes entren desde ahí.</p></details>
+    <details class="glass"><summary>¿Cómo entro después de pagar?</summary><p>Te registras en forjaia.com con el mismo email que usaste en Hotmart y se abre todo solo. Si pagaste con Mercado Pago, escríbeme por Instagram (@juampiiacosta.ai) con tu email y te lo activo.</p></details>
+    <details class="glass"><summary>¿Y si no me sirve?</summary><p>Tienes 15 días para pedir el reembolso desde Hotmart.</p></details>
+  </div>
+</div></section>
+
+<section class="l-sec"><div class="l-wrap" style="text-align:center">
+  <h2>Elige tu primer sistema hoy</h2>
+  <div class="l-acciones" style="margin-top:18px"><a class="l-boton js-pagar" href="#precio">Quiero el acceso · US$ 24,90</a></div>
+</div></section>
+</main>
+
+<footer class="l-pie"><div class="l-wrap">Forja IA · <a href="https://www.instagram.com/juampiiacosta.ai/">@juampiiacosta.ai</a></div></footer>
+<div class="v-fijo"><a class="l-boton js-pagar" href="#precio">Quiero el acceso · US$ 24,90</a></div>
+
+<script>
+(function () {
+  // De qué anuncio vino: utm_campaign del link del anuncio → sck en el link de Hotmart (vuelve en el aviso de compra)
+  var q = new URLSearchParams(location.search);
+  var sck = (q.get("utm_campaign") || "lp-sin-anuncio").toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 60);
+  var pago = document.querySelector("[data-base]");
+  var link = pago.getAttribute("data-base") + "&sck=" + encodeURIComponent(sck);
+  document.querySelectorAll(".js-pagar").forEach(function (a) { a.href = link; a.target = "_blank"; a.rel = "noopener"; });
+})();
+</script>
+</body>
+</html>
