@@ -22,6 +22,19 @@ export function limpiarRegistro(cuerpo) {
   return fila;
 }
 
+// De qué anuncio vino quien se registra por ManyChat: cada anuncio pone el campo de usuario «anuncio» (por ejemplo ad-codex)
+// y llega en el «Full Contact Data» como custom_fields.anuncio. Se guarda como utm_campaign, con utm_source «ig-ads».
+export function anuncioDe(c) {
+  const cf = (c && c.custom_fields) || {};
+  const v = String((c && c.anuncio) || cf.anuncio || "").trim().toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 60);
+  return v || null;
+}
+export function marcarAnuncio(fila, c) {
+  const ad = anuncioDe(c);
+  if (fila && ad) { fila.utm_source = fila.utm_source || "ig-ads"; fila.utm_campaign = ad; }
+  return fila;
+}
+
 async function leerCuerpo(req) {
   if (req.body && typeof req.body === "object") return req.body;
   if (typeof req.body === "string") return Object.fromEntries(new URLSearchParams(req.body));

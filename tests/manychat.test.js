@@ -29,3 +29,10 @@ test("el link mágico se lee, vence a los 30 días y no sirve como cookie ni al 
   const c = await crearCookie("ana@mail.com", "", "s1", "pago");
   assert.equal(await leerEnlace(c, "s1"), null);
 });
+
+import { anuncioDe, marcarAnuncio } from "../api/registro.js";
+test("manychat: el campo «anuncio» del contacto queda como utm_campaign", () => {
+  assert.equal(anuncioDe({ custom_fields: { anuncio: " Ad-Codex " } }), "ad-codex");
+  assert.equal(anuncioDe({ custom_fields: {} }), null);
+  assert.deepEqual(marcarAnuncio({ email: "a@b.co" }, { custom_fields: { anuncio: "ad-acceso" } }), { email: "a@b.co", utm_source: "ig-ads", utm_campaign: "ad-acceso" });
+});

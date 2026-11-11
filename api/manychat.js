@@ -9,7 +9,7 @@
 import { crearEnlace } from "../lib/acceso.js";
 import { SITIO } from "../lib/sitio.js";
 import { GUIAS_GRATIS } from "../lib/gratis.js";
-import { guardarEnSupabase, limpiarRegistro } from "./registro.js";
+import { guardarEnSupabase, limpiarRegistro, marcarAnuncio } from "./registro.js";
 
 export function claveIgual(a, b) {
   a = String(a || ""); b = String(b || "");
@@ -48,6 +48,7 @@ export default async function handler(req, res) {
   // Sin mail válido (por ejemplo, si tocó «Sin mail»): el link lleva al registro normal de la web, así los botones nunca quedan rotos
   if (!fila) return responder(200, { ok: false, error: "email", link: `${SITIO}/api/acceso?t=` });
   fila.origen = "manychat";
+  marcarAnuncio(fila, cuerpo);
   const guia = guiaGratis(cuerpo.guia);
   if (guia) fila.utm_content = guia.slice(0, 120);
 

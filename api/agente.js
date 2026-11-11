@@ -9,7 +9,7 @@
 
 import { claveIgual } from "./manychat.js";
 import { SITIO } from "../lib/sitio.js";
-import { cabeceras, guardarEnSupabase, limpiarRegistro } from "./registro.js";
+import { cabeceras, guardarEnSupabase, limpiarRegistro, marcarAnuncio } from "./registro.js";
 import { crearEnlace } from "../lib/acceso.js";
 import { GUIAS_GRATIS, PALABRAS } from "../lib/gratis.js";
 
@@ -224,6 +224,7 @@ export default async function handler(req, res) {
     if (fila) {
       try {
         fila.origen = "manychat";
+        marcarAnuncio(fila, c);
         const guia = guiaPedida(historial.filter((f) => f.rol === "usuario").map((f) => f.texto));
         if (guia) fila.utm_content = guia;
         await guardarEnSupabase(fila, db);
