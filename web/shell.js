@@ -193,6 +193,8 @@ var FJ = (function () {
   FJ.ofertaUnica = function (o, mail, perfil) {
     FJ.oferta = o;
     var guardado = function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } };
+    // En una guía no se le cruza nada: la oferta espera a la próxima página que abra
+    if (/^\/guias\//.test(location.pathname)) return;
     var conPerfil = !!perfil || guardado("jpa_perfil_" + mail) === "1";
     if (conPerfil) return setTimeout(function () { mostrarOferta(o, mail); }, 1200);
     // Recién registrado: el formulario de bienvenida ya pregunta por la oferta (y «Sí, ahora» la abre).

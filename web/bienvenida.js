@@ -405,7 +405,8 @@
   var gratis = /(?:^|;\s*)jpa_nivel=gratis/.test(document.cookie);
   function arrancar() { if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", abrir); else abrir(); }
   if (forzar) arrancar();
-  else if (gratis) {
+  // Primero lo que vino a buscar: en una guía (la de su reel) no se le cruza el formulario; sale en la próxima página que abra
+  else if (gratis && !enGuia) {
     // Siempre lo confirma en la cuenta (no en el navegador): si en esta compu ya lo completó otra cuenta, a esta igual le sale
     fetch("/api/cuenta", { credentials: "same-origin" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
       if (!d || !d.email) return;
