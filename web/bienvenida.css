@@ -104,3 +104,6 @@ html.bv-lock, html.bv-lock body { overflow: hidden !important; }
 @keyframes bv-shake { 20%, 60% { transform: translateX(-5px); } 40%, 80% { transform: translateX(5px); } }
 @keyframes bv-toast { 0% { opacity: 0; transform: translate(-50%, 14px) scale(.94); } 12%, 82% { opacity: 1; transform: translate(-50%, 0) scale(1); } 100% { opacity: 0; transform: translate(-50%, -6px); } }
 @keyframes bv-caer { to { transform: translateY(112vh) rotate(720deg); opacity: 0; } }
+.bv-oferta { width: 100%; display: grid; gap: 6px; padding: 16px 18px; border-radius: 18px; text-align: center; background: rgba(255, 90, 31, .1); border: 1px solid rgba(255, 122, 69, .45); }
+.bv-oferta b { font-size: 20px; letter-spacing: -.02em; line-height: 1.25; }
+.bv-oferta span { color: #c9b3a5; font-size: 14px; line-height: 1.45; }

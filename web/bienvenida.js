@@ -282,7 +282,10 @@
   function resultado() {
     var id = rutaPara(st.resp), ruta = (window.RUTAS || []).filter(function (r) { return r.id === id; })[0];
     var instalar = st.resp.objetivo === "Que me lo instalen en mi negocio";
-    var compra = st.resp.inversion === "Sí, ahora" && window.FJ && FJ.gratis && FJ.desbloquear;
+    // Oferta por única vez activa (Panel): se la ofrece a todos al terminar. Si no, solo a quien dijo «Sí, ahora», a 24,90.
+    var oferta = window.FJ && FJ.gratis && FJ.oferta && !FJ.ofertaMostrada ? FJ.oferta : null;
+    var compra = window.FJ && FJ.gratis && FJ.desbloquear && (oferta || st.resp.inversion === "Sí, ahora");
+    var precio = oferta ? oferta.precio : "24,90";
     var dm = (window.REDES && REDES.dm) || "https://ig.me/m/juampiiacosta.ia";
     Sfx.gran(); confeti(70); progreso();
     el.cuerpo.innerHTML = '<div class="bv-espera"><span class="bv-icono" aria-hidden="true">🎉</span><p class="bv-ceja">Perfil completo</p>' +
@@ -290,7 +293,9 @@
       (ruta ? '<div class="bv-ruta"><small>Tu ruta recomendada · ' + ruta.pasos.length + ' pasos</small><b>' + esc(ruta.t) + '</b><span>' + esc(ruta.d) + '</span></div>' : '') +
       (instalar ? '<a class="bv-extra" href="' + dm + '" target="_blank" rel="noopener"><span class="e">🛠️</span><span><b>¿Quieres que te lo instale yo?</b><br>Escríbeme «INSTALAR» por Instagram y vemos tu caso.</span></a>' : '') +
       (enGuia ? '<p class="bv-texto">Con esto te armé tu sección <b>Recomendados para ti</b> en la biblioteca.</p>' : '<p class="bv-texto">Y te armé arriba de todo tu sección <b>Recomendados para ti</b>' + (window.recomendar ? ', con ' + recomendar(st.resp).length + ' guías elegidas para lo tuyo' : '') + '.</p>') +
-      (compra ? '<button class="bv-ok" type="button" id="bv-comprar">Desbloquear todo · US$ 24,90</button>' : '') +
+      (compra ? '<div class="bv-oferta"><b>¿Te gustaría tener todo completo por US$ ' + esc(precio) + '?</b><span>' +
+        (oferta ? 'Solo ahora, al registrarte. Después queda en US$ ' + esc(oferta.antes) + '.' : 'Las ' + FJ.total + ' guías, los sistemas y Maestro. Pago único: es tuyo para siempre.') +
+        '</span></div><button class="bv-ok" type="button" id="bv-comprar">Sí, lo quiero · US$ ' + esc(precio) + '</button>' : '') +
       (enGuia ? '<button class="' + (compra ? 'bv-saltar' : 'bv-ok') + '" type="button" id="bv-ir">Seguir con la guía →</button>' + (compra ? '' : '<a class="bv-saltar" href="/recursos#inicio">Ver mis recomendados</a>') + '</div>'
         : '<button class="' + (compra ? 'bv-saltar' : 'bv-ok') + '" type="button" id="bv-ir">Ver mis recomendados →</button></div>');
     enfocar(".bv-tit");
