@@ -171,6 +171,19 @@ export default async function handler(req, res) {
   const db = url && clave ? { url, clave } : null;
   const guardar = (rol, t) => db ? supabase("chat_mensajes", { method: "POST", body: JSON.stringify({ contacto, nombre, rol, texto: t }), headers: { Prefer: "return=minimal" } }, db).catch((e) => console.error("No se guardó el mensaje:", e.message)) : null;
 
+  // Contactos silenciados a mano (ajustes.silenciados = ["id", ...]): el agente no les contesta nada, habla Juampi
+  if (db) {
+    try {
+      const fila = await supabase("ajustes?clave=eq.silenciados&select=valor", { method: "GET" }, db);
+      const lista = (fila && fila[0] && fila[0].valor) || [];
+      if (Array.isArray(lista) && lista.map(String).includes(contacto)) {
+        await guardar("usuario", texto);
+        await guardar("derivado", "silenciado");
+        return responder({ ok: true, derivar: "si" });
+      }
+    } catch (e) { console.error("No se leyó la lista de silenciados:", e.message); }
+  }
+
   let historial = [];
   if (db) {
     try {
