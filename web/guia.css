@@ -272,3 +272,5 @@ details p { margin-top: 10px; }
 .g-tarjeta a { overflow-wrap: anywhere; }
 .g-tarjeta code, .lectura li code { font: 500 .88em "JetBrains Mono", monospace; overflow-wrap: anywhere; word-break: break-word; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .1); border-radius: 6px; padding: 1px 5px; }
 @media (max-width: 760px) { .lectura ul.g-lista { grid-template-columns: minmax(0, 1fr); } }
+.g-creditos p { color: var(--muted); font-size: 13px; margin-top: 8px; max-width: 60ch; }
+.g-creditos li { color: var(--muted); font-size: 13px; }

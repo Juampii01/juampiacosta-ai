@@ -74,6 +74,20 @@ function svgGuia(id) {
 
 function dosCifras(n) { return (n < 10 ? "0" : "") + n; }
 
+/** Repos de GitHub (autor, nombre) que aparecen en cualquier parte de la guía, sin repetir. */
+function creditosDe(g) {
+  var vistos = {}, salida = [], re = /github\.com\/([\w-]+)\/([\w.-]+)/g, m;
+  var texto = JSON.stringify(g);
+  while ((m = re.exec(texto))) {
+    var autor = m[1], repo = m[2].replace(/\.git$/, "").replace(/\.+$/, "");
+    if (!repo || autor === "en" || autor === "orgs" || autor === "settings") continue;
+    var k = (autor + "/" + repo).toLowerCase();
+    if (vistos[k]) continue;
+    vistos[k] = 1; salida.push([autor, repo]);
+  }
+  return salida;
+}
+
 // Convierte «github.com/usuario/repo» suelto en enlace
 function enlazar(texto) {
   return texto.replace(/(^|[\s(])((?:https?:\/\/)?(?:www\.)?github\.com\/[\w.-]+\/[\w.-]+)/g, function (m, antes, url) {
@@ -274,6 +288,14 @@ function pintarGuia(caja, g) {
   if (g.faq && g.faq.length) {
     html += '<section id="preguntas" class="g-parte"><span class="g-num"><i>' + svgGuia("duda") + '</i>' + dosCifras(g.secciones.length + 1) + ' · Dudas</span><h2>Preguntas frecuentes</h2>' +
       g.faq.map(function (f) { return '<details class="glass"><summary>' + f.q + '</summary><p>' + adornar(f.a) + '</p></details>'; }).join("") + '</section>';
+  }
+
+  // Créditos: cada repo de GitHub que aparece en la guía, con su autor
+  var repos = creditosDe(g);
+  if (repos.length) {
+    html += '<section class="g-fuentes g-creditos"><span class="g-etq">Créditos</span><p>Estos proyectos son de sus autores. Aquí solo te explicamos para qué sirven y cómo usarlos. Si te sirven, dales una estrella en GitHub.</p><ul>' + repos.map(function (r) {
+      return '<li><a href="https://github.com/' + r[0] + '/' + r[1] + '" target="_blank" rel="noopener">' + r[1] + '</a> · de ' + r[0] + '</li>';
+    }).join("") + '</ul></section>';
   }
 
   // Fuentes oficiales que respaldan la guía

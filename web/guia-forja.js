@@ -45,7 +45,7 @@
   var conPrompt = document.querySelector("#guia .g-prompt");
   if (conPrompt) saltos.push([conPrompt.closest("section").id, "Prompts"]);
   [["ejemplo", "Ejemplo"], ["si-falla", "Si algo falla"], ["kit", "Kit"], ["preguntas", "Preguntas"]].forEach(function (s) { if (document.getElementById(s[0])) saltos.push(s); });
-  var fu = document.querySelector("#guia .g-fuentes");
+  var fu = document.querySelector("#guia .g-fuentes:not(.g-creditos)");
   if (fu) { fu.id = "fuentes"; saltos.push(["fuentes", "Fuentes"]); }
   var nav = document.getElementById("fj-saltos");
   nav.innerHTML = saltos.map(function (s, i) { return '<a href="#' + s[0] + '"' + (i === 0 ? ' class="activo"' : '') + '>' + s[1] + '</a>'; }).join("");

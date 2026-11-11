@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena nvidia-api-gratis-modelos-abiertos, API gratis de NVIDIA: más de 100 modelos abiertos para probar sin pagar, NVIDIA te da una clave gratis para usar modelos abiertos (Kimi, DeepSeek, Qwen, Llama y más) por API. Cómo sacarla, cómo probarla y cómo usarla en Claude Code o en tus automatizaciones, con sus límites reales. y 014a1c3f -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena nvidia-api-gratis-modelos-abiertos, API gratis de NVIDIA: más de 100 modelos abiertos para probar sin pagar, NVIDIA te da una clave gratis para usar modelos abiertos (Kimi, DeepSeek, Qwen, Llama y más) por API. Cómo sacarla, cómo probarla y cómo usarla en Claude Code o en tus automatizaciones, con sus límites reales. y ed829ed8 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,23 +9,23 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=014a1c3f">
-<link rel="stylesheet" href="../web/cta.css?v=014a1c3f">
-<link rel="stylesheet" href="../web/biblioteca.css?v=014a1c3f">
-<link rel="stylesheet" href="../web/guia.css?v=014a1c3f">
-<link rel="stylesheet" href="../web/tema.css?v=014a1c3f">
-<link rel="stylesheet" href="../web/bienvenida.css?v=014a1c3f">
-<link rel="stylesheet" href="../web/forja.css?v=014a1c3f">
-<script src="../web/tema.js?v=014a1c3f"></script>
-<link rel="icon" href="../web/favicon.svg?v=014a1c3f" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=ed829ed8">
+<link rel="stylesheet" href="../web/cta.css?v=ed829ed8">
+<link rel="stylesheet" href="../web/biblioteca.css?v=ed829ed8">
+<link rel="stylesheet" href="../web/guia.css?v=ed829ed8">
+<link rel="stylesheet" href="../web/tema.css?v=ed829ed8">
+<link rel="stylesheet" href="../web/bienvenida.css?v=ed829ed8">
+<link rel="stylesheet" href="../web/forja.css?v=ed829ed8">
+<script src="../web/tema.js?v=ed829ed8"></script>
+<link rel="icon" href="../web/favicon.svg?v=ed829ed8" type="image/svg+xml">
 <meta name="theme-color" content="#0a0a0b">
 </head>
 <body class="fj-app" data-seccion="classroom" data-raiz="/">
-<script src="../web/redes.js?v=014a1c3f"></script>
-<script src="../web/guias-web.js?v=014a1c3f"></script>
-<script src="../web/categorias.js?v=014a1c3f"></script>
-<script src="../web/comun.js?v=014a1c3f"></script>
-<script src="../web/modulos.js?v=014a1c3f"></script>
+<script src="../web/redes.js?v=ed829ed8"></script>
+<script src="../web/guias-web.js?v=ed829ed8"></script>
+<script src="../web/categorias.js?v=ed829ed8"></script>
+<script src="../web/comun.js?v=ed829ed8"></script>
+<script src="../web/modulos.js?v=ed829ed8"></script>
 
 <main class="fj-guia" data-slug="nvidia-api-gratis-modelos-abiertos">
   <div class="fj-guia-col">
@@ -38,11 +38,11 @@
 </main>
 <script>var GUIA = {"slug": "nvidia-api-gratis-modelos-abiertos", "post": "NVIDIA", "t": "API gratis de NVIDIA: más de 100 modelos abiertos para probar sin pagar", "d": "NVIDIA te da una clave gratis para usar modelos abiertos (Kimi, DeepSeek, Qwen, Llama y más) por API. Cómo sacarla, cómo probarla y cómo usarla en Claude Code o en tus automatizaciones, con sus límites reales.", "tema": "Gasta menos tokens", "min": 9, "ficha": [["Qué es", "Una clave gratis de build.nvidia.com para usar modelos abiertos por API, compatible con el formato de OpenAI."], ["Para qué sirve", "Probar ideas, prototipos y automatizaciones sin gastar, y tener un plan B cuando se te termina el límite de Claude."], ["Necesitas", "Una cuenta de NVIDIA con el teléfono verificado. No pide tarjeta."], ["Límite", "Unas 40 solicitudes por minuto en total, sumando todos los modelos."], ["Ojo", "Es para probar y desarrollar, no para un producto con clientes. Y no es Claude: los modelos abiertos rinden menos en tareas largas."]], "secciones": [{"h": "Qué te da NVIDIA gratis", "p": ["En build.nvidia.com hay un catálogo de más de 100 modelos abiertos alojados por NVIDIA: familias como Kimi K2 (Moonshot), DeepSeek, Qwen, Llama, Mistral, Gemma, Nemotron y gpt-oss de OpenAI.", "Con una sola clave los usas todos, con el mismo formato que la API de OpenAI. Eso quiere decir que funciona en casi cualquier herramienta que acepte \"un proveedor compatible con OpenAI\": n8n, Make, tus propios scripts o un router para Claude Code."], "aviso": "Los nombres de los modelos y el catálogo cambian seguido. Antes de usar uno, copia su nombre exacto desde su página en build.nvidia.com."}, {"h": "Saca tu clave (5 minutos)", "pasos": ["Entra a build.nvidia.com y crea una cuenta de NVIDIA (o entra con la que tengas). No pide tarjeta.", "Verifica tu número de teléfono: sin eso no se habilitan los modelos.", "Toca Get API Key, o entra a build.nvidia.com/settings/api-keys, y genera una clave. Empieza con nvapi-.", "Cópiala y guárdala en un lugar seguro. Nunca la pegues en un chat ni la subas a GitHub."]}, {"h": "Pruébala en un minuto", "p": ["Elige un modelo en build.nvidia.com y copia su nombre (por ejemplo meta/llama-3.3-70b-instruct). Después pídele a Claude que haga la prueba por ti:"], "prompts": [{"t": "Probar la clave de NVIDIA", "c": "Quiero probar la API gratis de NVIDIA. Tengo la clave guardada en la variable de entorno NVIDIA_API_KEY (no te la voy a pegar). Escribe y ejecuta una prueba mínima contra https://integrate.api.nvidia.com/v1/chat/completions con el modelo [NOMBRE DEL MODELO], que le pida \"Responde solo: funciona\". Si da error, dime qué significa y cómo lo arreglo."}], "aviso": "Para guardar la clave como variable: en Mac o Linux, export NVIDIA_API_KEY=nvapi-... en la terminal. En Windows, setx NVIDIA_API_KEY \"nvapi-...\" y abre una terminal nueva."}, {"h": "Usarla en tus automatizaciones", "lista": ["<b>n8n o Make<\/b>: agrega una credencial de OpenAI, cambia la URL base por <code>https://integrate.api.nvidia.com/v1<\/code> y pega tu clave de NVIDIA. En el nodo, escribe el nombre del modelo.", "<b>Tus scripts<\/b>: cualquier librería de OpenAI sirve. Cambias dos cosas: la URL base y el nombre del modelo.", "<b>Para qué conviene<\/b>: tareas cortas y repetitivas (clasificar mensajes, resumir, extraer datos de un texto) mientras armas y pruebas el sistema."]}, {"h": "Usarla dentro de Claude Code", "p": ["Claude Code habla el formato de Anthropic, así que para usar modelos de NVIDIA necesitas un traductor en el medio. El más usado es claude-code-router (código abierto, MIT): recibe lo que manda Claude Code y se lo pasa al modelo que elijas.", "Su forma de configurarse cambió entre versiones (antes con un archivo config.json, ahora también con una interfaz en el navegador), así que lo más seguro es que Claude Code lo instale leyendo la documentación actual:"], "prompts": [{"t": "Instalar claude-code-router con NVIDIA", "c": "Instálame claude-code-router (github.com/musistudio/claude-code-router) leyendo su README actual. Configura un proveedor llamado nvidia con api_base_url https://integrate.api.nvidia.com/v1/chat/completions, la clave tomada de la variable NVIDIA_API_KEY (no me la pidas en el chat) y el modelo [NOMBRE DEL MODELO]. Ponlo como modelo por defecto del router, dime cómo arrancar Claude Code con el router y cómo volver a mi Claude normal."}], "lista": ["<b>Elige un modelo que use herramientas<\/b> (tool calling): sin eso Claude Code no puede leer ni editar archivos. Kimi K2, Qwen3 Coder, DeepSeek y gpt-oss-120b suelen ser los indicados; confírmalo en la página del modelo.", "<b>Úsalo para tareas chicas<\/b>: preguntas sobre tu código, cambios puntuales, scripts. Para lo grande, vuelve a Claude."], "aviso": "Si una guía de internet te pide poner Claude Code en modo \"bypassPermissions\" para que ande con NVIDIA, no lo hagas: le saca las confirmaciones antes de borrar o cambiar archivos, y no hace falta."}, {"h": "Los límites, sin vueltas", "lista": ["<b>40 solicitudes por minuto en total<\/b>, sumando todos los modelos. Claude Code hace muchas solicitudes seguidas: en sesiones intensas hay usuarios que reportan errores 429 (límite alcanzado) a los pocos minutos. Si te pasa, espera un minuto.", "<b>Para probar, no para vender<\/b>: el catálogo alojado es para prototipos y evaluación. Si armas algo para un cliente que lo va a usar todos los días, pasa a un plan pago (de NVIDIA o de otro proveedor).", "<b>No es Claude<\/b>: los modelos abiertos rinden bien en tareas cortas, pero en trabajos largos y con muchos pasos se pierden más. Úsalo como plan B o para ahorrar en lo repetitivo.", "<b>Tus datos<\/b>: no le mandes información sensible de clientes a un servicio de prueba."]}], "faq": [{"q": "¿Es gratis de verdad?", "a": "Sí, para probar y desarrollar: no pide tarjeta. El límite es de velocidad (unas 40 solicitudes por minuto), no de dinero."}, {"q": "¿Reemplaza a mi plan de Claude?", "a": "No. Sirve como plan B cuando se te termina el límite y para automatizaciones simples. Para el trabajo importante, Claude sigue rindiendo más."}, {"q": "¿Necesito una placa NVIDIA?", "a": "No. Los modelos corren en los servidores de NVIDIA; tú solo usas la clave por internet."}], "fuentes": ["https://build.nvidia.com", "https://docs.api.nvidia.com/nim/reference/llm-apis", "https://forums.developer.nvidia.com/t/request-for-nvidia-nim-api-rate-limit-increase-40-200-rpm-agentic-development-workflow/378941", "https://github.com/cheahjs/free-llm-api-resources", "https://github.com/musistudio/claude-code-router"], "cat": "ahorrar", "parte": "aprende"};</script>
 
-<script src="../web/shell.js?v=014a1c3f"></script>
-<script src="../web/rutas.js?v=014a1c3f"></script>
-<script src="../web/logos.js?v=014a1c3f"></script>
-<script src="../web/guia.js?v=014a1c3f"></script>
-<script src="../web/guia-forja.js?v=014a1c3f"></script>
-<script src="../web/bienvenida.js?v=014a1c3f"></script>
+<script src="../web/shell.js?v=ed829ed8"></script>
+<script src="../web/rutas.js?v=ed829ed8"></script>
+<script src="../web/logos.js?v=ed829ed8"></script>
+<script src="../web/guia.js?v=ed829ed8"></script>
+<script src="../web/guia-forja.js?v=ed829ed8"></script>
+<script src="../web/bienvenida.js?v=ed829ed8"></script>
 </body>
 </html>
