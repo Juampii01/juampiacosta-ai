@@ -192,11 +192,18 @@ var FJ = (function () {
   // así que si cierra la pestaña tampoco le vuelve a salir. Si el formulario de bienvenida está abierto, espera a que cierre.
   FJ.ofertaUnica = function (o, mail) {
     FJ.oferta = o;
-    var esperas = 0;
+    var guardado = function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } };
+    var conPerfil = FJ.cookie("jpa_perfil") === "1" || guardado("jpa_perfil") === "1";
+    if (conPerfil) return setTimeout(function () { mostrarOferta(o, mail); }, 1200);
+    // Recién registrado: el formulario de bienvenida ya pregunta por la oferta (y «Sí, ahora» la abre).
+    // Cuando el formulario se cierra: si respondió otra cosa, la oferta cuenta como vista y pasada; si no llegó a esa pregunta, aparece.
+    var vueltas = 0;
     (function cuando() {
       var bv = document.querySelector(".bv");
-      if (bv && !bv.hidden && esperas++ < 600) return setTimeout(cuando, 1000);
+      if ((!bv || !bv.hidden) && vueltas++ < 900) return setTimeout(cuando, 1000);
       if (FJ.ofertaMostrada) return;
+      var r = {}; try { r = JSON.parse(guardado("jpa_respuestas") || "{}"); } catch (e) {}
+      if (r.inversion && r.inversion !== "Sí, ahora") { FJ.ofertaMostrada = true; anotar("oferta_vista", "formulario"); anotar("oferta_no", "formulario"); return; }
       setTimeout(function () { mostrarOferta(o, mail); }, 1200);
     })();
   };

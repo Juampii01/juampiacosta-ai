@@ -168,6 +168,9 @@
   }
 
   function cabeza(p) {
+    // Con la oferta por única vez activa (Panel), la pregunta del precio muestra el precio de la oferta
+    var o = window.FJ && FJ.oferta && !FJ.ofertaMostrada ? FJ.oferta : null;
+    if (p.id === "inversion" && o) p = { b: p.b, q: "¿Comprarías el acceso completo por US$ " + o.precio + "?", sub: "Es solo ahora, al registrarte. Después queda en US$ " + o.antes + " hasta el 30 de noviembre y luego pasa a US$ 44,90." };
     return '<div class="bv-meta"><span>Bloque ' + p.b + ' · <b>' + BLOQUES[p.b] + '</b></span><span>' + (st.i + 1) + ' / ' + PREGUNTAS.length + '</span></div>' +
       '<h2 class="bv-tit" id="bv-tit" tabindex="-1">' + esc(p.q) + '</h2>' + (p.sub ? '<p class="bv-sub">' + esc(p.sub) + '</p>' : '');
   }
