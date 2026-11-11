@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena agente-que-mejora-sus-propios-prompts, Agente que mejora sus propios prompts: trabajadores, calificador y coach, Un bucle donde Claude hace el trabajo, un calificador lo puntúa con una rúbrica fija y un coach reescribe el prompt que falló. Con el prompt listo para copiar y las reglas para que no se descontrole. y de1d5a9f -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena agente-que-mejora-sus-propios-prompts, Agente que mejora sus propios prompts: trabajadores, calificador y coach, Un bucle donde Claude hace el trabajo, un calificador lo puntúa con una rúbrica fija y un coach reescribe el prompt que falló. Con el prompt listo para copiar y las reglas para que no se descontrole. y e0c7c3b3 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,23 +9,23 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=de1d5a9f">
-<link rel="stylesheet" href="../web/cta.css?v=de1d5a9f">
-<link rel="stylesheet" href="../web/biblioteca.css?v=de1d5a9f">
-<link rel="stylesheet" href="../web/guia.css?v=de1d5a9f">
-<link rel="stylesheet" href="../web/tema.css?v=de1d5a9f">
-<link rel="stylesheet" href="../web/bienvenida.css?v=de1d5a9f">
-<link rel="stylesheet" href="../web/forja.css?v=de1d5a9f">
-<script src="../web/tema.js?v=de1d5a9f"></script>
-<link rel="icon" href="../web/favicon.svg?v=de1d5a9f" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=e0c7c3b3">
+<link rel="stylesheet" href="../web/cta.css?v=e0c7c3b3">
+<link rel="stylesheet" href="../web/biblioteca.css?v=e0c7c3b3">
+<link rel="stylesheet" href="../web/guia.css?v=e0c7c3b3">
+<link rel="stylesheet" href="../web/tema.css?v=e0c7c3b3">
+<link rel="stylesheet" href="../web/bienvenida.css?v=e0c7c3b3">
+<link rel="stylesheet" href="../web/forja.css?v=e0c7c3b3">
+<script src="../web/tema.js?v=e0c7c3b3"></script>
+<link rel="icon" href="../web/favicon.svg?v=e0c7c3b3" type="image/svg+xml">
 <meta name="theme-color" content="#0a0a0b">
 </head>
 <body class="fj-app" data-seccion="classroom" data-raiz="/">
-<script src="../web/redes.js?v=de1d5a9f"></script>
-<script src="../web/guias-web.js?v=de1d5a9f"></script>
-<script src="../web/categorias.js?v=de1d5a9f"></script>
-<script src="../web/comun.js?v=de1d5a9f"></script>
-<script src="../web/modulos.js?v=de1d5a9f"></script>
+<script src="../web/redes.js?v=e0c7c3b3"></script>
+<script src="../web/guias-web.js?v=e0c7c3b3"></script>
+<script src="../web/categorias.js?v=e0c7c3b3"></script>
+<script src="../web/comun.js?v=e0c7c3b3"></script>
+<script src="../web/modulos.js?v=e0c7c3b3"></script>
 
 <main class="fj-guia" data-slug="agente-que-mejora-sus-propios-prompts">
   <div class="fj-guia-col">
@@ -38,11 +38,11 @@
 </main>
 <script>var GUIA = {"slug": "agente-que-mejora-sus-propios-prompts", "post": "MEJORA", "t": "Agente que mejora sus propios prompts: trabajadores, calificador y coach", "d": "Un bucle donde Claude hace el trabajo, un calificador lo puntúa con una rúbrica fija y un coach reescribe el prompt que falló. Con el prompt listo para copiar y las reglas para que no se descontrole.", "tema": "Agentes", "min": 9, "ficha": [["Qué es", "Un sistema de tres roles: trabajadores que hacen las tareas, un calificador que las puntúa y un coach que corrige el prompt cuando algo sale mal."], ["Para quién", "Quien ya repite tareas con Claude (investigar, redactar mails, buscar leads, responder consultas) y quiere que la calidad suba sola con el tiempo."], ["Necesitas", "Claude Code o un Proyecto de Claude, y una lista de 10 a 20 casos de prueba reales de tu tarea."], ["La idea clave", "El modelo no mejora solo: mejora el sistema que lo prueba, mide el resultado y vuelve atrás cuando un cambio rinde peor."], ["Ojo", "Sin una rúbrica clara y casos de prueba representativos, el sistema se optimiza para la cosa equivocada."]], "secciones": [{"h": "Cómo funciona el bucle", "p": ["Separas el trabajo en tres roles. Cada uno tiene una sola tarea, y ninguno puede cambiar las reglas de los otros."], "pasos": ["<b>Trabajadores<\/b>: hacen las tareas (investigar, redactar, buscar leads, responder). Cada uno tiene su propio prompt.", "<b>Calificador<\/b>: puntúa cada respuesta de 0 a 1 con una rúbrica fija. No la puede cambiar nunca.", "<b>Coach<\/b>: si la nota es menor a 0,9, mira qué falló, reescribe el prompt de ese trabajador en una o dos líneas y repite la tarea.", "<b>Registro<\/b>: se guarda cada versión del prompt con su porcentaje de aprobación. Si una versión nueva rinde peor, se vuelve a la anterior."]}, {"h": "Paso 1 · Escribe la rúbrica", "p": ["Es la parte más importante. Si la rúbrica es vaga, el coach mejora cosas que no te importan."], "lista": ["<b>Correcto<\/b>: ¿la información es verdadera y responde lo que se pidió?", "<b>Con fuente<\/b>: ¿cada dato importante tiene de dónde salió?", "<b>Breve<\/b>: ¿dice lo necesario y nada más?", "<b>Cumple el pedido<\/b>: ¿respeta formato, tono y largo?"], "aviso": "Escribe la rúbrica tú. Si dejas que la escriba el mismo sistema que se califica, termina poniéndose buenas notas."}, {"h": "Paso 2 · Arma los casos de prueba", "p": ["Junta entre 10 y 20 ejemplos reales de la tarea, incluidos los difíciles: el cliente enojado, el lead sin email, el tema sin fuentes. El bucle corre siempre contra esos casos, así cada cambio se compara con lo mismo."]}, {"h": "Paso 3 · Pega el prompt", "p": ["En Claude Code puedes crear un subagente por rol. En un Proyecto de Claude, pega esto como instrucciones y pásale los casos de prueba."], "prompts": [{"t": "Bucle de auto-mejora", "c": "Corre mis tareas con un equipo de trabajadores.\n\nDespués de cada respuesta, puntúala de 0 a 1 con esta rúbrica fija: correcta, con fuente, breve y que cumpla el pedido.\n\nSi una respuesta saca menos de 0,9, mándala al Coach.\n\nEl Coach tiene que identificar la falla, reescribir el prompt de ese trabajador en una o dos líneas y volver a correr la tarea.\n\nNunca cambies la rúbrica.\n\nGuarda cada versión de cada prompt con su porcentaje de aprobación. Si un cambio rinde peor, vuelve a la versión anterior.\n\nAl final, muéstrame el porcentaje de aprobación general y las tres mejoras de prompt más grandes, con el antes y el después."}]}, {"h": "Cómo se ven las mejoras", "lista": ["<b>Investigador<\/b>: “Busca info del tema” → “Cita dos fuentes por dato. Si no hay fuente, dilo.”", "<b>Leads<\/b>: “Busca 50 leads” → “Solo equipos de 10 a 200 personas. Verifica cada email.”", "<b>Email<\/b>: “Sé persuasivo” → “Máximo 90 palabras. Un solo pedido por mail.”", "<b>Soporte<\/b>: “Responde todos los tickets” → “Cita la política. Reintegros de más de US$50 los aprueba una persona.”"]}, {"h": "Reglas para que no se descontrole", "lista": ["Pon un tope de vueltas y de gasto por corrida.", "Revisa tú los cambios de prompt antes de usarlos con clientes reales.", "Todo lo que sale hacia afuera (mandar, publicar, cobrar) lo aprueba una persona.", "Si la aprobación sube pero los resultados reales no mejoran, el problema está en la rúbrica o en los casos de prueba."]}], "faq": [{"q": "¿Necesito programar?", "a": "No para probarlo: con el prompt y un Proyecto de Claude alcanza. Para que corra solo todas las noches conviene Claude Code o una herramienta como n8n."}, {"q": "¿Cuánto gasta?", "a": "Cada vuelta usa tokens de más: el trabajador, el calificador y el coach. Empieza con pocos casos y un tope de vueltas."}, {"q": "¿Se relaciona con la guía AGENTE?", "a": "Sí: es un bucle (cuándo sigue y cuándo para) con un calificador como control. Si no la viste, empieza por las 3 ingenierías de un agente."}], "fuentes": ["https://www.anthropic.com/engineering/building-effective-agents", "https://code.claude.com/docs/en/sub-agents", "https://docs.claude.com/en/docs/test-and-evaluate/develop-tests"], "cat": "agentes", "parte": "úsalo"};</script>
 
-<script src="../web/shell.js?v=de1d5a9f"></script>
-<script src="../web/rutas.js?v=de1d5a9f"></script>
-<script src="../web/logos.js?v=de1d5a9f"></script>
-<script src="../web/guia.js?v=de1d5a9f"></script>
-<script src="../web/guia-forja.js?v=de1d5a9f"></script>
-<script src="../web/bienvenida.js?v=de1d5a9f"></script>
+<script src="../web/shell.js?v=e0c7c3b3"></script>
+<script src="../web/rutas.js?v=e0c7c3b3"></script>
+<script src="../web/logos.js?v=e0c7c3b3"></script>
+<script src="../web/guia.js?v=e0c7c3b3"></script>
+<script src="../web/guia-forja.js?v=e0c7c3b3"></script>
+<script src="../web/bienvenida.js?v=e0c7c3b3"></script>
 </body>
 </html>

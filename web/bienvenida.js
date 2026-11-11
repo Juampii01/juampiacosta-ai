@@ -311,7 +311,7 @@
     var oferta = window.FJ && FJ.gratis && FJ.oferta && !FJ.ofertaMostrada ? FJ.oferta : null;
     var compra = window.FJ && FJ.gratis && FJ.desbloquear && (oferta || st.resp.inversion === "Sí, ahora");
     var precio = oferta ? oferta.precio : "24,90";
-    var dm = (window.REDES && REDES.dm) || "https://ig.me/m/juampiiacosta.ia";
+    var dm = (window.REDES && REDES.dm) || "https://ig.me/m/juampiiacosta.ai";
     Sfx.gran(); confeti(70); progreso();
     el.cuerpo.innerHTML = '<div class="bv-espera"><span class="bv-icono" aria-hidden="true">🎉</span><p class="bv-ceja">Perfil completo</p>' +
       '<h2 class="bv-tit" tabindex="-1">¡Listo' + (nombre ? ", " + esc(nombre) : "") + '! Ya sé qué te sirve</h2>' +

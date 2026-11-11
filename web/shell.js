@@ -74,7 +74,7 @@ var FJ = (function () {
       '<span class="fj-avatar">' + inicial + '</span><span class="fj-usuario-txt"><b>' + (nombre || "Tu cuenta") + '</b><small>' + (gratis ? "Plan gratis" : "Acceso completo") + '</small></span>' + svg("abajo", 2) + '</button>' +
       '<div class="fj-menu-usuario" hidden><span class="fj-menu-email" id="fj-email"></span>' +
       '<a href="' + raiz + 'cuenta">Mi cuenta</a>' + (gratis ? '<a href="/?plan=1#precio">Desbloquear todo</a>' : '') +
-      '<a href="https://ig.me/m/juampiiacosta.ia" target="_blank" rel="noopener">Escríbeme por Instagram</a>' +
+      '<a href="https://ig.me/m/juampiiacosta.ai" target="_blank" rel="noopener">Escríbeme por Instagram</a>' +
       '<button type="button" id="fj-salir">Cerrar sesión</button></div></div>';
   var main = document.querySelector("main");
   cuerpo.insertBefore(top, main || null);
