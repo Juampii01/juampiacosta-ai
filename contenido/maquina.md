@@ -1,6 +1,6 @@
 ## Qué hace
 
-Es el flujo con el que hice más de 100.000 vistas en una semana, convertido en skills para Claude Code. Tú solo te grabas:
+Es el flujo con el que hice más de 70.000 vistas en 14 días, convertido en skills para Claude Code. Tú solo te grabas:
 
 | Paso | Escribes | Qué hace |
 |---|---|---|
