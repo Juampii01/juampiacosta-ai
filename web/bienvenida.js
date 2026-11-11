@@ -1,5 +1,5 @@
-/* Formulario de bienvenida de /recursos.
-   Lo ve quien entró con el registro gratis y todavía no lo completó: 7 preguntas de a una, con sonidos,
+/* Formulario de bienvenida (Classroom, guías, Inicio, Sistemas y Máquina).
+   Lo ve quien entró con el registro gratis y todavía no lo completó: 8 preguntas obligatorias de a una; la del rubro y las opciones del objetivo cambian según lo que hace, con sonidos,
    barra de progreso por bloques, festejos y confeti. Al final le arma su ruta recomendada.
    Guarda en Supabase por /api/perfil al cerrar cada bloque y al terminar (quién es lo decide la cookie firmada).
    Las opciones tienen que coincidir con lib/perfil.js. Para verlo de nuevo: /recursos?bienvenida=1 */
@@ -167,16 +167,39 @@
     progreso(); enfocar(".bv-tit");
   }
 
-  function cabeza(p) {
+  // La segunda pregunta cambia según lo que hace (no se le pregunta «rubro» a un estudiante)
+  var RUBRO = {
+    "Tengo un negocio": ["¿De qué es tu negocio?", "Así te muestro ejemplos de tu rubro.", "Ej.: inmobiliaria", ["Inmobiliaria", "Estética", "Gastronomía", "Salud", "Comercio", "Servicios"]],
+    "Trabajo en una empresa": ["¿En qué área trabajas?", "Así te muestro lo que te sirve en tu trabajo.", "Ej.: administración", ["Administración", "Ventas", "Marketing", "Atención al cliente", "Recursos humanos", "Sistemas"]],
+    "Freelancer o agencia": ["¿Qué servicio das?", "Así te muestro cómo sumarle IA a lo que ya vendes.", "Ej.: diseño", ["Marketing", "Diseño", "Desarrollo web", "Contenido", "Contabilidad", "Consultoría"]],
+    "Quiero vender IA a empresas": ["¿A qué negocios te gustaría venderle?", "Así te muestro sistemas para ese rubro.", "Ej.: clínicas", ["Clínicas", "Inmobiliarias", "Restaurantes", "Estéticas", "Comercios", "Todavía no sé"]],
+    "Estudiante": ["¿Qué estudias?", "Así te muestro lo que más te sirve.", "Ej.: ingeniería", ["Ingeniería", "Sistemas", "Marketing", "Diseño", "Administración", "Otra carrera"]],
+    "Otro": ["Cuéntame a qué te dedicas", "En dos o tres palabras alcanza.", "Ej.: docente", []]
+  };
+  // Opciones de «qué quieres lograr» que no tienen sentido para cada situación
+  var SIN_OBJETIVO = {
+    "Estudiante": ["Ahorrar tiempo en mi negocio", "Que me lo instalen en mi negocio"],
+    "Trabajo en una empresa": ["Que me lo instalen en mi negocio"],
+    "Quiero vender IA a empresas": ["Que me lo instalen en mi negocio"]
+  };
+  function adaptar(p) {
+    var sit = st.resp.situacion, q = {};
+    for (var k in p) q[k] = p[k];
+    if (p.id === "rubro" && RUBRO[sit]) { q.q = RUBRO[sit][0]; q.sub = RUBRO[sit][1]; q.ph = RUBRO[sit][2]; q.chips = RUBRO[sit][3]; }
+    if (p.id === "objetivo" && SIN_OBJETIVO[sit]) q.ops = p.ops.filter(function (o) { return SIN_OBJETIVO[sit].indexOf(o[0]) < 0; });
     // Con la oferta por única vez activa (Panel), la pregunta del precio muestra el precio de la oferta
     var o = window.FJ && FJ.oferta && !FJ.ofertaMostrada ? FJ.oferta : null;
-    if (p.id === "inversion" && o) p = { b: p.b, q: "¿Comprarías el acceso completo por US$ " + o.precio + "?", sub: "Es solo ahora, al registrarte. Después queda en US$ " + o.antes + " hasta el 30 de noviembre y luego pasa a US$ 44,90." };
+    if (p.id === "inversion" && o) { q.q = "¿Comprarías el acceso completo por US$ " + o.precio + "?"; q.sub = "Es solo ahora, al registrarte. Después queda en US$ " + o.antes + " hasta el 30 de noviembre y luego pasa a US$ 44,90."; }
+    return q;
+  }
+
+  function cabeza(p) {
     return '<div class="bv-meta"><span>Bloque ' + p.b + ' · <b>' + BLOQUES[p.b] + '</b></span><span>' + (st.i + 1) + ' / ' + PREGUNTAS.length + '</span></div>' +
       '<h2 class="bv-tit" id="bv-tit" tabindex="-1">' + esc(p.q) + '</h2>' + (p.sub ? '<p class="bv-sub">' + esc(p.sub) + '</p>' : '');
   }
 
   function pintar() {
-    var p = PREGUNTAS[st.i], r = st.resp[p.id], html = '<div class="bv-paso">' + cabeza(p);
+    var p = adaptar(PREGUNTAS[st.i]), r = st.resp[p.id], html = '<div class="bv-paso">' + cabeza(p);
     if (p.ops) {
       var clase = { lista: "", grilla: " bv-ops--grilla", paises: " bv-ops--paises" }[p.tipo];
       html += '<div class="bv-ops' + clase + '">' + p.ops.map(function (o, k) {
@@ -185,6 +208,7 @@
       }).join("") + '</div>';
     } else if (p.tipo === "texto") {
       html += '<form class="bv-campo" novalidate><input class="bv-in" id="bv-txt" maxlength="80" autocomplete="organization" enterkeyhint="next" placeholder="' + esc(p.ph) + '" value="' + esc(r || "") + '">' +
+        (p.chips && p.chips.length ? '<div class="bv-chips">' + p.chips.map(function (c) { return '<button type="button" class="bv-chip' + (r === c ? ' si' : '') + '" data-chip="' + esc(c) + '">' + esc(c) + '</button>'; }).join("") + '</div>' : '') +
         '<button class="bv-ok" type="submit">Seguir →</button></form>' + (p.opcional ? '<button class="bv-saltar" type="button" data-saltar>Saltear esta</button>' : '');
     } else {
       var pais = PREGUNTAS.filter(function (x) { return x.id === "pais"; })[0].ops.filter(function (o) { return o[0] === st.resp.pais; })[0];
@@ -355,6 +379,8 @@
     el.atras.addEventListener("click", function () { if (st.etapa !== "preg" || st.i === 0 || st.timer) return; Sfx.click(); st.i--; pintar(); });
     el.cuerpo.addEventListener("click", function (e) {
       var b = e.target.closest(".bv-op"); if (b) return elegir(b.getAttribute("data-v"), b);
+      var chip = e.target.closest("[data-chip]");
+      if (chip) { var t = $("#bv-txt"); if (t) { t.value = chip.getAttribute("data-chip"); var f = t.closest("form"); if (f.requestSubmit) f.requestSubmit(); else f.dispatchEvent(new Event("submit", { cancelable: true })); } return; }
       if (e.target.closest("[data-saltar]")) { Sfx.click(); st.resp[PREGUNTAS[st.i].id] = ""; siguiente(); }
     });
     el.cuerpo.addEventListener("submit", enviarCampo);
