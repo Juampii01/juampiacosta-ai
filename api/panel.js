@@ -7,11 +7,11 @@ import { limpiarEmail } from "../lib/codigo.js";
 import { config, enc, json, leerCuerpo, sb } from "../lib/db.js";
 import { enviarLote, mailInvitacion } from "../lib/invitacion.js";
 
-const CAMPOS = "email,nombre,origen,compro,baja,perfil_completo,situacion,rubro,nivel,objetivo,inversion,foco,pais,whatsapp,creado,actualizado,utm_source,utm_campaign,invitado_forja,ultimo_ingreso";
+const CAMPOS = "email,nombre,origen,compro,baja,perfil_completo,situacion,rubro,nivel,objetivo,inversion,foco,pais,whatsapp,creado,actualizado,utm_source,utm_campaign,invitado_forja,ultimo_ingreso,prueba";
 
-// Los admins (el equipo) no cuentan en los números: sus pruebas no son registros ni ventas reales.
+// Los admins (el equipo) y las cuentas de prueba (registros.prueba) no cuentan en los números.
 export function resumen(todos, admins = process.env.ADMINS) {
-  const usuarios = todos.filter((u) => !esAdmin(u.email, admins));
+  const usuarios = todos.filter((u) => !esAdmin(u.email, admins) && !u.prueba);
   return {
     registrados: usuarios.length,
     chat: usuarios.filter((u) => /chat|manychat|agente/i.test(u.origen || "")).length,
@@ -129,7 +129,7 @@ export default async function handler(req, res) {
       const vistas = {}, ultimo = {};
       prog.forEach((p) => { vistas[p.email] = (vistas[p.email] || 0) + 1; if (!ultimo[p.email] || p.visto > ultimo[p.email]) ultimo[p.email] = p.visto; });
       const frec = frecuencia(act);
-      const usuarios = regs.map((r) => ({ ...r, admin: esAdmin(r.email), vistas: vistas[r.email] || 0, ultima_guia: ultimo[r.email] || null, ...(frec[r.email] || { dias: 0, dias7: 0, paginas: 0, abiertas: 0 }) }));
+      const usuarios = regs.map((r) => ({ ...r, admin: esAdmin(r.email) || !!r.prueba, vistas: vistas[r.email] || 0, ultima_guia: ultimo[r.email] || null, ...(frec[r.email] || { dias: 0, dias7: 0, paginas: 0, abiertas: 0 }) }));
       const noAdmin = int.filter((e) => !esAdmin(e.email));
       return json(res, 200, { usuarios, resumen: resumen(usuarios), interes: embudo(int, usuarios), oferta: rondaOferta(aj[0] && aj[0].valor, noAdmin) });
     }

@@ -70,7 +70,7 @@
     }).join("");
     document.getElementById("pa-filas").innerHTML = lista.length ? lista.map(function (u) {
       var wa = u.whatsapp ? '<a href="https://wa.me/' + String(u.whatsapp).replace(/\D/g, "") + '" target="_blank" rel="noopener">' + esc(u.whatsapp) + '</a>' : '';
-      return '<tr><td><b>' + esc(u.nombre || "Sin nombre") + '</b><small>' + esc(u.email) + '</small>' + (wa ? '<small>' + wa + (u.pais ? ' · ' + esc(u.pais) : '') + '</small>' : (u.pais ? '<small>' + esc(u.pais) + '</small>' : '')) + '</td>' +
+      return '<tr' + (u.prueba ? ' style="opacity:.55"' : '') + '><td><b>' + esc(u.nombre || "Sin nombre") + '</b>' + (u.prueba ? ' <span class="fj-pill">Prueba</span>' : '') + '<small>' + esc(u.email) + '</small>' + (wa ? '<small>' + wa + (u.pais ? ' · ' + esc(u.pais) : '') + '</small>' : (u.pais ? '<small>' + esc(u.pais) + '</small>' : '')) + '</td>' +
         '<td><span class="fj-pill' + (u.compro ? ' pago' : '') + '">' + (u.compro ? 'Completo' : 'Gratis') + '</span></td>' +
         '<td>' + esc(u.origen || "web") + (u.utm_campaign ? '<small>' + esc(u.utm_campaign) + '</small>' : '') + '</td>' +
         '<td>' + (u.perfil_completo ? esc([u.situacion, u.rubro].filter(Boolean).join(" · ")) + '<small>' + esc(u.nivel || "") + '</small>' : '<span class="fj-nota">Sin completar</span>') + '</td>' +
