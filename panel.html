@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de /panel (solo equipo). build.py la copia a ../panel.html con la versión (d01c302e) -->
+<!-- Plantilla de /panel (solo equipo). build.py la copia a ../panel.html con la versión (964d360f) -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -8,15 +8,15 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="web/base.css?v=d01c302e">
-<link rel="stylesheet" href="web/tema.css?v=d01c302e">
-<link rel="stylesheet" href="web/forja.css?v=d01c302e">
-<script src="web/tema.js?v=d01c302e"></script>
-<link rel="icon" href="web/favicon.svg?v=d01c302e" type="image/svg+xml">
+<link rel="stylesheet" href="web/base.css?v=964d360f">
+<link rel="stylesheet" href="web/tema.css?v=964d360f">
+<link rel="stylesheet" href="web/forja.css?v=964d360f">
+<script src="web/tema.js?v=964d360f"></script>
+<link rel="icon" href="web/favicon.svg?v=964d360f" type="image/svg+xml">
 </head>
 <body class="fj-app" data-seccion="panel" data-raiz="/">
-<script src="web/guias-web.js?v=d01c302e"></script>
-<script src="web/comun.js?v=d01c302e"></script>
+<script src="web/guias-web.js?v=964d360f"></script>
+<script src="web/comun.js?v=964d360f"></script>
 <main class="fj-main ancho">
   <div class="fj-cab"><span class="fj-eyebrow">Panel de equipo · solo admin</span><h1>Usuarios</h1></div>
   <div class="fj-stats" id="pa-stats"></div>
@@ -25,6 +25,10 @@
     <p class="sub">Los que tocaron «Sí, lo quiero» en el aviso del Classroom, abrieron la ventana de compra o intentaron abrir una guía paga. Del más reciente al más viejo: escríbeles mientras está caliente.</p>
     <div class="kpis" id="pa-int-kpis"></div>
     <div class="fj-tabla-caja"><table><thead><tr><th scope="col">Usuario</th><th scope="col">Qué hizo</th><th scope="col">Cuándo</th><th scope="col">Perfil</th><th scope="col"><span class="fj-oculto">Escribir</span></th></tr></thead><tbody id="pa-int-filas"><tr><td colspan="5">Cargando…</td></tr></tbody></table></div>
+  </section>
+  <section class="fj-card" id="pa-oferta" style="padding:20px;margin-bottom:20px;display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+    <div style="flex:1;min-width:260px"><b>Oferta por única vez</b><p class="fj-nota" style="font-size:14px;margin:4px 0 0" id="pa-of-txt">Cargando…</p></div>
+    <button type="button" class="fj-btn fj-btn-primario" id="pa-of-btn" disabled>Activar</button>
   </section>
   <section class="fj-card" id="pa-invitar" style="padding:20px;margin-bottom:20px;display:flex;flex-wrap:wrap;align-items:center;gap:12px">
     <div style="flex:1;min-width:240px"><b>Invitación a Forja IA por mail</b><p class="fj-nota" style="font-size:14px;margin:4px 0 0" id="pa-inv-txt">Cargando…</p></div>
@@ -40,7 +44,7 @@
   <div class="fj-card fj-tabla-caja"><table class="fj-tabla"><thead><tr><th scope="col">Usuario</th><th scope="col">Plan</th><th scope="col">Origen</th><th scope="col">Perfil</th><th scope="col">Quiere</th><th scope="col">Uso</th><th scope="col">Alta</th><th scope="col"><span class="fj-oculto">Acciones</span></th></tr></thead><tbody id="pa-filas"><tr><td colspan="8">Cargando…</td></tr></tbody></table></div>
   <p class="fj-nota" style="margin-top:12px" id="pa-pie"></p>
 </main>
-<script src="web/shell.js?v=d01c302e"></script>
+<script src="web/shell.js?v=964d360f"></script>
 <script>
 (function () {
   var esc = FJ.esc, todos = [], filtro = "todos", q = "";
@@ -81,7 +85,7 @@
     var m = Math.round((Date.now() - Date.parse(iso)) / 6e4);
     return m < 1 ? "recién" : m < 60 ? "hace " + m + " min" : m < 1440 ? "hace " + Math.round(m / 60) + " h" : fecha(iso);
   }
-  var QUE = { hotmart: ["Fue a pagar (Hotmart)", ""], mpago: ["Fue a pagar (Mercado Pago)", ""], si: ["Tocó «Sí, lo quiero»", ""], guia_paga: ["Abrió una guía paga", ""], ventana: ["Abrió la ventana de compra", ""], no: ["Tocó «Ahora no»", " n"] };
+  var QUE = { oferta_si: ["Tocó «La quiero» en la oferta", ""], oferta_no: ["Pasó la oferta", " n"], hotmart: ["Fue a pagar (Hotmart)", ""], mpago: ["Fue a pagar (Mercado Pago)", ""], si: ["Tocó «Sí, lo quiero»", ""], guia_paga: ["Abrió una guía paga", ""], ventana: ["Abrió la ventana de compra", ""], no: ["Tocó «Ahora no»", " n"] };
   function pintarInteres(it, s) {
     if (!it) return;
     document.getElementById("pa-int-kpis").innerHTML = [["Vieron el aviso", it.vieron, ""], ["Tocaron «Sí, lo quiero»", it.si, "color:#ff7a45"], ["Abrieron la compra", it.ventana, ""], ["Fueron a pagar", it.pagar, ""], ["Compraron", s.compraron, "color:#22c55e"]]
@@ -103,11 +107,30 @@
         .map(function (x, i) { return '<div class="fj-card fj-stat"' + (i === 4 ? ' style="border-color:var(--fj-acento)"' : '') + '><small>' + x[0] + '</small><b' + (i === 4 ? ' style="color:var(--fj-acento-txt)"' : '') + '>' + x[1] + '</b><span>' + x[2] + '</span></div>'; }).join("");
       pintar();
       pintarInteres(d.interes, s);
+      pintarOferta(d.oferta);
       var pend = todos.filter(function (u) { return !u.invitado_forja && !u.baja; }).length, ya = todos.filter(function (u) { return u.invitado_forja; }).length;
       document.getElementById("pa-inv-txt").textContent = pend ? "Les avisa que la biblioteca ahora es Forja IA y cómo entrar con su email. Pendientes: " + pend + (ya ? " · ya enviada a " + ya : "") + ". A cada persona le llega una sola vez." : "Ya se mandó a todos (" + ya + "). Los nuevos registros entran directo a Forja IA.";
       var bt = document.getElementById("pa-inv-todos"); bt.disabled = !pend; bt.textContent = "Enviar a " + pend; bt.dataset.n = pend;
     }).catch(function () { document.getElementById("pa-filas").innerHTML = '<tr><td colspan="8">No se pudo cargar el panel.</td></tr>'; });
   }
+  function pintarOferta(o) {
+    var t = document.getElementById("pa-of-txt"), b = document.getElementById("pa-of-btn");
+    if (!o || !o.listo) { t.textContent = "Faltan los links de pago de la oferta."; b.disabled = true; return; }
+    var cuando = o.desde ? new Date(o.desde).toLocaleString("es", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "";
+    t.innerHTML = (o.activa ? '<span class="fj-pill si">Activa</span> desde el ' + esc(cuando) + '. ' : 'Apagada. ') +
+      'A cada usuario del plan gratis le aparece <b>una sola vez</b> al entrar: acceso completo a US$ ' + esc(o.precio) + ' (en vez de ' + esc(o.antes) + '). Si la cierra, no le vuelve a salir.' +
+      (o.desde ? '<br>Esta ronda: la vieron ' + o.vieron + ' · tocaron «La quiero» ' + o.quieren + ' · pasaron ' + o.pasaron + '.' : '');
+    b.disabled = false; b.dataset.activa = o.activa ? "1" : "";
+    b.textContent = o.activa ? "Apagar" : (o.desde ? "Activar otra ronda" : "Activar");
+    b.className = "fj-btn " + (o.activa ? "fj-btn-borde" : "fj-btn-primario");
+  }
+  document.getElementById("pa-of-btn").addEventListener("click", function () {
+    var b = this, prender = !b.dataset.activa;
+    if (prender && !confirm("¿Activar la oferta? Le va a aparecer una vez a cada usuario del plan gratis cuando entre.")) return;
+    b.disabled = true;
+    fetch("/api/panel", { method: "POST", headers: { "Content-Type": "application/json" }, credentials: "same-origin", body: JSON.stringify({ accion: "oferta", activa: prender }) })
+      .then(function (r) { return r.json(); }).then(function () { cargar(); }).catch(function () { b.disabled = false; });
+  });
   document.getElementById("pa-filtros").addEventListener("click", function (e) { var b = e.target.closest("[data-f]"); if (b) { filtro = b.dataset.f; pintar(); } });
   document.getElementById("pa-buscar").addEventListener("input", function () { q = this.value.trim().toLowerCase(); pintar(); });
   document.getElementById("pa-filas").addEventListener("click", function (e) {

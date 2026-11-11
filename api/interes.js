@@ -1,12 +1,13 @@
 // POST /api/interes (JSON: evento, detalle opcional) -> anota la intención de compra de quien está adentro.
 // Eventos: aviso (vio el aviso del Classroom, una vez por día), si («Sí, lo quiero»), no («Ahora no»),
 // ventana (se abrió la ventana de compra; detalle = desde dónde), hotmart / mpago (tocó el botón de pago),
-// guia_paga (intentó abrir una guía del acceso completo; detalle = slug). Los admins no cuentan.
+// guia_paga (intentó abrir una guía del acceso completo; detalle = slug), oferta_vista / oferta_si / oferta_no
+// (la oferta por única vez que se activa desde el Panel; detalle de oferta_si = hotmart o mpago). Los admins no cuentan.
 
 import { sesion } from "../lib/sesion.js";
 import { config, json, leerCuerpo, sb } from "../lib/db.js";
 
-export const EVENTOS = ["aviso", "si", "no", "ventana", "hotmart", "mpago", "guia_paga"];
+export const EVENTOS = ["aviso", "si", "no", "ventana", "hotmart", "mpago", "guia_paga", "oferta_vista", "oferta_si", "oferta_no"];
 
 export function limpiarInteres(c) {
   const evento = String(c && c.evento || "");

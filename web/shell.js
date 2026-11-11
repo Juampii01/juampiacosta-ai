@@ -100,6 +100,7 @@ var FJ = (function () {
   fetch("/api/cuenta?p=" + encodeURIComponent(location.pathname), { credentials: "same-origin" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
     if (d && d.email) document.getElementById("fj-email").textContent = d.email;
     if (d && d.subio) location.reload(); // acaba de acreditarse el pago: recarga con todo abierto
+    if (d && d.oferta && FJ.ofertaUnica) FJ.ofertaUnica(d.oferta, d.email);
   }).catch(function () {});
 
   // Progreso guardado en tu cuenta: se mezcla con el del navegador para que se vea igual en el móvil y en la compu
@@ -186,6 +187,53 @@ var FJ = (function () {
     e.preventDefault(); abrir();
   }, true);
   FJ.desbloquear = abrir;
+
+  // Oferta por única vez (se prende desde el Panel): le aparece una sola vez a cada uno. Apenas se ve queda anotada,
+  // así que si cierra la pestaña tampoco le vuelve a salir. Si el formulario de bienvenida está abierto, espera a que cierre.
+  FJ.ofertaUnica = function (o, mail) {
+    FJ.oferta = o;
+    var esperas = 0;
+    (function cuando() {
+      var bv = document.querySelector(".bv");
+      if (bv && !bv.hidden && esperas++ < 600) return setTimeout(cuando, 1000);
+      if (FJ.ofertaMostrada) return;
+      setTimeout(function () { mostrarOferta(o, mail); }, 1200);
+    })();
+  };
+  function mostrarOferta(o, mail) {
+    if (FJ.ofertaMostrada) return;
+    FJ.ofertaMostrada = true;
+    var num = function (s) { return parseFloat(String(s).replace(",", ".")) || 0; };
+    var off = num(o.antes) ? Math.round((1 - num(o.precio) / num(o.antes)) * 100) : 0;
+    var hot = o.hotmart + (mail ? (o.hotmart.indexOf("?") < 0 ? "?" : "&") + "email=" + encodeURIComponent(mail) : "");
+    var v = document.createElement("div");
+    v.className = "fj-paywall fj-oferta-unica";
+    v.innerHTML = '<div class="fj-paywall-fondo" data-pasar></div>' +
+      '<div class="fj-paywall-caja" role="dialog" aria-modal="true" aria-labelledby="fj-ou-tit">' +
+      '<button type="button" class="fj-paywall-x" data-pasar aria-label="Cerrar">×</button>' +
+      '<span class="fj-eyebrow">Solo por esta vez' + (off ? ' · ' + off + '% OFF' : '') + '</span>' +
+      '<h2 id="fj-ou-tit">El acceso completo a US$ ' + FJ.esc(o.precio) + '</h2>' +
+      '<p class="fj-paywall-sub">Las ' + FJ.total + ' guías, los sistemas listos para replicar, NovaCut completo y Maestro. Pago único: es tuyo para siempre.</p>' +
+      '<div class="fj-paywall-precio"><s>US$ ' + FJ.esc(o.antes) + '</s><b>US$ ' + FJ.esc(o.precio) + '</b><span>Si cierras esta ventana, la oferta desaparece y no vuelve a salir.</span></div>' +
+      '<a class="fj-btn fj-btn-primario fj-paywall-pagar" data-pago="hotmart" href="' + FJ.esc(hot) + '" target="_blank" rel="noopener">La quiero ahora · US$ ' + FJ.esc(o.precio) + '</a>' +
+      (o.mpago ? '<a class="fj-btn fj-btn-borde fj-paywall-mp" data-pago="mpago" href="' + FJ.esc(o.mpago) + '" target="_blank" rel="noopener">Estoy en Argentina: Mercado Pago' + (o.pesos ? ' ($ ' + FJ.esc(o.pesos) + ')' : '') + '</a>' : '') +
+      '<button type="button" class="fj-ou-pasar" data-pasar>Pasar</button>' +
+      '<p class="fj-paywall-nota">Paga con el mismo mail de tu cuenta' + (mail ? ' (<b>' + FJ.esc(mail) + '</b>)' : '') + '. Con Hotmart se abre todo solo en unos minutos; con Mercado Pago, mándame el comprobante por Instagram.</p>' +
+      '</div>';
+    document.body.appendChild(v);
+    document.documentElement.style.overflow = "hidden";
+    anotar("oferta_vista");
+    var cerrarO = function () { v.remove(); document.documentElement.style.overflow = ""; document.removeEventListener("keydown", esc); };
+    var esc = function (e) { if (e.key === "Escape") { anotar("oferta_no"); cerrarO(); } };
+    document.addEventListener("keydown", esc);
+    v.addEventListener("click", function (e) {
+      var pago = e.target.closest("[data-pago]");
+      if (pago) { anotar("oferta_si", pago.getAttribute("data-pago")); return; }
+      if (e.target.closest("[data-pasar]")) { anotar("oferta_no"); cerrarO(); }
+    });
+    v.querySelector(".fj-paywall-pagar").focus();
+  }
+  FJ.mostrarOferta = function () { if (FJ.oferta && !FJ.ofertaMostrada) { mostrarOferta(FJ.oferta, email); return true; } return false; };
   var pedida = (location.search.match(/[?&]desbloquear=([a-z0-9-]{1,120})/) || [])[1];
   if (pedida) {
     history.replaceState(null, "", location.pathname + location.hash);

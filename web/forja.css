@@ -493,3 +493,5 @@ html[data-tema="claro"] body.fj-app, html[data-tema="claro"] body.fj-acceso {
 .fj-inicio .in-rank .pos{font:700 12px "JetBrains Mono",monospace;color:var(--fj-muted)}
 .fj-inicio .in-rank .av{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:12px;background:var(--fj-surface2);border:1px solid var(--fj-line)}
 .fj-inicio .in-rank .pts{font:700 12px "JetBrains Mono",monospace}
+.fj-ou-pasar{display:block;margin:6px auto 4px;border:0;background:none;color:#a1a1aa;font:600 14px Inter,sans-serif;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+.fj-ou-pasar:hover{color:#fff}

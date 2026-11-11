@@ -25,6 +25,18 @@ export function paginaDe(url) {
   return m ? m[1] : p === "/" ? "inicio" : "";
 }
 
+/** La oferta por única vez (Panel → «Oferta»): solo si está activa, tiene links y esta persona no la vio desde que se activó. */
+export async function ofertaPara(email, consultar = sb) {
+  try {
+    const a = (await consultar("ajustes?clave=eq.oferta&select=valor"))[0];
+    const o = a && a.valor;
+    if (!o || !o.activa || !o.hotmart || !o.desde) return null;
+    const vista = await consultar(`interes?email=eq.${enc(email)}&evento=eq.oferta_vista&creado=gte.${enc(o.desde)}&select=id&limit=1`);
+    if (vista.length) return null;
+    return { precio: o.precio, antes: o.antes, hotmart: o.hotmart, mpago: o.mpago || "", pesos: o.pesos || "" };
+  } catch (e) { console.error("oferta:", e.message); return null; }
+}
+
 export default async function handler(req, res) {
   const yo = await sesion(req);
   if (!yo) return json(res, 401, { error: "sesion" });
@@ -45,7 +57,8 @@ export default async function handler(req, res) {
         res.setHeader("Set-Cookie", cookiesDeSesion(cookie, "pago", f.nombre || yo.nombre, yo.admin));
         nivel = "pago"; subio = true;
       }
-      return json(res, 200, { subio, email: yo.email, nombre: f.nombre || yo.nombre, rubro: f.rubro || "", mails: !f.baja, nivel, compro: !!f.compro, desde: f.creado || null, perfil: !!f.perfil_completo, admin: yo.admin });
+      const oferta = nivel === "gratis" && !yo.admin ? await ofertaPara(yo.email) : null;
+      return json(res, 200, { subio, oferta, email: yo.email, nombre: f.nombre || yo.nombre, rubro: f.rubro || "", mails: !f.baja, nivel, compro: !!f.compro, desde: f.creado || null, perfil: !!f.perfil_completo, admin: yo.admin });
     } catch (e) { console.error("cuenta GET:", e.message); return json(res, 502, { error: "servidor" }); }
   }
   if (req.method === "POST") {

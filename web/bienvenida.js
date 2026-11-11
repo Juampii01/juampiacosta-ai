@@ -293,7 +293,7 @@
     enfocar(".bv-tit");
     if (compra) {
       if (FJ.anotar) FJ.anotar("si", "formulario");
-      $("#bv-comprar").addEventListener("click", function () { cerrar(); FJ.desbloquear("formulario"); });
+      $("#bv-comprar").addEventListener("click", function () { cerrar(); if (!(FJ.mostrarOferta && FJ.mostrarOferta())) FJ.desbloquear("formulario"); });
     }
     $("#bv-ir").addEventListener("click", function () {
       cerrar();
