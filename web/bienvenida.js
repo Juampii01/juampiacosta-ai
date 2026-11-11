@@ -12,7 +12,7 @@
       ["Tengo un negocio", "🏢"], ["Trabajo en una empresa", "💼"], ["Freelancer o agencia", "🧾"],
       ["Quiero vender IA a empresas", "🚀"], ["Estudiante", "🎓"], ["Otro", "✨"]] },
     { id: "rubro", b: 1, tipo: "texto", q: "¿De qué rubro?", sub: "Así te muestro ejemplos que te sirvan.",
-      ph: "Inmobiliaria, estética, contable, gastronomía…", opcional: true },
+      ph: "Inmobiliaria, estética, contable, gastronomía…" },
     { id: "nivel", b: 1, tipo: "lista", q: "¿Cómo usas la IA hoy?", ops: [
       ["Nunca usé IA", "🌱"], ["Uso ChatGPT o Claude a veces", "💬"], ["La uso todos los días", "⚡"], ["Ya armo automatizaciones o agentes", "⚙️"]] },
     { id: "objetivo", b: 2, tipo: "lista", q: "¿Qué quieres lograr con la IA?", ops: [
@@ -307,7 +307,8 @@
       cerrar();
       if (enGuia) return;
       if (window.pintarRecomendados) pintarRecomendados();
-      history.replaceState(null, "", "#inicio"); if (window.verVista) verVista("inicio");
+      if (!window.verVista) { location.href = "/recursos#inicio"; return; }
+      history.replaceState(null, "", "#inicio"); verVista("inicio");
       setTimeout(function () { var c = document.getElementById("para-vos"); if (c) c.scrollIntoView({ behavior: sinMovimiento() ? "auto" : "smooth", block: "start" }); }, 80);
     });
   }
