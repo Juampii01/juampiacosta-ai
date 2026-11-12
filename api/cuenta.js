@@ -26,7 +26,7 @@ export function paginaDe(url) {
 }
 
 /** La oferta por única vez (Panel → «Oferta»): solo si está activa, tiene links y esta persona no la vio desde que se activó. */
-export async function ofertaPara(email, consultar = sb) {
+export async function ofertaPara(email, consultar = sb, pais = "") {
   try {
     const a = (await consultar("ajustes?clave=eq.oferta&select=valor"))[0];
     const o = a && a.valor;
@@ -36,7 +36,9 @@ export async function ofertaPara(email, consultar = sb) {
     const desde = o.activa && o.desde ? o.desde : o.prueba_desde || "2000-01-01";
     const vista = await consultar(`interes?email=eq.${enc(email)}&evento=eq.oferta_vista&creado=gte.${enc(desde)}&select=id&limit=1`);
     if (vista.length) return null;
-    return { precio: o.precio, antes: o.antes, hotmart: o.hotmart, mpago: o.mpago || "", pesos: o.pesos || "" };
+    // Mercado Pago solo cobra en pesos: a quien dijo que está en otro país no le mostramos ese botón
+    const mp = pais && pais !== "Argentina" ? "" : o.mpago || "";
+    return { precio: o.precio, antes: o.antes, hotmart: o.hotmart, mpago: mp, pesos: mp ? o.pesos || "" : "" };
   } catch (e) { console.error("oferta:", e.message); return null; }
 }
 
@@ -52,7 +54,7 @@ export default async function handler(req, res) {
       await sb("rpc/registrar_actividad", { method: "POST", body: { p_email: yo.email, p_seccion: pagina } }).catch((e) => console.error("actividad:", e.message));
     }
     try {
-      const f = (await sb(`registros?email=eq.${enc(yo.email)}&select=nombre,rubro,baja,compro,creado,perfil_completo`))[0] || {};
+      const f = (await sb(`registros?email=eq.${enc(yo.email)}&select=nombre,rubro,baja,compro,creado,perfil_completo,pais`))[0] || {};
       // Pagó (Hotmart o acceso a mano desde el Panel) y sigue con la cookie del plan gratis: se la pasamos a «pago» acá mismo
       let nivel = yo.nivel, subio = false;
       if (f.compro && yo.nivel === "gratis" && process.env.ACCESS_SECRET) {
@@ -60,7 +62,7 @@ export default async function handler(req, res) {
         res.setHeader("Set-Cookie", cookiesDeSesion(cookie, "pago", f.nombre || yo.nombre, yo.admin));
         nivel = "pago"; subio = true;
       }
-      const oferta = nivel === "gratis" && !yo.admin ? await ofertaPara(yo.email) : null;
+      const oferta = nivel === "gratis" && !yo.admin ? await ofertaPara(yo.email, sb, f.pais || "") : null;
       return json(res, 200, { subio, oferta, email: yo.email, nombre: f.nombre || yo.nombre, rubro: f.rubro || "", mails: !f.baja, nivel, compro: !!f.compro, desde: f.creado || null, perfil: !!f.perfil_completo, admin: yo.admin });
     } catch (e) { console.error("cuenta GET:", e.message); return json(res, 502, { error: "servidor" }); }
   }

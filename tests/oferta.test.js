@@ -29,3 +29,10 @@ test("ronda de la oferta en el panel: solo cuenta lo de esta ronda", () => {
   assert.equal(rondaOferta(null, ev), null);
   assert.deepEqual(limpiarInteres({ evento: "oferta_si", detalle: "hotmart" }), { evento: "oferta_si", detalle: "hotmart" });
 });
+
+test("oferta: fuera de Argentina no muestra Mercado Pago", async () => {
+  const o = await ofertaPara("a@x.com", falso(AJ, []), "España");
+  assert.equal(o.mpago, ""); assert.equal(o.pesos, ""); assert.equal(o.hotmart, AJ.hotmart);
+  const ar = await ofertaPara("a@x.com", falso(AJ, []), "Argentina");
+  assert.equal(ar.mpago, AJ.mpago);
+});
