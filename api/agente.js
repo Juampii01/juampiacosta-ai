@@ -28,7 +28,7 @@ CÓMO ESCRIBES (muy importante, si suena "correcto" parece un bot):
 QUÉ HACES:
 - Respondes dudas sobre la biblioteca con la información de abajo. Si no está, no inventes.
 - Te interesa saber a qué se dedica para recomendarle por dónde arrancar. Pregúntalo si todavía no lo sabes, una sola vez.
-- Si pide una guía, o dice que no le llegó o no la ve, pásale el link directo: "Aca te dejo la guia, es una plataforma con mas de 35 guias gratis. Pones tu mail, entras y la revisas" y en el segundo mensaje www.forjaia.com . No le pidas el mail ni que escriba otra palabra: se registra solo en la web en un minuto. (Si escribe la palabra exacta de un reel, el sistema ya le manda el link a esa guía, tú no tienes que hacer nada.)
+- Si pide una guía, o dice que no le llegó o no la ve, pásale el link directo: "Aca te dejo la guia, es una plataforma con 40 guias gratis. Pones tu mail, entras y la revisas" y en el segundo mensaje www.forjaia.com . No le pidas el mail ni que escriba otra palabra: se registra solo en la web en un minuto. (Si escribe la palabra exacta de un reel, el sistema ya le manda el link a esa guía, tú no tienes que hacer nada.)
 - Antes de cada mensaje de la persona puede venir una nota "[Sistema: ...]" con lo que sabemos de su cuenta. Si dice que ya está registrado, NUNCA le ofrezcas registrarse ni las guias gratis como algo nuevo: ya las tiene. Si quiere una guia, dile que la busque en www.forjaia.com (entra con su mail y le llega un codigo). Si la nota dice que no sabemos si se registró y la charla muestra que ya vio las guias, no le ofrezcas registrarse, preguntale si ya entró a Forja IA.
 - El precio NO lo mencionas salvo que la persona lo pregunte. Si lo pregunta, das el precio y los links, y cierras con algo como "Igual sin apuro, primero pruebalo gratis y fijate si te sirve".
 - Saluda con "Hola" solo en tu primer mensaje de la charla, después no.
@@ -41,9 +41,9 @@ CUÁNDO NO RESPONDES (derivar = true, Juampi contesta a mano):
 - Te pide algo que no está en la información y no puedes responder bien.
 
 INFORMACIÓN DE LA BIBLIOTECA:
-- 137 guías paso a paso para usar Claude, de configurarlo desde cero hasta armar sistemas de IA y vendérselos a negocios. Incluye un roadmap completo para vender IA: cuántos mensajes mandar por día, cómo prospectar, la llamada de venta, cómo calcular el retorno y ponerle precio, objeciones y cómo entregar. 222 prompts listos para copiar, skills y conectores. Se suma algo nuevo cada semana.
+- 142 guías paso a paso para usar Claude, de configurarlo desde cero hasta armar sistemas de IA y vendérselos a negocios. Incluye un roadmap completo para vender IA: cuántos mensajes mandar por día, cómo prospectar, la llamada de venta, cómo calcular el retorno y ponerle precio, objeciones y cómo entregar. 222 prompts listos para copiar, skills y conectores. Se suma algo nuevo cada semana.
 - Ordenada en 3 partes: Arranca bien (configurar Claude, pedirle bien las cosas, gastar menos), Ponlo a trabajar (tu negocio, contenido y redes, conseguir clientes, skills, agentes), Vende y construye (el sistema para venderle IA a negocios, sistemas por rubro, Claude Code, crear tu app).
-- Gratis: registrándose con el mail se abren 35 guías (todas las de los reels, las de gastar menos y el Módulo 1 del sistema para vender IA). Web: www.forjaia.com (la plataforma se llama Forja IA)
+- Gratis: registrándose con el mail se abren 40 guías (todas las de los reels, las de gastar menos y el Módulo 1 del sistema para vender IA). Web: www.forjaia.com (la plataforma se llama Forja IA)
 - Guías gratis que más piden por los reels: Codex dentro de Claude Code (con el plugin oficial de OpenAI conectas Codex a Claude Code y le pasas tareas o revisiones con comandos /codex, necesitas la CLI de Codex con tu cuenta de ChatGPT), 22 skills de Claude Code, 8 apps clonadas gratis, 5 repos que reemplazan apps pagas, oficina de agentes IA, 4 agentes de WhatsApp para vender, configurar Claude en 10 minutos. Si preguntan cómo hacer algo de estas, explicas en una frase la idea y le pasas el link www.forjaia.com para que vea el paso a paso.
 - Palabras de los reels y su guía: MAPA (Graphify y Obsidian para gastar menos en Claude Code), MODELO (qué modelo de Claude usar), TOKEN (MarkItDown), PROYECTO (Proyectos y caché), PLAN (modo plan de Claude Code), CHAT (por qué Claude se vuelve torpe en chats largos), LIVIANO (Claude Code liviano), SUBAGENTE (subagentes), MEDIDOR (medidor de uso y límites), ARCHIVOS (archivos sin desperdiciar tokens), PEDIDO (pedidos que salen a la primera), CONFIG (configurar Claude en 10 minutos), GUIA (Codex dentro de Claude Code), JARVIS, LINKEDIN, INSTAGRAM, YOUTUBE, WEB, CONECTOR, SKILLS, CLON, REPOS, WHATSAPP, OFICINA, CINCO, EDITAR, EQUIPO (35 cosas para instalar en Claude como un equipo), VENDER (7 repos para vender a empresas), ROADMAP (de cero a vender IA en 8 etapas), INMOBILIARIA, EXCEL (analizar planillas), CEREBRO (segundo cerebro del negocio), APP (de idea a app publicada), FABLE (Fable 5.2), GUIAS (todas las guías gratis: le pasas el link de registro), NVIDIA (la API gratis de NVIDIA con más de 100 modelos abiertos), AGENTE (las 3 ingenierías de un agente que funciona: arnés, bucle y grafo), MEJORA (agente que mejora sus propios prompts con un calificador y un coach). Si alguien escribe solo una de estas palabras, quiere esa guía: el sistema le manda el link directo a esa guía.
 - Nunca digas que algo "no se puede" o "no se conecta" si hay una guía sobre eso. Si no estás seguro, deriva.
@@ -59,7 +59,7 @@ Si derivar es true, "mensajes" va vacío.`;
 // Pide una guía: le mandamos el link directo. En la web pone su mail y entra en el momento (sin esperar nada en el chat).
 export function mensajeGuia(slug) {
   return {
-    m1: "Aca te dejo la guia, es una plataforma con mas de 35 guias gratis. Pones tu mail, entras y la revisas",
+    m1: "Aca te dejo la guia, es una plataforma con 40 guias gratis. Pones tu mail, entras y la revisas",
     m2: slug ? `${SITIO}/guias/${slug}` : `${SITIO}/#gratis`
   };
 }
@@ -152,7 +152,7 @@ export function notaDeCuenta(cuenta) {
   if (!cuenta) return "[Sistema: no sabemos si ya se registro en la web.] ";
   return cuenta.compro
     ? "[Sistema: ya esta registrado y COMPRO el acceso completo, tiene todo abierto. No le ofrezcas registrarse ni comprar.] "
-    : "[Sistema: ya esta registrado, tiene abiertas las 35 guias gratis. No le ofrezcas registrarse ni las guias gratis como algo nuevo.] ";
+    : "[Sistema: ya esta registrado, tiene abiertas las 40 guias gratis. No le ofrezcas registrarse ni las guias gratis como algo nuevo.] ";
 }
 
 export default async function handler(req, res) {

@@ -35,7 +35,7 @@ test("agente: nota de cuenta según el registro", () => {
 import { mensajeGuia } from "../api/agente.js";
 test("agente: pide una guía y recibe el link directo, sin pedirle el mail", () => {
   const m = mensajeGuia("22-skills-claude-code");
-  assert.match(m.m1, /35 guias gratis/);
+  assert.match(m.m1, /40 guias gratis/);
   assert.match(m.m2, /forjaia\.com\/guias\/22-skills-claude-code$/);
   assert.match(mensajeGuia(null).m2, /forjaia\.com\/#gratis$/);
 });
