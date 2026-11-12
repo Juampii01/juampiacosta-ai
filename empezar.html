@@ -118,6 +118,18 @@
   @media (max-width: 480px) { .l-monto b { font-size: 46px; } }
   .v-sis { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
   .v-sis span { padding: 7px 12px; border-radius: 999px; font-size: 14px; border: 1px solid var(--line); }
+  .l-video-et { position: absolute; right: 12px; top: 12px; z-index: 2; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 700;
+    background: rgba(10, 8, 6, .78); color: #fff; border: 1px solid rgba(255, 138, 76, .5); }
+  .l-hero .l-video { margin: 8px auto 26px; }
+  .v-oferta { display: grid; justify-items: center; gap: 14px; }
+  .v-precio { display: flex; align-items: baseline; justify-content: center; flex-wrap: wrap; gap: 6px 12px; }
+  .v-precio b { font-size: clamp(38px, 6vw, 52px); letter-spacing: -.04em; line-height: 1; }
+  .v-precio s { color: var(--muted); font-size: 20px; }
+  .v-precio span { width: 100%; text-align: center; color: var(--glow); font-weight: 600; font-size: 16px; }
+  .v-confianza { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 10px; margin-top: 4px; }
+  .v-confianza li { padding: 8px 14px; border-radius: 999px; font-size: 14px; border: 1px solid var(--line); background: var(--glass); }
+  .v-confianza li b { color: var(--ink); }
+  @media (max-width: 820px) { .l-hero .l-sub { display: none; } .l-hero h1 { margin-bottom: 14px; } }
 </style>
 <!-- Píxel de Meta «Forja IA» (4736870359880696): visita a la landing y clic al pago. La compra la manda Hotmart con el mismo píxel. -->
 <script>
@@ -137,9 +149,17 @@ fbq('init','4736870359880696');fbq('track','PageView');
 <section class="l-hero"><div class="l-wrap">
   <span class="mono">Precio de lanzamiento · hasta el 30 de noviembre</span>
   <h1>Aprende a usar la IA <em>antes de quedarte atrás</em>, paso a paso y sin saber programar</h1>
-  <p>Configuras Claude en 10 minutos, aprendes a pedirle bien las cosas y lo pones a hacer lo que hoy te lleva horas: mails, planillas, posteos y más.</p>
-  <div class="l-acciones"><a class="l-boton js-pagar" href="#precio">Quiero el acceso · US$ 24,90</a></div>
-  <p class="l-linea">Pago único · Es tuyo para siempre · <b>15 días de garantía</b></p>
+  <p class="l-sub">Configuras Claude en 10 minutos, aprendes a pedirle bien las cosas y lo pones a hacer lo que hoy te lleva horas: mails, planillas, posteos y más.</p>
+  <div class="l-video"><video src="web/demo-empezar.mp4" poster="web/demo-empezar.jpg" autoplay muted loop playsinline preload="auto" aria-label="Recorrido por la plataforma Forja IA por dentro"></video><span class="l-video-et">Así se ve por dentro</span></div>
+  <div class="v-oferta">
+    <div class="v-precio"><s>US$ 44,90</s><b>US$ 24,90</b><span>Pago único. Menos que una cena afuera.</span></div>
+    <a class="l-boton js-pagar" href="#precio">Quiero el acceso · US$ 24,90</a>
+    <ul class="v-confianza">
+      <li>🛡️ <b>15 días de garantía</b>: si no te sirve, te devuelven todo</li>
+      <li>💳 Pagas en 1 paso, sin crear cuenta</li>
+      <li>♾️ Es tuyo para siempre</li>
+    </ul>
+  </div>
 </div></section>
 
 <section class="l-sec"><div class="l-wrap">
@@ -184,7 +204,7 @@ fbq('init','4736870359880696');fbq('track','PageView');
     <div class="l-caja glass l-caja--precio">
       <span class="mono">Precio de lanzamiento</span>
       <div class="l-monto"><b>US$ 24,90</b><s>US$ 44,90</s></div>
-      <p class="l-chico">Hasta el 30 de noviembre. En diciembre sube a US$ 44,90 y desde enero pasa a ser mensual.</p>
+      <p class="l-chico"><b style="color:var(--ink)">Menos que una cena afuera.</b> Hasta el 30 de noviembre. En diciembre sube a US$ 44,90 y desde enero pasa a ser mensual.</p>
       <ul>
         <li>10 sistemas listos para replicar</li>
         <li>El roadmap para vender IA a negocios</li>
@@ -192,14 +212,14 @@ fbq('init','4736870359880696');fbq('track','PageView');
         <li>Todo lo que se sume después</li>
       </ul>
       <a class="l-boton js-pagar" href="https://pay.hotmart.com/J108404247X?off=8flev061" data-base="https://pay.hotmart.com/J108404247X?off=8flev061">Quiero el acceso · US$ 24,90</a>
-      <p class="l-chico">Pagas con Hotmart en la moneda de tu país. ¿Estás en Argentina? <a href="https://mpago.la/1Q8PbXK">Paga con Mercado Pago ($ 39.000)</a>.</p>
+      <p class="l-chico">Pagas en 1 paso con Hotmart, en la moneda de tu país y sin crear cuenta. ¿Estás en Argentina? <a href="https://mpago.la/1Q8PbXK">Paga con Mercado Pago ($ 39.000)</a>.</p>
     </div>
     <div class="l-caja glass">
       <span class="mono">Garantía</span>
       <h3 style="font-size:22px;margin:10px 0 8px">15 días para probarlo</h3>
       <p class="l-chico" style="font-size:15px">Si entras y sientes que no es para ti, pides el reembolso desde Hotmart dentro de los 15 días y te devuelven el pago completo.</p>
       <span class="mono" style="display:block;margin-top:22px">Después de pagar</span>
-      <p class="l-chico" style="font-size:15px">Te llega un mail de Hotmart. Entras en forjaia.com, te registras con el mismo email de la compra y se te abre todo.</p>
+      <p class="l-chico" style="font-size:15px">Te llega un mail de Hotmart. Entras en forjaia.com con el mismo email de la compra y se te abre todo.</p>
     </div>
   </div>
 </div></section>
