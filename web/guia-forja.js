@@ -40,6 +40,50 @@
   }
   pintarAcciones();
 
+  // Puerta de entrada → paso pago: en las guías gratis que más se abren, al llegar al final aparece la guía paga
+  // que sigue, con un paso concreto. Solo para quien está con el plan gratis. Se anota cuándo se ve y cuándo toca.
+  var SIGUIENTE = {
+    "configura-claude-en-10-minutos": {
+      hecho: "Ya tienes a Claude configurado para que sepa quién eres.",
+      slug: "las-formas-de-usar-claude",
+      paso: "Elige dónde usarlo para cada cosa: Chat, Proyectos, Cowork, Claude Code o Chrome, qué plan pide cada uno y cuál te conviene a ti.",
+      despues: ["formula-para-pedirle-bien-a-claude"]
+    },
+    "codex-dentro-de-claude-code": {
+      hecho: "Ya tienes a Claude planificando y a Codex ejecutando.",
+      slug: "el-flujo-de-trabajo-que-recomienda-la-comunidad",
+      paso: "Arma el orden de trabajo que repite la comunidad: explorar, planificar, construir de a un paso, revisar y guardar, para que el combo no te rompa nada.",
+      despues: ["claude-md-la-memoria-del-proyecto", "hooks-de-claude-code-para-no-romper-nada"]
+    }
+  };
+  var sp = MODULOS.gratis && SIGUIENTE[g.slug];
+  var porSlug = function (s) { return GUIAS_WEB.filter(function (x) { return x.slug === s; })[0]; };
+  var spGuia = sp && porSlug(sp.slug);
+  if (spGuia) {
+    var tarjeta = document.createElement("section");
+    tarjeta.className = "fj-siguiente";
+    tarjeta.setAttribute("aria-labelledby", "fj-sig-tit");
+    tarjeta.innerHTML = '<span class="fj-eyebrow">Tu siguiente paso</span>' +
+      '<p class="fj-sig-hecho">✓ ' + esc(sp.hecho) + '</p>' +
+      '<h3 id="fj-sig-tit">' + candado + esc(spGuia.t) + '</h3>' +
+      '<p class="fj-sig-paso">' + esc(sp.paso) + ' <small>' + spGuia.min + ' min</small></p>' +
+      (sp.despues.length ? '<p class="fj-sig-despues">Después: ' + sp.despues.map(function (s) { var x = porSlug(s); return x ? esc(x.t) : ""; }).filter(Boolean).join(" · ") + '</p>' : '') +
+      '<button type="button" class="fj-btn fj-btn-primario" id="fj-sig-btn">Desbloquear y seguir · US$ 24,90</button>' +
+      '<p class="fj-sig-nota">Está en el acceso completo: las ' + FJ.total + ' guías, pago único y es tuyo para siempre.</p>';
+    var art = document.getElementById("guia");
+    var antes = art.querySelector(".relacionadas") || art.querySelector(".cta-card");
+    if (antes) art.insertBefore(tarjeta, antes); else art.appendChild(tarjeta);
+    document.getElementById("fj-sig-btn").addEventListener("click", function () { FJ.desbloquear("siguiente:" + spGuia.slug); });
+    if ("IntersectionObserver" in window && FJ.anotar) {
+      var visto = new IntersectionObserver(function (es) {
+        if (!es[0].isIntersecting) return;
+        visto.disconnect();
+        FJ.anotar("siguiente_visto", g.slug + ":" + spGuia.slug);
+      }, { threshold: 0.5 });
+      visto.observe(tarjeta);
+    }
+  }
+
   // Saltos a las partes que importan
   var saltos = [["guia", "Tutorial"]];
   var conPrompt = document.querySelector("#guia .g-prompt");

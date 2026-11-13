@@ -495,3 +495,15 @@ html[data-tema="claro"] body.fj-app, html[data-tema="claro"] body.fj-acceso {
 .fj-inicio .in-rank .pts{font:700 12px "JetBrains Mono",monospace}
 .fj-ou-pasar{display:block;margin:6px auto 4px;border:0;background:none;color:#a1a1aa;font:600 14px Inter,sans-serif;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
 .fj-ou-pasar:hover{color:#fff}
+
+/* «Tu siguiente paso» al final de las guías puerta (plan gratis) */
+.fj-siguiente{margin:40px 0 8px;padding:24px;border-radius:16px;border:1px solid rgba(255,122,69,.45);background:linear-gradient(180deg,rgba(255,122,69,.10),rgba(255,122,69,.02))}
+.fj-siguiente .fj-eyebrow{color:#ff7a45}
+.fj-siguiente .fj-sig-hecho{margin:10px 0 4px;font-size:14px;color:var(--fj-muted,#a1a1aa)}
+.fj-siguiente h3{display:flex;align-items:flex-start;gap:8px;margin:6px 0 8px;font-size:21px;line-height:1.25;letter-spacing:-.01em}
+.fj-siguiente .fj-sig-paso{margin:0 0 6px;line-height:1.55}
+.fj-siguiente .fj-sig-paso small{color:var(--fj-muted,#a1a1aa);white-space:nowrap}
+.fj-siguiente .fj-sig-despues{margin:0 0 16px;font-size:14px;color:var(--fj-muted,#a1a1aa)}
+.fj-siguiente h3 svg{margin-top:.3em}
+.fj-siguiente .fj-btn{width:100%;justify-content:center}
+.fj-siguiente .fj-sig-nota{margin:10px 0 0;font-size:13px;color:var(--fj-muted,#a1a1aa);text-align:center}

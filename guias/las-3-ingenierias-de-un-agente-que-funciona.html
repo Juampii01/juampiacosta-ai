@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena las-3-ingenierias-de-un-agente-que-funciona, Las 3 ingenierías detrás de un agente que funciona: arnés, bucle y grafo, Escribir buenos prompts fue el paso uno. Un agente que funciona de verdad se diseña en tres capas: qué ve y qué puede tocar, cuándo sigue y cuándo para, y qué paso viene después y dónde aprueba un humano. y e0c7c3b3 -->
+<!-- Plantilla de cada guía. build.py la copia a ../guias/<slug>.html y rellena las-3-ingenierias-de-un-agente-que-funciona, Las 3 ingenierías detrás de un agente que funciona: arnés, bucle y grafo, Escribir buenos prompts fue el paso uno. Un agente que funciona de verdad se diseña en tres capas: qué ve y qué puede tocar, cuándo sigue y cuándo para, y qué paso viene después y dónde aprueba un humano. y 979b8a6e -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -9,23 +9,23 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../web/base.css?v=e0c7c3b3">
-<link rel="stylesheet" href="../web/cta.css?v=e0c7c3b3">
-<link rel="stylesheet" href="../web/biblioteca.css?v=e0c7c3b3">
-<link rel="stylesheet" href="../web/guia.css?v=e0c7c3b3">
-<link rel="stylesheet" href="../web/tema.css?v=e0c7c3b3">
-<link rel="stylesheet" href="../web/bienvenida.css?v=e0c7c3b3">
-<link rel="stylesheet" href="../web/forja.css?v=e0c7c3b3">
-<script src="../web/tema.js?v=e0c7c3b3"></script>
-<link rel="icon" href="../web/favicon.svg?v=e0c7c3b3" type="image/svg+xml">
+<link rel="stylesheet" href="../web/base.css?v=979b8a6e">
+<link rel="stylesheet" href="../web/cta.css?v=979b8a6e">
+<link rel="stylesheet" href="../web/biblioteca.css?v=979b8a6e">
+<link rel="stylesheet" href="../web/guia.css?v=979b8a6e">
+<link rel="stylesheet" href="../web/tema.css?v=979b8a6e">
+<link rel="stylesheet" href="../web/bienvenida.css?v=979b8a6e">
+<link rel="stylesheet" href="../web/forja.css?v=979b8a6e">
+<script src="../web/tema.js?v=979b8a6e"></script>
+<link rel="icon" href="../web/favicon.svg?v=979b8a6e" type="image/svg+xml">
 <meta name="theme-color" content="#0a0a0b">
 </head>
 <body class="fj-app" data-seccion="classroom" data-raiz="/">
-<script src="../web/redes.js?v=e0c7c3b3"></script>
-<script src="../web/guias-web.js?v=e0c7c3b3"></script>
-<script src="../web/categorias.js?v=e0c7c3b3"></script>
-<script src="../web/comun.js?v=e0c7c3b3"></script>
-<script src="../web/modulos.js?v=e0c7c3b3"></script>
+<script src="../web/redes.js?v=979b8a6e"></script>
+<script src="../web/guias-web.js?v=979b8a6e"></script>
+<script src="../web/categorias.js?v=979b8a6e"></script>
+<script src="../web/comun.js?v=979b8a6e"></script>
+<script src="../web/modulos.js?v=979b8a6e"></script>
 
 <main class="fj-guia" data-slug="las-3-ingenierias-de-un-agente-que-funciona">
   <div class="fj-guia-col">
@@ -38,11 +38,11 @@
 </main>
 <script>var GUIA = {"slug": "las-3-ingenierias-de-un-agente-que-funciona", "post": "AGENTE", "t": "Las 3 ingenierías detrás de un agente que funciona: arnés, bucle y grafo", "d": "Escribir buenos prompts fue el paso uno. Un agente que funciona de verdad se diseña en tres capas: qué ve y qué puede tocar, cuándo sigue y cuándo para, y qué paso viene después y dónde aprueba un humano.", "tema": "Agentes", "min": 11, "ficha": [["Qué es", "Una forma simple de diseñar agentes de IA en tres capas: el arnés, el bucle y el grafo."], ["Para quién", "Quien ya usa Claude o Claude Code y quiere armar agentes que no se desordenen, no gasten de más y no hagan cosas sin permiso."], ["Necesitas", "Claude o Claude Code. Para la parte práctica, un proyecto donde quieras automatizar una tarea de varios pasos."], ["La idea clave", "La mayoría de los agentes que fallan no fallan por el modelo: fallan porque nadie decidió estas tres cosas a propósito."], ["Por dónde empezar", "Toma un agente que ya tengas (o una tarea que repites) y completa la hoja de diseño del final."]], "secciones": [{"h": "Por qué el prompt ya no alcanza", "p": ["Un prompt resuelve una respuesta. Un agente hace muchas cosas seguidas: lee archivos, usa herramientas, decide qué hacer después y vuelve a intentar si algo falla. Ahí aparecen problemas que ningún prompt arregla: lee de más y se confunde, toca lo que no debería, entra en un bucle que no termina o se saltea un paso importante.", "Por eso hoy se habla de tres ingenierías nuevas, una por cada problema. No son nombres oficiales de ningún producto: son una forma ordenada de pensar el diseño. Cada una responde una pregunta."], "lista": ["<b>Arnés<\/b> (harness): ¿qué ve el modelo y qué puede tocar?", "<b>Bucle<\/b> (loop): ¿cuándo sigue trabajando y cuándo para?", "<b>Grafo<\/b> (graph): ¿qué paso viene después y dónde tiene que decir que sí una persona?"]}, {"h": "1 · El arnés: qué ve y qué puede tocar", "p": ["El arnés es todo lo que rodea al modelo: las instrucciones fijas, el contexto que le pasas, las herramientas que tiene a mano y los permisos de cada una. Es la capa que más impacto tiene y la que más se arma sin pensar.", "Regla de oro: dale lo mínimo que necesita para la tarea. Más contexto no es mejor: con contexto de más el modelo se distrae y gasta más. Más herramientas tampoco: cada herramienta extra es una decisión más que puede tomar mal."], "lista": ["<b>Instrucciones fijas<\/b>: en Claude Code van en el archivo CLAUDE.md del proyecto; en un agente propio, en el mensaje de sistema. Qué hace, qué no hace y cómo se ve un trabajo bien terminado.", "<b>Contexto justo<\/b>: pásale el archivo o el dato que hace falta, no la carpeta entera. Si la tarea es larga, que guarde notas en un archivo en vez de cargar todo en la conversación.", "<b>Herramientas con nombre claro<\/b>: cada herramienta hace una sola cosa y su descripción dice cuándo usarla.", "<b>Permisos<\/b>: separa lo que puede hacer solo (leer, buscar) de lo que necesita confirmación (borrar, enviar, pagar, publicar). En Claude Code se configura con las reglas de permisos de settings.json."], "prompts": [{"t": "Revisar el arnés de tu agente", "c": "Revisa la configuración de este agente: [PEGA TUS INSTRUCCIONES, LA LISTA DE HERRAMIENTAS Y LOS PERMISOS]. Dime: 1) qué contexto le sobra o le falta para su tarea, 2) qué herramientas no necesita, 3) qué acciones debería pedir confirmación antes de hacerlas y hoy no la piden. Propón la versión mínima."}]}, {"h": "2 · El bucle: cuándo sigue y cuándo para", "p": ["Un agente trabaja en vueltas: piensa, actúa, mira el resultado y decide si sigue. El bucle es la regla que decide cuándo termina. Si no la diseñas, el agente para antes de tiempo (te deja el trabajo a medias) o no para nunca (te gasta el plan).", "Todo bucle sano tiene tres cosas: una condición de éxito que se pueda comprobar, un límite de vueltas o de gasto, y qué hacer cuando algo falla."], "lista": ["<b>Éxito comprobable<\/b>: no \"hasta que esté bien\", sino \"hasta que pasen los tests\", \"hasta que la planilla tenga las 200 filas\" o \"hasta que el mail tenga asunto, saludo y link\".", "<b>Límite<\/b>: un máximo de intentos o de tiempo. Si llega al límite, para y te cuenta qué logró y qué no.", "<b>Qué hacer si falla<\/b>: reintentar una vez con otra estrategia, y si vuelve a fallar, avisar a una persona en vez de inventar.", "<b>En Claude Code<\/b>: los hooks te dejan correr un control automático en momentos fijos, por ejemplo cuando el agente quiere terminar (evento Stop), y frenarlo si el control no pasa."], "prompts": [{"t": "Diseñar el bucle", "c": "Mi agente hace esta tarea: [DESCRIBE LA TAREA]. Escríbeme: 1) una condición de éxito que se pueda comprobar con un control automático, 2) un límite razonable de intentos, 3) qué tiene que hacer si falla dos veces. Después agrega esas reglas a sus instrucciones."}], "aviso": "Si un agente repite la misma acción tres veces sin avanzar, el problema casi nunca es el modelo: falta una condición de salida clara."}, {"h": "3 · El grafo: qué paso viene después", "p": ["El grafo es el mapa de pasos: qué se hace primero, qué puede ir en paralelo, dónde hay una bifurcación y en qué puntos tiene que aprobar una persona. Es la diferencia entre un agente que improvisa y un proceso que siempre sale igual.", "No todo tiene que ser un agente libre. Si los pasos se conocen de antemano, un flujo fijo es más barato, más rápido y más fácil de revisar. Deja que el agente decida solo donde realmente hace falta criterio."], "lista": ["<b>Pasos fijos<\/b>: lo que siempre se hace igual (leer el pedido, buscar el cliente, armar el borrador).", "<b>Bifurcaciones<\/b>: si el cliente es nuevo va por un camino, si ya compró va por otro.", "<b>Paralelo<\/b>: tareas independientes que pueden correr al mismo tiempo, por ejemplo con subagentes en Claude Code.", "<b>Aprobación humana<\/b>: antes de todo lo que no se puede deshacer o que sale hacia afuera (enviar, publicar, cobrar, borrar). El agente prepara, la persona aprueba."], "prompts": [{"t": "Dibujar el grafo", "c": "Convierte este proceso en un mapa de pasos: [DESCRIBE EL PROCESO]. Marca qué pasos son fijos, cuáles necesitan que el agente decida, cuáles pueden ir en paralelo y en cuáles tiene que aprobar una persona antes de seguir. Dámelo como lista numerada y como diagrama en texto."}]}, {"h": "Ejemplo: agente que responde consultas de clientes", "lista": ["<b>Arnés<\/b>: ve las preguntas frecuentes, los precios y el historial de ese cliente. Puede leer y redactar. No puede enviar, cobrar ni prometer descuentos.", "<b>Bucle<\/b>: termina cuando el borrador responde la pregunta, usa un precio que existe en la lista y no supera 5 líneas. Si no encuentra el dato en dos intentos, marca la consulta para una persona.", "<b>Grafo<\/b>: clasifica la consulta → si es reclamo o pago, pasa directo a una persona → si es consulta común, redacta → una persona aprueba → se envía."]}, {"h": "Tu hoja de diseño", "p": ["Antes de construir (o para arreglar un agente que ya tienes), contesta esto por escrito. Si no puedes completar una línea, ahí está el problema."], "pasos": ["Qué tarea hace, en una oración.", "Qué necesita ver, y qué no tiene que ver.", "Qué herramientas usa y cuáles necesitan confirmación.", "Cómo se comprueba que terminó bien.", "Cuántos intentos tiene y qué hace si falla.", "Cuáles son los pasos, en orden, y dónde aprueba una persona."], "prompts": [{"t": "Completar la hoja con Claude", "c": "Ayúdame a diseñar un agente con estas tres capas: arnés (qué ve y qué puede tocar), bucle (cuándo sigue y cuándo para) y grafo (qué paso viene después y dónde aprueba una persona). La tarea es: [DESCRIBE LA TAREA]. Hazme una pregunta por vez hasta completar las seis líneas de la hoja y al final dame las instrucciones listas para pegar."}]}], "faq": [{"q": "¿Necesito saber programar?", "a": "No para diseñarlo. Las tres capas son decisiones, no código. Para construirlo, Claude Code o una herramienta como n8n te resuelven la parte técnica a partir de la hoja de diseño."}, {"q": "¿Cuál de las tres es más importante?", "a": "El arnés: la mayoría de los errores vienen de que el agente ve de más, tiene herramientas de más o puede hacer cosas sin confirmación."}, {"q": "¿Siempre necesito un agente?", "a": "No. Si los pasos son siempre los mismos, un flujo fijo es mejor. Usa un agente solo donde haga falta decidir."}], "fuentes": ["https://www.anthropic.com/engineering/building-effective-agents", "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents", "https://code.claude.com/docs/en/hooks", "https://code.claude.com/docs/en/permissions", "https://code.claude.com/docs/en/sub-agents"], "cat": "agentes", "parte": "úsalo"};</script>
 
-<script src="../web/shell.js?v=e0c7c3b3"></script>
-<script src="../web/rutas.js?v=e0c7c3b3"></script>
-<script src="../web/logos.js?v=e0c7c3b3"></script>
-<script src="../web/guia.js?v=e0c7c3b3"></script>
-<script src="../web/guia-forja.js?v=e0c7c3b3"></script>
-<script src="../web/bienvenida.js?v=e0c7c3b3"></script>
+<script src="../web/shell.js?v=979b8a6e"></script>
+<script src="../web/rutas.js?v=979b8a6e"></script>
+<script src="../web/logos.js?v=979b8a6e"></script>
+<script src="../web/guia.js?v=979b8a6e"></script>
+<script src="../web/guia-forja.js?v=979b8a6e"></script>
+<script src="../web/bienvenida.js?v=979b8a6e"></script>
 </body>
 </html>

@@ -126,3 +126,8 @@ test("interés: embudo y lista por persona", () => {
   assert.equal(e.vieron, 2); assert.equal(e.si, 1); assert.equal(e.pagar, 1); assert.equal(e.no, 1);
   assert.deepEqual(e.lista.map((x) => [x.email, x.top]), [["a@x.co", "hotmart"], ["b@x.co", "no"]]);
 });
+
+test("interes acepta siguiente_visto con detalle guía:guía", () => {
+  assert.deepEqual(limpiarInteres({ evento: "siguiente_visto", detalle: "configura-claude-en-10-minutos:las-formas-de-usar-claude" }),
+    { evento: "siguiente_visto", detalle: "configura-claude-en-10-minutos:las-formas-de-usar-claude" });
+});

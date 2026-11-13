@@ -2,12 +2,13 @@
 // Eventos: aviso (vio el aviso del Classroom, una vez por día), si («Sí, lo quiero»), no («Ahora no»),
 // ventana (se abrió la ventana de compra; detalle = desde dónde), hotmart / mpago (tocó el botón de pago),
 // guia_paga (intentó abrir una guía del acceso completo; detalle = slug), oferta_vista / oferta_si / oferta_no
-// (la oferta por única vez que se activa desde el Panel; detalle de oferta_si = hotmart o mpago). Los admins no cuentan.
+// (la oferta por única vez que se activa desde el Panel; detalle de oferta_si = hotmart o mpago),
+// siguiente_visto (vio la tarjeta «Tu siguiente paso» al final de una guía puerta; detalle = guía:guía paga). Los admins no cuentan.
 
 import { sesion } from "../lib/sesion.js";
 import { config, json, leerCuerpo, sb } from "../lib/db.js";
 
-export const EVENTOS = ["aviso", "si", "no", "ventana", "hotmart", "mpago", "guia_paga", "oferta_vista", "oferta_si", "oferta_no"];
+export const EVENTOS = ["aviso", "si", "no", "ventana", "hotmart", "mpago", "guia_paga", "oferta_vista", "oferta_si", "oferta_no", "siguiente_visto"];
 
 export function limpiarInteres(c) {
   const evento = String(c && c.evento || "");
