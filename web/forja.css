@@ -546,3 +546,9 @@ html[data-tema="claro"] body.fj-app, html[data-tema="claro"] body.fj-acceso {
 }
 .fj-tabla-caja { max-width: 100%; min-width: 0; }
 .fj-main { min-width: 0; }
+
+/* Classroom a todo el ancho: 3 columnas en pantallas grandes, 2 en medianas, 1 en celular */
+.fj-main.completo { max-width: none; }
+.fj-main.completo .fj-modulos { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+@media (max-width: 1100px) { .fj-main.completo .fj-modulos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .fj-main.completo .fj-modulos { grid-template-columns: 1fr; } }
