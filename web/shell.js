@@ -19,6 +19,7 @@ var FJ = (function () {
     inicio: '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/>',
     classroom: '<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>',
     comunidad: '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>',
+    calendario: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
     sistemas: '<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>',
     biblioteca: '<path d="M4 4h6a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4z"/><path d="M20 4h-6a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h6z"/>',
     maquina: '<rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/>',
@@ -46,7 +47,7 @@ var FJ = (function () {
     '<nav class="fj-nav" aria-label="Secciones">' +
       item("inicio", "Inicio", raiz + "inicio") +
       item("classroom", "Classroom", raiz + "recursos", '<em>' + total + '</em>') +
-      item("comunidad", "Comunidad", raiz + "comunidad") +
+      item("calendario", "Calendario", raiz + "calendario", '<span class="fj-badge">ENERO</span>') +
       item("sistemas", "Sistemas", raiz + "sistemas") +
       item("biblioteca", "Biblioteca", raiz + "biblioteca#posts", seccion === "biblioteca" ? '' : svg("abajo", 2)) + sub +
     '</nav>' +

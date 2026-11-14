@@ -52,7 +52,7 @@
           var chip = esActual ? (e.vistas ? "En curso" : "Empieza aquí") : e.estado;
           var meta = m.guias.length + ' guías · ' + (e.bloqueado ? 'todas con candado' : (MODULOS.gratis && e.abiertas < m.guias.length ? e.abiertas + ' abiertas · ' : '') + e.vistas + ' vistas');
           return '<a class="fj-card fj-modulo' + (esActual ? ' actual' : '') + (e.bloqueado ? ' bloqueado' : '') + '" href="' + href + '" aria-label="' + m.codigo + ' ' + esc(m.nombre) + (e.bloqueado ? ', bloqueado' : '') + '">' +
-            '<div class="fj-portada"><span class="cod">' + m.codigo + '</span><span class="nom">' + esc(m.nombre) + '</span><span class="sello"><i></i>FORJA IA</span>' +
+            '<div class="fj-portada con-img"><img src="/web/portadas/' + m.codigo.toLowerCase() + '.jpg" alt="" loading="lazy" width="1200" height="675">' +
             '<span class="fj-estado' + (e.estado === "Completo" ? ' completo' : '') + '">' + chip.toUpperCase() + '</span>' +
             (e.bloqueado ? '<div class="fj-candado"><span>' + candado + 'Solo en el acceso completo</span></div>' : '') + '</div>' +
             '<div class="fj-modulo-cuerpo"><h3><span>' + m.codigo + '</span>' + esc(m.nombre) + '</h3><p>' + esc(m.desc) + '</p><span class="meta">' + meta + '</span><span class="esp"></span>' +

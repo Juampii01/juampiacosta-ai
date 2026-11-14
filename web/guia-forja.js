@@ -107,7 +107,7 @@
     if (!mod) { caja.hidden = true; return; }
     var leidas = PROGRESO.leidas(), e = MODULOS.estado(mod, leidas);
     var cerradas = guias.length - e.abiertas;
-    caja.innerHTML = '<a class="fj-lista-cab" href="/recursos"><span class="mini">' + mod.codigo + '</span><div><b>' + esc(mod.nombre) + '</b><small>' + e.vistas + ' de ' + guias.length + ' vistas' + (MODULOS.gratis ? ' · ' + e.abiertas + ' abiertas' : '') + '</small></div>' +
+    caja.innerHTML = '<a class="fj-lista-cab" href="/recursos"><span class="mini con-img"><img src="/web/portadas/' + mod.codigo.toLowerCase() + '.jpg" alt=""></span><div><b>' + esc(mod.nombre) + '</b><small>' + e.vistas + ' de ' + guias.length + ' vistas' + (MODULOS.gratis ? ' · ' + e.abiertas + ' abiertas' : '') + '</small></div>' +
       '<span class="fj-anillo" style="--p:' + e.pct + '">' + e.pct + '%</span></a>' +
       '<div class="fj-lista"><div class="fj-lista-tit">GUÍAS</div>' + guias.map(function (x, i) {
         var bloq = !MODULOS.abierta(x), vista = !!leidas[x.slug], actual = x.slug === g.slug;

@@ -1,0 +1,104 @@
+<!doctype html>
+<!-- Plantilla de /calendario. build.py la copia a ../calendario.html con la versión ({{V}}) -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calendario | Forja IA</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="web/base.css?v={{V}}">
+<link rel="stylesheet" href="web/tema.css?v={{V}}">
+<link rel="stylesheet" href="web/bienvenida.css?v={{V}}">
+<link rel="stylesheet" href="web/forja.css?v={{V}}">
+<script src="web/tema.js?v={{V}}"></script>
+<link rel="icon" href="web/favicon.svg?v={{V}}" type="image/svg+xml">
+<style>
+  .ca-hero { display: grid; grid-template-columns: 1.15fr 1fr; overflow: hidden; margin-bottom: 22px; }
+  .ca-hero img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 240px; }
+  .ca-hero-txt { padding: 28px; display: flex; flex-direction: column; gap: 12px; justify-content: center; }
+  .ca-hero-txt h2 { font-size: 26px; line-height: 1.15; letter-spacing: -.02em; }
+  .ca-chip { align-self: flex-start; padding: 6px 12px; border-radius: 99px; background: rgba(255, 90, 31, .12); color: var(--fj-acento-txt); font: 600 12px "JetBrains Mono", monospace; letter-spacing: .12em; }
+  .ca-horas { display: flex; flex-wrap: wrap; gap: 8px; }
+  .ca-horas span { padding: 6px 10px; border-radius: 10px; border: 1px solid var(--fj-line); font-size: 13px; color: var(--fj-text2); }
+  .ca-horas b { color: var(--fj-text); }
+  .ca-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .ca-mes { padding: 22px; }
+  .ca-mes h3, .ca-como h3 { font-size: 17px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: baseline; }
+  .ca-mes h3 small { font: 500 11px "JetBrains Mono", monospace; letter-spacing: .14em; color: var(--fj-muted); }
+  .ca-dias { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; }
+  .ca-dias .n { font: 500 11px "JetBrains Mono", monospace; color: var(--fj-muted); padding-bottom: 4px; }
+  .ca-dias span { height: 40px; display: grid; place-items: center; border-radius: 10px; font-size: 14px; color: var(--fj-text2); }
+  .ca-dias span.vivo { background: #ff5a1f; color: #17110e; font-weight: 800; box-shadow: 0 8px 22px -10px rgba(255, 90, 31, .9); }
+  .ca-nota { margin-top: 14px; font-size: 13px; color: var(--fj-muted); display: flex; gap: 8px; align-items: center; }
+  .ca-nota i { width: 10px; height: 10px; border-radius: 3px; background: #ff5a1f; flex: none; }
+  .ca-como { padding: 22px; }
+  .ca-como ol { list-style: none; display: grid; gap: 14px; }
+  .ca-como li { display: flex; gap: 12px; }
+  .ca-como li b { flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 90, 31, .14); color: var(--fj-acento-txt); font-size: 13px; }
+  .ca-como li p { font-size: 14.5px; line-height: 1.5; color: var(--fj-text2); }
+  .ca-como li p strong { color: var(--fj-text); }
+  .ca-pago { margin-top: 22px; padding: 22px; display: flex; gap: 18px; align-items: center; justify-content: space-between; flex-wrap: wrap; border-color: rgba(255, 90, 31, .45); }
+  .ca-pago[hidden] { display: none; }
+  main .ca-pago { margin-top: 22px; }
+  .ca-pago p { font-size: 15px; line-height: 1.5; color: var(--fj-text2); max-width: 620px; }
+  .ca-pago p b { color: var(--fj-text); }
+  @media (max-width: 860px) { .ca-hero, .ca-grid { grid-template-columns: 1fr; } .ca-hero img { min-height: 0; aspect-ratio: 16 / 9; } }
+</style>
+</head>
+<body class="fj-app" data-seccion="calendario" data-raiz="/">
+<script src="web/guias-web.js?v={{V}}"></script>
+<script src="web/comun.js?v={{V}}"></script>
+<main class="fj-main ancho">
+  <div class="fj-cab"><span class="fj-eyebrow">Calendario</span><h1>Directos en vivo, todos los sábados</h1>
+    <p>Desde enero, cada sábado nos conectamos en vivo para armar sistemas con IA, resolver tus dudas y ver qué salió nuevo. Lo que sale de cada directo queda como guía escrita en el Classroom.</p></div>
+
+  <section class="fj-card ca-hero">
+    <img src="web/portadas/directos.jpg" alt="">
+    <div class="ca-hero-txt">
+      <span class="ca-chip">DISPONIBLE DESDE ENERO</span>
+      <h2>Sábados · 15:00 hora Argentina</h2>
+      <div class="ca-horas"><span>México <b>12:00</b></span><span>Colombia y Perú <b>13:00</b></span><span>Chile <b>15:00</b></span><span>España <b>19:00</b></span></div>
+      <p style="font-size:14.5px;line-height:1.5;color:var(--fj-text2)">Una hora en vivo. Te avisamos por email el día anterior y una hora antes, con el link para entrar.</p>
+    </div>
+  </section>
+
+  <div class="ca-grid">
+    <section class="fj-card ca-mes">
+      <h3>Enero 2027 <small>SÁBADOS EN VIVO</small></h3>
+      <div class="ca-dias" id="ca-dias"></div>
+      <p class="ca-nota"><i></i>Directo a las 15:00 (hora Argentina)</p>
+    </section>
+    <section class="fj-card ca-como">
+      <h3>Cómo es cada directo</h3>
+      <ol>
+        <li><b>1</b><p><strong>Armamos algo en vivo.</strong> Un sistema, un agente o una automatización, de principio a fin, para que veas cómo se hace.</p></li>
+        <li><b>2</b><p><strong>Tus preguntas.</strong> Trae tu caso: lo que te trabó en una guía, un cliente, un sistema que quieres armar.</p></li>
+        <li><b>3</b><p><strong>Lo nuevo de la semana.</strong> Qué salió en IA y si te sirve o no, sin humo.</p></li>
+        <li><b>4</b><p><strong>Queda escrito.</strong> Lo que armamos se convierte en una guía nueva del Classroom, con los prompts listos para copiar.</p></li>
+      </ol>
+    </section>
+  </div>
+
+  <section class="fj-card ca-pago" id="ca-pago" hidden>
+    <p><b>Los directos van a ser parte del plan pago.</b> Con el plan gratis tienes la biblioteca y los primeros módulos abiertos.</p>
+    <button type="button" class="fj-btn fj-btn-primario" id="ca-desbloquear">Desbloquear todo</button>
+  </section>
+</main>
+<script src="web/shell.js?v={{V}}"></script>
+<script>
+(function () {
+  var d = document.getElementById("ca-dias"), h = ["L", "M", "M", "J", "V", "S", "D"].map(function (x) { return '<span class="n">' + x + '</span>'; }).join("");
+  // Enero de 2027 empieza viernes: 4 huecos antes del 1
+  for (var i = 0; i < 4; i++) h += "<span></span>";
+  for (var n = 1; n <= 31; n++) { var sab = (n + 3) % 7 === 5; h += '<span' + (sab ? ' class="vivo" title="Directo · 15:00"' : '') + '>' + n + '</span>'; }
+  d.innerHTML = h;
+  if (FJ.gratis) {
+    document.getElementById("ca-pago").hidden = false;
+    document.getElementById("ca-desbloquear").addEventListener("click", function () { if (FJ.desbloquear) FJ.desbloquear("calendario"); else location.href = "/?plan=1#precio"; });
+  }
+})();
+</script>
+</body>
+</html>

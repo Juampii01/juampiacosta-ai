@@ -269,7 +269,7 @@ def video_html(cfg, n_guias, n_prompts, n_skills):
 
 
 LOGO_FORJA = '<svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#17110e"/><path d="M9 22h14l-2-5H11z" fill="#ff5a1f"/><path d="M16 6c3 3 4 5 2 8-1-1-2-1-3 0-2-2-1-5 1-8z" fill="#ffb27a"/></svg>'
-PAGINAS = ["recursos", "biblioteca", "entrar", "cuenta", "comunidad", "sistemas", "panel", "maestro"]
+PAGINAS = ["recursos", "biblioteca", "entrar", "cuenta", "comunidad", "calendario", "sistemas", "panel", "maestro"]
 
 
 def paginas(v):

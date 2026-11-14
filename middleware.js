@@ -16,7 +16,7 @@ export const config = {
   matcher: [
     "/", "/index.html",
     "/inicio", "/inicio.html", "/maquina", "/maquina.html", "/recursos", "/recursos.html",
-    "/biblioteca", "/biblioteca.html", "/sistemas", "/sistemas.html", "/comunidad", "/comunidad.html",
+    "/biblioteca", "/biblioteca.html", "/sistemas", "/sistemas.html", "/comunidad", "/comunidad.html", "/calendario", "/calendario.html",
     "/cuenta", "/cuenta.html", "/maestro", "/maestro.html", "/panel", "/panel.html",
     "/guias/:path*", "/sistemas/:path*", "/descargas/:path*",
     "/web/guias-web.js", "/web/guias-web.json", "/web/prompts.js", "/web/herramientas.js",
@@ -25,7 +25,7 @@ export const config = {
   ]
 };
 
-const PRIVADAS = /^\/(inicio|recursos|biblioteca|sistemas|comunidad|cuenta|maestro|panel)(\.html)?$/;
+const PRIVADAS = /^\/(inicio|recursos|biblioteca|sistemas|comunidad|calendario|cuenta|maestro|panel)(\.html)?$/;
 
 export function decidir(ruta, nivel, admin = false) {
   if (/^\/(contenido|supabase|lib|tests)\/|^\/build\.py$|^\/web\/guias-web\.json$/.test(ruta)) return { no: true };

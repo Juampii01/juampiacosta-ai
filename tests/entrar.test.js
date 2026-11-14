@@ -37,6 +37,7 @@ test("sin cookie: solo el inicio; lo privado nunca", () => {
   assert.deepEqual(decidir("/", null), { pasa: true });
   assert.deepEqual(decidir("/recursos", null), { a: "/entrar" });
   assert.deepEqual(decidir("/comunidad", null), { a: "/entrar?volver=/comunidad" });
+  assert.deepEqual(decidir("/calendario", null), { a: "/entrar?volver=/calendario" });
   assert.deepEqual(decidir("/panel", null), { a: "/entrar?volver=/panel" });
   assert.deepEqual(decidir("/web/prompts.js", null), { prohibido: true });
   // Guía gratis sin sesión: al registro y de vuelta a la guía. Guía paga sin sesión: a entrar.
@@ -80,6 +81,7 @@ test("panel: solo el equipo, aunque haya pagado", () => {
   assert.deepEqual(decidir("/panel.html", "gratis", false), { a: "/recursos" });
   assert.deepEqual(decidir("/panel", "pago", true), { pasa: true });
   assert.deepEqual(decidir("/comunidad", "gratis"), { pasa: true });
+  assert.deepEqual(decidir("/calendario", "gratis"), { pasa: true });
 });
 
 test("pago: todo", () => {
