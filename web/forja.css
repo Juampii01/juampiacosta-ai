@@ -536,3 +536,13 @@ html[data-tema="claro"] body.fj-app, html[data-tema="claro"] body.fj-acceso {
 .fj-inicio .in-fases .txt b{display:block;font-size:14px}
 .fj-inicio .in-fases .txt small{font-size:12.5px;color:var(--fj-text2)}
 .fj-inicio .in-fases .fj-barra{grid-area:barra}
+
+/* Celular: acciones de la guía compactas y tablas del panel con scroll propio */
+@media (max-width: 640px) {
+  .fj-acciones { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px; }
+  .fj-acciones .esp, .fj-acciones a[aria-label^="Guía anterior"] { display: none; }
+  .fj-acciones .fj-btn { justify-content: center; min-height: 42px; padding: 0 10px; font-size: 14px; white-space: nowrap; }
+  .fj-acciones a[href^="/maestro"], .fj-acciones .fj-btn-primario { grid-column: 1 / -1; }
+}
+.fj-tabla-caja { max-width: 100%; min-width: 0; }
+.fj-main { min-width: 0; }
