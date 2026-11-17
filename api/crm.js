@@ -16,6 +16,9 @@ export function tokenValido(cabecera, esperado = process.env.CRM_TOKEN) {
   return a.length === b.length && timingSafeEqual(a, b);
 }
 
+/** Lo que vale una venta en dólares: el precio de la oferta o, si se cobró en USD, el monto. */
+export const usdDe = (v) => (v.monto_usd != null ? Number(v.monto_usd) : v.moneda === "USD" && v.monto ? Number(v.monto) : 0);
+
 export const diaAr = (iso) => new Date(Date.parse(iso) - AR).toISOString().slice(0, 10);
 export const enmascarar = (email) => String(email || "").replace(/^(.).*?(@.*)$/, "$1***$2");
 
@@ -44,7 +47,7 @@ export function metricas({ registros, ventas, chat, actividad, interes, n = 30, 
   netas.forEach((v) => {
     const d = diaAr(v.creado); if (!serie[d]) return;
     if (esBiblioteca(v)) serie[d].ventas++;
-    if (v.moneda === "USD" && v.monto) serie[d].ingresos_usd += Number(v.monto);
+    serie[d].ingresos_usd += usdDe(v);
   });
   // Conversaciones del agente: el día del primer mensaje de cada contacto
   const primero = {};
@@ -56,7 +59,7 @@ export function metricas({ registros, ventas, chat, actividad, interes, n = 30, 
   const regsV = regs.filter((r) => enVentana(r.creado));
   const ventasBib = netas.filter(esBiblioteca);
   const ventasV = ventasBib.filter((v) => enVentana(v.creado));
-  const usd = (lista) => Math.round(lista.reduce((s, v) => s + (v.moneda === "USD" && v.monto ? Number(v.monto) : 0), 0) * 100) / 100;
+  const usd = (lista) => Math.round(lista.reduce((s, v) => s + usdDe(v), 0) * 100) / 100;
   const contactosV = Object.values(primero).filter(enVentana).length;
   const hace7 = dias(7, ahora)[0];
   const activos7 = new Set(act.filter((a) => a.dia >= hace7).map((a) => a.email)).size;
@@ -124,7 +127,7 @@ export default async function handler(req, res) {
   try {
     const [registros, ventas, chat, actividad, interes] = await Promise.all([
       sb("registros?select=email,nombre,compro,prueba,pais,whatsapp,creado&order=creado.desc&limit=20000"),
-      sb("ventas?select=transaccion,estado,medio,email,producto_id,producto,monto,moneda,origen,creado&order=creado.desc&limit=20000"),
+      sb("ventas?select=transaccion,estado,medio,email,producto_id,producto,monto,moneda,monto_usd,origen,creado&order=creado.desc&limit=20000"),
       sb(`chat_mensajes?select=contacto,rol,creado&order=creado.desc&limit=50000`),
       sb(`actividad?select=email,dia,secciones&dia=gte.${dias(Math.max(n, 7))[0]}&limit=50000`),
       sb("interes?select=email,evento,detalle,creado&order=creado.desc&limit=20000")

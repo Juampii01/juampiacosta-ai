@@ -6,7 +6,7 @@ create table if not exists public.ventas (
   estado text not null check (estado in ('aprobada','anulada')),
   medio text not null default 'hotmart' check (medio in ('hotmart','mpago','manual')),
   email text, producto_id text, producto text,
-  monto numeric(12,2), moneda text, origen text,
+  monto numeric(12,2), moneda text, monto_usd numeric(12,2), origen text,
   creado timestamptz not null default now(),
   unique (transaccion, estado)
 );

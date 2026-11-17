@@ -53,6 +53,9 @@ export function leerVenta(cuerpo) {
   if (!estado || !transaccion) return null;
   const precio = compra.price || compra.full_price || {};
   const monto = Number(precio.value);
+  // Hotmart cobra en la moneda de cada país: el precio de la oferta (en USD) es lo que vale la venta
+  const oferta = compra.original_offer_price || {};
+  const usd = oferta.currency_value === "USD" ? Number(oferta.value) : precio.currency_value === "USD" ? monto : NaN;
   const origen = compra.origin || {};
   return {
     transaccion, evento, estado, medio: "hotmart",
@@ -61,6 +64,7 @@ export function leerVenta(cuerpo) {
     producto: d.product && d.product.name ? String(d.product.name).slice(0, 120) : null,
     monto: Number.isFinite(monto) ? monto : null,
     moneda: precio.currency_value ? String(precio.currency_value).slice(0, 8) : null,
+    monto_usd: Number.isFinite(usd) ? usd : null,
     origen: String(origen.sck || origen.src || "").slice(0, 120) || null
   };
 }

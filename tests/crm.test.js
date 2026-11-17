@@ -29,7 +29,7 @@ test("separa negocio y plataforma, sin admins ni pruebas, y resta reembolsos", (
   const ventas = [
     { transaccion: "T1", estado: "aprobada", email: "a@x.com", producto_id: "8923277", monto: 24.9, moneda: "USD", medio: "hotmart", origen: "ad-vender", creado: "2026-11-16T12:00:00Z" },
     { transaccion: "T2", estado: "aprobada", email: "a@x.com", producto_id: "8923495", monto: 7, moneda: "USD", medio: "hotmart", creado: "2026-11-16T12:00:00Z" },
-    { transaccion: "T3", estado: "aprobada", email: "c@x.com", producto_id: "8923277", monto: 24.9, moneda: "USD", medio: "hotmart", creado: "2026-11-16T13:00:00Z" },
+    { transaccion: "T3", estado: "aprobada", email: "c@x.com", producto_id: "8923277", monto: 87150, moneda: "COP", monto_usd: 24.9, medio: "hotmart", creado: "2026-11-16T13:00:00Z" },
     { transaccion: "T3", estado: "anulada", email: "c@x.com", producto_id: "8923277", creado: "2026-11-17T13:00:00Z" },
     { transaccion: "T4", estado: "aprobada", email: "p@x.com", producto_id: "8923277", monto: 24.9, moneda: "USD", creado: "2026-11-17T13:00:00Z" }
   ];
@@ -49,7 +49,9 @@ test("separa negocio y plataforma, sin admins ni pruebas, y resta reembolsos", (
 
 test("lee la venta de un aviso de Hotmart, también la del order bump", () => {
   const v = leerVenta({ event: "PURCHASE_APPROVED", data: { product: { id: 8923495, name: "PDF" }, buyer: { email: "A@X.com" }, purchase: { transaction: "HP1", price: { value: 7, currency_value: "USD" }, origin: { sck: "ad-1" } } } });
-  assert.deepEqual(v, { transaccion: "HP1", evento: "PURCHASE_APPROVED", estado: "aprobada", medio: "hotmart", email: "a@x.com", producto_id: "8923495", producto: "PDF", monto: 7, moneda: "USD", origen: "ad-1" });
+  assert.deepEqual(v, { transaccion: "HP1", evento: "PURCHASE_APPROVED", estado: "aprobada", medio: "hotmart", email: "a@x.com", producto_id: "8923495", producto: "PDF", monto: 7, moneda: "USD", monto_usd: 7, origen: "ad-1" });
+  const ars = leerVenta({ event: "PURCHASE_APPROVED", data: { purchase: { transaction: "HP2", price: { value: 46264, currency_value: "ARS" }, original_offer_price: { value: 24.9, currency_value: "USD" } } } });
+  assert.equal(ars.monto_usd, 24.9);
   assert.equal(leerVenta({ event: "PURCHASE_DELAYED", data: { purchase: { transaction: "x" } } }), null);
   assert.equal(leerVenta({ event: "PURCHASE_REFUNDED", data: { purchase: { transaction: "HP1" } } }).estado, "anulada");
 });
