@@ -42,6 +42,37 @@ export function leerAviso(cuerpo) {
   return null;
 }
 
+// Cada venta y reembolso de cualquier producto (también el PDF del order bump) queda en «ventas» para el CRM.
+export function leerVenta(cuerpo) {
+  if (!cuerpo || typeof cuerpo !== "object") return null;
+  const evento = String(cuerpo.event || "");
+  const estado = APROBADA.has(evento) ? "aprobada" : ANULADA.has(evento) ? "anulada" : null;
+  const d = cuerpo.data || {};
+  const compra = d.purchase || {};
+  const transaccion = String(compra.transaction || "").slice(0, 80);
+  if (!estado || !transaccion) return null;
+  const precio = compra.price || compra.full_price || {};
+  const monto = Number(precio.value);
+  const origen = compra.origin || {};
+  return {
+    transaccion, evento, estado, medio: "hotmart",
+    email: String((d.buyer && d.buyer.email) || "").trim().toLowerCase().slice(0, 254) || null,
+    producto_id: d.product && d.product.id != null ? String(d.product.id) : null,
+    producto: d.product && d.product.name ? String(d.product.name).slice(0, 120) : null,
+    monto: Number.isFinite(monto) ? monto : null,
+    moneda: precio.currency_value ? String(precio.currency_value).slice(0, 8) : null,
+    origen: String(origen.sck || origen.src || "").slice(0, 120) || null
+  };
+}
+
+async function guardarVenta(venta, { url, clave, fetchImpl = fetch }) {
+  const h = { ...cabeceras(clave), Prefer: "resolution=ignore-duplicates,return=minimal" };
+  const r = await fetchImpl(`${url.replace(/\/$/, "")}/rest/v1/ventas?on_conflict=transaccion,estado`, {
+    method: "POST", headers: h, body: JSON.stringify(venta), signal: AbortSignal.timeout(5000)
+  });
+  if (!r.ok) throw new Error(`Supabase respondió ${r.status}: ${(await r.text()).slice(0, 200)}`);
+}
+
 export async function marcarCompra({ email, nombre, compro, venta_origen }, { url, clave, fetchImpl = fetch } = {}) {
   const cambio = venta_origen ? { compro, venta_origen } : { compro };
   const base = url.replace(/\/$/, "");
@@ -80,6 +111,10 @@ export default async function handler(req, res) {
   const cuerpo = await leerJson(req);
   const recibido = req.headers["x-hotmart-hottok"] || (cuerpo && cuerpo.hottok);
   if (!hottokValido(recibido, hottok)) return fin(401);
+
+  // El registro de ventas es para medir: si falla, no frena el acceso
+  const venta = leerVenta(cuerpo);
+  if (venta) await guardarVenta(venta, { url, clave }).catch((e) => console.error("No se pudo guardar la venta:", e.message));
 
   const aviso = leerAviso(cuerpo);
   if (!aviso) return fin(200); // Otros eventos: se reciben y no cambian nada

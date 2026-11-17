@@ -141,6 +141,10 @@ export default async function handler(req, res) {
       if (c.accion !== "acceso" || !email || typeof c.compro !== "boolean") return json(res, 400, { error: "datos" });
       const r = await sb(`registros?email=eq.${enc(email)}`, { method: "PATCH", prefer: "return=representation", body: { compro: c.compro, actualizado: new Date().toISOString() } });
       if (!r.length) await sb("registros", { method: "POST", prefer: "return=minimal", body: { email, origen: "manual", compro: c.compro } });
+      // Para el CRM: el acceso dado a mano (Mercado Pago) cuenta como venta; quitarlo, como anulada
+      await sb("ventas?on_conflict=transaccion,estado", { method: "POST", prefer: "resolution=ignore-duplicates,return=minimal",
+        body: { transaccion: `manual-${email}`, evento: "PANEL", estado: c.compro ? "aprobada" : "anulada", medio: "mpago", email, producto_id: "8923277", producto: "Forja IA · acceso completo" } })
+        .catch((e) => console.error("panel: no se pudo guardar la venta:", e.message));
       console.log(`panel: ${yo.email} ${c.compro ? "dio" : "sacó"} acceso completo a ${email.replace(/^(.).*@/, "$1***@")}`);
       return json(res, 200, { ok: true });
     }
