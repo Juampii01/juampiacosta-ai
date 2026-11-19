@@ -56,7 +56,8 @@ var FJ = (function () {
     (admin ? '<nav class="fj-nav" aria-label="Equipo"><div class="fj-nav-tit">EQUIPO</div>' + item("panel", "Panel", raiz + "panel") + '</nav>' : '') +
     (gratis ? '<div class="fj-plan"><b>Plan gratis</b><div class="fj-barra"><i style="width:' + (total ? Math.round(abiertas / total * 100) : 0) + '%"></i></div>' +
       '<small>' + abiertas + ' de ' + total + ' guías abiertas</small><a class="fj-btn fj-btn-primario" href="/?plan=1#precio">Desbloquear todo</a></div>'
-      : '<div class="fj-plan"><b>Acceso completo</b><small>Las ' + total + ' guías y todo lo que se sume. Para siempre.</small></div>');
+      : '<div class="fj-plan"><b>Acceso completo</b><small>Las ' + total + ' guías y todo lo que se sume. Para siempre.</small></div>') +
+    '<a class="fj-ayuda" href="' + ((window.REDES && REDES.wa) || 'https://wa.me/5491130043803') + '" target="_blank" rel="noopener"><b>¿Dudas? Escríbeme por WhatsApp</b><small>' + ((window.REDES && REDES.waNumero) || '+54 9 11 3004-3803') + '</small></a>';
   cuerpo.insertBefore(lado, cuerpo.firstChild);
   var velo = document.createElement("div");
   velo.className = "fj-velo";
@@ -75,6 +76,7 @@ var FJ = (function () {
       '<span class="fj-avatar">' + inicial + '</span><span class="fj-usuario-txt"><b>' + (nombre || "Tu cuenta") + '</b><small>' + (gratis ? "Plan gratis" : "Acceso completo") + '</small></span>' + svg("abajo", 2) + '</button>' +
       '<div class="fj-menu-usuario" hidden><span class="fj-menu-email" id="fj-email"></span>' +
       '<a href="' + raiz + 'cuenta">Mi cuenta</a>' + (gratis ? '<a href="/?plan=1#precio">Desbloquear todo</a>' : '') +
+      '<a href="' + ((window.REDES && REDES.wa) || 'https://wa.me/5491130043803') + '" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>' +
       '<a href="https://ig.me/m/juampiiacosta.ai" target="_blank" rel="noopener">Escríbeme por Instagram</a>' +
       '<button type="button" id="fj-salir">Cerrar sesión</button></div></div>';
   var main = document.querySelector("main");
